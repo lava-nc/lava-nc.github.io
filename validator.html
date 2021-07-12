@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Validator &mdash; Lava  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Initializer" href="initializer.html" />
+    <link rel="prev" title="Variable" href="variable.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Lava
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executable.html">Executable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executor.html">Executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiler.html">Compiler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variable.html">Variable</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Validator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initializer.html">Initializer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc_dense.html">Dense</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc_lif.html">LIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc_sparse.html">Sparse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensorflow_backend.html">Tensorflow Backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tf_compiler.html">TF Compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_executor.html">TF Executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_probing.html">TF Probing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tf_variable.html">TF Variable</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lava</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Validator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/validator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-lava.core.generic.validator">
+<span id="validator"></span><h1>Validator<a class="headerlink" href="#module-lava.core.generic.validator" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsBoolean">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">IsBoolean</span></span><a class="headerlink" href="#lava.core.generic.validator.IsBoolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if value is True or False.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsBoolean.is_equivalent">
+<span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsBoolean.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsIn">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">IsIn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if value is a member of a list of &lt;elements&gt;.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsIn.elements">
+<span class="sig-name descname"><span class="pre">elements</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.core.generic.validator.IsIn.elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsIn.is_equivalent">
+<span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsIn.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsSignedInt">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">IsSignedInt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_bits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsSignedInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if value is a signed &lt;num_bits&gt; integer with num_bits-1 value
+bits.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsSignedInt.is_equivalent">
+<span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsSignedInt.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsSignedInt.num_bits">
+<span class="sig-name descname"><span class="pre">num_bits</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.core.generic.validator.IsSignedInt.num_bits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsUnsignedInt">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">IsUnsignedInt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_bits</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsUnsignedInt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if value is an unsigned &lt;num_bits&gt; integer with num_bits value
+bits.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsUnsignedInt.is_equivalent">
+<span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsUnsignedInt.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsUnsignedInt.num_bits">
+<span class="sig-name descname"><span class="pre">num_bits</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.core.generic.validator.IsUnsignedInt.num_bits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsWithin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">IsWithin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsWithin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if value is within a certain range.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsWithin.is_equivalent">
+<span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.IsWithin.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsWithin.max_val">
+<span class="sig-name descname"><span class="pre">max_val</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.core.generic.validator.IsWithin.max_val" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.core.generic.validator.IsWithin.min_val">
+<span class="sig-name descname"><span class="pre">min_val</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.core.generic.validator.IsWithin.min_val" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.core.generic.validator.Validator">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><a class="headerlink" href="#lava.core.generic.validator.Validator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract base class for all validators used within variables.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.core.generic.validator.Validator.is_equivalent">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">is_equivalent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.core.generic.validator.Validator" title="lava.core.generic.validator.Validator"><span class="pre">lava.core.generic.validator.Validator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.Validator.is_equivalent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.core.generic.validator.is_bool">
+<span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">is_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.is_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if &lt;val&gt; is boolean.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.core.generic.validator.is_in">
+<span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">is_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elems</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.is_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if &lt;val&gt; is equal to any of &lt;elems&gt;.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.core.generic.validator.is_within">
+<span class="sig-prename descclassname"><span class="pre">lava.core.generic.validator.</span></span><span class="sig-name descname"><span class="pre">is_within</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.core.generic.validator.is_within" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if &lt;val&gt; is within range of &lt;min_val&gt; and &lt;max_val&gt;.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="initializer.html" class="btn btn-neutral float-right" title="Initializer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="variable.html" class="btn btn-neutral float-left" title="Variable" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
