@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>magma.core.variables package &mdash; Lava  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="magma.runtime package" href="magma.runtime.html" />
+    <link rel="prev" title="magma.core.sync package" href="magma.core.sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Lava
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="magma.html">magma</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="magma.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="magma.compiler.html">magma.compiler package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="magma.compiler.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.compiler.html#magma-compiler-compiler-module">magma.compiler.compiler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.compiler.html#magma-compiler-executable-module">magma.compiler.executable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.compiler.html#module-magma.compiler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="magma.core.html">magma.core package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="magma.core.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.exceptions">magma.core.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-model-module">magma.core.model module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-process-module">magma.core.process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.resources">magma.core.resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.run_conditions">magma.core.run_conditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-run-configs-module">magma.core.run_configs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="magma.runtime.html">magma.runtime package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="magma.runtime.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.runtime.html#magma-runtime-runtime-module">magma.runtime.runtime module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.runtime.html#module-magma.runtime">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="magma.tests.html">magma.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-process-module">magma.tests.test_process module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests.test_pyports">magma.tests.test_pyports module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-pypychannel-module">magma.tests.test_pypychannel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="magma.html#module-magma">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proc.html">proc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proc.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="proc.conv.html">proc.conv package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="proc.conv.html#module-proc.conv">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proc.dense.html">proc.dense package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="proc.dense.html#module-proc.dense">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proc.io.html">proc.io package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="proc.io.html#module-proc.io">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proc.lif.html">proc.lif package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="proc.lif.html#module-proc.lif">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="proc.sparse.html">proc.sparse package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="proc.sparse.html#module-proc.sparse">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="proc.html#module-proc">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.fixed-point.html">utils.fixed-point package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.fixed-point.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.profiler.html">utils.profiler package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.profiler.html#module-utils.profiler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.validator.html">utils.validator package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.validator.html#module-utils.validator">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="utils.visualizer.html">utils.visualizer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="utils.visualizer.html#module-utils.visualizer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials.html#module-tutorials">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lava</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="magma.html">magma</a> &raquo;</li>
+        
+          <li><a href="magma.core.html">magma.core package</a> &raquo;</li>
+        
+      <li>magma.core.variables package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/magma.core.variables.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="magma-core-variables-package">
+<h1>magma.core.variables package<a class="headerlink" href="#magma-core-variables-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-magma.core.variables.abstract">
+<span id="magma-core-variables-abstract-module"></span><h2>magma.core.variables.abstract module<a class="headerlink" href="#module-magma.core.variables.abstract" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="magma.core.variables.abstract.AbstractPortImplementation">
+<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.abstract.</code><code class="sig-name descname">AbstractPortImplementation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process_model</span></em>, <em class="sig-param"><span class="n">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractPortImplementation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject">
+<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.abstract.</code><code class="sig-name descname">AbstractProcessInterfaceObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="p">:</span> <span class="n">Tuple</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.alias">
+<code class="sig-name descname">alias</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject" title="magma.core.variables.abstract.AbstractProcessInterfaceObject">magma.core.variables.abstract.AbstractProcessInterfaceObject</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.alias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Establishes an ‘alias’ relationship between ‘this’ and ‘other’
+AbstractProcessInterface object (like Vars or Ports) across sub
+process boundaries when an ‘outer’ interface object is made an alias
+of an ‘inner’ interface object. In this case the ‘outer’ object
+points to the ‘inner’ object.
+As a first step self.alias(other) determines whether ‘self’ or
+‘other’ is the ‘inner’ or ‘outer’ interface object and then
+estblishes the directional relationship from the ‘outer’ to the
+‘inner’.</p>
+<p>If one variable aliases another variable, the compiler will use the
+initial value of the ‘outer’ variable to initialize the inner
+variable. Any initial value of the ‘inner’ variable will be ignored.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.process">
+<em class="property">property </em><code class="sig-name descname">process</code><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="magma-core-variables-ports-module">
+<h2>magma.core.variables.ports module<a class="headerlink" href="#magma-core-variables-ports-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="magma-core-variables-pyports-module">
+<h2>magma.core.variables.pyports module<a class="headerlink" href="#magma-core-variables-pyports-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-magma.core.variables.types">
+<span id="magma-core-variables-types-module"></span><h2>magma.core.variables.types module<a class="headerlink" href="#module-magma.core.variables.types" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="magma.core.variables.types.LavaCType">
+<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.types.</code><code class="sig-name descname">LavaCType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d_type</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.types.LavaCType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="magma.core.variables.types.LavaCType.d_type">
+<code class="sig-name descname">d_type</code><em class="property">: str</em><a class="headerlink" href="#magma.core.variables.types.LavaCType.d_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="magma.core.variables.types.LavaCType.precision">
+<code class="sig-name descname">precision</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#magma.core.variables.types.LavaCType.precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="magma.core.variables.types.LavaPyType">
+<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.types.</code><code class="sig-name descname">LavaPyType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span><span class="p">:</span> <span class="n">type</span></em>, <em class="sig-param"><span class="n">d_type</span><span class="p">:</span> <span class="n">type</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.types.LavaPyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="magma.core.variables.types.LavaPyType.cls">
+<code class="sig-name descname">cls</code><em class="property">: type</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.cls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="magma.core.variables.types.LavaPyType.d_type">
+<code class="sig-name descname">d_type</code><em class="property">: type</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.d_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="magma.core.variables.types.LavaPyType.precision">
+<code class="sig-name descname">precision</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="magma-core-variables-variable-module">
+<h2>magma.core.variables.variable module<a class="headerlink" href="#magma-core-variables-variable-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-magma.core.variables">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-magma.core.variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="magma.runtime.html" class="btn btn-neutral float-right" title="magma.runtime package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="magma.core.sync.html" class="btn btn-neutral float-left" title="magma.core.sync package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, Intel Corporation
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
