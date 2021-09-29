@@ -84,14 +84,13 @@ Documentation Overview
 .. toctree::
    :maxdepth: 2
 
-   magma
-   proc
-   utils
+   lava_architecture_overview
+   lava_api_documentation
    tutorials
-   lib
-   dl
-   dnf
-   optimization
+   algorithms
+   developer_guide
+   loihi_overview
+   social
 
 
 
