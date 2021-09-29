@@ -37,6 +37,29 @@ Getting started
 Install instructions
 --------------------
 
+Releases will be published via Github releases (We do not plan to push out to PyPI at the moment).
+
+.. code-block:: shell-session
+
+   pip install lava-0.0.1.tar.gz
+   pip install lava-lib-0.0.1.tar.gz
+
+
+
+INRC Members
+^^^^^^^^^^^^
+
+Lava will need additional bits to run on Intel Neuromorphic Hardware (Loihi/Loihi2).
+
+Please email inrc_interest@intel.com for access to the INRC website and to receive an online meeting invitation if you wish to be an engaged INRC member.
+
+.. code-block:: shell-session
+
+   pip install /nfs/ncl/releases/lava/0.0.1/lava-nx-0.0.1.tar.gz
+   pip install /nfs/ncl/releases/lava/0.0.1/lava-nx-lib-0.0.1.tar.gz
+
+
+
 Preview
 -------
 

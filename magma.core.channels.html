@@ -96,11 +96,11 @@
 <li class="toctree-l3 current"><a class="reference internal" href="magma.core.html">magma.core package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="magma.core.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.exceptions">magma.core.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-exceptions-module">magma.core.exceptions module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-model-module">magma.core.model module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-process-module">magma.core.process module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.resources">magma.core.resources module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.run_conditions">magma.core.run_conditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-resources-module">magma.core.resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-run-conditions-module">magma.core.run_conditions module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-run-configs-module">magma.core.run_configs module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core">Module contents</a></li>
 </ul>
@@ -114,7 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="magma.tests.html">magma.tests package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-process-module">magma.tests.test_process module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests.test_pyports">magma.tests.test_pyports module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-pyports-module">magma.tests.test_pyports module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-pypychannel-module">magma.tests.test_pypychannel module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests">Module contents</a></li>
 </ul>
@@ -261,105 +261,11 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="module-magma.core.channels.pypychannel">
-<span id="magma-core-channels-pypychannel-module"></span><h2>magma.core.channels.pypychannel module<a class="headerlink" href="#module-magma.core.channels.pypychannel" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="magma.core.channels.pypychannel.CspRecvPort">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.channels.pypychannel.</code><code class="sig-name descname">CspRecvPort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">shm</span></em>, <em class="sig-param"><span class="n">proto</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">req</span></em>, <em class="sig-param"><span class="n">ack</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvPort" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The output port of a CSP channel.</p>
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspRecvPort.peek">
-<code class="sig-name descname">peek</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvPort.peek" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the next token on the channel without acknowledging it. Blocks
-if there is no data on the channel.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspRecvPort.probe">
-<code class="sig-name descname">probe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvPort.probe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if a ‘recv’ call will not block, and False otherwise.
-Does not block.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspRecvPort.recv">
-<code class="sig-name descname">recv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvPort.recv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Receive from the channel. Blocks if there is no data on the channel.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspRecvPort.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvPort.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="magma.core.channels.pypychannel.CspRecvQueue">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.channels.pypychannel.</code><code class="sig-name descname">CspRecvQueue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">maxsize</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvQueue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">queue.Queue</span></code></p>
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspRecvQueue.get">
-<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">block</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">peek</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspRecvQueue.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation from the standard library augmented with ‘peek’ to
-optionally return the head element without removing it.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="magma.core.channels.pypychannel.CspSendPort">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.channels.pypychannel.</code><code class="sig-name descname">CspSendPort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">shm</span></em>, <em class="sig-param"><span class="n">proto</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">req</span></em>, <em class="sig-param"><span class="n">ack</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspSendPort" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The input port of a CSP channel.</p>
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspSendPort.probe">
-<code class="sig-name descname">probe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspSendPort.probe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns True if a ‘send’ call will not block, and False otherwise.
-Does not block.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspSendPort.send">
-<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspSendPort.send" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send data on the channel. May block if the channel is already full.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.channels.pypychannel.CspSendPort.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.CspSendPort.start" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="magma.core.channels.pypychannel.Proto">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.channels.pypychannel.</code><code class="sig-name descname">Proto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">dtype</span></em>, <em class="sig-param"><span class="n">nbytes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.channels.pypychannel.Proto" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
-<dl class="py attribute">
-<dt id="magma.core.channels.pypychannel.Proto.dtype">
-<code class="sig-name descname">dtype</code><a class="headerlink" href="#magma.core.channels.pypychannel.Proto.dtype" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="magma.core.channels.pypychannel.Proto.nbytes">
-<code class="sig-name descname">nbytes</code><a class="headerlink" href="#magma.core.channels.pypychannel.Proto.nbytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 2</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="magma.core.channels.pypychannel.Proto.shape">
-<code class="sig-name descname">shape</code><a class="headerlink" href="#magma.core.channels.pypychannel.Proto.shape" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
-
-</dd></dl>
-
+<section id="magma-core-channels-pypychannel-module">
+<h2>magma.core.channels.pypychannel module<a class="headerlink" href="#magma-core-channels-pypychannel-module" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="module-magma.core.channels">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-magma.core.channels" title="Permalink to this headline">¶</a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 

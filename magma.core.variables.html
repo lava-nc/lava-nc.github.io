@@ -96,11 +96,11 @@
 <li class="toctree-l3 current"><a class="reference internal" href="magma.core.html">magma.core package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="magma.core.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.exceptions">magma.core.exceptions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-exceptions-module">magma.core.exceptions module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-model-module">magma.core.model module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-process-module">magma.core.process module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.resources">magma.core.resources module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core.run_conditions">magma.core.run_conditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-resources-module">magma.core.resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-run-conditions-module">magma.core.run_conditions module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#magma-core-run-configs-module">magma.core.run_configs module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.core.html#module-magma.core">Module contents</a></li>
 </ul>
@@ -114,7 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="magma.tests.html">magma.tests package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-process-module">magma.tests.test_process module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests.test_pyports">magma.tests.test_pyports module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-pyports-module">magma.tests.test_pyports module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#magma-tests-test-pypychannel-module">magma.tests.test_pypychannel module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="magma.tests.html#module-magma.tests">Module contents</a></li>
 </ul>
@@ -261,47 +261,8 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="module-magma.core.variables.abstract">
-<span id="magma-core-variables-abstract-module"></span><h2>magma.core.variables.abstract module<a class="headerlink" href="#module-magma.core.variables.abstract" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="magma.core.variables.abstract.AbstractPortImplementation">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.abstract.</code><code class="sig-name descname">AbstractPortImplementation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">process_model</span></em>, <em class="sig-param"><span class="n">port</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractPortImplementation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-</dd></dl>
-
-<dl class="py class">
-<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.abstract.</code><code class="sig-name descname">AbstractProcessInterfaceObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="p">:</span> <span class="n">Tuple</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<dl class="py method">
-<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.alias">
-<code class="sig-name descname">alias</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject" title="magma.core.variables.abstract.AbstractProcessInterfaceObject">magma.core.variables.abstract.AbstractProcessInterfaceObject</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.alias" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establishes an ‘alias’ relationship between ‘this’ and ‘other’
-AbstractProcessInterface object (like Vars or Ports) across sub
-process boundaries when an ‘outer’ interface object is made an alias
-of an ‘inner’ interface object. In this case the ‘outer’ object
-points to the ‘inner’ object.
-As a first step self.alias(other) determines whether ‘self’ or
-‘other’ is the ‘inner’ or ‘outer’ interface object and then
-estblishes the directional relationship from the ‘outer’ to the
-‘inner’.</p>
-<p>If one variable aliases another variable, the compiler will use the
-initial value of the ‘outer’ variable to initialize the inner
-variable. Any initial value of the ‘inner’ variable will be ignored.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.name">
-<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="magma.core.variables.abstract.AbstractProcessInterfaceObject.process">
-<em class="property">property </em><code class="sig-name descname">process</code><a class="headerlink" href="#magma.core.variables.abstract.AbstractProcessInterfaceObject.process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="magma-core-variables-abstract-module">
+<h2>magma.core.variables.abstract module<a class="headerlink" href="#magma-core-variables-abstract-module" title="Permalink to this headline">¶</a></h2>
 </section>
 <section id="magma-core-variables-ports-module">
 <h2>magma.core.variables.ports module<a class="headerlink" href="#magma-core-variables-ports-module" title="Permalink to this headline">¶</a></h2>
@@ -309,51 +270,14 @@ variable. Any initial value of the ‘inner’ variable will be ignored.</p>
 <section id="magma-core-variables-pyports-module">
 <h2>magma.core.variables.pyports module<a class="headerlink" href="#magma-core-variables-pyports-module" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="module-magma.core.variables.types">
-<span id="magma-core-variables-types-module"></span><h2>magma.core.variables.types module<a class="headerlink" href="#module-magma.core.variables.types" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="magma.core.variables.types.LavaCType">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.types.</code><code class="sig-name descname">LavaCType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d_type</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.types.LavaCType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt id="magma.core.variables.types.LavaCType.d_type">
-<code class="sig-name descname">d_type</code><em class="property">: str</em><a class="headerlink" href="#magma.core.variables.types.LavaCType.d_type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="magma.core.variables.types.LavaCType.precision">
-<code class="sig-name descname">precision</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#magma.core.variables.types.LavaCType.precision" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="magma.core.variables.types.LavaPyType">
-<em class="property">class </em><code class="sig-prename descclassname">magma.core.variables.types.</code><code class="sig-name descname">LavaPyType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cls</span><span class="p">:</span> <span class="n">type</span></em>, <em class="sig-param"><span class="n">d_type</span><span class="p">:</span> <span class="n">type</span></em>, <em class="sig-param"><span class="n">precision</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#magma.core.variables.types.LavaPyType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt id="magma.core.variables.types.LavaPyType.cls">
-<code class="sig-name descname">cls</code><em class="property">: type</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.cls" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="magma.core.variables.types.LavaPyType.d_type">
-<code class="sig-name descname">d_type</code><em class="property">: type</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.d_type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="magma.core.variables.types.LavaPyType.precision">
-<code class="sig-name descname">precision</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#magma.core.variables.types.LavaPyType.precision" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="magma-core-variables-types-module">
+<h2>magma.core.variables.types module<a class="headerlink" href="#magma-core-variables-types-module" title="Permalink to this headline">¶</a></h2>
 </section>
 <section id="magma-core-variables-variable-module">
 <h2>magma.core.variables.variable module<a class="headerlink" href="#magma-core-variables-variable-module" title="Permalink to this headline">¶</a></h2>
 </section>
-<section id="module-magma.core.variables">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-magma.core.variables" title="Permalink to this headline">¶</a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 
