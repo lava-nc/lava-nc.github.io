@@ -19,6 +19,7 @@ a closed behavioral loop.
    :target: https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif
    :alt: 2D DNF tracking bias input
 
+|
 
 What is lava-dnf?
 -----------------
