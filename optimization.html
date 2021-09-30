@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Optimization &mdash; Lava  documentation</title>
+  <title>Neuromorphic Constraint Optimization Library &mdash; Lava  documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Developer Guide" href="developer_guide.html" />
-    <link rel="prev" title="Dynamic Neural Fields (DNFs)" href="dnf.html" /> 
+    <link rel="prev" title="Dynamic Neural Fields" href="dnf.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -139,14 +139,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields (DNFs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#key-features">Key features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dnf.html#license">License</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Optimization</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +207,7 @@
         
           <li><a href="algorithms.html">Algorithms</a> &raquo;</li>
         
-      <li>Optimization</li>
+      <li>Neuromorphic Constraint Optimization Library</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -226,10 +226,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="optimization">
-<h1>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <section id="neuromorphic-constraint-optimization-library">
+<h1>Neuromorphic Constraint Optimization Library<a class="headerlink" href="#neuromorphic-constraint-optimization-library" title="Permalink to this headline">¶</a></h1>
+<p><strong>A library of solvers that leverage neuromorphic hardware for constrained optimization.</strong></p>
+<p>Constrained optimization searches for the values of input variables that minimize or maximize a given objective function, while the variables are subject to constraints. This kind of problem is ubiquitous throughout scientific domains and industries.
+Constrained optimization is a promising application for neuromorphic computing as it <a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">naturally aligns with the dynamics of spiking neural networks</a>. When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: In its simplest form, recurrent inhibitory synapses connect neurons which represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
+<p>This Lava repository provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems:</p>
+<ol class="arabic simple">
+<li><p>Constraint Satisfaction Problems (CSP).</p></li>
+<li><p>Quadratic Unconstrained Binary Optimization (QUBO).</p></li>
+</ol>
+<p>In the future, the library will be extended by solvers targeting further constraint optimization problems that are relevant for robotics and operations research.
+The current focus lies on solvers for the following problems:</p>
+<ol class="arabic simple">
+<li><p>Linear Programming (LP).</p></li>
+<li><p>Integer Programming (IP).</p></li>
+<li><p>Quadratic Programming (QP).</p></li>
+<li><p>Mixed-Integer Linear Programming (MILP).</p></li>
+<li><p>Mixed-Integer Quadratic Programming (MIQP).</p></li>
+</ol>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/86950058/135390275-f0c75a18-4b2f-4340-b1af-e0530259eabf.png"><img alt="Overview_Solvers3" src="https://user-images.githubusercontent.com/86950058/135390275-f0c75a18-4b2f-4340-b1af-e0530259eabf.png" /></a>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.optimization</span> <span class="kn">import</span> <span class="n">CspSolver</span>
+
+<span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">]</span>
+<span class="n">domains</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">var1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="n">var2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span> <span class="n">var3</span> <span class="o">=</span><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">})</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">CspSolver</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">domains</span><span class="p">,</span> <span class="n">constraints</span><span class="p">))</span>
+<span class="n">solution</span><span class="p">,</span> <span class="n">t_sol</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;Loihi1&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span><span class="p">,</span> <span class="n">t_sol</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;Loihi2&#39;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">time_to_solution</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">energy_to_solution</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -243,7 +275,7 @@
         <a href="developer_guide.html" class="btn btn-neutral float-right" title="Developer Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dnf.html" class="btn btn-neutral float-left" title="Dynamic Neural Fields (DNFs)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dnf.html" class="btn btn-neutral float-left" title="Dynamic Neural Fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

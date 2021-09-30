@@ -138,14 +138,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields (DNFs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#key-features">Key features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dnf.html#license">License</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#example">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -226,50 +226,274 @@
   <section id="lava-documentation">
 <h1>Lava Documentation<a class="headerlink" href="#lava-documentation" title="Permalink to this headline">¶</a></h1>
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/68661711/135301797-400e163d-71a3-45f8-b35f-e849e8c74f0c.png"><img alt="image" src="https://user-images.githubusercontent.com/68661711/135301797-400e163d-71a3-45f8-b35f-e849e8c74f0c.png" /></a>
-<p>#
-A software framework for neuromorphic computing</p>
-</section>
+<p align="center"><b>
+  A software framework for neuromorphic computing
+</b></p></section>
 <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>… short purpose/mission statement and major capabilities …</p>
-<p>… Link to documentation page: <a class="reference external" href="https://lava-nc.github.io">https://lava-nc.github.io</a></p>
+<p>Lava is an open-source software framework for developing neuro-inspired applications and mapping them to neuromorphic hardware. It intrinsically leverages the advantages of neuromorphic hardware to support its goal of matching the ability of the human brain  human brain’s ability to intelligently process, learn from, and respond to real-world data within milliseconds at microwatt power levels.</p>
+<p>The vision behind Lava is a common, open, professionally developed code base that unites the full range of approaches pursued by the neuromorphic computing community. It provides a modular and composable structure for researchers to integrate their best ideas into a growing algorithms library, and it presents compelling and productive abstractions to application developers. For this purpose, Lava allows researchers to define versatile processes like individual neurons, neural networks, or interfaces to peripheral devices, and to connect it into complex neuromorphic applications.</p>
+<p>Lava is platform-agnostic so that applications can be tested on conventional CPUs/GPUs and deployed to a wide range of neuromorphic chips such as Intel’s Loihi. To compile and execute processes for different backends, Lava builds on a low-level interface called Magma with a powerful compiler and runtime library. This framework natively supports:</p>
+<ol class="arabic simple">
+<li><p>Massive parallelism.</p></li>
+<li><p>Channel-based message passing between asynchronous processes using Communicating Sequential Processes.</p></li>
+<li><p>Heterogeneous execution platforms with both conventional and neuromorphic components.</p></li>
+<li><p>Real-time and Offline training.</p></li>
+<li><p>Measurement of performance and energy consumption.</p></li>
+<li><p>Integration with third-party frameworks.</p></li>
+</ol>
+<p>For users, Lava blends a simple Python Interface with an excellent performance due to underlying C/C++/CUDA/OpenCL code.</p>
+<p>For more information, visit the Lava Documentation: <a class="reference external" href="https://lava-nc.github.io/">https://lava-nc.github.io/</a></p>
 </section>
 <section id="release-plan">
 <h1>Release plan<a class="headerlink" href="#release-plan" title="Permalink to this headline">¶</a></h1>
-<p>… Explain Lava has been developed by Intel is currently in beta status and different components will be migrated in stages over next month to public repo</p>
-<p>… Show release plan table</p>
+<p>Lava has originally been developed by Intel’s Neuromorphic Computing Lab but will be completely open-sourced in stages beginning October 2021 together with the announcement of Intel’s new Loihi 2 neuromorphic processor architecture.
+During the first two months after the initial release, there will be rapid bi-weekly releases of the core Lava components and first algorithm libraries by Intel.</p>
+<p>After this first wave of releases, Intel will slow down to a quarterly release schedule of new features and enhancements. At the same time, increasing engagement with open-source contributors is expected.</p>
+<p><strong>Initial release schedule:</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 4%" />
+<col style="width: 85%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Component</p></td>
+<td><p>HW Support</p></td>
+<td><p>Features</p></td>
+</tr>
+<tr class="row-even"><td><p>Magma</p></td>
+<td><p>CPU, GPU</p></td>
+<td><ul class="simple">
+<li><p>The generic high-level and HW-agnostic API supports creation of processes that execute asynchronously, in parallel and communicate via messages over channels to enable algorithm and application development.</p></li>
+<li><p>Compiler and Run time initially only support execution or simulation on CPU and GPU platform.</p></li>
+<li><p>A series of basic examples and tutorials explain Lava’s key architectural and usage concepts</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Process library</p></td>
+<td><p>CPU, GPU</p></td>
+<td><p>Process library initially supports basic processes to create spiking neural networks with different neuron models, connection topologies and input/output processes.</p></td>
+</tr>
+<tr class="row-even"><td><p>Deep Learning library</p></td>
+<td><p>CPU, GPU</p></td>
+<td><p>The Lava Deep Learning (DL) library allows for direct training of stateful and event-based spiking neural networks with backpropagation via SLAYER 2.0 as well as inference through Lava. Training and inference will initially only be supported on CPU/GPU HW.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Optimization library</p></td>
+<td><p>CPU, GPU</p></td>
+<td><p>The Lava optimization library offers a variety of constraint optimization solvers such as constraint satisfaction (CSP) or quadratic unconstraint binary optimization (QUBO) and more.</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic Neural Field library</p></td>
+<td><p>CPU, GPU</p></td>
+<td><p>The Dynamic Neural Field (DNF) library allows to build neural attractor networks for working memory, decision making, basic neuronal representations, and learning.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Magma and Process library</p></td>
+<td><p>Loihi 1, 2</p></td>
+<td><p>Compiler, Runtime and the process library will be upgraded to support Loihi 1 and 2 architectures.</p></td>
+</tr>
+<tr class="row-even"><td><p>Profiler</p></td>
+<td><p>CPU, GPU</p></td>
+<td><p>The Lava Profiler enable power and performance measurements on neuromorphic HW as well as the ability to simulate power and performance of neuromorphic HW on CPU/GPU platforms. Initially only CPU/GPU support will be available.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DL, DNF &amp; Optimization library</p></td>
+<td><p>Loihi 1, 2</p></td>
+<td><p>All algorithm libraries will be upgraded to support and be properly tested on neuromorphic HW.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lava-organization">
+<h1>Lava organization<a class="headerlink" href="#lava-organization" title="Permalink to this headline">¶</a></h1>
+<p>… Show figure of SW stack</p>
+<p>… Explain the different repositories and components in tabular form and related to SW tack</p>
 </section>
 <section id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <section id="install-instructions">
 <h2>Install instructions<a class="headerlink" href="#install-instructions" title="Permalink to this headline">¶</a></h2>
-<p>Releases will be published via Github releases (We do not plan to push out to PyPI at the moment).</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">pip install lava-0.0.1.tar.gz</span>
+<section id="installing-or-cloning-lava">
+<h3>Installing or cloning Lava<a class="headerlink" href="#installing-or-cloning-lava" title="Permalink to this headline">¶</a></h3>
+<p>New Lava releases will be published via GitHub releases and can be installed after downloading.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install lava-0.0.1.tar.gz</span>
 <span class="go">pip install lava-lib-0.0.1.tar.gz</span>
 </pre></div>
 </div>
-<section id="inrc-members">
-<h3>INRC Members<a class="headerlink" href="#inrc-members" title="Permalink to this headline">¶</a></h3>
-<p>Lava will need additional bits to run on Intel Neuromorphic Hardware (Loihi/Loihi2).</p>
-<p>Please email <a class="reference external" href="mailto:inrc_interest&#37;&#52;&#48;intel&#46;com">inrc_interest<span>&#64;</span>intel<span>&#46;</span>com</a> for access to the INRC website and to receive an online meeting invitation if you wish to be an engaged INRC member.</p>
-<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">pip install /nfs/ncl/releases/lava/0.0.1/lava-nx-0.0.1.tar.gz</span>
-<span class="go">pip install /nfs/ncl/releases/lava/0.0.1/lava-nx-lib-0.0.1.tar.gz</span>
+<p>If you would like to contribute to the source code or work with the source directly, you can also clone the repository.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone git@github.com:lava-nc/lava.git</span>
+<span class="go">pip install -e lava/lava</span>
+
+<span class="go">git clone git@github.com:lava-nc/lava-lib.git</span>
+<span class="gp"># </span><span class="o">[</span>Optional<span class="o">]</span>
+<span class="go">pip install -e lava-lib/dnf</span>
+<span class="go">pip install -e lava-lib/dl</span>
+<span class="go">pip install -e lava-lib/optimization</span>
+</pre></div>
+</div>
+<p>This will allow you to run Lava on your own local CPU or GPU.</p>
+</section>
+<section id="running-lava-on-intel-loihi">
+<h3>Running Lava on Intel Loihi<a class="headerlink" href="#running-lava-on-intel-loihi" title="Permalink to this headline">¶</a></h3>
+<p>Intel’s neuromorphic Loihi 1 or 2 research systems are currently not available commercially. Developers interested in using Lava with Loihi systems, need to join the Intel Neuromorphic Research Community (INRC). Once a member of the INRC, developers will gain access to cloud-hosted Loihi systems or are able obtain physical Loihi systems on a loan basis as well as additional proprietary components of the magma library which enables to compile processes for Loihi systems.</p>
+<p>Please email <a class="reference external" href="mailto:inrc_interest&#37;&#52;&#48;intel&#46;com">inrc_interest<span>&#64;</span>intel<span>&#46;</span>com</a> to request a template to apply for INRC membership.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install /nfs/ncl/releases/lava/0.0.1/lava-nc-0.0.1.tar.gz</span>
+<span class="go">pip install /nfs/ncl/releases/lava/0.0.1/lava-nc-lib-0.0.1.tar.gz</span>
 </pre></div>
 </div>
 </section>
 </section>
-<section id="preview">
-<h2>Preview<a class="headerlink" href="#preview" title="Permalink to this headline">¶</a></h2>
-<p>… show a programming example as a teaser to provide an idea of the look and feel: e.g. Input -&gt; DNN -&gt; Output + how to compile and run</p>
+<section id="coding-example">
+<h2>Coding example<a class="headerlink" href="#coding-example" title="Permalink to this headline">¶</a></h2>
+<section id="building-a-simple-feed-forward-network">
+<h3>Building a simple feed-forward network<a class="headerlink" href="#building-a-simple-feed-forward-network" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate Lava processes to build network</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lava.proc.io</span> <span class="kn">import</span> <span class="n">SpikeInput</span><span class="p">,</span> <span class="n">SpikeOutput</span>
+<span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LIF</span>
+
+<span class="n">si</span> <span class="o">=</span> <span class="n">SpikeInput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;source_data_path&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">in_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
+              <span class="n">out_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+              <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)))</span>
+<span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span> <span class="n">vth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">so</span> <span class="o">=</span> <span class="n">SpikeOutput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;result_data_path&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span>
+
+<span class="c1"># Connect processes via their directional input and output ports</span>
+<span class="n">si</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+<span class="n">dense</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+<span class="n">lif</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+
+<span class="c1"># Execute processes for fixed number of steps on Loihi 2 (by running any of them)</span>
+<span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">run_configs</span> <span class="k">as</span> <span class="n">rcfg</span>
+<span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">run_conditions</span> <span class="k">as</span> <span class="n">rcnd</span>
+<span class="n">lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_cfg</span><span class="o">=</span><span class="n">rcfg</span><span class="o">.</span><span class="n">Loihi2HwCfg</span><span class="p">(),</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">rcnd</span><span class="o">.</span><span class="n">RunSteps</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-custom-lava-process">
+<h3>Creating a custom Lava process<a class="headerlink" href="#creating-a-custom-lava-process" title="Permalink to this headline">¶</a></h3>
+<p>A process has input and output ports to interact with other processes, internal variables may have different behavioral implementations in different programming languages or for different HW platforms.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">AbstractProcess</span><span class="p">,</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">OutPort</span>
+
+<span class="k">class</span> <span class="nc">LIF</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Leaky-Integrate-and-Fire neural process with activation input and spike</span>
+<span class="sd">    output ports a_in and s_out.</span>
+
+<span class="sd">    Realizes the following abstract behavior:</span>
+<span class="sd">    u[t] = u[t-1] * (1-du) + a_in</span>
+<span class="sd">    v[t] = v[t-1] * (1-dv) + u[t] + b</span>
+<span class="sd">    s_out = v[t] &gt; vth</span>
+<span class="sd">    v[t] = v[t] - s_out*vth</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+        <span class="c1"># Declare input and output ports</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+        <span class="c1"># Declare internal variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decay_u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;du&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decay_v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dv&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;vth&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-process-models">
+<h3>Creating process models<a class="headerlink" href="#creating-process-models" title="Permalink to this headline">¶</a></h3>
+<p>Process models are used to provide different behavioral models of a process. This Python model implements the LIF process, the Loihi synchronization protocol and requires a CPU compute resource to run.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lava</span> <span class="kn">import</span> <span class="n">magma</span> <span class="k">as</span> <span class="n">mg</span>
+<span class="kn">from</span> <span class="nn">lava.magma.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
+<span class="kn">from</span> <span class="nn">lava.magma.sync_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span><span class="p">,</span> <span class="n">DONE</span>
+<span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">LIF</span>
+<span class="kn">from</span> <span class="nn">lava.magma.pymodel</span> <span class="kn">import</span> <span class="n">AbstractPyProcessModel</span><span class="p">,</span> <span class="n">LavaType</span>
+<span class="kn">from</span> <span class="nn">lava.magma.pymodel</span> <span class="kn">import</span> <span class="n">InPortVecDense</span> <span class="k">as</span> <span class="n">InPort</span>
+<span class="kn">from</span> <span class="nn">lava.magma.pymodel</span> <span class="kn">import</span> <span class="n">OutPortVecDense</span> <span class="k">as</span> <span class="n">OutPort</span>
+
+<span class="nd">@mg</span><span class="o">.</span><span class="n">implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
+<span class="nd">@mg</span><span class="o">.</span><span class="n">requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PyLifModel</span><span class="p">(</span><span class="n">AbstractPyProcessModel</span><span class="p">):</span>
+    <span class="c1"># Declare port implementation</span>
+    <span class="n">a_in</span><span class="p">:</span> <span class="n">InPort</span> <span class="o">=</span>     <span class="n">LavaType</span><span class="p">(</span><span class="n">InPort</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">s_out</span><span class="p">:</span> <span class="n">OutPort</span> <span class="o">=</span>   <span class="n">LavaType</span><span class="p">(</span><span class="n">OutPort</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Declare variable implementation</span>
+    <span class="n">u</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span>    <span class="n">LavaType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span>    <span class="n">LavaType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span>    <span class="n">LavaType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">du</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span>          <span class="n">LavaType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">dv</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span>          <span class="n">LavaType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">vth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span>         <span class="n">LavaType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Executed during spiking phase of synchronization protocol.&quot;&quot;&quot;</span>
+        <span class="c1"># Decay current</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">)</span>
+        <span class="c1"># Receive input activation via channel and accumulate</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">+=</span> <span class="n">activation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+        <span class="c1"># Generate output spikes and send to receiver</span>
+        <span class="n">spikes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">spikes</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">spikes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In contrast this process model also implements the LIF process but by structurally allocating neural network resources on a virtual Loihi 1 neuro core.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava</span> <span class="kn">import</span> <span class="n">magma</span> <span class="k">as</span> <span class="n">mg</span>
+<span class="kn">from</span> <span class="nn">lava.magma.resources</span> <span class="kn">import</span> <span class="n">Loihi1NeuroCore</span>
+<span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">LIF</span>
+<span class="kn">from</span> <span class="nn">lava.magma.ncmodel</span> <span class="kn">import</span> <span class="n">AbstractNcProcessModel</span><span class="p">,</span> <span class="n">LavaType</span><span class="p">,</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span><span class="p">,</span> <span class="n">Var</span>
+
+<span class="nd">@mg</span><span class="o">.</span><span class="n">implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">)</span>
+<span class="nd">@mg</span><span class="o">.</span><span class="n">requires</span><span class="p">(</span><span class="n">Loihi1NeuroCore</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">NcProcessModel</span><span class="p">(</span><span class="n">AbstractNcProcessModel</span><span class="p">):</span>
+    <span class="c1"># Declare port implementation</span>
+    <span class="n">a_in</span><span class="p">:</span> <span class="n">InPort</span> <span class="o">=</span>   <span class="n">LavaType</span><span class="p">(</span><span class="n">InPort</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">s_out</span><span class="p">:</span> <span class="n">OutPort</span> <span class="o">=</span> <span class="n">LavaType</span><span class="p">(</span><span class="n">OutPort</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Declare variable implementation</span>
+    <span class="n">u</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>         <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>         <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">b</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>         <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">du</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>        <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">dv</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>        <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">vth</span><span class="p">:</span> <span class="n">Var</span> <span class="o">=</span>       <span class="n">LavaType</span><span class="p">(</span><span class="n">Var</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net</span><span class="p">:</span> <span class="n">mg</span><span class="o">.</span><span class="n">Net</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Allocates neural resources in &#39;virtual&#39; neuro core.&quot;&quot;&quot;</span>
+        <span class="n">num_neurons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_args</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Allocate output axons</span>
+        <span class="n">out_ax</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">out_ax</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">)</span>
+        <span class="n">net</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">out_ax</span><span class="p">)</span>
+        <span class="c1"># Allocate compartments</span>
+        <span class="n">cx_cfg</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">cx_cfg</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                  <span class="n">du</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">,</span>
+                                  <span class="n">dv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="p">,</span>
+                                  <span class="n">vth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vth</span><span class="p">)</span>
+        <span class="n">cx</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">cx</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">,</span>
+                          <span class="n">u</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">,</span>
+                          <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span>
+                          <span class="n">b_mant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span>
+                          <span class="n">cfg</span><span class="o">=</span><span class="n">cx_cfg</span><span class="p">)</span>
+        <span class="n">cx</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">out_ax</span><span class="p">)</span>
+        <span class="c1"># Allocate dendritic accumulators</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">)</span>
+        <span class="n">da</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span>
+        <span class="n">net</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
-<section id="lava-sw-stack">
-<h1>Lava SW stack<a class="headerlink" href="#lava-sw-stack" title="Permalink to this headline">¶</a></h1>
-<p>… Show figure of SW stack</p>
-<p>… Explain the different repositories and components in tabular form and related to SW tack</p>
 </section>
-<section id="contacting-us">
-<h1>Contacting us<a class="headerlink" href="#contacting-us" title="Permalink to this headline">¶</a></h1>
+<section id="communication">
+<h1>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Why to reach out?</p></li>
+<li><p>Link to newsletter subscription goes here to learn more about latest lava developments and releases</p></li>
+</ul>
 </section>
 <section id="documentation-overview">
 <h1>Documentation Overview<a class="headerlink" href="#documentation-overview" title="Permalink to this headline">¶</a></h1>
@@ -288,8 +512,8 @@ A software framework for neuromorphic computing</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dl.html">Lava DL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields (DNFs)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>

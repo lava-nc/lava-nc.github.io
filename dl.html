@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dynamic Neural Fields (DNFs)" href="dnf.html" />
+    <link rel="next" title="Dynamic Neural Fields" href="dnf.html" />
     <link rel="prev" title="Algorithms" href="algorithms.html" /> 
 </head>
 
@@ -139,14 +139,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields (DNFs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#key-features">Key features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dnf.html#license">License</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#example">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -228,14 +228,15 @@
             
   <section id="lava-dl">
 <h1>Lava DL<a class="headerlink" href="#lava-dl" title="Permalink to this headline">¶</a></h1>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a><code class="docutils literal notranslate"><span class="pre">lava-dl</span></code>** provides tools for training and deploying a deep learning solution for event-based deep networks on traditional as well as neuromorphic backends. We present <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> and <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> as our training and inference tool for deep learning models.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a><code class="docutils literal notranslate"><span class="pre">lava-dl</span></code>** is a library of deep learning tools, which consists of <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> and <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> for training and deployment of event-based deep neural networks on traditional as well as neuromorphic backends.</p>
 <section id="lava-dl-workflow">
 <h2>Lava-dl Workflow<a class="headerlink" href="#lava-dl-workflow" title="Permalink to this headline">¶</a></h2>
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png"><img alt="lava_dl" src="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png" /></a>
 </section>
 <section id="lava-lib-dl-slayer">
 <h2><a href="#id3"><span class="problematic" id="id4">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code>**<a class="headerlink" href="#lava-lib-dl-slayer" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is the enhanced version of <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a> method that now supports <em>recurrent network structures</em>, a wider variety of <em>neuron models</em> and <em>synaptic connections</em> and more (look <a class="reference external" href="placeholder_for_slayer_readme">here</a> for a complete list of new features). Network layers are encapsulated in an easy to use <code class="docutils literal notranslate"><span class="pre">block</span></code> interface. SLAYER is built on top of <a class="reference external" href="https://pytorch.org/">PyTorch</a> deep learning framework. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> supports platform independent <strong>hdf5 network exchange</strong>. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> then ingests the hdf5 output and encapsulates the trained network layers as native Lava Processes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is an enhanced version of <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a>. Most noteworthy enhancements are: support for <em>recurrent network structures</em>, a wider variety of <em>neuron models</em> and <em>synaptic connections</em> (a complete list of features is <a class="reference external" href="placeholder_for_slayer_readme">here</a>). This version of SLAYER is built on top of the <a class="reference external" href="https://pytorch.org/">PyTorch</a> deep learning framework, similar to its predecessor. For smooth integration with Lava, <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> supports exporting trained models using the platform independent <strong>hdf5 network exchange</strong> format.</p>
+<p>In future versions, SLAYER will get completely integrated into Lava to train Lava Processes directly. This will eliminate the need for explicitly exporting and importing the trained networks.</p>
 <section id="example-code">
 <h3>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h3>
 <p><strong>Import modules</strong></p>
@@ -293,7 +294,7 @@
 </section>
 <section id="lava-lib-dl-netx">
 <h2><a href="#id5"><span class="problematic" id="id6">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code><a href="#id7"><span class="problematic" id="id8">**</span></a><a class="headerlink" href="#lava-lib-dl-netx" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> provides automated API for loading models trained using SLAYER as Lava Processes and running inference in a few easy steps. The details of hdf5 network description specification can be found <a class="reference external" href="placeholder_for_netx_readme">here</a>.</p>
+<p>For inference using Lava, <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> provides an automated API for loading SLAYER-trained models as Lava Processes, which can be directly run on a desired backend. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> imports models saved via SLAYER using the hdf5 network exchange format. The details of hdf5 network description specification can be found <a class="reference external" href="placeholder_for_netx_readme">here</a>.</p>
 <section id="id10">
 <h3>Example Code<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p><strong>Import modules</strong></p>
@@ -322,10 +323,10 @@
 </pre></div>
 </div>
 <p><strong>Run the network</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">import</span> <span class="nn">lava.magma.core.run_configs</span> <span class="k">as</span> <span class="nn">rc</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">run_configs</span> <span class="k">as</span> <span class="n">rcfg</span>
+<span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">run_conditions</span> <span class="k">as</span> <span class="n">rcnd</span>
 
-<span class="n">net</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">total_run_time</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">rc</span><span class="o">.</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+<span class="n">net</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">rcnd</span><span class="o">.</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">total_run_time</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">rcfg</span><span class="o">.</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
@@ -340,7 +341,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dnf.html" class="btn btn-neutral float-right" title="Dynamic Neural Fields (DNFs)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dnf.html" class="btn btn-neutral float-right" title="Dynamic Neural Fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="algorithms.html" class="btn btn-neutral float-left" title="Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
