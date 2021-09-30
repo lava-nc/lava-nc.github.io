@@ -9,13 +9,14 @@ Lava Documentation
 .. role:: raw-html-m2r(raw)
    :format: html
 
-
+|
 
 .. image:: https://user-images.githubusercontent.com/68661711/135301797-400e163d-71a3-45f8-b35f-e849e8c74f0c.png
    :target: https://user-images.githubusercontent.com/68661711/135301797-400e163d-71a3-45f8-b35f-e849e8c74f0c.png
    :alt: image
+   :align: center
 
-
+|
 
 .. raw:: html
 
