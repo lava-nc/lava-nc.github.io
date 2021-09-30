@@ -321,7 +321,6 @@ Documentation Overview
 
    lava_architecture_overview
    lava_api_documentation
-   tutorials
    algorithms
    developer_guide
    loihi_overview

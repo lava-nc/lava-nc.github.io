@@ -7,4 +7,5 @@ Lava API Documentation
     magma
     proc
     utils
+    tutorials
  

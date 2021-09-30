@@ -1,7 +1,7 @@
-Algorithms
-==========
+Algorithms and Application Libraries
+====================================
 
-Following are the list of algorithms implemented using Lava:
+Following are the list of algorithms and applications implemented using Lava:
 
 .. toctree::
    :maxdepth: 4
