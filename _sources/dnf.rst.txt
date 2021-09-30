@@ -1,6 +1,14 @@
 Dynamic Neural Fields
 =====================
 
+
+.. image:: https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif
+   :target: https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif
+   :alt: 2D DNF tracking bias input
+:raw-html-m2r:`<br>`
+*Voltage of a selective dynamic neural field tracking input*
+
+
 Introduction
 ------------
 
@@ -33,3 +41,23 @@ Examples demonstrating basic DNF regimes and instabilities
 Infrastructure
     • Sensor and data input/output
     • Plotting
+
+
+Example
+-------
+
+.. code-block:: python
+
+   from lava.lib.dnf.populations import Population
+   from lava.lib.dnf.kernels import SelectiveKernel
+   from lava.lib.dnf.connect import connect
+   from lava.lib.dnf.operations import Instar, OneToOne
+
+   # create population of 20x20 spiking neurons
+   dnf = Population(shape=(20, 20))
+
+   # create a selective kernel
+   kernel = SelectiveKernel(amp_exc=18, width_exc=[4, 4], global_inh=-15)
+
+   # apply the kernel to the population to create a DNF with a selective regime
+   connect(dnf, dnf, [Instar(kernel)])

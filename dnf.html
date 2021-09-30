@@ -143,6 +143,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-lava-dnf">What is lava-dnf?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
@@ -227,6 +228,9 @@
             
   <section id="dynamic-neural-fields">
 <h1>Dynamic Neural Fields<a class="headerlink" href="#dynamic-neural-fields" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif"><img alt="2D DNF tracking bias input" src="https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif" /></a>
+<p><a href="#id1"><span class="problematic" id="id2">:raw-html-m2r:`&lt;br&gt;`</span></a>
+<em>Voltage of a selective dynamic neural field tracking input</em></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Dynamic Neural Fields (DNF) are neural attractor networks that generate stabilized activity patterns in recurrently connected populations of neurons. These activity patterns form the basis for working memory, decision making, basic neuronal representations, and learning.  DNFs are the fundamental building block of Dynamic Field Theory (DFT, Home | Dynamic field theory), a mathematical and conceptual framework for modeling cognitive processes in the embodied cognition approach, i.e. cognition (memory, representation, decision making, and learning) in a closed behavioral loop.</p>
@@ -261,6 +265,24 @@ This library also provides tools to direct sensory input to the neuronal archite
 </ul>
 </dd>
 </dl>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.dnf.populations</span> <span class="kn">import</span> <span class="n">Population</span>
+<span class="kn">from</span> <span class="nn">lava.lib.dnf.kernels</span> <span class="kn">import</span> <span class="n">SelectiveKernel</span>
+<span class="kn">from</span> <span class="nn">lava.lib.dnf.connect</span> <span class="kn">import</span> <span class="n">connect</span>
+<span class="kn">from</span> <span class="nn">lava.lib.dnf.operations</span> <span class="kn">import</span> <span class="n">Instar</span><span class="p">,</span> <span class="n">OneToOne</span>
+
+<span class="c1"># create population of 20x20 spiking neurons</span>
+<span class="n">dnf</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># create a selective kernel</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">SelectiveKernel</span><span class="p">(</span><span class="n">amp_exc</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">width_exc</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">global_inh</span><span class="o">=-</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># apply the kernel to the population to create a DNF with a selective regime</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">dnf</span><span class="p">,</span> <span class="n">dnf</span><span class="p">,</span> <span class="p">[</span><span class="n">Instar</span><span class="p">(</span><span class="n">kernel</span><span class="p">)])</span>
+</pre></div>
+</div>
 </section>
 </section>
 

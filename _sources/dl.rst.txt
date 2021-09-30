@@ -8,9 +8,12 @@ Lava-dl Workflow
 ----------------
 
 
-.. image:: https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png
-   :target: https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png
-   :alt: lava_dl
+.. raw:: html
+
+   <p align="center">
+   <img src="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png" alt="Drawing" style="max-height: 400px;"/>
+   </p>
+
 
 
 lava.lib.dl.slayer

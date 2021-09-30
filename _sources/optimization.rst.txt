@@ -11,13 +11,13 @@ This Lava repository provides constraint optimization solvers that leverage the 
 
 #. Constraint Satisfaction Problems (CSP).
 #. Quadratic Unconstrained Binary Optimization (QUBO).
+#. Integer Linear Programming (ILP).
 
 In the future, the library will be extended by solvers targeting further constraint optimization problems that are relevant for robotics and operations research.
 The current focus lies on solvers for the following problems:
 
 
 #. Linear Programming (LP).
-#. Integer Programming (IP).
 #. Quadratic Programming (QP).
 #. Mixed-Integer Linear Programming (MILP).
 #. Mixed-Integer Quadratic Programming (MIQP).
