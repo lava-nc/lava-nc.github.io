@@ -307,7 +307,6 @@ Documentation Overview
    algorithms
    developer_guide
    loihi_overview
-   social
 
 
 
