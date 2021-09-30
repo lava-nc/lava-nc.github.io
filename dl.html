@@ -129,12 +129,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="algorithms.html">Algorithms</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Lava DL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#lava-dl-workflow">Lava-dl Workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-slayer">**<code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code>**</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-slayer">lava.lib.dl.slayer</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#example-code">Example Code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-netx">**<code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code>**</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Example Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-netx">lava.lib.dl.netx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example Code</a></li>
 </ul>
 </li>
 </ul>
@@ -227,13 +227,13 @@
             
   <section id="lava-dl">
 <h1>Lava DL<a class="headerlink" href="#lava-dl" title="Permalink to this headline">¶</a></h1>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a><code class="docutils literal notranslate"><span class="pre">lava-dl</span></code>** is a library of deep learning tools, which consists of <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> and <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> for training and deployment of event-based deep neural networks on traditional as well as neuromorphic backends.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lava-dl</span></code> is a library of deep learning tools, which consists of <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> and <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> for training and deployment of event-based deep neural networks on traditional as well as neuromorphic backends.</p>
 <section id="lava-dl-workflow">
 <h2>Lava-dl Workflow<a class="headerlink" href="#lava-dl-workflow" title="Permalink to this headline">¶</a></h2>
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png"><img alt="lava_dl" src="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png" /></a>
 </section>
 <section id="lava-lib-dl-slayer">
-<h2><a href="#id3"><span class="problematic" id="id4">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code>**<a class="headerlink" href="#lava-lib-dl-slayer" title="Permalink to this headline">¶</a></h2>
+<h2>lava.lib.dl.slayer<a class="headerlink" href="#lava-lib-dl-slayer" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is an enhanced version of <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a>. Most noteworthy enhancements are: support for <em>recurrent network structures</em>, a wider variety of <em>neuron models</em> and <em>synaptic connections</em> (a complete list of features is <a class="reference external" href="placeholder_for_slayer_readme">here</a>). This version of SLAYER is built on top of the <a class="reference external" href="https://pytorch.org/">PyTorch</a> deep learning framework, similar to its predecessor. For smooth integration with Lava, <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> supports exporting trained models using the platform independent <strong>hdf5 network exchange</strong> format.</p>
 <p>In future versions, SLAYER will get completely integrated into Lava to train Lava Processes directly. This will eliminate the need for explicitly exporting and importing the trained networks.</p>
 <section id="example-code">
@@ -292,10 +292,10 @@
 </section>
 </section>
 <section id="lava-lib-dl-netx">
-<h2><a href="#id5"><span class="problematic" id="id6">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code><a href="#id7"><span class="problematic" id="id8">**</span></a><a class="headerlink" href="#lava-lib-dl-netx" title="Permalink to this headline">¶</a></h2>
+<h2>lava.lib.dl.netx<a class="headerlink" href="#lava-lib-dl-netx" title="Permalink to this headline">¶</a></h2>
 <p>For inference using Lava, <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> provides an automated API for loading SLAYER-trained models as Lava Processes, which can be directly run on a desired backend. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> imports models saved via SLAYER using the hdf5 network exchange format. The details of hdf5 network description specification can be found <a class="reference external" href="placeholder_for_netx_readme">here</a>.</p>
-<section id="id10">
-<h3>Example Code<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3>Example Code<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><strong>Import modules</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.dl.netx</span> <span class="kn">import</span> <span class="n">hdf5</span>
 </pre></div>

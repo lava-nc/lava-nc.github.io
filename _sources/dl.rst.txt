@@ -2,7 +2,7 @@
 Lava DL
 =======
 
-**\ ``lava-dl``\ ** is a library of deep learning tools, which consists of ``lava.lib.dl.slayer`` and ``lava.lib.dl.netx`` for training and deployment of event-based deep neural networks on traditional as well as neuromorphic backends.
+``lava-dl`` is a library of deep learning tools, which consists of ``lava.lib.dl.slayer`` and ``lava.lib.dl.netx`` for training and deployment of event-based deep neural networks on traditional as well as neuromorphic backends.
 
 Lava-dl Workflow
 ----------------
@@ -13,7 +13,7 @@ Lava-dl Workflow
    :alt: lava_dl
 
 
-**\ ``lava.lib.dl.slayer``\ **
+lava.lib.dl.slayer
 ----------------------------------
 
 ``lava.lib.dl.slayer`` is an enhanced version of `SLAYER <https://github.com/bamsumit/slayerPytorch>`_. Most noteworthy enhancements are: support for *recurrent network structures*\ , a wider variety of *neuron models* and *synaptic connections* (a complete list of features is `here <placeholder_for_slayer_readme>`_\ ). This version of SLAYER is built on top of the `PyTorch <https://pytorch.org/>`_ deep learning framework, similar to its predecessor. For smooth integration with Lava, ``lava.lib.dl.slayer`` supports exporting trained models using the platform independent **hdf5 network exchange** format. 
@@ -82,7 +82,7 @@ Example Code
 
    net.export_hdf5('network.net')
 
-**\ ``lava.lib.dl.netx``\ **\  
+lava.lib.dl.netx
 ---------------------------------
 
 For inference using Lava, ``lava.lib.dl.netx``\  provides an automated API for loading SLAYER-trained models as Lava Processes, which can be directly run on a desired backend. ``lava.lib.dl.netx`` imports models saved via SLAYER using the hdf5 network exchange format. The details of hdf5 network description specification can be found `here <placeholder_for_netx_readme>`_.
