@@ -22,9 +22,11 @@ The current focus lies on solvers for the following problems:
 #. Mixed-Integer Linear Programming (MILP).
 #. Mixed-Integer Quadratic Programming (MIQP).
 
-.. image:: https://user-images.githubusercontent.com/86950058/135390275-f0c75a18-4b2f-4340-b1af-e0530259eabf.png
-   :target: https://user-images.githubusercontent.com/86950058/135390275-f0c75a18-4b2f-4340-b1af-e0530259eabf.png
-   :alt: Overview_Solvers3
+.. image:: https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true
+   :target: https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true
+   :alt: Overview_Solvers
+
+|
 
 Example
 -------
