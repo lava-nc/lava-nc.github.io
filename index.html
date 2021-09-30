@@ -152,8 +152,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#conventions-and-coding-style">Conventions and Coding Style</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#style-guide-and-conventions">Style guide and conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a></li>
 </ul>
 </li>
@@ -361,16 +361,15 @@ During the first two months after the initial Sept 30 launch, NCL will release t
 <span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LIF</span>
 
 <span class="n">si</span> <span class="o">=</span> <span class="n">SpikeInput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;source_data_path&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
-<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">in_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
-              <span class="n">out_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-              <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)))</span>
+<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">784</span><span class="p">),</span>
+              <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">784</span><span class="p">)))</span>
 <span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span> <span class="n">vth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">so</span> <span class="o">=</span> <span class="n">SpikeOutput</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;result_data_path&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span>
 
 <span class="c1"># Connect processes via their directional input and output ports</span>
-<span class="n">si</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-<span class="n">lif</span><span class="o">.</span><span class="n">out_port</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+<span class="n">si</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+<span class="n">dense</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+<span class="n">lif</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
 
 <span class="c1"># Execute processes for fixed number of steps on Loihi 2 (by running any of them)</span>
 <span class="kn">from</span> <span class="nn">lava.magma</span> <span class="kn">import</span> <span class="n">run_configs</span> <span class="k">as</span> <span class="n">rcfg</span>
@@ -524,8 +523,8 @@ During the first two months after the initial Sept 30 launch, NCL will release t
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#conventions-and-coding-style">Conventions and Coding Style</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#style-guide-and-conventions">Style guide and conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a></li>
 </ul>
 </li>

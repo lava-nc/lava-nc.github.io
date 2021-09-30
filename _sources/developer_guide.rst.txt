@@ -2,13 +2,13 @@ Developer Guide
 ===============
 
 
-Conventions and Coding Style
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Style guide and conventions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-How to contribute to Lava?
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+How to contribute to Lava
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 

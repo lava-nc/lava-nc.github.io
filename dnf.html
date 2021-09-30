@@ -153,8 +153,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#conventions-and-coding-style">Conventions and Coding Style</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#style-guide-and-conventions">Style guide and conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a></li>
 </ul>
 </li>
@@ -228,43 +228,54 @@
             
   <section id="dynamic-neural-fields">
 <h1>Dynamic Neural Fields<a class="headerlink" href="#dynamic-neural-fields" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif"><img alt="2D DNF tracking bias input" src="https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif" /></a>
-<p><a href="#id1"><span class="problematic" id="id2">:raw-html-m2r:`&lt;br&gt;`</span></a>
-<em>Voltage of a selective dynamic neural field tracking input</em></p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Dynamic Neural Fields (DNF) are neural attractor networks that generate stabilized activity patterns in recurrently connected populations of neurons. These activity patterns form the basis for working memory, decision making, basic neuronal representations, and learning.  DNFs are the fundamental building block of Dynamic Field Theory (DFT, Home | Dynamic field theory), a mathematical and conceptual framework for modeling cognitive processes in the embodied cognition approach, i.e. cognition (memory, representation, decision making, and learning) in a closed behavioral loop.</p>
+<p>Dynamic Neural Fields (DNF) are neural attractor networks that generate
+stabilized activity patterns in recurrently connected populations of neurons.
+These activity patterns form the basis of neural representations, decision
+making, working memory, and learning. DNFs are the fundamental
+building block of [dynamic field theory](<a class="reference external" href="https://dynamicfieldtheory.org">https://dynamicfieldtheory.org</a>),
+a mathematical and conceptual framework for modeling cognitive processes in
+a closed behavioral loop.</p>
+<p>![2D DNF tracking bias input](<a class="reference external" href="https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif">https://user-images.githubusercontent.com/5708333/135443996-7492b968-277a-4397-9b1c-597b7af4a699.gif</a>)&lt;br&gt;
+<em>Voltage of a selective dynamic neural field tracking moving input</em></p>
 </section>
 <section id="what-is-lava-dnf">
 <h2>What is lava-dnf?<a class="headerlink" href="#what-is-lava-dnf" title="Permalink to this headline">¶</a></h2>
-<p>lava-dnf is a Lava library, an open-source software framework for neuromorphic computing. The main building block in Lava are processes. lava-dnf provides processes and other software infrastructure to build architectures composed of DNFs (attractor networks) as the main building blocks.
-This library also provides tools to direct sensory input to the neuronal architecture and to read out the, e.g. motor control, output.</p>
-<p>The primary focus of lava-dnf today are robotic applications - sensing and perception, motion control, behavioral organization, map formation, and autonomous (continual) learning. Neuromorphic hardware provides significant gains in both processing speed and energy efficiency compared to conventional implementations of DNFs on a CPU or GPU (e.g. using cedar or cosivina).</p>
+<p>lava-dnf is a library within the Lava software framework. The main building
+blocks in Lava are processes. lava-dnf provides
+processes and other software infrastructure to build architectures composed of
+DNFs. It also provides tools to direct sensory input to
+neural architectures and to read output, for instance for motor control.</p>
+<p>The primary focus of lava-dnf today is on robotic applications: sensing and
+perception, motion control, behavioral organization, map formation, and
+autonomous (continual) learning. Neuromorphic hardware provides significant
+gains in both processing speed and energy efficiency compared to conventional
+implementations of DNFs on a CPU or GPU (e.g., using
+[cedar](<a class="reference external" href="https://cedar.ini.rub.de">https://cedar.ini.rub.de</a>) or [cosivina](<a class="reference external" href="https://github.com/cosivina">https://github.com/cosivina</a>)).</p>
 </section>
 <section id="key-features">
 <h2>Key features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt>Building DNF architectures</dt><dd><ul class="simple">
+<p>Building DNF architectures</p>
+<ol class="arabic simple">
 <li><p>Based on spiking neurons</p></li>
 <li><p>DNF dimensionality support for 0D, 1D, 2D, and 3D</p></li>
-<li><p>recurrent connectivity based on kernel functions</p></li>
-<li><p>forward connectivity to connect multiple DNFs</p></li>
-<li><p>structured input from spike generators</p></li>
-</ul>
-</dd>
-<dt>Examples demonstrating basic DNF regimes and instabilities</dt><dd><ul class="simple">
-<li><p>detection of input</p></li>
-<li><p>selection of input</p></li>
-<li><p>working memory of input</p></li>
-<li><p>neural oscillator</p></li>
-</ul>
-</dd>
-<dt>Infrastructure</dt><dd><ul class="simple">
+<li><p>Recurrent connectivity based on kernel functions</p></li>
+<li><p>Forward connectivity to connect multiple DNFs</p></li>
+<li><p>Structured input from spike generators</p></li>
+</ol>
+<p>Examples demonstrating basic DNF regimes and instabilities</p>
+<ol class="arabic simple">
+<li><p>Detection of input</p></li>
+<li><p>Selection of input</p></li>
+<li><p>Working memory of input</p></li>
+<li><p>Neural oscillator</p></li>
+</ol>
+<p>Infrastructure</p>
+<ol class="arabic simple">
 <li><p>Sensor and data input/output</p></li>
 <li><p>Plotting</p></li>
-</ul>
-</dd>
-</dl>
+</ol>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
