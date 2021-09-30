@@ -1,4 +1,4 @@
-optimization
+Optimization
 ============
 
 .. toctree::

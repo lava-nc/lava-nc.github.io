@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dl &mdash; Lava  documentation</title>
+  <title>Lava DL &mdash; Lava  documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="dnf" href="dnf.html" />
+    <link rel="next" title="Dynamic Neural Fields (DNFs)" href="dnf.html" />
     <link rel="prev" title="Algorithms" href="algorithms.html" /> 
 </head>
 
@@ -127,13 +127,26 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="algorithms.html">Algorithms</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">dl</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lava DL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lava-dl-workflow">Lava-dl Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-slayer">**<code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code>**</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-code">Example Code</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dnf.html">dnf</a><ul class="simple">
+<li class="toctree-l3"><a class="reference internal" href="#lava-lib-dl-netx">**<code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code>**</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Example Code</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields (DNFs)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -194,7 +207,7 @@
         
           <li><a href="algorithms.html">Algorithms</a> &raquo;</li>
         
-      <li>dl</li>
+      <li>Lava DL</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -213,10 +226,110 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="dl">
-<h1>dl<a class="headerlink" href="#dl" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <section id="lava-dl">
+<h1>Lava DL<a class="headerlink" href="#lava-dl" title="Permalink to this headline">¶</a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a><code class="docutils literal notranslate"><span class="pre">lava-dl</span></code>** provides tools for training and deploying a deep learning solution for event-based deep networks on traditional as well as neuromorphic backends. We present <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> and <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> as our training and inference tool for deep learning models.</p>
+<section id="lava-dl-workflow">
+<h2>Lava-dl Workflow<a class="headerlink" href="#lava-dl-workflow" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png"><img alt="lava_dl" src="https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png" /></a>
+</section>
+<section id="lava-lib-dl-slayer">
+<h2><a href="#id3"><span class="problematic" id="id4">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code>**<a class="headerlink" href="#lava-lib-dl-slayer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is the enhanced version of <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a> method that now supports <em>recurrent network structures</em>, a wider variety of <em>neuron models</em> and <em>synaptic connections</em> and more (look <a class="reference external" href="placeholder_for_slayer_readme">here</a> for a complete list of new features). Network layers are encapsulated in an easy to use <code class="docutils literal notranslate"><span class="pre">block</span></code> interface. SLAYER is built on top of <a class="reference external" href="https://pytorch.org/">PyTorch</a> deep learning framework. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> supports platform independent <strong>hdf5 network exchange</strong>. <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> then ingests the hdf5 output and encapsulates the trained network layers as native Lava Processes.</p>
+<section id="example-code">
+<h3>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline">¶</a></h3>
+<p><strong>Import modules</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
+</pre></div>
 </div>
+<p><strong>Network Description</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># like any standard pyTorch network</span>
+<span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="c1"># sequential network blocks</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">rf_params</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">alif</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">alif_params</span><span class="p">,</span> <span class="mi">64</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Recurrent</span><span class="p">(</span><span class="n">cuba_params</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">KWTA</span><span class="p">(</span><span class="n">cuba_params</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">num_winners</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span>
+            <span class="c1"># forward computation is as simple as calling the blocks in a loop</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="nf">export_hdf5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="c1"># network export to hdf5 format</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;layer&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Training</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="o">...</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>Export the network</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="s1">&#39;network.net&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="lava-lib-dl-netx">
+<h2><a href="#id5"><span class="problematic" id="id6">**</span></a><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code><a href="#id7"><span class="problematic" id="id8">**</span></a><a class="headerlink" href="#lava-lib-dl-netx" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> provides automated API for loading models trained using SLAYER as Lava Processes and running inference in a few easy steps. The details of hdf5 network description specification can be found <a class="reference external" href="placeholder_for_netx_readme">here</a>.</p>
+<section id="id10">
+<h3>Example Code<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p><strong>Import modules</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.dl.netx</span> <span class="kn">import</span> <span class="n">hdf5</span>
+</pre></div>
+</div>
+<p><strong>Load the trained network</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the model as a Lava Process</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">hdf5</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">net_config</span><span class="o">=</span><span class="s1">&#39;network.net&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Attach Processes for Input Injection and Output Readout</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.io</span> <span class="kn">import</span> <span class="n">InputLoader</span><span class="p">,</span> <span class="n">BiasWriter</span><span class="p">,</span> <span class="n">OutputReader</span>
+
+<span class="c1"># Instantiate the processes</span>
+<span class="n">input_loader</span> <span class="o">=</span> <span class="n">InputLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">testing_set</span><span class="p">)</span>
+<span class="n">bias_writer</span> <span class="o">=</span> <span class="n">BiasWriter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">OutputReader</span><span class="p">()</span>
+
+<span class="c1"># Connect the input to the network:</span>
+<span class="n">input_loader</span><span class="o">.</span><span class="n">data_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">bias_writer</span><span class="o">.</span><span class="n">bias_in</span><span class="p">)</span>
+<span class="n">bias_writer</span><span class="o">.</span><span class="n">bias_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">in_layer</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+
+<span class="c1"># Connect network-output to the output process</span>
+<span class="n">net</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">net_output_in</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Run the network</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<span class="kn">import</span> <span class="nn">lava.magma.core.run_configs</span> <span class="k">as</span> <span class="nn">rc</span>
+
+<span class="n">net</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">total_run_time</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">rc</span><span class="o">.</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -227,7 +340,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dnf.html" class="btn btn-neutral float-right" title="dnf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dnf.html" class="btn btn-neutral float-right" title="Dynamic Neural Fields (DNFs)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="algorithms.html" class="btn btn-neutral float-left" title="Algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

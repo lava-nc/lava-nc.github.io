@@ -1,6 +1,129 @@
-dl
-==
 
-.. toctree::
-   :maxdepth: 4
+Lava DL
+=======
 
+**\ ``lava-dl``\ ** provides tools for training and deploying a deep learning solution for event-based deep networks on traditional as well as neuromorphic backends. We present ``lava.lib.dl.slayer`` and ``lava.lib.dl.netx`` as our training and inference tool for deep learning models.
+
+Lava-dl Workflow
+----------------
+
+
+.. image:: https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png
+   :target: https://user-images.githubusercontent.com/11490108/135362329-a6cf89e7-9d9e-42e5-9f33-102537463e63.png
+   :alt: lava_dl
+
+
+**\ ``lava.lib.dl.slayer``\ **
+----------------------------------
+
+``lava.lib.dl.slayer`` is the enhanced version of `SLAYER <https://github.com/bamsumit/slayerPytorch>`_ method that now supports *recurrent network structures*\ , a wider variety of *neuron models* and *synaptic connections* and more (look `here <placeholder_for_slayer_readme>`_ for a complete list of new features). Network layers are encapsulated in an easy to use ``block`` interface. SLAYER is built on top of `PyTorch <https://pytorch.org/>`_ deep learning framework. ``lava.lib.dl.slayer`` supports platform independent **hdf5 network exchange**. ``lava.lib.dl.netx`` then ingests the hdf5 output and encapsulates the trained network layers as native Lava Processes.
+
+Example Code
+^^^^^^^^^^^^
+
+**Import modules**
+
+.. code-block:: python
+
+   import lava.lib.dl.slayer as slayer
+
+**Network Description**
+
+.. code-block:: python
+
+   # like any standard pyTorch network
+   class Network(torch.nn.Module):
+       def __init__(self):
+           ...
+           self.blocks = torch.nn.ModuleList([# sequential network blocks 
+                   slayer.block.sigma_delta.Input(sdnn_params), 
+                   slayer.block.sigma_delta.Conv(sdnn_params,  3, 24, 3),
+                   slayer.block.sigma_delta.Conv(sdnn_params, 24, 36, 3),
+                   slayer.block.rf_iz.Conv(rf_params, 36, 64, 3, delay=True),
+                   slayer.block.rf_iz.Conv(sdnn_cnn_params, 64, 64, 3, delay=True),
+                   slayer.block.rf_iz.Flatten(),
+                   slayer.block.alif.Dense(alif_params, 64*40, 100, delay=True),
+                   slayer.block.cuba.Recurrent(cuba_params, 100, 50),
+                   slayer.block.cuba.KWTA(cuba_params, 50, 50, num_winners=5)
+               ])
+
+       def forward(self, x):
+           for block in self.blocks: 
+               # forward computation is as simple as calling the blocks in a loop
+               x = block(x)
+           return x
+
+       def export_hdf5(self, filename):
+           # network export to hdf5 format
+           h = h5py.File(filename, 'w')
+           layer = h.create_group('layer')
+           for i, b in enumerate(self.blocks):
+               b.export_hdf5(layer.create_group(f'{i}'))
+
+**Training**
+
+.. code-block:: python
+
+   net = Network()
+   ...
+   for epoch in range(epochs):
+       for i, (input, ground_truth) in enumerate(train_loader):
+           out = net(input)
+           ...
+       for i, (input, ground_truth) in enumerate(test_loader):
+           out = net(input)
+           ...
+
+**Export the network**
+
+.. code-block:: python
+
+   net.export_hdf5('network.net')
+
+**\ ``lava.lib.dl.netx``\ **\  
+---------------------------------
+
+``lava.lib.dl.netx``\  provides automated API for loading models trained using SLAYER as Lava Processes and running inference in a few easy steps. The details of hdf5 network description specification can be found `here <placeholder_for_netx_readme>`_.
+
+Example Code
+^^^^^^^^^^^^
+
+**Import modules**
+
+.. code-block:: python
+
+   from lava.lib.dl.netx import hdf5
+
+**Load the trained network**
+
+.. code-block:: python
+
+   # Import the model as a Lava Process
+   net = hdf5.Network(net_config='network.net')
+
+**Attach Processes for Input Injection and Output Readout**
+
+.. code-block:: python
+
+   from lava.proc.io import InputLoader, BiasWriter, OutputReader
+
+   # Instantiate the processes
+   input_loader = InputLoader(dataset=testing_set)
+   bias_writer = BiasWriter(shape=input_shape)
+   output = OutputReader()
+
+   # Connect the input to the network:
+   input_loader.data_out.connect(bias_writer.bias_in)
+   bias_writer.bias_out.connect(net.in_layer.bias)
+
+   # Connect network-output to the output process
+   net.out_layer.neuron.s_out.connect(output.net_output_in)
+
+**Run the network**
+
+.. code-block:: python
+
+   from lava.magma.core.run_conditions import RunSteps
+   import lava.magma.core.run_configs as rc
+
+   net.run(condition=RunSteps(total_run_time), run_cfg=rc.Loihi1SimCfg())
