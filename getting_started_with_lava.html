@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started With Lava &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Algorithms and Application Libraries" href="algorithms.html" />
+    <link rel="prev" title="Lava Architecture" href="lava_architecture_overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dl.html">Lava DL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-dl-workflow">Lava-dl Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-lib-dl-slayer">lava.lib.dl.slayer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-lib-dl-netx">lava.lib.dl.netx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl.html#id2">Example Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#docsting-format">Docsting Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started With Lava</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started_with_lava.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="getting-started-with-lava">
+<h1>Getting Started With Lava<a class="headerlink" href="#getting-started-with-lava" title="Permalink to this headline"></a></h1>
+<p>This guide to programming Lava will provide a growing collection of learning resources to help you become a Lava developer! It will cover all aspects of Lava enabling you to create, compile, execute and understand Lava <em>Processes</em>. Review the <a class="reference external" href="https://lava-nc.org/lava_architecture_overview.html">Lava Architecture</a> section for an introduction to the fundamental architectural concepts of Lava.</p>
+<p>The following two sections currently include <strong>application examples</strong> that give a broader overview how to use Lava features in practice while the tutorials on the <strong>fundamental concepts</strong> provide a deeper dive into specific features of Lava and how to use them.</p>
+<div class="section" id="application-examples">
+<h2>Application examples:<a class="headerlink" href="#application-examples" title="Permalink to this headline"></a></h2>
+<p>These are standalone tutorials that can be followed in any order.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/lava/tutorials/end_to_end/tutorial01_mnist_digit_classification.ipynb">MNIST digit classification:</a> The classical ‘<em>Hello World!</em>’ example illustrating how to build a simple feed-forward image classifier using leaky-integrate-and-fire neurons.</p></li>
+</ul>
+<p><strong>Coming soon:</strong></p>
+<ul class="simple">
+<li><p>Liquid state machine: Another classical canonical example in neuromorphic computing, illustrating a complex, spiking and recurrent neural network for time series classification.</p></li>
+<li><p>Learning: Many neuromorphic architectures offer local on-chip learning via bio-inspired STDP learning. This tutorial provides a simple example how such learning rules can be used.</p></li>
+</ul>
+</div>
+<div class="section" id="fundamental-concepts">
+<h2>Fundamental concepts:<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline"></a></h2>
+<p>These tutorials walk step-by-step through the fundamental concepts of Lava introduced in <a class="reference external" href="https://lava-nc.org/lava_architecture_overview.html">Lava Architecture</a>. These tutorials tend to build on each other, therefore it’s best to consume them in order.</p>
+<p>1. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb">Installing Lava</a>:
+Quickly get Lava installed, tested and ready to develop on your system.</p>
+<p>2. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/lava/tutorials/in_depth/tutorial02_processes.ipynb">Processes</a>:
+Learn how to create <em>Processes</em> which are Lava’s fundamental computational building blocks.</p>
+<p>3. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/lava/tutorials/in_depth/tutorial03_process_models.ipynb">Process models</a>:
+Learn to implement <em>Process</em> behavior with the ability to run on diverse backends via Lava <em>ProcessModels</em>.</p>
+<p>4. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/lava/tutorials/in_depth/tutorial04_execution.ipynb">Execution</a>:
+This notebook demonstrates how to configure, start, and stop the execution of a network of <em>Processes</em>.</p>
+<p><strong>Coming shortly:</strong></p>
+<p>5. Connecting processes:
+How to connect <em>Processes</em> for message-based communication via channels and to build a network of asynchronously operating and interacting <em>Processes</em>.</p>
+<p>6. Hierarchical processes:
+<em>Processes</em> can be composed into hierarchical processes. Learn how to implement <em>SubProcessModels</em> to build modular <em>Processes</em> of <em>Processes</em>.</p>
+<p>7. Direct memory access:
+Explains how to realize direct memory access between <em>Processes</em> and what to be cautious about.</p>
+<p>8. State monitoring:
+Lava offers probes to monitor the evolution of temporal state during execution. Learn how to create probes, retrieve timeseries and how to create custom visualization of network dynamics.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava_architecture_overview.html" class="btn btn-neutral float-left" title="Lava Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="algorithms.html" class="btn btn-neutral float-right" title="Algorithms and Application Libraries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

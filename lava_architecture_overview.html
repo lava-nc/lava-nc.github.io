@@ -1,69 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Lava Architecture Overview &mdash; Lava  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lava Architecture &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lava API Documentation" href="lava_api_documentation.html" />
-    <link rel="prev" title="Lava Documentation" href="index.html" /> 
+    <link rel="next" title="Getting Started With Lava" href="getting_started_with_lava.html" />
+    <link rel="prev" title="Lava Software Framework" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Lava
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Lava
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -71,59 +35,24 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lava Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="magma.html">magma</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="magma.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="magma.compiler.html">magma.compiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.core.html">magma.core</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.runtime.html">magma.runtime</a></li>
-<li class="toctree-l4"><a class="reference internal" href="magma.tests.html">magma.tests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-platform-execution">4. Cross-platform execution:</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="magma.html#module-magma">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="proc.html">proc</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="proc.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="proc.conv.html">proc.conv package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="proc.dense.html">proc.dense package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="proc.io.html">proc.io package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="proc.lif.html">proc.lif package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="proc.sparse.html">proc.sparse package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="proc.html#module-proc">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="utils.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="utils.fixed-point.html">utils.fixed-point package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.profiler.html">utils.profiler package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.validator.html">utils.validator package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="utils.visualizer.html">utils.visualizer package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="utils.html#module-utils">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials.html">tutorials</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorials.html#module-tutorials">Module contents</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -153,135 +82,191 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#style-guide-and-conventions">Style guide and conventions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="loihi_overview.html">Loihi and Loihi Systems Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#docsting-format">Docsting Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Lava</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Lava Architecture Overview</li>
-    
-    
+      <li>Lava Architecture</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/lava_architecture_overview.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <section id="lava-architecture-overview">
-<h1>Lava Architecture Overview<a class="headerlink" href="#lava-architecture-overview" title="Permalink to this headline">¶</a></h1>
-</section>
+             
+  <div class="section" id="lava-architecture">
+<h1>Lava Architecture<a class="headerlink" href="#lava-architecture" title="Permalink to this headline"></a></h1>
+<p>Lava is an emerging open-source software framework for neuromorphic computing. Many parts of Lava are still under development. Therefore the following sections describe Lava’s key attributes and fundamental architectural concepts that are partly implemented and partly envisioned today. A deeper dive into these architectural concepts can be found in the ‘Getting started with Lava’ section. We hope to inspire and invite developers to contribute to this open-source effort to solve some of the key challenges of neuromorphic hardware, software and application development.</p>
+<div class="section" id="key-attributes">
+<h2>Key attributes<a class="headerlink" href="#key-attributes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Asynchronous parallelism:</strong> Lava is a software framework for asynchronous event-based processing for distributed, neuromorphic, heterogeneous, and massively parallel hardware platforms supporting edge to cloud based systems.</p></li>
+<li><p><strong>Refinement:</strong> Lava facilitates iterative software development through refinement of abstract computational processes into architecture-specific implementations. This allows application development to start from high-level behavioral models that can be broken down successively into lower-level models optimized for different platforms.</p></li>
+<li><p><strong>Cross-platform:</strong> Lava supports flexible cross-platform execution of computational processes on novel neuromorphic architectures such as Intel Loihi as well as conventional CPU/GPU architectures. It is flexible in the dual sense of allowing the same computational processes to execute on different platforms while also allowing different processes to execute and interact across architectures through message passing.</p></li>
+<li><p><strong>Modular and composable:</strong> Lava’s computational processes follow a consistent architecture, to make them interoperable which allows to compose modular systems from other computational processes.</p></li>
+<li><p><strong>Extensible:</strong> Lava is open and extensible to support use cases of increasing breadth over time and to interact with other third party frameworks such as TensorFlow, ROS, Brian and more.</p></li>
+<li><p><strong>Trainable:</strong> Lave comes with powerful training algorithms to train models offline and continually online in real-time in the future.</p></li>
+<li><p><strong>Accessible:</strong> Lava provides an intuitive Python API to quickly build and execute models on distributed parallel systems.</p></li>
+</ul>
+</div>
+<div class="section" id="why-do-we-need-lava">
+<h2>Why do we need Lava?<a class="headerlink" href="#why-do-we-need-lava" title="Permalink to this headline"></a></h2>
+<p>At a micro-scale, neuromorphic systems are brain-inspired. Brains consist of a large number of neurons and synapses that operate in parallel and communicate with each other with sparse asynchronous messages (spikes), which lead to large gains in computational efficiency.</p>
+<p>At a macro-scale, neuromorphic hardware systems often involve multiple physical computing elements, ranging from special purpose neural accelerators to conventional CPU/GPUs, sensors, or actuator devices.
+Neuromorphic hardware systems and Lava mirror this general, massively parallel, heterogenous architecture from the ground up. All algorithms built in Lava are built from independent, modular computational processes that may execute on different hardware platforms and communicate through generalized message types.</p>
+<p>So far, there is no single open software framework today that combines all of these architectural aspects in a coherent, easy to use, and performant fashion to pave the way for broader adoption of neuromorphic technologies.</p>
+</div>
+<div class="section" id="lava-s-foundational-concepts">
+<h2>Lava’s foundational concepts<a class="headerlink" href="#lava-s-foundational-concepts" title="Permalink to this headline"></a></h2>
+<div class="section" id="processes">
+<h3>1. Processes:<a class="headerlink" href="#processes" title="Permalink to this headline"></a></h3>
+<p><em>Processes</em> are the fundamental building block in the Lava architecture from which all algorithms and applications are built. <em>Processes</em> are stateful objects with internal variables, input and output ports for message-based communication via channels.
+<em>Processes</em> come in different forms. A <em>Process</em> can be as simple as a single neuron or as complex an entire neural network like a ResNet architecture, or an excitatory/inhibitory network.
+A <em>Process</em> could also represent regular program code like a search algorithm, a system management process or be used for data pre and post processing.
+In addition, peripheral devices such as sensors or actuators can also be wrapped into the <em>Process</em> abstraction to integrate them seamlessly into a Lava application alongside other computational processes.
+In short, everything in Lava is a <em>Process</em>, which has its own private memory and communicates with its environment solely via messages. This makes Lava <em>Processes</em> a recursive programming abstraction from which modular, large-scale parallel applications can be built.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" style="width: 800px;" /></a>
+</div>
+<div class="section" id="behavioral-implementations-via-processmodels">
+<h3>2. Behavioral implementations via ProcessModels:<a class="headerlink" href="#behavioral-implementations-via-processmodels" title="Permalink to this headline"></a></h3>
+<p><em>Process</em> classes themselves only define the interface of a <em>Process</em> in terms of state variables, ports, and other class methods for other <em>Processes</em> to use or interact with any given <em>Process</em>. However, <em>Processes</em> do not provide a behavioral implementation to make a <em>Process</em> executable on a particular hardware architecture.</p>
+<p>The behavioral implementation - i.e. a concrete implementation of variables, ports, channels and internal business logic - is provided via separate <em>ProcessModel</em> classes. <em>Processes</em> can have one or more <em>ProcessModels</em> of the same or different types. We distinguish between two categories of <em>ProcessModel</em> types:</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" style="width: 800px;" /></a>
+<ul class="simple">
+<li><p><strong>SubProcessModels:</strong> The first way <em>ProcessModels</em> can be implemented is in terms of other <em>Processes</em>. With a <em>SubProcessModel</em>, other sub-<em>Processes</em> can be instantiated, configured, and connected to define the behavior of the parent-<em>Process</em>. The ports of a <em>SubProcessModel</em> can be connected to the ports of its sub-<em>Processes</em> and variables of sub-<em>Processes</em> can be exposed as variables of the parent-<em>Process</em> as needed to make them accessible in its environment. This type of refinement of a parent-<em>Process</em> by means of sub-<em>Processes</em> can be applied recursively and will result in a tree-structured <em>Process</em>/<em>ProcessModel</em> hierarchy which allows to build sophisticated and reusable application modules.</p></li>
+<li><p><strong>LeafProcessModels:</strong> <em>ProcessModels</em> can also be implemented directly as opposed to the composition of other sub-<em>Processes</em>. In this case, we refer to them as <em>LeafProcessModels</em> because they form the leaves of the tree-structured <em>Process</em> hierarchy. Such <em>LeafProcesses</em> can be implemented in a programming language such as <em>Python</em> or <em>C</em>. For different hardware architectures, the <em>LeafProcessModel</em> code either describes computations directly in terms of executable instructions for a von-Neumann processor, possibly using external libraries such as Numpy, TensorFlow or PyTorch. In contrast, compute resources like neuromorphic cores do not execute arbitrary sequences of instructions but gain computational advantages by executing through collective dynamics specified by structural descriptions. In this case, the code of corresponding <em>NcProcessModels</em> for such cores is responsible for the structural allocation and configuration of neural network resources such as axons, synapses, and neurons in a neuro core. In the future, Lava <em>Processes</em> may also model and specify the operation of analog neuromorphic chips with behavioral models that will only approximately match their real-time execution.</p></li>
+</ul>
+<p>In general, in neuromorphic architectures computation emerges from collective dynamical processes that are often approximate, nondeterministic, and may vary in detailed execution from platform to platform. Therefore Lava views behavior as <em>modeled</em> rather than <em>programmed</em> or <em>specified</em>, and this perspective motivates the name <em>ProcessModel</em>.</p>
+<p>Fundamentally, all <em>Processes</em> within a system or network operate in parallel and communicate asynchronously with each other through the exchange of message tokens. But many use cases require synchronization among <em>Processes</em>, for instance to implement a discrete-time dynamical system representing a particular neuron model progressing from one algorithmic time step to the next.
+Lava allows developers to define synchronization protocols that describe how <em>Processes</em> in the same synchronization domain synchronize with each other. This <em>SyncProtocol</em> is orchestrated by a <em>Synchronizer</em> within a <em>SyncDomain</em> which exchanges synchronization message tokens with all <em>Processes</em> in a <em>SyncDomain</em>. The compiler either assigns <em>Processes</em> automatically to a <em>SyncDomain</em> based on the <em>SyncProtocol</em> it implements but also allows users to assign <em>Processes</em> manually to <em>SyncDomains</em> to customize synchronization among <em>Processes</em> in more detail.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" style="width: 800px;" /></a>
+<p>Besides implementing a specific <em>Process</em> and <em>SyncProtocol</em>, a <em>ProcessModel</em> has a specific type (such as <em>PyProcessModel</em>, <em>CProcessModel</em>, <em>SubProcessModel</em>, etc.), has one or more resource requirements, and has one or more tags. Resource requirements specify what compute or peripheral resources a <em>ProcessModel</em> may require in order to execute, such as CPU, neuromorphic core, hard disk, or access to a camera. Furthermore, tags specify additional behavioral attributes of a <em>ProcessModel</em>.</p>
+<p>In order to execute a specific instance of a <em>Process</em>, the compiler will select one of the <em>ProcessModels</em> that implement a given <em>Process</em> class. In order to allow for different selection strategies, the compiler delegates this <em>ProcessModel</em> selection to instances of a separate <em>RunConfig</em> class. Such <em>RunConfigs</em> correspond to a set of rules that determine which <em>ProcessModel</em> to select for a <em>Process</em> given user preferences and the resource requirements and tags of a <em>ProcessModel</em>. For instance, a particular <em>RunConfig</em> may always select the highest-level Python-based implementation of a <em>Process</em> for quick application prototyping on a conventional CPU or GPU architecture without physical access to neuromorphic systems like Intel’s Kapoho Bay or Pohohiki Springs. Another <em>RunConfig</em> might prefer to map <em>Processes</em> to neuro cores or embedded CPUs whenever such neuromorphic systems are available. Lava will provide several pre-configured <em>RunConfigs</em> but allows users to customize them or create their own.</p>
+<p>In summary, while <em>Processes</em> only provide a universal interface to interact with their environment via message passing, one or more <em>ProcessModels</em> are what implement the behavioral model of a <em>Process</em> in different languages and ways tailored to different hardware architectures. This implementation can either be provided directly or by refining a given <em>Process</em> iteratively by implementing its behavior via sub-<em>Processes</em> which allows for code reuse and greater modularity.</p>
+<p>Overall, this programming model enables quick application prototyping at a high level, agnostic of the intricate constraints and complexities that are often associated with neuromorphic architectures, in the language of choice of a user, while deferring specifics about the hardware architecture for later. Once ready, high-level behavioral models can be replaced or refined by more efficient lower-level implementations (often provided by the Lava process library). At the same time, the availability of different behavioral implementations allows users to run the same application on different hardware platforms such as a CPU or a neuromorphic system when only one of them is available.</p>
+</div>
+<div class="section" id="composability-and-connectivity">
+<h3>3. Composability and connectivity:<a class="headerlink" href="#composability-and-connectivity" title="Permalink to this headline"></a></h3>
+<p><em>Processes</em> are connected via ports with each other for message-based communication over channels. For hierarchical <em>Processes</em>, ports of a parent process can also be internally connected to ports of a child <em>Process</em> and vice versa within a <em>SubProcessModel</em>.
+In general, connections between <em>Processes</em> can be feed-forward or recurrent and support branching and joining of connections.
+While ports at the <em>Process</em>-level are only responsible for establishing connectivity between <em>Processes</em> before compilation, the port implementation at <em>ProcessModel</em>-level is responsible for actual message-passing at runtime.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" style="width: 800px;" /></a>
+<p>The different kinds of ports and variables are part of the same formal class hierarchy. Both ports and variables are members of a <em>Process</em>. As such, both ports and variables communicate or represent numeric data, characterized by a data type that must be specified when allocating them in a <em>Process</em>. Additionally, port and variable implementations have an associated type and support a configurable precision of the numeric data they communicate or represent.
+There are four main types of ports that can be grouped in two different ways:</p>
+<ul class="simple">
+<li><p><em>OutPorts</em> connect to and send messages to <em>InPorts</em> by value; meaning that the <em>InPort</em> receives a copy of the data sent via the <em>OutPort</em>. Thus changes to that data on the sender or receiver side will not affect the other side, enabling safe parallel processing without side-effects.</p></li>
+<li><p>On the other hand, <em>RefPorts</em> connect to <em>VarPorts</em> which act as a proxy to internal state variables of a <em>Process</em>. <em>RefPorts</em> enable one <em>Process</em> to directly access a variable or internal memory of another <em>Process</em> by reference as if it was its own. Such direct-memory access is generally very powerful, but also more dangerous as it can lead to unforeseen side effect in parallel programming and should therefore only be used with caution. Yet, sometimes it is necessary to achieve certain behaviors.</p></li>
+</ul>
+<p>Aside from these main port types, there are additional virtual ports that effectively act as directives to the compiler to transform the shape of ports or how to combine multiple ports. Currently, Lava supports <em>ReshapePorts</em> and <em>ConcatPorts</em> to change the shape of a port or to concatenate multiple ports into one.
+Finally, system-level communication between <em>Processes</em> such as for synchronization is also implemented via ports and channels, but those are not managed directly by – and  therefore are hidden from – the user.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" style="width: 800px;" /></a>
+</div>
+<div class="section" id="cross-platform-execution">
+<h3>4. Cross-platform execution:<a class="headerlink" href="#cross-platform-execution" title="Permalink to this headline"></a></h3>
+<p>Lava supports cross-platform execution of processes on a distributed set of compute nodes. Nodes in Lava have compute resources associated with them such as CPUs or neuro cores, and peripheral resources such as sensors, actuators or hard-disks. Given a graph of <em>Processes</em>, their <em>ProcessModels</em> and a <em>RunConfig</em>, this allows the compiler to map the <em>Processes</em> defined in the user system process to one or more <em>NodeConfigurations</em>. Depending on which type of node a <em>Process</em> is mapped to, a different <em>ProcessModel</em> with a node-specific implementation of its variables, ports, channels and behavior is chosen.
+In the end, each node in a <em>NodeConfiguration</em> can host one or more <em>SyncDomains</em> with one or more <em>ProcModels</em> in it. Each such <em>SyncDomain</em> also contains a local <em>RuntimeService</em> process. The <em>RuntimeService</em> is responsible for system management and includes the <em>Synchronizer</em> for orchestrating the <em>SyncProtocol</em> of the <em>SyncDomain</em>. Irrespective of the presence of multiple <em>SyncDomains</em> on multiple nodes, all user-defined and system processes communicate seamlessly via one asynchronous message-passing backend with each other and the global Runtime within the user system process.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" style="width: 800px;" /></a>
+</div>
+</div>
+<div class="section" id="lava-software-stack">
+<h2>Lava software stack<a class="headerlink" href="#lava-software-stack" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" style="width: 800px;" /></a>
+<p>The core components of the Lava software stack are comprised of the <em>Communicating Sequential Process</em> API, a powerful compiler, and a runtime. In combination, these components form the <em>Magma</em> layer of Lava, which is the foundation on which new <em>Processes</em> and <em>ProcessModels</em> are built.
+The Lava process library provides a growing collection of generic, low-level, reusable, and widely applicable <em>Processes</em> from which higher-level algorithm and application libraries are built.</p>
+<p>The first libraries, to be released as part of the Lava software framework, are libraries for deep learning (lava-dl), optimization (lava-optim), and dynamic neural fields (lava-dnf). Future libraries will add support for vector symbolic architectures (lava-vsa) and evolutionary optimization (lava-evo).</p>
+<p>Besides these components, future releases of Lava will offer several utilities for application profiling, automatic float to fixed-point model conversion, network visualization, and more.
+Finally, Lava is open for extension to other third-party frameworks such as TensorFlow, ROS or Nengo.
+We welcome open-source contributions to any of these future libraries and utilities.</p>
+</div>
+</div>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="lava_api_documentation.html" class="btn btn-neutral float-right" title="Lava API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Lava Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Lava Software Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getting_started_with_lava.html" class="btn btn-neutral float-right" title="Getting Started With Lava" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2021, Intel Corporation
-
-    </p>
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(false);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

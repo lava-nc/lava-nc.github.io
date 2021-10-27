@@ -1,2 +1,0 @@
-Events/Meetings: Stay updated
-=============================
