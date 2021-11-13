@@ -14,6 +14,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -56,14 +57,26 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="dl.html">Lava DL</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-dl-workflow">Lava-dl Workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-lib-dl-slayer">lava.lib.dl.slayer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#slayer-2-0">SLAYER 2.0</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="dl.html#example-code">Example Code</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="dl.html#lava-lib-dl-netx">lava.lib.dl.netx</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="dl.html#id2">Example Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
 </ul>
 </li>
 </ul>
@@ -76,7 +89,18 @@
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -98,7 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#coding-conventions">Coding Conventions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#code-requirements">Code Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#guidelines">Guidelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#docsting-format">Docsting Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#docstring-format">Docstring Format</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contributors">Contributors</a><ul>
@@ -125,7 +149,43 @@
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -153,22 +213,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="neuromorphic-constraint-optimization-library">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="neuromorphic-constraint-optimization-library">
 <h1>Neuromorphic Constraint Optimization Library<a class="headerlink" href="#neuromorphic-constraint-optimization-library" title="Permalink to this headline"></a></h1>
 <p><strong>A library of solvers that leverage neuromorphic hardware for constrained optimization.</strong></p>
 <p>Constrained optimization searches for the values of input variables that minimize or maximize a given objective function, while the variables are subject to constraints. This kind of problem is ubiquitous throughout scientific domains and industries.
-Constrained optimization is a promising application for neuromorphic computing as it <a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">naturally aligns with the dynamics of spiking neural networks</a>. When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: In its simplest form, recurrent inhibitory synapses connect neurons which represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
-<p>This Lava repository provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems:</p>
+Constrained optimization is a promising application for neuromorphic computing as
+it [naturally aligns with the dynamics of spiking neural networks](<a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">https://doi.org/10.1109/JPROC.2021.3067593</a>). When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
+<p>This Lava repository currently provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems:</p>
 <ol class="arabic simple">
-<li><p>Constraint Satisfaction Problems (CSP).</p></li>
-<li><p>Quadratic Unconstrained Binary Optimization (QUBO).</p></li>
-<li><p>Integer Linear Programming (ILP).</p></li>
+<li><p>Quadratic Programming (QP).</p></li>
 </ol>
 <p>In the future, the library will be extended by solvers targeting further constraint optimization problems that are relevant for robotics and operations research.
 The current focus lies on solvers for the following problems:</p>
 <ol class="arabic simple">
+<li><p>Constraint Satisfaction Problems (CSP).</p></li>
+<li><p>Quadratic Unconstrained Binary Optimization (QUBO).</p></li>
+<li><p>Integer Linear Programming (ILP).</p></li>
 <li><p>Linear Programming (LP).</p></li>
-<li><p>Quadratic Programming (QP).</p></li>
 <li><p>Mixed-Integer Linear Programming (MILP).</p></li>
 <li><p>Mixed-Integer Quadratic Programming (MIQP).</p></li>
 </ol>
@@ -176,8 +261,44 @@ The current focus lies on solvers for the following problems:</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h2>
+<div class="section" id="qp-solver">
+<h3>QP Solver<a class="headerlink" href="#qp-solver" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li><p>[Solving LASSO.](<a class="reference external" href="https://github.com/lava-nc/lava-optimization/tree/main/tutorials/qp/tutorial_01_solving_lasso.ipynb">https://github.com/lava-nc/lava-optimization/tree/main/tutorials/qp/tutorial_01_solving_lasso.ipynb</a>)</p></li>
+</ol>
+</div>
+</div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
+<div class="section" id="id1">
+<h3>QP Solver<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">lava.lib.optimization.problems.problems</span> <span class="kn">import</span> <span class="n">QP</span>
+<span class="kn">from</span> <span class="nn">lava.lib.optimization.solvers.qp.solver</span> <span class="kn">import</span> <span class="n">QPSolver</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">A</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">alpha_d</span><span class="p">,</span> <span class="n">beta_g</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">QP</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">QPSolver</span><span class="p">(</span>
+<span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+<span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span>
+<span class="n">alpha_decay_schedule</span><span class="o">=</span><span class="n">alpha_d</span><span class="p">,</span>
+<span class="n">beta_growth_schedule</span><span class="o">=</span><span class="n">beta_g</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coming-up-next-cspsolver">
+<h3>Coming up next: CSPSolver<a class="headerlink" href="#coming-up-next-cspsolver" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.optimization</span> <span class="kn">import</span> <span class="n">CspSolver</span>
 
 <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">]</span>
@@ -191,6 +312,32 @@ The current focus lies on solvers for the following problems:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">energy_to_solution</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Working installation of Lava [see Lava installation tutorial.](<a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb">https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb</a>)</p></li>
+</ol>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Clone the lava-optimization repository.</p></li>
+<li><p>Add lava-optimization/src to your PYTHONPATH variable. For example, run
+“export PYTHONPATH=$PYTHONPATH:$(pwd)” from lava-optimization/src/
+on your terminal (You should do this only after having added Lava to your PYTHONPATH.
+This order is required for namespaces to be well defined).</p></li>
+</ol>
+</div>
+<div class="section" id="lava-optimization-documentation">
+<h2>Lava Optimization Documentation<a class="headerlink" href="#lava-optimization-documentation" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The documentation will arrive shortly. In the mean time, please review docstrings in code.</p>
+</div>
+</div></blockquote>
 </div>
 </div>
 

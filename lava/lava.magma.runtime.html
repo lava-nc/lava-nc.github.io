@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lava.magma.runtime package &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.runtime.channels package" href="lava.magma.runtime.channels.html" />
+    <link rel="prev" title="lava.magma.core.sync.protocols package" href="lava.magma.core.sync.protocols.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">lava</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.html">lava package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="modules.html">lava</a> &raquo;</li>
+          <li><a href="lava.html">lava package</a> &raquo;</li>
+          <li><a href="lava.magma.html">lava.magma package</a> &raquo;</li>
+      <li>lava.magma.runtime package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lava/lava.magma.runtime.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="lava-magma-runtime-package">
+<h1>lava.magma.runtime package<a class="headerlink" href="#lava-magma-runtime-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.runtime.channels.html">lava.magma.runtime.channels package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.channels.html#module-lava.magma.runtime.channels">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.runtime.node.html">lava.magma.runtime.node package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#module-lava.magma.runtime.node.node">lava.magma.runtime.node.node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#module-lava.magma.runtime.node">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-lava.magma.runtime.mgmt_token_enums">
+<span id="lava-magma-runtime-mgmt-token-enums-module"></span><h2>lava.magma.runtime.mgmt_token_enums module<a class="headerlink" href="#module-lava.magma.runtime.mgmt_token_enums" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_COMMAND</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Signifies the Mgmt Command being sent between two actors. These may be
+between runtime and runtime_service or the runtime_service
+and process model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.PAUSE">
+<span class="sig-name descname"><span class="pre">PAUSE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.PAUSE" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies a PAUSE command from one actor to another</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.RUN">
+<span class="sig-name descname"><span class="pre">RUN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.RUN" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies a RUN command for 0 timesteps from one actor to another. Any
+non negative integer signifies a run command</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.STOP">
+<span class="sig-name descname"><span class="pre">STOP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.STOP" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies a STOP command from one actor to another</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_RESPONSE</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Signifies the response to a Mgmt command. This response can be sent
+by any actor upon receiving a Mgmt command</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.DONE">
+<span class="sig-name descname"><span class="pre">DONE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.DONE" title="Permalink to this definition"></a></dt>
+<dd><p>Signfies Ack or Finished with the Command</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.PAUSED">
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.PAUSED" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Execution State to be Paused</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.TERMINATED">
+<span class="sig-name descname"><span class="pre">TERMINATED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.TERMINATED" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Termination</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">REQ_TYPE</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Signifies type of request</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE.GET">
+<span class="sig-name descname"><span class="pre">GET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE.GET" title="Permalink to this definition"></a></dt>
+<dd><p>Read a variable</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE.SET">
+<span class="sig-name descname"><span class="pre">SET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE.SET" title="Permalink to this definition"></a></dt>
+<dd><p>Write to a variable</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.enum_to_np">
+<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">enum_to_np</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.enum_to_np" title="Permalink to this definition"></a></dt>
+<dd><p>Helper function to convert an int (or EnumInt) to a single value np array
+so as to pass it via the message passing framework</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – value to be converted to a 1-D array</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np array with the value</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.runtime.runtime">
+<span id="lava-magma-runtime-runtime-module"></span><h2>lava.magma.runtime.runtime module<a class="headerlink" href="#module-lava.magma.runtime.runtime" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime.</span></span><span class="sig-name descname"><span class="pre">Runtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cond</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exe</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Lava runtime which consumes an executable and run run_condition. Exposes
+the APIs to start, pause, stop and wait on an execution. Execution could
+be blocking and non-blocking as specified by the run run_condition.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.get_var">
+<span class="sig-name descname"><span class="pre">get_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.get_var" title="Permalink to this definition"></a></dt>
+<dd><p>Gets value of a variable with id ‘var_id’.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.global_time">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">global_time</span></span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.global_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.initialize" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the runtime</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.join" title="Permalink to this definition"></a></dt>
+<dd><p>Join all ports and processes</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.node_cfg">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">node_cfg</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.node.NodeConfig" title="lava.magma.compiler.node.NodeConfig"><span class="pre">lava.magma.compiler.node.NodeConfig</span></a></em><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.node_cfg" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the selected NodeCfg.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.pause" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.set_var">
+<span class="sig-name descname"><span class="pre">set_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.set_var" title="Permalink to this definition"></a></dt>
+<dd><p>Sets value of a variable with id ‘var_id’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_condition</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.stop" title="Permalink to this definition"></a></dt>
+<dd><p>Stops an ongoing or paused run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.wait" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime.target_fn">
+<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime.</span></span><span class="sig-name descname"><span class="pre">target_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.target_fn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.runtime.runtime_service">
+<span id="lava-magma-runtime-runtime-service-module"></span><h2>lava.magma.runtime.runtime_service module<a class="headerlink" href="#module-lava.magma.runtime.runtime_service" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">AbstractRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.join" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.run">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.start" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AsyncPyRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">AsyncPyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AsyncPyRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.PyRuntimeService</span></code></a></p>
+<p>RuntimeService that implements Async SyncProtocol in Py.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AsyncPyRuntimeService.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AsyncPyRuntimeService.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.CRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">CRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.CRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiCRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">LoihiCRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiCRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
+<p>RuntimeService that implements Loihi SyncProtocol in C.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">LoihiPyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.PyRuntimeService</span></code></a></p>
+<p>RuntimeService that implements Loihi SyncProtocol in Python.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase">
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Phase</span></span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.HOST">
+<span class="sig-name descname"><span class="pre">HOST</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([5],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.HOST" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.LRN">
+<span class="sig-name descname"><span class="pre">LRN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([3],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.LRN" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.POST_MGMT">
+<span class="sig-name descname"><span class="pre">POST_MGMT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([4],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.POST_MGMT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.PRE_MGMT">
+<span class="sig-name descname"><span class="pre">PRE_MGMT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.PRE_MGMT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.SPK">
+<span class="sig-name descname"><span class="pre">SPK</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.SPK" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.PyRuntimeService">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">PyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.runtime">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.runtime" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.core.sync.protocols.html" class="btn btn-neutral float-left" title="lava.magma.core.sync.protocols package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.runtime.channels.html" class="btn btn-neutral float-right" title="lava.magma.runtime.channels package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

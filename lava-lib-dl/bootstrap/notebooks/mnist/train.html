@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrap SNN Training &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Bootstrap SNN Training</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/lava-lib-dl/bootstrap/notebooks/mnist/train.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Bootstrap-SNN-Training">
+<h1>Bootstrap SNN Training<a class="headerlink" href="#Bootstrap-SNN-Training" title="Permalink to this headline"></a></h1>
+<p>The underlying principle for ANN-SNN conversion is that the ReLU activation function (or similar form) approximates the firing rate of an LIF spiking neuron. Consequently, an ANN trained with ReLU activation can be mapped to an equivalent SNN with proper scaling of weights and thresholds. However, as the number of time-steps reduces, the alignment between ReLU activation and LIF spiking rate falls apart mainly due to the following two reasons (especially, for discrete-in-time models like Loihi’s
+CUBA LIF):</p>
+<ul class="simple">
+<li><p>With less time steps, the SNN can assume only a few discrete firing rates.</p></li>
+<li><p>Limited time steps mean that the spiking neuron activity rate often saturates to maximum allowable firing rate.</p></li>
+</ul>
+<p>Introducing <strong>Bootstrap training</strong>. An SNN is used to jumpstart an equivalent ANN model which is then used to accelerate SNN training. There is no restriction on the type of spiking neuron or it’s reset behavior. It consists of following steps: <img alt="image0" src="../../../../_images/fit.png" /></p>
+<ul class="simple">
+<li><p>Input output data points are first collected from the network running as an SNN: <strong>SAMPLING mode</strong>.</p></li>
+<li><p>The data is used to estimate the corresponding ANN activation as a piecewise linear layer, unique to each layer: <strong>FIT mode</strong>.</p></li>
+<li><p>The training is accelerated using the piecewise linear ANN activation: <strong>ANN mode</strong>.</p></li>
+<li><p>The network is seamlessly translated to an SNN: <strong>SNN mode</strong>.</p></li>
+<li><p><em>SAMPLING mode</em> and <em>FIT mode</em> are repeated for a few iterations every couple of epochs, thus maintaining an accurate ANN estimate.</p></li>
+</ul>
+<table><tr><td><p><img alt="Drawing" src="../../../../_images/bootstrap.png" /></p>
+</td></tr></table><p>Bootstrap training is available as <strong>``lava.lib.dl.bootstrap``</strong>. The main modules are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">block</span></code>: provides <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block</span></code> based network definition interface.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ann_sampler</span></code>: provides utilities for sampling SNN data points and pievewise linear ANN fit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">routine</span></code>: <code class="docutils literal notranslate"><span class="pre">routine.Scheduler</span></code> provides scheduling utility to seamlessly switch between SAMPLING | FIT | ANN | SNN mode.</p>
+<ul>
+<li><p>It also provides ANN-SNN bootstrap hybrid traiing utility as well (Not demonstrated in this tutorial).</p></li>
+</ul>
+</li>
+</ul>
+<table><tr><td><p><img alt="Drawing" src="../../../../_images/scheduler.png" /></p>
+</td></tr></table><div class="section" id="MNIST-Classification">
+<h2>MNIST Classification<a class="headerlink" href="#MNIST-Classification" title="Permalink to this headline"></a></h2>
+<p>Here, we will demonstrate botstrap SNN training on the well known MNIST classification problem.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>import os, sys
+import h5py
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+import torch
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+from torchvision import datasets, transforms
+
+# import slayer from lava-dl
+import lava.lib.dl.slayer as slayer
+import lava.lib.dl.bootstrap as bootstrap
+
+import IPython.display as display
+from matplotlib import animation
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Create-Network">
+<h1>Create Network<a class="headerlink" href="#Create-Network" title="Permalink to this headline"></a></h1>
+<p>The network definition follows standard PyTorch way using <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap</span></code> provides <strong>block interface</strong> similar to <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block</span></code> - which bundles all these individual components into a single unit. These blocks can be cascaded to build a network easily. The block interface provides additional utilities for normalization (weight and neuron), dropout, gradient monitoring and network export.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>class Network(torch.nn.Module):
+    def __init__(self, time_steps=16):
+        super(Network, self).__init__()
+        self.time_steps = time_steps
+
+        neuron_params = {
+                &#39;threshold&#39;     : 1.25,
+                &#39;current_decay&#39; : 1, # this must be 1 to use batchnorm
+                &#39;voltage_decay&#39; : 0.03,
+                &#39;tau_grad&#39;      : 1,
+                &#39;scale_grad&#39;    : 1,
+            }
+        neuron_params_norm = {
+                **neuron_params,
+                # &#39;norm&#39;    : slayer.neuron.norm.MeanOnlyBatchNorm,
+            }
+
+        self.blocks = torch.nn.ModuleList([
+                bootstrap.block.cuba.Input(neuron_params, weight=1, bias=0), # enable affine transform at input
+                bootstrap.block.cuba.Dense(neuron_params_norm, 28*28, 512, weight_norm=True, weight_scale=2),
+                bootstrap.block.cuba.Dense(neuron_params_norm, 512, 512, weight_norm=True, weight_scale=2),
+                bootstrap.block.cuba.Affine(neuron_params, 512, 10, weight_norm=True, weight_scale=2),
+            ])
+
+    def forward(self, x, mode):
+        N, C, H, W = x.shape
+        if mode.base_mode == bootstrap.Mode.ANN:
+            x = x.reshape([N, C, H, W, 1])
+        else:
+            x = slayer.utils.time.replicate(x, self.time_steps)
+
+        x = x.reshape(N, -1, x.shape[-1])
+
+        for block, m in zip(self.blocks, mode):
+            x = block(x, mode=m)
+
+        return x
+
+    def export_hdf5(self, filename):
+        # network export to hdf5 format
+        h = h5py.File(filename, &#39;w&#39;)
+        simulation = h.create_group(&#39;simulation&#39;)
+        simulation[&#39;Ts&#39;] = 1
+        simulation[&#39;tSample&#39;] = self.time_steps
+        layer = h.create_group(&#39;layer&#39;)
+        for i, b in enumerate(self.blocks):
+            b.export_hdf5(layer.create_group(f&#39;{i}&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Instantiate-Network,-Optimizer,-DataSet-and-DataLoader">
+<h1>Instantiate Network, Optimizer, DataSet and DataLoader<a class="headerlink" href="#Instantiate-Network,-Optimizer,-DataSet-and-DataLoader" title="Permalink to this headline"></a></h1>
+<p>Here we will use standard <em>torchvision datasets</em> to load MNIST data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>trained_folder = &#39;Trained&#39;
+os.makedirs(trained_folder, exist_ok=True)
+
+# device = torch.device(&#39;cpu&#39;)
+device = torch.device(&#39;cuda&#39;)
+
+net = Network().to(device)
+
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
+
+# Dataset and dataLoader instances.
+training_set = datasets.MNIST(
+        root=&#39;data/&#39;,
+        train=True,
+        transform=transforms.Compose([
+            transforms.RandomAffine(
+                degrees=10,
+                translate=(0.05, 0.05),
+                scale=(0.95, 1.05),
+                shear=5,
+            ),
+            transforms.ToTensor(),
+            transforms.Normalize((0.5), (0.5)),
+        ]),
+        download=True,
+    )
+
+testing_set = datasets.MNIST(
+        root=&#39;data/&#39;,
+        train=False,
+        transform=transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5), (0.5)),
+        ]),
+    )
+
+train_loader = DataLoader(dataset=training_set, batch_size=32, shuffle=True)
+test_loader  = DataLoader(dataset=testing_set , batch_size=32, shuffle=True)
+
+stats = slayer.utils.LearningStats()
+scheduler = bootstrap.routine.Scheduler()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Training-Loop">
+<h1>Training Loop<a class="headerlink" href="#Training-Loop" title="Permalink to this headline"></a></h1>
+<p>Training loop follows standard PyTorch training structure. <code class="docutils literal notranslate"><span class="pre">bootstrap.routine.Scheduler</span></code> helps simplify the complex routine of periodically switching between different bootstrap modes during training. <code class="docutils literal notranslate"><span class="pre">scheduler.mode(epoch,</span> <span class="pre">i,</span> <span class="pre">net.training)</span></code> provides an iterator which orchestrates the mode of different blocks/layers.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>epochs = 100
+for epoch in range(epochs):
+    for i, (input, label) in enumerate(train_loader, 0):
+        net.train()
+        mode = scheduler.mode(epoch, i, net.training)
+
+        input = input.to(device)
+        output = net.forward(input, mode)
+        rate = torch.mean(output, dim=-1).reshape((input.shape[0], -1))
+
+        loss = F.cross_entropy(rate, label.to(device))
+        prediction = rate.data.max(1, keepdim=True)[1].cpu().flatten()
+
+        stats.training.num_samples += len(label)
+        stats.training.loss_sum += loss.cpu().data.item() * input.shape[0]
+        stats.training.correct_samples += torch.sum( prediction == label ).data.item()
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
+
+    for i, (input, label) in enumerate(test_loader, 0):
+        net.eval()
+        mode = scheduler.mode(epoch, i, net.training)
+
+        with torch.no_grad():
+            input = input.to(device)
+            output = net.forward(input, mode=scheduler.mode(epoch, i, net.training))
+            rate = torch.mean(output, dim=-1).reshape((input.shape[0], -1))
+
+            loss = F.cross_entropy(rate, label.to(device))
+            prediction = rate.data.max(1, keepdim=True)[1].cpu().flatten()
+
+        stats.testing.num_samples += len(label)
+        stats.testing.loss_sum += loss.cpu().data.item() * input.shape[0]
+        stats.testing.correct_samples += torch.sum( prediction == label ).data.item()
+
+    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
+
+    if mode.base_mode == bootstrap.routine.Mode.SNN:
+        scheduler.sync_snn_stat(stats.testing)
+        print(&#39;\r&#39;, &#39; &#39;*len(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;))
+        print(mode)
+        print(f&#39;[Epoch {epoch:2d}/{epochs}]\nSNN Testing: {scheduler.snn_stat}&#39;)
+
+        if scheduler.snn_stat.best_accuracy:
+            torch.save(net.state_dict(), trained_folder + &#39;/network.pt&#39;)
+        scheduler.update_snn_stat()
+
+    stats.update()
+    stats.save(trained_folder + &#39;/&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Mode: SNN
+[Epoch  0/100]
+SNN Testing: loss =     0.18656                        accuracy = 0.96080
+
+Mode: SNN
+[Epoch 10/100]
+SNN Testing: loss =     0.06348 (min =     0.18656)    accuracy = 0.98460 (max = 0.96080)
+
+Mode: SNN
+[Epoch 20/100]
+SNN Testing: loss =     0.04227 (min =     0.06348)    accuracy = 0.98950 (max = 0.98460)
+
+Mode: SNN
+[Epoch 30/100]
+SNN Testing: loss =     0.03778 (min =     0.04227)    accuracy = 0.98870 (max = 0.98950)
+
+Mode: SNN
+[Epoch 40/100]
+SNN Testing: loss =     0.03424 (min =     0.03778)    accuracy = 0.98860 (max = 0.98950)
+
+Mode: SNN
+[Epoch 50/100]
+SNN Testing: loss =     0.04215 (min =     0.03424)    accuracy = 0.98500 (max = 0.98950)
+
+Mode: SNN
+[Epoch 60/100]
+SNN Testing: loss =     0.02876 (min =     0.03424)    accuracy = 0.99220 (max = 0.98950)
+
+Mode: SNN
+[Epoch 70/100]
+SNN Testing: loss =     0.02592 (min =     0.02876)    accuracy = 0.99190 (max = 0.99220)
+
+Mode: SNN
+[Epoch 80/100]
+SNN Testing: loss =     0.02771 (min =     0.02592)    accuracy = 0.99090 (max = 0.99220)
+
+Mode: SNN
+[Epoch 90/100]
+SNN Testing: loss =     0.02705 (min =     0.02592)    accuracy = 0.99150 (max = 0.99220)
+[Epoch 99/100] Train loss =     0.01632 (min =     0.01561)    accuracy = 0.99425 (max = 0.99480) | Test  loss =     0.02458 (min =     0.02152)    accuracy = 0.99150 (max = 0.99280)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Plot-the-learning-curves">
+<h1>Plot the learning curves<a class="headerlink" href="#Plot-the-learning-curves" title="Permalink to this headline"></a></h1>
+<p>Plotting the learning curves is as easy as calling <code class="docutils literal notranslate"><span class="pre">stats.plot()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>stats.plot(figsize=(15, 5))
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_bootstrap_notebooks_mnist_train_9_0.png" src="../../../../_images/lava-lib-dl_bootstrap_notebooks_mnist_train_9_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_bootstrap_notebooks_mnist_train_9_1.png" src="../../../../_images/lava-lib-dl_bootstrap_notebooks_mnist_train_9_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Export-the-best-model">
+<h1>Export the best model<a class="headerlink" href="#Export-the-best-model" title="Permalink to this headline"></a></h1>
+<p>Load the best model during training and export it as hdf5 network. It is supported by <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> to automatically load the network as a lava process.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>net.load_state_dict(torch.load(trained_folder + &#39;/network.pt&#39;))
+net.export_hdf5(trained_folder + &#39;/network.net&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Visualize-the-network-output">
+<h1>Visualize the network output<a class="headerlink" href="#Visualize-the-network-output" title="Permalink to this headline"></a></h1>
+<p>Here, we will use <code class="docutils literal notranslate"><span class="pre">slayer.io.tensor_to_event</span></code> method to convert the torch output spike tensor into graded (non-binary) <code class="docutils literal notranslate"><span class="pre">slayer.io.Event</span></code> object and visualize a few input and output event pairs.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>output = net(input.to(device), mode=scheduler.mode(100, 0, False))
+for i in range(5):
+    img = (2*input[i].reshape(28, 28).cpu().data.numpy()-1) * 255
+    Image.fromarray(img).convert(&#39;RGB&#39;).save(f&#39;gifs/inp{i}.png&#39;)
+    out_event = slayer.io.tensor_to_event(output[i].cpu().data.numpy().reshape(1, 10, -1))
+    out_anim = out_event.anim(plt.figure(figsize=(10, 3.5)), frame_rate=2400)
+    out_anim.save(f&#39;gifs/out{i}.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>img_td = lambda gif: f&#39;&lt;td&gt; &lt;img src=&quot;{gif}&quot; alt=&quot;Drawing&quot; style=&quot;height: 150px;&quot;/&gt; &lt;/td&gt;&#39;
+html = &#39;&lt;table&gt;&#39;
+html += &#39;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;Input&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Output&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&#39;
+for i in range(5):
+    html += &#39;&lt;tr&gt;&#39;
+    html += img_td(f&#39;gifs/inp{i}.png&#39;)
+    html += img_td(f&#39;gifs/out{i}.gif&#39;)
+    html += &#39;&lt;/tr&gt;&#39;
+html += &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
+display.HTML(html)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table><tr><td align="center"><b>Input</b></td><td><b>Output</b></td></tr><tr><td> <img src="gifs/inp0.png" alt="Drawing" style="height: 150px;"/> </td><td> <img src="gifs/out0.gif" alt="Drawing" style="height: 150px;"/> </td></tr><tr><td> <img src="gifs/inp1.png" alt="Drawing" style="height: 150px;"/> </td><td> <img src="gifs/out1.gif" alt="Drawing" style="height: 150px;"/> </td></tr><tr><td> <img src="gifs/inp2.png" alt="Drawing" style="height: 150px;"/> </td><td> <img src="gifs/out2.gif" alt="Drawing" style="height: 150px;"/> </td></tr><tr><td> <img src="gifs/inp3.png" alt="Drawing" style="height: 150px;"/> </td><td> <img src="gifs/out3.gif" alt="Drawing" style="height: 150px;"/> </td></tr><tr><td> <img src="gifs/inp4.png" alt="Drawing" style="height: 150px;"/> </td><td> <img src="gifs/out4.gif" alt="Drawing" style="height: 150px;"/> </td></tr></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

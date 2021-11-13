@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lava.proc.lif package &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.proc.sparse package" href="lava.proc.sparse.html" />
+    <link rel="prev" title="lava.proc.io package" href="lava.proc.io.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">lava</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.html">lava package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="modules.html">lava</a> &raquo;</li>
+          <li><a href="lava.html">lava package</a> &raquo;</li>
+          <li><a href="lava.proc.html">lava.proc package</a> &raquo;</li>
+      <li>lava.proc.lif package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lava/lava.proc.lif.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="lava-proc-lif-package">
+<h1>lava.proc.lif package<a class="headerlink" href="#lava-proc-lif-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-lava.proc.lif.models">
+<span id="lava-proc-lif-models-module"></span><h2>lava.proc.lif.models module<a class="headerlink" href="#module-lava.proc.lif.models" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModel</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.a_in">
+<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.a_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.bias" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.du">
+<span class="sig-name descname"><span class="pre">du</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.du" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.dv">
+<span class="sig-name descname"><span class="pre">dv</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.dv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.LIF</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractResource</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.run_spk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.u">
+<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.u" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.v">
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.v" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModel.vth">
+<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModel.vth" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.proc.lif.process">
+<span id="lava-proc-lif-process-module"></span><h2>lava.proc.lif.process module<a class="headerlink" href="#module-lava.proc.lif.process" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.process.LIF">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">LIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.LIF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Leaky-Integrate-and-Fire neural process with activation input and spike
+output ports a_in and s_out.</p>
+<p>Realizes the following abstract behavior:
+u[t] = u[t-1] * (1-du) + a_in
+v[t] = v[t-1] * (1-dv) + u[t] + bias
+s_out = v[t] &gt; vth
+v[t] = v[t] - s_out*vth</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.proc.lif">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.proc.lif" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.proc.io.html" class="btn btn-neutral float-left" title="lava.proc.io package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.proc.sparse.html" class="btn btn-neutral float-right" title="lava.proc.sparse package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

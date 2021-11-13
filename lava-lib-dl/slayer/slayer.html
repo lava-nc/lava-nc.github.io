@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lava-DL SLAYER &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lava-DL Bootstrap" href="../bootstrap/bootstrap.html" />
+    <link rel="prev" title="Deep Learning" href="../../dl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../algorithms.html">Algorithms and Application Libraries</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../dl.html">Deep Learning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../dl.html#detailed-description">Detailed Description</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../algorithms.html">Algorithms and Application Libraries</a> &raquo;</li>
+          <li><a href="../../dl.html">Deep Learning</a> &raquo;</li>
+      <li>Lava-DL SLAYER</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/lava-lib-dl/slayer/slayer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="lava-dl-slayer">
+<h1>Lava-DL SLAYER<a class="headerlink" href="#lava-dl-slayer" title="Permalink to this headline"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is an enhanced version of
+<a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a>. It now supports
+a wide variety of learnable event-based <em>neuron models</em>, <em>synapse</em>,
+<em>axon</em>, and <em>dendrite</em> properties. Other enhancements include various
+utilities useful during training for event IO, visualization,and
+filtering as well as logging of training statistics.</p>
+<p><strong>Highlight Features</strong></p>
+<ul class="simple">
+<li><p>Resonator, Adaptive leaky neuron dynamics in addtion to conventional
+Leaky neuron dynamics</p></li>
+<li><p>Sigma-Delta wrapper around arbitrary neuron dynamics</p></li>
+<li><p>Graded spikes</p></li>
+<li><p>Learnable neuron parameters at a granularity of individual neuron</p></li>
+<li><p>Persistent states between iterations for robotics application</p></li>
+<li><p>Arbitrary recurrent architectures including k-winner-take-all (KWTA)</p></li>
+<li><p>Complex valued synapses</p></li>
+<li><p>Sparse connectivity with connection masking</p></li>
+<li><p>Runtime shape identification (eliminates the need for <em>a priori</em>
+architecture shape calculation)</p></li>
+<li><p>Just-In-Time compilation of CUDA acccelerated code.</p></li>
+<li><p>Block interface for easy description of network.</p></li>
+<li><p>Easy network export to hdf5 interface format.</p></li>
+</ul>
+<div class="section" id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h2>
+<p><strong>End to End</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="dummy_link">Oxford spike train regression</a> TODO: UPDATE LINK</p></li>
+<li><p><a class="reference external" href="dummy_link">NMNIST digit classification</a> TODO: UPDATE LINK</p></li>
+<li><p><a class="reference external" href="dummy_link">PilotNet steering angle prediction</a> TODO: UPDATE LINK</p></li>
+</ul>
+<p><strong>Deep Dive</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="dummy_link">Dynamics and Neurons</a> TODO: UPDATE LINK</p></li>
+</ul>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline"></a></h2>
+<p>The overall feature organization is described below.</p>
+<div class="section" id="spike-slayer-spike">
+<h3>Spike (<code class="docutils literal notranslate"><span class="pre">slayer.spike</span></code>)<a class="headerlink" href="#spike-slayer-spike" title="Permalink to this headline"></a></h3>
+<p>SLAYER supports binary as well as graded spikes, which are amenable to
+backpropagation. This opens the door for a new class of neuron behavior.</p>
+</div>
+<div class="section" id="neuron-slayer-neuron">
+<h3>Neuron (<code class="docutils literal notranslate"><span class="pre">slayer.neuron</span></code>)<a class="headerlink" href="#neuron-slayer-neuron" title="Permalink to this headline"></a></h3>
+<p>Neuron models in SLAYER are built around custom CUDA accelerated
+fundamental linear dynamics. Each neuron model has individually
+learnable parameters from its neural dynamicsas well as persistent state
+behavior between iterations. Following neuron dynamics are supported.</p>
+<ul class="simple">
+<li><p>Leaky Integrator</p></li>
+<li><p>Resonator</p></li>
+<li><p>Adaptive Integrator with Refractory Dynamics</p></li>
+<li><p>Adaptive Resonator with Refractory Dynamics</p></li>
+</ul>
+<p>These fundamental dynamics can be combined to build a variety of neuron
+models. Following neuron models are currently supported:</p>
+<div class="section" id="current-based-leaky-integrator-slayer-neuron-cuba">
+<h4>CUrrent BAsed leaky integrator: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.cuba</span></code><a class="headerlink" href="#current-based-leaky-integrator-slayer-neuron-cuba" title="Permalink to this headline"></a></h4>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29907126/135405316-0782e174-ceaf-4d97-a4ca-7ddcd681a1ba.png" alt="Drawing" style="width=1000px"/>
+</p></div>
+<div class="section" id="adaptive-leaky-integrate-and-fire-slayer-neuron-alif">
+<h4>Adaptive Leaky Integrate and Fire: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.alif</span></code><a class="headerlink" href="#adaptive-leaky-integrate-and-fire-slayer-neuron-alif" title="Permalink to this headline"></a></h4>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29907126/135405926-60269c92-92d7-453c-8324-941b3322c7a5.png" alt="Drawing" style="width=1000px"/>
+</p></div>
+<div class="section" id="resonate-and-fire-phase-threshold-and-izhikevich-variant-slayer-neuron-rf-rf-iz">
+<h4>Resonate and Fire (phase threshold and Izhikevich variant): <code class="docutils literal notranslate"><span class="pre">slayer.neuron.{rf,</span> <span class="pre">rf_iz}</span></code><a class="headerlink" href="#resonate-and-fire-phase-threshold-and-izhikevich-variant-slayer-neuron-rf-rf-iz" title="Permalink to this headline"></a></h4>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29907126/135404915-3e9371c4-3148-4ea8-813e-8f05ce9e4b67.png" alt="Drawing" style="width=1000px"/>
+</p></div>
+<div class="section" id="adaptive-resonators-slayer-neuron-adrf-adrf-iz">
+<h4>Adaptive resonators: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.{adrf,</span> <span class="pre">adrf_iz}</span></code><a class="headerlink" href="#adaptive-resonators-slayer-neuron-adrf-adrf-iz" title="Permalink to this headline"></a></h4>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29907126/135405837-03c1a053-03fc-44bf-afe1-2cdadde4f01a.png" alt="Drawing" style="width=1000px"/>
+</p></div>
+<div class="section" id="sigma-delta-neuron-with-arbitrary-activation-slayer-neuron-sigma-delta">
+<h4>Sigma Delta neuron with arbitrary activation: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.sigma_delta</span></code><a class="headerlink" href="#sigma-delta-neuron-with-arbitrary-activation-slayer-neuron-sigma-delta" title="Permalink to this headline"></a></h4>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/29907126/135405757-0747aae0-def6-49cd-aa44-8b0fa67b40fd.png" alt="Drawing" style="width=1000px"/>
+</p><p>In addition, SLAYER also supports <em>neuron dropout</em> and quantization
+ready batch-normalization methods.</p>
+</div>
+</div>
+<div class="section" id="synapse-slayer-syanpse">
+<h3>Synapse (<code class="docutils literal notranslate"><span class="pre">slayer.syanpse</span></code>)<a class="headerlink" href="#synapse-slayer-syanpse" title="Permalink to this headline"></a></h3>
+<p>SLAYER supports dense, conv, and pool synaptic connections. Masking is
+possible in both real as well as complex connections:
+<code class="docutils literal notranslate"><span class="pre">slayer.synapse.{complex}.{Dense,</span> <span class="pre">Conv,</span> <span class="pre">Pool}</span></code>.</p>
+</div>
+<div class="section" id="axon-slayer-axon">
+<h3>Axon (<code class="docutils literal notranslate"><span class="pre">slayer.axon</span></code>)<a class="headerlink" href="#axon-slayer-axon" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Learnable axonal delay (<code class="docutils literal notranslate"><span class="pre">slayer.axon.Delay</span></code>)</p></li>
+<li><p>Learnable delta encoder (<code class="docutils literal notranslate"><span class="pre">slayer.axon.Delta</span></code>)</p></li>
+</ul>
+</div>
+<div class="section" id="dendrite-slayer-dendrite">
+<h3>Dendrite (<code class="docutils literal notranslate"><span class="pre">slayer.dendrite</span></code>)<a class="headerlink" href="#dendrite-slayer-dendrite" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Sigma decoder (<code class="docutils literal notranslate"><span class="pre">slayer.dendrite.Sigma</span></code>)</p></li>
+</ul>
+</div>
+<div class="section" id="blocks-slayer-blocks">
+<h3>Blocks (<code class="docutils literal notranslate"><span class="pre">slayer.blocks</span></code>)<a class="headerlink" href="#blocks-slayer-blocks" title="Permalink to this headline"></a></h3>
+<p>SLAYER provides easy encapsulation of neuron, synapse, axon, and
+dendrite classes for a variety of standard neuron-connection
+combinations:
+<code class="docutils literal notranslate"><span class="pre">slayer.block.{cuba,</span> <span class="pre">alif,</span> <span class="pre">rf,</span> <span class="pre">rf_iz,</span> <span class="pre">sigma_delta}.{input,</span> <span class="pre">output,</span> <span class="pre">dense,</span> <span class="pre">conv,</span> <span class="pre">pool,</span> <span class="pre">kwta,</span> <span class="pre">recurrent}</span></code>
+These blocks can be easily used to define a network and export it in
+pytorch as well as our platform independent hdf5 format.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># like any standard pyTorch network</span>
+<span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="c1"># sequential network blocks</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">rf_params</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">rf_iz</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">alif</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">alif_params</span><span class="p">,</span> <span class="mi">64</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Recurrent</span><span class="p">(</span><span class="n">cuba_params</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">KWTA</span><span class="p">(</span><span class="n">cuba_params</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">num_winners</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span>
+            <span class="c1"># forward computation is as simple as calling the blocks in a loop</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span> <span class="nf">export_hdf5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="c1"># network export to hdf5 format</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;layer&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p align="center"></p></div>
+<div class="section" id="fundamental-practices">
+<h3>Fundamental Practices<a class="headerlink" href="#fundamental-practices" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Tensors are always assumed to be in the order <code class="docutils literal notranslate"><span class="pre">NCHWT</span></code> or <code class="docutils literal notranslate"><span class="pre">NCT</span></code>
+where <code class="docutils literal notranslate"><span class="pre">N</span></code>:Batch, <code class="docutils literal notranslate"><span class="pre">C</span></code>:Channel, <code class="docutils literal notranslate"><span class="pre">H</span></code>: Height(y), <code class="docutils literal notranslate"><span class="pre">W</span></code>: Width(x)
+and <code class="docutils literal notranslate"><span class="pre">T</span></code>: Time.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NCHW</span></code> is the default PyTorch ordering.</p></li>
+</ul>
+</li>
+<li><p>Synapse values are maintained in scaled down range.</p></li>
+<li><p>Neurons hold the shape of the layer. It shall be automatically
+identified on runtime.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../dl.html" class="btn btn-neutral float-left" title="Deep Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../bootstrap/bootstrap.html" class="btn btn-neutral float-right" title="Lava-DL Bootstrap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

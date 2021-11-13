@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Input/Output &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Auto" href="auto.html" />
+    <link rel="prev" title="Classifier" href="classifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Lava - Deep Learning</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">SLAYER</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classifier.html">Classifier</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="../index.html">Lava - Deep Learning</a> &raquo;</li>
+          <li><a href="index.html">SLAYER</a> &raquo;</li>
+      <li>Input/Output</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/lava-lib-dl/slayer/io.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-lava.lib.dl.slayer.io">
+<span id="input-output"></span><h1>Input/Output<a class="headerlink" href="#module-lava.lib.dl.slayer.io" title="Permalink to this headline"></a></h1>
+<p>Spike/event Input Output and visualization module.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.Event">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.Event" title="Permalink to this definition"></a></dt>
+<dd><p>This class provides a way to store, read, write and visualize spike
+event.</p>
+<dl class="simple">
+<dt>Members:</dt><dd><ul class="simple">
+<li><p>x (numpy int array): x index of spike event.</p></li>
+<li><p>y (numpy int array): y index of spike event
+(not used if the spatial dimension is 1).</p></li>
+<li><p>c (numpy int array): channel index of spike event.</p></li>
+<li><p>t (numpy double array): timestamp of spike event.
+Time is assumed to be in ms.</p></li>
+<li><p>p (numpy int or double array): payload of spike event.
+None for binary spike.</p></li>
+<li><p>graded (bool): flag to indicate graded or binary spike.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_event</strong> (<em>int array</em>) – x location of event</p></li>
+<li><p><strong>y_event</strong> (<em>int array</em><em> or </em><em>None</em>) – y location of event</p></li>
+<li><p><strong>c_event</strong> (<em>int array</em>) – c location of event</p></li>
+<li><p><strong>t_event</strong> (<em>int array</em><em> or </em><em>float array</em>) – time of event</p></li>
+<li><p><strong>payload</strong> (<em>int array</em><em> or </em><em>float array</em><em> or </em><em>None</em>) – payload of event. None for binary event. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">x_event</span><span class="p">,</span> <span class="n">y_event</span><span class="p">,</span> <span class="n">c_event</span><span class="p">,</span> <span class="n">t_event</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.Event.anim">
+<span class="sig-name descname"><span class="pre">anim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_compute_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.Event.anim" title="Permalink to this definition"></a></dt>
+<dd><p>Get animation object for spike event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fig</strong> (<em>int</em>) – plot figure ID. Defaults to None.</p></li>
+<li><p><strong>frame_rate</strong> (<em>int</em>) – frame rate of visualization. Defaults to 24.</p></li>
+<li><p><strong>pre_compute_frames</strong> (<em>bool</em>) – flag to enable precomputation of frames for faster visualization.
+Defaults to True.</p></li>
+<li><p><strong>repeat</strong> (<em>bool</em>) – flag to enable repeat of animation. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>matplotlib anim object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>anim</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">anim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">anim</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.Event.fill_tensor">
+<span class="sig-name descname"><span class="pre">fill_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">empty_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binning_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OR'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.Event.fill_tensor" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a numpy tensor that contains the spike events sampled in
+bins of <code class="docutils literal notranslate"><span class="pre">sampling_time</span></code>. The tensor is of dimension
+(channels, height, width, time) or``CHWT``.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>empty_tensor</strong> (<em>numpy</em><em> or </em><em>torch tensor</em>) – an empty tensor to hold spike data .</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – the width of time bin. Defaults to 1.</p></li>
+<li><p><strong>random_shift</strong> (<em>bool</em>) – flag to randomly shift the sample in time. Defaults to False.</p></li>
+<li><p><strong>binning_mode</strong> (<em>str</em>) – the way spikes are binned. Options are ‘OR’|’SUM’. If the event is
+graded binning mode is overwritten to ‘SUM’. Defaults to ‘OR’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike tensor.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy or torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spike</span> <span class="o">=</span> <span class="n">td_event</span><span class="o">.</span><span class="n">fill_tensor</span><span class="p">(</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.Event.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_compute_frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.Event.show" title="Permalink to this definition"></a></dt>
+<dd><p>Visualizes spike event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fig</strong> (<em>int</em>) – plot figure ID. Defaults to None.</p></li>
+<li><p><strong>frame_rate</strong> (<em>int</em>) – frame rate of visualization. Defaults to 24.</p></li>
+<li><p><strong>pre_compute_frames</strong> (<em>bool</em>) – flag to enable precomputation of frames for faster visualization.
+Defaults to True.</p></li>
+<li><p><strong>repeat</strong> (<em>bool</em>) – flag to enable repeat of animation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.Event.to_tensor">
+<span class="sig-name descname"><span class="pre">to_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.Event.to_tensor" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a numpy tensor that contains the spike events sampled in
+bins of <code class="docutils literal notranslate"><span class="pre">sampling_time</span></code>. The array is of dimension
+(channels, height, time) or``CHT`` for 1D data. The array is of
+dimension (channels, height, width, time) or``CHWT`` for 2D data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sampling_time</strong> (<em>int</em>) – event data sampling time. Defaults to 1.</p></li>
+<li><p><strong>dim</strong> (<em>int</em><em> or </em><em>None</em>) – desired dimension. It is inferred if None. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike tensor.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spike</span> <span class="o">=</span> <span class="n">td_event</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.encode_1d_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">encode_1d_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">td_event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.encode_1d_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Writes one dimensional binary spike file from a td_event event.</p>
+<dl class="simple">
+<dt>The binary file is encoded as follows:</dt><dd><ul class="simple">
+<li><p>Each spike event is represented by a 40 bit number.</p></li>
+<li><p>First 16 bits (bits 39-24) represent the neuronID.</p></li>
+<li><p>Bit 23 represents the sign of spike event: 0=&gt;OFF event, 1=&gt;ON event.</p></li>
+<li><p>the last 23 bits (bits 22-0) represent the spike event timestamp in
+microseconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p></li>
+<li><p><strong>td_event</strong> (<em>event</em>) – spike event object</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encode_1d_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">td_event</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.encode_2d_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">encode_2d_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">td_event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.encode_2d_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Writes two dimensional binary spike file from a td_event event.
+It is the same format used in neuromorphic datasets NMNIST &amp; NCALTECH101.</p>
+<dl class="simple">
+<dt>The binary file is encoded as follows:</dt><dd><ul class="simple">
+<li><p>Each spike event is represented by a 40 bit number.</p></li>
+<li><p>First 8 bits (bits 39-32) represent the xID of the neuron.</p></li>
+<li><p>Next 8 bits (bits 31-24) represent the yID of the neuron.</p></li>
+<li><p>Bit 23 represents the sign of spike event: 0=&gt;OFF event, 1=&gt;ON event.</p></li>
+<li><p>The last 23 bits (bits 22-0) represent the spike event timestamp in
+microseconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p></li>
+<li><p><strong>td_event</strong> (<em>event</em>) – spike event object</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encode_2d_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">td_event</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.encode_np_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">encode_np_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">td_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xypt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.encode_np_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Writes td_event event into numpy file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p></li>
+<li><p><strong>td_event</strong> (<em>event</em>) – spike event.</p></li>
+<li><p><strong>fmt</strong> (<em>str</em>) – format of numpy event ordering. Options are ‘xypt’. Defaults to ‘xypt’.</p></li>
+<li><p><strong>time_unit</strong> (<em>float</em>) – scale factor that converts the data to seconds. Defaults to 1e-3.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encode_np_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">td_event</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encode_np_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">td_event</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;xypt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.read_1d_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">read_1d_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.read_1d_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Reads one dimensional binary spike file and returns a td_event event.</p>
+<dl class="simple">
+<dt>The binary file is encoded as follows:</dt><dd><ul class="simple">
+<li><p>Each spike event is represented by a 40 bit number.</p></li>
+<li><p>First 16 bits (bits 39-24) represent the neuronID.</p></li>
+<li><p>Bit 23 represents the sign of spike event: 0=&gt;OFF event, 1=&gt;ON event.</p></li>
+<li><dl class="simple">
+<dt>the last 23 bits (bits 22-0) represent the spike event timestamp in</dt><dd><p>microseconds.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike event.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.io.Event" title="lava.lib.dl.slayer.io.Event">Event</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">read_1d_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.read_2d_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">read_2d_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.read_2d_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Reads two dimensional binary spike file and returns a td_event event.
+It is the same format used in neuromorphic datasets NMNIST &amp; NCALTECH101.</p>
+<dl class="simple">
+<dt>The binary file is encoded as follows:</dt><dd><ul class="simple">
+<li><p>Each spike event is represented by a 40 bit number.</p></li>
+<li><p>First 8 bits (bits 39-32) represent the xID of the neuron.</p></li>
+<li><p>Next 8 bits (bits 31-24) represent the yID of the neuron.</p></li>
+<li><p>Bit 23 represents the sign of spike event: 0=&gt;OFF event, 1=&gt;ON event.</p></li>
+<li><p>The last 23 bits (bits 22-0) represent the spike event timestamp in
+microseconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike event.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.io.Event" title="lava.lib.dl.slayer.io.Event">Event</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">read_2d_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.read_np_spikes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">read_np_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xypt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.read_np_spikes" title="Permalink to this definition"></a></dt>
+<dd><p>Reads numpy spike event and returns a td_event event.
+The numpy array is assumed to be of nEvent x event dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of spike file.</p></li>
+<li><p><strong>fmt</strong> (<em>str</em>) – format of numpy event ordering. Options are ‘xypt’. Defaults to ‘xypt’.</p></li>
+<li><p><strong>time_unit</strong> (<em>float</em>) – scale factor that converts the data to seconds. Defaults to 1e-3.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.io.Event" title="lava.lib.dl.slayer.io.Event">Event</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">read_np_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">read_np_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;xypt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">read_np_spikes</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.io.tensor_to_event">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">tensor_to_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.tensor_to_event" title="Permalink to this definition"></a></dt>
+<dd><p>Returns td_event event from a numpy array (of dimension 3 or 4).
+The numpy array must be of dimension (channels, height, time) or <code class="docutils literal notranslate"><span class="pre">CHT</span></code>
+for 1D data.
+The numpy array must be of dimension (channels, height, width, time) or
+<code class="docutils literal notranslate"><span class="pre">CHWT</span></code> for 2D data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spike_tensor</strong> (<em>numpy</em><em> or </em><em>torch tensor</em>) – spike tensor.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – the width of time bin. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>spike event</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.io.Event" title="lava.lib.dl.slayer.io.Event">Event</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">td_event</span> <span class="o">=</span> <span class="n">tensor_to_Event</span><span class="p">(</span><span class="n">spike</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classifier.html" class="btn btn-neutral float-left" title="Classifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auto.html" class="btn btn-neutral float-right" title="Auto" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

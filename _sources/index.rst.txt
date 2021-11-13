@@ -53,9 +53,6 @@ Future planned enhancements include support for emerging computational paradigms
 
 For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.
 
-For more information, visit the Lava Documentation: https://lava-nc.github.io/
-
-
 Release plan
 ============
 

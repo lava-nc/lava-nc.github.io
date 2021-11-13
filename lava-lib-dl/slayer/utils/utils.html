@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utility Modules &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Bootstrap (ANN-SNN training)" href="../../bootstrap/index.html" />
+    <link rel="prev" title="Utilities" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Lava - Deep Learning</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">SLAYER</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../auto.html">Auto</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="../../index.html">Lava - Deep Learning</a> &raquo;</li>
+          <li><a href="../index.html">SLAYER</a> &raquo;</li>
+          <li><a href="modules.html">Utilities</a> &raquo;</li>
+      <li>Utility Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/lava-lib-dl/slayer/utils/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="utility-modules">
+<h1>Utility Modules<a class="headerlink" href="#utility-modules" title="Permalink to this headline"></a></h1>
+<div class="section" id="module-lava.lib.dl.slayer.utils.assistant">
+<span id="assistant"></span><h2>Assistant<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.assistant" title="Permalink to this headline"></a></h2>
+<p>Assistant utility for automatically load network from network
+description.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.assistant.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Assistant that bundles training, validation and testing workflow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net</strong> (<em>torch.nn.Module</em>) – network to train.</p></li>
+<li><p><strong>error</strong> (<em>object</em><em> or </em><em>lambda</em>) – an error object or a lambda function that evaluates error.
+It is expected to take <code class="docutils literal notranslate"><span class="pre">(output,</span> <span class="pre">target)</span></code> | <code class="docutils literal notranslate"><span class="pre">(output,</span> <span class="pre">label)</span></code>
+as it’s argument and return a scalar value.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch optimizer</em>) – the learning optimizer.</p></li>
+<li><p><strong>stats</strong> (<em>slayer.utils.stats</em>) – learning stats logger. If None, stats will not be logged.
+Defaults to None.</p></li>
+<li><p><strong>classifier</strong> (<em>slayer.classifier</em><em> or </em><em>lambda</em>) – classifier object or lambda function that takes output and
+returns the network prediction. None means regression mode.
+Classification steps are bypassed.
+Defaults to None.</p></li>
+<li><p><strong>count_log</strong> (<em>bool</em>) – flag to enable count log. Defaults to False.</p></li>
+<li><p><strong>lam</strong> (<em>float</em>) – lagrangian to merge network layer based loss.
+None means no such additional loss.
+If not None, net is expected to return the accumulated loss as second
+argument. It is intended to be used with layer wise sparsity loss.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.net">
+<span class="sig-name descname"><span class="pre">net</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.net" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.error">
+<span class="sig-name descname"><span class="pre">error</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.optimizer">
+<span class="sig-name descname"><span class="pre">optimizer</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.optimizer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.classifier">
+<span class="sig-name descname"><span class="pre">classifier</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.classifier" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.count_log">
+<span class="sig-name descname"><span class="pre">count_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.count_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.lam">
+<span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.lam" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.device" title="Permalink to this definition"></a></dt>
+<dd><p>the main device memory where network is placed. It is not at start and
+gets initialized on the first call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>torch.device or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.reduce_lr">
+<span class="sig-name descname"><span class="pre">reduce_lr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.3333333333333335</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.reduce_lr" title="Permalink to this definition"></a></dt>
+<dd><p>Reduces the learning rate of the optimizer by <code class="docutils literal notranslate"><span class="pre">factor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – learning rate reduction factor. Defaults to 10/3.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.test">
+<span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.test" title="Permalink to this definition"></a></dt>
+<dd><p>Testing assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.train" title="Permalink to this definition"></a></dt>
+<dd><p>Training assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant.valid">
+<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant.valid" title="Permalink to this definition"></a></dt>
+<dd><p>Validation assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.filter">
+<span id="filter"></span><h2>Filter<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.filter" title="Permalink to this headline"></a></h2>
+<p>Time dimension filtering utilities.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fir_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Finite impulse response filter. The filters are not learnable. For
+learnable filter, use <cite>FIRBank</cite> with one filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fir_response</strong> (<em>array</em>) – Desired FIR response. If it is None, an exponentially decaying filter
+is initialized. Defaults to None.</p></li>
+<li><p><strong>time_constant</strong> (<em>float</em>) – time constant of exponentially decaying filter. Defaults to 1.</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – length of the FIR filter to initialize. Defaults to 20.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – sampling time of FIR filter. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.filter" title="Permalink to this definition"></a></dt>
+<dd><p>impulse response of FIR filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR.sampling_time">
+<span class="sig-name descname"><span class="pre">sampling_time</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.sampling_time" title="Permalink to this definition"></a></dt>
+<dd><p>sampling time of FIR filter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIRBank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.conv.Conv3d</span></code></p>
+<p>Finite impulse response filter bank. The filters are learnable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_filter</strong> (<em>int</em>) – number of FIR filters in the bank.</p></li>
+<li><p><strong>filter_length</strong> (<em>float</em>) – time length of the filter.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – sampling time of the filter. Defaults to 1.</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – initialization scaling factor for filter. Defaults to 1.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.sampling_time">
+<span class="sig-name descname"><span class="pre">sampling_time</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.sampling_time" title="Permalink to this definition"></a></dt>
+<dd><p>sampling time of the filter. Defaults to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.bias" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.dilation">
+<span class="sig-name descname"><span class="pre">dilation</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.dilation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.filter_length">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">filter_length</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.filter_length" title="Permalink to this definition"></a></dt>
+<dd><p>Time length of the filter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.groups">
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.groups" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.impulse_response">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">impulse_response</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.impulse_response" title="Permalink to this definition"></a></dt>
+<dd><p>Impulse response of filter bank</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.kernel_size">
+<span class="sig-name descname"><span class="pre">kernel_size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.num_filter">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">num_filter</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.num_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Number of filters in the bank.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.out_channels">
+<span class="sig-name descname"><span class="pre">out_channels</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.out_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.output_padding">
+<span class="sig-name descname"><span class="pre">output_padding</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.output_padding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.padding">
+<span class="sig-name descname"><span class="pre">padding</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.padding_mode">
+<span class="sig-name descname"><span class="pre">padding_mode</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.stride">
+<span class="sig-name descname"><span class="pre">stride</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.stride" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.transposed">
+<span class="sig-name descname"><span class="pre">transposed</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.transposed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.weight">
+<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="pre">:</span> <span class="pre">torch.Tensor</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.weight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.conv">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.conv" title="Permalink to this definition"></a></dt>
+<dd><p>Convolution in time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input signal. Last dimension is assumed to be time.</p></li>
+<li><p><strong>filter</strong> (<em>torch tensor</em>) – convolution filter. Assumed to be 1 dimensional. It will be flattened
+otherwise.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – sampling time. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>convolution output. Output shape is same as input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.corr">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">corr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.corr" title="Permalink to this definition"></a></dt>
+<dd><p>Correlation in time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input signal. Last dimension is assumed to be time.</p></li>
+<li><p><strong>filter</strong> (<em>torch tensor</em>) – correlation filter. Assumed to be 1 dimensional. It will be flattened
+otherwise.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – sampling time. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>correlation output. Output shape is same as input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">corr</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.int_utils">
+<span id="integer-utilities"></span><h2>Integer Utilities<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.int_utils" title="Permalink to this headline"></a></h2>
+<p>Integer bit shift utilities.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.int_utils.</span></span><span class="sig-name descname"><span class="pre">Q2Zero</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
+<p>Autograd compliant version of quantization towards zero.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero.backward">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.backward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero.forward">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.right_shift_to_zero">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.int_utils.</span></span><span class="sig-name descname"><span class="pre">right_shift_to_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.right_shift_to_zero" title="Permalink to this definition"></a></dt>
+<dd><p>Right shift with quantization towards zero implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.int32</em><em> or </em><em>torch.int64</em>) – input tensor.</p></li>
+<li><p><strong>bits</strong> (<em>int</em>) – number of bits to shift.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>right shift to zero result.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.int32 or torch.int64</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.quantize">
+<span id="quantization"></span><h2>Quantization<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.quantize" title="Permalink to this headline"></a></h2>
+<p>Quantization utility.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.quantize.quantize">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.quantize.</span></span><span class="sig-name descname"><span class="pre">quantize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.quantize.quantize" title="Permalink to this definition"></a></dt>
+<dd><p>Implements quantization of parameters. Rounds the parameter before
+quantization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – quantization step. Default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>quantized tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Quantize in step of 0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_quantized</span> <span class="o">=</span> <span class="n">quantize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.stats">
+<span id="learning-statistics"></span><h2>Learning Statistics<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.stats" title="Permalink to this headline"></a></h2>
+<p>Module for managing, visualizing, and displaying learning statistics.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Learning stat manager</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.loss_sum">
+<span class="sig-name descname"><span class="pre">loss_sum</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.loss_sum" title="Permalink to this definition"></a></dt>
+<dd><p>accumulated loss sum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.correct_samples">
+<span class="sig-name descname"><span class="pre">correct_samples</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.correct_samples" title="Permalink to this definition"></a></dt>
+<dd><p>accumulated correct samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.num_samples">
+<span class="sig-name descname"><span class="pre">num_samples</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.num_samples" title="Permalink to this definition"></a></dt>
+<dd><p>number of samples accumulated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.min_loss">
+<span class="sig-name descname"><span class="pre">min_loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.min_loss" title="Permalink to this definition"></a></dt>
+<dd><p>best loss recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.max_accuracy">
+<span class="sig-name descname"><span class="pre">max_accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.max_accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>best accuracy recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.loss_log">
+<span class="sig-name descname"><span class="pre">loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.loss_log" title="Permalink to this definition"></a></dt>
+<dd><p>log of loss stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.accuracy_log">
+<span class="sig-name descname"><span class="pre">accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.accuracy_log" title="Permalink to this definition"></a></dt>
+<dd><p>log of accuracy stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.best_loss">
+<span class="sig-name descname"><span class="pre">best_loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.best_loss" title="Permalink to this definition"></a></dt>
+<dd><p>does current epoch have best loss? It is updated only
+after <cite>stats.update()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.best_accuracy">
+<span class="sig-name descname"><span class="pre">best_accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.best_accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>does current epoch have best accuracy? It is updated only
+after <cite>stats.update()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>String method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.accuracy">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>Current accuracy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.loss">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.loss" title="Permalink to this definition"></a></dt>
+<dd><p>Current loss.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset stat.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update stat.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.valid_accuracy_log">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.valid_loss_log">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages training, validation and testing stats.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.training">
+<span class="sig-name descname"><span class="pre">training</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.training" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage training statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="lava.lib.dl.slayer.utils.stats.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.testing">
+<span class="sig-name descname"><span class="pre">testing</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.testing" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage testing statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="lava.lib.dl.slayer.utils.stats.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.validation">
+<span class="sig-name descname"><span class="pre">validation</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.validation" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage validation statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="lava.lib.dl.slayer.utils.stats.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>String summary of stats.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.load" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.new_line">
+<span class="sig-name descname"><span class="pre">new_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.new_line" title="Permalink to this definition"></a></dt>
+<dd><p>Forces stats printout on new line.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the training curves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figures</strong> (<em>tuple of ints</em>) – figures to plot loss and accuracy. Defaults to (1, 2).</p></li>
+<li><p><strong>figsize</strong> (<em>tuple of ints</em><em> or </em><em>None</em>) – custom width and height of the figure. None means default size.
+Defaults to None.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – If not None, saves the plot to the path specified.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_elapsed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataloader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.print" title="Permalink to this definition"></a></dt>
+<dd><p>Dynamic print method for stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epoch</strong> (<em>int</em>) – current epoch</p></li>
+<li><p><strong>iter</strong> (<em>int</em><em> or </em><em>None</em>) – iteration number in epoch. Defaults to None.</p></li>
+<li><p><strong>time_elapsed</strong> (<em>float</em><em> or </em><em>None</em>) – elapsed time. Defaults to None.</p></li>
+<li><p><strong>header</strong> (<em>list</em><em> or </em><em>None</em>) – List of strings to print before statistics. It can be used to
+customize additional prints. None means no header.
+Defaults to None.</p></li>
+<li><p><strong>dataloader</strong> (<em>torch.dataloader</em><em> or </em><em>None</em>) – torch dataloader. If not None, shows progress in the epoch.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves learning stats to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Folder path to save the stats. Defaults to ‘’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update all the stats. Typically called at the end of epoch.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.time">
+<span id="time"></span><h2>Time<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.time" title="Permalink to this headline"></a></h2>
+<p>Tensor time manipulation utilities.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.time.replicate">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.time.</span></span><span class="sig-name descname"><span class="pre">replicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.time.replicate" title="Permalink to this definition"></a></dt>
+<dd><p>Replicates input in time dimension. Additional dimension of time is
+added at the end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – torch input tensor.</p></li>
+<li><p><strong>num_steps</strong> (<em>int</em>) – number of steps to replicate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>input replicated num_steps times in time</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">replicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.time.shift">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.time.</span></span><span class="sig-name descname"><span class="pre">shift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.time.shift" title="Permalink to this definition"></a></dt>
+<dd><p>Implements shift in time axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>shift_val</strong> (<em>torch tensor</em><em> or </em><em>float</em><em> or </em><em>int</em>) – shift tensor. If it is scalar, same shift is
+applied to all the spatial dimension. Otherwise, the input’s spatial
+dimension  must match shift’s dimension.</p></li>
+<li><p><strong>sampling_time</strong> (<em>float</em>) – sampling time. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>shifted output</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">shift</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">shift</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils.utils">
+<span id="utils"></span><h2>Utils<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.utils" title="Permalink to this headline"></a></h2>
+<p>Collection of utilities.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.utils.diagonal_mask">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">diagonal_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_diagonals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.diagonal_mask" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a binary mask with ones around the major diagonal defined by
+<cite>num_diagonals</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<em>int</em>) – dimension of the mask matrix</p></li>
+<li><p><strong>num_diagonals</strong> (<em>int</em>) – number of diagonals. The number gets rounded up to the nearest odd
+number. 1 means an identity matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mask tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.utils.staticproperty">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.staticproperty" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">property</span></code></p>
+<p>wraps static member function of a class as a static property of that
+class.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.slayer.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.utils" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Assistant that bundles training, validation and testing workflow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net</strong> (<em>torch.nn.Module</em>) – network to train.</p></li>
+<li><p><strong>error</strong> (<em>object</em><em> or </em><em>lambda</em>) – an error object or a lambda function that evaluates error.
+It is expected to take <code class="docutils literal notranslate"><span class="pre">(output,</span> <span class="pre">target)</span></code> | <code class="docutils literal notranslate"><span class="pre">(output,</span> <span class="pre">label)</span></code>
+as it’s argument and return a scalar value.</p></li>
+<li><p><strong>optimizer</strong> (<em>torch optimizer</em>) – the learning optimizer.</p></li>
+<li><p><strong>stats</strong> (<em>slayer.utils.stats</em>) – learning stats logger. If None, stats will not be logged.
+Defaults to None.</p></li>
+<li><p><strong>classifier</strong> (<em>slayer.classifier</em><em> or </em><em>lambda</em>) – classifier object or lambda function that takes output and
+returns the network prediction. None means regression mode.
+Classification steps are bypassed.
+Defaults to None.</p></li>
+<li><p><strong>count_log</strong> (<em>bool</em>) – flag to enable count log. Defaults to False.</p></li>
+<li><p><strong>lam</strong> (<em>float</em>) – lagrangian to merge network layer based loss.
+None means no such additional loss.
+If not None, net is expected to return the accumulated loss as second
+argument. It is intended to be used with layer wise sparsity loss.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.net">
+<span class="sig-name descname"><span class="pre">net</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.net" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.error">
+<span class="sig-name descname"><span class="pre">error</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.optimizer">
+<span class="sig-name descname"><span class="pre">optimizer</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.optimizer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.classifier">
+<span class="sig-name descname"><span class="pre">classifier</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.classifier" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.count_log">
+<span class="sig-name descname"><span class="pre">count_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.count_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.lam">
+<span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.lam" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.device" title="Permalink to this definition"></a></dt>
+<dd><p>the main device memory where network is placed. It is not at start and
+gets initialized on the first call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>torch.device or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.reduce_lr">
+<span class="sig-name descname"><span class="pre">reduce_lr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.3333333333333335</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.reduce_lr" title="Permalink to this definition"></a></dt>
+<dd><p>Reduces the learning rate of the optimizer by <code class="docutils literal notranslate"><span class="pre">factor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – learning rate reduction factor. Defaults to 10/3.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.test">
+<span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.test" title="Permalink to this definition"></a></dt>
+<dd><p>Testing assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.train" title="Permalink to this definition"></a></dt>
+<dd><p>Training assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant.valid">
+<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant.valid" title="Permalink to this definition"></a></dt>
+<dd><p>Validation assistant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor.</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – ground truth or label.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>output</em> – network’s output.</p></li>
+<li><p><strong>count</strong> (<em>optional</em>) – spike count if <code class="docutils literal notranslate"><span class="pre">count_log</span></code> is enabled</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Learning stat manager</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.loss_sum">
+<span class="sig-name descname"><span class="pre">loss_sum</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.loss_sum" title="Permalink to this definition"></a></dt>
+<dd><p>accumulated loss sum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.correct_samples">
+<span class="sig-name descname"><span class="pre">correct_samples</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.correct_samples" title="Permalink to this definition"></a></dt>
+<dd><p>accumulated correct samples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.num_samples">
+<span class="sig-name descname"><span class="pre">num_samples</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.num_samples" title="Permalink to this definition"></a></dt>
+<dd><p>number of samples accumulated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.min_loss">
+<span class="sig-name descname"><span class="pre">min_loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.min_loss" title="Permalink to this definition"></a></dt>
+<dd><p>best loss recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.max_accuracy">
+<span class="sig-name descname"><span class="pre">max_accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.max_accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>best accuracy recorded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.loss_log">
+<span class="sig-name descname"><span class="pre">loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.loss_log" title="Permalink to this definition"></a></dt>
+<dd><p>log of loss stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.accuracy_log">
+<span class="sig-name descname"><span class="pre">accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.accuracy_log" title="Permalink to this definition"></a></dt>
+<dd><p>log of accuracy stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.best_loss">
+<span class="sig-name descname"><span class="pre">best_loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.best_loss" title="Permalink to this definition"></a></dt>
+<dd><p>does current epoch have best loss? It is updated only
+after <cite>stats.update()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.best_accuracy">
+<span class="sig-name descname"><span class="pre">best_accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.best_accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>does current epoch have best accuracy? It is updated only
+after <cite>stats.update()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>String method.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.accuracy">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
+<dd><p>Current accuracy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.loss">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.loss" title="Permalink to this definition"></a></dt>
+<dd><p>Current loss.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset stat.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update stat.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.valid_accuracy_log">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.valid_loss_log">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages training, validation and testing stats.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.training">
+<span class="sig-name descname"><span class="pre">training</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.training" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage training statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.LearningStat" title="lava.lib.dl.slayer.utils.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.testing">
+<span class="sig-name descname"><span class="pre">testing</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.testing" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage testing statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.LearningStat" title="lava.lib.dl.slayer.utils.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.validation">
+<span class="sig-name descname"><span class="pre">validation</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.validation" title="Permalink to this definition"></a></dt>
+<dd><p><cite>LearningStat</cite> object to manage validation statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.lib.dl.slayer.utils.LearningStat" title="lava.lib.dl.slayer.utils.LearningStat">LearningStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.__str__" title="Permalink to this definition"></a></dt>
+<dd><p>String summary of stats.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.load" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.new_line">
+<span class="sig-name descname"><span class="pre">new_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.new_line" title="Permalink to this definition"></a></dt>
+<dd><p>Forces stats printout on new line.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">2)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the training curves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figures</strong> (<em>tuple of ints</em>) – figures to plot loss and accuracy. Defaults to (1, 2).</p></li>
+<li><p><strong>figsize</strong> (<em>tuple of ints</em><em> or </em><em>None</em>) – custom width and height of the figure. None means default size.
+Defaults to None.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – If not None, saves the plot to the path specified.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_elapsed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataloader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.print" title="Permalink to this definition"></a></dt>
+<dd><p>Dynamic print method for stats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epoch</strong> (<em>int</em>) – current epoch</p></li>
+<li><p><strong>iter</strong> (<em>int</em><em> or </em><em>None</em>) – iteration number in epoch. Defaults to None.</p></li>
+<li><p><strong>time_elapsed</strong> (<em>float</em><em> or </em><em>None</em>) – elapsed time. Defaults to None.</p></li>
+<li><p><strong>header</strong> (<em>list</em><em> or </em><em>None</em>) – List of strings to print before statistics. It can be used to
+customize additional prints. None means no header.
+Defaults to None.</p></li>
+<li><p><strong>dataloader</strong> (<em>torch.dataloader</em><em> or </em><em>None</em>) – torch dataloader. If not None, shows progress in the epoch.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.save" title="Permalink to this definition"></a></dt>
+<dd><p>Saves learning stats to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Folder path to save the stats. Defaults to ‘’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update all the stats. Typically called at the end of epoch.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.diagonal_mask">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">diagonal_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_diagonals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.diagonal_mask" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a binary mask with ones around the major diagonal defined by
+<cite>num_diagonals</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dim</strong> (<em>int</em>) – dimension of the mask matrix</p></li>
+<li><p><strong>num_diagonals</strong> (<em>int</em>) – number of diagonals. The number gets rounded up to the nearest odd
+number. 1 means an identity matrix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mask tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.quantize">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">quantize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.quantize" title="Permalink to this definition"></a></dt>
+<dd><p>Implements quantization of parameters. Rounds the parameter before
+quantization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input tensor</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – quantization step. Default is 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>quantized tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Quantize in step of 0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_quantized</span> <span class="o">=</span> <span class="n">quantize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.staticproperty">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.staticproperty" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">property</span></code></p>
+<p>wraps static member function of a class as a static property of that
+class.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../bootstrap/index.html" class="btn btn-neutral float-right" title="Bootstrap (ANN-SNN training)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

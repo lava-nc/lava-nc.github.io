@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamics, Neurons, and Spikes &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.html">lava package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Dynamics, Neurons, and Spikes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/lava-lib-dl/slayer/notebooks/neuron_dynamics/dynamics.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Dynamics,-Neurons,-and-Spikes">
+<h1>Dynamics, Neurons, and Spikes<a class="headerlink" href="#Dynamics,-Neurons,-and-Spikes" title="Permalink to this headline"></a></h1>
+<p><img alt="image0" src="../../../../_images/dynamics.png" /></p>
+<p><strong>Dynamics</strong> are the fundamental building blocks of neurons in <code class="docutils literal notranslate"><span class="pre">lava.dl.lib.slayer</span></code>. In this tutorial, we will go throught some fundamental neuron dynamics that are built in SLAYER and illustrate how they can be combined to build a variety of neuron models. These dynamics are custom <strong>CUDA</strong> accelerated, <strong>fixed precision</strong> compatible, and <strong>PyTorch autogard</strong> compatible with <em>learnable decay(s)</em> and <em>persistent state(s)</em>.</p>
+<p><strong>Dynamics scaling:</strong> the internal dynamics computation are done in fixed precision range. However, the parameters and state can be interpreted in scaled representation. This has two advantages.</p>
+<ul class="simple">
+<li><p>First, the dynamics are scaled such that the backpropagation gradients are usually in proper range for good gradient flow thus eliminating the need for unnatural scaling of surrogate gradients.</p></li>
+<li><p>Second, the states and decays are in intuitive range rather than in abstract scaled fixed point state.</p></li>
+</ul>
+<div class="section" id="Notations:">
+<h2>Notations:<a class="headerlink" href="#Notations:" title="Permalink to this headline"></a></h2>
+<p>Following notation for variable is used in this notebook.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="head"><p>Variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img class="math" src="../../../../_images/math/f9cdd3dac8ccac6a2b3a69c929243be79f823640.png" alt="x[t]"/></p></td>
+<td><p>input</p></td>
+</tr>
+<tr class="row-odd"><td><p><img class="math" src="../../../../_images/math/730e2e3ea47365c92c9b973b5370c31891376b9c.png" alt="y[t]"/></p></td>
+<td><p>state variable</p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="../../../../_images/math/e291e65d98ca8eb460f1fe569cf1b89201d11590.png" alt="\vartheta[t]"/></p></td>
+<td><p>threshold</p></td>
+</tr>
+<tr class="row-odd"><td><p><img class="math" src="../../../../_images/math/6b9f4d5ca9d5b89d9ea6be68c7c93ab1707b856a.png" alt="r[t]"/></p></td>
+<td><p>refractory state</p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="../../../../_images/math/4be40294ccac3c5e9bfd0c49381af6aef0ce3172.png" alt="s[t]"/></p></td>
+<td><p>spike flag</p></td>
+</tr>
+<tr class="row-odd"><td><p><img class="math" src="../../../../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.png" alt="\alpha"/></p></td>
+<td><p>leak parameter</p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="../../../../_images/math/fffd2357ee88a9c50ba9e831ed64c39c73d54a07.png" alt="\phi"/></p></td>
+<td><p>phase shift</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE:</strong> this is a deep dive tutorial. It introduces * neuron dynamics in SLAYER. * how some available neurons are implemented. * how one can use these dynamics to build their custom neuron model. * real and complex spike mechanism in SLAYER.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>import numpy as np
+import matplotlib.pyplot as plt
+import torch
+
+import lava.lib.dl.slayer as slayer
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Parameter-setup">
+<h1>Parameter setup<a class="headerlink" href="#Parameter-setup" title="Permalink to this headline"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>device = torch.device(&#39;cpu&#39;)
+# device = torch.device(&#39;cuda&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>time = np.arange(1000)
+t = torch.FloatTensor(time).to(device)
+input = torch.zeros_like(t)
+for tt, ww in [[10, 1], [97, 1.8], [100, 1.6], [270, -3], [500, 0.5]]:
+    input[tt] = ww
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>scale = 1&lt;&lt;12 # scale factor for integer simulation
+decay = torch.FloatTensor([0.1 * scale]).to(device)
+initial_state = torch.FloatTensor([0]).to(device)
+threshold = 1.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dynamics">
+<h1>Dynamics<a class="headerlink" href="#Dynamics" title="Permalink to this headline"></a></h1>
+<p>Leaky integrator is the basic first order neuron dynamics represented by the following discrete system:</p>
+<p><em>state dynamics</em>: <img class="math" src="../../../../_images/math/601e1694dba3fabaf40d8a37e29dd6dc6f5e4fd5.png" alt="y[t] = (1-\alpha)\,y[t-1] + x[t]"/></p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/41fa3ea3dd485e942336c7337eda8db9172b4214.png" alt="s[t] = y[t] \geq \vartheta"/></p>
+<p><em>reset dynamics</em>: <img class="math" src="../../../../_images/math/70bc1b1c445a957f6790893aec8c9fcde3bcd81f.png" alt="y[t] = 0"/></p>
+<p>Leaky integrator dynamics can be cascaded with other dynamics to form a second order neuron like CUBA neuron and other higer order neurons.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>y = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale, threshold=threshold)
+</pre></div>
+</div>
+</div>
+<p>Fully backpropagable spike mechanism is avalilable as <code class="docutils literal notranslate"><span class="pre">slayer.spike.Spike</span></code>. It supports binary as well as graded spikes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>sp = slayer.spike.Spike.apply(
+        y,
+        threshold,
+        1, # tau_rho: gradient relaxation constant
+        1, # scale_rho: gradient scale constant
+        False, # graded_spike: graded or binary spike
+        0, # voltage_last: voltage at t=-1
+        1, # scale: graded spike scale
+    )
+</pre></div>
+</div>
+</div>
+<div class="section" id="1.1-CUrrent-BAsed-(CUBA)-leaky-integrate-and-fire-(LIF)-neuron">
+<h2>1.1 CUrrent BAsed (CUBA) leaky integrate and fire (LIF) neuron<a class="headerlink" href="#1.1-CUrrent-BAsed-(CUBA)-leaky-integrate-and-fire-(LIF)-neuron" title="Permalink to this headline"></a></h2>
+<p>A CUBA-LIF neuron is simply the leaky integrator dynamics applied to current followed by voltage. For easy usage, CUBA neuron is avaliable as <strong>``slayer.neuron.cuba``</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>second_order_th = threshold * 5
+current = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale)
+voltage = slayer.neuron.dynamics.leaky_integrator.dynamics(current, decay=decay, state=initial_state, w_scale=scale, threshold=second_order_th)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="1.2-Plot-results">
+<h2>1.2 Plot results<a class="headerlink" href="#1.2-Plot-results" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>fig,ax = plt.subplots(3, 1, figsize=(15, 7))
+ax[0].plot(time, input.cpu(), label=&#39;weighted spikes&#39;)
+ax[0].legend(loc=&#39;upper right&#39;)
+
+ax[1].plot(time, y.cpu(), label=&#39;Leaky integrator dynamics&#39;)
+ax[1].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
+ax[1].plot(time[sp&gt;0], y[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+ax[1].legend(loc=&#39;upper right&#39;)
+
+ax[2].plot(time, current.cpu(), label=&#39;CUBA current&#39;)
+ax[2].plot(time, voltage.cpu(), label=&#39;CUBA voltage&#39;)
+ax[2].plot(time, second_order_th * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
+ax[2].plot(time[voltage&gt;second_order_th], voltage[voltage&gt;second_order_th].cpu(), label=&#39;spike&#39;)
+ax[2].legend(loc=&#39;upper right&#39;)
+
+ax[-1].set_xlabel(&#39;time&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 0, &#39;time&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_17_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_17_1.png" />
+</div>
+</div>
+<div class="section" id="2.-Adaptive-Threshold-Dynamics">
+<h3>2. Adaptive Threshold Dynamics<a class="headerlink" href="#2.-Adaptive-Threshold-Dynamics" title="Permalink to this headline"></a></h3>
+<p>Adaptive threshold dynamics provides first order threshold adaptation and refractory state adaptation dynamics.</p>
+<p><em>threshold dynamics</em>: <img class="math" src="../../../../_images/math/adf8ef071aa5b9b9804c63a32e5d255f765473c5.png" alt="\vartheta[t] = (1-\alpha_{\vartheta})\,(\vartheta[t-1] - \vartheta_0) + \vartheta_0"/></p>
+<p><em>refractory dynamics</em>: <img class="math" src="../../../../_images/math/3ad9cfe484c99c1014c3487cf724d0dd8a5d9416.png" alt="r[t] = (1-\alpha_r)\,r[t-1]"/></p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/bc30be4806bb36e20e264e230335543df535ec80.png" alt="s[t] = (x[t] - r[t]) \geq \vartheta[t]"/></p>
+<p><em>post spike dynamics</em>: <img class="math" src="../../../../_images/math/a21a617ae420a06b08dc744da449e01e622a4dae.png" alt="r[t] = r[t] + 2\,\vartheta[t]"/> and <img class="math" src="../../../../_images/math/8334ce2f3a02c5c90f39379b7d1f3e027b7236bc.png" alt="\vartheta[t] = \vartheta[t] + \vartheta_{\text{step}}"/></p>
+</div>
+</div>
+<div class="section" id="2.1-Adaptive-Leaky-Integrator-and-Fire-Neuron">
+<h2>2.1 Adaptive Leaky Integrator and Fire Neuron<a class="headerlink" href="#2.1-Adaptive-Leaky-Integrator-and-Fire-Neuron" title="Permalink to this headline"></a></h2>
+<p>When coupled with a second order leaky integrator, it results in second order adaptive leaky integartor neuron. For easy usage, ALIF neuron is avaliable as <strong>``slayer.neuron.alif``</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>current = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale)
+voltage = slayer.neuron.dynamics.leaky_integrator.dynamics(current, decay=decay, state=initial_state, w_scale=scale)
+th, ref = slayer.neuron.dynamics.adaptive_threshold.dynamics(
+        voltage,                      # dynamics state
+        ref_state=initial_state,      # previous refractory state
+        ref_decay=0.5*decay,          # refractory decay
+        th_state=initial_state + second_order_th, # previous threshold state
+        th_decay=decay,               # threshold decay
+        th_scale=0.5*second_order_th, # threshold step
+        th0=second_order_th,          # threshold stable state
+        w_scale=scale                 # fixed precision scaling
+    )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="2.2-Plot-results">
+<h2>2.2 Plot results<a class="headerlink" href="#2.2-Plot-results" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>fig,ax = plt.subplots(2, 1, figsize=(15, 4.5))
+ax[0].plot(time, input.cpu(), label=&#39;weighted spikes&#39;)
+ax[0].legend(loc=&#39;upper right&#39;)
+
+ax[1].plot(time, current.cpu(), label=&#39;ALIF current&#39;)
+ax[1].plot(time, voltage.cpu(), label=&#39;ALIF voltage&#39;)
+ax[1].plot(time, ref.cpu(), label=&#39;refractory dynamics&#39;)
+ax[1].plot(time, th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
+ax[1].plot(time[(voltage-ref)&gt;th], voltage[(voltage-ref)&gt;th], &#39;*&#39;, label=&#39;spike&#39;)
+ax[1].legend(loc=&#39;upper right&#39;)
+
+ax[-1].set_xlabel(&#39;time&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 0, &#39;time&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_22_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_22_1.png" />
+</div>
+</div>
+<div class="section" id="3.-Resonator">
+<h3>3. Resonator<a class="headerlink" href="#3.-Resonator" title="Permalink to this headline"></a></h3>
+<p>Resonator is first order complex leaky dynamics. The leak is, in general, complex and gives rise to oscillatory dynamics. The resonator dynamics is described by</p>
+<div class="math">
+<p><img src="../../../../_images/math/36e6ae6db733bbf3d8bcc38bfeb1b2e1708ceb41.png" alt="\frac{\text dz}{\text dt} = (-\lambda + i\omega)\,z + \zeta"/></p>
+</div><p>where <img class="math" src="../../../../_images/math/8ba26edfa7e8528acd97d9154516d69353766687.png" alt="\zeta \in \mathbb{R}^n"/> is the complex input to the system, <img class="math" src="../../../../_images/math/235c7b6173d347430aa0057aeeb5a5a0778abded.png" alt="\lambda, \omega \in R^+"/>.</p>
+<p><strong>Discretization</strong></p>
+<p>The impulse response of resonator is</p>
+<div class="math">
+<p><img src="../../../../_images/math/ac5cd65e37fdd3ca62d257bb9786fb4726a54c43.png" alt="h(t) = e^{-\lambda t}\,e^{i\omega t}\,\mathcal H(t)"/></p>
+</div><p>The coresponding discrete system has the impulse respnse</p>
+<div class="math">
+<p><img src="../../../../_images/math/1b409fa27720ee4d4191ff4840c280251521ac11.png" alt="h[n] = e^{-\lambda n \Delta t}\,e^{i\omega n \Delta t}\,\mathcal H[n] =  (e^{-\lambda \Delta t}\,e^{i\omega \Delta t})^n\,\mathcal H[n] = e^{-\lambda \Delta t}\,e^{i\omega \Delta t} h[n-1],\ h[0]=1"/></p>
+</div><p>The equivalent discrete system is therefore</p>
+<div class="math">
+<p><img src="../../../../_images/math/260b565240b0a43b0665dda46a1a4544fe05fa48.png" alt="z[n + 1] = e^{-\lambda \Delta t}\,e^{i\omega \Delta t}\,z[n] + \zeta[n]"/></p>
+</div><p>The complex decay can be decoupled as</p>
+<p><em>magnitude leak</em>: <img class="math" src="../../../../_images/math/8f12218ce27d05454856203cb3ca76b0f86c855d.png" alt="\alpha = 1 - e^{-\lambda \Delta t}"/></p>
+<p><em>phase shift</em>: <img class="math" src="../../../../_images/math/c5c28a608246822aa3288b79db74e85c893e0d20.png" alt="\phi = e^{i\omega \Delta t}"/></p>
+<p><em>decay matrix</em>: <img class="math" src="../../../../_images/math/cdde4349285fc0a0f76943c0d677b2196c4ea029.png" alt="(1-\alpha)\begin{bmatrix} \cos\phi &amp;-\sin\phi \\ \sin\phi &amp;\cos\phi\end{bmatrix}"/></p>
+</div>
+</div>
+<div class="section" id="3.1-Resonate-and-Fire-(RF)-neuron">
+<h2>3.1 Resonate and Fire (RF) neuron<a class="headerlink" href="#3.1-Resonate-and-Fire-(RF)-neuron" title="Permalink to this headline"></a></h2>
+<p>A resonate and fire neuron spikes when it’s internal state crosses the real axis in the positive real half plane greater than the neuron’s theshold, <img class="math" src="../../../../_images/math/7b2bbbffc5e0f7181e68eda8fb75cec1551f5fd4.png" alt="\vartheta"/>. Formally, it can be stated as follows.</p>
+<div class="math">
+<p><img src="../../../../_images/math/1de5b25ce0359a6f45adae27f912ddda48bc32db.png" alt="f_s(z) = \mathcal{H}(\mathfrak{Re}(z) - \vartheta)\,\delta(\mathfrak{Im}(z))"/></p>
+</div><p>or equivalently</p>
+<div class="math">
+<p><img src="../../../../_images/math/e1f588611dde2e024c169183e0a1df7afb6eb81d.png" alt="f_s(z) = \mathcal{H}(|z| - \vartheta)\,\delta(\arg(z))"/></p>
+</div><p>For easy usage, RF neuron is avaliable as <strong>``slayer.neuron.rf``</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>re_input = input
+im_input = 2*torch.randn_like(re_input) * (re_input &gt; 0)
+alpha = torch.FloatTensor([0.03 * scale]).to(device)
+phi = 2 * np.pi /25
+sin_decay = (scale-alpha) * np.sin(phi)
+cos_decay = (scale-alpha) * np.cos(phi)
+re, im = slayer.neuron.dynamics.resonator.dynamics(
+        re_input, im_input,
+        sin_decay, cos_decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        w_scale=scale,
+    )
+
+</pre></div>
+</div>
+</div>
+<p>Fully backpropagable complex spike mechanism supporting phase spiking mechanism of RF neuron is avalilable as <code class="docutils literal notranslate"><span class="pre">slayer.spike.complex.Spike</span></code>. It supports binary as well as graded spikes.</p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/625f4694e919bedabce03c33ec5193176000e484.png" alt="|z[t]| \geq \vartheta"/> and <img class="math" src="../../../../_images/math/c3707baba3a5c4443181aa4fb3fd4bdf6110d236.png" alt="\arg(z[t]) = 0"/></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>sp = slayer.spike.complex.Spike.apply(
+        re, im,
+        threshold,
+        1, # tau_rho: gradient relaxation constant
+        1, # scale_rho: gradient scale constant
+        False, # graded_spike: graded or binary spike
+        0, # voltage_last: voltage at t=-1
+        1, # scale: graded spike scale
+    )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.2-Izhikevich-Resonate-and-Fire-(RF-Iz)-neuron">
+<h2>3.2 Izhikevich Resonate and Fire (RF-Iz) neuron<a class="headerlink" href="#3.2-Izhikevich-Resonate-and-Fire-(RF-Iz)-neuron" title="Permalink to this headline"></a></h2>
+<p>RF-Izhikevich[1] neuron dynamics is same as the basic RF neuron. However the firing and reset mechanism is different. The neuron fires when the imaginary state is above threshold and the real state is reset to zero post spike.</p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/f21c07839979066c6e9afc3d6bf98e86fb52a9d5.png" alt="\mathfrak{Im}(z[t]) \geq \vartheta"/></p>
+<p><em>post spike dynamics</em>: <img class="math" src="../../../../_images/math/205c175ba92932e5d35fb43e07f30e99c0fbf30a.png" alt="\mathfrak{Re}(z[t]) = 0"/></p>
+<p>For easy usage, RF-Izhikevich neuron is avaliable as <strong>``slayer.neuron.rf_iz``</strong>.</p>
+<p>[1] <a class="reference external" href="https://www.izhikevich.org/publications/resfire.pdf">Eugene M. Izhikevich Resonate and Fire Neurons.</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>iz_re, iz_im = slayer.neuron.dynamics.resonator.dynamics(
+        re_input, im_input,
+        sin_decay, cos_decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        w_scale=scale,
+        threshold=threshold,
+    )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.3-Second-Order-RF-neuron">
+<h2>3.3 Second Order RF neuron<a class="headerlink" href="#3.3-Second-Order-RF-neuron" title="Permalink to this headline"></a></h2>
+<p>Two resonator dynamics can be cascaded to produce Gammatone like second order resonator dynamics. In theory, it could also be combined with leaky integrator for even more exotic neuron model.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>second_order_th = threshold * 15
+re_0, im_0 = slayer.neuron.dynamics.resonator.dynamics(
+        re_input, im_input,
+        sin_decay, cos_decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        w_scale=scale,
+    )
+re_1, im_1 = slayer.neuron.dynamics.resonator.dynamics(
+        re_0, im_0,
+        sin_decay, cos_decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        w_scale=scale,
+    )
+sp_1 = slayer.spike.complex.Spike.apply(re_1, im_1, second_order_th, 1, 1, False, 0, 1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3.4-Plot-results">
+<h2>3.4 Plot results<a class="headerlink" href="#3.4-Plot-results" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>fig,ax = plt.subplots(4, 1, figsize=(15, 9))
+ax[0].plot(time, re_input.cpu(), label=&#39;real weighted spikes&#39;)
+ax[0].plot(time, im_input.cpu(), label=&#39;imag weighted spikes&#39;)
+ax[0].legend(loc=&#39;upper right&#39;)
+
+ax[1].plot(time, re.cpu(), label=&#39;RF real state&#39;)
+ax[1].plot(time, im.cpu(), label=&#39;RF imag state&#39;)
+ax[1].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
+ax[1].plot(time[sp&gt;0], re[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+ax[1].legend(loc=&#39;upper right&#39;)
+
+ax[2].plot(time, iz_re.cpu(), label=&#39;RF Izhikevich real state&#39;)
+ax[2].plot(time, iz_im.cpu(), label=&#39;RF Izhikevich imag state&#39;)
+ax[2].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
+ax[2].plot(time[iz_im &gt; threshold], iz_im[iz_im &gt; threshold], &#39;*&#39;, label=&#39;spike&#39;)
+ax[2].legend(loc=&#39;upper right&#39;)
+
+ax[3].plot(time, re_1.cpu(), label=&#39;RF-Or2 real state&#39;)
+ax[3].plot(time, im_1.cpu(), label=&#39;RF-Or2 imag state&#39;)
+ax[3].plot(time, second_order_th * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
+ax[3].plot(time[sp_1&gt;0], re_1[sp_1&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+ax[3].legend(loc=&#39;upper right&#39;)
+
+ax[-1].set_xlabel(&#39;time&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 0, &#39;time&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_33_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_33_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>def plot_phase_region(ax, threshold, sin_decay):
+    xlims = ax.get_xlim()
+    ylims = ax.get_ylim()
+    xx = np.array([threshold, threshold+500])
+    yy = xx * sin_decay
+    ax.fill_between(xx, yy, color=&#39;green&#39;, alpha=0.1)
+    ax.set_xlim(xlims)
+    ax.set_ylim(ylims)
+
+def plot_iz_region(ax, threshold):
+    ylims = ax.get_ylim()
+    ax.axhspan(threshold, threshold+50, color=&#39;green&#39;, alpha=0.1)
+    ax.set_ylim(ylims)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>fig, ax = plt.subplots(1, 3, figsize=(10, 3))
+ax[0].plot(re.cpu(), im.cpu())
+ax[0].plot(re[sp&gt;0], im[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+plot_phase_region(ax[0], threshold, sin_decay.item()/scale)
+ax[0].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
+ax[0].set_ylabel(&#39;$\mathfrak{Im}(z)$&#39;)
+ax[0].legend(loc=&#39;lower left&#39;)
+ax[0].set_title(&#39;RF&#39;)
+ax[1].plot(iz_re.cpu(), iz_im.cpu())
+ax[1].plot(iz_re[iz_im &gt; threshold], iz_im[iz_im &gt; threshold], &#39;*&#39;, label=&#39;spike&#39;)
+plot_iz_region(ax[1], threshold)
+ax[1].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
+ax[1].legend(loc=&#39;lower left&#39;)
+ax[1].set_title(&#39;RF Izhikevich&#39;)
+
+ax[2].plot(re_1.cpu(), im_1.cpu())
+ax[2].plot(re_1[sp_1&gt;0], im_1[sp_1&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+plot_phase_region(ax[2], second_order_th, sin_decay.item()/scale)
+ax[2].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
+ax[2].legend(loc=&#39;lower left&#39;)
+ax[2].set_title(&#39;RF-Or2&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 1.0, &#39;RF-Or2&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_35_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_35_1.png" />
+</div>
+</div>
+<div class="section" id="4.-Adaptive-Resonator">
+<h3>4. Adaptive Resonator<a class="headerlink" href="#4.-Adaptive-Resonator" title="Permalink to this headline"></a></h3>
+<p>Adaptive resonator adds adaptive threshold and refractory dynamics on top of resonator. Two flavors of adaptive resonator dynamics are available in SLAYER: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.dynamics.phase_th</span></code> and <code class="docutils literal notranslate"><span class="pre">slayer.neuron.dynamics.adaptive_resonator</span></code> corresponding to <strong>phase spiking</strong> and <strong>Izhikevich spiking</strong> mechanisms respectively. Both dynamics follow the same post spike dynamics.</p>
+<p><em>post spike dynamics</em>: <img class="math" src="../../../../_images/math/a21a617ae420a06b08dc744da449e01e622a4dae.png" alt="r[t] = r[t] + 2\,\vartheta[t]"/> and <img class="math" src="../../../../_images/math/8334ce2f3a02c5c90f39379b7d1f3e027b7236bc.png" alt="\vartheta[t] = \vartheta[t] + \vartheta_{\text{step}}"/></p>
+</div>
+</div>
+<div class="section" id="4.1-Adaptive-Resonate-and-Fire-(AdRF)-neuron">
+<h2>4.1 Adaptive Resonate and Fire (AdRF) neuron<a class="headerlink" href="#4.1-Adaptive-Resonate-and-Fire-(AdRF)-neuron" title="Permalink to this headline"></a></h2>
+<p>AdRF neuron spikes when its state crosses zero phase with real value higher than refractory dynamics and threshold dynamics combined.</p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/e9afeeba0e73b662593bd6445592e6f7ffbdf31d.png" alt="|z[t]| \geq (\vartheta[t] + r[t])"/> and <img class="math" src="../../../../_images/math/c3707baba3a5c4443181aa4fb3fd4bdf6110d236.png" alt="\arg(z[t]) = 0"/></p>
+<p>For easy usage, AdRF neuron is avaliable as <strong>``slayer.neuron.adrf``</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>adrf_re, adrf_im = slayer.neuron.dynamics.resonator.dynamics(
+        re_input, im_input,
+        sin_decay, cos_decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        w_scale=scale,
+    )
+adrf_th, adrf_ref = slayer.neuron.dynamics.adaptive_phase_th.dynamics(
+        adrf_re, adrf_im,
+        im_state=initial_state, # only imaginary state is needed to determine first phase crossing
+        ref_state=initial_state, ref_decay=0.5*decay,       # refractory state and decay
+        th_state=initial_state + threshold, th_decay=decay, # threshold state and decay
+        th_scale=0.5 * threshold, # threshold step
+        th0=threshold,          # threshold stable state
+        w_scale=scale,
+    )
+adrf_sp = slayer.spike.complex.Spike.apply(
+        adrf_re, adrf_im, adrf_th + adrf_ref,
+        1, # tau_rho: gradient relaxation constant
+        1, # scale_rho: gradient scale constant
+        False, # graded_spike: graded or binary spike
+        0, # voltage_last: voltage at t=-1
+        1, # scale: graded spike scale
+    )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.2-Adaptive-Resonate-and-Fire-Izhikevich-(AdRF-Iz)-neuron">
+<h2>4.2 Adaptive Resonate and Fire Izhikevich (AdRF-Iz) neuron<a class="headerlink" href="#4.2-Adaptive-Resonate-and-Fire-Izhikevich-(AdRF-Iz)-neuron" title="Permalink to this headline"></a></h2>
+<p>AdRF-Iz neuron fires when the imaginary state exceeds the threshold and refractory dynamics. There is no hard reset in this model.</p>
+<p><em>spike dynamics</em>: <img class="math" src="../../../../_images/math/e4d544ffe96af98d6c08f6205299968ae23600b0.png" alt="\mathfrak{Im}(z[t]) \geq (\vartheta[t] + r[t])"/></p>
+<p>For easy usage, AdRF-Iz neuron is avaliable as <strong>``slayer.neuron.adrf_iz``</strong>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>adrf_iz_re, adrf_iz_im, adrf_iz_th, adrf_iz_ref = slayer.neuron.dynamics.adaptive_resonator.dynamics(
+        re_input, im_input,
+        sin_decay, cos_decay, ref_decay=0.5*decay, th_decay=decay,
+        real_state=initial_state,
+        imag_state=initial_state,
+        ref_state=initial_state,
+        th_state=initial_state + threshold,
+        th_scale=0.5 * threshold, # threshold step
+        th0=threshold,          # threshold stable state
+        w_scale=scale,
+    )
+
+adrf_iz_sp = adrf_iz_im &gt; (adrf_iz_th + adrf_iz_ref)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="4.3-Plot-results">
+<h2>4.3 Plot results<a class="headerlink" href="#4.3-Plot-results" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>fig,ax = plt.subplots(3, 1, figsize=(15, 6.6))
+ax[0].plot(time, re_input.cpu(), label=&#39;real weighted spikes&#39;)
+ax[0].plot(time, im_input.cpu(), label=&#39;imag weighted spikes&#39;)
+ax[0].legend(loc=&#39;upper right&#39;)
+
+ax[1].plot(time, adrf_re.cpu(), label=&#39;AdRF real state&#39;)
+ax[1].plot(time, adrf_im.cpu(), label=&#39;AdRF imag state&#39;)
+ax[1].plot(time, adrf_ref.cpu(), label=&#39;refractory dynamics&#39;)
+ax[1].plot(time, adrf_th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
+ax[1].plot(time[adrf_sp&gt;0], adrf_re[adrf_sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+ax[1].legend(loc=&#39;upper right&#39;)
+
+ax[2].plot(time, adrf_iz_re.cpu(), label=&#39;AdRF-Iz real state&#39;)
+ax[2].plot(time, adrf_iz_im.cpu(), label=&#39;AdRF-Iz imag state&#39;)
+ax[2].plot(time, adrf_iz_ref.cpu(), label=&#39;refractory dynamics&#39;)
+ax[2].plot(time, adrf_iz_th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
+ax[2].plot(time[adrf_iz_sp], adrf_iz_im[adrf_iz_sp], &#39;*&#39;, label=&#39;spike&#39;)
+ax[2].legend(loc=&#39;upper right&#39;)
+
+ax[-1].set_xlabel(&#39;time&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 0, &#39;time&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_42_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_42_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>import matplotlib.patches as patches
+
+fig, ax = plt.subplots(1, 2, figsize=(6.5, 3), sharey=True)
+ax[0].plot(adrf_re.cpu(), adrf_im.cpu())
+ax[0].plot(adrf_re[sp&gt;0], adrf_im[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
+plot_phase_region(ax[0], threshold, sin_decay.item()/scale)
+ax[0].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
+ax[0].set_ylabel(&#39;$\mathfrak{Im}(z)$&#39;)
+ax[0].legend(loc=&#39;lower left&#39;)
+ax[0].set_title(&#39;AdRF&#39;)
+
+ax[1].plot(adrf_iz_re.cpu(), adrf_iz_im.cpu())
+ax[1].plot(adrf_iz_re[adrf_iz_sp], adrf_iz_im[adrf_iz_sp], &#39;*&#39;, label=&#39;spike&#39;)
+plot_iz_region(ax[1], threshold)
+ax[1].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
+ax[1].legend(loc=&#39;lower left&#39;)
+ax[1].set_title(&#39;AdRF Izhikevich&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0.5, 1.0, &#39;AdRF Izhikevich&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_43_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_neuron_dynamics_dynamics_43_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -276,7 +276,7 @@ Code Requirements
   - module docstring
   - class docstring
   - method docstring
-  - See :ref:`docsting format<Docsting Format>`
+  - See :ref:`docstring format<Docstring Format>`
 
 - Code should be developed using TDD (Test Driven Development)
 
@@ -295,7 +295,7 @@ Code Requirements
 Guidelines
 ==========
 - Before you embark on a big coding project, document it with an :ref:`issue <Open an Issue>` and discuss it with others including Lava Committers.
-- Use consistent :ref:`numpy docstring format<Docsting Format>`
+- Use consistent :ref:`numpy docstring format<Docstring Format>`
 - Strive for a 100% linter score
 - Prefer short yet descriptive variable and function names
 - The more global a variable or function name the longer it may be. The more local the shorter the name should be
@@ -306,7 +306,7 @@ Guidelines
   - class doc string
   - method docstring
 
-Docsting Format
+Docstring Format
 ===============
 
 .. code-block:: python

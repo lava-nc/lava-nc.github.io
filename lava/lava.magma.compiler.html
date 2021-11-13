@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lava.magma.compiler package &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.compiler.c package" href="lava.magma.compiler.c.html" />
+    <link rel="prev" title="lava.magma package" href="lava.magma.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Lava</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.html">Lava Package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="lava.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.html#module-lava">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="modules.html">Lava</a> &raquo;</li>
+          <li><a href="lava.html">Lava Package</a> &raquo;</li>
+          <li><a href="lava.magma.html">lava.magma package</a> &raquo;</li>
+      <li>lava.magma.compiler package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lava/lava.magma.compiler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="lava-magma-compiler-package">
+<h1>lava.magma.compiler package<a class="headerlink" href="#lava-magma-compiler-package" title="Permalink to this headline"></a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.compiler.c.html">lava.magma.compiler.c package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.c.html#module-lava.magma.compiler.c">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.compiler.channels.html">lava.magma.compiler.channels package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.channels.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.channels.html#lava-magma-compiler-channels-channel-utils-module">lava.magma.compiler.channels.channel_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.channels.html#module-lava.magma.compiler.channels.interfaces">lava.magma.compiler.channels.interfaces module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.channels.html#module-lava.magma.compiler.channels.pypychannel">lava.magma.compiler.channels.pypychannel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.channels.html#module-lava.magma.compiler.channels">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.compiler.nc.html">lava.magma.compiler.nc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.nc.html#module-lava.magma.compiler.nc">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.compiler.py.html">lava.magma.compiler.py package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.compiler.py.html#module-lava.magma.compiler.py">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="module-lava.magma.compiler.builder">
+<span id="lava-magma-compiler-builder-module"></span><h2>lava.magma.compiler.builder module<a class="headerlink" href="#module-lava.magma.compiler.builder" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractChannelBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">AbstractChannelBuilder</span></span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractChannelBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract Channel Builder</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractProcessBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">AbstractProcessBuilder</span></span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractProcessBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractProcessBuilder.proc_model">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">proc_model</span></span><em class="property"><span class="pre">:</span> <span class="pre">AbstractProcessModel</span></em><a class="headerlink" href="#lava.magma.compiler.builder.AbstractProcessBuilder.proc_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractProcessBuilder.set_csp_ports">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">set_csp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractProcessBuilder.set_csp_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">AbstractRuntimeServiceBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rs_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder.build" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder.runtime_service_id">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">runtime_service_id</span></span><a class="headerlink" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder.runtime_service_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.CProcessBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">CProcessBuilder</span></span><a class="headerlink" href="#lava.magma.compiler.builder.CProcessBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractProcessBuilder" title="lava.magma.compiler.builder.AbstractProcessBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractProcessBuilder</span></code></a></p>
+<p>C Process Builder</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">ChannelBuilderMp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AbstractProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AbstractProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_port_initializer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_port_initializer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractChannelBuilder" title="lava.magma.compiler.builder.AbstractChannelBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractChannelBuilder</span></code></a></p>
+<p>A ChannelBuilder assuming Python multi-processing is used as messaging
+and multi processing backbone.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messaging_infrastructure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">multiprocessing.managers.SharedMemoryManager</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a></span></span><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.build" title="Permalink to this definition"></a></dt>
+<dd><p>Given the message passing framework builds a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>messaging_infrastructure</strong> (<em>SharedMemoryManager</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PyPyChannel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel">Channel</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Can’t build channel of type specified</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.channel_type">
+<span class="sig-name descname"><span class="pre">channel_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.channel_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.dst_port_initializer">
+<span class="sig-name descname"><span class="pre">dst_port_initializer</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></em><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.dst_port_initializer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.dst_process">
+<span class="sig-name descname"><span class="pre">dst_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">AbstractProcess</span></em><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.dst_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.src_port_initializer">
+<span class="sig-name descname"><span class="pre">src_port_initializer</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></em><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.src_port_initializer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ChannelBuilderMp.src_process">
+<span class="sig-name descname"><span class="pre">src_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">AbstractProcess</span></em><a class="headerlink" href="#lava.magma.compiler.builder.ChannelBuilderMp.src_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.NcProcessBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">NcProcessBuilder</span></span><a class="headerlink" href="#lava.magma.compiler.builder.NcProcessBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractProcessBuilder" title="lava.magma.compiler.builder.AbstractProcessBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractProcessBuilder</span></code></a></p>
+<p>Neuromorphic Core Process Builder</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">PyProcessBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractProcessBuilder" title="lava.magma.compiler.builder.AbstractProcessBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractProcessBuilder</span></code></a></p>
+<p>A PyProcessBuilder instantiates and initializes a PyProcessModel.</p>
+<p>The compiler creates a PyProcessBuilder for each PyProcessModel. In turn,
+the runtime, loads a PyProcessBuilder onto a compute node where it builds
+the PyProcessModel and its associated ports.</p>
+<p>In order to build the PyProcessModel, the builder inspects all LavaType
+class variables of a PyProcessModel, creates the corresponding data type
+with the specified properties, the shape and the initial value provided by
+the Lava Var. In addition, the builder creates the required PyPort
+instances. Finally, the builder assigns both port and variable
+implementations to the PyProcModel.</p>
+<p>Once the PyProcessModel is built, it is the RuntimeService’s job to
+connect channels to ports and start the process.</p>
+<p>Note: For unit testing it should be possible to build processes locally
+instead of on a remote node. For ture atomic unit testing a ProcessModel
+locally, PyInPorts and PyOutPorts must be fed manually with data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.build" title="Permalink to this definition"></a></dt>
+<dd><p>Builds a PyProcModel at runtime within Runtime.</p>
+<p>The Compiler initializes the PyProcBuilder with the ProcModel,
+VarInitializers and PortInitializers.
+The Runtime builds the channels and CSP ports between all ports,
+assigns them to builder.</p>
+<p>At deployment to a node, the Builder.build(..) gets executed
+resulting in the following:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>ProcModel gets instantiated</p></li>
+<li><p>Vars are initialized and assigned to ProcModel</p></li>
+<li><p>PyPorts are initialized (with CSP ports) and assigned to ProcModel</p></li>
+</ol>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel">AbstractPyProcessModel</a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.check_all_vars_and_ports_set">
+<span class="sig-name descname"><span class="pre">check_all_vars_and_ports_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.check_all_vars_and_ports_set" title="Permalink to this definition"></a></dt>
+<dd><p>Checks that Vars and PyPorts assigned from Process have a
+corresponding LavaPyType.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>AssertionError</strong> – No LavaPyType found in ProcModel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.check_lava_py_types">
+<span class="sig-name descname"><span class="pre">check_lava_py_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.check_lava_py_types" title="Permalink to this definition"></a></dt>
+<dd><p>Checks correctness of LavaPyTypes.</p>
+<p>Any Py{In/Out/Ref}Ports must be strict sub-types of Py{In/Out/Ref}Ports.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.proc_model">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">proc_model</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.proc_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.set_csp_ports">
+<span class="sig-name descname"><span class="pre">set_csp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.set_csp_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Set CSP Ports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>csp_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – PyProcessModel has no port of that name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.set_py_ports">
+<span class="sig-name descname"><span class="pre">set_py_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.set_py_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Set py_ports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>py_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><em>PortInitializer</em></a><em>]</em>) – </p></li>
+<li><p><strong>check</strong> (<em>bool</em><em>, </em><em>optional</em>) – , by default True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.set_rs_csp_ports">
+<span class="sig-name descname"><span class="pre">set_rs_csp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.set_rs_csp_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Set RS CSP Ports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>csp_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.PyProcessBuilder.set_variables">
+<span class="sig-name descname"><span class="pre">set_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.utils.VarInitializer" title="lava.magma.compiler.utils.VarInitializer"><span class="pre">lava.magma.compiler.utils.VarInitializer</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.PyProcessBuilder.set_variables" title="Permalink to this definition"></a></dt>
+<dd><p>Set variables list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variables</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="#lava.magma.compiler.utils.VarInitializer" title="lava.magma.compiler.utils.VarInitializer"><em>VarInitializer</em></a><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">RuntimeChannelBuilderMp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">Runtime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">Runtime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_initializer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractChannelBuilder" title="lava.magma.compiler.builder.AbstractChannelBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractChannelBuilder</span></code></a></p>
+<p>A RuntimeChannelBuilder assuming Python multi-processing is
+used as messaging and multi processing backbone.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messaging_infrastructure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">multiprocessing.managers.SharedMemoryManager</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a></span></span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp.build" title="Permalink to this definition"></a></dt>
+<dd><p>Given the message passing framework builds a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>messaging_infrastructure</strong> (<em>SharedMemoryManager</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PyPyChannel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel">Channel</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Can’t build channel of type specified</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp.channel_type">
+<span class="sig-name descname"><span class="pre">channel_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp.channel_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp.dst_process">
+<span class="sig-name descname"><span class="pre">dst_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">Runtime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp.dst_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp.port_initializer">
+<span class="sig-name descname"><span class="pre">port_initializer</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></em><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp.port_initializer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeChannelBuilderMp.src_process">
+<span class="sig-name descname"><span class="pre">src_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">Runtime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeChannelBuilderMp.src_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeServiceBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">RuntimeServiceBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rs_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.runtime.html#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_service_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_ids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeServiceBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></code></a></p>
+<p>Run Time Service Builder</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeServiceBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.runtime.html#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService"><span class="pre">lava.magma.runtime.runtime_service.PyRuntimeService</span></a></span></span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeServiceBuilder.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build Runtime Service</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="lava.magma.runtime.html#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService">PyRuntimeService</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeServiceBuilder.runtime_service_id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">runtime_service_id</span></span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeServiceBuilder.runtime_service_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeServiceBuilder.set_csp_ports">
+<span class="sig-name descname"><span class="pre">set_csp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeServiceBuilder.set_csp_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Set CSP Ports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>csp_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.RuntimeServiceBuilder.set_csp_proc_ports">
+<span class="sig-name descname"><span class="pre">set_csp_proc_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.RuntimeServiceBuilder.set_csp_proc_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Set CSP Process Ports</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>csp_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.builder.</span></span><span class="sig-name descname"><span class="pre">ServiceChannelBuilderMp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractProcessModel</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_process</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractProcessModel</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_initializer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.builder.AbstractChannelBuilder" title="lava.magma.compiler.builder.AbstractChannelBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.builder.AbstractChannelBuilder</span></code></a></p>
+<p>A RuntimeServiceChannelBuilder assuming Python multi-processing is used
+as messaging and multi processing backbone.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messaging_infrastructure</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">multiprocessing.managers.SharedMemoryManager</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a></span></span><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp.build" title="Permalink to this definition"></a></dt>
+<dd><p>Given the message passing framework builds a channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>messaging_infrastructure</strong> (<em>SharedMemoryManager</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>PyPyChannel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel">Channel</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Can’t build channel of type specified</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp.channel_type">
+<span class="sig-name descname"><span class="pre">channel_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><span class="pre">lava.magma.compiler.channels.interfaces.Channel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp.channel_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp.dst_process">
+<span class="sig-name descname"><span class="pre">dst_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractProcessModel</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp.dst_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp.port_initializer">
+<span class="sig-name descname"><span class="pre">port_initializer</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#lava.magma.compiler.utils.PortInitializer" title="lava.magma.compiler.utils.PortInitializer"><span class="pre">lava.magma.compiler.utils.PortInitializer</span></a></em><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp.port_initializer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.builder.ServiceChannelBuilderMp.src_process">
+<span class="sig-name descname"><span class="pre">src_process</span></span><em class="property"><span class="pre">:</span> <span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.builder.AbstractRuntimeServiceBuilder" title="lava.magma.compiler.builder.AbstractRuntimeServiceBuilder"><span class="pre">lava.magma.compiler.builder.AbstractRuntimeServiceBuilder</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractProcessModel</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.builder.ServiceChannelBuilderMp.src_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.compiler">
+<span id="lava-magma-compiler-compiler-module"></span><h2>lava.magma.compiler.compiler module<a class="headerlink" href="#module-lava.magma.compiler.compiler" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.compiler.Compiler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.compiler.</span></span><span class="sig-name descname"><span class="pre">Compiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compile_cfg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.compiler.Compiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.compiler.Compiler.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><span class="pre">lava.magma.core.run_configs.RunConfig</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></span><a class="headerlink" href="#lava.magma.compiler.compiler.Compiler.compile" title="Permalink to this definition"></a></dt>
+<dd><p>Compiles a process hierarchy according to RunConfig and returns
+Executable which can either be serialized or executed by Runtime.</p>
+<p>The compiler proceeds through multiple stages to create an Executable
+for distributed heterogeneous HW platform:</p>
+<p>1. Extract specific ProcessModel classes for each Process in Process
+hierarchy according to RunCfg:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Parse hierarchical Process and either get sub process</p></li>
+</ul>
+<p>ProcessModel or leaf ProcessModel according to RunConfig
+- RunConfig may contain selection rules based on classes or
+specific class instances.
+- At this stage, also check if RunConfig selects any NcProcModels
+which would require access to NcProcCompiler and Loihi itself.
+Throw error if these modules are not found/installed -&gt; raise
+NoLoihiProcessCompiler exception.
+- Returns a map of Process -&gt; ProcessModel</p>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><dl class="simple">
+<dt>Group ProcessModel classes by ProcessModelType:</dt><dd><ul class="simple">
+<li><p>Returns a map of ProcessModelType -&gt; {(Process, ProcessModel)}</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Compile ProcessModels by type:</dt><dd><ol class="loweralpha">
+<li><dl>
+<dt>If any, compile NcProcessModels:</dt><dd><ul class="simple">
+<li><p>This is essentially the current NeuroProcCompiler except that</p></li>
+</ul>
+<p>we don’t generate OutAx yet. That will be part of Channel setup
+- We can already allocate and account for OutAx resources but
+we cannot decide on specific addresses because those have not
+been determined yet.
+- Theoretically there could be mixtures of Loihi1 and Loihi2
+NeuroCores…
+- There is no reason to not also  include resource
+requirements to non-NcProcessModels (SeqProcs), i.e. not
+dealing with SpikeIO. We can already account for resource
+requirements but we fill in addresses later.
+- Currently, this would essentially build and return a board
+object but this could be wrapped into a uniform
+NcProcInitializer object for Runtime.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>If any, compile CProcessModels:</dt><dd><ul class="simple">
+<li><p>Check that uer provided behavior code exists (can’t do much</p></li>
+</ul>
+<p>more than that at this point)
+- Generate header file code for Process-Vars given
+CProcessModel (but don’t dump code to file yet)
+- Would there be any difference at this stage depending on
+which NodeType the process will run on?
+- For consistency, we could also return a CProcInitializer
+object for Runtime at this point that holds this loaded and
+generated code collateral</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>If any, compile PyProcessModels: [Only part needed initially]</dt><dd><ul class="simple">
+<li><p>Gather shape information from lava.process ports and combine</p></li>
+</ul>
+<p>with LavaPyType (again, not much more we need to do here)
+- If we had fully working py2c tool, we could generate C code
+from Python code at this point
+- Return PyProcInitializer</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Generate NodeConfigurations:</dt><dd><ul class="simple">
+<li><p>The objective of this stage is to generate a list of</p></li>
+</ul>
+<p>different/alternate NodeConfigurations given resource
+requirements of all the processes. A NodeConfiguration is a set
+of Nodes, each supporting different ComputeResources and
+PeripheralResources of a certain quantity and each with a list of
+processes assigned to it.
+- Example: A GenericNode with a set of SeqProcs and a NahukuNode
+with a set of SeqProcs and NeuralProcs
+- Algorithm idea:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Initialize a binary matrix with rows corresponding to all</p></li>
+</ul>
+<p>processes and columns corresponding to different NodeTypes.
+- Set each element True, if the respective NodeType satisfies
+the Resource- and PeripheralType requirements of the Process
+- For M different NodeTypes, there are 2**M different node
+combinations. Not expected to be very large.
+- Search over all NodeType combinations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Convert index into binary vector</p></li>
+<li><p>Index into matrix columns</p></li>
+<li><p>Take OR over columns and sum the result</p></li>
+<li><p>Take those combinations that sum to the number of</p></li>
+</ul>
+<p>processes</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For all legal NodeType combinations, compute actual</p></li>
+</ul>
+<p>resource requirements given quantity of supported resources
+per node and exclude those that don’t satisfy requirements of
+processes.
+- Feel free to compute some kind of score over remaining
+legal ones to thin out potential NodeCfgs even further</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>In order to potentially further prune the search space, consult</p></li>
+</ul>
+<p>RunConfiguration for excluded or required NodeTypes. Especially
+in the beginning, this will allows to bypass most of this search
+and just use the user-selected set of nodes.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>[From hereon, repeat everything for every remaining NodeCfg]</p>
+<ol class="arabic" start="5">
+<li><dl class="simple">
+<dt>Map processes:</dt><dd><p>While we are still using NcCore, it will probably still take care
+of all of this.
+a) NcProcessModels: Map logical to physical core ids on-chip and
+map logical to physical chip ids on board given NodeCfg. To begin
+with we can continue to use our naive linear mapping strategy.
+b) CProcessModels: Map CProcessModels to one or multiple ECPU
+cores or CPU cores. We can have ParallelCProcess models to
+distribute a computation (if compatible) over multiple embedded
+cores.
+c) PyProcessModels: Not sure any mapping is needed.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Setup RuntimeService processes:</dt><dd><p>Given resource requirements from RunConfig (cluster size) and
+from lava.processModel compilation, the next step is to figure out
+where to instantiate auxiliary RuntimeService processes that
+handle synchronization, management access and probing.</p>
+<ol class="loweralpha">
+<li><dl>
+<dt>Instantiate RuntimeServiceInitializers per SyncDomain:</dt><dd><ul>
+<li><dl>
+<dt>Iterate all SyncDomains</dt><dd><ul class="simple">
+<li><p>Find Processes in SyncDomain</p></li>
+<li><p>Get all Nodes in current NodeCfg associated with those</p></li>
+</ul>
+<p>Processes
+- Create one or more RuntimeServiceInitializer (RSI) per
+Node:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use some kind of factory pattern to create the</p></li>
+</ul>
+<p>appropriate type of RSI give NodeType
+- Add Processes on that Node to RSI
+- On generic (Superhost-like) Node, one RSI is in
+principle enough by we could create more for load
+balancing as an optimization. Here RSI handles
+management, synchronization and probing.
+- On a LoihiNode, we need at least one RSI per host
+CPU because it implies a shared memory domain in
+which at least one RSI must handle management access.
+But can also add more for load balancing. Here RSI
+will have sub structure because synchronization happens
+on ECPUs, management happens peer-to-peer and probing
+happens from host.</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Compile probes:</dt><dd><ul class="simple">
+<li><p>For each RSI of a Node in a SyncDomain in a NodeCfg,</p></li>
+</ul>
+<p>get all Processes
+- Get probes of each process in RSI
+- Initialize those probes with address information produced
+during mapping stage
+- Register those probes with RSI directly.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Compile channels:</dt><dd><ul class="simple">
+<li><p>At this point, all processes have been assigned to Nodes,</p></li>
+</ul>
+<p>ComputeResources and physical to logical mapping has been
+performed. Also RuntimeService processes have been created (or
+prepared for via RSIs).
+- This means we are ready to set up channels between all kinds of
+ports on different resources.
+- Channel implementations come in different forms:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Explicit channels under SW control, i.e. between two ports</p></li>
+</ul>
+<p>on a GenericNode CPU.
+- Implicit channels not under SW control, i.e. between two
+ports on LoihiCores or ECPUs. In this case, channel setup
+means updating OutAx to point to appropriate InAx and
+generating C header files with address information.
+- Mixtures of both across those two domains.</p>
+</div></blockquote>
+<ol class="loweralpha">
+<li><dl>
+<dt>Compile InPort/OutPort/RefPort channels (created by user):</dt><dd><ul>
+<li><dl>
+<dt>Iterate all processes in current NodeCfg:</dt><dd><ul>
+<li><dl>
+<dt>Iterate all OutPorts and RefPorts:</dt><dd><ul class="simple">
+<li><p>Get the other InPort or Var</p></li>
+<li><p>Create appropriate ChannelInitializer given type of</p></li>
+</ul>
+<p>source and destination ProcessModel
+- Assign channel to ports and collect all of them in
+a global list</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Compile implied management channels (created by compiler):</dt><dd><ul>
+<li><dl>
+<dt>Iterate all RSIs of a SyncDomain in a NodeCfg:</dt><dd><ul>
+<li><dl>
+<dt>Iterate all its assigned processes:</dt><dd><ul class="simple">
+<li><p>Create management ports and channels on</p></li>
+</ul>
+<dl>
+<dt>RuntimeServiceProcess and process.</dt><dd><ul class="simple">
+<li><p>The implementation of these ports and channels</p></li>
+</ul>
+<p>again depends on type of source and destination
+channels
+- For LoihiNode we need to inform RSI about BS
+domain size (currently inferred by NxCore)
+- For non-Loihi nodes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Create a MgmtRequest channel to process on</p></li>
+</ul>
+<p>on which process can listen to sync signals
+and management requests
+- Create a MgmtResponse channel from
+lava.process to any process that might send
+management requests to it (i.e. via RefPorts,
+handled in (a).</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+<dl>
+<dt>Notes on Runtime (should probably go somewhere else):</dt><dd><ul>
+<li><p>Runtime can figure out what NodeTypes are available and pick a
+desired NodeConfiguration.</p></li>
+<li><p>Given NodeConfiguration, Runtime will acquire required nodes
+(initializing nodes in compute cluster or acquiring Loihi board).</p></li>
+<li><p>Next Runtime, will simply/naively execute every initializer
+provided by Executable. In many cases, this means sending the
+initializer to the remote node which instantiates the appropriate
+ProcessModel or RuntimeService and initializes internal state on
+the remote node.
+- For SW ProcessModels this means allocating e.g. numpy arrays</p>
+<blockquote>
+<div><p>and initializing their values</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For LoihiNodes this basically means pushing the NxCore
+configuration until that gets eventually refactored.</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.exceptions">
+<span id="lava-magma-compiler-exceptions-module"></span><h2>lava.magma.compiler.exceptions module<a class="headerlink" href="#module-lava.magma.compiler.exceptions" title="Permalink to this headline"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="lava.magma.compiler.exceptions.NoProcessModelFound">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exceptions.</span></span><span class="sig-name descname"><span class="pre">NoProcessModelFound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exceptions.NoProcessModelFound" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="lava.magma.compiler.exceptions.ProcessAlreadyCompiled">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exceptions.</span></span><span class="sig-name descname"><span class="pre">ProcessAlreadyCompiled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exceptions.ProcessAlreadyCompiled" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.exec_var">
+<span id="lava-magma-compiler-exec-var-module"></span><h2>lava.magma.compiler.exec_var module<a class="headerlink" href="#module-lava.magma.compiler.exec_var" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exec_var.</span></span><span class="sig-name descname"><span class="pre">AbstractExecVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'Var'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.name">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.node_id">
+<span class="sig-name descname"><span class="pre">node_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.node_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.proc_id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">proc_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.proc_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.process">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">process</span></span><em class="property"><span class="pre">:</span> <span class="pre">AbstractProcess</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.runtime_srv_id">
+<span class="sig-name descname"><span class="pre">runtime_srv_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.runtime_srv_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.var">
+<span class="sig-name descname"><span class="pre">var</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.var" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.AbstractExecVar.var_id">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">var_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.AbstractExecVar.var_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.CExecVar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exec_var.</span></span><span class="sig-name descname"><span class="pre">CExecVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'Var'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exec_var.CExecVar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.exec_var.AbstractExecVar" title="lava.magma.compiler.exec_var.AbstractExecVar"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.exec_var.AbstractExecVar</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.CExecVar.node_id">
+<span class="sig-name descname"><span class="pre">node_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.CExecVar.node_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.CExecVar.runtime_srv_id">
+<span class="sig-name descname"><span class="pre">runtime_srv_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.CExecVar.runtime_srv_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.CExecVar.var">
+<span class="sig-name descname"><span class="pre">var</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></em><a class="headerlink" href="#lava.magma.compiler.exec_var.CExecVar.var" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exec_var.</span></span><span class="sig-name descname"><span class="pre">NcExecVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'Var'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chip_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_base_addr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'str'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.exec_var.AbstractExecVar" title="lava.magma.compiler.exec_var.AbstractExecVar"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.exec_var.AbstractExecVar</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar.chip_id">
+<span class="sig-name descname"><span class="pre">chip_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar.chip_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar.core_id">
+<span class="sig-name descname"><span class="pre">core_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar.core_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar.entry_id">
+<span class="sig-name descname"><span class="pre">entry_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar.entry_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar.field">
+<span class="sig-name descname"><span class="pre">field</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar.field" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.NcExecVar.register_base_addr">
+<span class="sig-name descname"><span class="pre">register_base_addr</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.NcExecVar.register_base_addr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.PyExecVar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.exec_var.</span></span><span class="sig-name descname"><span class="pre">PyExecVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'Var'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">'int'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.exec_var.PyExecVar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.exec_var.AbstractExecVar" title="lava.magma.compiler.exec_var.AbstractExecVar"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.compiler.exec_var.AbstractExecVar</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.PyExecVar.node_id">
+<span class="sig-name descname"><span class="pre">node_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.PyExecVar.node_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.PyExecVar.runtime_srv_id">
+<span class="sig-name descname"><span class="pre">runtime_srv_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.exec_var.PyExecVar.runtime_srv_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.exec_var.PyExecVar.var">
+<span class="sig-name descname"><span class="pre">var</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></em><a class="headerlink" href="#lava.magma.compiler.exec_var.PyExecVar.var" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.executable">
+<span id="lava-magma-compiler-executable-module"></span><h2>lava.magma.compiler.executable module<a class="headerlink" href="#module-lava.magma.compiler.executable" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.executable.</span></span><span class="sig-name descname"><span class="pre">Executable</span></span><a class="headerlink" href="#lava.magma.compiler.executable.Executable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Produced by compiler and contains everything the Runtime needs to run
+process.
+This includes all ProcessModels of sub processes, RuntimeService
+processes for the various nodes in the system and channel configurations.
+An Executable should be serializable so it can be saved and loaded at a
+later point.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_c_builders">
+<span class="sig-name descname"><span class="pre">set_c_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">'AbstractProcess'</span><span class="p"><span class="pre">,</span> </span><span class="pre">CProcessBuilder</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_c_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_channel_builders">
+<span class="sig-name descname"><span class="pre">set_channel_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ChannelBuilderMp</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_channel_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_nc_builders">
+<span class="sig-name descname"><span class="pre">set_nc_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">'AbstractProcess'</span><span class="p"><span class="pre">,</span> </span><span class="pre">NcProcessBuilder</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_nc_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_node_cfgs">
+<span class="sig-name descname"><span class="pre">set_node_cfgs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_cfgs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.node.NodeConfig" title="lava.magma.compiler.node.NodeConfig"><span class="pre">lava.magma.compiler.node.NodeConfig</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_node_cfgs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_py_builders">
+<span class="sig-name descname"><span class="pre">set_py_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">'AbstractProcess'</span><span class="p"><span class="pre">,</span> </span><span class="pre">PyProcessBuilder</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_py_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_rs_builders">
+<span class="sig-name descname"><span class="pre">set_rs_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">SyncDomain</span><span class="p"><span class="pre">,</span> </span><span class="pre">AbstractRuntimeServiceBuilder</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_rs_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_sync_channel_builders">
+<span class="sig-name descname"><span class="pre">set_sync_channel_builders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_channel_builders</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractChannelBuilder</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_sync_channel_builders" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.set_sync_domains">
+<span class="sig-name descname"><span class="pre">set_sync_domains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sync_domains</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">lava.magma.core.sync.domain.SyncDomain</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable.set_sync_domains" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.node">
+<span id="lava-magma-compiler-node-module"></span><h2>lava.magma.compiler.node module<a class="headerlink" href="#module-lava.magma.compiler.node" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.node.Node">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.node.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractNode</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractProcess</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.node.Node" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A Node represents a physical compute node on which one or more
+processes execute.</p>
+<p>Nodes are of a specific type and hold references to all processes mapped
+to a node.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.node.NodeConfig">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.node.</span></span><span class="sig-name descname"><span class="pre">NodeConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">init_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.node.NodeConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">collections.UserList</span></code></p>
+<p>A NodeConfig is a collection of Nodes. Nodes represent a physical
+compute node on which one or more processes execute.</p>
+<p>A NodeCfg has a list of all ‘nodes’ and a ‘node_map’ that maps each
+process to its respective node.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.node.NodeConfig.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#lava.magma.compiler.node.Node" title="lava.magma.compiler.node.Node"><span class="pre">lava.magma.compiler.node.Node</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.node.NodeConfig.append" title="Permalink to this definition"></a></dt>
+<dd><p>Appends a new node to the NodeConfig.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.compiler.node.NodeConfig.nodes">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.compiler.node.Node" title="lava.magma.compiler.node.Node"><span class="pre">lava.magma.compiler.node.Node</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.node.NodeConfig.nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Returns list of all nodes of the NodeConfig.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.node.NodeConfig.set_exec_vars">
+<span class="sig-name descname"><span class="pre">set_exec_vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exec_vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#lava.magma.compiler.exec_var.AbstractExecVar" title="lava.magma.compiler.exec_var.AbstractExecVar"><span class="pre">lava.magma.compiler.exec_var.AbstractExecVar</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.node.NodeConfig.set_exec_vars" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler.utils">
+<span id="lava-magma-compiler-utils-module"></span><h2>lava.magma.compiler.utils module<a class="headerlink" href="#module-lava.magma.compiler.utils" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.utils.</span></span><span class="sig-name descname"><span class="pre">PortInitializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer.d_type">
+<span class="sig-name descname"><span class="pre">d_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer.d_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer.port_type">
+<span class="sig-name descname"><span class="pre">port_type</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer.port_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer.shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.PortInitializer.size">
+<span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.utils.PortInitializer.size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.VarInitializer">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.utils.</span></span><span class="sig-name descname"><span class="pre">VarInitializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.utils.VarInitializer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.VarInitializer.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.magma.compiler.utils.VarInitializer.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.VarInitializer.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.compiler.utils.VarInitializer.shape" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.VarInitializer.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#lava.magma.compiler.utils.VarInitializer.value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.VarInitializer.var_id">
+<span class="sig-name descname"><span class="pre">var_id</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.utils.VarInitializer.var_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.compiler">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.compiler" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.html" class="btn btn-neutral float-left" title="lava.magma package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.compiler.c.html" class="btn btn-neutral float-right" title="lava.magma.compiler.c package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
