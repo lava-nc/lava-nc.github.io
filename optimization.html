@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuromorphic Constraint Optimization Library &mdash; Lava  documentation</title>
+  <title>Neuromorphic Constraint Optimization &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -88,7 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#qp-solver">QP Solver</a></li>
 </ul>
@@ -100,7 +100,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -150,14 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">lava</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava/lava.html">lava package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -184,6 +176,7 @@
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +196,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="algorithms.html">Algorithms and Application Libraries</a> &raquo;</li>
-      <li>Neuromorphic Constraint Optimization Library</li>
+      <li>Neuromorphic Constraint Optimization</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/optimization.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -237,12 +230,12 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="neuromorphic-constraint-optimization-library">
-<h1>Neuromorphic Constraint Optimization Library<a class="headerlink" href="#neuromorphic-constraint-optimization-library" title="Permalink to this headline"></a></h1>
+<div class="section" id="neuromorphic-constraint-optimization">
+<h1>Neuromorphic Constraint Optimization<a class="headerlink" href="#neuromorphic-constraint-optimization" title="Permalink to this headline"></a></h1>
 <p><strong>A library of solvers that leverage neuromorphic hardware for constrained optimization.</strong></p>
 <p>Constrained optimization searches for the values of input variables that minimize or maximize a given objective function, while the variables are subject to constraints. This kind of problem is ubiquitous throughout scientific domains and industries.
 Constrained optimization is a promising application for neuromorphic computing as
-it [naturally aligns with the dynamics of spiking neural networks](<a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">https://doi.org/10.1109/JPROC.2021.3067593</a>). When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
+it <a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">naturally aligns with the dynamics of spiking neural networks</a>. When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
 <p>This Lava repository currently provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems:</p>
 <ol class="arabic simple">
 <li><p>Quadratic Programming (QP).</p></li>
@@ -329,15 +322,6 @@ The current focus lies on solvers for the following problems:</p>
 on your terminal (You should do this only after having added Lava to your PYTHONPATH.
 This order is required for namespaces to be well defined).</p></li>
 </ol>
-</div>
-<div class="section" id="lava-optimization-documentation">
-<h2>Lava Optimization Documentation<a class="headerlink" href="#lava-optimization-documentation" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The documentation will arrive shortly. In the mean time, please review docstrings in code.</p>
-</div>
-</div></blockquote>
 </div>
 </div>
 

@@ -87,7 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="optimization.html#qp-solver">QP Solver</a></li>
 </ul>
@@ -99,7 +99,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -149,14 +148,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava/lava.html">Lava Package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -183,6 +175,7 @@
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -267,6 +260,7 @@
 </ol>
 <p>Future planned enhancements include support for emerging computational paradigms such as Vector Symbolic Architectures (aka Hyperdimensional Computing) and nonlinear oscillatory networks.</p>
 <p>For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.</p>
+<p>For more information, visit Lava on Github: <a class="reference external" href="https://github.com/lava-nc">https://github.com/lava-nc</a></p>
 </div>
 <div class="section" id="release-plan">
 <h1>Release plan<a class="headerlink" href="#release-plan" title="Permalink to this headline"></a></h1>
@@ -350,10 +344,11 @@ git clone git@github.com:lava-nc/lava.git
 <span class="nb">cd</span> lava
 pip install -r build-requirements.txt
 pip install -r requirements.txt
-<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>~/lava
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/src
 pyb -E unit
 </pre></div>
 </div>
+<p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo $PYTHONPATH and ensure ‘lava/src’ is the first entry that precedes any additional Lava library src paths.</p>
 </div>
 <div class="section" id="windows">
 <h3>[Windows]<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
@@ -365,10 +360,11 @@ pyb -E unit
 <span class="go">cd lava</span>
 <span class="go">pip install -r build-requirements.txt</span>
 <span class="go">pip install -r requirements.txt</span>
-<span class="go">set PYTHONPATH=%HOMEPATH%\lava</span>
+<span class="go">set PYTHONPATH=%cd%\src</span>
 <span class="go">pyb -E unit</span>
 </pre></div>
 </div>
+<p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo %PYTHONPATH% and ensure ‘lavasrc’ is the first entry that precedes any additional Lava library src paths.</p>
 <p>You should expect the following output after running the unit tests:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">PyBuilder version 0.13.3</span>
 <span class="go">Build started at 2021-10-25 13:32:02</span>
@@ -387,7 +383,7 @@ pyb -E unit
 <div class="section" id="alternative-installing-lava-from-binaries">
 <h2>[Alternative] Installing Lava from Binaries<a class="headerlink" href="#alternative-installing-lava-from-binaries" title="Permalink to this headline"></a></h2>
 <p>If you only need the lava package in your python environment, we will publish
-Lava releases via <cite>GitHub Releases&lt;https://github.com/lava-nc/lava/releases&gt;</cite>.
+Lava releases via <a class="reference external" href="https://github.com/lava-nc/lava/releases">GitHub Releases</a>.
 Please download the package and install it.</p>
 <p>Open a python terminal and run:</p>
 <div class="section" id="windows-macos-linux">
@@ -584,7 +580,7 @@ instructions, email: <a class="reference external" href="mailto:nrc_support&#37;
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dl.html">Deep Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dnf.html">Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
@@ -603,6 +599,7 @@ instructions, email: <a class="reference external" href="mailto:nrc_support&#37;
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>

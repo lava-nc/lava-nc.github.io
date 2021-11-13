@@ -53,6 +53,8 @@ Future planned enhancements include support for emerging computational paradigms
 
 For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.
 
+For more information, visit Lava on Github: `https://github.com/lava-nc <https://github.com/lava-nc>`__
+
 Release plan
 ============
 
@@ -129,8 +131,10 @@ Open a python terminal and run based on the OS you are on:
    cd lava
    pip install -r build-requirements.txt
    pip install -r requirements.txt
-   export PYTHONPATH=~/lava
+   export PYTHONPATH=$(pwd)/src
    pyb -E unit
+
+Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo $PYTHONPATH and ensure 'lava/src' is the first entry that precedes any additional Lava library src paths.
 
 [Windows]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -145,8 +149,10 @@ Open a python terminal and run based on the OS you are on:
    cd lava
    pip install -r build-requirements.txt
    pip install -r requirements.txt
-   set PYTHONPATH=%HOMEPATH%\lava
+   set PYTHONPATH=%cd%\src
    pyb -E unit
+
+Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo %PYTHONPATH% and ensure 'lava\src' is the first entry that precedes any additional Lava library src paths.
 
 You should expect the following output after running the unit tests:
 
@@ -168,7 +174,7 @@ You should expect the following output after running the unit tests:
 -------------------------------------------
 
 If you only need the lava package in your python environment, we will publish
-Lava releases via `GitHub Releases<https://github.com/lava-nc/lava/releases>`.
+Lava releases via `GitHub Releases <https://github.com/lava-nc/lava/releases>`__.
 Please download the package and install it.
 
 Open a python terminal and run:

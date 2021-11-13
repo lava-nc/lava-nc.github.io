@@ -1,11 +1,11 @@
-Neuromorphic Constraint Optimization Library
-============================================
+Neuromorphic Constraint Optimization
+====================================
 
 **A library of solvers that leverage neuromorphic hardware for constrained optimization.**
 			
 Constrained optimization searches for the values of input variables that minimize or maximize a given objective function, while the variables are subject to constraints. This kind of problem is ubiquitous throughout scientific domains and industries.
 Constrained optimization is a promising application for neuromorphic computing as 
-it [naturally aligns with the dynamics of spiking neural networks](https://doi.org/10.1109/JPROC.2021.3067593). When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.
+it `naturally aligns with the dynamics of spiking neural networks <https://doi.org/10.1109/JPROC.2021.3067593>`__. When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.
 	
 This Lava repository currently provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems: 
 
@@ -94,9 +94,3 @@ Setup
    "export PYTHONPATH=$PYTHONPATH:$(pwd)" from lava-optimization/src/ 
    on your terminal (You should do this only after having added Lava to your PYTHONPATH. 
    This order is required for namespaces to be well defined).
-
-Lava Optimization Documentation
--------------------------------
-
- .. note::
-    The documentation will arrive shortly. In the mean time, please review docstrings in code. 
