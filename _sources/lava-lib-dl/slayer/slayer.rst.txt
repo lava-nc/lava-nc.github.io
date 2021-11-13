@@ -30,13 +30,13 @@ Tutorials
 
 **End to End** 
 
-* `Oxford spike train regression <dummy_link>`__ TODO: UPDATE LINK 
-* `NMNIST digit classification <dummy_link>`__ TODO: UPDATE LINK 
-* `PilotNet steering angle prediction <dummy_link>`__ TODO: UPDATE LINK
+* `Oxford spike train regression <notebooks/oxford/train.html>`__
+* `NMNIST digit classification <notebooks/nmnist/train.html>`__ 
+* `PilotNet steering angle prediction <notebooks/pilotnet/train.html>`__
 
 **Deep Dive** 
 
-* `Dynamics and Neurons <dummy_link>`__ TODO: UPDATE LINK
+* `Dynamics and Neurons <notebooks/neuron_dynamics/dynamics.html>`__
 
 Modules
 -------

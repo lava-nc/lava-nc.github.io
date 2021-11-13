@@ -83,7 +83,7 @@ bootstrap mode.
 Tutorials
 ---------
 
--  `MNIST digit classification <dummy_link>`__ TODO: UPDATE LINK
+-  * `MNIST digit classification <notebooks/mnist/train.html>`__ 
 
 Modules
 -------
