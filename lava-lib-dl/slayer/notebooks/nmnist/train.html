@@ -86,7 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qp-solver">QP Solver</a></li>
 </ul>
@@ -98,7 +98,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -148,14 +147,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">lava</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.html">lava package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../neuron/modules.html">Neuron</a></li>
@@ -182,6 +174,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -498,20 +491,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import os, sys
-import glob
-import zipfile
-import h5py
-import numpy as np
-import matplotlib.pyplot as plt
-import torch
-from torch.utils.data import Dataset, DataLoader
+<span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
 
-# import slayer from lava-dl
-import lava.lib.dl.slayer as slayer
+<span class="c1"># import slayer from lava-dl</span>
+<span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
 
-import IPython.display as display
-from matplotlib import animation
+<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
 </pre></div>
 </div>
 </div>
@@ -524,7 +517,7 @@ from matplotlib import animation
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from nmnist import augment, NMNISTDataset
+<span></span><span class="kn">from</span> <span class="nn">nmnist</span> <span class="kn">import</span> <span class="n">augment</span><span class="p">,</span> <span class="n">NMNISTDataset</span>
 </pre></div>
 </div>
 </div>
@@ -539,48 +532,48 @@ from matplotlib import animation
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>class Network(torch.nn.Module):
-    def __init__(self):
-        super(Network, self).__init__()
+<span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Network</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-        neuron_params = {
-                &#39;threshold&#39;     : 1.25,
-                &#39;current_decay&#39; : 0.25,
-                &#39;voltage_decay&#39; : 0.03,
-                &#39;tau_grad&#39;      : 0.03,
-                &#39;scale_grad&#39;    : 3,
-                &#39;requires_grad&#39; : True,
-            }
-        neuron_params_drop = {**neuron_params, &#39;dropout&#39; : slayer.neuron.Dropout(p=0.05),}
+        <span class="n">neuron_params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;threshold&#39;</span>     <span class="p">:</span> <span class="mf">1.25</span><span class="p">,</span>
+                <span class="s1">&#39;current_decay&#39;</span> <span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+                <span class="s1">&#39;voltage_decay&#39;</span> <span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
+                <span class="s1">&#39;tau_grad&#39;</span>      <span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
+                <span class="s1">&#39;scale_grad&#39;</span>    <span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s1">&#39;requires_grad&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="n">neuron_params_drop</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">neuron_params</span><span class="p">,</span> <span class="s1">&#39;dropout&#39;</span> <span class="p">:</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),}</span>
 
-        self.blocks = torch.nn.ModuleList([
-                slayer.block.cuba.Dense(neuron_params_drop, 34*34*2, 512, weight_norm=True, delay=True),
-                slayer.block.cuba.Dense(neuron_params_drop, 512, 512, weight_norm=True, delay=True),
-                slayer.block.cuba.Dense(neuron_params, 512, 10, weight_norm=True),
-            ])
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">neuron_params_drop</span><span class="p">,</span> <span class="mi">34</span><span class="o">*</span><span class="mi">34</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">neuron_params_drop</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">neuron_params</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="p">])</span>
 
-    def forward(self, spike):
-        for block in self.blocks:
-            spike = block(spike)
-        return spike
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spike</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span>
+            <span class="n">spike</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">spike</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">spike</span>
 
-    def grad_flow(self, path):
-        # helps monitor the gradient flow
-        grad = [b.synapse.grad_norm for b in self.blocks if hasattr(b, &#39;synapse&#39;)]
+    <span class="k">def</span> <span class="nf">grad_flow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="c1"># helps monitor the gradient flow</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">synapse</span><span class="o">.</span><span class="n">grad_norm</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;synapse&#39;</span><span class="p">)]</span>
 
-        plt.figure()
-        plt.semilogy(grad)
-        plt.savefig(path + &#39;gradFlow.png&#39;)
-        plt.close()
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;gradFlow.png&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-        return grad
+        <span class="k">return</span> <span class="n">grad</span>
 
-    def export_hdf5(self, filename):
-        # network export to hdf5 format
-        h = h5py.File(filename, &#39;w&#39;)
-        layer = h.create_group(&#39;layer&#39;)
-        for i, b in enumerate(self.blocks):
-            b.export_hdf5(layer.create_group(f&#39;{i}&#39;))
+    <span class="k">def</span> <span class="nf">export_hdf5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="c1"># network export to hdf5 format</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;layer&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -593,21 +586,21 @@ from matplotlib import animation
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>trained_folder = &#39;Trained&#39;
-os.makedirs(trained_folder, exist_ok=True)
+<span></span><span class="n">trained_folder</span> <span class="o">=</span> <span class="s1">&#39;Trained&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">trained_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# device = torch.device(&#39;cpu&#39;)
-device = torch.device(&#39;cuda&#39;)
+<span class="c1"># device = torch.device(&#39;cpu&#39;)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 
-net = Network().to(device)
+<span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
-optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
-training_set = NMNISTDataset(train=True, transform=augment)
-testing_set  = NMNISTDataset(train=False)
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">NMNISTDataset</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">augment</span><span class="p">)</span>
+<span class="n">testing_set</span>  <span class="o">=</span> <span class="n">NMNISTDataset</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-train_loader = DataLoader(dataset=training_set, batch_size=32, shuffle=True)
-test_loader  = DataLoader(dataset=testing_set , batch_size=32, shuffle=True)
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">training_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">testing_set</span> <span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,12 +628,12 @@ NMNIST dataset is freely available here: https://www.garrickorchard.com/datasets
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>for i in range(5):
-    spike_tensor, label = testing_set[np.random.randint(len(testing_set))]
-    spike_tensor = spike_tensor.reshape(2, 34, 34, -1)
-    event = slayer.io.tensor_to_event(spike_tensor.cpu().data.numpy())
-    anim = event.anim(plt.figure(figsize=(5, 5)), frame_rate=240)
-    anim.save(f&#39;gifs/input{i}.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">spike_tensor</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">testing_set</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">testing_set</span><span class="p">))]</span>
+    <span class="n">spike_tensor</span> <span class="o">=</span> <span class="n">spike_tensor</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">tensor_to_event</span><span class="p">(</span><span class="n">spike_tensor</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">anim</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+    <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/input</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">,</span> <span class="n">animation</span><span class="o">.</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -649,11 +642,11 @@ NMNIST dataset is freely available here: https://www.garrickorchard.com/datasets
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>gif_td = lambda gif: f&#39;&lt;td&gt; &lt;img src=&quot;{gif}&quot; alt=&quot;Drawing&quot; style=&quot;height: 250px;&quot;/&gt; &lt;/td&gt;&#39;
-header = &#39;&lt;table&gt;&lt;tr&gt;&#39;
-images = &#39; &#39;.join([gif_td(f&#39;gifs/input{i}.gif&#39;) for i in range(5)])
-footer = &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
-display.HTML(header + images + footer)
+<span></span><span class="n">gif_td</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">gif</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;&lt;td&gt; &lt;img src=&quot;</span><span class="si">{</span><span class="n">gif</span><span class="si">}</span><span class="s1">&quot; alt=&quot;Drawing&quot; style=&quot;height: 250px;&quot;/&gt; &lt;/td&gt;&#39;</span>
+<span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;&lt;table&gt;&lt;tr&gt;&#39;</span>
+<span class="n">images</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">gif_td</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/input</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+<span class="n">footer</span> <span class="o">=</span> <span class="s1">&#39;&lt;/tr&gt;&lt;/table&gt;&#39;</span>
+<span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">header</span> <span class="o">+</span> <span class="n">images</span> <span class="o">+</span> <span class="n">footer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -677,7 +670,7 @@ display.HTML(header + images + footer)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>error = slayer.loss.SpikeRate(true_rate=0.2, false_rate=0.03, reduction=&#39;sum&#39;).to(device)
+<span></span><span class="n">error</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">SpikeRate</span><span class="p">(</span><span class="n">true_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">false_rate</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -691,8 +684,8 @@ display.HTML(header + images + footer)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>stats = slayer.utils.LearningStats()
-assistant = slayer.utils.Assistant(net, error, optimizer, stats, classifier=slayer.classifier.Rate.predict)
+<span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">LearningStats</span><span class="p">()</span>
+<span class="n">assistant</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Assistant</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">slayer</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">Rate</span><span class="o">.</span><span class="n">predict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -711,27 +704,27 @@ assistant = slayer.utils.Assistant(net, error, optimizer, stats, classifier=slay
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>epochs = 100
+<span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
 
-for epoch in range(epochs):
-    for i, (input, label) in enumerate(train_loader): # training loop
-        output = assistant.train(input, label)
-    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span> <span class="c1"># training loop</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">assistant</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-    for i, (input, label) in enumerate(test_loader): # training loop
-        output = assistant.test(input, label)
-    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">):</span> <span class="c1"># training loop</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">assistant</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-    if epoch%20 == 19: # cleanup display
-        print(&#39;\r&#39;, &#39; &#39;*len(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;))
-        stats_str = str(stats).replace(&quot;| &quot;, &quot;\n&quot;)
-        print(f&#39;[Epoch {epoch:2d}/{epochs}]\n{stats_str}&#39;)
+    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">20</span> == 19: # cleanup display
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+        <span class="n">stats_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;| &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">]</span><span class="se">\n</span><span class="si">{</span><span class="n">stats_str</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    if stats.testing.best_accuracy:
-        torch.save(net.state_dict(), trained_folder + &#39;/network.pt&#39;)
-    stats.update()
-    stats.save(trained_folder + &#39;/&#39;)
-    net.grad_flow(trained_folder + &#39;/&#39;)
+    <span class="k">if</span> <span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">best_accuracy</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">)</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">grad_flow</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -772,7 +765,7 @@ Test  loss =     0.05019 (min =     0.04633)    accuracy = 0.98540 (max = 0.9872
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>stats.plot(figsize=(15, 5))
+<span></span><span class="n">stats</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -799,8 +792,8 @@ Test  loss =     0.05019 (min =     0.04633)    accuracy = 0.98540 (max = 0.9872
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>net.load_state_dict(torch.load(trained_folder + &#39;/network.pt&#39;))
-net.export_hdf5(trained_folder + &#39;/network.net&#39;)
+<span></span><span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">))</span>
+<span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.net&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -813,14 +806,14 @@ net.export_hdf5(trained_folder + &#39;/network.net&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>output = net(input.to(device))
-for i in range(5):
-    inp_event = slayer.io.tensor_to_event(input[i].cpu().data.numpy().reshape(2, 34, 34, -1))
-    out_event = slayer.io.tensor_to_event(output[i].cpu().data.numpy().reshape(1, 10, -1))
-    inp_anim = inp_event.anim(plt.figure(figsize=(5, 5)), frame_rate=240)
-    out_anim = out_event.anim(plt.figure(figsize=(10, 5)), frame_rate=240)
-    inp_anim.save(f&#39;gifs/inp{i}.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
-    out_anim.save(f&#39;gifs/out{i}.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+<span></span><span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">inp_event</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">tensor_to_event</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">out_event</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">tensor_to_event</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">inp_anim</span> <span class="o">=</span> <span class="n">inp_event</span><span class="o">.</span><span class="n">anim</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+    <span class="n">out_anim</span> <span class="o">=</span> <span class="n">out_event</span><span class="o">.</span><span class="n">anim</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">240</span><span class="p">)</span>
+    <span class="n">inp_anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/inp</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">,</span> <span class="n">animation</span><span class="o">.</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">out_anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/out</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">,</span> <span class="n">animation</span><span class="o">.</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -830,15 +823,15 @@ for i in range(5):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>html = &#39;&lt;table&gt;&#39;
-html += &#39;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;Input&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Output&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&#39;
-for i in range(5):
-    html += &#39;&lt;tr&gt;&#39;
-    html += gif_td(f&#39;gifs/inp{i}.gif&#39;)
-    html += gif_td(f&#39;gifs/out{i}.gif&#39;)
-    html += &#39;&lt;/tr&gt;&#39;
-html += &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
-display.HTML(html)
+<span></span><span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;table&gt;&#39;</span>
+<span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;Input&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Output&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;tr&gt;&#39;</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="n">gif_td</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/inp</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="n">gif_td</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/out</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">)</span>
+    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/tr&gt;&#39;</span>
+<span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/tr&gt;&lt;/table&gt;&#39;</span>
+<span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

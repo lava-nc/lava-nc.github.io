@@ -17,9 +17,7 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="lava.magma.core.model.c package" href="lava.magma.core.model.c.html" />
-    <link rel="prev" title="lava.magma.core package" href="lava.magma.core.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,7 +35,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
@@ -88,7 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
 </ul>
@@ -100,7 +98,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -149,15 +146,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="modules.html">lava</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="lava.html">lava package</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -184,6 +174,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -202,11 +193,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
-          <li><a href="modules.html">lava</a> &raquo;</li>
-          <li><a href="lava.html">lava package</a> &raquo;</li>
-          <li><a href="lava.magma.html">lava.magma package</a> &raquo;</li>
-          <li><a href="lava.magma.core.html">lava.magma.core package</a> &raquo;</li>
       <li>lava.magma.core.model package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.model.rst.txt" rel="nofollow"> View page source</a>
@@ -284,17 +270,25 @@
 <span id="lava-magma-core-model-interfaces-module"></span><h2>lava.magma.core.model.interfaces module<a class="headerlink" href="#module-lava.magma.core.model.interfaces" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.interfaces.AbstractPortImplementation">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.interfaces.</span></span><span class="sig-name descname"><span class="pre">AbstractPortImplementation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">AbstractProcessModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csp_port</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.interfaces.AbstractPortImplementation" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.interfaces.</span></span><span class="sig-name descname"><span class="pre">AbstractPortImplementation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">process_model:</span> <span class="pre">AbstractProcessModel</span></em>, <em class="sig-param"><span class="pre">shape:</span> <span class="pre">Tuple[int</span></em>, <em class="sig-param"><span class="pre">...]</span> <span class="pre">=</span> <span class="pre">()</span></em>, <em class="sig-param"><span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.interfaces.AbstractPortImplementation" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.core.model.interfaces.AbstractPortImplementation.csp_ports">
+<em class="property"><span class="pre">abstract</span> <span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">csp_ports</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.interfaces.AbstractPortImplementation.csp_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Returns all csp ports of the port.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.interfaces.AbstractPortImplementation.join">
 <span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.interfaces.AbstractPortImplementation.join" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Join all csp ports</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.interfaces.AbstractPortImplementation.start">
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.interfaces.AbstractPortImplementation.start" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Start all csp ports.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -360,6 +354,11 @@ ProcModel.__annotations__ if the user has not forgotten to specify it.</p>
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.model.AbstractProcessModel.start" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.model.AbstractProcessModel.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.model.model.AbstractProcessModel.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -371,10 +370,7 @@ ProcModel.__annotations__ if the user has not forgotten to specify it.</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lava.magma.core.html" class="btn btn-neutral float-left" title="lava.magma.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lava.magma.core.model.c.html" class="btn btn-neutral float-right" title="lava.magma.core.model.c package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

@@ -86,7 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qp-solver">QP Solver</a></li>
 </ul>
@@ -98,7 +98,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -148,14 +147,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">lava</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.html">lava package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../neuron/modules.html">Neuron</a></li>
@@ -182,6 +174,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -532,11 +525,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import numpy as np
-import matplotlib.pyplot as plt
-import torch
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">torch</span>
 
-import lava.lib.dl.slayer as slayer
+<span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
 </pre></div>
 </div>
 </div>
@@ -549,8 +542,8 @@ import lava.lib.dl.slayer as slayer
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>device = torch.device(&#39;cpu&#39;)
-# device = torch.device(&#39;cuda&#39;)
+<span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="c1"># device = torch.device(&#39;cuda&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -559,11 +552,11 @@ import lava.lib.dl.slayer as slayer
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>time = np.arange(1000)
-t = torch.FloatTensor(time).to(device)
-input = torch.zeros_like(t)
-for tt, ww in [[10, 1], [97, 1.8], [100, 1.6], [270, -3], [500, 0.5]]:
-    input[tt] = ww
+<span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tt</span><span class="p">,</span> <span class="n">ww</span> <span class="ow">in</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">97</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">],</span> <span class="p">[</span><span class="mi">270</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]:</span>
+    <span class="nb">input</span><span class="p">[</span><span class="n">tt</span><span class="p">]</span> <span class="o">=</span> <span class="n">ww</span>
 </pre></div>
 </div>
 </div>
@@ -572,10 +565,10 @@ for tt, ww in [[10, 1], [97, 1.8], [100, 1.6], [270, -3], [500, 0.5]]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>scale = 1&lt;&lt;12 # scale factor for integer simulation
-decay = torch.FloatTensor([0.1 * scale]).to(device)
-initial_state = torch.FloatTensor([0]).to(device)
-threshold = 1.5
+<span></span><span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">12</span> <span class="c1"># scale factor for integer simulation</span>
+<span class="n">decay</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">scale</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">1.5</span>
 </pre></div>
 </div>
 </div>
@@ -592,7 +585,7 @@ threshold = 1.5
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>y = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale, threshold=threshold)
+<span></span><span class="n">y</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">leaky_integrator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -602,15 +595,15 @@ threshold = 1.5
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>sp = slayer.spike.Spike.apply(
-        y,
-        threshold,
-        1, # tau_rho: gradient relaxation constant
-        1, # scale_rho: gradient scale constant
-        False, # graded_spike: graded or binary spike
-        0, # voltage_last: voltage at t=-1
-        1, # scale: graded spike scale
-    )
+<span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">spike</span><span class="o">.</span><span class="n">Spike</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># tau_rho: gradient relaxation constant</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale_rho: gradient scale constant</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="c1"># graded_spike: graded or binary spike</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="c1"># voltage_last: voltage at t=-1</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale: graded spike scale</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -622,9 +615,9 @@ threshold = 1.5
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>second_order_th = threshold * 5
-current = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale)
-voltage = slayer.neuron.dynamics.leaky_integrator.dynamics(current, decay=decay, state=initial_state, w_scale=scale, threshold=second_order_th)
+<span></span><span class="n">second_order_th</span> <span class="o">=</span> <span class="n">threshold</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">current</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">leaky_integrator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">leaky_integrator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">second_order_th</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -636,22 +629,22 @@ voltage = slayer.neuron.dynamics.leaky_integrator.dynamics(current, decay=decay,
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fig,ax = plt.subplots(3, 1, figsize=(15, 7))
-ax[0].plot(time, input.cpu(), label=&#39;weighted spikes&#39;)
-ax[0].legend(loc=&#39;upper right&#39;)
+<span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[1].plot(time, y.cpu(), label=&#39;Leaky integrator dynamics&#39;)
-ax[1].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
-ax[1].plot(time[sp&gt;0], y[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-ax[1].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Leaky integrator dynamics&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[2].plot(time, current.cpu(), label=&#39;CUBA current&#39;)
-ax[2].plot(time, voltage.cpu(), label=&#39;CUBA voltage&#39;)
-ax[2].plot(time, second_order_th * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
-ax[2].plot(time[voltage&gt;second_order_th], voltage[voltage&gt;second_order_th].cpu(), label=&#39;spike&#39;)
-ax[2].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">current</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CUBA current&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">voltage</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CUBA voltage&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">second_order_th</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">voltage</span><span class="o">&gt;</span><span class="n">second_order_th</span><span class="p">],</span> <span class="n">voltage</span><span class="p">[</span><span class="n">voltage</span><span class="o">&gt;</span><span class="n">second_order_th</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[-1].set_xlabel(&#39;time&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -688,18 +681,18 @@ Text(0.5, 0, &#39;time&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>current = slayer.neuron.dynamics.leaky_integrator.dynamics(input, decay=decay, state=initial_state, w_scale=scale)
-voltage = slayer.neuron.dynamics.leaky_integrator.dynamics(current, decay=decay, state=initial_state, w_scale=scale)
-th, ref = slayer.neuron.dynamics.adaptive_threshold.dynamics(
-        voltage,                      # dynamics state
-        ref_state=initial_state,      # previous refractory state
-        ref_decay=0.5*decay,          # refractory decay
-        th_state=initial_state + second_order_th, # previous threshold state
-        th_decay=decay,               # threshold decay
-        th_scale=0.5*second_order_th, # threshold step
-        th0=second_order_th,          # threshold stable state
-        w_scale=scale                 # fixed precision scaling
-    )
+<span></span><span class="n">current</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">leaky_integrator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">leaky_integrator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">th</span><span class="p">,</span> <span class="n">ref</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">adaptive_threshold</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">voltage</span><span class="p">,</span>                      <span class="c1"># dynamics state</span>
+        <span class="n">ref_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>      <span class="c1"># previous refractory state</span>
+        <span class="n">ref_decay</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">decay</span><span class="p">,</span>          <span class="c1"># refractory decay</span>
+        <span class="n">th_state</span><span class="o">=</span><span class="n">initial_state</span> <span class="o">+</span> <span class="n">second_order_th</span><span class="p">,</span> <span class="c1"># previous threshold state</span>
+        <span class="n">th_decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span>               <span class="c1"># threshold decay</span>
+        <span class="n">th_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">second_order_th</span><span class="p">,</span> <span class="c1"># threshold step</span>
+        <span class="n">th0</span><span class="o">=</span><span class="n">second_order_th</span><span class="p">,</span>          <span class="c1"># threshold stable state</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span>                 <span class="c1"># fixed precision scaling</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -711,18 +704,18 @@ th, ref = slayer.neuron.dynamics.adaptive_threshold.dynamics(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fig,ax = plt.subplots(2, 1, figsize=(15, 4.5))
-ax[0].plot(time, input.cpu(), label=&#39;weighted spikes&#39;)
-ax[0].legend(loc=&#39;upper right&#39;)
+<span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[1].plot(time, current.cpu(), label=&#39;ALIF current&#39;)
-ax[1].plot(time, voltage.cpu(), label=&#39;ALIF voltage&#39;)
-ax[1].plot(time, ref.cpu(), label=&#39;refractory dynamics&#39;)
-ax[1].plot(time, th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
-ax[1].plot(time[(voltage-ref)&gt;th], voltage[(voltage-ref)&gt;th], &#39;*&#39;, label=&#39;spike&#39;)
-ax[1].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">current</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ALIF current&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">voltage</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ALIF voltage&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">ref</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;refractory dynamics&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[(</span><span class="n">voltage</span><span class="o">-</span><span class="n">ref</span><span class="p">)</span><span class="o">&gt;</span><span class="n">th</span><span class="p">],</span> <span class="n">voltage</span><span class="p">[(</span><span class="n">voltage</span><span class="o">-</span><span class="n">ref</span><span class="p">)</span><span class="o">&gt;</span><span class="n">th</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[-1].set_xlabel(&#39;time&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -778,19 +771,19 @@ Text(0.5, 0, &#39;time&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>re_input = input
-im_input = 2*torch.randn_like(re_input) * (re_input &gt; 0)
-alpha = torch.FloatTensor([0.03 * scale]).to(device)
-phi = 2 * np.pi /25
-sin_decay = (scale-alpha) * np.sin(phi)
-cos_decay = (scale-alpha) * np.cos(phi)
-re, im = slayer.neuron.dynamics.resonator.dynamics(
-        re_input, im_input,
-        sin_decay, cos_decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        w_scale=scale,
-    )
+<span></span><span class="n">re_input</span> <span class="o">=</span> <span class="nb">input</span>
+<span class="n">im_input</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">re_input</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">re_input</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span><span class="mf">0.03</span> <span class="o">*</span> <span class="n">scale</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span><span class="mi">25</span>
+<span class="n">sin_decay</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">cos_decay</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">re</span><span class="p">,</span> <span class="n">im</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_input</span><span class="p">,</span> <span class="n">im_input</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
 
 </pre></div>
 </div>
@@ -802,15 +795,15 @@ re, im = slayer.neuron.dynamics.resonator.dynamics(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>sp = slayer.spike.complex.Spike.apply(
-        re, im,
-        threshold,
-        1, # tau_rho: gradient relaxation constant
-        1, # scale_rho: gradient scale constant
-        False, # graded_spike: graded or binary spike
-        0, # voltage_last: voltage at t=-1
-        1, # scale: graded spike scale
-    )
+<span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">spike</span><span class="o">.</span><span class="n">complex</span><span class="o">.</span><span class="n">Spike</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="n">re</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># tau_rho: gradient relaxation constant</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale_rho: gradient scale constant</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="c1"># graded_spike: graded or binary spike</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="c1"># voltage_last: voltage at t=-1</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale: graded spike scale</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -827,14 +820,14 @@ re, im = slayer.neuron.dynamics.resonator.dynamics(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>iz_re, iz_im = slayer.neuron.dynamics.resonator.dynamics(
-        re_input, im_input,
-        sin_decay, cos_decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        w_scale=scale,
-        threshold=threshold,
-    )
+<span></span><span class="n">iz_re</span><span class="p">,</span> <span class="n">iz_im</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_input</span><span class="p">,</span> <span class="n">im_input</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+        <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,22 +840,22 @@ re, im = slayer.neuron.dynamics.resonator.dynamics(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>second_order_th = threshold * 15
-re_0, im_0 = slayer.neuron.dynamics.resonator.dynamics(
-        re_input, im_input,
-        sin_decay, cos_decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        w_scale=scale,
-    )
-re_1, im_1 = slayer.neuron.dynamics.resonator.dynamics(
-        re_0, im_0,
-        sin_decay, cos_decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        w_scale=scale,
-    )
-sp_1 = slayer.spike.complex.Spike.apply(re_1, im_1, second_order_th, 1, 1, False, 0, 1)
+<span></span><span class="n">second_order_th</span> <span class="o">=</span> <span class="n">threshold</span> <span class="o">*</span> <span class="mi">15</span>
+<span class="n">re_0</span><span class="p">,</span> <span class="n">im_0</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_input</span><span class="p">,</span> <span class="n">im_input</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">re_1</span><span class="p">,</span> <span class="n">im_1</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_0</span><span class="p">,</span> <span class="n">im_0</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">sp_1</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">spike</span><span class="o">.</span><span class="n">complex</span><span class="o">.</span><span class="n">Spike</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">re_1</span><span class="p">,</span> <span class="n">im_1</span><span class="p">,</span> <span class="n">second_order_th</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -874,30 +867,30 @@ sp_1 = slayer.spike.complex.Spike.apply(re_1, im_1, second_order_th, 1, 1, False
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fig,ax = plt.subplots(4, 1, figsize=(15, 9))
-ax[0].plot(time, re_input.cpu(), label=&#39;real weighted spikes&#39;)
-ax[0].plot(time, im_input.cpu(), label=&#39;imag weighted spikes&#39;)
-ax[0].legend(loc=&#39;upper right&#39;)
+<span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">re_input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">im_input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;imag weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[1].plot(time, re.cpu(), label=&#39;RF real state&#39;)
-ax[1].plot(time, im.cpu(), label=&#39;RF imag state&#39;)
-ax[1].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
-ax[1].plot(time[sp&gt;0], re[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-ax[1].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF real state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF imag state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">re</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[2].plot(time, iz_re.cpu(), label=&#39;RF Izhikevich real state&#39;)
-ax[2].plot(time, iz_im.cpu(), label=&#39;RF Izhikevich imag state&#39;)
-ax[2].plot(time, threshold * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
-ax[2].plot(time[iz_im &gt; threshold], iz_im[iz_im &gt; threshold], &#39;*&#39;, label=&#39;spike&#39;)
-ax[2].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">iz_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF Izhikevich real state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">iz_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF Izhikevich imag state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">iz_im</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">],</span> <span class="n">iz_im</span><span class="p">[</span><span class="n">iz_im</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[3].plot(time, re_1.cpu(), label=&#39;RF-Or2 real state&#39;)
-ax[3].plot(time, im_1.cpu(), label=&#39;RF-Or2 imag state&#39;)
-ax[3].plot(time, second_order_th * np.ones_like(time), alpha=0.5, label=&#39;threshold&#39;)
-ax[3].plot(time[sp_1&gt;0], re_1[sp_1&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-ax[3].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">re_1</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF-Or2 real state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">im_1</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RF-Or2 imag state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">second_order_th</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">sp_1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">re_1</span><span class="p">[</span><span class="n">sp_1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[-1].set_xlabel(&#39;time&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -922,19 +915,19 @@ Text(0.5, 0, &#39;time&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def plot_phase_region(ax, threshold, sin_decay):
-    xlims = ax.get_xlim()
-    ylims = ax.get_ylim()
-    xx = np.array([threshold, threshold+500])
-    yy = xx * sin_decay
-    ax.fill_between(xx, yy, color=&#39;green&#39;, alpha=0.1)
-    ax.set_xlim(xlims)
-    ax.set_ylim(ylims)
+<span></span><span class="k">def</span> <span class="nf">plot_phase_region</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">sin_decay</span><span class="p">):</span>
+    <span class="n">xlims</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+    <span class="n">ylims</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">threshold</span><span class="p">,</span> <span class="n">threshold</span><span class="o">+</span><span class="mi">500</span><span class="p">])</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">xx</span> <span class="o">*</span> <span class="n">sin_decay</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlims</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylims</span><span class="p">)</span>
 
-def plot_iz_region(ax, threshold):
-    ylims = ax.get_ylim()
-    ax.axhspan(threshold, threshold+50, color=&#39;green&#39;, alpha=0.1)
-    ax.set_ylim(ylims)
+<span class="k">def</span> <span class="nf">plot_iz_region</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="n">ylims</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhspan</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">threshold</span><span class="o">+</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylims</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -943,27 +936,27 @@ def plot_iz_region(ax, threshold):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fig, ax = plt.subplots(1, 3, figsize=(10, 3))
-ax[0].plot(re.cpu(), im.cpu())
-ax[0].plot(re[sp&gt;0], im[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-plot_phase_region(ax[0], threshold, sin_decay.item()/scale)
-ax[0].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
-ax[0].set_ylabel(&#39;$\mathfrak{Im}(z)$&#39;)
-ax[0].legend(loc=&#39;lower left&#39;)
-ax[0].set_title(&#39;RF&#39;)
-ax[1].plot(iz_re.cpu(), iz_im.cpu())
-ax[1].plot(iz_re[iz_im &gt; threshold], iz_im[iz_im &gt; threshold], &#39;*&#39;, label=&#39;spike&#39;)
-plot_iz_region(ax[1], threshold)
-ax[1].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
-ax[1].legend(loc=&#39;lower left&#39;)
-ax[1].set_title(&#39;RF Izhikevich&#39;)
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">im</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">re</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">im</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">plot_phase_region</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">sin_decay</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Re}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Im}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iz_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">iz_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iz_re</span><span class="p">[</span><span class="n">iz_im</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">],</span> <span class="n">iz_im</span><span class="p">[</span><span class="n">iz_im</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">plot_iz_region</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Re}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RF Izhikevich&#39;</span><span class="p">)</span>
 
-ax[2].plot(re_1.cpu(), im_1.cpu())
-ax[2].plot(re_1[sp_1&gt;0], im_1[sp_1&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-plot_phase_region(ax[2], second_order_th, sin_decay.item()/scale)
-ax[2].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
-ax[2].legend(loc=&#39;lower left&#39;)
-ax[2].set_title(&#39;RF-Or2&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">re_1</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">im_1</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">re_1</span><span class="p">[</span><span class="n">sp_1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">im_1</span><span class="p">[</span><span class="n">sp_1</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">plot_phase_region</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">second_order_th</span><span class="p">,</span> <span class="n">sin_decay</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Re}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RF-Or2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -999,30 +992,30 @@ Text(0.5, 1.0, &#39;RF-Or2&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>adrf_re, adrf_im = slayer.neuron.dynamics.resonator.dynamics(
-        re_input, im_input,
-        sin_decay, cos_decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        w_scale=scale,
-    )
-adrf_th, adrf_ref = slayer.neuron.dynamics.adaptive_phase_th.dynamics(
-        adrf_re, adrf_im,
-        im_state=initial_state, # only imaginary state is needed to determine first phase crossing
-        ref_state=initial_state, ref_decay=0.5*decay,       # refractory state and decay
-        th_state=initial_state + threshold, th_decay=decay, # threshold state and decay
-        th_scale=0.5 * threshold, # threshold step
-        th0=threshold,          # threshold stable state
-        w_scale=scale,
-    )
-adrf_sp = slayer.spike.complex.Spike.apply(
-        adrf_re, adrf_im, adrf_th + adrf_ref,
-        1, # tau_rho: gradient relaxation constant
-        1, # scale_rho: gradient scale constant
-        False, # graded_spike: graded or binary spike
-        0, # voltage_last: voltage at t=-1
-        1, # scale: graded spike scale
-    )
+<span></span><span class="n">adrf_re</span><span class="p">,</span> <span class="n">adrf_im</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_input</span><span class="p">,</span> <span class="n">im_input</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">adrf_th</span><span class="p">,</span> <span class="n">adrf_ref</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">adaptive_phase_th</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">adrf_re</span><span class="p">,</span> <span class="n">adrf_im</span><span class="p">,</span>
+        <span class="n">im_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="c1"># only imaginary state is needed to determine first phase crossing</span>
+        <span class="n">ref_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">ref_decay</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">decay</span><span class="p">,</span>       <span class="c1"># refractory state and decay</span>
+        <span class="n">th_state</span><span class="o">=</span><span class="n">initial_state</span> <span class="o">+</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">th_decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span> <span class="c1"># threshold state and decay</span>
+        <span class="n">th_scale</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">threshold</span><span class="p">,</span> <span class="c1"># threshold step</span>
+        <span class="n">th0</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>          <span class="c1"># threshold stable state</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">adrf_sp</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">spike</span><span class="o">.</span><span class="n">complex</span><span class="o">.</span><span class="n">Spike</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="n">adrf_re</span><span class="p">,</span> <span class="n">adrf_im</span><span class="p">,</span> <span class="n">adrf_th</span> <span class="o">+</span> <span class="n">adrf_ref</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># tau_rho: gradient relaxation constant</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale_rho: gradient scale constant</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="c1"># graded_spike: graded or binary spike</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="c1"># voltage_last: voltage at t=-1</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="c1"># scale: graded spike scale</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1037,19 +1030,19 @@ adrf_sp = slayer.spike.complex.Spike.apply(
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>adrf_iz_re, adrf_iz_im, adrf_iz_th, adrf_iz_ref = slayer.neuron.dynamics.adaptive_resonator.dynamics(
-        re_input, im_input,
-        sin_decay, cos_decay, ref_decay=0.5*decay, th_decay=decay,
-        real_state=initial_state,
-        imag_state=initial_state,
-        ref_state=initial_state,
-        th_state=initial_state + threshold,
-        th_scale=0.5 * threshold, # threshold step
-        th0=threshold,          # threshold stable state
-        w_scale=scale,
-    )
+<span></span><span class="n">adrf_iz_re</span><span class="p">,</span> <span class="n">adrf_iz_im</span><span class="p">,</span> <span class="n">adrf_iz_th</span><span class="p">,</span> <span class="n">adrf_iz_ref</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">adaptive_resonator</span><span class="o">.</span><span class="n">dynamics</span><span class="p">(</span>
+        <span class="n">re_input</span><span class="p">,</span> <span class="n">im_input</span><span class="p">,</span>
+        <span class="n">sin_decay</span><span class="p">,</span> <span class="n">cos_decay</span><span class="p">,</span> <span class="n">ref_decay</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="n">decay</span><span class="p">,</span> <span class="n">th_decay</span><span class="o">=</span><span class="n">decay</span><span class="p">,</span>
+        <span class="n">real_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">imag_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">ref_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span>
+        <span class="n">th_state</span><span class="o">=</span><span class="n">initial_state</span> <span class="o">+</span> <span class="n">threshold</span><span class="p">,</span>
+        <span class="n">th_scale</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">threshold</span><span class="p">,</span> <span class="c1"># threshold step</span>
+        <span class="n">th0</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>          <span class="c1"># threshold stable state</span>
+        <span class="n">w_scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+    <span class="p">)</span>
 
-adrf_iz_sp = adrf_iz_im &gt; (adrf_iz_th + adrf_iz_ref)
+<span class="n">adrf_iz_sp</span> <span class="o">=</span> <span class="n">adrf_iz_im</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">adrf_iz_th</span> <span class="o">+</span> <span class="n">adrf_iz_ref</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1061,26 +1054,26 @@ adrf_iz_sp = adrf_iz_im &gt; (adrf_iz_th + adrf_iz_ref)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>fig,ax = plt.subplots(3, 1, figsize=(15, 6.6))
-ax[0].plot(time, re_input.cpu(), label=&#39;real weighted spikes&#39;)
-ax[0].plot(time, im_input.cpu(), label=&#39;imag weighted spikes&#39;)
-ax[0].legend(loc=&#39;upper right&#39;)
+<span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">re_input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">im_input</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;imag weighted spikes&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[1].plot(time, adrf_re.cpu(), label=&#39;AdRF real state&#39;)
-ax[1].plot(time, adrf_im.cpu(), label=&#39;AdRF imag state&#39;)
-ax[1].plot(time, adrf_ref.cpu(), label=&#39;refractory dynamics&#39;)
-ax[1].plot(time, adrf_th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
-ax[1].plot(time[adrf_sp&gt;0], adrf_re[adrf_sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-ax[1].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AdRF real state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AdRF imag state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_ref</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;refractory dynamics&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_th</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">adrf_sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">adrf_re</span><span class="p">[</span><span class="n">adrf_sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[2].plot(time, adrf_iz_re.cpu(), label=&#39;AdRF-Iz real state&#39;)
-ax[2].plot(time, adrf_iz_im.cpu(), label=&#39;AdRF-Iz imag state&#39;)
-ax[2].plot(time, adrf_iz_ref.cpu(), label=&#39;refractory dynamics&#39;)
-ax[2].plot(time, adrf_iz_th.cpu(), alpha=0.5, label=&#39;threshold&#39;)
-ax[2].plot(time[adrf_iz_sp], adrf_iz_im[adrf_iz_sp], &#39;*&#39;, label=&#39;spike&#39;)
-ax[2].legend(loc=&#39;upper right&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_iz_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AdRF-Iz real state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_iz_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AdRF-Iz imag state&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_iz_ref</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;refractory dynamics&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">adrf_iz_th</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;threshold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">adrf_iz_sp</span><span class="p">],</span> <span class="n">adrf_iz_im</span><span class="p">[</span><span class="n">adrf_iz_sp</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
 
-ax[-1].set_xlabel(&#39;time&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1105,23 +1098,23 @@ Text(0.5, 0, &#39;time&#39;)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import matplotlib.patches as patches
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
 
-fig, ax = plt.subplots(1, 2, figsize=(6.5, 3), sharey=True)
-ax[0].plot(adrf_re.cpu(), adrf_im.cpu())
-ax[0].plot(adrf_re[sp&gt;0], adrf_im[sp&gt;0], &#39;*&#39;, label=&#39;spike&#39;)
-plot_phase_region(ax[0], threshold, sin_decay.item()/scale)
-ax[0].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
-ax[0].set_ylabel(&#39;$\mathfrak{Im}(z)$&#39;)
-ax[0].legend(loc=&#39;lower left&#39;)
-ax[0].set_title(&#39;AdRF&#39;)
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">adrf_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">adrf_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">adrf_re</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">adrf_im</span><span class="p">[</span><span class="n">sp</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">plot_phase_region</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">sin_decay</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Re}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Im}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;AdRF&#39;</span><span class="p">)</span>
 
-ax[1].plot(adrf_iz_re.cpu(), adrf_iz_im.cpu())
-ax[1].plot(adrf_iz_re[adrf_iz_sp], adrf_iz_im[adrf_iz_sp], &#39;*&#39;, label=&#39;spike&#39;)
-plot_iz_region(ax[1], threshold)
-ax[1].set_xlabel(&#39;$\mathfrak{Re}(z)$&#39;)
-ax[1].legend(loc=&#39;lower left&#39;)
-ax[1].set_title(&#39;AdRF Izhikevich&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">adrf_iz_re</span><span class="o">.</span><span class="n">cpu</span><span class="p">(),</span> <span class="n">adrf_iz_im</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">adrf_iz_re</span><span class="p">[</span><span class="n">adrf_iz_sp</span><span class="p">],</span> <span class="n">adrf_iz_im</span><span class="p">[</span><span class="n">adrf_iz_sp</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;spike&#39;</span><span class="p">)</span>
+<span class="n">plot_iz_region</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$\mathfrak</span><span class="si">{Re}</span><span class="s1">(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;AdRF Izhikevich&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

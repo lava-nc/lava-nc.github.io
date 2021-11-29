@@ -88,7 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#tutorials">Tutorials</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="optimization.html#qp-solver">QP Solver</a></li>
 </ul>
@@ -100,7 +100,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#lava-optimization-documentation">Lava Optimization Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -150,14 +149,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">lava</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava/lava.html">lava package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava/lava.html#module-lava">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -184,6 +176,7 @@
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
 </ul>
@@ -244,7 +237,7 @@
 <h2>Application examples:<a class="headerlink" href="#application-examples" title="Permalink to this headline"></a></h2>
 <p>These are standalone tutorials that can be followed in any order.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/end_to_end/tutorial01_mnist_digit_classification.ipynb">MNIST digit classification:</a> The classical ‘<em>Hello World!</em>’ example illustrating how to build a simple feed-forward image classifier using leaky-integrate-and-fire neurons.</p></li>
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/end_to_end/tutorial01_mnist_digit_classification.ipynb">MNIST digit classification:</a> The classical ‘<em>Hello World!</em>’ example illustrating how to build a simple feed-forward image classifier using leaky-integrate-and-fire neurons.</p></li>
 </ul>
 <p><strong>Coming soon:</strong></p>
 <ul class="simple">
@@ -255,21 +248,21 @@
 <div class="section" id="fundamental-concepts">
 <h2>Fundamental concepts:<a class="headerlink" href="#fundamental-concepts" title="Permalink to this headline"></a></h2>
 <p>These tutorials walk step-by-step through the fundamental concepts of Lava introduced in <a class="reference external" href="https://lava-nc.org/lava_architecture_overview.html">Lava Architecture</a>. These tutorials tend to build on each other, therefore it’s best to consume them in order.</p>
-<p>1. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb">Installing Lava</a>:
+<p>1. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial01_installing_lava.ipynb">Installing Lava</a>:
 Quickly get Lava installed, tested and ready to develop on your system.</p>
-<p>2. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial02_processes.ipynb">Processes</a>:
+<p>2. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial02_processes.ipynb">Processes</a>:
 Learn how to create <em>Processes</em> which are Lava’s fundamental computational building blocks.</p>
-<p>3. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial03_process_models.ipynb">Process models</a>:
+<p>3. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial03_process_models.ipynb">Process models</a>:
 Learn to implement <em>Process</em> behavior with the ability to run on diverse backends via Lava <em>ProcessModels</em>.</p>
-<p>4. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial04_execution.ipynb">Execution</a>:
+<p>4. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial04_execution.ipynb">Execution</a>:
 This notebook demonstrates how to configure, start, and stop the execution of a network of <em>Processes</em>.</p>
-<p><strong>Coming shortly:</strong></p>
-<p>5. Connecting processes:
+<p>5. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial05_connect_processes.ipynb">Connecting processes</a>:
 How to connect <em>Processes</em> for message-based communication via channels and to build a network of asynchronously operating and interacting <em>Processes</em>.</p>
-<p>6. Hierarchical processes:
-<em>Processes</em> can be composed into hierarchical processes. Learn how to implement <em>SubProcessModels</em> to build modular <em>Processes</em> of <em>Processes</em>.</p>
-<p>7. Direct memory access:
-Explains how to realize direct memory access between <em>Processes</em> and what to be cautious about.</p>
+<p>6. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial06_hierarchical_processes.ipynb">Hierarchical processes</a>:
+Processes can be composed into hierarchical processes. Learn how to implement <em>SubProcessModels</em> to build modular <em>Processes</em> of <em>Processes</em>.</p>
+<p>7. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial07_remote_memory_access.ipynb">Remote memory access</a>:
+Explains how to realize remote memory access between <em>Processes</em> and what to be cautious about.</p>
+<p><strong>Coming shortly:</strong></p>
 <p>8. State monitoring:
 Lava offers probes to monitor the evolution of temporal state during execution. Learn how to create probes, retrieve timeseries and how to create custom visualization of network dynamics.</p>
 </div>
