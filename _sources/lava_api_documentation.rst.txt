@@ -9,5 +9,6 @@ Welcome to Lava API documentation.
 
    lava/modules.rst
    lava-lib-dl/index.rst
+   lava-lib-dnf/index.rst
    lava-lib-optimization/index.rst
  
