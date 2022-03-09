@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -235,15 +242,23 @@
 <div class="section" id="module-lava.magma.core.process.ports.exceptions">
 <span id="lava-magma-core-process-ports-exceptions-module"></span><h2>lava.magma.core.process.ports.exceptions module<a class="headerlink" href="#module-lava.magma.core.process.ports.exceptions" title="Permalink to this headline"></a></h2>
 <dl class="py exception">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.ConcatIndexError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ConcatIndexError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ConcatIndexError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the axis over which ports should be concatenated is out of
+bounds.</p>
+</dd></dl>
+
+<dl class="py exception">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.ConcatShapeError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ConcatShapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shapes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ConcatShapeError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ConcatShapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shapes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ConcatShapeError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raised when incompatible ports are tried to be concatenated.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.DuplicateConnectionError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">DuplicateConnectionError</span></span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.DuplicateConnectionError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">DuplicateConnectionError</span></span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.DuplicateConnectionError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raised when an attempt is made to create more than one connection
 between source and destination port.</p>
@@ -251,14 +266,29 @@ between source and destination port.</p>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.ReshapeError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ReshapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ReshapeError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ReshapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ReshapeError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raised when new port shape is incompatible with old shape.</p>
 </dd></dl>
 
 <dl class="py exception">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.TransposeIndexError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">TransposeIndexError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrong_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.TransposeIndexError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when indices in transpose axes are out of bounds for the old
+shape dimension.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.TransposeShapeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">TransposeShapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.TransposeShapeError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when transpose axes is incompatible with old shape dimension.</p>
+</dd></dl>
+
+<dl class="py exception">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.VarNotSharableError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">VarNotSharableError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.VarNotSharableError" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">VarNotSharableError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.VarNotSharableError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raised when an attempt is made to connect a RefPort or VarPort to a
 non-sharable Var.</p>
@@ -269,7 +299,7 @@ non-sharable Var.</p>
 <span id="lava-magma-core-process-ports-ports-module"></span><h2>lava.magma.core.process.ports.ports module<a class="headerlink" href="#module-lava.magma.core.process.ports.ports" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractDstPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractDstPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractDstPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Interface for destination ports such as InPorts and VarPorts in which
 connections terminate.
@@ -279,7 +309,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractIOPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractIOPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractIOPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class for InPorts and OutPorts.
 This class needs no implementation and only serves to establish a clear
@@ -288,7 +318,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.interfaces.AbstractProcessMember" title="lava.magma.core.process.interfaces.AbstractProcessMember"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.interfaces.AbstractProcessMember</span></code></a></p>
 <p>Abstract base class for any type of port of a Lava Process.</p>
 <p>Ports of a process can be connected to ports of other processes to enable
@@ -305,7 +335,7 @@ These connections, imply an a-cyclic graph structure that allows the
 compiler to infer connections between processes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.concat_with">
-<span class="sig-name descname"><span class="pre">concat_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ConcatPort" title="lava.magma.core.process.ports.ports.ConcatPort"><span class="pre">lava.magma.core.process.ports.ports.ConcatPort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.concat_with" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">concat_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ConcatPort" title="lava.magma.core.process.ports.ports.ConcatPort"><span class="pre">lava.magma.core.process.ports.ports.ConcatPort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.concat_with" title="Permalink to this definition"></a></dt>
 <dd><p>Concatenates this port with other ports in given order along given
 axis by deriving and returning a new virtual ConcatPort. This implies
 resulting ConcatPort can only be forward connected to another port.
@@ -333,6 +363,38 @@ either directly or indirectly (through other ports).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_incoming_virtual_ports">
+<span class="sig-name descname"><span class="pre">get_incoming_virtual_ports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_incoming_virtual_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the list of all incoming virtual ports in order from
+source to the current port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>virtual_ports</strong> – the list of all incoming virtual ports, sorted from source to
+destination port</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(AbstractVirtualPorts)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_outgoing_virtual_ports">
+<span class="sig-name descname"><span class="pre">get_outgoing_virtual_ports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_outgoing_virtual_ports" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the list of all outgoing virtual ports in order from
+the current port to the destination port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>virtual_ports</strong> – the list of all outgoing virtual ports, sorted from source to
+destination port</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(AbstractVirtualPorts)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_src_ports">
 <span class="sig-name descname"><span class="pre">get_src_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_src_ports" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the list of all source ports that connect either directly
@@ -341,7 +403,7 @@ or indirectly (through other ports) to this port.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.reshape">
-<span class="sig-name descname"><span class="pre">reshape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ReshapePort" title="lava.magma.core.process.ports.ports.ReshapePort"><span class="pre">lava.magma.core.process.ports.ports.ReshapePort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.reshape" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">reshape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ReshapePort" title="lava.magma.core.process.ports.ports.ReshapePort"><span class="pre">lava.magma.core.process.ports.ports.ReshapePort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.reshape" title="Permalink to this definition"></a></dt>
 <dd><p>Reshapes this port by deriving and returning a new virtual
 ReshapePort with the new shape. This implies that the resulting
 ReshapePort can only be forward connected to another port.</p>
@@ -350,11 +412,23 @@ ReshapePort can only be forward connected to another port.</p>
 :param not change.:</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.TransposePort" title="lava.magma.core.process.ports.ports.TransposePort"><span class="pre">lava.magma.core.process.ports.ports.TransposePort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.transpose" title="Permalink to this definition"></a></dt>
+<dd><p>Permutes the tensor dimension of this port by deriving and returning
+a new virtual TransposePort the new permuted dimension. This implies
+that the resulting TransposePort can only be forward connected to
+another port.</p>
+<p>:param :
+:type : param axes: Order of permutation. Number of total elements and number
+:param of dimensions must not change.:</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractRVPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractRVPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractRVPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class for RefPorts and VarPorts.
 This class needs no implementation and only serves to establish a clear
@@ -363,7 +437,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractSrcPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractSrcPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractSrcPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Interface for source ports such as OutPorts and RefPorts from which
 connections originate.
@@ -373,15 +447,52 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractVirtualPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractVirtualPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class interface for any type of port that merely serves
-to transforms the properties of a user-defined port.
-Needs no implementation because this class purely serves as a
-type-identifier.</p>
+to transform the properties of a user-defined port.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.connect" title="Permalink to this definition"></a></dt>
+<dd><p>Connects this virtual port to other port(s).</p>
+<p>:param :
+:type : param ports: The port(s) to connect to. Connections from an IOPort
+:param to a RVPort and vice versa are not allowed.:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.get_transform_func_bwd">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_func_bwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.get_transform_func_bwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the backward (bwd)
+transformation of the virtual port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.get_transform_func_fwd">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_transform_func_fwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.get_transform_func_fwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the forward (fwd)
+transformation of the virtual port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.process">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">process</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.process" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.process" title="Permalink to this definition"></a></dt>
 <dd><p>Returns parent process of parent port that this VirtualPort was
 derived from.</p>
 </dd></dl>
@@ -390,8 +501,8 @@ derived from.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ConcatPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ConcatPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ConcatPort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ConcatPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ConcatPort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
 <p>A ConcatPort is a virtual port that allows to concatenate multiple
 ports along given axis into a new port before connecting to another port.
 The shape of all concatenated ports outside of the concatenation
@@ -399,19 +510,40 @@ dimension must be the same.
 It is used by the compiler to map the indices of the underlying
 tensor-valued data array from the derived to the new shape.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ConcatPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ConcatPort.connect" title="Permalink to this definition"></a></dt>
-<dd><p>Connects this ConcatPort to other port(s)</p>
-<p>:param :
-:type : param ports: The port(s) to connect to. Connections from an IOPort
-:param to a RVPort and vice versa are not allowed.:</p>
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ConcatPort.get_transform_func_bwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_bwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ConcatPort.get_transform_func_bwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the backward (bwd)
+transformation of the virtual port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ConcatPort.get_transform_func_fwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_fwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ConcatPort.get_transform_func_fwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the forward (fwd)
+transformation of the virtual port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ImplicitVarPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ImplicitVarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ImplicitVarPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ImplicitVarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ImplicitVarPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></code></a></p>
 <p>Sub class for VarPort to identify implicitly created VarPorts when
 a RefPort connects directly to a Var.</p>
@@ -419,7 +551,7 @@ a RefPort connects directly to a Var.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">InPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_op</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><span class="pre">lava.magma.core.process.ports.reduce_ops.AbstractReduceOp</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">InPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><span class="pre">lava.magma.core.process.ports.reduce_ops.AbstractReduceOp</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="lava.magma.core.process.ports.ports.AbstractDstPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractDstPort</span></code></a></p>
 <p>Input ports are members of a Lava Process and can be connected to
 other ports to facilitate receiving of messages via channels.</p>
@@ -429,7 +561,7 @@ process as a sub process. Similarly, InPorts can connect to other InPorts
 of nested sub processes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this InPort to other InPort(s) of a nested process. InPorts
 cannot connect to other OutPorts.</p>
 <p>:param :
@@ -438,7 +570,7 @@ cannot connect to other OutPorts.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) to this InPort or connects other
 InPort(s) of parent process to this InPort.</p>
 <p>:param :
@@ -449,7 +581,7 @@ InPort(s) of parent process to this InPort.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">OutPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">OutPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="lava.magma.core.process.ports.ports.AbstractSrcPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractSrcPort</span></code></a></p>
 <p>Output ports are members of a Lava Process and can be connected to
 other ports to facilitate sending of messages via channels.</p>
@@ -459,7 +591,7 @@ Similarly, OutPorts can receive connections from other OutPorts of nested
 sub processes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this OutPort to other InPort(s) of another process
 or to OutPort(s) of its parent process.</p>
 <p>:param :
@@ -468,7 +600,7 @@ or to OutPort(s) of its parent process.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) of a nested process to this OutPort.
 OutPorts cannot receive connections from other InPorts.</p>
 <p>:param :
@@ -478,23 +610,9 @@ OutPorts cannot receive connections from other InPorts.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.PermutePort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">PermutePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.PermutePort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
-<p>A PermutePort is a virtual port that allows to permute the dimensions
-of a port before connecting to another port.
-It is used by the compiler to map the indices of the underlying
-tensor-valued data array from the derived to the new shape.</p>
-<p class="rubric">Example</p>
-<p>out_port = OutPort((2, 4, 3))
-in_port = InPort((3, 2, 4))
-out_port.permute([3, 1, 2]).connect(in_port)</p>
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReIndexPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReIndexPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReIndexPort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReIndexPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReIndexPort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
 <p>A ReIndexPort is a virtual port that allows to re-index the elements
 of a port before connecting to another port.
 It is used by the compiler to map the indices of the underlying
@@ -507,7 +625,7 @@ out_port.reindex([3, 1, 0, 2]).connect(in_port)</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">RefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">RefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="lava.magma.core.process.ports.ports.AbstractSrcPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractSrcPort</span></code></a></p>
 <p>RefPorts are members of a Lava Process and can be connected to
 internal Lava Vars of other processes to facilitate direct shared memory
@@ -526,7 +644,7 @@ Alternatively, VarPorts can be created dynamically by connecting a
 RefPort to a Var via the connect_var(..) method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this RefPort to other VarPort(s) of another process
 or to RefPort(s) of its parent process.</p>
 <dl class="field-list simple">
@@ -538,7 +656,7 @@ or to RefPort(s) of its parent process.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) of a nested process to this RefPort.
 RefPorts cannot receive connections from other VarPorts.</p>
 <p>:param :
@@ -547,7 +665,7 @@ RefPorts cannot receive connections from other VarPorts.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect_var">
-<span class="sig-name descname"><span class="pre">connect_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_var" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_var" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this RefPort to Lava Process Var(s) to facilitate shared
 memory access.</p>
 <dl class="field-list simple">
@@ -555,6 +673,12 @@ memory access.</p>
 <dd class="field-odd"><p><strong>variables</strong> – Var or list of Vars to connect to.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.create_implicit_var_port">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_implicit_var_port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ImplicitVarPort" title="lava.magma.core.process.ports.ports.ImplicitVarPort"><span class="pre">lava.magma.core.process.ports.ports.ImplicitVarPort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.create_implicit_var_port" title="Permalink to this definition"></a></dt>
+<dd><p>Creates and returns an ImplicitVarPort for the given Var.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -567,26 +691,97 @@ memory access.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReshapePort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReshapePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReshapePort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReshapePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReshapePort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
 <p>A ReshapePort is a virtual port that allows to change the shape of a
 port before connecting to another port.
 It is used by the compiler to map the indices of the underlying
 tensor-valued data array from the derived to the new shape.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReshapePort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReshapePort.connect" title="Permalink to this definition"></a></dt>
-<dd><p>Connects this ReshapePort to other port(s).</p>
-<p>:param :
-:type : param ports: The port(s) to connect to. Connections from an IOPort
-:param to a RVPort and vice versa are not allowed.:</p>
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReshapePort.get_transform_func_bwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_bwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReshapePort.get_transform_func_bwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the backward (bwd)
+transformation of the ReshapePort, which reshapes incoming data to
+a new shape (the shape of the source Process).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReshapePort.get_transform_func_fwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_fwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReshapePort.get_transform_func_fwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the forward (fwd)
+transformation of the ReshapePort, which reshapes incoming data to
+a new shape (the shape of the destination Process).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.TransposePort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">TransposePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.TransposePort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
+<p>A TransposePort is a virtual port that allows to permute the dimensions
+of a port before connecting to another port.
+It is used by the compiler to map the indices of the underlying
+tensor-valued data array from the derived to the new shape.</p>
+<p class="rubric">Example</p>
+<p>out_port = OutPort((2, 4, 3))
+in_port = InPort((3, 2, 4))
+out_port.transpose([3, 1, 2]).connect(in_port)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.TransposePort.get_transform_func_bwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_bwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.TransposePort.get_transform_func_bwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the backward (bwd)
+transformation of the TransposePort, which transposes (permutes)
+incoming data according to a specific order of axes (to match the
+source Process).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.TransposePort.get_transform_func_fwd">
+<span class="sig-name descname"><span class="pre">get_transform_func_fwd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">functools.partial</span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.TransposePort.get_transform_func_fwd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a function pointer that implements the forward (fwd)
+transformation of the TransposePort, which transposes (permutes)
+incoming data according to a specific order of axes (to match the
+destination Process).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>function_pointer</strong> – a function pointer that can be applied to incoming data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>functools.partial</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.VarPort">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">VarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">VarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="lava.magma.core.process.ports.ports.AbstractDstPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractDstPort</span></code></a></p>
 <p>VarPorts are members of a Lava Process and act as a wrapper for
 internal Lava Vars to facilitate connections between RefPorts and Vars
@@ -605,7 +800,7 @@ Alternatively, VarPorts can be created dynamically by connecting a
 RefPort to a Var via the RefPort.connect_var(..) method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.VarPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this VarPort to other VarPort(s) of a nested process.
 VarPorts cannot connect to other RefPorts.</p>
 <p>:param :
@@ -614,7 +809,7 @@ VarPorts cannot connect to other RefPorts.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.VarPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) to this VarPort or connects other
 VarPort(s) of parent process to this VarPort.</p>
 <p>:param :
@@ -625,13 +820,13 @@ VarPort(s) of parent process to this VarPort.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.is_disjoint">
-<span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">is_disjoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.is_disjoint" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">is_disjoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.is_disjoint" title="Permalink to this definition"></a></dt>
 <dd><p>Checks that both lists are disjoint.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.to_list">
-<span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.to_list" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.to_list" title="Permalink to this definition"></a></dt>
 <dd><p>If ‘obj’ is not a list, converts ‘obj’ into [obj].</p>
 </dd></dl>
 
@@ -640,7 +835,7 @@ VarPort(s) of parent process to this VarPort.</p>
 <span id="lava-magma-core-process-ports-reduce-ops-module"></span><h2>lava.magma.core.process.ports.reduce_ops module<a class="headerlink" href="#module-lava.magma.core.process.ports.reduce_ops" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.reduce_ops.</span></span><span class="sig-name descname"><span class="pre">AbstractReduceOp</span></span><a class="headerlink" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.reduce_ops.</span></span><span class="sig-name descname"><span class="pre">AbstractReduceOp</span></span><a class="headerlink" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Reduce operations are required by InPorts to specify how date from
 multiple OutPorts connected to the same InPorts gets integrated.</p>
@@ -648,7 +843,7 @@ multiple OutPorts connected to the same InPorts gets integrated.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.reduce_ops.ReduceSum">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.reduce_ops.</span></span><span class="sig-name descname"><span class="pre">ReduceSum</span></span><a class="headerlink" href="#lava.magma.core.process.ports.reduce_ops.ReduceSum" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.reduce_ops.</span></span><span class="sig-name descname"><span class="pre">ReduceSum</span></span><a class="headerlink" href="#lava.magma.core.process.ports.reduce_ops.ReduceSum" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.reduce_ops.AbstractReduceOp</span></code></a></p>
 <p>ReduceOp to indicate that multiple inputs to same InPort should be
 added.</p>

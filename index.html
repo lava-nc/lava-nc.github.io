@@ -172,7 +172,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
@@ -333,50 +339,73 @@ During the first two months after the initial Sept 30 launch, NCL will release t
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
 <div class="section" id="cloning-lava-and-running-from-source">
 <h2>Cloning Lava and Running from Source<a class="headerlink" href="#cloning-lava-and-running-from-source" title="Permalink to this headline"></a></h2>
-<p>We highly recommend cloning the repository and using pybuilder to setup lava. You will need to install pybuilder for the same.</p>
-<p>Open a python terminal and run based on the OS you are on:</p>
+<p>Open a python 3 terminal and run based on the OS you are on:</p>
 <div class="section" id="linux-macos">
 <h3>[Linux/MacOS]<a class="headerlink" href="#linux-macos" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~
-python3 -m venv python3_venv
-<span class="nb">source</span> python3_venv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
 pip install -U pip
+pip install <span class="s2">&quot;poetry&gt;=1.1.13&quot;</span>
 git clone git@github.com:lava-nc/lava.git
 <span class="nb">cd</span> lava
-pip install -r build-requirements.txt
-pip install -r requirements.txt
-<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/src
-pyb -E unit
+poetry config virtualenvs.in-project <span class="nb">true</span>
+poetry install
+<span class="nb">source</span> .venv/bin/activate
+pytest
+
+<span class="c1">## When running tests if you see &#39;OSError: [Errno 24] Too many open files&#39;</span>
+<span class="c1">## consider setting ulimit using `ulimit -n 4096`</span>
+<span class="c1">## See FAQ for more info: https://github.com/lava-nc/lava/wiki/Frequently-Asked-Questions-(FAQ)#install</span>
 </pre></div>
 </div>
 <p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo $PYTHONPATH and ensure ‘lava/src’ is the first entry that precedes any additional Lava library src paths.</p>
 </div>
 <div class="section" id="windows">
 <h3>[Windows]<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd %HOMEPATH%</span>
-<span class="go">python3 -m venv python3_venv</span>
-<span class="go">source python3_venv\bin\activate.bat</span>
-<span class="go">pip install -U pip</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Commands using PowerShell
+<span class="go">cd $HOME</span>
 <span class="go">git clone git@github.com:lava-nc/lava.git</span>
 <span class="go">cd lava</span>
-<span class="go">pip install -r build-requirements.txt</span>
-<span class="go">pip install -r requirements.txt</span>
-<span class="go">set PYTHONPATH=%cd%\src</span>
-<span class="go">pyb -E unit</span>
+<span class="go">python3 -m venv .venv</span>
+<span class="go">.venv\Scripts\activate</span>
+<span class="go">pip install -U pip</span>
+<span class="go">pip install &quot;poetry&gt;=1.1.13&quot;</span>
+<span class="go">poetry config virtualenvs.in-project true</span>
+<span class="go">poetry install</span>
+<span class="go">pytest</span>
 </pre></div>
 </div>
 <p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo %PYTHONPATH% and ensure ‘lavasrc’ is the first entry that precedes any additional Lava library src paths.</p>
 <p>You should expect the following output after running the unit tests:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">PyBuilder version 0.13.3</span>
-<span class="go">Build started at 2021-10-25 13:32:02</span>
-<span class="go">------------------------------------------------------------</span>
-<span class="go">[INFO]  Activated environments: unit</span>
-<span class="go">[INFO]  Building Lava version 0.1.0</span>
-<span class="go">......  PyBuilder Logs ...</span>
-<span class="go">[INFO]  Running unit tests</span>
-<span class="go">[INFO]  Executing unit tests from Python modules in /home/user/lava/lava/tests</span>
-<span class="go">[INFO]  Executed 72 unit tests</span>
-<span class="go">[INFO]  All unit tests passed.</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest
+<span class="go">============================================== test session starts ==============================================</span>
+<span class="go">platform linux -- Python 3.8.10, pytest-7.0.1, pluggy-1.0.0</span>
+<span class="go">rootdir: /home/user/lava, configfile: pyproject.toml, testpaths: tests</span>
+<span class="go">plugins: cov-3.0.0</span>
+<span class="go">collected 205 items</span>
+
+<span class="go">tests/lava/magma/compiler/test_channel_builder.py .                                                       [  0%]</span>
+<span class="go">tests/lava/magma/compiler/test_compiler.py ........................                                       [ 12%]</span>
+<span class="go">tests/lava/magma/compiler/test_node.py ..                                                                 [ 13%]</span>
+<span class="go">tests/lava/magma/compiler/builder/test_channel_builder.py .                                               [ 13%]</span>
+
+<span class="go">...... pytest output ...</span>
+
+<span class="go">tests/lava/proc/sdn/test_models.py ........                                                               [ 98%]</span>
+<span class="go">tests/lava/proc/sdn/test_process.py ...                                                                   [100%]</span>
+<span class="go">=============================================== warnings summary ================================================</span>
+
+<span class="go">...... pytest output ...</span>
+
+<span class="go">src/lava/proc/lif/process.py                                                           38      0   100%</span>
+<span class="go">src/lava/proc/monitor/models.py                                                        27      0   100%</span>
+<span class="go">src/lava/proc/monitor/process.py                                                       79      0   100%</span>
+<span class="go">src/lava/proc/sdn/models.py                                                           159      9    94%   199-202, 225-231</span>
+<span class="go">src/lava/proc/sdn/process.py                                                           59      0   100%</span>
+<span class="go">-----------------------------------------------------------------------------------------------------------------TOTAL</span>
+<span class="go">                                                                                    4048    453    89%</span>
+
+<span class="go">Required test coverage of 85.0% reached. Total coverage: 88.81%</span>
+<span class="go">============================ 199 passed, 6 skipped, 2 warnings in 118.17s (0:01:58) =============================</span>
 </pre></div>
 </div>
 </div>

@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -240,7 +247,7 @@
 <p>Axon delay implementation.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delay.Delay">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.delay.</span></span><span class="sig-name descname"><span class="pre">Delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.delay.</span></span><span class="sig-name descname"><span class="pre">Delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Learnable axonal delay module. The delays operate on channel dimension.</p>
 <dl class="field-list simple">
@@ -309,13 +316,13 @@ called explicitly.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delay.Delay.shape">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay.shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay.shape" title="Permalink to this definition"></a></dt>
 <dd><p>Shape of the delay.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delay.Delay.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.delay.Delay.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -351,7 +358,7 @@ called explicitly.</p>
 <p>Delta encoder implementation.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delta.Delta">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.delta.</span></span><span class="sig-name descname"><span class="pre">Delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.delta.</span></span><span class="sig-name descname"><span class="pre">Delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Implements delta differential encoding followed by thresholding.
 The thresholds are learnable, individually or as a group.</p>
@@ -364,10 +371,11 @@ y[t] &amp;= \begin{cases}
 r[t] &amp;= \Delta x[t] - y[t]"/></p>
 </div><p>For cumulative error, output evaluation is changed to</p>
 <div class="math">
-<p><img src="../../../_images/math/e956e507e3c443938e6857c7eec70e441c05b6b4.png" alt="e[t] &amp;= e[t] + \Delta x[t]\\
+<p><img src="../../../_images/math/b6c57f0821b0e8e5271fa5528aaf81bd12468c83.png" alt="e[t] &amp;= e[t] + \Delta x[t]\\
 y[t] &amp;= \begin{cases}
     \Delta x[t] &amp;\text{ if } e[t] \geq \vartheta \\
-    0 &amp;\text{ otherwise}
+    0 &amp;\text{ otherwise}\\
+e[t] &amp;= e[t] * (1 - \mathcal{H}(|y[t]|))
 \end{cases}"/></p>
 </div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -488,7 +496,7 @@ before that.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delta.Delta.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta.device" title="Permalink to this definition"></a></dt>
 <dd><p>Device property of object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -507,7 +515,7 @@ before that.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.delta.Delta.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.delta.Delta.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -517,7 +525,7 @@ before that.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.axon" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delay">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.</span></span><span class="sig-name descname"><span class="pre">Delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.</span></span><span class="sig-name descname"><span class="pre">Delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Learnable axonal delay module. The delays operate on channel dimension.</p>
 <dl class="field-list simple">
@@ -586,20 +594,20 @@ called explicitly.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delay.shape">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay.shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay.shape" title="Permalink to this definition"></a></dt>
 <dd><p>Shape of the delay.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delay.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delay.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delta">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.</span></span><span class="sig-name descname"><span class="pre">Delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.axon.</span></span><span class="sig-name descname"><span class="pre">Delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Implements delta differential encoding followed by thresholding.
 The thresholds are learnable, individually or as a group.</p>
@@ -612,10 +620,11 @@ y[t] &amp;= \begin{cases}
 r[t] &amp;= \Delta x[t] - y[t]"/></p>
 </div><p>For cumulative error, output evaluation is changed to</p>
 <div class="math">
-<p><img src="../../../_images/math/e956e507e3c443938e6857c7eec70e441c05b6b4.png" alt="e[t] &amp;= e[t] + \Delta x[t]\\
+<p><img src="../../../_images/math/b6c57f0821b0e8e5271fa5528aaf81bd12468c83.png" alt="e[t] &amp;= e[t] + \Delta x[t]\\
 y[t] &amp;= \begin{cases}
     \Delta x[t] &amp;\text{ if } e[t] \geq \vartheta \\
-    0 &amp;\text{ otherwise}
+    0 &amp;\text{ otherwise}\\
+e[t] &amp;= e[t] * (1 - \mathcal{H}(|y[t]|))
 \end{cases}"/></p>
 </div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -736,7 +745,7 @@ before that.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delta.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta.device" title="Permalink to this definition"></a></dt>
 <dd><p>Device property of object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -755,7 +764,7 @@ before that.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.axon.Delta.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.axon.Delta.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

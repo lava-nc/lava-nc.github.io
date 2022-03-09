@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -240,7 +247,7 @@
 <p>Abstract neuron base class.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.base.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.base.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>This is an abstract class that governs the minimal basic functionality
 of a neuron object.</p>
@@ -354,7 +361,7 @@ flag. If desired, it should be explicitly set.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -386,23 +393,23 @@ follows</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron.threshold">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.threshold" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.threshold" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron.v_th_mant">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">v_th_mant</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.v_th_mant" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_th_mant</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.v_th_mant" title="Permalink to this definition"></a></dt>
 <dd><p>Get voltage-threshold-mantessa parameter.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.base.Neuron.weight_exponent">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">weight_exponent</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.weight_exponent" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weight_exponent</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.base.Neuron.weight_exponent" title="Permalink to this definition"></a></dt>
 <dd><p>Get weight exponent.</p>
 </dd></dl>
 
@@ -414,7 +421,7 @@ follows</p>
 <p>CUBA neuron model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.cuba.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.cuba.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Loihi CUBA neuron.</p>
 <div class="math">
@@ -468,27 +475,27 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.cx_current_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_current_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.cx_current_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_current_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.cx_current_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment current decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.cx_voltage_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_voltage_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.cx_voltage_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_voltage_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.cx_voltage_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment voltage decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.device_params">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.device_params" title="Permalink to this definition"></a></dt>
 <dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
@@ -534,13 +541,13 @@ the neuron shape is determined from the input automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.ref_delay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ref_delay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.ref_delay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ref_delay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.ref_delay" title="Permalink to this definition"></a></dt>
 <dd><p>Refractory delay.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -565,20 +572,21 @@ reset dynamics is already applied.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.cuba.neuron_params">
-<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.cuba.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.neuron_params" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.cuba.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.neuron_params" title="Permalink to this definition"></a></dt>
 <dd><p>Translates device parameters to neuron parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
 <li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -597,7 +605,7 @@ class.</p>
 <p>Resonate and Fire neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF neuron.</p>
 <div class="math">
@@ -655,26 +663,32 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.cx_cos_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment cos decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.cx_sin_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment sin decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.decay" title="Permalink to this definition"></a></dt>
 <dd><p>The decay parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.device_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -720,25 +734,25 @@ automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.frequency">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.frequency" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.frequency" title="Permalink to this definition"></a></dt>
 <dd><p>The frequency of neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.lam">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.lam" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.lam" title="Permalink to this definition"></a></dt>
 <dd><p>The lambda parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.period">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.period" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.period" title="Permalink to this definition"></a></dt>
 <dd><p>The period of the neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -765,9 +779,31 @@ representation of the variable states.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf.neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Translates device parameters to neuron parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of neuron parameters that can be used to initialize neuron
+class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -776,7 +812,7 @@ representation of the variable states.</p>
 <p>Resonate and Fire Izhikevich neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF Izhikevich neuron.</p>
 <div class="math">
@@ -836,26 +872,32 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_cos_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment cos decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_sin_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment sin decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.decay" title="Permalink to this definition"></a></dt>
 <dd><p>The decay parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.device_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -902,25 +944,25 @@ automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.frequency">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.frequency" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.frequency" title="Permalink to this definition"></a></dt>
 <dd><p>The frequency of neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.lam">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.lam" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.lam" title="Permalink to this definition"></a></dt>
 <dd><p>The lambda parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.period">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.period" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.period" title="Permalink to this definition"></a></dt>
 <dd><p>The period of the neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -947,9 +989,31 @@ representation of the variable states.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.rf_iz.neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf_iz.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Translates device parameters to neuron parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of neuron parameters that can be used to initialize neuron
+class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -958,7 +1022,7 @@ representation of the variable states.</p>
 <p>Adaptive Leaky Integrate and Fire neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.alif.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.alif.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Adaptive LIF neuron.</p>
 <div class="math">
@@ -1024,41 +1088,41 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.cx_current_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_current_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_current_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_current_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_current_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment current decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.cx_refractory_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment refractory decay parameter to be used for
 configuring Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.cx_threshold_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment threshold decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.cx_voltage_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_voltage_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_voltage_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_voltage_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.cx_voltage_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment voltage decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.device_params">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.device_params" title="Permalink to this definition"></a></dt>
 <dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
@@ -1106,13 +1170,13 @@ the neuron shape is determined from the input automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.ref_delay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ref_delay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.ref_delay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ref_delay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.ref_delay" title="Permalink to this definition"></a></dt>
 <dd><p>Refractory delay.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -1140,9 +1204,37 @@ representation of the variable states.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.Neuron.v_th_step">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_th_step</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron.v_th_step" title="Permalink to this definition"></a></dt>
+<dd><p>Get voltage-threshold step parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.alif.neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.alif.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Translates device parameters to neuron parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of neuron parameters that can be used to initialize neuron
+class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1151,7 +1243,7 @@ representation of the variable states.</p>
 <p>Adaptive RF Izhikevich neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF neuron.</p>
 <div class="math">
@@ -1219,40 +1311,46 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.cx_cos_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment cos decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.cx_refractory_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment refractory decay parameter to be used for
 configuring Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.cx_sin_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment sin decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.cx_threshold_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment threshold decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.decay" title="Permalink to this definition"></a></dt>
 <dd><p>The decay parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.device_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1301,25 +1399,25 @@ automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.frequency">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.frequency" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.frequency" title="Permalink to this definition"></a></dt>
 <dd><p>The frequency of neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.lam">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.lam" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.lam" title="Permalink to this definition"></a></dt>
 <dd><p>The lambda parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.period">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.period" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.period" title="Permalink to this definition"></a></dt>
 <dd><p>The period of the neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -1348,9 +1446,37 @@ representation of the variable states.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.Neuron.v_th_step">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_th_step</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron.v_th_step" title="Permalink to this definition"></a></dt>
+<dd><p>Get voltage-threshold step parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf.neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Translates device parameters to neuron parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of neuron parameters that can be used to initialize neuron
+class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1359,7 +1485,7 @@ representation of the variable states.</p>
 <p>Adaptive RF Izhikevich neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Adaptive RF Izhikevich neuron.</p>
 <div class="math">
@@ -1427,40 +1553,46 @@ function.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_cos_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_cos_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_cos_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment cos decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_refractory_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_refractory_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_refractory_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment refractory decay parameter to be used for
 configuring Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_sin_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_sin_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_sin_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment sin decay parameter to be used for configuration.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_threshold_decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cx_threshold_decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.cx_threshold_decay" title="Permalink to this definition"></a></dt>
 <dd><p>The compartment threshold decay parameter to be used for configuring
 Loihi hardware.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.decay">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.decay" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decay</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.decay" title="Permalink to this definition"></a></dt>
 <dd><p>The decay parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.device_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1509,25 +1641,25 @@ automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.frequency">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.frequency" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frequency</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.frequency" title="Permalink to this definition"></a></dt>
 <dd><p>The frequency of neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.lam">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.lam" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lam</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.lam" title="Permalink to this definition"></a></dt>
 <dd><p>The lambda parameter of the neuron.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.period">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.period" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">period</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.period" title="Permalink to this definition"></a></dt>
 <dd><p>The period of the neuron oscillation.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -1556,9 +1688,37 @@ representation of the variable states.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.Neuron.v_th_step">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">v_th_step</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron.v_th_step" title="Permalink to this definition"></a></dt>
+<dd><p>Get voltage-threshold step parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.adrf_iz.neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf_iz.</span></span><span class="sig-name descname"><span class="pre">neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4096</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Translates device parameters to neuron parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_params</strong> (<em>dictionary</em>) – dictionary of device parameter specification.</p></li>
+<li><p><strong>scale</strong> (<em>int</em>) – neuron scale value. Default value = 1 &lt;&lt; 6.</p></li>
+<li><p><strong>p_scale</strong> (<em>int</em>) – parameter scale value. Default value = 1 &lt;&lt; 12</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of neuron parameters that can be used to initialize neuron
+class.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1567,7 +1727,7 @@ representation of the variable states.</p>
 <p>Sigma Delta neuron.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.sigma_delta.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.sigma_delta.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cum_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Sigma-Delta wrapper neuron.</p>
 <p>The internal state representations are scaled down compared to
@@ -1604,13 +1764,13 @@ Defaults to False.</p></li>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device" title="Permalink to this definition"></a></dt>
 <dd><p>The device memory (cpu/cuda) where the object lives.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device_params">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device_params" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.device_params" title="Permalink to this definition"></a></dt>
 <dd><p>Dictionary of device parameters.</p>
 </dd></dl>
 
@@ -1635,7 +1795,7 @@ the neuron shape is determined from the input automatically.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron.scale">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.scale" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scale</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.scale" title="Permalink to this definition"></a></dt>
 <dd><p>Scale difference between slayer representation and hardware
 representation of the variable states.</p>
 </dd></dl>
@@ -1653,13 +1813,13 @@ representation of the variable states.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron.threshold">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.threshold" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.threshold" title="Permalink to this definition"></a></dt>
 <dd><p>Neuron threshold</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.sigma_delta.Neuron.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.sigma_delta.Neuron.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1691,7 +1851,7 @@ class.</p>
 <p>Neuron Dropout.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.dropout.Dropout">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.dropout.</span></span><span class="sig-name descname"><span class="pre">Dropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.dropout.</span></span><span class="sig-name descname"><span class="pre">Dropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.dropout.Dropout3d</span></code></p>
 <p>Neuron dropout method. It behaves similar to <cite>torch.nn.Dropout</cite>.
 However, dropout over time dimension is preserved, i.e. if a neuron is
@@ -1716,12 +1876,12 @@ dropped, it remains dropped for the entire time duration.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.dropout.Dropout.inplace">
-<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout.inplace" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout.inplace" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.dropout.Dropout.p">
-<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout.p" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.dropout.Dropout.p" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1732,7 +1892,7 @@ dropped, it remains dropped for the entire time duration.</p>
 <p>Neuron normalization methods.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.norm.</span></span><span class="sig-name descname"><span class="pre">MeanOnlyBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_hook_fx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.norm.</span></span><span class="sig-name descname"><span class="pre">MeanOnlyBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_hook_fx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Implements mean only batch norm with optional user defined quantization
 using pre-hook-function. The mean of batchnorm translates to negative bias
@@ -1788,7 +1948,7 @@ Defaults to None.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.bias">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.bias" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.bias" title="Permalink to this definition"></a></dt>
 <dd><p>Equivalent bias shift.</p>
 </dd></dl>
 
@@ -1805,14 +1965,14 @@ Defaults to None.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.MeanOnlyBatchNorm.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.norm.</span></span><span class="sig-name descname"><span class="pre">WgtScaleBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_exp_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_hook_fx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.norm.</span></span><span class="sig-name descname"><span class="pre">WgtScaleBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_exp_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_hook_fx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Implements batch norm with variance scale in powers of 2. This allows
 eventual normalizaton to be implemented with bit-shift in a hardware
@@ -1893,7 +2053,7 @@ Defaults to None.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.bias">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.bias" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bias</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.bias" title="Permalink to this definition"></a></dt>
 <dd><p>Equivalent bias shift.</p>
 </dd></dl>
 
@@ -1915,12 +2075,12 @@ Defaults to None.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.weight_exp">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">weight_exp</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.weight_exp" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weight_exp</span></span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.norm.WgtScaleBatchNorm.weight_exp" title="Permalink to this definition"></a></dt>
 <dd><p>Equivalent weight exponent value.</p>
 </dd></dl>
 
@@ -1931,7 +2091,7 @@ Defaults to None.</p></li>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.neuron" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.Dropout">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.</span></span><span class="sig-name descname"><span class="pre">Dropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.</span></span><span class="sig-name descname"><span class="pre">Dropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.dropout.Dropout3d</span></code></p>
 <p>Neuron dropout method. It behaves similar to <cite>torch.nn.Dropout</cite>.
 However, dropout over time dimension is preserved, i.e. if a neuron is
@@ -1956,17 +2116,17 @@ dropped, it remains dropped for the entire time duration.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.Dropout.inplace">
-<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.inplace" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.inplace" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.Dropout.p">
-<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.p" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.p" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.neuron.Dropout.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.neuron.Dropout.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

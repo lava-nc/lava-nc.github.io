@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -236,19 +243,19 @@
 <span id="lava-proc-dense-models-module"></span><h2>lava.proc.dense.models module<a class="headerlink" href="#module-lava.proc.dense.models" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelBitAcc</span></span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelBitAcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
 <p>Implementation of Conn Process with Dense synaptic connections that is
 bit-accurate with Loihi’s hardware implementation of Dense, which means,
 it mimics Loihi behaviour bit-by-bit.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.a_buff">
-<span class="sig-name descname"><span class="pre">a_buff</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.a_buff" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">a_buff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.a_buff" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.a_out">
-<span class="sig-name descname"><span class="pre">a_out</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.a_out" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">a_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.a_out" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -265,49 +272,55 @@ it mimics Loihi behaviour bit-by-bit.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.num_weight_bits">
-<span class="sig-name descname"><span class="pre">num_weight_bits</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.num_weight_bits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">num_weight_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.num_weight_bits" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.required_resources">
-<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractResource</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.required_resources" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.required_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.run_spk">
 <span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.run_spk" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Function that runs in Spiking Phase</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.s_in">
-<span class="sig-name descname"><span class="pre">s_in</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.s_in" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">s_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.s_in" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.sign_mode">
-<span class="sig-name descname"><span class="pre">sign_mode</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=2)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.sign_mode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sign_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=2)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.sign_mode" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">['bit_accurate_loihi',</span> <span class="pre">'fixed_pt']</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.tags" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['bit_accurate_loihi',</span> <span class="pre">'fixed_pt']</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.use_graded_spike" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.weight_exp">
-<span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=4)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.weight_exp" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=4)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.weight_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.weights">
-<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.weights" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.weights" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelFloat</span></span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
 <p>Implementation of Conn Process with Dense synaptic connections in
 floating point precision. This short and simple ProcessModel can be used
@@ -315,12 +328,12 @@ for quick algorithmic prototyping, without engaging with the nuances of a
 fixed point implementation.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.a_buff">
-<span class="sig-name descname"><span class="pre">a_buff</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.a_buff" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">a_buff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.a_buff" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.a_out">
-<span class="sig-name descname"><span class="pre">a_out</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.a_out" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">a_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.a_out" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -337,42 +350,48 @@ fixed point implementation.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.num_weight_bits">
-<span class="sig-name descname"><span class="pre">num_weight_bits</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.num_weight_bits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">num_weight_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.num_weight_bits" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.required_resources">
-<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractResource</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.required_resources" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.required_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.run_spk">
 <span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.run_spk" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Function that runs in Spiking Phase</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.s_in">
-<span class="sig-name descname"><span class="pre">s_in</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.s_in" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">s_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.s_in" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.sign_mode">
-<span class="sig-name descname"><span class="pre">sign_mode</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.sign_mode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">sign_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.sign_mode" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.tags" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.use_graded_spike" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.weight_exp">
-<span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.weight_exp" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.weight_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.weights">
-<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.weights" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.weights" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -382,7 +401,7 @@ fixed point implementation.</p>
 <span id="lava-proc-dense-process-module"></span><h2>lava.proc.dense.process module<a class="headerlink" href="#module-lava.proc.dense.process" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.process.Dense">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.process.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.process.Dense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.process.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.process.Dense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
 <p>Dense connections between neurons. Realizes the      following abstract
 behavior: a_out = weights * s_in ‘</p>
@@ -417,6 +436,9 @@ behavior: a_out = weights * s_in ‘</p>
 :param the sign of the weight is included in the weight bits and:
 :param the fixed point weight used for inference is scaled by 2.:
 :param Unnecessary for floating point implementations.:
+:param use_graded_spike:
+:type use_graded_spike: bool
+:param flag to indicate graded spike. Default is False:
 :param In the fixed point implementation:
 :param weights are scaled according to the:
 :param following equations:

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blocks Module &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="HDF5" href="../hdf5.html" />
+    <link rel="prev" title="Blocks" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#processes">1. Processes:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qp-solver">QP Solver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#id1">QP Solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#setup">Setup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#table-of-contents">Table of Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../lava/modules.html">Lava</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Lava - Deep Learning</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Lava-DL NetX</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="../../index.html">Lava - Deep Learning</a> &raquo;</li>
+          <li><a href="../index.html">Lava-DL NetX</a> &raquo;</li>
+          <li><a href="modules.html">Blocks</a> &raquo;</li>
+      <li>Blocks Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/lava-lib-dl/netx/blocks/blocks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="blocks-module">
+<h1>Blocks Module<a class="headerlink" href="#blocks-module" title="Permalink to this headline"></a></h1>
+<div class="section" id="module-lava.lib.dl.netx.blocks.process">
+<span id="process"></span><h2>Process<a class="headerlink" href="#module-lava.lib.dl.netx.blocks.process" title="Permalink to this headline"></a></h2>
+<p>Composable blocks processes in Lava.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.AbstractBlock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.process.</span></span><span class="sig-name descname"><span class="pre">AbstractBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.AbstractBlock" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Abstract block definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) – shape of the block output in (x, y, z) or WHC format.</p></li>
+<li><p><strong>neuron_params</strong> (<em>dict</em>) – dictionary of neuron parameters. Defaults to None.</p></li>
+<li><p><strong>has_graded_input</strong> (<em>dict</em>) – flag for graded spikes at input. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.AbstractBlock.block">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.AbstractBlock.block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.process.</span></span><span class="sig-name descname"><span class="pre">Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Conv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.AbstractBlock" title="lava.lib.dl.netx.blocks.process.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.AbstractBlock</span></code></a></p>
+<p>Conv layer block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) – shape of the layer block in (x, y, z)/WHC format.</p></li>
+<li><p><strong>input_shape</strong> (<em>tuple</em><em> or </em><em>list</em>) – shape of input layer in (x, y, z)/WHC format.</p></li>
+<li><p><strong>neuron_params</strong> (<em>dict</em>) – dictionary of neuron parameters. Defaults to None.</p></li>
+<li><p><strong>weight</strong> (<em>np.ndarray</em>) – kernel weight.</p></li>
+<li><p><strong>bias</strong> (<em>np.ndarray</em><em> or </em><em>None</em>) – bias of neuron. None means no bias. Defaults to None.</p></li>
+<li><p><strong>stride</strong> (<em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) – convolution stride. Defaults to 1.</p></li>
+<li><p><strong>padding</strong> (<em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) – convolution padding. Defaults to 0.</p></li>
+<li><p><strong>dilation</strong> (<em>int</em><em> or </em><em>tuple of ints</em><em>, </em><em>optional</em>) – convolution dilation. Defaults to 1.</p></li>
+<li><p><strong>groups</strong> (<em>int</em>) – convolution groups. Defaults to 1.</p></li>
+<li><p><strong>has_graded_input</strong> (<em>dict</em>) – flag for graded spikes at input. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Conv.export_hdf5">
+<span class="sig-name descname"><span class="pre">export_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">h5py._hl.files.File</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">h5py._hl.group.Group</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Conv.export_hdf5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Dense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.process.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Dense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.AbstractBlock" title="lava.lib.dl.netx.blocks.process.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.AbstractBlock</span></code></a></p>
+<p>Dense layer block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) – shape of the layer block in (x, y, z)/WHC format.</p></li>
+<li><p><strong>neuron_params</strong> (<em>dict</em>) – dictionary of neuron parameters. Defaults to None.</p></li>
+<li><p><strong>weight</strong> (<em>np.ndarray</em>) – synaptic weight.</p></li>
+<li><p><strong>bias</strong> (<em>np.ndarray</em><em> or </em><em>None</em>) – bias of neuron. None means no bias. Defaults to None.</p></li>
+<li><p><strong>has_graded_input</strong> (<em>dict</em>) – flag for graded spikes at input. Defaults to False.</p></li>
+<li><p><strong>num_weight_bits</strong> (<em>int</em>) – number of weight bits. Defaults to 8.</p></li>
+<li><p><strong>weight_exponent</strong> (<em>int</em>) – weight exponent value. Defaults to 0.</p></li>
+<li><p><strong>sign_mode</strong> (<em>int</em>) – sign mode of the synapse. Refer to lava.proc.dense documentation for
+details. Default is 1 meaning mixed mode.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Dense.export_hdf5">
+<span class="sig-name descname"><span class="pre">export_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">h5py._hl.files.File</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">h5py._hl.group.Group</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Dense.export_hdf5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Input">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.process.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Input" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.AbstractBlock" title="lava.lib.dl.netx.blocks.process.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.AbstractBlock</span></code></a></p>
+<p>Input layer block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em> or </em><em>list</em>) – shape of the layer block in (x, y, z)/WHC format.</p></li>
+<li><p><strong>neuron_params</strong> (<em>dict</em>) – dictionary of neuron parameters. Defaults to None.</p></li>
+<li><p><strong>transform</strong> (<em>fx pointer</em><em> or </em><em>lambda</em>) – input transform to be applied. Defualts to <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x</span></code>.</p></li>
+<li><p><strong>bias</strong> (<em>np.ndarray</em><em> or </em><em>None</em>) – bias of input neuron. None means no bias. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.Input.export_hdf5">
+<span class="sig-name descname"><span class="pre">export_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">h5py._hl.files.File</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">h5py._hl.group.Group</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.Input.export_hdf5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.netx.blocks.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-lava.lib.dl.netx.blocks.models" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.models.</span></span><span class="sig-name descname"><span class="pre">AbstractPyBlockModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../lava/lava.magma.core.model.sub.html#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="lava.magma.core.model.sub.model.AbstractSubProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.sub.model.AbstractSubProcessModel</span></code></a></p>
+<p>Abstract Block model. A block typically encapsulates at least a
+synapse and a neuron in a layer. It could also include recurrent
+connection as well as residual connection. A minimal example of a
+block is a feedforward layer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../../lava/lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['fixed_pt']</span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.models.</span></span><span class="sig-name descname"><span class="pre">PyConvModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel" title="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.models.AbstractPyBlockModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.Conv" title="lava.lib.dl.netx.blocks.process.Conv"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.Conv</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../../../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel.inp">
+<span class="sig-name descname"><span class="pre">inp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">PyInPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel.inp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel.out">
+<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">PyOutPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel.out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyConvModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyConvModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel" title="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.models.AbstractPyBlockModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.Dense" title="lava.lib.dl.netx.blocks.process.Dense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.Dense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../../../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel.inp">
+<span class="sig-name descname"><span class="pre">inp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">PyInPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel.inp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel.out">
+<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">PyOutPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel.out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyDenseModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyDenseModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.models.</span></span><span class="sig-name descname"><span class="pre">PyInputModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.models.AbstractPyBlockModel" title="lava.lib.dl.netx.blocks.models.AbstractPyBlockModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.models.AbstractPyBlockModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.Input" title="lava.lib.dl.netx.blocks.process.Input"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.netx.blocks.process.Input</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../../../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel.inp">
+<span class="sig-name descname"><span class="pre">inp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">PyInPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel.inp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel.out">
+<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">PyOutPort</span></a></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel.out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.models.PyInputModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.netx.blocks.models.PyInputModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.lib.dl.netx.blocks">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.netx.blocks" title="Permalink to this headline"></a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Blocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hdf5.html" class="btn btn-neutral float-right" title="HDF5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

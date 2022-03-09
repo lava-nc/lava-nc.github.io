@@ -181,20 +181,30 @@ For full coverage of how to create a fork and work with it see `Github Fork Proc
 - Write your code
   
   - Make code changes
-  - Run linting and unit tests (install `pybuilder <https://pybuilder.io/documentation/installation>`_)
+  - Run linting and unit tests
 
     .. _Lint Unit Tests:
 
     .. code-block:: bash
     
-       ## Flake8 linting
-       pyb analyze
-       ## Bandit security linting
-       pyb bandit
-       ## Unit tests
-       pyb -E unit
-       # Alternately
-       python -m unittest discover -s lava/tests -p "test_*.py" -vvv
+       # Install poetry
+       pip install "poetry>=1.1.13"
+       poetry config virtualenvs.in-project true
+       poetry install
+       poetry shell
+
+       # Run linting
+       flakeheaven lint src/lava tests
+
+       # Run unit tests
+       pytest
+
+       # Run Secuity Linting
+       bandit -r src/lava/.
+
+       #### If security linting fails run bandit directly
+       #### and format failures
+       bandit -r src/lava/. --format custom --msg-template '{abspath}:{line}: {test_id}[bandit]: {severity}: {msg}'
 
   - Fix any issues flagged by linting and unit tests and check again to ensure the issues are resolved
 

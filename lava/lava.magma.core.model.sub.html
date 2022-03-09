@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -236,7 +243,7 @@
 <span id="lava-magma-core-model-sub-model-module"></span><h2>lava.magma.core.model.sub.model module<a class="headerlink" href="#module-lava.magma.core.model.sub.model" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.sub.model.AbstractSubProcessModel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.sub.model.</span></span><span class="sig-name descname"><span class="pre">AbstractSubProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.sub.model.</span></span><span class="sig-name descname"><span class="pre">AbstractSubProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></code></a></p>
 <p>Abstract base class for any ProcessModel that derives the behavior of
 the Process it implements from other sub processes.</p>
@@ -273,9 +280,14 @@ proc.vars.var1.alias(self.proc2.vars.var3)</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.sub.model.AbstractSubProcessModel.find_sub_procs">
-<span class="sig-name descname"><span class="pre">find_sub_procs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.model.sub.model.AbstractSubProcessModel.find_sub_procs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">find_sub_procs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.model.sub.model.AbstractSubProcessModel.find_sub_procs" title="Permalink to this definition"></a></dt>
 <dd><p>Finds and returns all sub processes of ProcessModel.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.sub.model.AbstractSubProcessModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.sub.model.AbstractSubProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

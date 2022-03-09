@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -240,7 +247,7 @@
 <p>Spike mechanism implementation.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.spike.Spike">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.spike.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.spike.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
 <p>Spiking mechanism with autograd link.</p>
 <div class="math">
@@ -270,17 +277,17 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.spike.Spike.backward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_spikes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.backward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_spikes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.backward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.spike.Spike.derivative">
-<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.derivative" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.derivative" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.spike.Spike.forward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.forward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.spike.Spike.forward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -291,7 +298,7 @@
 <p>Complex spike (Phase threshold) implementation.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.complex.Spike">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.complex.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.complex.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
 <p>Complex spike function with autograd link.</p>
 <div class="math">
@@ -322,17 +329,17 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.complex.Spike.backward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.backward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.backward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.complex.Spike.derivative">
-<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.derivative" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.derivative" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.complex.Spike.forward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.forward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imag_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.complex.Spike.forward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -342,7 +349,7 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.spike" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.Spike">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.spike.</span></span><span class="sig-name descname"><span class="pre">Spike</span></span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
 <p>Spiking mechanism with autograd link.</p>
 <div class="math">
@@ -372,17 +379,17 @@
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.Spike.backward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_spikes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.backward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_spikes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.backward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.Spike.derivative">
-<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.derivative" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">derivative</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.derivative" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.spike.Spike.forward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.forward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_last</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.spike.Spike.forward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

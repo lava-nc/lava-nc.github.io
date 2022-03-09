@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -240,7 +247,7 @@
 <p>Abstract bootstrap layer blocks.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.base.</span></span><span class="sig-name descname"><span class="pre">AbstractBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.base.</span></span><span class="sig-name descname"><span class="pre">AbstractBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Abstract bootstrap block</p>
 <dl class="py method">
@@ -273,7 +280,7 @@ Defaults to Mode.ANN.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -289,7 +296,7 @@ Defaults to Mode.ANN.</p></li>
 <p>Bootstrap CUBA layer blocks.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Affine" title="lava.lib.dl.slayer.block.cuba.Affine"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Affine</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
 <p>CUBA LIF affine transform class. This should never be instantiated on
 its own.</p>
@@ -326,14 +333,14 @@ average event rate is returned. Defaults to False.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Conv">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Conv" title="lava.lib.dl.slayer.block.cuba.Conv"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Conv</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
 <p>CUBA LIF convolution block class. This should never be instantiated on
 its own.</p>
@@ -367,14 +374,14 @@ event rate is returned. Defaults to False.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Conv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Dense">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Dense" title="lava.lib.dl.slayer.block.cuba.Dense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Dense</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
 <p>CUBA LIF dense block class. The block is 8 bit quantization ready.</p>
 <dl class="field-list simple">
@@ -404,14 +411,14 @@ event rate is returned. Defaults to False.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Dense.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Flatten">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Flatten" title="lava.lib.dl.slayer.block.cuba.Flatten"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Flatten</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
 <p>CUBA LIF flatten block class. This should never be instantiated on its
 own.</p>
@@ -428,14 +435,14 @@ event rate is returned. Defaults to False.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Flatten.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Input">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Input" title="lava.lib.dl.slayer.block.cuba.Input"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Input</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
 <p>CUBA LIF input block class. The block is 8 bit quantization ready.</p>
 <dl class="field-list simple">
@@ -460,7 +467,7 @@ average event rate is returned. Defaults to False.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Input.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

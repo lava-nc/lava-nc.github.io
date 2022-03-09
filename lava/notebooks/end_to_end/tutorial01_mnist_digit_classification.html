@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -477,7 +484,7 @@ div.rendered_html tbody tr:hover {
 <hr class="docutils" />
 <div class="section" id="MNIST-Digit-Classification-with-Lava">
 <h1>MNIST Digit Classification with Lava<a class="headerlink" href="#MNIST-Digit-Classification-with-Lava" title="Permalink to this headline"></a></h1>
-<p><strong>Motivation</strong><em>: In this tutorial, we will build a Lava Process for an MNIST classifier, using the Lava Processes for LIF neurons and Dense connectivity. Between those leaning towards Neuroscience and those partial to Computer Science, this tutorial aims to be appealing to the former. It is supposed to get one started with Lava in a few minutes.</em></p>
+<p><strong>Motivation</strong><em>: In this tutorial, we will build a Lava Process for an MNIST classifier, using the Lava Processes for LIF neurons and Dense connectivity. The tutorial is useful to get started with Lava in a few minutes.</em></p>
 <div class="section" id="This-tutorial-assumes-that-you:">
 <h2>This tutorial assumes that you:<a class="headerlink" href="#This-tutorial-assumes-that-you:" title="Permalink to this headline"></a></h2>
 <ul class="simple">
@@ -486,7 +493,7 @@ div.rendered_html tbody tr:hover {
 </ul>
 </div>
 <div class="section" id="This-tutorial-gives-a-bird’s-eye-view-of">
-<h2>This tutorial gives a bird’s-eye-view of<a class="headerlink" href="#This-tutorial-gives-a-bird’s-eye-view-of" title="Permalink to this headline"></a></h2>
+<h2>This tutorial gives a bird’s-eye view of<a class="headerlink" href="#This-tutorial-gives-a-bird’s-eye-view-of" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>how Lava Process(es) can perform the MNIST digit classification task using <a class="reference external" href="https://github.com/lava-nc/lava/tree/main/src/lava/proc/lif">Leaky Integrate-and-Fire (LIF)</a> neurons and <a class="reference external" href="https://github.com/lava-nc/lava/tree/main/src/lava/proc/dense">Dense (fully connected)</a> connectivity.</p></li>
 <li><p>how to create a Process</p></li>
@@ -495,49 +502,39 @@ div.rendered_html tbody tr:hover {
 <li><p>how to execute them</p></li>
 </ul>
 </div>
-<div class="section" id="Follow-the-links-below-for-deep-dive-tutorials-on">
-<h2>Follow the links below for deep-dive tutorials on<a class="headerlink" href="#Follow-the-links-below-for-deep-dive-tutorials-on" title="Permalink to this headline"></a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="../in_depth/tutorial02_processes.ipynb">Processes</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial03_process_models.ipynb">ProcessModel</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial04_execution.ipynb">Execution</a></p></li>
-</ul>
-</div>
 <div class="section" id="Our-MNIST-Classifier">
 <h2>Our MNIST Classifier<a class="headerlink" href="#Our-MNIST-Classifier" title="Permalink to this headline"></a></h2>
 <p>In this tutorial, we will build a multi-layer feed-forward classifier without any convolutional layers. The architecture is shown below.</p>
 <blockquote>
 <div><p><strong>Important Note</strong>:</p>
-<p>Right now, this model uses arbitrary <em>untrained</em> network paramters (weights and biases)! We will update this model and fix this shortcoming in the next few days after release. Thus the MNIST classifier is not expected to produce any meaningful output at this point in time. Nevertheless, this example illustrates how to build, compile and run an otherwise functional model in Lava.</p>
+<p>The classifier is a simple feed-forward model using pre-trained network parameters (weights and biases). It illustrates how to build, compile and run a functional model in Lava. Please refer to <a class="reference external" href="https://github.com/lava-nc/lava-dl">Lava-DL</a> to understand how to train deep networks with Lava.</p>
 </div></blockquote>
-<center><p><img alt="Training" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial01/mnist_process_arch.png" /></p>
-</center><p>flow</p>
-<p>The 3 Processes shown above are: 1. Spike Input Process - generates spikes via integrate and fire dynamics, using the image input 2. MNIST Feed-forward process - encapsulates feed-forward architecture of Dense connectivity and LIF neurons 3. Output Process - accumulates output spikes from the feed-forward process and infers the class label; compares the predicted class label with the ground truth</p>
+<center><p><img alt="MNIST Process AA" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial01/mnist_process_arch.png" /></p>
+</center><p>The 3 Processes shown above are: - <em>SpikeInput</em> Process - generates spikes via integrate and fire dynamics, using the image input - <em>ImageClassifier</em> Process - encapsulates feed-forward architecture of Dense connectivity and LIF neurons - <em>Output</em> Process - accumulates output spikes from the feed-forward process and infers the class label</p>
+</div>
 <div class="section" id="General-Imports">
-<h3>General Imports<a class="headerlink" href="#General-Imports" title="Permalink to this headline"></a></h3>
+<h2>General Imports<a class="headerlink" href="#General-Imports" title="Permalink to this headline"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Assumes: $PYTHONPATH contains lava repository root</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="Create-the-Process-class">
-<h2>Create the Process class<a class="headerlink" href="#Create-the-Process-class" title="Permalink to this headline"></a></h2>
+<div class="section" id="Lava-Processes">
+<h2>Lava Processes<a class="headerlink" href="#Lava-Processes" title="Permalink to this headline"></a></h2>
 <p>Below we create the Lava Process classes. We need to define only the structure of the process here. The details about how the Process will be executed are specified in the <a class="reference external" href="../in_depth/tutorial03_process_models.ipynb">ProcessModels</a> below.</p>
-<p>As mentioned above, we define Processes for - converting input images to binary spikes from those biases (<em>SpikeInput</em>), - the 4-layer fully connected feed-forward network (<em>MnistClassifier</em>) - accumulating the output spikes and inferring the class for an input image (<em>OutputProcess</em>)</p>
+<p>As mentioned above, we define Processes for - converting input images to binary spikes from those biases (<em>SpikeInput</em>), - the 3-layer fully connected feed-forward network (<em>MnistClassifier</em>) - accumulating the output spikes and inferring the class for an input image (<em>OutputProcess</em>)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Import Process level premitives</span>
+<span></span><span class="c1"># Import Process level primitives</span>
 <span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
 <span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
 <span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
@@ -558,8 +555,8 @@ div.rendered_html tbody tr:hover {
         <span class="n">n_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num_images&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
         <span class="n">n_steps_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num_steps_per_image&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">784</span><span class="p">,)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">label_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Input spikes to the classifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>  <span class="c1"># Ground truth labels to OutputProc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_img</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_steps_img</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_img</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
@@ -568,14 +565,13 @@ div.rendered_html tbody tr:hover {
         <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;vth&#39;</span><span class="p">])</span>
 
 
-<span class="k">class</span> <span class="nc">MnistClassifier</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A 4 layer feed-forward network with LIF and Dense Processes.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">ImageClassifier</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A 3 layer feed-forward network with LIF and Dense Processes.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="c1"># As mentioned before, the weights and biases saved on the disk are</span>
-        <span class="c1"># arbitrary numbers. These will not produce any meaningful output</span>
-        <span class="c1"># classification.</span>
+
+        <span class="c1"># Using pre-trained weights and biases</span>
         <span class="n">trained_weights_path</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;trained_weights_path&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
                                           <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="s1">&#39;mnist_pretrained.npy&#39;</span><span class="p">))</span>
         <span class="n">real_path_trained_wgts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">trained_weights_path</span><span class="p">)</span>
@@ -597,6 +593,15 @@ div.rendered_html tbody tr:hover {
         <span class="bp">self</span><span class="o">.</span><span class="n">w_dense2</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">w2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b_output_lif</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="n">b3</span><span class="p">)</span>
 
+        <span class="c1"># Up-level currents and voltages of LIF Processes</span>
+        <span class="c1"># for resetting (see at the end of the tutorial)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif1_u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif1_v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif2_u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif2_v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oplif_u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oplif_v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">OutputProcess</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Process to gather spikes from 10 output LIF neurons and interpret the</span>
@@ -609,7 +614,7 @@ div.rendered_html tbody tr:hover {
         <span class="bp">self</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_img</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spikes_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Accumulated spikes for classification</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pred_labels</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_img</span><span class="p">,))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gt_labels</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_img</span><span class="p">,))</span>
@@ -617,9 +622,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Create-ProcessModels-for-Python-execution">
-<h2>Create ProcessModels for Python execution<a class="headerlink" href="#Create-ProcessModels-for-Python-execution" title="Permalink to this headline"></a></h2>
-<p>The code in these ProcessModels is what will get executed. Processes above were declarations, in a way.</p>
+<div class="section" id="ProcessModels-for-Python-execution">
+<h2>ProcessModels for Python execution<a class="headerlink" href="#ProcessModels-for-Python-execution" title="Permalink to this headline"></a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -646,10 +650,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="section" id="ProcessModel-for-producing-spiking-input">
-<h3>ProcessModel for producing spiking input<a class="headerlink" href="#ProcessModel-for-producing-spiking-input" title="Permalink to this headline"></a></h3>
+<p><strong>Decorators for ProcessModels</strong>: - <code class="docutils literal notranslate"><span class="pre">&#64;implements</span></code>: associates a ProcessModel with a Process through the argument <code class="docutils literal notranslate"><span class="pre">proc</span></code>. Using <code class="docutils literal notranslate"><span class="pre">protocol</span></code> argument, we will specify the synchronization protocol used by the ProcessModel. In this tutorial, all ProcessModels execute according to the <code class="docutils literal notranslate"><span class="pre">LoihiProtocol</span></code>. Which means, similar to the Loihi chip, each time-step is divided into <em>spiking</em>, <em>pre-management</em>, <em>post-management</em>, and <em>learning</em> phases. It is necessary to specify behaviour of a
+ProcessModel during the spiking phase using <code class="docutils literal notranslate"><span class="pre">run_spk</span></code> function. Other phases are optional. - <code class="docutils literal notranslate"><span class="pre">&#64;requires</span></code>: specifies the hardware resource on which a ProcessModel will be executed. In this tutorial, we will execute all ProcessModels on a CPU.</p>
+<p><strong>SpikingInput ProcessModel</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -665,23 +670,33 @@ div.rendered_html tbody tr:hover {
     <span class="n">ground_truth_label</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">vth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
-    <span class="n">mnist_dataset</span> <span class="o">=</span> <span class="n">MnistDataset</span><span class="p">()</span>
-    <span class="n">curr_img_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc_params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">proc_params</span><span class="o">=</span><span class="n">proc_params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mnist_dataset</span> <span class="o">=</span> <span class="n">MnistDataset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_img_id</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_ts</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">curr_img_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;Guard function for PostManagement phase.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post-Management phase: executed only when guard function above</span>
+<span class="sd">        returns True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mnist_dataset</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_img_id</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ground_truth_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mnist_dataset</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">curr_img_id</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="o">-</span> <span class="mi">127</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ground_truth_label</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_img_id</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Spiking phase: executed unconditionally at every time-step</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_img</span>
         <span class="n">s_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">s_out</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># reset voltage to 0 after a spike</span>
@@ -689,30 +704,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="ProcessModel-for-the-feed-forward-network">
-<h3>ProcessModel for the feed-forward network<a class="headerlink" href="#ProcessModel-for-the-feed-forward-network" title="Permalink to this headline"></a></h3>
+<p><strong>ImageClassifier ProcessModel</strong></p>
 <p>Notice that the following process model is further decomposed into sub-Processes, which implement LIF neural dynamics and Dense connectivity. We will not go into the details of how these are implemented in this tutorial.</p>
+<p>Also notice that a <em>SubProcessModel</em> does not actually contain any concrete execution. This is handled by the ProcessModels of the constituent Processes.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
 <span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
 
-<span class="nd">@implements</span><span class="p">(</span><span class="n">MnistClassifier</span><span class="p">)</span>
+<span class="nd">@implements</span><span class="p">(</span><span class="n">ImageClassifier</span><span class="p">)</span>
 <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyMnistClassifierModel</span><span class="p">(</span><span class="n">AbstractSubProcessModel</span><span class="p">):</span>
-    <span class="n">spikes_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">spikes_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">w_dense0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">b_lif1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
-    <span class="n">w_dense1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">b_lif2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
-    <span class="n">w_dense2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="n">b_output_lif</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
-
+<span class="k">class</span> <span class="nc">PyImageClassifierModel</span><span class="p">(</span><span class="n">AbstractSubProcessModel</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dense0</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">784</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense0</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,),</span> <span class="n">b</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_lif1</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
@@ -722,94 +727,147 @@ div.rendered_html tbody tr:hover {
                         <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense2</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span> <span class="n">b</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_output_lif</span><span class="o">.</span><span class="n">init</span><span class="p">,</span>
-                              <span class="n">vth</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="mi">17</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
+                              <span class="n">vth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
 
-        <span class="n">proc</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">spikes_in</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense0</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense0</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">spikes_out</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">spikes_in</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense0</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense0</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">spikes_out</span><span class="p">)</span>
+
+        <span class="c1"># Create aliases of SubProcess variables</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">lif1_u</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">lif1_v</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">lif2_u</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">lif2_v</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">oplif_u</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">oplif_v</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Finally,-ProcessModel-for-inference-output">
-<h3>Finally, ProcessModel for inference output<a class="headerlink" href="#Finally,-ProcessModel-for-inference-output" title="Permalink to this headline"></a></h3>
+<p><strong>OutputProcess ProcessModel</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">OutputProcess</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
 <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PyOutputProcessModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">spikes_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">label_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">spikes_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">num_images</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">spikes_accum</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">num_steps_per_image</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">pred_labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">gt_labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
-    <span class="n">current_img_id</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
-    <span class="c1"># This is needed for Loihi synchronization protocol</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc_params</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">proc_params</span><span class="o">=</span><span class="n">proc_params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span> <span class="o">=</span> <span class="mi">0</span>
+
     <span class="k">def</span> <span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_ts</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span>\
-                <span class="o">.</span><span class="n">current_ts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="sd">&quot;&quot;&quot;Guard function for PostManagement phase.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Curr Img: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">pred_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pred_labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred_label</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;Post-Management phase: executed only when guard function above</span>
+<span class="sd">        returns True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">gt_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="n">pred_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gt_labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">gt_label</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pred Label: </span><span class="si">{</span><span class="n">pred_label</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ground Truth: </span><span class="si">{</span><span class="n">gt_label</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred_labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_img_id</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">spikes_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spikes_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">+=</span> <span class="n">spikes_buffer</span>
+        <span class="sd">&quot;&quot;&quot;Spiking phase: executed unconditionally at every time-step</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">spk_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spikes_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spikes_accum</span> <span class="o">+</span> <span class="n">spk_in</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="Run-the-Process">
-<h2>Run the Process<a class="headerlink" href="#Run-the-Process" title="Permalink to this headline"></a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="section" id="Connecting-Processes">
+<h2>Connecting Processes<a class="headerlink" href="#Connecting-Processes" title="Permalink to this headline"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">num_images</span> <span class="o">=</span> <span class="mi">5</span>
+<span></span><span class="n">num_images</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="mi">128</span>
 
-<span class="c1"># Create instances</span>
+<span class="c1"># Create Process instances</span>
 <span class="n">spike_input</span> <span class="o">=</span> <span class="n">SpikeInput</span><span class="p">(</span><span class="n">num_images</span><span class="o">=</span><span class="n">num_images</span><span class="p">,</span>
                          <span class="n">num_steps_per_image</span><span class="o">=</span><span class="n">num_steps_per_image</span><span class="p">,</span>
                          <span class="n">vth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">mnist_clf</span> <span class="o">=</span> <span class="n">MnistClassifier</span><span class="p">(</span>
+<span class="n">mnist_clf</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span>
     <span class="n">trained_weights_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;mnist_pretrained.npy&#39;</span><span class="p">))</span>
 <span class="n">output_proc</span> <span class="o">=</span> <span class="n">OutputProcess</span><span class="p">(</span><span class="n">num_images</span><span class="o">=</span><span class="n">num_images</span><span class="p">)</span>
 
-<span class="c1"># Connect instances</span>
-<span class="n">spike_input</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">spikes_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mnist_clf</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">spikes_in</span><span class="p">)</span>
-<span class="n">mnist_clf</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">spikes_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_proc</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">spikes_in</span><span class="p">)</span>
-<span class="n">spike_input</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">label_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_proc</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">label_in</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<span class="c1"># Connect Processes</span>
+<span class="n">spike_input</span><span class="o">.</span><span class="n">spikes_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mnist_clf</span><span class="o">.</span><span class="n">spikes_in</span><span class="p">)</span>
+<span class="n">mnist_clf</span><span class="o">.</span><span class="n">spikes_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_proc</span><span class="o">.</span><span class="n">spikes_in</span><span class="p">)</span>
+<span class="c1"># Connect Input directly to Output for ground truth labels</span>
+<span class="n">spike_input</span><span class="o">.</span><span class="n">label_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_proc</span><span class="o">.</span><span class="n">label_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execution-and-results">
+<h2>Execution and results<a class="headerlink" href="#Execution-and-results" title="Permalink to this headline"></a></h2>
+<p>Below, we will run the classifier process in a loop of <code class="docutils literal notranslate"><span class="pre">num_images</span></code> number of iterations. Each iteration will run the Process for <code class="docutils literal notranslate"><span class="pre">num_steps_per_image</span></code> number of time-steps.</p>
+<p>We take this approach to clear the neural states of all three LIF layers inside the classifier after every image. We need to clear the neural states, because the network parameters were trained assuming clear neural states for each inference.</p>
+<blockquote>
+<div><p>Note: Below we have used <code class="docutils literal notranslate"><span class="pre">Var.set()</span></code> function to set the values of internal state variables. The same behaviour can be achieved by using <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code>. See the <a class="reference external" href="../in_depth/tutorial07_remote_memory_access.ipynb">RefPorts tutorial</a> to learn more about how to use <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code> to access internal state variables of Lava Processes.</p>
+</div></blockquote>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
 <span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
 
-<span class="n">mnist_clf</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="p">(</span><span class="n">num_images</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_steps_per_image</span><span class="p">),</span>
-    <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">(</span><span class="n">select_sub_proc_model</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="c1"># Loop over all images</span>
+<span class="k">for</span> <span class="n">img_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_images</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">Current image: </span><span class="si">{</span><span class="n">img_id</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Run each image-inference for fixed number of steps</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps_per_image</span><span class="p">),</span>
+        <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">(</span><span class="n">select_sub_proc_model</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                             <span class="n">select_tag</span><span class="o">=</span><span class="s1">&#39;fixed_pt&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Reset internal neural state of LIF neurons</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">lif1_u</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">64</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">lif1_v</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">64</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">lif2_u</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">64</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">lif2_v</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">64</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">oplif_u</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+    <span class="n">mnist_clf</span><span class="o">.</span><span class="n">oplif_v</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+
+<span class="c1"># Gather ground truth and predictions before stopping exec</span>
+<span class="n">ground_truth</span> <span class="o">=</span> <span class="n">output_proc</span><span class="o">.</span><span class="n">gt_labels</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">output_proc</span><span class="o">.</span><span class="n">pred_labels</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+<span class="c1"># Stop the execution</span>
 <span class="n">mnist_clf</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ground_truth</span><span class="o">==</span><span class="n">predictions</span><span class="p">)</span><span class="o">/</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ground truth: </span><span class="si">{</span><span class="n">ground_truth</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Predictions : </span><span class="si">{</span><span class="n">predictions</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;Accuracy    : </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -818,22 +876,29 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Curr Img: 0
-Pred Label: 0   Ground Truth: [5]
-Curr Img: 1
-Pred Label: 0   Ground Truth: [0]
-Curr Img: 2
-Pred Label: 0   Ground Truth: [4]
-Curr Img: 3
-Pred Label: 0   Ground Truth: [1]
-Curr Img: 4
-Pred Label: 0   Ground Truth: [9]
+Current image: 25
+Ground truth: [5 0 4 1 9 2 1 3 1 4 3 5 3 6 1 7 2 8 6 9 4 0 9 1 1]
+Predictions : [3 0 4 1 4 2 1 3 1 4 3 5 3 6 1 7 2 8 5 9 4 0 9 1 1]
+Accuracy    : 88.0
 </pre></div></div>
 </div>
 <blockquote>
 <div><p><strong>Important Note</strong>:</p>
-<p>Right now, this model uses arbitrary <em>untrained</em> network paramters (weights and biases)! We will update this model and fix this shortcoming in the next few days after release. Thus the MNIST classifier is not expected to produce any meaningful output at this point in time.</p>
+<p>The classifier is a simple feed-forward model using pre-trained network parameters (weights and biases). It illustrates how to build, compile and run a functional model in Lava. Please refer to <a class="reference external" href="https://github.com/lava-nc/lava-dl">Lava-DL</a> to understand how to train deep networks with Lava.</p>
 </div></blockquote>
+<div class="section" id="How-to-learn-more?">
+<h3>How to learn more?<a class="headerlink" href="#How-to-learn-more?" title="Permalink to this headline"></a></h3>
+</div>
+</div>
+<div class="section" id="Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">
+<h2>Follow the links below for deep-dive tutorials on the concepts in this tutorial:<a class="headerlink" href="#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="../in_depth/tutorial02_processes.ipynb">Processes</a></p></li>
+<li><p><a class="reference external" href="../in_depth/tutorial03_process_models.ipynb">ProcessModel</a></p></li>
+<li><p><a class="reference external" href="../in_depth/tutorial04_execution.ipynb">Execution</a></p></li>
+<li><p><a class="reference external" href="../in_depth/tutorial06_hierarchical_processes.ipynb">SubProcessModels</a> or <a class="reference external" href="../in_depth/tutorial06_hierarchical_processes.ipynb">Hierarchical Processes</a></p></li>
+<li><p><a class="reference external" href="../in_depth/tutorial07_remote_memory_access.ipynb">RefPorts</a></p></li>
+</ul>
 <p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org/">Lava documentation</a> or dive into the <a class="reference external" href="https://github.com/lava-nc/lava/">source code</a>.</p>
 <p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to the <a class="reference external" href="http://eepurl.com/hJCyhb">INRC newsletter</a>.</p>
 </div>

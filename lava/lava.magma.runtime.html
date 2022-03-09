@@ -171,7 +171,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
@@ -240,7 +246,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava.magma.runtime.node.html">lava.magma.runtime.node package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#module-lava.magma.runtime.node.node">lava.magma.runtime.node.node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#lava-magma-runtime-node-node-module">lava.magma.runtime.node.node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava.magma.runtime.node.html#module-lava.magma.runtime.node">Module contents</a></li>
 </ul>
 </li>
@@ -254,27 +260,39 @@
 <span id="lava-magma-runtime-mgmt-token-enums-module"></span><h2>lava.magma.runtime.mgmt_token_enums module<a class="headerlink" href="#module-lava.magma.runtime.mgmt_token_enums" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_COMMAND</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_COMMAND</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Signifies the Mgmt Command being sent between two actors. These may be
 between runtime and runtime_service or the runtime_service
 and process model.</p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.GET_DATA">
+<span class="sig-name descname"><span class="pre">GET_DATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-3.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.GET_DATA" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Read a variable</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.PAUSE">
-<span class="sig-name descname"><span class="pre">PAUSE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.PAUSE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAUSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-2.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.PAUSE" title="Permalink to this definition"></a></dt>
 <dd><p>Signifies a PAUSE command from one actor to another</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.RUN">
-<span class="sig-name descname"><span class="pre">RUN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.RUN" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">RUN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([0.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.RUN" title="Permalink to this definition"></a></dt>
 <dd><p>Signifies a RUN command for 0 timesteps from one actor to another. Any
 non negative integer signifies a run command</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.SET_DATA">
+<span class="sig-name descname"><span class="pre">SET_DATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-4.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.SET_DATA" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Write a variable</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.STOP">
-<span class="sig-name descname"><span class="pre">STOP</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.STOP" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">STOP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-1.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_COMMAND.STOP" title="Permalink to this definition"></a></dt>
 <dd><p>Signifies a STOP command from one actor to another</p>
 </dd></dl>
 
@@ -282,52 +300,57 @@ non negative integer signifies a run command</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_RESPONSE</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">MGMT_RESPONSE</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Signifies the response to a Mgmt command. This response can be sent
 by any actor upon receiving a Mgmt command</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.DONE">
-<span class="sig-name descname"><span class="pre">DONE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.DONE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">DONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([0.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.DONE" title="Permalink to this definition"></a></dt>
 <dd><p>Signfies Ack or Finished with the Command</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.ERROR">
+<span class="sig-name descname"><span class="pre">ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-2.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.ERROR" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Error raised</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.PAUSED">
-<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.PAUSED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">PAUSED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-3.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.PAUSED" title="Permalink to this definition"></a></dt>
 <dd><p>Signifies Execution State to be Paused</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.REQ_PAUSE">
+<span class="sig-name descname"><span class="pre">REQ_PAUSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-4.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.REQ_PAUSE" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Request of PAUSE</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.REQ_STOP">
+<span class="sig-name descname"><span class="pre">REQ_STOP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-5.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.REQ_STOP" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Request of STOP</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.SET_COMPLETE">
+<span class="sig-name descname"><span class="pre">SET_COMPLETE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-6.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.SET_COMPLETE" title="Permalink to this definition"></a></dt>
+<dd><p>Signifies Completion of Set Var</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.TERMINATED">
-<span class="sig-name descname"><span class="pre">TERMINATED</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([-1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.TERMINATED" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">TERMINATED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([-1.])</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.MGMT_RESPONSE.TERMINATED" title="Permalink to this definition"></a></dt>
 <dd><p>Signifies Termination</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">REQ_TYPE</span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Signifies type of request</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE.GET">
-<span class="sig-name descname"><span class="pre">GET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([0],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE.GET" title="Permalink to this definition"></a></dt>
-<dd><p>Read a variable</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.REQ_TYPE.SET">
-<span class="sig-name descname"><span class="pre">SET</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.REQ_TYPE.SET" title="Permalink to this definition"></a></dt>
-<dd><p>Write to a variable</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.enum_equal">
-<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">enum_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.enum_equal" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">enum_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.enum_equal" title="Permalink to this definition"></a></dt>
 <dd><p>Helper function to compare two np arrays created by enum_to_np.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -344,7 +367,7 @@ by any actor upon receiving a Mgmt command</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.runtime.mgmt_token_enums.enum_to_np">
-<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">enum_to_np</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value:</span> <span class="pre">Union[int,</span> <span class="pre">float],</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.int32'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.enum_to_np" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.mgmt_token_enums.</span></span><span class="sig-name descname"><span class="pre">enum_to_np</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value:</span> <span class="pre">typing.Union[int,</span> <span class="pre">float],</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'numpy.float64'&gt;</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.array</span></span></span><a class="headerlink" href="#lava.magma.runtime.mgmt_token_enums.enum_to_np" title="Permalink to this definition"></a></dt>
 <dd><p>Helper function to convert an int (or EnumInt) or a float to a single value
 np array so as to pass it via the message passing framework. The dtype of
 the np array is specified by d_type with the default of np.int32.</p>
@@ -366,11 +389,13 @@ the np array is specified by d_type with the default of np.int32.</p>
 <span id="lava-magma-runtime-runtime-module"></span><h2>lava.magma.runtime.runtime module<a class="headerlink" href="#module-lava.magma.runtime.runtime" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime.</span></span><span class="sig-name descname"><span class="pre">Runtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cond</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exe</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_infrastructure_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">lava.magma.core.process.message_interface_enum.ActorType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime.</span></span><span class="sig-name descname"><span class="pre">Runtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_infrastructure_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">lava.magma.core.process.message_interface_enum.ActorType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Lava runtime which consumes an executable and run run_condition. Exposes
+<p>Lava runtime which consumes an executable and run
+run_condition. Exposes
 the APIs to start, pause, stop and wait on an execution. Execution could
-be blocking and non-blocking as specified by the run run_condition.</p>
+be blocking and non-blocking as specified by the run
+run_condition.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.__del__">
 <span class="sig-name descname"><span class="pre">__del__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.__del__" title="Permalink to this definition"></a></dt>
@@ -380,18 +405,13 @@ free compute resources.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.get_var">
-<span class="sig-name descname"><span class="pre">get_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.get_var" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.get_var" title="Permalink to this definition"></a></dt>
 <dd><p>Gets value of a variable with id ‘var_id’.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.global_time">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">global_time</span></span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.global_time" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.initialize">
-<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.initialize" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_cfg_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.initialize" title="Permalink to this definition"></a></dt>
 <dd><p>Initializes the runtime</p>
 </dd></dl>
 
@@ -403,25 +423,35 @@ free compute resources.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.node_cfg">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">node_cfg</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.node.NodeConfig" title="lava.magma.compiler.node.NodeConfig"><span class="pre">lava.magma.compiler.node.NodeConfig</span></a></em><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.node_cfg" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_cfg</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.node.NodeConfig" title="lava.magma.compiler.node.NodeConfig"><span class="pre">lava.magma.compiler.node.NodeConfig</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.node_cfg" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the selected NodeCfg.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.pause">
 <span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.pause" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Pauses the execution</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.set_var">
-<span class="sig-name descname"><span class="pre">set_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.set_var" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.set_var" title="Permalink to this definition"></a></dt>
 <dd><p>Sets value of a variable with id ‘var_id’.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_condition</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.start" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.start" title="Permalink to this definition"></a></dt>
+<dd><p>Given a run condition, starts the runtime</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>run_condition</strong> – AbstractRunCondition</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.stop">
@@ -432,119 +462,32 @@ free compute resources.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.Runtime.wait">
 <span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.Runtime.wait" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Waits for existing run to end. This is helpful if the execution
+was started in non-blocking mode earlier.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime.target_fn">
 <span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime.</span></span><span class="sig-name descname"><span class="pre">target_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime.target_fn" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Function to build and attach a system process to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – List Parameters to be passed onto the process</p></li>
+<li><p><strong>kwargs</strong> – Dict Parameters to be passed onto the process</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.runtime.runtime_service">
-<span id="lava-magma-runtime-runtime-service-module"></span><h2>lava.magma.runtime.runtime_service module<a class="headerlink" href="#module-lava.magma.runtime.runtime_service" title="Permalink to this headline"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">AbstractRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.join">
-<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.join" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.run">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AbstractRuntimeService.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService.start" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AsyncPyRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">AsyncPyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AsyncPyRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.PyRuntimeService</span></code></a></p>
-<p>RuntimeService that implements Async SyncProtocol in Py.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.AsyncPyRuntimeService.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.AsyncPyRuntimeService.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.CRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">CRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.CRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiCRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">LoihiCRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiCRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
-<p>RuntimeService that implements Loihi SyncProtocol in C.</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">LoihiPyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_service.PyRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.PyRuntimeService</span></code></a></p>
-<p>RuntimeService that implements Loihi SyncProtocol in Python.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Phase</span></span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.HOST">
-<span class="sig-name descname"><span class="pre">HOST</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([5],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.HOST" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.LRN">
-<span class="sig-name descname"><span class="pre">LRN</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([3],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.LRN" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.POST_MGMT">
-<span class="sig-name descname"><span class="pre">POST_MGMT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([4],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.POST_MGMT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.PRE_MGMT">
-<span class="sig-name descname"><span class="pre">PRE_MGMT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([2],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.PRE_MGMT" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.SPK">
-<span class="sig-name descname"><span class="pre">SPK</span></span><em class="property"> <span class="pre">=</span> <span class="pre">array([1],</span> <span class="pre">dtype=int32)</span></em><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.Phase.SPK" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.LoihiPyRuntimeService.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.LoihiPyRuntimeService.run" title="Permalink to this definition"></a></dt>
-<dd><p>Retrieves commands from the runtime. On STOP or PAUSE commands all
-ProcessModels are notified and expected to TERMINATE or PAUSE,
-respectively. Otherwise the number of time steps is received as command.
-In this case iterate through the phases of the Loihi protocol until the
-last time step is reached. The runtime is informed after the last time
-step. The loop ends when receiving the STOP command from the runtime.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.runtime.runtime_service.PyRuntimeService">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_service.</span></span><span class="sig-name descname"><span class="pre">PyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_service.PyRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_service.AbstractRuntimeService" title="lava.magma.runtime.runtime_service.AbstractRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.runtime.runtime_service.AbstractRuntimeService</span></code></a></p>
-</dd></dl>
-
+<div class="section" id="lava-magma-runtime-runtime-service-module">
+<h2>lava.magma.runtime.runtime_service module<a class="headerlink" href="#lava-magma-runtime-runtime-service-module" title="Permalink to this headline"></a></h2>
 </div>
 <div class="section" id="module-lava.magma.runtime">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.runtime" title="Permalink to this headline"></a></h2>

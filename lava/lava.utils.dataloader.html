@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -236,49 +243,64 @@
 <span id="lava-utils-dataloader-mnist-module"></span><h2>lava.utils.dataloader.mnist module<a class="headerlink" href="#module-lava.utils.dataloader.mnist" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.utils.dataloader.mnist.</span></span><span class="sig-name descname"><span class="pre">MnistDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/mnist.npy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.utils.dataloader.mnist.</span></span><span class="sig-name descname"><span class="pre">MnistDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/mnist.npy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">decompress_convert_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decompress_convert_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save" title="Permalink to this definition"></a></dt>
 <dd><p>download_path (str): path of downloaded raw MNIST dataset in IDX
 format
 save_path (str): path at which processed npy file will be saved</p>
+<p>After loading data = np.load(), data is a np.array of np.arrays.
+train_imgs = data[0][0]; shape = 60000 x 28 x 28
+test_imgs = data[1][0]; shape = 10000 x 28 x 28
+train_labels = data[0][1]; shape = 60000 x 1
+test_labels = data[1][1]; shape = 10000 x 1</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.download_mnist">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">download_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.download_mnist" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">download_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/sshresth/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.download_mnist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['train-images-idx3-ubyte.gz',</span> <span class="pre">'train-labels-idx1-ubyte.gz',</span> <span class="pre">'t10k-images-idx3-ubyte.gz',</span> <span class="pre">'t10k-labels-idx1-ubyte.gz']</span></em><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.files" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.images">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.images" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.images" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.labels">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.labels" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.labels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.mirrors">
+<span class="sig-name descname"><span class="pre">mirrors</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['http://yann.lecun.com/exdb/mnist/',</span> <span class="pre">'https://ossci-datasets.s3.amazonaws.com/mnist/',</span> <span class="pre">'https://storage.googleapis.com/cvdf-datasets/mnist/']</span></em><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.mirrors" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.test_images">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">test_images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.test_images" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.test_images" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.test_labels">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">test_labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.test_labels" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.test_labels" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.train_images">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">train_images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.train_images" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_images</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.train_images" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.train_labels">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">train_labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.train_labels" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">train_labels</span></span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.train_labels" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

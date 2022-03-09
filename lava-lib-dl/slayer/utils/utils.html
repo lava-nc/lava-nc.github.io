@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -241,7 +248,7 @@
 description.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.assistant.Assistant">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.assistant.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.assistant.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.assistant.Assistant" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Assistant that bundles training, validation and testing workflow.</p>
 <dl class="field-list simple">
@@ -396,7 +403,7 @@ gets initialized on the first call.</p>
 <p>Time dimension filtering utilities.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fir_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fir_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Finite impulse response filter. The filters are not learnable. For
 learnable filter, use <cite>FIRBank</cite> with one filter.</p>
@@ -440,14 +447,14 @@ is initialized. Defaults to None.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIR.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.training" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIR.training" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIRBank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.filter.</span></span><span class="sig-name descname"><span class="pre">FIRBank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.conv.Conv3d</span></code></p>
 <p>Finite impulse response filter bank. The filters are learnable.</p>
 <dl class="field-list simple">
@@ -473,17 +480,17 @@ is initialized. Defaults to None.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.bias" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.bias" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.dilation">
-<span class="sig-name descname"><span class="pre">dilation</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.dilation" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">dilation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.dilation" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.filter_length">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">filter_length</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.filter_length" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">filter_length</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.filter_length" title="Permalink to this definition"></a></dt>
 <dd><p>Time length of the filter.</p>
 </dd></dl>
 
@@ -494,59 +501,59 @@ is initialized. Defaults to None.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.groups">
-<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.groups" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">groups</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.groups" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.impulse_response">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">impulse_response</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.impulse_response" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">impulse_response</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.impulse_response" title="Permalink to this definition"></a></dt>
 <dd><p>Impulse response of filter bank</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.kernel_size">
-<span class="sig-name descname"><span class="pre">kernel_size</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.kernel_size" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">kernel_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.kernel_size" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.num_filter">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">num_filter</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.num_filter" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_filter</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.num_filter" title="Permalink to this definition"></a></dt>
 <dd><p>Number of filters in the bank.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.out_channels">
-<span class="sig-name descname"><span class="pre">out_channels</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.out_channels" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">out_channels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.out_channels" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.output_padding">
-<span class="sig-name descname"><span class="pre">output_padding</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.output_padding" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">output_padding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.output_padding" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.padding">
-<span class="sig-name descname"><span class="pre">padding</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">padding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.padding_mode">
-<span class="sig-name descname"><span class="pre">padding_mode</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding_mode" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">padding_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.padding_mode" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.stride">
-<span class="sig-name descname"><span class="pre">stride</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.stride" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">stride</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.stride" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.transposed">
-<span class="sig-name descname"><span class="pre">transposed</span></span><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.transposed" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">transposed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.transposed" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.filter.FIRBank.weight">
-<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="pre">:</span> <span class="pre">torch.Tensor</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.weight" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.Tensor</span></em><a class="headerlink" href="#lava.lib.dl.slayer.utils.filter.FIRBank.weight" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -609,17 +616,17 @@ otherwise.</p></li>
 <p>Integer bit shift utilities.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.int_utils.</span></span><span class="sig-name descname"><span class="pre">Q2Zero</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.int_utils.</span></span><span class="sig-name descname"><span class="pre">Q2Zero</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.autograd.function.Function</span></code></p>
 <p>Autograd compliant version of quantization towards zero.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero.backward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.backward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.backward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.int_utils.Q2Zero.forward">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.forward" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.int_utils.Q2Zero.forward" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -680,7 +687,7 @@ quantization.</p>
 <p>Module for managing, visualizing, and displaying learning statistics.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Learning stat manager</p>
 <dl class="py attribute">
@@ -792,13 +799,13 @@ after <cite>stats.update()</cite>.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.accuracy">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
 <dd><p>Current accuracy.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.loss">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.loss" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.loss" title="Permalink to this definition"></a></dt>
 <dd><p>Current loss.</p>
 </dd></dl>
 
@@ -816,19 +823,19 @@ after <cite>stats.update()</cite>.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.valid_accuracy_log">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStat.valid_loss_log">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.stats.LearningStats">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.stats.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.stats.LearningStats" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Manages training, validation and testing stats.</p>
 <dl class="py attribute">
@@ -1023,7 +1030,7 @@ number. 1 means an identity matrix.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.utils.staticproperty">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.staticproperty" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.staticproperty" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">property</span></code></p>
 <p>wraps static member function of a class as a static property of that
 class.</p>
@@ -1034,7 +1041,7 @@ class.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.utils" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.Assistant">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">Assistant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.Assistant" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Assistant that bundles training, validation and testing workflow.</p>
 <dl class="field-list simple">
@@ -1185,7 +1192,7 @@ gets initialized on the first call.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStat</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Learning stat manager</p>
 <dl class="py attribute">
@@ -1297,13 +1304,13 @@ after <cite>stats.update()</cite>.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.accuracy">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">accuracy</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.accuracy" title="Permalink to this definition"></a></dt>
 <dd><p>Current accuracy.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.loss">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.loss" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loss</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.loss" title="Permalink to this definition"></a></dt>
 <dd><p>Current loss.</p>
 </dd></dl>
 
@@ -1321,19 +1328,19 @@ after <cite>stats.update()</cite>.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.valid_accuracy_log">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">valid_accuracy_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_accuracy_log" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStat.valid_loss_log">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">valid_loss_log</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStat.valid_loss_log" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.LearningStats">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">LearningStats</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.LearningStats" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Manages training, validation and testing stats.</p>
 <dl class="py attribute">
@@ -1492,7 +1499,7 @@ quantization.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.staticproperty">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.staticproperty" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">staticproperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.staticproperty" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">property</span></code></p>
 <p>wraps static member function of a class as a static property of that
 class.</p>

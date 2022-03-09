@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -237,7 +244,7 @@
 <p>ANN-SNN mode switching routine helper.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.LayerMode">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">LayerMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crossover</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.LayerMode" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">LayerMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crossover</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.LayerMode" title="Permalink to this definition"></a></dt>
 <dd><p>Iterator that iterates layer/block’s mode of operation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -258,14 +265,14 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Mode">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Mode" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Mode" title="Permalink to this definition"></a></dt>
 <dd><p>Enum constants for different mode of operation. Valid modes are
 <cite>SNN</cite> | <cite>ANN</cite> | <cite>SAMPLE | FIT</cite>.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Scheduler">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Scheduler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_sample_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crossover_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Scheduler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_sample_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crossover_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler" title="Permalink to this definition"></a></dt>
 <dd><p>Hybrid mode iterator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -279,7 +286,7 @@ enables inference on different backends.</p></li>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
-<p><strong>End to end tutorials</strong></p>
+<p><strong>End to end training tutorials</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="lava-lib-dl/slayer/notebooks/oxford/train.html">Oxford spike train regression</a></p></li>
 <li><p><a class="reference external" href="lava-lib-dl/bootstrap/notebooks/mnist/train.html">MNIST digit classification</a></p></li>
@@ -289,6 +296,12 @@ enables inference on different backends.</p></li>
 <p><strong>Deep dive tutorials</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="lava-lib-dl/slayer/notebooks/neuron_dynamics/dynamics.html">Dynamics and Neurons</a></p></li>
+</ul>
+<p><strong>Inference tutorials</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="lava-lib-dl/netx/notebooks/oxford/run.html">Oxford Inference</a></p></li>
+<li><p><a class="reference external" href="lava-lib-dl/netx/notebooks/pilotnet_snn/run.html">PilotNet SNN Inference</a></p></li>
+<li><p><a class="reference external" href="lava-lib-dl/netx/notebooks/pilotnet_sdnn/run.html">PilotNet SDNN Inference</a></p></li>
 </ul>
 </div>
 <div class="section" id="slayer-2-0">
@@ -463,6 +476,20 @@ details of hdf5 network description specification can be found
 
 <span class="c1"># Connect network-output to the output process</span>
 <span class="n">net</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">net_output_in</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">io</span>
+
+<span class="c1"># Instantiate the processes</span>
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">dataloader</span><span class="o">.</span><span class="n">SpikeDataloader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_set</span><span class="p">)</span>
+<span class="n">output_logger</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sink</span><span class="o">.</span><span class="n">RingBuffer</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">buffer</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+<span class="n">gt_logger</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sink</span><span class="o">.</span><span class="n">RingBuffer</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">buffer</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+
+<span class="c1"># Connect the input to the network:</span>
+<span class="n">dataloader</span><span class="o">.</span><span class="n">ground_truth</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">gt_logger</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+<span class="n">dataloader</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">in_layer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+
+<span class="c1"># Connect network-output to the output process</span>
+<span class="n">net</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">output_logger</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Run the network</strong></p>

@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -238,7 +245,7 @@
 spike-train. Standard PyTorch loss are also compatible.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeMax">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeMax" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeMax" title="Permalink to this definition"></a></dt>
 <dd><p>Spike max (NLL) loss.</p>
 <div class="math">
 <p><img src="../../_images/math/04ed2aca03d477e0244246ca4a8971c7557b69fb.png" alt="L &amp;= \begin{cases}
@@ -271,7 +278,7 @@ Defaults to ‘probability’.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeRate">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeRate" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeRate" title="Permalink to this definition"></a></dt>
 <dd><p>Spike rate loss.</p>
 <div class="math">
 <p><img src="../../_images/math/c3bb6b6437235a036d7d8241c441d7982294d446.png" alt="\hat {\boldsymbol r} &amp;=
@@ -308,7 +315,7 @@ at every time step. Defaults to None.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeTime">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeTime" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeTime" title="Permalink to this definition"></a></dt>
 <dd><p>Spike-time based loss. It is similar to van Rossum distance between
 output and desired spike train.</p>
 <div class="math">

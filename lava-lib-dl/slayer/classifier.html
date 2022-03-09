@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -237,7 +244,7 @@
 <p>Classifier modules.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.classifier.MovingWindow">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">MovingWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_window</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.MovingWindow" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">MovingWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_window</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.MovingWindow" title="Permalink to this definition"></a></dt>
 <dd><p>Moving window based classifier. It produces a timeseries of
 classification/prediction based on moving window estimate.</p>
 <div class="math">
@@ -346,7 +353,7 @@ Defaults to None.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.classifier.Rate">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">Rate</span></span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">Rate</span></span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate" title="Permalink to this definition"></a></dt>
 <dd><p>Global rate based classifier. It considers the event rate of the spike
 train over the entire duration as the confidence score.</p>
 <div class="math">
@@ -371,7 +378,7 @@ train over the entire duration as the confidence score.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.classifier.Rate.confidence">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">confidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.confidence" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">confidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.confidence" title="Permalink to this definition"></a></dt>
 <dd><p>Given spike train, returns the confidence of the output class based
 on spike rate.</p>
 <dl class="field-list simple">
@@ -406,7 +413,7 @@ Defaults to ‘probability’.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.classifier.Rate.predict">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.predict" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.predict" title="Permalink to this definition"></a></dt>
 <dd><p>Given spike train, predicts the output class based on spike rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -430,7 +437,7 @@ by default.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.classifier.Rate.rate">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.rate" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate.rate" title="Permalink to this definition"></a></dt>
 <dd><p>Given spike train, returns the output spike rate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

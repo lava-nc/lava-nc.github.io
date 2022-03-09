@@ -171,9 +171,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -235,9 +242,187 @@
 <div class="section" id="module-lava.proc.lif.models">
 <span id="lava-proc-lif-models-module"></span><h2>lava.proc.lif.models module<a class="headerlink" href="#module-lava.proc.lif.models" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelBitAcc</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">AbstractPyLifModelFixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
+<p>Abstract implementation of fixed point precision
+leaky-integrate-and-fire neuron model. Implementations like those
+bit-accurate with Loihi hardware inherit from here.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.a_in">
+<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.a_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=13)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp">
+<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.du">
+<span class="sig-name descname"><span class="pre">du</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.du" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.dv">
+<span class="sig-name descname"><span class="pre">dv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.dv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.reset_voltage">
+<span class="sig-name descname"><span class="pre">reset_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.reset_voltage" title="Permalink to this definition"></a></dt>
+<dd><p>Voltage reset behaviour. This can differ for different neuron
+models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>The run function that performs the actual computation during
+execution orchestrated by a PyLoihiProcessModel using the
+LoihiProtocol.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.scale_bias">
+<span class="sig-name descname"><span class="pre">scale_bias</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.scale_bias" title="Permalink to this definition"></a></dt>
+<dd><p>Scale bias with bias exponent by taking into account sign of the
+exponent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.scale_threshold">
+<span class="sig-name descname"><span class="pre">scale_threshold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.scale_threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Placeholder method for scaling threshold(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Placeholder method to specify spiking behaviour of a LIF neuron.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.subthr_dynamics">
+<span class="sig-name descname"><span class="pre">subthr_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activation_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.subthr_dynamics" title="Permalink to this definition"></a></dt>
+<dd><p>Common sub-threshold dynamics of current and voltage variables for
+all LIF models. This is where the ‘leaky integration’ happens.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.u">
+<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.u" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.v">
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.v" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">AbstractPyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
+<p>Abstract implementation of floating point precision
+leaky-integrate-and-fire neuron model.</p>
+<p>Specific implementations inherit from here.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.a_in">
+<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.a_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp">
+<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.du">
+<span class="sig-name descname"><span class="pre">du</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.du" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.dv">
+<span class="sig-name descname"><span class="pre">dv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.dv" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.reset_voltage">
+<span class="sig-name descname"><span class="pre">reset_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.reset_voltage" title="Permalink to this definition"></a></dt>
+<dd><p>Voltage reset behaviour. This can differ for different neuron
+models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>The run function that performs the actual computation during
+execution orchestrated by a PyLoihiProcessModel using the
+LoihiProtocol.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Abstract method to define the activation function that determines
+how spikes are generated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.subthr_dynamics">
+<span class="sig-name descname"><span class="pre">subthr_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activation_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.subthr_dynamics" title="Permalink to this definition"></a></dt>
+<dd><p>Common sub-threshold dynamics of current and voltage variables for
+all LIF models. This is where the ‘leaky integration’ happens.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.u">
+<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.u" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.v">
+<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.v" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelBitAcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFixed" title="lava.proc.lif.models.AbstractPyLifModelFixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFixed</span></code></a></p>
 <p>Implementation of Leaky-Integrate-and-Fire neural process bit-accurate
 with Loihi’s hardware LIF dynamics, which means, it mimics Loihi
 behaviour bit-by-bit.</p>
@@ -252,32 +437,7 @@ behaviour bit-by-bit.</p>
 dv: unsigned 12-bit integer (0 to 4095)
 bias: signed 13-bit integer (-4096 to 4095). Mantissa part of neuron bias.
 bias_exp: unsigned 3-bit integer (0 to 7). Exponent part of neuron bias.
-vth: unsigned 17-bit integer (0 to 131071)</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.a_in">
-<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.a_in" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=13)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.bias" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.bias_exp">
-<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.bias_exp" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.du">
-<span class="sig-name descname"><span class="pre">du</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.du" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.dv">
-<span class="sig-name descname"><span class="pre">dv</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.uint16'&gt;,</span> <span class="pre">precision=12)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.dv" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+vth: unsigned 17-bit integer (0 to 131071).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.implements_process">
 <span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.implements_process" title="Permalink to this definition"></a></dt>
@@ -292,74 +452,48 @@ vth: unsigned 17-bit integer (0 to 131071)</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.required_resources">
-<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractResource</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.required_resources" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.run_spk">
-<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.run_spk" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.required_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.s_out">
-<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.s_out" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.s_out" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.scale_threshold">
+<span class="sig-name descname"><span class="pre">scale_threshold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.scale_threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Scale threshold according to the way Loihi hardware scales it. In
+Loihi hardware, threshold is left-shifted by 6-bits to MSB-align it
+with other state variables of higher precision.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Spike when voltage exceeds threshold.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">['bit_accurate_loihi',</span> <span class="pre">'fixed_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.tags" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.u">
-<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.u" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.v">
-<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.v" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['bit_accurate_loihi',</span> <span class="pre">'fixed_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.tags" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.vth">
-<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=17)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.vth" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=17)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelBitAcc.vth" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelFloat</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="lava.proc.lif.models.AbstractPyLifModelFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFloat</span></code></a></p>
 <p>Implementation of Leaky-Integrate-and-Fire neural process in floating
 point precision. This short and simple ProcessModel can be used for quick
 algorithmic prototyping, without engaging with the nuances of a fixed
 point implementation.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.a_in">
-<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.a_in" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.bias" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.bias_exp">
-<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.bias_exp" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.du">
-<span class="sig-name descname"><span class="pre">du</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.du" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.dv">
-<span class="sig-name descname"><span class="pre">dv</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.dv" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.implements_process">
 <span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.implements_process" title="Permalink to this definition"></a></dt>
@@ -374,37 +508,157 @@ point implementation.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.required_resources">
-<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstractResource</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.required_resources" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.run_spk">
-<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.run_spk" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.required_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.s_out">
-<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.s_out" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.s_out" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Spiking activation function for LIF.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.tags" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.u">
-<span class="sig-name descname"><span class="pre">u</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.u" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.v">
-<span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="pre">:</span> <span class="pre">numpy.ndarray</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.v" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.tags" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat.vth">
-<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.vth" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat.vth" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyTernLifModelFixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFixed" title="lava.proc.lif.models.AbstractPyLifModelFixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFixed</span></code></a></p>
+<p>Implementation of Ternary Leaky-Integrate-and-Fire neural process
+with fixed point precision.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#lava.proc.lif.models.PyLifModelBitAcc" title="lava.proc.lif.models.PyLifModelBitAcc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lava.proc.lif.models.PyLifModelBitAcc</span></code></a></dt><dd><p>Bit-Accurate LIF neuron model</p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.proc.lif.process.TernaryLIF" title="lava.proc.lif.process.TernaryLIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.TernaryLIF</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.reset_voltage">
+<span class="sig-name descname"><span class="pre">reset_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.reset_voltage" title="Permalink to this definition"></a></dt>
+<dd><p>Reset voltage of all spiking neurons to 0.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=2)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.scale_threshold">
+<span class="sig-name descname"><span class="pre">scale_threshold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.scale_threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Placeholder method for scaling threshold(s).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Placeholder method to specify spiking behaviour of a LIF neuron.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['fixed_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.vth_hi">
+<span class="sig-name descname"><span class="pre">vth_hi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.vth_hi" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFixed.vth_lo">
+<span class="sig-name descname"><span class="pre">vth_lo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFixed.vth_lo" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyTernLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="lava.proc.lif.models.AbstractPyLifModelFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFloat</span></code></a></p>
+<p>Implementation of Ternary Leaky-Integrate-and-Fire neural process in
+floating point precision. This ProcessModel builds upon the floating
+point ProcessModel for LIF by adding upper and lower threshold voltages.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.proc.lif.process.TernaryLIF" title="lava.proc.lif.process.TernaryLIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.TernaryLIF</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.reset_voltage">
+<span class="sig-name descname"><span class="pre">reset_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.reset_voltage" title="Permalink to this definition"></a></dt>
+<dd><p>Reset voltage of all spiking neurons to 0.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=2)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Spiking activation for T-LIF: -1 spikes below lower threshold,
++1 spikes above upper threshold.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.vth_hi">
+<span class="sig-name descname"><span class="pre">vth_hi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.vth_hi" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat.vth_lo">
+<span class="sig-name descname"><span class="pre">vth_lo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat.vth_lo" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -413,9 +667,17 @@ point implementation.</p>
 <div class="section" id="module-lava.proc.lif.process">
 <span id="lava-proc-lif-process-module"></span><h2>lava.proc.lif.process module<a class="headerlink" href="#module-lava.proc.lif.process" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="lava.proc.lif.process.LIF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">LIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.LIF" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.process.AbstractLIF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">AbstractLIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.AbstractLIF" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Abstract class for variables common to all neurons with leaky
+integrator dynamics.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.process.LIF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">LIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.LIF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.process.AbstractLIF" title="lava.proc.lif.process.AbstractLIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.AbstractLIF</span></code></a></p>
 <p>Leaky-Integrate-and-Fire (LIF) neural Process.</p>
 <p>LIF dynamics abstracts to:
 u[t] = u[t-1] * (1-du) + a_in         # neuron current
@@ -428,12 +690,44 @@ v[t] = 0                              # reset at spike</p>
 <li><p><strong>du</strong> (<em>Inverse of decay time-constant for current decay.</em>) – </p></li>
 <li><p><strong>dv</strong> (<em>Inverse of decay time-constant for voltage decay.</em>) – </p></li>
 <li><p><strong>bias</strong> (<em>Mantissa part of neuron bias.</em>) – </p></li>
-<li><p><strong>bias_exp</strong> (<em>Exponent part of neuron bias</em><em>, </em><em>if needed. Mostly for fixed point</em>) – implementations. Unnecessary for floating point
-implementations. If specified, bias = bias * 2**bias_exp.</p></li>
+<li><p><strong>bias_exp</strong> (<em>Exponent part of neuron bias</em><em>, </em><em>if needed. Mostly for fixed point</em>) – implementations. Ignored for floating point
+implementations.</p></li>
 <li><p><strong>vth</strong> (<em>Neuron threshold voltage</em><em>, </em><em>exceeding which</em><em>, </em><em>the neuron will spike.</em>) – </p></li>
+<li><p><strong>use_graded_spike</strong> (<em>Flag to indicate graded spike. Default is False</em>) – </p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.process.TernaryLIF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">TernaryLIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.TernaryLIF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.process.AbstractLIF" title="lava.proc.lif.process.AbstractLIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.AbstractLIF</span></code></a></p>
+<p>Leaky-Integrate-and-Fire (LIF) neural Process with <em>ternary</em> spiking
+output, i.e., +1, 0, and -1 spikes. When the voltage of a T-LIF neuron
+exceeds its upper threshold (UTh), it issues a positive spike and when
+the voltage drops below its lower threshold (LTh), it issues a negative
+spike. Between the two thresholds, the neuron follows leaky linear
+dynamics.</p>
+<p>This class inherits the state variables and ports from AbstractLIF and
+adds two new threshold variables for upper and lower thresholds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vth_hi</strong> (<em>Upper threshold voltage</em><em>, </em><em>exceeding which the neuron spikes +1</em>) – </p></li>
+<li><p><strong>vth_lo</strong> (<em>Lower threshold voltage</em><em>, </em><em>below which the neuron spikes -1</em>) – </p></li>
+<li><p><strong>use_graded_spike</strong> (<em>Flag to indicate graded spike. Default is False</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lava.proc.lif.process.LIF</span></code></a></dt><dd><p>‘Regular’ leaky-integrate-and-fire neuron for</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation</span></code></p>
+</div>
 </dd></dl>
 
 </div>

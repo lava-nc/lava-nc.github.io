@@ -61,7 +61,7 @@ Typical Lava-DL workflow consists of:
 Getting Started
 ---------------
 
-**End to end tutorials**
+**End to end training tutorials**
 
 * `Oxford spike train regression <lava-lib-dl/slayer/notebooks/oxford/train.html>`__
 * `MNIST digit classification <lava-lib-dl/bootstrap/notebooks/mnist/train.html>`__ 
@@ -71,6 +71,12 @@ Getting Started
 **Deep dive tutorials**
 
 * `Dynamics and Neurons <lava-lib-dl/slayer/notebooks/neuron_dynamics/dynamics.html>`__
+
+**Inference tutorials**
+
+* `Oxford Inference <lava-lib-dl/netx/notebooks/oxford/run.html>`__
+* `PilotNet SNN Inference <lava-lib-dl/netx/notebooks/pilotnet_snn/run.html>`__
+* `PilotNet SDNN Inference <lava-lib-dl/netx/notebooks/pilotnet_sdnn/run.html>`__
 
 SLAYER 2.0
 ----------
@@ -279,6 +285,20 @@ Example Code
 
    # Connect network-output to the output process
    net.out_layer.neuron.s_out.connect(output.net_output_in)
+
+   from lava.proc import io   
+   
+   # Instantiate the processes
+   dataloader = io.dataloader.SpikeDataloader(dataset=test_set)
+   output_logger = io.sink.RingBuffer(shape=net.out_layer.shape, buffer=num_steps)
+   gt_logger = io.sink.RingBuffer(shape=(1,), buffer=num_steps)   
+   
+   # Connect the input to the network:
+   dataloader.ground_truth.connect(gt_logger.a_in)
+   dataloader.s_out.connect(net.in_layer.neuron.a_in)   
+   
+   # Connect network-output to the output process
+   net.out_layer.out.connect(output_logger.a_in)
 
 **Run the network**
 

@@ -173,9 +173,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/netx/utils.html">Utils</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
 </ul>
 </li>
@@ -432,15 +439,25 @@ Please link your pull request to the issue covering the request upon pull reques
 <li><p>Write your code</p>
 <ul>
 <li><p>Make code changes</p></li>
-<li><p>Run linting and unit tests (install <a class="reference external" href="https://pybuilder.io/documentation/installation">pybuilder</a>)</p>
-<div class="highlight-bash notranslate" id="lint-unit-tests"><div class="highlight"><pre><span></span><span class="c1">## Flake8 linting</span>
-pyb analyze
-<span class="c1">## Bandit security linting</span>
-pyb bandit
-<span class="c1">## Unit tests</span>
-pyb -E unit
-<span class="c1"># Alternately</span>
-python -m unittest discover -s lava/tests -p <span class="s2">&quot;test_*.py&quot;</span> -vvv
+<li><p>Run linting and unit tests</p>
+<div class="highlight-bash notranslate" id="lint-unit-tests"><div class="highlight"><pre><span></span><span class="c1"># Install poetry</span>
+pip install <span class="s2">&quot;poetry&gt;=1.1.13&quot;</span>
+poetry config virtualenvs.in-project <span class="nb">true</span>
+poetry install
+poetry shell
+
+<span class="c1"># Run linting</span>
+flakeheaven lint src/lava tests
+
+<span class="c1"># Run unit tests</span>
+pytest
+
+<span class="c1"># Run Secuity Linting</span>
+bandit -r src/lava/.
+
+<span class="c1">#### If security linting fails run bandit directly</span>
+<span class="c1">#### and format failures</span>
+bandit -r src/lava/. --format custom --msg-template <span class="s1">&#39;{abspath}:{line}: {test_id}[bandit]: {severity}: {msg}&#39;</span>
 </pre></div>
 </div>
 </li>
