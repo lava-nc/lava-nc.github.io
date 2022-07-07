@@ -259,22 +259,16 @@
 <li><p>Channel-based message passing between asynchronous processes (the Communicating Sequential Processes paradigm)</p></li>
 <li><p>Hyper-granular parallelism where computation emerges as the collective result of inter-process interactions</p></li>
 <li><p>Heterogeneous execution platforms with both conventional and neuromorphic components</p></li>
-<li><p>Measurement (and cross-platform modeling) of performance and energy consumption</p></li>
 <li><p>Offline backprop-based training of a wide range of neuron models and network topologies</p></li>
-<li><p>Online real-time learning using plasticity rules constrained to access only locally available process information</p></li>
 <li><p>Tools for generating complex spiking neural networks such as <em>dynamic neural fields</em> and networks that solve well-defined optimization problems</p></li>
 <li><p>Integration with third-party frameworks</p></li>
 </ol>
-<p>Future planned enhancements include support for emerging computational paradigms such as Vector Symbolic Architectures (aka Hyperdimensional Computing) and nonlinear oscillatory networks.</p>
 <p>For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.</p>
 <p>For more information, visit Lava on Github: <a class="reference external" href="https://github.com/lava-nc">https://github.com/lava-nc</a></p>
 </div>
 <div class="section" id="release-plan">
 <h1>Release plan<a class="headerlink" href="#release-plan" title="Permalink to this headline"></a></h1>
-<p>Intel’s Neuromorphic Computing Lab (NCL) developed the initial Lava architecture as the result of an iterative (re-)design process starting from its initial Loihi Nx SDK software.  As of October, 2021, this serves as the seed of the Lava open source project, which will be released in stages beginning October 2021 as final refactoring for the new Lava software architecture is completed.
-During the first two months after the initial Sept 30 launch, NCL will release the core Lava components and first algorithm libraries in regular bi-weekly releases.</p>
-<p>After this first wave of releases, expect NCL releases to relax to quarterly intervals, allowing more time for significant new features and enhancements to be implemented, as well as increasing engagement with community-wide contributors.</p>
-<p><strong>Initial release schedule:</strong></p>
+<p>Intel's Neuromorphic Computing Lab (NCL) developed the initial Lava architecture as the result of an iterative (re-)design process starting from its initial Loihi Nx SDK software. NCL released the seed of the Lava open source project in October 2021 and we now encourage Lava contributions from all neuromorphic developers. Below is a sample of the components and capabilities that we anticipate will be added to Lava in the coming months:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -283,45 +277,31 @@ During the first two months after the initial Sept 30 launch, NCL will release t
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Component</p></td>
-<td><p>HW Support</p></td>
 <td><p>Features</p></td>
 </tr>
-<tr class="row-even"><td><p>Magma</p></td>
-<td><p>CPU, GPU</p></td>
-<td><ul class="simple">
-<li><p>The generic high-level and HW-agnostic API supports creation of processes that execute asynchronously, in parallel and communicate via messages over channels to enable algorithm and application development.</p></li>
-<li><p>Compiler and Run time initially only support execution or simulation on CPU and GPU platform.</p></li>
-<li><p>A series of basic examples and tutorials explain Lava’s key architectural and usage concepts</p></li>
-</ul>
-</td>
+<tr class="row-even"><td><p>NcProcCompiler for Loihi 1</p></td>
+<td><p>Compiler and Runtime support for Intel's Loihi 1 neuromorphic architecture</p></td>
 </tr>
-<tr class="row-odd"><td><p>Process library</p></td>
-<td><p>CPU, GPU</p></td>
-<td><p>Process library initially supports basic processes to create spiking neural networks with different neuron models, connection topologies and input/output processes.</p></td>
-</tr>
-<tr class="row-even"><td><p>Deep Learning library</p></td>
-<td><p>CPU, GPU</p></td>
-<td><p>The Lava Deep Learning (DL) library allows for direct training of stateful and event-based spiking neural networks with backpropagation via SLAYER 2.0 as well as inference through Lava. Training and inference will initially only be supported on CPU/GPU HW.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Optimization library</p></td>
-<td><p>CPU, GPU</p></td>
-<td><p>The Lava optimization library offers a variety of constraint optimization solvers such as constraint satisfaction (CSP) or quadratic unconstraint binary optimization (QUBO) and more.</p></td>
-</tr>
-<tr class="row-even"><td><p>Dynamic Neural Field library</p></td>
-<td><p>CPU, GPU</p></td>
-<td><p>The Dynamic Neural Field (DNF) library allows to build neural attractor networks for working memory, decision making, basic neuronal representations, and learning.</p></td>
-</tr>
-<tr class="row-odd"><td><p>Magma and Process library</p></td>
-<td><p>Loihi 1, 2</p></td>
-<td><p>Compiler, Runtime and the process library will be upgraded to support Loihi 1 and 2 architectures.</p></td>
+<tr class="row-odd"><td><p>Learning Engine</p></td>
+<td><p>Loihi 2 learning engine simulator for bit-accurate learning simulation on CPU/GPU (stage 1 release) + Compiler and Runtime support for on-chip learning (stage 2 release)</p></td>
 </tr>
 <tr class="row-even"><td><p>Profiler</p></td>
-<td><p>CPU, GPU</p></td>
-<td><p>The Lava Profiler enable power and performance measurements on neuromorphic HW as well as the ability to simulate power and performance of neuromorphic HW on CPU/GPU platforms. Initially only CPU/GPU support will be available.</p></td>
+<td><p>Profiler enabling power and performance measurements on neuromorphic HW as well as the ability to simulate power and performance of neuromorphic HW on CPU/GPU platforms</p></td>
 </tr>
-<tr class="row-odd"><td><p>DL, DNF &amp; Optimization library</p></td>
-<td><p>Loihi 1, 2</p></td>
-<td><p>All algorithm libraries will be upgraded to support and be properly tested on neuromorphic HW.</p></td>
+<tr class="row-odd"><td><p>Sensor I/O Processes</p></td>
+<td><p>Processes supporting real-time input from RGB, DVS, and other sensors</p></td>
+</tr>
+<tr class="row-even"><td><p>Vector Symbolic Architecture library (lava-vsa)</p></td>
+<td><p>Processes enabling capabilties like continual learning and factorization using sparse hyperdimensional computing algorithms that run on neuromorphic architectures</p></td>
+</tr>
+<tr class="row-odd"><td><p>Optimization library (lava-optim) enhancements</p></td>
+<td><p>Process Models for Loihi neurocore compilation, new Processes supporting CSP, QUBO, and QP solvers</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic Neural Field library (lava-dnf) enhancements</p></td>
+<td><p>Process Models for Loihi neurocore compilation, new Processes supporting visual search capabilities</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deep Learning library (lava-dl) enhancements</p></td>
+<td><p>Process Models for Loihi neurocore compilation, enhanced support for gradient-based training of recurrent networks</p></td>
 </tr>
 </tbody>
 </table>
@@ -335,117 +315,6 @@ During the first two months after the initial Sept 30 launch, NCL will release t
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/68661711/135412508-4a93e20a-8b64-4723-a69b-de8f4b5902f7.png"><img alt="image" src="https://user-images.githubusercontent.com/68661711/135412508-4a93e20a-8b64-4723-a69b-de8f4b5902f7.png" /></a>
 <p>All of Lava’s core APIs and higher-level components are released, by default, with permissive BSD 3 licenses in order to encourage the broadest possible community contribution.  Lower-level Magma components needed for mapping processes to neuromorphic backends are generally released with more restrictive LGPL-2.1 licensing to discourage commercial proprietary forks of these technologies.  The specific components of Magma needed to compile processes specifically to Intel Loihi chips remains proprietary to Intel and is not provided through this GitHub site (see below).  Similar Magma-layer code for other future commercial neuromorphic platforms likely will also remain proprietary.</p>
 </div>
-<div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
-<div class="section" id="cloning-lava-and-running-from-source">
-<h2>Cloning Lava and Running from Source<a class="headerlink" href="#cloning-lava-and-running-from-source" title="Permalink to this headline"></a></h2>
-<p>Open a python 3 terminal and run based on the OS you are on:</p>
-<div class="section" id="linux-macos">
-<h3>[Linux/MacOS]<a class="headerlink" href="#linux-macos" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
-pip install -U pip
-pip install <span class="s2">&quot;poetry&gt;=1.1.13&quot;</span>
-git clone git@github.com:lava-nc/lava.git
-<span class="nb">cd</span> lava
-poetry config virtualenvs.in-project <span class="nb">true</span>
-poetry install
-<span class="nb">source</span> .venv/bin/activate
-pytest
-
-<span class="c1">## When running tests if you see &#39;OSError: [Errno 24] Too many open files&#39;</span>
-<span class="c1">## consider setting ulimit using `ulimit -n 4096`</span>
-<span class="c1">## See FAQ for more info: https://github.com/lava-nc/lava/wiki/Frequently-Asked-Questions-(FAQ)#install</span>
-</pre></div>
-</div>
-<p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo $PYTHONPATH and ensure ‘lava/src’ is the first entry that precedes any additional Lava library src paths.</p>
-</div>
-<div class="section" id="windows">
-<h3>[Windows]<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Commands using PowerShell
-<span class="go">cd $HOME</span>
-<span class="go">git clone git@github.com:lava-nc/lava.git</span>
-<span class="go">cd lava</span>
-<span class="go">python3 -m venv .venv</span>
-<span class="go">.venv\Scripts\activate</span>
-<span class="go">pip install -U pip</span>
-<span class="go">pip install &quot;poetry&gt;=1.1.13&quot;</span>
-<span class="go">poetry config virtualenvs.in-project true</span>
-<span class="go">poetry install</span>
-<span class="go">pytest</span>
-</pre></div>
-</div>
-<p>Note that you should install the core Lava repository (lava) before installing other Lava libraries such as lava-optimization or lava-dl. Test your PYTHONPATH using echo %PYTHONPATH% and ensure ‘lavasrc’ is the first entry that precedes any additional Lava library src paths.</p>
-<p>You should expect the following output after running the unit tests:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest
-<span class="go">============================================== test session starts ==============================================</span>
-<span class="go">platform linux -- Python 3.8.10, pytest-7.0.1, pluggy-1.0.0</span>
-<span class="go">rootdir: /home/user/lava, configfile: pyproject.toml, testpaths: tests</span>
-<span class="go">plugins: cov-3.0.0</span>
-<span class="go">collected 205 items</span>
-
-<span class="go">tests/lava/magma/compiler/test_channel_builder.py .                                                       [  0%]</span>
-<span class="go">tests/lava/magma/compiler/test_compiler.py ........................                                       [ 12%]</span>
-<span class="go">tests/lava/magma/compiler/test_node.py ..                                                                 [ 13%]</span>
-<span class="go">tests/lava/magma/compiler/builder/test_channel_builder.py .                                               [ 13%]</span>
-
-<span class="go">...... pytest output ...</span>
-
-<span class="go">tests/lava/proc/sdn/test_models.py ........                                                               [ 98%]</span>
-<span class="go">tests/lava/proc/sdn/test_process.py ...                                                                   [100%]</span>
-<span class="go">=============================================== warnings summary ================================================</span>
-
-<span class="go">...... pytest output ...</span>
-
-<span class="go">src/lava/proc/lif/process.py                                                           38      0   100%</span>
-<span class="go">src/lava/proc/monitor/models.py                                                        27      0   100%</span>
-<span class="go">src/lava/proc/monitor/process.py                                                       79      0   100%</span>
-<span class="go">src/lava/proc/sdn/models.py                                                           159      9    94%   199-202, 225-231</span>
-<span class="go">src/lava/proc/sdn/process.py                                                           59      0   100%</span>
-<span class="go">-----------------------------------------------------------------------------------------------------------------TOTAL</span>
-<span class="go">                                                                                    4048    453    89%</span>
-
-<span class="go">Required test coverage of 85.0% reached. Total coverage: 88.81%</span>
-<span class="go">============================ 199 passed, 6 skipped, 2 warnings in 118.17s (0:01:58) =============================</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="alternative-installing-lava-from-binaries">
-<h2>[Alternative] Installing Lava from Binaries<a class="headerlink" href="#alternative-installing-lava-from-binaries" title="Permalink to this headline"></a></h2>
-<p>If you only need the lava package in your python environment, we will publish
-Lava releases via <a class="reference external" href="https://github.com/lava-nc/lava/releases">GitHub Releases</a>.
-Please download the package and install it.</p>
-<p>Open a python terminal and run:</p>
-<div class="section" id="windows-macos-linux">
-<h3>[Windows/MacOS/Linux]<a class="headerlink" href="#windows-macos-linux" title="Permalink to this headline"></a></h3>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv python3_venv</span>
-<span class="go">pip install -U pip</span>
-<span class="go">pip install lava-nc-0.1.0.tar.gz</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="running-lava-on-intel-loihi">
-<h1>Running Lava on Intel Loihi<a class="headerlink" href="#running-lava-on-intel-loihi" title="Permalink to this headline"></a></h1>
-<p>Intel’s neuromorphic Loihi 1 or 2 research systems are currently not available
-commercially. Developers interested in using Lava with Loihi systems, need to
-join the Intel Neuromorphic Research Community (INRC). Once a member of the
-INRC, developers will gain access to cloud-hosted Loihi systems or are able
-to obtain physical Loihi systems on a loan basis. In addition, Intel will
-provide further proprietary components of the magma library which enable
-compiling processes for Loihi systems that need to be installed into the
-same Lava namespace.</p>
-<p>Login to Intel External vLab Machines. Instructions were sent to you during
-your INRC Account Setup. If you do not know/remember the login
-instructions, email: <a class="reference external" href="mailto:nrc_support&#37;&#52;&#48;intel-research&#46;net">nrc_support<span>&#64;</span>intel-research<span>&#46;</span>net</a></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Login to INRC VM with your credentials
-<span class="gp"># </span>Follow the instructions to Install or Clone Lava
-<span class="go">cd /nfs/ncl/releases/lava/0.1.0</span>
-<span class="go">pip install lava-nc-0.1.0.tar.gz</span>
-</pre></div>
-</div>
-<p>Please email <a class="reference external" href="mailto:inrc_interest&#37;&#52;&#48;intel&#46;com">inrc_interest<span>&#64;</span>intel<span>&#46;</span>com</a> to request a research proposal template to apply for INRC membership.</p>
 <div class="section" id="coding-example">
 <h2>Coding example<a class="headerlink" href="#coding-example" title="Permalink to this headline"></a></h2>
 <div class="section" id="building-a-simple-feed-forward-network">
