@@ -408,50 +408,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">s_out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In contrast this process model also implements the LIF process but by structurally allocating neural network resources on a virtual Loihi 1 neuro core.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">Loihi1NeuroCore</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.nc.model</span> <span class="kn">import</span> <span class="n">NcLoihiProcessModel</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.nc.ports</span> <span class="kn">import</span> <span class="n">NcInPort</span><span class="p">,</span> <span class="n">NcOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.nc.type</span> <span class="kn">import</span> <span class="n">LavaNcType</span><span class="p">,</span> <span class="n">NcVar</span>
-
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">)</span> <span class="c1">#Note that the NcLoihiProcessModel class implies the useage of the Loihi SyncProtcol</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">Loihi1NeuroCore</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">NcLifModel</span><span class="p">(</span><span class="n">NcLoihiProcessModel</span><span class="p">):</span>
-    <span class="c1"># Declare port implementation</span>
-    <span class="n">a_in</span><span class="p">:</span> <span class="n">InPort</span> <span class="o">=</span>   <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcInPort</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-    <span class="n">s_out</span><span class="p">:</span> <span class="n">OutPort</span> <span class="o">=</span> <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcOutPort</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="c1"># Declare variable implementation</span>
-    <span class="n">u</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>         <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-    <span class="n">v</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>         <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-    <span class="n">b</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>         <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-    <span class="n">du</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>        <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-    <span class="n">dv</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>        <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-    <span class="n">vth</span><span class="p">:</span> <span class="n">NcVar</span> <span class="o">=</span>       <span class="n">LavaNcType</span><span class="p">(</span><span class="n">NcVar</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">allocate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net</span><span class="p">:</span> <span class="n">mg</span><span class="o">.</span><span class="n">Net</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Allocates neural resources in &#39;virtual&#39; neuro core.&quot;&quot;&quot;</span>
-        <span class="n">num_neurons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_args</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="c1"># Allocate output axons</span>
-        <span class="n">out_ax</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">out_ax</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">)</span>
-        <span class="n">net</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">out_ax</span><span class="p">)</span>
-        <span class="c1"># Allocate compartments</span>
-        <span class="n">cx_cfg</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">cx_cfg</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                               <span class="n">du</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">,</span>
-                               <span class="n">dv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="p">,</span>
-                               <span class="n">vth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vth</span><span class="p">)</span>
-        <span class="n">cx</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">cx</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">,</span>
-                                   <span class="n">u</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">,</span>
-                                   <span class="n">v</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span>
-                              <span class="n">b_mant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span>
-                              <span class="n">cfg</span><span class="o">=</span><span class="n">cx_cfg</span><span class="p">)</span>
-        <span class="n">cx</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">out_ax</span><span class="p">)</span>
-        <span class="c1"># Allocate dendritic accumulators</span>
-        <span class="n">da</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_neurons</span><span class="p">)</span>
-        <span class="n">da</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">cx</span><span class="p">)</span>
-        <span class="n">net</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>
