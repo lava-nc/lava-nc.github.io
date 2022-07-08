@@ -266,46 +266,6 @@
 <p>For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.</p>
 <p>For more information, visit Lava on Github: <a class="reference external" href="https://github.com/lava-nc">https://github.com/lava-nc</a></p>
 </div>
-<div class="section" id="release-plan">
-<h1>Release plan<a class="headerlink" href="#release-plan" title="Permalink to this headline"></a></h1>
-<p>Intel's Neuromorphic Computing Lab (NCL) developed the initial Lava architecture as the result of an iterative (re-)design process starting from its initial Loihi Nx SDK software. NCL released the seed of the Lava open source project in October 2021 and we now encourage Lava contributions from all neuromorphic developers. Below is a sample of the components and capabilities that we anticipate will be added to Lava in the coming months:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 4%" />
-<col style="width: 85%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>Component</p></td>
-<td><p>Features</p></td>
-</tr>
-<tr class="row-even"><td><p>NcProcCompiler for Loihi 1</p></td>
-<td><p>Compiler and Runtime support for Intel's Loihi 1 neuromorphic architecture</p></td>
-</tr>
-<tr class="row-odd"><td><p>Learning Engine</p></td>
-<td><p>Loihi 2 learning engine simulator for bit-accurate learning simulation on CPU/GPU (stage 1 release) + Compiler and Runtime support for on-chip learning (stage 2 release)</p></td>
-</tr>
-<tr class="row-even"><td><p>Profiler</p></td>
-<td><p>Profiler enabling power and performance measurements on neuromorphic HW as well as the ability to simulate power and performance of neuromorphic HW on CPU/GPU platforms</p></td>
-</tr>
-<tr class="row-odd"><td><p>Sensor I/O Processes</p></td>
-<td><p>Processes supporting real-time input from RGB, DVS, and other sensors</p></td>
-</tr>
-<tr class="row-even"><td><p>Vector Symbolic Architecture library (lava-vsa)</p></td>
-<td><p>Processes enabling capabilties like continual learning and factorization using sparse hyperdimensional computing algorithms that run on neuromorphic architectures</p></td>
-</tr>
-<tr class="row-odd"><td><p>Optimization library (lava-optim) enhancements</p></td>
-<td><p>Process Models for Loihi neurocore compilation, new Processes supporting CSP, QUBO, and QP solvers</p></td>
-</tr>
-<tr class="row-even"><td><p>Dynamic Neural Field library (lava-dnf) enhancements</p></td>
-<td><p>Process Models for Loihi neurocore compilation, new Processes supporting visual search capabilities</p></td>
-</tr>
-<tr class="row-odd"><td><p>Deep Learning library (lava-dl) enhancements</p></td>
-<td><p>Process Models for Loihi neurocore compilation, enhanced support for gradient-based training of recurrent networks</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="lava-organization">
 <h1>Lava organization<a class="headerlink" href="#lava-organization" title="Permalink to this headline"></a></h1>
 <p>Processes are the fundamental building block in the Lava architecture from which all algorithms and applications are built. Processes are stateful objects with internal variables, input and output ports for message-based communication via channels and multiple behavioral models. This architecture is inspired from the Communicating Sequential Process (CSP) paradigm for asynchronous, parallel systems that interact via message passing. Lava processes implementing the CSP API can be compiled and executed via a cross-platform compiler and runtime that support execution on neuromorphic and conventional von-Neumann HW. Together, these components form the low-level Magma layer of Lava.</p>
