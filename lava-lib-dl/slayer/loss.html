@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loss &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -239,107 +240,9 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="module-lava.lib.dl.slayer.loss">
-<span id="loss"></span><h1>Loss<a class="headerlink" href="#module-lava.lib.dl.slayer.loss" title="Permalink to this headline"></a></h1>
-<p>This module provides some pre-built loss methods to be used with
-spike-train. Standard PyTorch loss are also compatible.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeMax">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeMax" title="Permalink to this definition"></a></dt>
-<dd><p>Spike max (NLL) loss.</p>
-<div class="math">
-<p><img src="../../_images/math/04ed2aca03d477e0244246ca4a8971c7557b69fb.png" alt="L &amp;= \begin{cases}
-    -\int_T
-        {\bf 1}[\text{label}]^\top
-        \log(\boldsymbol p(t))\,\text dt
-        &amp;\text{ if moving window}\\
-    -{\bf 1}[\text{label}]^\top
-    \log(\boldsymbol p) &amp;\text{ otherwise}
-\end{cases}"/></p>
-</div><p>Note: input is always collapsed in spatial dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>moving_window</strong> (<em>int</em>) – size of moving window. If not None, assumes label to be specified
-at every time step. Defaults to None.</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – confidence mode. One of ‘probability’|’softmax’.
-Defaults to ‘probability’.</p></li>
-<li><p><strong>reduction</strong> (<em>str</em>) – loss reduction method. One of ‘sum’|’mean’. Defaults to ‘sum’.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeMax.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeMax.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Forward computation of loss.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeRate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeRate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">false_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moving_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeRate" title="Permalink to this definition"></a></dt>
-<dd><p>Spike rate loss.</p>
-<div class="math">
-<p><img src="../../_images/math/c3bb6b6437235a036d7d8241c441d7982294d446.png" alt="\hat {\boldsymbol r} &amp;=
-    r_\text{true}\,{\bf 1}[\text{label}] +
-    r_\text{false}\,(1 - {\bf 1}[\text{label}])\
-
-L &amp;= \begin{cases}
-\frac{1}{2}\int_T(
-    {\boldsymbol r}(t) - \hat{\boldsymbol r}(t)
-)^\top {\bf 1}\,\text dt &amp;\text{ if moving window}\\
-\frac{1}{2}(
-    \boldsymbol r - \hat{\boldsymbol r}
-)^\top 1 &amp;\text{ otherwise}
-\end{cases}"/></p>
-</div><p>Note: input is always collapsed in spatial dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_rate</strong> (<em>float</em>) – true spiking rate.</p></li>
-<li><p><strong>false_rate</strong> (<em>float</em>) – false spiking rate.</p></li>
-<li><p><strong>moving_window</strong> (<em>int</em>) – size of moving window. If not None, assumes label to be specified
-at every time step. Defaults to None.</p></li>
-<li><p><strong>reduction</strong> (<em>str</em>) – loss reduction method. One of ‘sum’|’mean’. Defaults to ‘sum’.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeRate.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeRate.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Forward computation of loss.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeTime">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.loss.</span></span><span class="sig-name descname"><span class="pre">SpikeTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeTime" title="Permalink to this definition"></a></dt>
-<dd><p>Spike-time based loss. It is similar to van Rossum distance between
-output and desired spike train.</p>
-<div class="math">
-<p><img src="../../_images/math/bd53c1a3d22cdb0d4e5c96ff49ae3d2e82e17d20.png" alt="L = \int_0^T \left( \varepsilon * (s - \hat{s}) \right)(t)^2\,
-    \text{d}t"/></p>
-</div><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>time_constant</strong> (<em>int</em>) – time constant of low pass filter. Defaults to 5.</p></li>
-<li><p><strong>length</strong> (<em>int</em>) – length of low pass filter. Defaults to 100.</p></li>
-<li><p><strong>filter_order</strong> (<em>int</em>) – order of low pass filter. Defaults to 1.</p></li>
-<li><p><strong>reduction</strong> (<em>str</em>) – mean square reduction. Options are ‘mean’|’sum’. Defaults to ‘sum’.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.loss.SpikeTime.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.loss.SpikeTime.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Forward computation of loss.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
+<section id="loss">
+<h1>Loss<a class="headerlink" href="#loss" title="Permalink to this headline"></a></h1>
+</section>
 
 
            </div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deep Learning &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -237,9 +238,9 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="deep-learning">
+<section id="deep-learning">
 <h1>Deep Learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline"></a></h1>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
 <p>Lava-DL (<code class="docutils literal notranslate"><span class="pre">lava-dl</span></code>) is a library of deep learning tools within Lava that
 support offline training, online training and inference methods for
@@ -267,8 +268,8 @@ Networks.</p></li>
 deployment of event-based deep neural networks on traditional as well as
 neuromorphic backends.</p>
 <p>More tools will be added in the future.</p>
-</div>
-<div class="section" id="lava-dl-workflow">
+</section>
+<section id="lava-dl-workflow">
 <h2>Lava-DL Workflow<a class="headerlink" href="#lava-dl-workflow" title="Permalink to this headline"></a></h2>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/140595634-a97886c6-280a-4771-830b-ae47a9324612.png" alt="Drawing" style="max-height: 400px;"/>
@@ -283,8 +284,8 @@ training.</p></li>
 lava proces from the hdf5 network description of the trained network and
 enables inference on different backends.</p></li>
 </ul>
-</div>
-<div class="section" id="getting-started">
+</section>
+<section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
 <p><strong>End to end training tutorials</strong></p>
 <ul class="simple">
@@ -303,8 +304,8 @@ enables inference on different backends.</p></li>
 <li><p><a class="reference external" href="lava-lib-dl/netx/notebooks/pilotnet_snn/run.html">PilotNet SNN Inference</a></p></li>
 <li><p><a class="reference external" href="lava-lib-dl/netx/notebooks/pilotnet_sdnn/run.html">PilotNet SDNN Inference</a></p></li>
 </ul>
-</div>
-<div class="section" id="slayer-2-0">
+</section>
+<section id="slayer-2-0">
 <h2>SLAYER 2.0<a class="headerlink" href="#slayer-2-0" title="Permalink to this headline"></a></h2>
 <p>SLAYER 2.0 (<cite>lava.lib.dl.slayer</cite>) is an enhanced version of
 <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a>. Most noteworthy
@@ -320,7 +321,7 @@ platform independent <strong>hdf5 network exchange</strong> format.</p>
 <p>In future versions, SLAYER will get completely integrated into Lava to
 train Lava Processes directly. This will eliminate the need for
 explicitly exporting and importing the trained networks.</p>
-<div class="section" id="example-code">
+<section id="example-code">
 <h3>Example Code<a class="headerlink" href="#example-code" title="Permalink to this headline"></a></h3>
 <p><strong>Import modules</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
@@ -374,9 +375,9 @@ explicitly exporting and importing the trained networks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="s1">&#39;network.net&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="bootstrap">
+</section>
+</section>
+<section id="bootstrap">
 <h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline"></a></h2>
 <p>In general ANN-SNN conversion methods for rate based SNN result in high latency of the network during inference. This is because the rate interpretation of a spiking neuron using ReLU acitvation unit breaks down for short inference times. As a result, the network requires many time steps per sample to achieve adequate inference results.</p>
 <p>Bootstrap (<cite>lava.lib.dl.bootstrap</cite>) enables rapid training of rate based SNNs by translating them to an equivalent dynamic ANN representation which leads to SNN performance close to the equivalent ANN and low latency inference. More details <a class="reference external" href="lava-lib-dl/bootstrap/bootstrap.html">here</a>. It also supports <em>hybrid training</em>
@@ -384,7 +385,7 @@ a mixed ANN-SNN network to minimize the ANN to SNN performance gap. This method 
 <p>It has similar API as <cite>lava.lib.dl.slayer</cite> and supports exporting
 trained models using the platform independent <strong>hdf5 network exchange</strong>
 format.</p>
-<div class="section" id="example-code-1">
+<section id="example-code-1">
 <span id="id1"></span><h3>Example Code<a class="headerlink" href="#example-code-1" title="Permalink to this headline"></a></h3>
 <p><strong>Import modules</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lava.lib.dl.bootstrap</span> <span class="k">as</span> <span class="nn">bootstrap</span>
@@ -441,9 +442,9 @@ format.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="s1">&#39;network.net&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="network-exchange-netx-library">
+</section>
+</section>
+<section id="network-exchange-netx-library">
 <h2>Network Exchange (NetX) Library<a class="headerlink" href="#network-exchange-netx-library" title="Permalink to this headline"></a></h2>
 <p>For inference using Lava, Network Exchange Library (<cite>lava.lib.dl.netx</cite>) provides an
 automated API for loading SLAYER-trained models as Lava Processes, which
@@ -451,7 +452,7 @@ can be directly run on a desired backend. <code class="docutils literal notransl
 models saved via SLAYER using the hdf5 network exchange format. The
 details of hdf5 network description specification can be found
 <a class="reference external" href="lava-lib-dl/netx/netx.html">here</a>.</p>
-<div class="section" id="example-code-2">
+<section id="example-code-2">
 <span id="id2"></span><h3>Example Code<a class="headerlink" href="#example-code-2" title="Permalink to this headline"></a></h3>
 <p><strong>Import modules</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.dl.netx</span> <span class="kn">import</span> <span class="n">hdf5</span>
@@ -499,9 +500,9 @@ details of hdf5 network description specification can be found
 <span class="n">net</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">rcnd</span><span class="o">.</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">total_run_time</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">rcfg</span><span class="o">.</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="detailed-description">
+</section>
+</section>
+<section id="detailed-description">
 <h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Detailed description:</span></p>
@@ -511,8 +512,8 @@ details of hdf5 network description specification can be found
 <li class="toctree-l1"><a class="reference internal" href="lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

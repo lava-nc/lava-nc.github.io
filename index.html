@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lava Software Framework &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -235,7 +236,7 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-software-framework">
+<section id="lava-software-framework">
 <h1>Lava Software Framework<a class="headerlink" href="#lava-software-framework" title="Permalink to this headline"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -246,8 +247,8 @@
 </div>
 <p align="center"><b>
   A software framework for neuromorphic computing
-</b></p></div>
-<div class="section" id="introduction">
+</b></p></section>
+<section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
 <p>Lava is an open-source software framework for developing neuro-inspired applications and mapping them to neuromorphic hardware. Lava provides developers with the tools and abstractions to develop applications that fully exploit the principles of neural computation.  Constrained in this way, like the brain, Lava applications allow neuromorphic platforms to intelligently process, learn from, and respond to real-world data with great gains in energy efficiency and speed compared to conventional computer architectures.</p>
 <p>The vision behind Lava is an open, community-developed code base that unites the full range of approaches pursued by the neuromorphic computing community. It provides a modular, composable, and extensible structure for researchers to integrate their best ideas into a growing algorithms library, while introducing new abstractions that allow others to build on those ideas without having to reinvent them.</p>
@@ -263,10 +264,10 @@
 <li><p>Tools for generating complex spiking neural networks such as <em>dynamic neural fields</em> and networks that solve well-defined optimization problems</p></li>
 <li><p>Integration with third-party frameworks</p></li>
 </ol>
-<p>For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA/OpenCL code.</p>
+<p>For maximum developer productivity, Lava blends a simple Python Interface with accelerated performance using underlying C/C++/CUDA code.</p>
 <p>For more information, visit Lava on Github: <a class="reference external" href="https://github.com/lava-nc">https://github.com/lava-nc</a></p>
-</div>
-<div class="section" id="lava-organization">
+</section>
+<section id="lava-organization">
 <h1>Lava organization<a class="headerlink" href="#lava-organization" title="Permalink to this headline"></a></h1>
 <p>Processes are the fundamental building block in the Lava architecture from which all algorithms and applications are built. Processes are stateful objects with internal variables, input and output ports for message-based communication via channels and multiple behavioral models. This architecture is inspired from the Communicating Sequential Process (CSP) paradigm for asynchronous, parallel systems that interact via message passing. Lava processes implementing the CSP API can be compiled and executed via a cross-platform compiler and runtime that support execution on neuromorphic and conventional von-Neumann HW. Together, these components form the low-level Magma layer of Lava.</p>
 <p>At a higher level, the process library contains a growing set of generic processes that implement various kinds of neuron models, neural network connection topologies, IO processes, etc. These execute on either CPU, GPU or neuromorphic HW such as Intel’s Loihi architecture.</p>
@@ -274,10 +275,9 @@
 <p>Lava is open to modification and extension to third-party libraries like Nengo, ROS, YARP and others. Additional utilities also allow users to profile power and performance of workloads, visualize complex networks, or help with the float to fixed point conversions required for many low-precision devices such as neuromorphic HW.</p>
 <a class="reference external image-reference" href="https://user-images.githubusercontent.com/68661711/135412508-4a93e20a-8b64-4723-a69b-de8f4b5902f7.png"><img alt="image" src="https://user-images.githubusercontent.com/68661711/135412508-4a93e20a-8b64-4723-a69b-de8f4b5902f7.png" /></a>
 <p>All of Lava’s core APIs and higher-level components are released, by default, with permissive BSD 3 licenses in order to encourage the broadest possible community contribution.  Lower-level Magma components needed for mapping processes to neuromorphic backends are generally released with more restrictive LGPL-2.1 licensing to discourage commercial proprietary forks of these technologies.  The specific components of Magma needed to compile processes specifically to Intel Loihi chips remains proprietary to Intel and is not provided through this GitHub site (see below).  Similar Magma-layer code for other future commercial neuromorphic platforms likely will also remain proprietary.</p>
-</div>
-<div class="section" id="coding-example">
+<section id="coding-example">
 <h2>Coding example<a class="headerlink" href="#coding-example" title="Permalink to this headline"></a></h2>
-<div class="section" id="building-a-simple-feed-forward-network">
+<section id="building-a-simple-feed-forward-network">
 <h3>Building a simple feed-forward network<a class="headerlink" href="#building-a-simple-feed-forward-network" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate Lava processes to build network</span>
 <span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
@@ -299,8 +299,8 @@
 <span class="n">lif1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="creating-a-custom-lava-process">
+</section>
+<section id="creating-a-custom-lava-process">
 <h3>Creating a custom Lava process<a class="headerlink" href="#creating-a-custom-lava-process" title="Permalink to this headline"></a></h3>
 <p>A process has input and output ports to interact with other processes, internal variables may have different behavioral implementations in different programming languages or for different HW platforms.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
@@ -331,8 +331,8 @@
        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vth&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="creating-process-models">
+</section>
+<section id="creating-process-models">
 <h3>Creating process models<a class="headerlink" href="#creating-process-models" title="Permalink to this headline"></a></h3>
 <p>Process models are used to provide different behavioral models of a process. This Python model implements the LIF process, the Loihi synchronization protocol and requires a CPU compute resource to run.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -368,15 +368,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">s_out</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="stay-in-touch">
+</section>
+</section>
+</section>
+<section id="stay-in-touch">
 <h1>Stay in touch<a class="headerlink" href="#stay-in-touch" title="Permalink to this headline"></a></h1>
 <p>To receive regular updates on the latest developments and releases of the Lava Software Framework please <a class="reference external" href="http://eepurl.com/hJCyhb">subscribe to our newsletter</a>.</p>
-</div>
-<div class="section" id="documentation-overview">
+</section>
+<section id="documentation-overview">
 <h1>Documentation Overview<a class="headerlink" href="#documentation-overview" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
@@ -420,15 +419,15 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
+</section>
+<section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
 
            </div>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.model.py package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -234,16 +235,16 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-model-py-package">
+<section id="lava-magma-core-model-py-package">
 <h1>lava.magma.core.model.py package<a class="headerlink" href="#lava-magma-core-model-py-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.model.py.model">
+</section>
+<section id="module-lava.magma.core.model.py.model">
 <span id="lava-magma-core-model-py-model-module"></span><h2>lava.magma.core.model.py.model module<a class="headerlink" href="#module-lava.magma.core.model.py.model" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.AbstractPyProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">AbstractPyProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">AbstractPyProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract interface for Python ProcessModels.</p>
 <dl class="simple">
@@ -283,11 +284,6 @@ to add ports to py_ports and var_ports list.</p>
 <dd><p>Wait for all the ports to shutdown.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.AbstractPyProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel.proc_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.AbstractPyProcessModel.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel.run" title="Permalink to this definition"></a></dt>
@@ -309,9 +305,34 @@ py_ports) and calls the run function.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyAsyncProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyAsyncProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></code></a></p>
-<p>Process Model for Asynchronous Processes.</p>
+<p>Process Model for Asynchronous Processes executed on CPU.</p>
+<p>This ProcessModel is used in combination with the AsyncProtocol to
+implement asynchronous execution. This means that the processes could run
+with a varying speed and message passing is possible at any time.</p>
+<p>In order to use the PyAsyncProcessModel, the <cite>run_async()</cite> function
+must be implemented which defines the behavior of the underlying Process.</p>
+<p class="rubric">Example</p>
+<p>&#64;implements(proc=SimpleProcess, protocol=AsyncProtocol)
+&#64;requires(CPU)
+class SimpleProcessModel(PyAsyncProcessModel):</p>
+<blockquote>
+<div><p>u = LavaPyType(int, int)
+v = LavaPyType(int, int)</p>
+<dl>
+<dt>def run_async(self):</dt><dd><dl>
+<dt>while True:</dt><dd><p>self.u = self.u + 10
+self.v = self.v + 1000
+if self.check_for_stop_cmd():</p>
+<blockquote>
+<div><p>return</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.Response">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Response</span></span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.Response" title="Permalink to this definition"></a></dt>
@@ -332,7 +353,7 @@ py_ports) and calls the run function.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.Response.STATUS_DONE">
 <span class="sig-name descname"><span class="pre">STATUS_DONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([0.])</span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.Response.STATUS_DONE" title="Permalink to this definition"></a></dt>
-<dd><p>Signfies Ack or Finished with the Command</p>
+<dd><p>Signifies Ack or Finished with the Command</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -367,26 +388,6 @@ py_ports) and calls the run function.</p>
 <dd><p>Checks if the RS has sent a STOP command.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.model_id">
-<span class="sig-name descname"><span class="pre">model_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.model_id" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.proc_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.process_to_service">
-<span class="sig-name descname"><span class="pre">process_to_service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspSendPort" title="lava.magma.compiler.channels.pypychannel.CspSendPort"><span class="pre">CspSendPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.process_to_service" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.py_ports">
-<span class="sig-name descname"><span class="pre">py_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><span class="pre">AbstractPyPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.py_ports" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.run_async">
 <span class="sig-name descname"><span class="pre">run_async</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.run_async" title="Permalink to this definition"></a></dt>
@@ -394,28 +395,31 @@ py_ports) and calls the run function.</p>
 RUN command is received.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.service_to_process">
-<span class="sig-name descname"><span class="pre">service_to_process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort"><span class="pre">CspRecvPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.service_to_process" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.var_id_to_var_map">
-<span class="sig-name descname"><span class="pre">var_id_to_var_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.var_id_to_var_map" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.var_ports">
-<span class="sig-name descname"><span class="pre">var_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.var_ports" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyLoihiProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyLoihiProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></code></a></p>
-<p>ProcessModel for processes that resembles process on Loihi.</p>
+<p>ProcessModel to simulate a Process on Loihi using CPU.</p>
+<p>The PyLoihiProcessModel implements the same phases of execution as the
+Loihi 1/2 processor but is executed on CPU. See the LoihiProtocol for a
+description of the different phases.</p>
+<p class="rubric">Example</p>
+<p>&#64;implements(proc=RingBuffer, protocol=LoihiProtocol)
+&#64;requires(CPU)
+&#64;tag(‘floating_pt’)
+class PySendModel(AbstractPyRingBuffer):</p>
+<blockquote>
+<div><p># Ring buffer send process model.
+s_out: PyOutPort = LavaPyType(PyOutPort.VEC_DENSE, float)
+data: np.ndarray = LavaPyType(np.ndarray, float)</p>
+<dl class="simple">
+<dt>def run_spk(self) -&gt; None:</dt><dd><p>buffer = self.data.shape[-1]
+self.s_out.send(self.data[…, (self.time_step - 1) % buffer])</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.Phase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Phase</span></span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.Phase" title="Permalink to this definition"></a></dt>
@@ -522,11 +526,6 @@ RUN command is received.</p>
 executed or not for the current timestep.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.model_id">
-<span class="sig-name descname"><span class="pre">model_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.model_id" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.post_guard">
 <span class="sig-name descname"><span class="pre">post_guard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.post_guard" title="Permalink to this definition"></a></dt>
@@ -540,21 +539,6 @@ executed or not for the current timestep.</p>
 <dd><p>Guard function that determines if pre lrn mgmt phase will get
 executed or not for the current timestep.</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.proc_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.process_to_service">
-<span class="sig-name descname"><span class="pre">process_to_service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspSendPort" title="lava.magma.compiler.channels.pypychannel.CspSendPort"><span class="pre">CspSendPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.process_to_service" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.py_ports">
-<span class="sig-name descname"><span class="pre">py_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><span class="pre">AbstractPyPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.py_ports" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.run_lrn">
@@ -580,25 +564,10 @@ executed or not for the current timestep.</p>
 <dd><p>Function that runs in Spiking Phase</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.service_to_process">
-<span class="sig-name descname"><span class="pre">service_to_process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort"><span class="pre">CspRecvPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.service_to_process" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.var_id_to_var_map">
-<span class="sig-name descname"><span class="pre">var_id_to_var_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.var_id_to_var_map" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.var_ports">
-<span class="sig-name descname"><span class="pre">var_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.var_ports" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
-</div>
-<div class="section" id="module-lava.magma.core.model.py.ports">
+</section>
+<section id="module-lava.magma.core.model.py.ports">
 <span id="lava-magma-core-model-py-ports-module"></span><h2>lava.magma.core.model.py.ports module<a class="headerlink" href="#module-lava.magma.core.model.py.ports" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.AbstractPyIOPort">
@@ -685,8 +654,65 @@ backend messaging infrastructure which is used to send and receive data.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.AbstractTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractTransformer</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Interface for Transformers that are used in receiving PyPorts to
+transform data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.AbstractTransformer.transform">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csp_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.AbstractTransformer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transforms incoming data in way that is determined by which CSP
+port the data is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – data that will be transformed</p></li>
+<li><p><strong>csp_port</strong> (<a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a>) – CSP port that the data was received on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_data</strong> – the transformed data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.IdentityTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">IdentityTransformer</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.IdentityTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span></code></a></p>
+<p>Transformer that does not transform the data but returns it unchanged.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.IdentityTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.IdentityTransformer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transforms incoming data in way that is determined by which CSP
+port the data is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – data that will be transformed</p></li>
+<li><p><strong>csp_port</strong> (<a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a>) – CSP port that the data was received on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_data</strong> – the transformed data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_ports:</span> <span class="pre">typing.List[lava.magma.compiler.channels.interfaces.AbstractCspPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...],</span> <span class="pre">d_type:</span> <span class="pre">type,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyIOPort" title="lava.magma.core.model.py.ports.AbstractPyIOPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractPyIOPort</span></code></a></p>
 <p>Python implementation of InPort used within AbstractPyProcessModel.</p>
 <p>PyInPort is an input Port that can be used in a Process to receive data sent
@@ -697,42 +723,110 @@ data on the channel. The different class attributes are used to select the
 type of OutPorts via LavaPyType declarations in PyProcModels, e.g.,
 LavaPyType(PyInPort.VEC_DENSE, np.int32, precision=24) creates a PyInPort.
 A PyOutPort (source) can be connected to one or multiple PyInPorts (target).</p>
-<dl class="simple">
-<dt>VEC_DENSE<span class="classifier">PyInPortVectorDense, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
-</dd>
-<dt>VEC_SPARSE<span class="classifier">PyInPortVectorSparse, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data as sparse vector (data + indices),
-so only entries which have changed in a vector need to be communicated.</p>
-</dd>
-<dt>SCALAR_DENSE<span class="classifier">PyInPortScalarDense, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data element by element for the whole
-data structure. So the CSP channel does need less memory to transfer
-data.</p>
-</dd>
-<dt>SCALAR_SPARSE<span class="classifier">PyInPortScalarSparse, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data element by element, but after each
-element the index of the data entry is also given. So only entries which
-need to be changed need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csp_ports</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a><em>]</em>) – Used to receive data from the referenced PyOutPort.</p></li>
+<li><p><strong>process_model</strong> (<a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a>) – The process model used by the process of the Port.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em><em>, </em><em>default=tuple</em><em>(</em><em>)</em>) – The shape of the Port.</p></li>
+<li><p><strong>d_type</strong> (<em>type</em><em>, </em><em>default=int</em>) – The data type of the Port.</p></li>
+<li><p><strong>transformer</strong> (<a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer"><em>AbstractTransformer</em></a><em>, </em><em>default: identity function</em>) – Enables transforming the received data in accordance with the
+virtual ports on the path to the PyInPort.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.SCALAR_DENSE">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.SCALAR_DENSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" title="lava.magma.core.model.py.ports.PyInPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortScalarDense</span></code></a></p>
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort._transformer">
+<span class="sig-name descname"><span class="pre">_transformer</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort._transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Enables transforming the received data in accordance with the
+virtual ports on the path to the PyVarPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer">AbstractTransformer</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.SCALAR_SPARSE">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.SCALAR_SPARSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" title="lava.magma.core.model.py.ports.PyInPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortScalarSparse</span></code></a></p>
-</dd></dl>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Class</span> <span class="pre">attributes</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">----------------</span></span></dt>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.VEC_DENSE">
 <span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.VEC_DENSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" title="lava.magma.core.model.py.ports.PyInPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortVectorDense</span></code></a></p>
+<dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" title="lava.magma.core.model.py.ports.PyInPortVectorDense">PyInPortVectorDense</a>, default=None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.VEC_SPARSE">
 <span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.VEC_SPARSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data as sparse vector (data + indices),
+so only entries which have changed in a vector need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortVectorSparse" title="lava.magma.core.model.py.ports.PyInPortVectorSparse">PyInPortVectorSparse</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.SCALAR_DENSE">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.SCALAR_DENSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data element by element for the whole
+data structure. So the CSP channel does need less memory to transfer
+data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" title="lava.magma.core.model.py.ports.PyInPortScalarDense">PyInPortScalarDense</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.SCALAR_SPARSE">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPort.SCALAR_SPARSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data element by element, but after each
+element the index of the data entry is also given. So only entries which
+need to be changed need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" title="lava.magma.core.model.py.ports.PyInPortScalarSparse">PyInPortScalarSparse</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" title="lava.magma.core.model.py.ports.PyInPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortScalarDense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" title="lava.magma.core.model.py.ports.PyInPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortScalarSparse</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" title="lava.magma.core.model.py.ports.PyInPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortVectorDense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPortVectorSparse" title="lava.magma.core.model.py.ports.PyInPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -792,7 +886,7 @@ to retrieve on the channel.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPortScalarDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_ports:</span> <span class="pre">typing.List[lava.magma.compiler.channels.interfaces.AbstractCspPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...],</span> <span class="pre">d_type:</span> <span class="pre">type,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></code></a></p>
 <p>Python implementation of PyInPort for dense scalar data.</p>
 <dl class="py method">
@@ -811,7 +905,7 @@ to retrieve on the channel.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPortScalarSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_ports:</span> <span class="pre">typing.List[lava.magma.compiler.channels.interfaces.AbstractCspPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...],</span> <span class="pre">d_type:</span> <span class="pre">type,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></code></a></p>
 <p>Python implementation of PyInPort for sparse scalar data.</p>
 <dl class="py method">
@@ -830,7 +924,7 @@ to retrieve on the channel.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPortVectorDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_ports:</span> <span class="pre">typing.List[lava.magma.compiler.channels.interfaces.AbstractCspPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...],</span> <span class="pre">d_type:</span> <span class="pre">type,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></code></a></p>
 <p>Python implementation of PyInPort for dense vector data.</p>
 <dl class="py method">
@@ -873,7 +967,7 @@ fashion.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPortVectorSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortVectorSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyInPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_ports:</span> <span class="pre">typing.List[lava.magma.compiler.channels.interfaces.AbstractCspPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...],</span> <span class="pre">d_type:</span> <span class="pre">type,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyInPortVectorSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></code></a></p>
 <p>Python implementation of PyInPort for sparse vector data.</p>
 <dl class="py method">
@@ -902,6 +996,16 @@ from it. The different class attributes are used to select the type of
 OutPorts via LavaPyType declarations in PyProcModels, e.g., LavaPyType(
 PyOutPort.VEC_DENSE, np.int32, precision=24) creates a PyOutPort.
 A PyOutPort (source) can be connected to one or multiple PyInPorts (target).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csp_ports</strong> (<em>list</em>) – A list of CSP Ports used by this IO Port.</p></li>
+<li><p><strong>process_model</strong> (<a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a>) – The process model used by the process of the Port.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) – The shape of the Port.</p></li>
+<li><p><strong>d_type</strong> (<em>type</em>) – The data type of the Port.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="simple">
 <dt>VEC_DENSE<span class="classifier">PyOutPortVectorDense, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
 </dd>
@@ -953,7 +1057,7 @@ need to be changed need to be communicated.</p>
 <dd><p>Abstract method to send data to the connected Port PyInPort (target).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em><em> or </em><em>int</em>) – The data (vector or scalar) to be sent to the PyInPort (target).</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em><em> or </em><em>int</em>) – The data (vector or scalar) to be sent to the InPort (target).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1012,7 +1116,7 @@ need to be changed need to be communicated.</p>
 <p>Python implementation of PyOutPort for sparse vector data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPortVectorSparse.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse.send" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse.send" title="Permalink to this definition"></a></dt>
 <dd><p>TBD</p>
 </dd></dl>
 
@@ -1020,7 +1124,7 @@ need to be changed need to be communicated.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractPyPort</span></code></a></p>
 <p>Python implementation of RefPort used within AbstractPyProcessModels.</p>
 <p>A PyRefPort is a Port connected to a VarPort of a variable Var of another
@@ -1040,6 +1144,8 @@ have been acknowledged (wait()).</p>
 <li><p><strong>process_model</strong> (<a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a>) – The process model used by the process of the Port.</p></li>
 <li><p><strong>shape</strong> (<em>tuple</em><em>, </em><em>default=tuple</em><em>(</em><em>)</em>) – The shape of the Port.</p></li>
 <li><p><strong>d_type</strong> (<em>type</em><em>, </em><em>default=int</em>) – The data type of the Port.</p></li>
+<li><p><strong>transformer</strong> (<a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer"><em>AbstractTransformer</em></a><em>, </em><em>default: identity function</em>) – Enables transforming the received data in accordance with the
+virtual ports on the path to the PyRefPort.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1061,6 +1167,18 @@ have been acknowledged (wait()).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort">CspRecvPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPort._transformer">
+<span class="sig-name descname"><span class="pre">_transformer</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPort._transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Enables transforming the received data in accordance with the
+virtual ports on the path to the PyRefPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer">AbstractTransformer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1125,26 +1243,26 @@ need to be changed need to be communicated.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortScalarDense" title="lava.magma.core.model.py.ports.PyRefPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortScalarDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortScalarSparse" title="lava.magma.core.model.py.ports.PyRefPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortScalarSparse</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortVectorDense" title="lava.magma.core.model.py.ports.PyRefPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortVectorDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortVectorSparse" title="lava.magma.core.model.py.ports.PyRefPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -1203,7 +1321,7 @@ optimized later at the CspChannel level</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPortScalarDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortScalarDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortScalarDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></code></a></p>
 <p>Python implementation of RefPort for dense scalar data.</p>
 <dl class="py method">
@@ -1222,7 +1340,7 @@ optimized later at the CspChannel level</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPortScalarSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortScalarSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortScalarSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></code></a></p>
 <p>Python implementation of RefPort for sparse scalar data.</p>
 <dl class="py method">
@@ -1241,7 +1359,7 @@ optimized later at the CspChannel level</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPortVectorDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortVectorDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortVectorDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></code></a></p>
 <p>Python implementation of RefPort for dense vector data.</p>
 <dl class="py method">
@@ -1275,7 +1393,7 @@ referenced Var.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPortVectorSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortVectorSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyRefPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">typing.Optional[lava.magma.core.model.py.ports.AbstractTransformer]</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPortVectorSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></code></a></p>
 <p>Python implementation of RefPort for sparse vector data.</p>
 <dl class="py method">
@@ -1294,7 +1412,7 @@ referenced Var.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractPyPort</span></code></a></p>
 <p>Python implementation of VarPort used within AbstractPyProcessModel.</p>
 <p>A PyVarPort is a Port linked to a variable Var of a Process and might be
@@ -1313,6 +1431,8 @@ given the command VarPortCmd received by a connected PyRefPort.</p>
 <li><p><strong>process_model</strong> (<a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a>) – The process model used by the process of the Port.</p></li>
 <li><p><strong>shape</strong> (<em>tuple</em><em>, </em><em>default=tuple</em><em>(</em><em>)</em>) – The shape of the Port.</p></li>
 <li><p><strong>d_type</strong> (<em>type</em><em>, </em><em>default=int</em>) – The data type of the Port.</p></li>
+<li><p><strong>transformer</strong> (<a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer"><em>AbstractTransformer</em></a><em>, </em><em>default: identity function</em>) – Enables transforming the received data in accordance with the
+virtual ports on the path to the PyVarPort.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1345,6 +1465,18 @@ given the command VarPortCmd received by a connected PyRefPort.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort">CspRecvPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPort._transformer">
+<span class="sig-name descname"><span class="pre">_transformer</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPort._transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Enables transforming the received data in accordance with the
+virtual ports on the path to the PyVarPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer">AbstractTransformer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1409,26 +1541,26 @@ need to be changed need to be communicated.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortScalarDense" title="lava.magma.core.model.py.ports.PyVarPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortScalarDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortScalarSparse" title="lava.magma.core.model.py.ports.PyVarPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortScalarSparse</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortVectorDense" title="lava.magma.core.model.py.ports.PyVarPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortVectorDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortVectorSparse" title="lava.magma.core.model.py.ports.PyVarPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -1459,7 +1591,7 @@ sending a command VarPortCmd.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPortScalarDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortScalarDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortScalarDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortScalarDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></code></a></p>
 <p>Python implementation of VarPort for dense scalar data.</p>
 <dl class="py method">
@@ -1484,7 +1616,7 @@ sending a command VarPortCmd.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPortScalarSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortScalarSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortScalarSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortScalarSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></code></a></p>
 <p>Python implementation of VarPort for sparse scalar data.</p>
 <dl class="py method">
@@ -1509,7 +1641,7 @@ sending a command VarPortCmd.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPortVectorDense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortVectorDense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortVectorDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortVectorDense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></code></a></p>
 <p>Python implementation of VarPort for dense vector data.</p>
 <dl class="py method">
@@ -1526,7 +1658,7 @@ sending a command VarPortCmd.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPortVectorSparse">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transform_funcs:</span> <span class="pre">typing.Optional[typing.List[functools.partial]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortVectorSparse" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">PyVarPortVectorSparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">var_name:</span> <span class="pre">str,</span> <span class="pre">csp_send_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspSendPort],</span> <span class="pre">csp_recv_port:</span> <span class="pre">typing.Optional[lava.magma.compiler.channels.pypychannel.CspRecvPort],</span> <span class="pre">process_model:</span> <span class="pre">lava.magma.core.model.model.AbstractProcessModel,</span> <span class="pre">shape:</span> <span class="pre">typing.Tuple[int,</span> <span class="pre">...]</span> <span class="pre">=</span> <span class="pre">(),</span> <span class="pre">d_type:</span> <span class="pre">type</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">transformer:</span> <span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span> <span class="pre">=</span> <span class="pre">&lt;lava.magma.core.model.py.ports.IdentityTransformer</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPortVectorSparse" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></code></a></p>
 <p>Python implementation of VarPort for sparse vector data.</p>
 <dl class="py method">
@@ -1565,25 +1697,25 @@ PyVarPort types.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.RefVarTypeMapping.get">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.get" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.get" title="Permalink to this definition"></a></dt>
 <dd><p>Class method to return the compatible PyVarPort type given the
 PyRefPort type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ref_port</strong> (<a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><em>PyRefPort</em></a>) – PyRefPort type to be mapped to a PyVarPort type.</p>
+<dd class="field-odd"><p><strong>ref_port</strong> (<em>ty.Type</em><em>[</em><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><em>PyRefPort</em></a><em>]</em>) – PyRefPort type to be mapped to a PyVarPort type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>result</strong> – PyVarPort type compatible to given PyRefPort type.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort">PyVarPort</a></p>
+<dd class="field-odd"><p>ty.Type[<a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort">PyVarPort</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.RefVarTypeMapping.mapping">
-<span class="sig-name descname"><span class="pre">mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorSparse'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarSparse'&gt;}</span></em><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.mapping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorSparse'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarSparse'&gt;}</span></em><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.mapping" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1606,8 +1738,35 @@ PyRefPorts and PyVarPorts.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-lava.magma.core.model.py.type">
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.VirtualPortTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">VirtualPortTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.VirtualPortTransformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractTransformer" title="lava.magma.core.model.py.ports.AbstractTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractTransformer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.VirtualPortTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csp_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.VirtualPortTransformer.transform" title="Permalink to this definition"></a></dt>
+<dd><p>Transforms incoming data in way that is determined by which CSP
+port the data is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – data that will be transformed</p></li>
+<li><p><strong>csp_port</strong> (<a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><em>AbstractCspPort</em></a>) – CSP port that the data was received on</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_data</strong> – the transformed data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-lava.magma.core.model.py.type">
 <span id="lava-magma-core-model-py-type-module"></span><h2>lava.magma.core.model.py.type module<a class="headerlink" href="#module-lava.magma.core.model.py.type" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.type.LavaPyType">
@@ -1630,11 +1789,11 @@ PyRefPorts and PyVarPorts.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-lava.magma.core.model.py">
+</section>
+<section id="module-lava.magma.core.model.py">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.model.py" title="Permalink to this headline"></a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

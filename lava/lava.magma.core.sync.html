@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.sync package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -234,9 +235,9 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-sync-package">
+<section id="lava-magma-core-sync-package">
 <h1>lava.magma.core.sync package<a class="headerlink" href="#lava-magma-core-sync-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="subpackages">
+<section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -249,16 +250,29 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
+</section>
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.sync.domain">
+</section>
+<section id="module-lava.magma.core.sync.domain">
 <span id="lava-magma-core-sync-domain-module"></span><h2>lava.magma.core.sync.domain module<a class="headerlink" href="#module-lava.magma.core.sync.domain" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.domain.SyncDomain">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.domain.</span></span><span class="sig-name descname"><span class="pre">SyncDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">AbstrctProcess</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.sync.domain.SyncDomain" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.domain.</span></span><span class="sig-name descname"><span class="pre">SyncDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.sync.domain.SyncDomain" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Specify to run a group of <cite>Processes</cite> using a specific <cite>SyncProtocol</cite>.</p>
+<p>A <cite>SyncProtocol</cite> defines how and when <cite>Processes</cite> are synchronized and
+communication is possible. The <cite>SyncDomain</cite> maps a list of <cite>Processes</cite> to
+a given <cite>SyncProtocol</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the SyncDomain.</p></li>
+<li><p><strong>protocol</strong> (<a class="reference internal" href="#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><em>AbstractSyncProtocol</em></a>) – SyncProtocol the <cite>Processes</cite> are mapped to.</p></li>
+<li><p><strong>processes</strong> (<em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a><em>]</em>) – List of <cite>Processes</cite> to run in the given SyncProtocol.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.sync.domain.SyncDomain.add_process">
 <span class="sig-name descname"><span class="pre">add_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.sync.domain.SyncDomain.add_process" title="Permalink to this definition"></a></dt>
@@ -271,13 +285,34 @@
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-lava.magma.core.sync.protocol">
+</section>
+<section id="module-lava.magma.core.sync.protocol">
 <span id="lava-magma-core-sync-protocol-module"></span><h2>lava.magma.core.sync.protocol module<a class="headerlink" href="#module-lava.magma.core.sync.protocol" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocol.AbstractSyncProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocol.</span></span><span class="sig-name descname"><span class="pre">AbstractSyncProtocol</span></span><a class="headerlink" href="#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for <cite>SyncProtocols</cite>.</p>
+<p>A <cite>SyncProtocol</cite> defines how and when the Processes in a <cite>SyncDomain</cite> are
+synchronized and communication is possible. SyncProtocols need to implement
+the <cite>runtime_service()’ method which returns a map between hardware
+resources and the corresponding `RuntimeServices</cite>.</p>
+<p>For example:</p>
+<blockquote>
+<div><p>&#64;property
+def runtime_service(self) -&gt; ty.Dict[Resource, AbstractRuntimeService]:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>return {CPU: LoihiPyRuntimeService,</dt><dd><p>LMT: NxSdkRuntimeService,
+NeuroCore: NxSdkRuntimeService,
+Loihi1NeuroCore: NxSdkRuntimeService,
+Loihi2NeuroCore: NxSdkRuntimeService}</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>The phases of execution and synchronizations points are implemented in the
+specific <cite>RuntimeService</cite>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocol.AbstractSyncProtocol.runtime_service">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runtime_service</span></span><a class="headerlink" href="#lava.magma.core.sync.protocol.AbstractSyncProtocol.runtime_service" title="Permalink to this definition"></a></dt>
@@ -285,11 +320,11 @@
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-lava.magma.core.sync">
+</section>
+<section id="module-lava.magma.core.sync">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.sync" title="Permalink to this headline"></a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

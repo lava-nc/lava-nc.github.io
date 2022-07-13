@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.model.nc package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -234,94 +235,18 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-model-nc-package">
+<section id="lava-magma-core-model-nc-package">
 <h1>lava.magma.core.model.nc package<a class="headerlink" href="#lava-magma-core-model-nc-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.model.nc.model">
-<span id="lava-magma-core-model-nc-model-module"></span><h2>lava.magma.core.model.nc.model module<a class="headerlink" href="#module-lava.magma.core.model.nc.model" title="Permalink to this headline"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.AbstractNcProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.nc.model.</span></span><span class="sig-name descname"><span class="pre">AbstractNcProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">logging.getLoggerClass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.AbstractNcProcessModel" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Abstract interface for NeuroCore ProcessModels</p>
-<dl class="simple">
-<dt>Example for how variables might be initialized:</dt><dd><p>u: np.ndarray =    LavaNcType(np.ndarray, np.int32, precision=24)
-v: np.ndarray =    LavaNcType(np.ndarray, np.int32, precision=24)
-bias: np.ndarray = LavaNcType(np.ndarray, np.int16, precision=12)
-du: int =          LavaNcType(int, np.uint16, precision=12)</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.AbstractNcProcessModel.allocate">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">allocate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.model.nc.model.Net" title="lava.magma.core.model.nc.model.Net"><span class="pre">lava.magma.core.model.nc.model.Net</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.AbstractNcProcessModel.allocate" title="Permalink to this definition"></a></dt>
-<dd><p>Allocates resources required by Process via Net provided by
-compiler.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.AbstractNcProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.nc.model.AbstractNcProcessModel.proc_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.NcProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.nc.model.</span></span><span class="sig-name descname"><span class="pre">NcProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.NcProcessModel" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.nc.model.AbstractNcProcessModel" title="lava.magma.core.model.nc.model.AbstractNcProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.nc.model.AbstractNcProcessModel</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.NcProcessModel.allocate">
-<span class="sig-name descname"><span class="pre">allocate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.model.nc.model.Net" title="lava.magma.core.model.nc.model.Net"><span class="pre">lava.magma.core.model.nc.model.Net</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.NcProcessModel.allocate" title="Permalink to this definition"></a></dt>
-<dd><p>Allocates resources required by Process via Net provided by
-compiler.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.NcProcessModel.model_id">
-<span class="sig-name descname"><span class="pre">model_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.nc.model.NcProcessModel.model_id" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.NcProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.nc.model.NcProcessModel.proc_params" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.NcProcessModel.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.NcProcessModel.run" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.Net">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.nc.model.</span></span><span class="sig-name descname"><span class="pre">Net</span></span><a class="headerlink" href="#lava.magma.core.model.nc.model.Net" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Represents a collection of logical entities (Attribute Groups)
-that consume resources on a NeuroCore.</p>
-<ul class="simple">
-<li><p>InputAxons</p></li>
-<li><p>Synapses</p></li>
-<li><p>DendriticAccumulator</p></li>
-<li><p>Compartments</p></li>
-<li><p>OutputAxons</p></li>
-<li><p>Synaptic pre traces</p></li>
-<li><p>Synaptic post traces</p></li>
-</ul>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.model.nc.model.Net.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_thing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_thing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.nc.model.Net.connect" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-lava.magma.core.model.nc">
+</section>
+<section id="lava-magma-core-model-nc-model-module">
+<h2>lava.magma.core.model.nc.model module<a class="headerlink" href="#lava-magma-core-model-nc-model-module" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-lava.magma.core.model.nc">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.model.nc" title="Permalink to this headline"></a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

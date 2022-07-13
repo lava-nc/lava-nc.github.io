@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lava-DL SLAYER &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -238,7 +239,7 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-dl-slayer">
+<section id="lava-dl-slayer">
 <h1>Lava-DL SLAYER<a class="headerlink" href="#lava-dl-slayer" title="Permalink to this headline"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">lava.lib.dl.slayer</span></code> is an enhanced version of
 <a class="reference external" href="https://github.com/bamsumit/slayerPytorch">SLAYER</a>. It now supports
@@ -263,7 +264,7 @@ architecture shape calculation)</p></li>
 <li><p>Block interface for easy description of network.</p></li>
 <li><p>Easy network export to hdf5 interface format.</p></li>
 </ul>
-<div class="section" id="tutorials">
+<section id="tutorials">
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h2>
 <p><strong>End to End</strong></p>
 <ul class="simple">
@@ -275,16 +276,16 @@ architecture shape calculation)</p></li>
 <ul class="simple">
 <li><p><a class="reference external" href="notebooks/neuron_dynamics/dynamics.html">Dynamics and Neurons</a></p></li>
 </ul>
-</div>
-<div class="section" id="modules">
+</section>
+<section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline"></a></h2>
 <p>The overall feature organization is described below.</p>
-<div class="section" id="spike-slayer-spike">
+<section id="spike-slayer-spike">
 <h3>Spike (<code class="docutils literal notranslate"><span class="pre">slayer.spike</span></code>)<a class="headerlink" href="#spike-slayer-spike" title="Permalink to this headline"></a></h3>
 <p>SLAYER supports binary as well as graded spikes, which are amenable to
 backpropagation. This opens the door for a new class of neuron behavior.</p>
-</div>
-<div class="section" id="neuron-slayer-neuron">
+</section>
+<section id="neuron-slayer-neuron">
 <h3>Neuron (<code class="docutils literal notranslate"><span class="pre">slayer.neuron</span></code>)<a class="headerlink" href="#neuron-slayer-neuron" title="Permalink to this headline"></a></h3>
 <p>Neuron models in SLAYER are built around custom CUDA accelerated
 fundamental linear dynamics. Each neuron model has individually
@@ -298,54 +299,54 @@ behavior between iterations. Following neuron dynamics are supported.</p>
 </ul>
 <p>These fundamental dynamics can be combined to build a variety of neuron
 models. Following neuron models are currently supported:</p>
-<div class="section" id="current-based-leaky-integrator-slayer-neuron-cuba">
+<section id="current-based-leaky-integrator-slayer-neuron-cuba">
 <h4>CUrrent BAsed leaky integrator: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.cuba</span></code><a class="headerlink" href="#current-based-leaky-integrator-slayer-neuron-cuba" title="Permalink to this headline"></a></h4>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/135405316-0782e174-ceaf-4d97-a4ca-7ddcd681a1ba.png" alt="Drawing" style="width=1000px"/>
-</p></div>
-<div class="section" id="adaptive-leaky-integrate-and-fire-slayer-neuron-alif">
+</p></section>
+<section id="adaptive-leaky-integrate-and-fire-slayer-neuron-alif">
 <h4>Adaptive Leaky Integrate and Fire: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.alif</span></code><a class="headerlink" href="#adaptive-leaky-integrate-and-fire-slayer-neuron-alif" title="Permalink to this headline"></a></h4>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/135405926-60269c92-92d7-453c-8324-941b3322c7a5.png" alt="Drawing" style="width=1000px"/>
-</p></div>
-<div class="section" id="resonate-and-fire-phase-threshold-and-izhikevich-variant-slayer-neuron-rf-rf-iz">
+</p></section>
+<section id="resonate-and-fire-phase-threshold-and-izhikevich-variant-slayer-neuron-rf-rf-iz">
 <h4>Resonate and Fire (phase threshold and Izhikevich variant): <code class="docutils literal notranslate"><span class="pre">slayer.neuron.{rf,</span> <span class="pre">rf_iz}</span></code><a class="headerlink" href="#resonate-and-fire-phase-threshold-and-izhikevich-variant-slayer-neuron-rf-rf-iz" title="Permalink to this headline"></a></h4>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/135404915-3e9371c4-3148-4ea8-813e-8f05ce9e4b67.png" alt="Drawing" style="width=1000px"/>
-</p></div>
-<div class="section" id="adaptive-resonators-slayer-neuron-adrf-adrf-iz">
+</p></section>
+<section id="adaptive-resonators-slayer-neuron-adrf-adrf-iz">
 <h4>Adaptive resonators: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.{adrf,</span> <span class="pre">adrf_iz}</span></code><a class="headerlink" href="#adaptive-resonators-slayer-neuron-adrf-adrf-iz" title="Permalink to this headline"></a></h4>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/135405837-03c1a053-03fc-44bf-afe1-2cdadde4f01a.png" alt="Drawing" style="width=1000px"/>
-</p></div>
-<div class="section" id="sigma-delta-neuron-with-arbitrary-activation-slayer-neuron-sigma-delta">
+</p></section>
+<section id="sigma-delta-neuron-with-arbitrary-activation-slayer-neuron-sigma-delta">
 <h4>Sigma Delta neuron with arbitrary activation: <code class="docutils literal notranslate"><span class="pre">slayer.neuron.sigma_delta</span></code><a class="headerlink" href="#sigma-delta-neuron-with-arbitrary-activation-slayer-neuron-sigma-delta" title="Permalink to this headline"></a></h4>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/29907126/135405757-0747aae0-def6-49cd-aa44-8b0fa67b40fd.png" alt="Drawing" style="width=1000px"/>
 </p><p>In addition, SLAYER also supports <em>neuron dropout</em> and quantization
 ready batch-normalization methods.</p>
-</div>
-</div>
-<div class="section" id="synapse-slayer-syanpse">
+</section>
+</section>
+<section id="synapse-slayer-syanpse">
 <h3>Synapse (<code class="docutils literal notranslate"><span class="pre">slayer.syanpse</span></code>)<a class="headerlink" href="#synapse-slayer-syanpse" title="Permalink to this headline"></a></h3>
 <p>SLAYER supports dense, conv, and pool synaptic connections. Masking is
 possible in both real as well as complex connections:
 <code class="docutils literal notranslate"><span class="pre">slayer.synapse.{complex}.{Dense,</span> <span class="pre">Conv,</span> <span class="pre">Pool}</span></code>.</p>
-</div>
-<div class="section" id="axon-slayer-axon">
+</section>
+<section id="axon-slayer-axon">
 <h3>Axon (<code class="docutils literal notranslate"><span class="pre">slayer.axon</span></code>)<a class="headerlink" href="#axon-slayer-axon" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Learnable axonal delay (<code class="docutils literal notranslate"><span class="pre">slayer.axon.Delay</span></code>)</p></li>
 <li><p>Learnable delta encoder (<code class="docutils literal notranslate"><span class="pre">slayer.axon.Delta</span></code>)</p></li>
 </ul>
-</div>
-<div class="section" id="dendrite-slayer-dendrite">
+</section>
+<section id="dendrite-slayer-dendrite">
 <h3>Dendrite (<code class="docutils literal notranslate"><span class="pre">slayer.dendrite</span></code>)<a class="headerlink" href="#dendrite-slayer-dendrite" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Sigma decoder (<code class="docutils literal notranslate"><span class="pre">slayer.dendrite.Sigma</span></code>)</p></li>
 </ul>
-</div>
-<div class="section" id="blocks-slayer-blocks">
+</section>
+<section id="blocks-slayer-blocks">
 <h3>Blocks (<code class="docutils literal notranslate"><span class="pre">slayer.blocks</span></code>)<a class="headerlink" href="#blocks-slayer-blocks" title="Permalink to this headline"></a></h3>
 <p>SLAYER provides easy encapsulation of neuron, synapse, axon, and
 dendrite classes for a variety of standard neuron-connection
@@ -383,8 +384,8 @@ pytorch as well as our platform independent hdf5 format.</p>
             <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p align="center"></p></div>
-<div class="section" id="fundamental-practices">
+<p align="center"></p></section>
+<section id="fundamental-practices">
 <h3>Fundamental Practices<a class="headerlink" href="#fundamental-practices" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>Tensors are always assumed to be in the order <code class="docutils literal notranslate"><span class="pre">NCHWT</span></code> or <code class="docutils literal notranslate"><span class="pre">NCT</span></code>
@@ -398,9 +399,9 @@ and <code class="docutils literal notranslate"><span class="pre">T</span></code>
 <li><p>Neurons hold the shape of the layer. It shall be automatically
 identified on runtime.</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

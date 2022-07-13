@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Block Module &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -240,243 +241,18 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="block-module">
+<section id="block-module">
 <h1>Block Module<a class="headerlink" href="#block-module" title="Permalink to this headline"></a></h1>
-<div class="section" id="module-lava.lib.dl.bootstrap.block.base">
-<span id="abstract-block"></span><h2>Abstract Block<a class="headerlink" href="#module-lava.lib.dl.bootstrap.block.base" title="Permalink to this headline"></a></h2>
-<p>Abstract bootstrap layer blocks.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.base.</span></span><span class="sig-name descname"><span class="pre">AbstractBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
-<p>Abstract bootstrap block</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock.fit" title="Permalink to this definition"></a></dt>
-<dd><p>Fit the sampling points to estimate piecewise linear model.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock.forward" title="Permalink to this definition"></a></dt>
-<dd><p>Forward calculation block</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>torch tensor</em>) – input tensor.</p></li>
-<li><p><strong>mode</strong> (<em>optional</em>) – forward operation mode. Can be one of
-<code class="docutils literal notranslate"><span class="pre">Mode.SNN`</span> <span class="pre">|</span> <span class="pre">`Mode.ANN`</span> <span class="pre">|</span> <span class="pre">`Mode.SAMPLE</span></code>.
-Defaults to Mode.ANN.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>output tensor.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>torch tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.AbstractBlock.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.base.doc_modifier">
-<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.base.</span></span><span class="sig-name descname"><span class="pre">doc_modifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.base.doc_modifier" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-lava.lib.dl.bootstrap.block.cuba">
-<span id="current-based-leaky-integrate-and-fire-cuba-block"></span><h2>CUrrent BAsed Leaky Integrate and Fire (CUBA) Block<a class="headerlink" href="#module-lava.lib.dl.bootstrap.block.cuba" title="Permalink to this headline"></a></h2>
-<p>Bootstrap CUBA layer blocks.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Affine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Affine" title="lava.lib.dl.slayer.block.cuba.Affine"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Affine</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
-<p>CUBA LIF affine transform class. This should never be instantiated on
-its own.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter. Defaults to None.</p></li>
-<li><p><strong>in_neurons</strong> (<em>int</em>) – number of input neurons.</p></li>
-<li><p><strong>out_neurons</strong> (<em>int</em>) – number of output neurons.</p></li>
-<li><p><strong>weight_scale</strong> (<em>int</em><em>, </em><em>optional</em>) – weight initialization scaling. Defaults to 1.</p></li>
-<li><p><strong>weight_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable weight normalization. Defaults to False.</p></li>
-<li><p><strong>pre_hook_fx</strong> (<em>optional</em>) – a function pointer or lambda that is applied to synaptic weights
-before synaptic operation. None means no transformation.
-Defaults to None.</p></li>
-<li><p><strong>dynamics</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable neuron dynamics. If False, only the dendrite current
-is returned. Defaults to True.</p></li>
-<li><p><strong>mask</strong> (<em>bool array</em><em>, </em><em>optional</em>) – boolean synapse mask that only enables relevant synapses. None
-means no masking is applied. Defaults to None.</p></li>
-<li><p><strong>count_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to return event count log. If True, an additional value of
-average event rate is returned. Defaults to False.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine.fit" title="Permalink to this definition"></a></dt>
-<dd><p>Fit the sampling points to estimate piecewise linear model.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Affine.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Affine.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Conv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Conv" title="lava.lib.dl.slayer.block.cuba.Conv"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Conv</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
-<p>CUBA LIF convolution block class. This should never be instantiated on
-its own.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter. Defaults to None.</p></li>
-<li><p><strong>in_features</strong> (<em>int</em>) – number of input features.</p></li>
-<li><p><strong>out_features</strong> (<em>int</em>) – number of output features.</p></li>
-<li><p><strong>kernel_size</strong> (<em>int</em>) – kernel size.</p></li>
-<li><p><strong>stride</strong> (<em>int</em><em> or </em><em>tuple of two ints</em><em>, </em><em>optional</em>) – convolution stride. Defaults to 1.</p></li>
-<li><p><strong>padding</strong> (<em>int</em><em> or </em><em>tuple of two ints</em><em>, </em><em>optional</em>) – convolution padding. Defaults to 0.</p></li>
-<li><p><strong>dilation</strong> (<em>int</em><em> or </em><em>tuple of two ints</em><em>, </em><em>optional</em>) – convolution dilation. Defaults to 1.</p></li>
-<li><p><strong>groups</strong> (<em>int</em><em>, </em><em>optional</em>) – number of blocked connections. Defaults to 1.</p></li>
-<li><p><strong>weight_scale</strong> (<em>int</em><em>, </em><em>optional</em>) – weight initialization scaling. Defaults to 1.</p></li>
-<li><p><strong>weight_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable weight normalization. Defaults to False.</p></li>
-<li><p><strong>pre_hook_fx</strong> (<em>optional</em>) – a function pointer or lambda that is applied to synaptic weights before
-synaptic operation. None means no transformation. Defaults to None.</p></li>
-<li><p><strong>delay</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable axonal delay. Defaults to False.</p></li>
-<li><p><strong>delay_shift</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to simulate spike propagation delay from one layer to next.
-Defaults to True.</p></li>
-<li><p><strong>count_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to return event count log. If True, an additional value of average
-event rate is returned. Defaults to False.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Conv.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Conv.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Conv.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Dense">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Dense" title="lava.lib.dl.slayer.block.cuba.Dense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Dense</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
-<p>CUBA LIF dense block class. The block is 8 bit quantization ready.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter. Defaults to None.</p></li>
-<li><p><strong>in_neurons</strong> (<em>int</em>) – number of input neurons.</p></li>
-<li><p><strong>out_neurons</strong> (<em>int</em>) – number of output neurons.</p></li>
-<li><p><strong>weight_scale</strong> (<em>int</em><em>, </em><em>optional</em>) – weight initialization scaling. Defaults to 1.</p></li>
-<li><p><strong>weight_norm</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable weight normalization. Defaults to False.</p></li>
-<li><p><strong>pre_hook_fx</strong> (<em>optional</em>) – a function pointer or lambda that is applied to synaptic weights before
-synaptic operation. None means no transformation. Defaults to None.</p></li>
-<li><p><strong>delay</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to enable axonal delay. Defaults to False.</p></li>
-<li><p><strong>delay_shift</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to simulate spike propagation delay from one layer to next.
-Defaults to True.</p></li>
-<li><p><strong>mask</strong> (<em>bool array</em><em>, </em><em>optional</em>) – boolean synapse mask that only enables relevant synapses. None means no
-masking is applied. Defaults to None.</p></li>
-<li><p><strong>count_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to return event count log. If True, an additional value of average
-event rate is returned. Defaults to False.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Dense.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Dense.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Dense.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Flatten">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Flatten" title="lava.lib.dl.slayer.block.cuba.Flatten"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Flatten</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
-<p>CUBA LIF flatten block class. This should never be instantiated on its
-own.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>count_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to return event count log. If True, an additional value of average
-event rate is returned. Defaults to False.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Flatten.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Flatten.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Flatten.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Input">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.block.cuba.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../slayer/block/block.html#lava.lib.dl.slayer.block.cuba.Input" title="lava.lib.dl.slayer.block.cuba.Input"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.Input</span></code></a>, <a class="reference internal" href="#lava.lib.dl.bootstrap.block.base.AbstractBlock" title="lava.lib.dl.bootstrap.block.base.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.bootstrap.block.base.AbstractBlock</span></code></a></p>
-<p>CUBA LIF input block class. The block is 8 bit quantization ready.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter. Defaults to None.</p></li>
-<li><p><strong>weight</strong> (<em>float</em><em>, </em><em>optional</em>) – weight for affine transform of input. None means no weight scaling.
-Defaults to None.</p></li>
-<li><p><strong>bias</strong> (<em>float</em><em>, </em><em>optional</em>) – bias for affine transform of input. None means no bias shift.
-Defaults to None.</p></li>
-<li><p><strong>delay_shift</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to simulate spike propagation delay from one layer to next.
-Defaults to True.</p></li>
-<li><p><strong>count_log</strong> (<em>bool</em><em>, </em><em>optional</em>) – flag to return event count log. If True, an additional value of
-average event rate is returned. Defaults to False.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Input.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Mode.ANN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.block.cuba.Input.training">
-<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#lava.lib.dl.bootstrap.block.cuba.Input.training" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-lava.lib.dl.bootstrap.block">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.bootstrap.block" title="Permalink to this headline"></a></h2>
-</div>
-</div>
+<section id="abstract-block">
+<h2>Abstract Block<a class="headerlink" href="#abstract-block" title="Permalink to this headline"></a></h2>
+</section>
+<section id="current-based-leaky-integrate-and-fire-cuba-block">
+<h2>CUrrent BAsed Leaky Integrate and Fire (CUBA) Block<a class="headerlink" href="#current-based-leaky-integrate-and-fire-cuba-block" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+</section>
+</section>
 
 
            </div>
