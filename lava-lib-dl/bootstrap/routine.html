@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Routine &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -240,9 +239,92 @@
     text-align: unset;
 }
 </style>
-<section id="routine">
-<h1>Routine<a class="headerlink" href="#routine" title="Permalink to this headline"></a></h1>
-</section>
+<div class="section" id="module-lava.lib.dl.bootstrap.routine">
+<span id="routine"></span><h1>Routine<a class="headerlink" href="#module-lava.lib.dl.bootstrap.routine" title="Permalink to this headline"></a></h1>
+<p>ANN-SNN mode switching routine helper.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.LayerMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">LayerMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crossover</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.LayerMode" title="Permalink to this definition"></a></dt>
+<dd><p>Iterator that iterates layer/block’s mode of operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>crossover</strong> (<em>int</em>) – point below which layer is always in <code class="docutils literal notranslate"><span class="pre">mode.SNN</span></code>.</p></li>
+<li><p><strong>base_mode</strong> (<em>enum</em>) – global mode of operation. Options are
+<code class="docutils literal notranslate"><span class="pre">mode.{SNN</span> <span class="pre">|</span> <span class="pre">ANN</span> <span class="pre">|</span> <span class="pre">SAMPLE</span> <span class="pre">|</span> <span class="pre">FIT}</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.LayerMode.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.LayerMode.__iter__" title="Permalink to this definition"></a></dt>
+<dd><p>mode iterator</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Mode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Mode" title="Permalink to this definition"></a></dt>
+<dd><p>Enum constants for different mode of operation. Valid modes are
+<cite>SNN</cite> | <cite>ANN</cite> | <cite>SAMPLE | FIT</cite>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Scheduler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.routine.</span></span><span class="sig-name descname"><span class="pre">Scheduler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_sample_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crossover_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler" title="Permalink to this definition"></a></dt>
+<dd><p>Hybrid mode iterator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_sample_iter</strong> (<em>int</em>) – number of iteration to sample data. Defaults to 10.</p></li>
+<li><p><strong>sample_period</strong> (<em>int</em>) – epoch interval to initiate data sampling. Defaults to 10.</p></li>
+<li><p><strong>crossover_epochs</strong> (<em>list</em>) – list of ints that define crossover landmarks. None means no landmarks.
+Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Scheduler.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Block operation mode generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epoch</strong> (<em>int</em>) – current epoch.</p></li>
+<li><p><strong>iteration</strong> (<em>int</em>) – current iteration.</p></li>
+<li><p><strong>train</strong> (<em>bool</em>) – training or evaluation mode flag. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>operation mode iterator</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Scheduler.sync_snn_stat">
+<span class="sig-name descname"><span class="pre">sync_snn_stat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler.sync_snn_stat" title="Permalink to this definition"></a></dt>
+<dd><p>Sync SNN stat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stat</strong> (<a class="reference internal" href="../slayer/utils/utils.html#lava.lib.dl.slayer.utils.LearningStat" title="lava.lib.dl.slayer.utils.LearningStat"><em>slayer.utils.LearningStat</em></a>) – learning stat to sync.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.routine.Scheduler.update_snn_stat">
+<span class="sig-name descname"><span class="pre">update_snn_stat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.routine.Scheduler.update_snn_stat" title="Permalink to this definition"></a></dt>
+<dd><p>Update snn leraning statistics.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 
 
            </div>

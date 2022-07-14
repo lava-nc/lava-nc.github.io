@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.proc.lif package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -235,12 +234,12 @@
     text-align: unset;
 }
 </style>
-<section id="lava-proc-lif-package">
+<div class="section" id="lava-proc-lif-package">
 <h1>lava.proc.lif package<a class="headerlink" href="#lava-proc-lif-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-lava.proc.lif.models">
+</div>
+<div class="section" id="module-lava.proc.lif.models">
 <span id="lava-proc-lif-models-module"></span><h2>lava.proc.lif.models module<a class="headerlink" href="#module-lava.proc.lif.models" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed">
@@ -255,13 +254,13 @@ bit-accurate with Loihi hardware inherit from here.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp">
-<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=13)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias_mant">
-<span class="sig-name descname"><span class="pre">bias_mant</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=13)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias_mant" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp">
+<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int16'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.bias_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -326,6 +325,11 @@ all LIF models. This is where the ‘leaky integration’ happens.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFixed.v">
 <span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFixed.v" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -334,7 +338,7 @@ all LIF models. This is where the ‘leaky integration’ happens.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">AbstractPyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">AbstractPyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
 <p>Abstract implementation of floating point precision
 leaky-integrate-and-fire neuron model.</p>
@@ -345,13 +349,13 @@ leaky-integrate-and-fire neuron model.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp">
-<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias_mant">
-<span class="sig-name descname"><span class="pre">bias_mant</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias_mant" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp">
+<span class="sig-name descname"><span class="pre">bias_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.bias_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -404,6 +408,11 @@ all LIF models. This is where the ‘leaky integration’ happens.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.AbstractPyLifModelFloat.v">
 <span class="sig-name descname"><span class="pre">v</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.AbstractPyLifModelFloat.v" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -426,11 +435,8 @@ behaviour bit-by-bit.</p>
 </dl>
 <p>du: unsigned 12-bit integer (0 to 4095)
 dv: unsigned 12-bit integer (0 to 4095)
-bias_mant: signed 13-bit integer (-4096 to 4095).</p>
-<blockquote>
-<div><p>Mantissa part of neuron bias.</p>
-</div></blockquote>
-<p>bias_exp: unsigned 3-bit integer (0 to 7). Exponent part of neuron bias.
+bias: signed 13-bit integer (-4096 to 4095). Mantissa part of neuron bias.
+bias_exp: unsigned 3-bit integer (0 to 7). Exponent part of neuron bias.
 vth: unsigned 17-bit integer (0 to 131071).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelBitAcc.implements_process">
@@ -482,7 +488,7 @@ with other state variables of higher precision.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifModelFloat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifModelFloat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="lava.proc.lif.models.AbstractPyLifModelFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFloat</span></code></a></p>
 <p>Implementation of Leaky-Integrate-and-Fire neural process in floating
 point precision. This short and simple ProcessModel can be used for quick
@@ -600,7 +606,7 @@ with fixed point precision.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyTernLifModelFloat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyTernLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyTernLifModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyTernLifModelFloat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="lava.proc.lif.models.AbstractPyLifModelFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.models.AbstractPyLifModelFloat</span></code></a></p>
 <p>Implementation of Ternary Leaky-Integrate-and-Fire neural process in
 floating point precision. This ProcessModel builds upon the floating
@@ -657,8 +663,8 @@ point ProcessModel for LIF by adding upper and lower threshold voltages.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.proc.lif.process">
+</div>
+<div class="section" id="module-lava.proc.lif.process">
 <span id="lava-proc-lif-process-module"></span><h2>lava.proc.lif.process module<a class="headerlink" href="#module-lava.proc.lif.process" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.process.AbstractLIF">
@@ -681,63 +687,16 @@ v[t] = 0                              # reset at spike</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – Number and topology of LIF neurons.</p></li>
-<li><p><strong>u</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ current.</p></li>
-<li><p><strong>v</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ voltage (membrane potential).</p></li>
-<li><p><strong>du</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for current decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>dv</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for voltage decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>bias_mant</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Mantissa part of neuron bias.</p></li>
-<li><p><strong>bias_exp</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Exponent part of neuron bias, if needed. Mostly for fixed point
-implementations. Ignored for floating point implementations.</p></li>
-<li><p><strong>vth</strong> (<em>float</em><em>, </em><em>optional</em>) – Neuron threshold voltage, exceeding which, the neuron will spike.
-Currently, only a single threshold can be set for the entire
-population of neurons.</p></li>
+<li><p><strong>du</strong> (<em>Inverse of decay time-constant for current decay.</em>) – </p></li>
+<li><p><strong>dv</strong> (<em>Inverse of decay time-constant for voltage decay.</em>) – </p></li>
+<li><p><strong>bias</strong> (<em>Mantissa part of neuron bias.</em>) – </p></li>
+<li><p><strong>bias_exp</strong> (<em>Exponent part of neuron bias</em><em>, </em><em>if needed. Mostly for fixed point</em>) – implementations. Ignored for floating point
+implementations.</p></li>
+<li><p><strong>vth</strong> (<em>Neuron threshold voltage</em><em>, </em><em>exceeding which</em><em>, </em><em>the neuron will spike.</em>) – </p></li>
+<li><p><strong>use_graded_spike</strong> (<em>Flag to indicate graded spike. Default is False</em>) – </p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">du</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="go">This will create 200x15 LIF neurons that all have the same current decay</span>
-<span class="go">of 10 and voltage decay of 5.</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.proc.lif.process.LIFReset">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">LIFReset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.LIFReset" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.LIF</span></code></a></p>
-<p>Leaky-Integrate-and-Fire (LIF) neural Process that resets its internal
-states in regular intervals.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – Number and topology of LIF neurons.</p></li>
-<li><p><strong>u</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ current.</p></li>
-<li><p><strong>v</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ voltage (membrane potential).</p></li>
-<li><p><strong>du</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for current decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>dv</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for voltage decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>bias_mant</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Mantissa part of neuron bias.</p></li>
-<li><p><strong>bias_exp</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Exponent part of neuron bias, if needed. Mostly for fixed point
-implementations. Ignored for floating point implementations.</p></li>
-<li><p><strong>vth</strong> (<em>float</em><em>, </em><em>optional</em>) – Neuron threshold voltage, exceeding which, the neuron will spike.
-Currently, only a single threshold can be set for the entire
-population of neurons.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lava.proc.lif.process.LIF</span></code></a></dt><dd><p>‘Regular’ leaky-integrate-and-fire neuron for</p>
-</dd>
-</dl>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation</span></code></p>
-</div>
 </dd></dl>
 
 <dl class="py class">
@@ -745,9 +704,9 @@ population of neurons.</p></li>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">TernaryLIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.TernaryLIF" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.process.AbstractLIF" title="lava.proc.lif.process.AbstractLIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.proc.lif.process.AbstractLIF</span></code></a></p>
 <p>Leaky-Integrate-and-Fire (LIF) neural Process with <em>ternary</em> spiking
-output, i.e., +1, 0, and -1 spikes. When the voltage of a TernaryLIF neuron
-exceeds its upper threshold (vth_hi), it issues a positive spike and when
-the voltage drops below its lower threshold (vth_lo), it issues a negative
+output, i.e., +1, 0, and -1 spikes. When the voltage of a T-LIF neuron
+exceeds its upper threshold (UTh), it issues a positive spike and when
+the voltage drops below its lower threshold (LTh), it issues a negative
 spike. Between the two thresholds, the neuron follows leaky linear
 dynamics.</p>
 <p>This class inherits the state variables and ports from AbstractLIF and
@@ -755,22 +714,9 @@ adds two new threshold variables for upper and lower thresholds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – Number and topology of LIF neurons.</p></li>
-<li><p><strong>u</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ current.</p></li>
-<li><p><strong>v</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ voltage (membrane potential).</p></li>
-<li><p><strong>du</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for current decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>dv</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for voltage decay. Currently, only a
-single decay can be set for the entire population of neurons.</p></li>
-<li><p><strong>bias_mant</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Mantissa part of neuron bias.</p></li>
-<li><p><strong>bias_exp</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Exponent part of neuron bias, if needed. Mostly for fixed point
-implementations. Ignored for floating point implementations.</p></li>
-<li><p><strong>vth_hi</strong> (<em>float</em><em>, </em><em>optional</em>) – Upper threshold voltage, exceeding which the neuron spikes +1.
-Currently, only a single higher threshold can be set for the entire
-population of neurons.</p></li>
-<li><p><strong>vth_lo</strong> (<em>float</em><em>, </em><em>optional</em>) – Lower threshold voltage, below which the neuron spikes -1.
-Currently, only a single lower threshold can be set for the entire
-population of neurons.</p></li>
+<li><p><strong>vth_hi</strong> (<em>Upper threshold voltage</em><em>, </em><em>exceeding which the neuron spikes +1</em>) – </p></li>
+<li><p><strong>vth_lo</strong> (<em>Lower threshold voltage</em><em>, </em><em>below which the neuron spikes -1</em>) – </p></li>
+<li><p><strong>use_graded_spike</strong> (<em>Flag to indicate graded spike. Default is False</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -784,11 +730,11 @@ population of neurons.</p></li>
 </div>
 </dd></dl>
 
-</section>
-<section id="module-lava.proc.lif">
+</div>
+<div class="section" id="module-lava.proc.lif">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.proc.lif" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

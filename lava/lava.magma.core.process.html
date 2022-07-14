@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.process package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -235,9 +234,9 @@
     text-align: unset;
 }
 </style>
-<section id="lava-magma-core-process-package">
+<div class="section" id="lava-magma-core-process-package">
 <h1>lava.magma.core.process package<a class="headerlink" href="#lava-magma-core-process-package" title="Permalink to this headline"></a></h1>
-<section id="subpackages">
+<div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -251,11 +250,11 @@
 </li>
 </ul>
 </div>
-</section>
-<section id="submodules">
+</div>
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-lava.magma.core.process.interfaces">
+</div>
+<div class="section" id="module-lava.magma.core.process.interfaces">
 <span id="lava-magma-core-process-interfaces-module"></span><h2>lava.magma.core.process.interfaces module<a class="headerlink" href="#module-lava.magma.core.process.interfaces" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.interfaces.AbstractProcessMember">
@@ -304,133 +303,129 @@ other unique objects.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.magma.core.process.process">
+</div>
+<div class="section" id="module-lava.magma.core.process.process">
 <span id="lava-magma-core-process-process-module"></span><h2>lava.magma.core.process.process module<a class="headerlink" href="#module-lava.magma.core.process.process" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.process.</span></span><span class="sig-name descname"><span class="pre">AbstractProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The notion of a Process is inspired by the Communicating Sequential
-Process paradigm for distributed, parallel, and asynchronous programming.</p>
-<p>A Process represents the fundamental computational unit of the Lava
+<p>The notion of a process is inspired by the Communicating Sequential
+Process paradigm for distributed, parallel and asynchronous programming.</p>
+<p>A process represents the fundamental computational unit of the Lava
 framework. Processes are independent from each other in that they primarily
 operate on their own local memory while communication with other
-Processes happens via message passing through channels at runtime. This
-makes parallel processing safe against side effects from shared-memory
-interaction. Nevertheless, shared-memory interaction between Processes is
-also supported. Lava Processes are built for executing on a distributed and
-heterogeneous hardware platform consisting of different compute resources.
-Compute resources can be conventional CPUs, GPUs, embedded CPUs, or
+processes happens via message passing through channels at runtime. This
+makes parallel processing save against side effects from shared-memory
+interaction. Nevertheless, shared-memory interaction between processes is
+also supported. Lava processes are built for executing on a distributed and
+heterogeneous HW platform consisting of different compute resources.
+Compute resources can be conventional CPUs, GPUs, embedded CPUs or
 neuromorphic cores.</p>
 <dl>
-<dt>Lava Processes consist of the following key components:</dt><dd><p>1. State: A Lava Process has internal state that is realized through
-Lava Vars (variables). Vars can be initialized by the user
-and are mutable during execution either as a result of Process code or
-user interaction.
-2. Ports: Lava Processes communicate with their environment or other
-Processes solely via messages. Messages are sent between ports via
-channels. Processes may have one or more input, output, or reference
+<dt>Lava processes consist of the following four key components:</dt><dd><p>1. State: A Lava process has internal state that is realized through
+Lava variables or Vars. Vars can be initialized by the user and are
+mutable during execution either as a result of process code or user
+interaction.
+2. Behavior: The behavior of a Lava process is implemented via separate
+so-called ProcessModels. ProcessModels allow to implement the behavior of
+a process at different levels of abstraction, in different languages or
+for different compute resources such as CPUs or neuromorphic cores. A
+single Process can support multiple ProcessModels of the same or
+different type.
+3. Ports: Lava processes communicate with their environment or other
+processes solely via messages. Messages are sent between ports via
+channels. Processes may have one or more input, output or reference
 ports.
-- OutPorts can only be connected to one or more InPorts and</p>
+- OutPorts can only be connected to one or moreInPorts and</p>
 <blockquote>
 <div><p>communication is uni-directional.</p>
 </div></blockquote>
 <ul class="simple">
 <li><p>InPorts can receive inputs from one or more OutPorts.</p></li>
-<li><p>RefPorts can be connected to Vars of remote Processes and allow the
-Process with the RefPort to access another Process’ internal state
+<li><p>RefPorts can be connected to Vars of remote processes and allow the
+process having the RefVar to access another process’s internal state
 directly and bi-directionally. This type of shared-memory interaction
 is potentially unsafe and should be used with caution!</p></li>
 </ul>
-<p>3. API: A Lava Process can expose a public API to configure it or interact
-with it at setup or during execution interactively. In general,
-the public state Vars can be considered part of a Process’ API.</p>
+<p>4. API: A Lava process can expose a public API to configure or interact
+with a process at setup or during execution interactively. In general,
+the public state Vars can be considered part of a Process’s API.</p>
 </dd>
 </dl>
-<p>Crucially, the behavior of a Process is not specified by the Process itself
-but by separate ProcessModels that implement the behavior
-of a Process at different levels of abstraction, in different
-programming languages, and for different compute resources, such as
-CPUs or neuromorphic cores. A single Process can support multiple
-ProcessModels of the same type or of different types. Please refer to
-the documentation of AbstractProcessModel for more details.</p>
-<p>Developers creating new Processes need to inherit from the
+<p>ProcessModels enable seamless cross-platform execution of processes. In
+particular they allow to build applications or algorithms using processes
+agnostic of the ProcessModel chosen at compile time. There are two
+broad categories of ProcessModels:
+1. LeafProcessModels allow to implement the behavior of a process
+directly in different languages for a particular compute resource.
+ProcessModels specify what Process they implement and what
+SynchronizationProtocol they implement (if necessary for the operation of
+the process). In addition, they specify which compute resource they require
+to function. All this information allows the compiler to map a Process
+and its ProcessModel to the appropriate HW platform.
+2. SubProcessModels allow to implement and compose the behavior of a
+process in terms of other processes. This enables the creation of
+hierarchical processes and reuse of more primitive ProcessModels to
+realize more complex ProcessModels. SubProcessModels inherit all compute
+resource requirements from the sub processes they instantiate. See
+documentation of AbstractProcessModel for more details.</p>
+<p>Developers creating new processes need to inherit from the
 AbstractProcess interface. Any internal Vars or Ports must be initialized
 within its init method:
 <a href="#id1"><span class="problematic" id="id2">``</span></a>`
 class NewProcess(AbstractProcess):</p>
 <blockquote>
 <div><dl class="simple">
-<dt>def __init__(self, shape, name):</dt><dd><p>super().__init__(shape=shape, name=name)
-self.var1 = Var(shape=shape)
-self.in_port1 = InPort(shape=shape)
-self.out_port1 = OutPort(shape=shape)
+<dt>def __init__(self, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs):</dt><dd><p>super().__init__(<a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs)
+self.var1 = Var(shape=&lt;shape&gt;)
+self.in_port1 = InPort(shape=&lt;shape&gt;)
+self.out_port1 = OutPort(shape=&lt;shape&gt;)
 …</p>
 </dd>
 </dl>
 </div></blockquote>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a>`
-Vars should only be used for dynamic state parameters that play a role in
-the behavioral model of the Process or for static configuration parameters
-that affect the behavior of the Process (e.g., the membrane potential of a
-LIF neuron).
-Meta parameters that are only needed for communicating information between
-the Process and its ProcessModels (e.g., shape) should not become a Var.
-They should be passed to the Process as keyword arguments and
-then need to be passed to the __init__ method of AbstractProcess,
-as is done with ‘shape’ and ‘name’ in the example above. All such keyword
-arguments are stored in the member ‘proc_params’, which is passed on to all
-ProcessModels of the Process.</p>
-<p>Vars can be initialized with user-provided values and Processes can be
-connected to other Processes via their ports:
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">p1</span> <span class="pre">=</span> <span class="pre">NewProcess(&lt;in_args&gt;)</span>
-<span class="pre">p2</span> <span class="pre">=</span> <span class="pre">NewProcess(&lt;in_args&gt;)</span>
-<span class="pre">p1.out_port1.connect(p2.in_port1)</span>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">Vars</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">initialized</span> <span class="pre">with</span> <span class="pre">user-provided</span> <span class="pre">values</span> <span class="pre">and</span> <span class="pre">processes</span> <span class="pre">can</span> <span class="pre">be</span>
+<span class="pre">connected</span> <span class="pre">to</span> <span class="pre">other</span> <span class="pre">processes</span> <span class="pre">via</span> <span class="pre">their</span> <span class="pre">ports:</span>
 <span class="pre">`</span></code>
-For more information on connecting Processes, see the documentation of
-InPort, OutPort, and RefPort.</p>
+p1 = NewProcess(&lt;in_args&gt;)
+p2 = NewProcess(&lt;in_args&gt;)
+p1.out_port1.connect(p2.in_port1)
+<a href="#id7"><span class="problematic" id="id8">``</span></a>`
+Processes do only specify their states, ports and other public interface
+methods but they do not specify the behavior. Instead, ProcessModels
+specify which Processes they implement. Typically, Processes share their
+states, ports and other public interface methods with their ProcessModels.
+For special cases, one can use proc_params memeber of the process to
+communicate arbitrary object between Processes and their PorcessModels.
+For more information on connecting process, see documentation of InPort,
+OutPort and RefPort.</p>
 <p>Once a concrete Process has been created and connected with other
-Processes it needs to be compiled before it is ready for execution.
-A Process is compiled by the Lava Compiler while execution is controlled
+processes it needs to be compiled before it is ready for execution.
+A process is compiled by the Lava Compiler while execution is controlled
 by the Lava Runtime. While the Lava Compiler and Runtime can be created
-manually to compile and run a Process, the AbstractProcess interface
-provides short-hand methods to compile and run a Process without
+manually to compile and run a process, the AbstractProcess interface
+provides short-hand methods to compile and run a process without
 interacting with the compiler or runtime directly. In particular running
-an uncompiled Process will compile a Process automatically.
-Since all Processes created in a session usually form a system, calling
+an uncompiled process will compile a process automatically.
+Since all processes created in a session usually form a system, calling
 ‘compile(..)’ or ‘run(..)’ on any of them compiles and runs all of them
 automatically.</p>
-<p>At compile time, the user must provide the Lava Compiler with a
+<p>At compile time, the user must provide the Lava compiler with a
 specific instance of a RunConfig class. A RunConfig class represents a set
 of rules that allows the compiler to select one and only one ProcessModel
 of a specific Process to be compiled for execution with specific compute
 resources. See the documentation on RunConfigs for more information how
 to create and customize such RunConfigs.</p>
-<p>Finally, in order to run a Process, a RunCondition must be provided. A
+<p>Finally, in order to run a process, a RunCondition must be provided. A
 RunCondition such as ‘RunSteps’ or ‘RunContinuous’ specifies until when a
-Process should be executed.</p>
-<p>Since Processes generally run asynchronously and in parallel,
-the execution of a set of Processes can either be paused or stopped by
+process should be executed.</p>
+<p>Since processes generally run asynchronously and in parallel,
+the execution of a set of processes can either be paused or stopped by
 calling the corresponding ‘pause()’ or ‘stop()’ methods.</p>
-<p>In order to save time setting up Processes for future use, Processes
+<p>In order to save time setting up processes for future use, processes
 can also be saved and reloaded from disk.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>proc_params</strong> – Any keyword arguments that get passed from child
-Processes will be stored in the AbstractProcess member
-‘proc_params’ and passed to all ProcessModels. ‘proc_params’ can
-be further added to or modified in order to pass parameters
-to ProcessModels that are not represented by dynamic state
-variables (Vars) of the Process.</p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the Process. Default is ‘Process_ID’, where ID
-is an integer value that is determined automatically.</p></li>
-<li><p><strong>log_config</strong> (<a class="reference internal" href="#lava.magma.core.process.process.LogConfig" title="lava.magma.core.process.process.LogConfig"><em>LogConfig</em></a><em>, </em><em>optional</em>) – Configuration options for logging.</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.__del__">
 <span class="sig-name descname"><span class="pre">__del__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.__del__" title="Permalink to this definition"></a></dt>
@@ -440,18 +435,12 @@ free compute resources.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.compile">
-<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><span class="pre">lava.magma.core.run_configs.RunConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.compile" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><span class="pre">lava.magma.core.run_configs.RunConfig</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><span class="pre">lava.magma.compiler.executable.Executable</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.compile" title="Permalink to this definition"></a></dt>
 <dd><p>Compiles this and any process connected to this process and
 returns the resulting Executable that can either be serialized or
 passed to Runtime.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>run_cfg</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><em>RunConfig</em></a>) – Used by the compiler to select a ProcessModel for each Process.</p></li>
-<li><p><strong>compile_config</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Configuration options for the Compiler and SubCompilers.</p></li>
-</ul>
-</dd>
-</dl>
+<p>:param : param run_cfg: RunConfig is used by compiler to select a
+:param ProcessModel for each compiled process.:</p>
 </dd></dl>
 
 <dl class="py property">
@@ -472,16 +461,6 @@ passed to Runtime.</p>
 <dd><p>Loads and de-serializes Process from disk.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.model">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.model_class">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'AbstractProcessModel'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.model_class" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.pause">
 <span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.pause" title="Permalink to this definition"></a></dt>
@@ -496,39 +475,31 @@ passed to Runtime.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><span class="pre">lava.magma.core.run_configs.RunConfig</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.run" title="Permalink to this definition"></a></dt>
-<dd><p>Executes this and any connected Processes that form a Process
-network. If any Process has not been compiled, it is automatically
-compiled before execution.</p>
-<p>When RunConfig.blocking is True, the Processes are executed for as long
-as the RunCondition is satisfied. Otherwise, the method run() returns
-immediately while the Processes are executed. In this case,
-the methods wait(), pause(), and stop() can be used to
-interact with the Runtime:</p>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><span class="pre">lava.magma.core.run_configs.RunConfig</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.run" title="Permalink to this definition"></a></dt>
+<dd><p>Runs process given RunConfig and RunCondition.</p>
+<p>run(..) compiles this and any process connected to this process
+automatically if it has not been compiled yet.</p>
+<p>run(..) executes for as long as the RunCondition is satisfied when
+RunConfig.blocking == True. Otherwise run(..) returns immediately. In
+this case, wait, pause and stop can be used to interact with the
+Runtime running all processes at a later point:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>wait() blocks execution for as long as the RunCondition is</p></li>
+<li><p>wait(..) blocks execution for as long as the RunCondition is</p></li>
 </ul>
 <p>satisfied.
-- pause() pauses execution as soon as possible and returns
+- pause(..) pauses execution at as soon as possible and returns
 control back to the user.
-- stop() terminates execution and releases control of all
+- stop(..) terminates execution and releases control of all
 involved compute nodes.</p>
 </div></blockquote>
-<p>If a run has been suspended by either pause() or a RunCondition
-being no longer satisfied, run() can be called again to resume
+<p>If a run has been suspended by either pause(..) or a RunCondition
+being no longer satisfied, run(..) can be called again to resume
 execution from the current state.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>condition</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><em>AbstractRunCondition</em></a>) – Specifies for how long to run the Process.</p></li>
-<li><p><strong>run_cfg</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) – Used by the compiler to select a ProcessModel for each Process.
-Must be provided when Processes have to be compiled, can be
-omitted otherwise.</p></li>
-<li><p><strong>compile_config</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Configuration options for the Compiler and SubCompilers.</p></li>
-</ul>
-</dd>
-</dl>
+<p>:param : param condition: RunCondition instance specifies for how long to
+:param run the process.:
+:param : param run_cfg: RunConfig is used by compiler to select a
+:param ProcessModel for each compiled process.:</p>
 </dd></dl>
 
 <dl class="py property">
@@ -575,24 +546,16 @@ RunCondition is met by blocking execution at command line level.</p>
 <p>Represents a collection of objects. Member objects can be accessed via
 dot-notation (SomeCollection.some_object_name). Collection also offers an
 iterator to iterate all member objects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>process</strong> (<a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a>) – Parent Process that holds the Collection</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – Name of the Collection</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.add_members">
-<span class="sig-name descname"><span class="pre">add_members</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">members</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">mem_type</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.Collection.add_members" title="Permalink to this definition"></a></dt>
-<dd><p>Adds members to a Collection.</p>
+<span class="sig-name descname"><span class="pre">add_members</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">members</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.Collection.add_members" title="Permalink to this definition"></a></dt>
+<dd><p>Adds members to Collection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>members</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>mem_type</em><em>]</em>) – Dictionary of Collection members, where the key is
-the string name of the member and the value is the member.</p>
+<dd class="field-odd"><p><strong>members</strong> – Dictionary of Collection members, where the key is</p>
 </dd>
 </dl>
+<p>the string name of the member and the value is the member.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -607,12 +570,6 @@ the string name of the member and the value is the member.</p>
 <dd><p>Returns True if Collection has no members.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.mem_type">
-<span class="sig-name descname"><span class="pre">mem_type</span></span><a class="headerlink" href="#lava.magma.core.process.process.Collection.mem_type" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></code></a>, <a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></code></a>, <a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></code></a>, <a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.variable.Var</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a>]</p>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.member_names">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">member_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.Collection.member_names" title="Permalink to this definition"></a></dt>
@@ -621,73 +578,8 @@ the string name of the member and the value is the member.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.members">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">members</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">mem_type</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.Collection.members" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">members</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><span class="pre">lava.magma.core.process.variable.Var</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.Collection.members" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the members of the Collection.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.process.</span></span><span class="sig-name descname"><span class="pre">LogConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level_console</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs_to_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%(asctime)s:%(levelname)s:</span> <span class="pre">%(name)s</span> <span class="pre">-</span> <span class="pre">%(message)s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%m/%d/%Y</span> <span class="pre">%I:%M:%S%p'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.LogConfig" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Configuration options for logging that can be passed into a Process.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.date_format">
-<span class="sig-name descname"><span class="pre">date_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%m/%d/%Y</span> <span class="pre">%I:%M:%S%p'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.date_format" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.file">
-<span class="sig-name descname"><span class="pre">file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.file" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%(asctime)s:%(levelname)s:</span> <span class="pre">%(name)s</span> <span class="pre">-</span> <span class="pre">%(message)s'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.format" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.level">
-<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.level_console">
-<span class="sig-name descname"><span class="pre">level_console</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level_console" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.logs_to_file">
-<span class="sig-name descname"><span class="pre">logs_to_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.logs_to_file" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.ProcessParameters">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.process.</span></span><span class="sig-name descname"><span class="pre">ProcessParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.ProcessParameters" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Wrapper around a dictionary that is used to pass parameters from a
-Process to its ProcessModels. The dictionary can be filled with an
-initial dictionary of parameters. Any further changes via the __setitem__
-method may not overwrite existing values. To overwrite a value, use the
-method overwrite().</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>initial_parameters</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Initial dictionary of parameters for a Process/ProcessModel.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.ProcessParameters.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.ProcessParameters.get" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.process.process.ProcessParameters.overwrite">
-<span class="sig-name descname"><span class="pre">overwrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.magma.core.process.process.ProcessParameters.overwrite" title="Permalink to this definition"></a></dt>
-<dd><p>Sets a key-value pair without checking whether the key is already
-present in ProcessParameters.</p>
 </dd></dl>
 
 </dd></dl>
@@ -737,12 +629,12 @@ new globally unique process ids.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.magma.core.process.variable">
+</div>
+<div class="section" id="module-lava.magma.core.process.variable">
 <span id="lava-magma-core-process-variable-module"></span><h2>lava.magma.core.process.variable module<a class="headerlink" href="#module-lava.magma.core.process.variable" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.Var">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.variable.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shareable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.variable.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shareable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.interfaces.AbstractProcessMember" title="lava.magma.core.process.interfaces.AbstractProcessMember"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.interfaces.AbstractProcessMember</span></code></a></p>
 <p>Represents a Lava variable. A Var implements the state of a Process and
 is part of its public user interface. Vars have the following properties:</p>
@@ -797,11 +689,6 @@ Both, this and ‘other_var’ must have the same ‘shape’ and be both
 then get() is delegated to aliased Var.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.magma.core.process.variable.Var.model">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#lava.magma.core.process.variable.Var.model" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.Var.set">
 <span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var.set" title="Permalink to this definition"></a></dt>
@@ -854,11 +741,11 @@ new globally unique Var ids.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.magma.core.process">
+</div>
+<div class="section" id="module-lava.magma.core.process">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.process" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

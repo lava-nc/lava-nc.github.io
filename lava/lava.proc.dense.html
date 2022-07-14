@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.proc.dense package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -235,12 +234,12 @@
     text-align: unset;
 }
 </style>
-<section id="lava-proc-dense-package">
+<div class="section" id="lava-proc-dense-package">
 <h1>lava.proc.dense package<a class="headerlink" href="#lava-proc-dense-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-lava.proc.dense.models">
+</div>
+<div class="section" id="module-lava.proc.dense.models">
 <span id="lava-proc-dense-models-module"></span><h2>lava.proc.dense.models module<a class="headerlink" href="#module-lava.proc.dense.models" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc">
@@ -270,11 +269,6 @@ it mimics Loihi behaviour bit-by-bit.</p>
 <span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.implements_protocol" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.num_message_bits">
-<span class="sig-name descname"><span class="pre">num_message_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=5)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.num_message_bits" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.num_weight_bits">
@@ -308,6 +302,11 @@ it mimics Loihi behaviour bit-by-bit.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelBitAcc.weight_exp">
 <span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=4)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelBitAcc.weight_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -321,7 +320,7 @@ it mimics Loihi behaviour bit-by-bit.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyDenseModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
 <p>Implementation of Conn Process with Dense synaptic connections in
 floating point precision. This short and simple ProcessModel can be used
@@ -348,11 +347,6 @@ fixed point implementation.</p>
 <span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.implements_protocol" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.num_message_bits">
-<span class="sig-name descname"><span class="pre">num_message_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=5)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.num_message_bits" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.num_weight_bits">
@@ -386,6 +380,11 @@ fixed point implementation.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.use_graded_spike">
+<span class="sig-name descname"><span class="pre">use_graded_spike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.use_graded_spike" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyDenseModelFloat.weight_exp">
 <span class="sig-name descname"><span class="pre">weight_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.dense.models.PyDenseModelFloat.weight_exp" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -397,20 +396,64 @@ fixed point implementation.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.proc.dense.process">
+</div>
+<div class="section" id="module-lava.proc.dense.process">
 <span id="lava-proc-dense-process-module"></span><h2>lava.proc.dense.process module<a class="headerlink" href="#module-lava.proc.dense.process" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.dense.process.Dense">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.process.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.process.Dense" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Dense connections between neurons. Realizes the      following abstract
+behavior: a_out = weights * s_in ‘</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – </p></li>
+<li><p><strong>(</strong><strong>num_flat_output_neurons</strong> (<em>2D Connection weight matrix of form</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>:param :
+:param num_flat_input_neurons) in C-order (row major).:
+:param weight_exp:
+:param Shared weight exponent used to:
+:param scale magnitude of weights:
+:param if needed. Mostly for fixed point:
+:param implementations. Unnecessary for floating point implementations.:
+:param Default value is 0.:
+:param num_weight_bits:
+:param Shared weight width/precision used by weight. Mostly for:
+:param fixed point  implementations. Unnecessary for floating point:
+:param implementations.:
+:param Default is for weights to use full 8 bit precision.:
+:param sign_mode:
+:param Shared indicator whether synapse is of ‘null’ (0):
+:param :
+:param ’mixed’ (1:
+:param default):
+:param ’excitatory’ (2) or  ’inhibitory’ (3) type. If:
+:param ’mixed’:
+:param the sign of the weight is included in the weight bits and:
+:param the fixed point weight used for inference is scaled by 2.:
+:param Unnecessary for floating point implementations.:
+:param use_graded_spike:
+:type use_graded_spike: bool
+:param flag to indicate graded spike. Default is False:
+:param In the fixed point implementation:
+:param weights are scaled according to the:
+:param following equations:
+:param weights = weights * (2 ** w_scale):
+:param w_scale =  8 - num_weight_bits + weight_exp + isMixed():
+:param a_buff:
+:param Circular buffer that stores output activations accumulated in current:
+:param timestep for future timesteps.:</p>
 </dd></dl>
 
-</section>
-<section id="module-lava.proc.dense">
+</div>
+<div class="section" id="module-lava.proc.dense">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.proc.dense" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.model.c package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -235,21 +234,84 @@
     text-align: unset;
 }
 </style>
-<section id="lava-magma-core-model-c-package">
+<div class="section" id="lava-magma-core-model-c-package">
 <h1>lava.magma.core.model.c package<a class="headerlink" href="#lava-magma-core-model-c-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="lava-magma-core-model-c-model-module">
-<h2>lava.magma.core.model.c.model module<a class="headerlink" href="#lava-magma-core-model-c-model-module" title="Permalink to this headline"></a></h2>
-</section>
-<section id="lava-magma-core-model-c-type-module">
-<h2>lava.magma.core.model.c.type module<a class="headerlink" href="#lava-magma-core-model-c-type-module" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-lava.magma.core.model.c">
+</div>
+<div class="section" id="module-lava.magma.core.model.c.model">
+<span id="lava-magma-core-model-c-model-module"></span><h2>lava.magma.core.model.c.model module<a class="headerlink" href="#module-lava.magma.core.model.c.model" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.model.AbstractCProcessModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.c.model.</span></span><span class="sig-name descname"><span class="pre">AbstractCProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.c.model.AbstractCProcessModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract interface for a C ProcessModels.</p>
+<dl class="simple">
+<dt>Example for how variables and ports might be initialized:</dt><dd><p>a_in:  LavaCType(CInPort, ‘short’, precision=16)
+s_out: LavaCType(COutPort, ‘short’, precision=1)
+u:     LavaCType(array, ‘signed long int’, precision=24)
+v:     LavaCType(array, ‘signed long int, precision=24)
+bias:  LavaCType(array, ‘signed short int’, precision=12)
+du:    LavaCType(scalar, ‘short int’, precision=12)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.model.AbstractCProcessModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.c.model.AbstractCProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.model.AbstractCProcessModel.source_file_name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source_file_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#lava.magma.core.model.c.model.AbstractCProcessModel.source_file_name" title="Permalink to this definition"></a></dt>
+<dd><p>Returns file name of <a href="#id1"><span class="problematic" id="id2">*</span></a>.h and <a href="#id3"><span class="problematic" id="id4">*</span></a>.c file containing implementation of
+Process behavior.
+By default, it should be in same directory as Python module of
+Process and Executable.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.model.AbstractParallelCProcessModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.c.model.</span></span><span class="sig-name descname"><span class="pre">AbstractParallelCProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.c.model.AbstractParallelCProcessModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.c.model.AbstractCProcessModel" title="lava.magma.core.model.c.model.AbstractCProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.c.model.AbstractCProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract interface for a C ProcessModel that can be distributed over
+multiple cores.
+Idea: This should be an implementation of a CProcessModel that can in
+particular be distributed over multiple embedded processors to accelerate
+sequential behavior or to provide larger contiguous virtual space of
+spike counters.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.model.AbstractParallelCProcessModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.c.model.AbstractParallelCProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.core.model.c.type">
+<span id="lava-magma-core-model-c-type-module"></span><h2>lava.magma.core.model.c.type module<a class="headerlink" href="#module-lava.magma.core.model.c.type" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.type.LavaCType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.c.type.</span></span><span class="sig-name descname"><span class="pre">LavaCType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.c.type.LavaCType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.type.LavaCType.d_type">
+<span class="sig-name descname"><span class="pre">d_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#lava.magma.core.model.c.type.LavaCType.d_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.c.type.LavaCType.precision">
+<span class="sig-name descname"><span class="pre">precision</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.c.type.LavaCType.precision" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-lava.magma.core.model.c">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.model.c" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

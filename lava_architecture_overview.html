@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lava Architecture &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -237,10 +236,10 @@
     text-align: unset;
 }
 </style>
-<section id="lava-architecture">
+<div class="section" id="lava-architecture">
 <h1>Lava Architecture<a class="headerlink" href="#lava-architecture" title="Permalink to this headline"></a></h1>
 <p>Lava is an emerging open-source software framework for neuromorphic computing. Many parts of Lava are still under development. Therefore the following sections describe Lava’s key attributes and fundamental architectural concepts that are partly implemented and partly envisioned today. A deeper dive into these architectural concepts can be found in the ‘Getting started with Lava’ section. We hope to inspire and invite developers to contribute to this open-source effort to solve some of the key challenges of neuromorphic hardware, software and application development.</p>
-<section id="key-attributes">
+<div class="section" id="key-attributes">
 <h2>Key attributes<a class="headerlink" href="#key-attributes" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><strong>Asynchronous parallelism:</strong> Lava is a software framework for asynchronous event-based processing for distributed, neuromorphic, heterogeneous, and massively parallel hardware platforms supporting edge to cloud based systems.</p></li>
@@ -251,17 +250,17 @@
 <li><p><strong>Trainable:</strong> Lave comes with powerful training algorithms to train models offline and continually online in real-time in the future.</p></li>
 <li><p><strong>Accessible:</strong> Lava provides an intuitive Python API to quickly build and execute models on distributed parallel systems.</p></li>
 </ul>
-</section>
-<section id="why-do-we-need-lava">
+</div>
+<div class="section" id="why-do-we-need-lava">
 <h2>Why do we need Lava?<a class="headerlink" href="#why-do-we-need-lava" title="Permalink to this headline"></a></h2>
 <p>At a micro-scale, neuromorphic systems are brain-inspired. Brains consist of a large number of neurons and synapses that operate in parallel and communicate with each other with sparse asynchronous messages (spikes), which lead to large gains in computational efficiency.</p>
 <p>At a macro-scale, neuromorphic hardware systems often involve multiple physical computing elements, ranging from special purpose neural accelerators to conventional CPU/GPUs, sensors, or actuator devices.
 Neuromorphic hardware systems and Lava mirror this general, massively parallel, heterogenous architecture from the ground up. All algorithms built in Lava are built from independent, modular computational processes that may execute on different hardware platforms and communicate through generalized message types.</p>
 <p>So far, there is no single open software framework today that combines all of these architectural aspects in a coherent, easy to use, and performant fashion to pave the way for broader adoption of neuromorphic technologies.</p>
-</section>
-<section id="lava-s-foundational-concepts">
+</div>
+<div class="section" id="lava-s-foundational-concepts">
 <h2>Lava’s foundational concepts<a class="headerlink" href="#lava-s-foundational-concepts" title="Permalink to this headline"></a></h2>
-<section id="processes">
+<div class="section" id="processes">
 <h3>1. Processes:<a class="headerlink" href="#processes" title="Permalink to this headline"></a></h3>
 <p><em>Processes</em> are the fundamental building block in the Lava architecture from which all algorithms and applications are built. <em>Processes</em> are stateful objects with internal variables, input and output ports for message-based communication via channels.
 <em>Processes</em> come in different forms. A <em>Process</em> can be as simple as a single neuron or as complex an entire neural network like a ResNet architecture, or an excitatory/inhibitory network.
@@ -269,8 +268,8 @@ A <em>Process</em> could also represent regular program code like a search algor
 In addition, peripheral devices such as sensors or actuators can also be wrapped into the <em>Process</em> abstraction to integrate them seamlessly into a Lava application alongside other computational processes.
 In short, everything in Lava is a <em>Process</em>, which has its own private memory and communicates with its environment solely via messages. This makes Lava <em>Processes</em> a recursive programming abstraction from which modular, large-scale parallel applications can be built.</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" style="width: 800px;" /></a>
-</section>
-<section id="behavioral-implementations-via-processmodels">
+</div>
+<div class="section" id="behavioral-implementations-via-processmodels">
 <h3>2. Behavioral implementations via ProcessModels:<a class="headerlink" href="#behavioral-implementations-via-processmodels" title="Permalink to this headline"></a></h3>
 <p><em>Process</em> classes themselves only define the interface of a <em>Process</em> in terms of state variables, ports, and other class methods for other <em>Processes</em> to use or interact with any given <em>Process</em>. However, <em>Processes</em> do not provide a behavioral implementation to make a <em>Process</em> executable on a particular hardware architecture.</p>
 <p>The behavioral implementation - i.e. a concrete implementation of variables, ports, channels and internal business logic - is provided via separate <em>ProcessModel</em> classes. <em>Processes</em> can have one or more <em>ProcessModels</em> of the same or different types. We distinguish between two categories of <em>ProcessModel</em> types:</p>
@@ -287,8 +286,8 @@ Lava allows developers to define synchronization protocols that describe how <em
 <p>In order to execute a specific instance of a <em>Process</em>, the compiler will select one of the <em>ProcessModels</em> that implement a given <em>Process</em> class. In order to allow for different selection strategies, the compiler delegates this <em>ProcessModel</em> selection to instances of a separate <em>RunConfig</em> class. Such <em>RunConfigs</em> correspond to a set of rules that determine which <em>ProcessModel</em> to select for a <em>Process</em> given user preferences and the resource requirements and tags of a <em>ProcessModel</em>. For instance, a particular <em>RunConfig</em> may always select the highest-level Python-based implementation of a <em>Process</em> for quick application prototyping on a conventional CPU or GPU architecture without physical access to neuromorphic systems like Intel’s Kapoho Bay or Pohohiki Springs. Another <em>RunConfig</em> might prefer to map <em>Processes</em> to neuro cores or embedded CPUs whenever such neuromorphic systems are available. Lava will provide several pre-configured <em>RunConfigs</em> but allows users to customize them or create their own.</p>
 <p>In summary, while <em>Processes</em> only provide a universal interface to interact with their environment via message passing, one or more <em>ProcessModels</em> are what implement the behavioral model of a <em>Process</em> in different languages and ways tailored to different hardware architectures. This implementation can either be provided directly or by refining a given <em>Process</em> iteratively by implementing its behavior via sub-<em>Processes</em> which allows for code reuse and greater modularity.</p>
 <p>Overall, this programming model enables quick application prototyping at a high level, agnostic of the intricate constraints and complexities that are often associated with neuromorphic architectures, in the language of choice of a user, while deferring specifics about the hardware architecture for later. Once ready, high-level behavioral models can be replaced or refined by more efficient lower-level implementations (often provided by the Lava process library). At the same time, the availability of different behavioral implementations allows users to run the same application on different hardware platforms such as a CPU or a neuromorphic system when only one of them is available.</p>
-</section>
-<section id="composability-and-connectivity">
+</div>
+<div class="section" id="composability-and-connectivity">
 <h3>3. Composability and connectivity:<a class="headerlink" href="#composability-and-connectivity" title="Permalink to this headline"></a></h3>
 <p><em>Processes</em> are connected via ports with each other for message-based communication over channels. For hierarchical <em>Processes</em>, ports of a parent process can also be internally connected to ports of a child <em>Process</em> and vice versa within a <em>SubProcessModel</em>.
 In general, connections between <em>Processes</em> can be feed-forward or recurrent and support branching and joining of connections.
@@ -303,15 +302,15 @@ There are four main types of ports that can be grouped in two different ways:</p
 <p>Aside from these main port types, there are additional virtual ports that effectively act as directives to the compiler to transform the shape of ports or how to combine multiple ports. Currently, Lava supports <em>ReshapePorts</em> and <em>ConcatPorts</em> to change the shape of a port or to concatenate multiple ports into one.
 Finally, system-level communication between <em>Processes</em> such as for synchronization is also implemented via ports and channels, but those are not managed directly by – and  therefore are hidden from – the user.</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" style="width: 800px;" /></a>
-</section>
-<section id="cross-platform-execution">
+</div>
+<div class="section" id="cross-platform-execution">
 <h3>4. Cross-platform execution:<a class="headerlink" href="#cross-platform-execution" title="Permalink to this headline"></a></h3>
 <p>Lava supports cross-platform execution of processes on a distributed set of compute nodes. Nodes in Lava have compute resources associated with them such as CPUs or neuro cores, and peripheral resources such as sensors, actuators or hard-disks. Given a graph of <em>Processes</em>, their <em>ProcessModels</em> and a <em>RunConfig</em>, this allows the compiler to map the <em>Processes</em> defined in the user system process to one or more <em>NodeConfigurations</em>. Depending on which type of node a <em>Process</em> is mapped to, a different <em>ProcessModel</em> with a node-specific implementation of its variables, ports, channels and behavior is chosen.
 In the end, each node in a <em>NodeConfiguration</em> can host one or more <em>SyncDomains</em> with one or more <em>ProcModels</em> in it. Each such <em>SyncDomain</em> also contains a local <em>RuntimeService</em> process. The <em>RuntimeService</em> is responsible for system management and includes the <em>Synchronizer</em> for orchestrating the <em>SyncProtocol</em> of the <em>SyncDomain</em>. Irrespective of the presence of multiple <em>SyncDomains</em> on multiple nodes, all user-defined and system processes communicate seamlessly via one asynchronous message-passing backend with each other and the global Runtime within the user system process.</p>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" style="width: 800px;" /></a>
-</section>
-</section>
-<section id="lava-software-stack">
+</div>
+</div>
+<div class="section" id="lava-software-stack">
 <h2>Lava software stack<a class="headerlink" href="#lava-software-stack" title="Permalink to this headline"></a></h2>
 <a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" style="width: 800px;" /></a>
 <p>The core components of the Lava software stack are comprised of the <em>Communicating Sequential Process</em> API, a powerful compiler, and a runtime. In combination, these components form the <em>Magma</em> layer of Lava, which is the foundation on which new <em>Processes</em> and <em>ProcessModels</em> are built.
@@ -320,8 +319,8 @@ The Lava process library provides a growing collection of generic, low-level, re
 <p>Besides these components, future releases of Lava will offer several utilities for application profiling, automatic float to fixed-point model conversion, network visualization, and more.
 Finally, Lava is open for extension to other third-party frameworks such as TensorFlow, ROS or Nengo.
 We welcome open-source contributions to any of these future libraries and utilities.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

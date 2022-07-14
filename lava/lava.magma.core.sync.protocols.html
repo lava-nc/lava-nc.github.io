@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.sync.protocols package &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -235,54 +234,25 @@
     text-align: unset;
 }
 </style>
-<section id="lava-magma-core-sync-protocols-package">
+<div class="section" id="lava-magma-core-sync-protocols-package">
 <h1>lava.magma.core.sync.protocols package<a class="headerlink" href="#lava-magma-core-sync-protocols-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-lava.magma.core.sync.protocols.async_protocol">
+</div>
+<div class="section" id="module-lava.magma.core.sync.protocols.async_protocol">
 <span id="lava-magma-core-sync-protocols-async-protocol-module"></span><h2>lava.magma.core.sync.protocols.async_protocol module<a class="headerlink" href="#module-lava.magma.core.sync.protocols.async_protocol" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.async_protocol.</span></span><span class="sig-name descname"><span class="pre">AsyncProtocol</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></code></a></p>
-<p>Protocol to run processes asynchronously.</p>
-<p>With the AsyncProtocol, Processes are executed without synchronization
-on specific phases. This means that the Processes could run with
-a varying speed and message passing is possible at any time.</p>
-<p><cite>AsyncProtocol</cite> is currently only implemented for execution on CPU using
-the <cite>PyAsyncProcessModel</cite> in which the <cite>run_async()</cite> function must be
-implemented to define the behavior of the underlying <cite>Process</cite>.</p>
-<p>For example:</p>
-<blockquote>
-<div><p>&#64;implements(proc=SimpleProcess, protocol=AsyncProtocol)
-&#64;requires(CPU)
-class SimpleProcessModel(PyAsyncProcessModel):</p>
-<blockquote>
-<div><p>u = LavaPyType(int, int)
-v = LavaPyType(int, int)</p>
-<dl>
-<dt>def run_async(self):</dt><dd><dl>
-<dt>while True:</dt><dd><p>self.u = self.u + 10
-self.v = self.v + 1000
-if self.check_for_stop_cmd():</p>
-<blockquote>
-<div><p>return</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.phases">
 <span class="sig-name descname"><span class="pre">phases</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.phases" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_functions">
-<span class="sig-name descname"><span class="pre">proc_functions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_functions" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_funcions">
+<span class="sig-name descname"><span class="pre">proc_funcions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_funcions" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -292,103 +262,13 @@ if self.check_for_stop_cmd():</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.magma.core.sync.protocols.loihi_protocol">
+</div>
+<div class="section" id="module-lava.magma.core.sync.protocols.loihi_protocol">
 <span id="lava-magma-core-sync-protocols-loihi-protocol-module"></span><h2>lava.magma.core.sync.protocols.loihi_protocol module<a class="headerlink" href="#module-lava.magma.core.sync.protocols.loihi_protocol" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.</span></span><span class="sig-name descname"><span class="pre">LoihiProtocol</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></code></a></p>
-<p>A ProcessModel implementing this synchronization protocol adheres to the
-phases of execution of the neuromorphic processor Loihi.</p>
-<p>Each phase is implemented by a dedicated method. Loihi’s phases of
-execution are listed below in order of execution. A ProcessModel adhering
-to this protocol must implement each phase in a dedicated method.
-Additionally, for each phase (except the spiking phase), a “guard” method
-must be implemented that determines whether its respective phase is
-executed in the given time step.</p>
-<p>For example:
-To execute the post management phase (‘run_post_mgmt()’), the function
-<cite>post_guard()</cite> must return True.</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def post_guard(self) -&gt; bool:</dt><dd><p>return True</p>
-</dd>
-<dt>def run_post_mgmt(self) -&gt; None:</dt><dd><p># i.e. read out a variable from a neurocore</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>The phases are executed in this order:</p>
-<ol class="arabic">
-<li><dl>
-<dt>Spiking phase:</dt><dd><p>Synaptic input is served, neuron states are updated and
-output spikes are generated and delivered. This method is always
-executed and does not have a corresponding guard method.</p>
-<dl class="simple">
-<dt>Method:</dt><dd><p>‘run_spk()’ -&gt; None</p>
-</dd>
-<dt>Guard:</dt><dd><p>None</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Pre management phase (<cite>run_pre_mgmt</cite>):</dt><dd><p>Memory is consolidated before the learning phase.
-In order to jump into this phase, ‘pre_guard’ and <cite>learn_guard</cite>
-must return True.</p>
-<dl class="simple">
-<dt>Method:</dt><dd><p>‘run_pre_mgmt()’ -&gt; None</p>
-</dd>
-<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None, and <cite>pre_guard()</cite> -&gt; None</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Learning phase:</dt><dd><p>Activity traces are calculated, learning rules are applied and
-parameters (weights, thresholds, delays, tags, etc) are updated.
-In order to jump into this phase, ‘lrn_guard’ must return True.</p>
-<dl class="simple">
-<dt>Method:</dt><dd><p>‘run_lrn()’ -&gt; None</p>
-</dd>
-<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Post management phase:</dt><dd><p>Memory is consolidated after learning phase. Read and write access
-to neuron states are safe now.
-In order to jump into this phase ‘post_guard’ must return True.</p>
-<dl>
-<dt>Method:</dt><dd><blockquote>
-<div><p>‘run_post_mgmt()’ -&gt; None</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>Host phase:</dt><dd><p>Memory of the host system is consolidated.
-In order to jump into this phase ‘host_guard’ must return True.</p>
-<dl class="simple">
-<dt>Method:</dt><dd><p>‘run_host_mgmt()’ -&gt; None</p>
-</dd>
-<dt>Guard:</dt><dd><p><cite>host_guard()</cite> -&gt; None</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</li>
-</ol>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.phases">
 <span class="sig-name descname"><span class="pre">phases</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[array([1.]),</span> <span class="pre">array([2.]),</span> <span class="pre">array([3.]),</span> <span class="pre">array([4.]),</span> <span class="pre">array([5.])]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.phases" title="Permalink to this definition"></a></dt>
@@ -404,12 +284,6 @@ In order to jump into this phase ‘host_guard’ must return True.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runtime_service</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.runtime_service" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.NxSdkRuntimeService">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.</span></span><span class="sig-name descname"><span class="pre">NxSdkRuntimeService</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.NxSdkRuntimeService" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="py class">
@@ -461,11 +335,11 @@ In order to jump into this phase ‘host_guard’ must return True.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-lava.magma.core.sync.protocols">
+</div>
+<div class="section" id="module-lava.magma.core.sync.protocols">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.sync.protocols" title="Permalink to this headline"></a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
