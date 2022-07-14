@@ -656,88 +656,10 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Error-module">
 <h1>Error module<a class="headerlink" href="#Error-module" title="Permalink to this headline"></a></h1>
 <p>Slayer provides prebuilt loss modules: <code class="docutils literal notranslate"><span class="pre">slayer.loss.{SpikeTime,</span> <span class="pre">SpikeRate,</span> <span class="pre">SpikeMax}</span></code>. * <code class="docutils literal notranslate"><span class="pre">SpikeTime</span></code>: precise spike time based loss when target spike train is known. * <code class="docutils literal notranslate"><span class="pre">SpikeRate</span></code>: spike rate based loss when desired rate of the output neuron is known. * <code class="docutils literal notranslate"><span class="pre">SpikeMax</span></code>: negative log likelihood losses for classification without any rate tuning.</p>
-<p>Since the target spike train <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\hat{\boldsymbol s}(t)</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
- is known for this problem, we use <code class="docutils literal notranslate"><span class="pre">SpikeTime</span></code> loss here. It uses <em>van Rossum</em> like spike train distance metric. The actual and target spike trains are filtered using a FIR filter and the norm of the timeseries is the loss metric.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">L = \frac{1}{2T} \int_T \left(h_\text{FIR} * ({\boldsymbol s} - \hat{\boldsymbol s})\right)(t)^\top{\bf 1}\,\text dt
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<ul class="simple">
+<p>Since the target spike train <img class="math" src="../../../../_images/math/463066f914bf1756bca9be0b29431e00f0bc61f3.png" alt="\hat{\boldsymbol s}(t)"/> is known for this problem, we use <code class="docutils literal notranslate"><span class="pre">SpikeTime</span></code> loss here. It uses <em>van Rossum</em> like spike train distance metric. The actual and target spike trains are filtered using a FIR filter and the norm of the timeseries is the loss metric.</p>
+<div class="math">
+<p><img src="../../../../_images/math/0ebb32e8f11a7e224c68e08263259c6cb1cec9ff.png" alt="L = \frac{1}{2T} \int_T \left(h_\text{FIR} * ({\boldsymbol s} - \hat{\boldsymbol s})\right)(t)^\top{\bf 1}\,\text dt"/></p>
+</div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">time_constant</span></code>: time constant of the FIR filter.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter_order</span></code>: the order of FIR filter. Exponential decay is first order filter.</p></li>
 </ul>

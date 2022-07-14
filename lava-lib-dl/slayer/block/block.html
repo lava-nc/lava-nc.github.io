@@ -557,8 +557,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Abstract K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -566,47 +566,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of neuron parameter. Defaults to None.</p></li>
@@ -720,49 +681,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>Abstract recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of neuron parameter.Defaults to None.</p></li>
@@ -1069,8 +991,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.cuba.AbstractCuba" title="lava.lib.dl.slayer.block.cuba.AbstractCuba"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.AbstractCuba</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>CUBA LIF K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -1078,47 +1000,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter. Defaults to None.</p></li>
@@ -1183,49 +1066,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.cuba.AbstractCuba" title="lava.lib.dl.slayer.block.cuba.AbstractCuba"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.cuba.AbstractCuba</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>CUBA LIF recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of CUBA LIF neuron parameter.Defaults to None.</p></li>
@@ -1466,8 +1310,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.rf.AbstractRF" title="lava.lib.dl.slayer.block.rf.AbstractRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.rf.AbstractRF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>Resonate &amp; Fire K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -1475,47 +1319,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of RF parameter. Defaults to None.</p></li>
@@ -1580,49 +1385,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.rf.AbstractRF" title="lava.lib.dl.slayer.block.rf.AbstractRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.rf.AbstractRF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>Resonate &amp; Fire recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of RF parameter.Defaults to None.</p></li>
@@ -1863,8 +1629,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.rf_iz.AbstractRFIz" title="lava.lib.dl.slayer.block.rf_iz.AbstractRFIz"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.rf_iz.AbstractRFIz</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>Resonate &amp; Fire Izhikevich K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -1872,47 +1638,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of RF-Izhikevich neuron parameter. Defaults to None.</p></li>
@@ -1977,49 +1704,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.rf_iz.AbstractRFIz" title="lava.lib.dl.slayer.block.rf_iz.AbstractRFIz"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.rf_iz.AbstractRFIz</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>Resonate &amp; Fire Izhikevich recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of RF-Izhikevich neuron parameter.Defaults to None.</p></li>
@@ -2227,8 +1915,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.alif.AbstractALIF" title="lava.lib.dl.slayer.block.alif.AbstractALIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.alif.AbstractALIF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>Adaptive LIF K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -2236,47 +1924,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive LIF neuron parameter. Defaults to None.</p></li>
@@ -2341,49 +1990,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.alif.AbstractALIF" title="lava.lib.dl.slayer.block.alif.AbstractALIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.alif.AbstractALIF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>Adaptive LIF recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive LIF neuron parameter.Defaults to None.</p></li>
@@ -2591,8 +2201,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.adrf.AbstractADRF" title="lava.lib.dl.slayer.block.adrf.AbstractADRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.adrf.AbstractADRF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>Adaptive Resonate &amp; Fire K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -2600,47 +2210,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive RF neuron parameter. Defaults to None.</p></li>
@@ -2705,49 +2276,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.adrf.AbstractADRF" title="lava.lib.dl.slayer.block.adrf.AbstractADRF"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.adrf.AbstractADRF</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>Adaptive Resonate &amp; Fire recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive RF neuron parameter.Defaults to None.</p></li>
@@ -2955,8 +2487,8 @@ average event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ" title="lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractKWTA" title="lava.lib.dl.slayer.block.base.AbstractKWTA"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractKWTA</span></code></a></p>
 <p>Adaptive Resonate &amp; Fire Izhikevich K-Winner-Takes-All block class. This should never be
 instantiated on its own. The formulation is described as below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+<div class="math">
+<p><img src="../../../_images/math/fac3f4b7d736d81a94909ec041ff59c121c58ce3.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
                    + \mathbf{R}\,s_{out}[t-1]
                    + \alpha\,(N-2K)\right)\\
 \mathbf{R} = \begin{bmatrix}
@@ -2964,47 +2496,8 @@ a &amp;-1 &amp;\cdots &amp;-1\\
 -1 &amp; a &amp;\cdots &amp;-1\\
 \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
 -1 &amp;-1 &amp;\cdots &amp; a
-\end{bmatrix},\qquad |a| &lt; 1
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\end{bmatrix},\qquad |a| &lt; 1"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive RF-Izhikevich neuron parameter. Defaults to None.</p></li>
@@ -3069,49 +2562,10 @@ event rate is returned. Defaults to False.</p></li>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ" title="lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.adrf_iz.AbstractADRFIZ</span></code></a>, <a class="reference internal" href="#lava.lib.dl.slayer.block.base.AbstractRecurrent" title="lava.lib.dl.slayer.block.base.AbstractRecurrent"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.block.base.AbstractRecurrent</span></code></a></p>
 <p>Adaptive Resonate &amp; Fire Izhikevich recurrent block class. This should never be instantiated on its
 own. The recurrent formulation is described below:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
-                + \mathbf{R}\,s_{out}[t-1]\right)
-
-</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+<div class="math">
+<p><img src="../../../_images/math/b2d354fa20d5d33cefe8f7323029a772068a6a72.png" alt="s_\text{out}[t] = f_s\left(\mathbf{W}\,s_\text{in}[t]
+                + \mathbf{R}\,s_{out}[t-1]\right)"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>neuron_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – a dictionary of Adaptive RF-Izhikevich neuron parameter.Defaults to None.</p></li>

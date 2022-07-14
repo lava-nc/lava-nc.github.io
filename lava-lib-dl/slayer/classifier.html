@@ -247,8 +247,8 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">MovingWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_window</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'probability'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.MovingWindow" title="Permalink to this definition"></a></dt>
 <dd><p>Moving window based classifier. It produces a timeseries of
 classification/prediction based on moving window estimate.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\text{rate: } {\bf r}(t)
+<div class="math">
+<p><img src="../../_images/math/d7769adf1d50baf8834d48501178b8dfe4043748.png" alt="\text{rate: } {\bf r}(t)
     &amp;= \frac{1}{W}\int_{t-W}^T {\bf s}(t)\,\text dt \
 
 \text{confidence: } {\bf c}(t) &amp;= \begin{cases}
@@ -261,45 +261,8 @@ classification/prediction based on moving window estimate.</p>
     \right) &amp;\text{ if mode=softmax}
 \end{cases} \
 
-\text{prediction: } p(t) &amp;= \arg\max({\bf r}(t))</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<dl class="field-list simple">
+\text{prediction: } p(t) &amp;= \arg\max({\bf r}(t))"/></p>
+</div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>time_window</strong> (<em>int</em>) – size of moving window.</p></li>
@@ -393,8 +356,8 @@ Defaults to None.</p></li>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.classifier.</span></span><span class="sig-name descname"><span class="pre">Rate</span></span><a class="headerlink" href="#lava.lib.dl.slayer.classifier.Rate" title="Permalink to this definition"></a></dt>
 <dd><p>Global rate based classifier. It considers the event rate of the spike
 train over the entire duration as the confidence score.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\text{rate: } {\bf r} &amp;= \frac{1}{T}\int_T{\bf s}(t)\,\text dt\
+<div class="math">
+<p><img src="../../_images/math/0b0160389fa706ee32bf86250a71ebbeb7174377.png" alt="\text{rate: } {\bf r} &amp;= \frac{1}{T}\int_T{\bf s}(t)\,\text dt\
 
 \text{confidence: } {\bf c} &amp;= \begin{cases}
     \frac{\bf r}{\bf r^\top 1}
@@ -407,45 +370,8 @@ train over the entire duration as the confidence score.</p>
         &amp;\text{ if mode=softmax}
 \end{cases} \\
 
-\text{prediction: } p &amp;= \arg\max(\bf r)</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p class="rubric">Examples</p>
+\text{prediction: } p &amp;= \arg\max(\bf r)"/></p>
+</div><p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">classifier</span> <span class="o">=</span> <span class="n">Rate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">prediction</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">(</span><span class="n">spike</span><span class="p">)</span>
 </pre></div>

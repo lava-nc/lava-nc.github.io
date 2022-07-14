@@ -424,52 +424,15 @@ follows</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.cuba.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.cuba.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Loihi CUBA neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u[t] &amp;= (1 - \alpha_u)\,u[t-1] + x[t] \
+<div class="math">
+<p><img src="../../../_images/math/9c6681917039ddc00b493c27970c89f94f3ba847.png" alt="u[t] &amp;= (1 - \alpha_u)\,u[t-1] + x[t] \
 
 v[t] &amp;= (1 - \alpha_v)\,v[t-1] + u[t] + \text{bias} \
 
 s[t] &amp;= v[t] \geq \vartheta \
 
-v[t] &amp;= v[t]\,(1-s[t])</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+v[t] &amp;= v[t]\,(1-s[t])"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
@@ -645,8 +608,8 @@ class.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
+<div class="math">
+<p><img src="../../../_images/math/40a4eb7205c22a02db9f33b02e57452d5408a5f9.png" alt="\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
     - \sin\phi\ \mathfrak{Im}(z[t-1]))
     + \mathfrak{Re}(x[t]) + \text{real bias} \
 
@@ -654,45 +617,8 @@ class.</p>
     + \cos\phi\ \mathfrak{Im}(z[t-1]))
     + \mathfrak{Im}(x[t]) + \text{imag bias}  \
 
-s[t] &amp;= |z[t]| \geq \vartheta \text{ and } \arg(z[t])=0</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+s[t] &amp;= |z[t]| \geq \vartheta \text{ and } \arg(z[t])=0"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
@@ -889,8 +815,8 @@ class.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.rf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.rf_iz.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF Izhikevich neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
+<div class="math">
+<p><img src="../../../_images/math/c56946fba53eaf1561035163fe8f7ec510c39f0e.png" alt="\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
     - \sin\phi\ \mathfrak{Im}(z[t-1]))
     + \mathfrak{Re}(x[t]) + \text{real bias} \
 
@@ -900,45 +826,8 @@ class.</p>
 
 s[t] &amp;= \mathfrak{Im}(z[t]) \geq \vartheta \
 
-\mathfrak{Re}(z[t]) &amp;= \mathfrak{Re}(z[t])\,(1-s[t])</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+\mathfrak{Re}(z[t]) &amp;= \mathfrak{Re}(z[t])\,(1-s[t])"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
@@ -1136,8 +1025,8 @@ class.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.alif.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.alif.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Adaptive LIF neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">u[t] &amp;= (1-\alpha_u)\,u[t-1] + x[t] + \text{bias} \
+<div class="math">
+<p><img src="../../../_images/math/afabb03914a64a1878a1abb81c403bd61383c342.png" alt="u[t] &amp;= (1-\alpha_u)\,u[t-1] + x[t] + \text{bias} \
 
 v[t] &amp;= (1-\alpha_v)\,v[t-1] + u[t] \
 
@@ -1150,45 +1039,8 @@ s[t] &amp;= (v[t] - r[t]) \geq \vartheta[t] \
 
 r[t] &amp;= r[t] + 2\,\vartheta[t] \
 
-\vartheta[t] &amp;= \vartheta[t] + \vartheta_{\text{step}}</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+\vartheta[t] &amp;= \vartheta[t] + \vartheta_{\text{step}}"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
@@ -1394,8 +1246,8 @@ class.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of RF neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
+<div class="math">
+<p><img src="../../../_images/math/94bf7877197a8d6030124fcb54f08a9105a39d63.png" alt="\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
     - \sin\phi\ \mathfrak{Im}(z[t-1]))
     + \mathfrak{Re}(x[t]) + \text{real bias}\
 
@@ -1408,45 +1260,8 @@ class.</p>
 
 r[t] &amp;= (1-\alpha_r)\,r[t-1] \
 
-s[t] &amp;= |z[t]| \geq (\vartheta[t] + r[t]) \text{ and } \arg(z[t])=0</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+s[t] &amp;= |z[t]| \geq (\vartheta[t] + r[t]) \text{ and } \arg(z[t])=0"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
@@ -1673,8 +1488,8 @@ class.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.neuron.adrf_iz.</span></span><span class="sig-name descname"><span class="pre">Neuron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graded_spike</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.neuron.adrf_iz.Neuron" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.slayer.neuron.base.Neuron" title="lava.lib.dl.slayer.neuron.base.Neuron"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.dl.slayer.neuron.base.Neuron</span></code></a></p>
 <p>This is the implementation of Adaptive RF Izhikevich neuron.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
+<div class="math">
+<p><img src="../../../_images/math/417d73949f4c8b445bdd674a1ceebe2892cf89d6.png" alt="\mathfrak{Re}(z[t]) &amp;= (1-\alpha)(\cos\phi\ \mathfrak{Re}(z[t-1])
     - \sin\phi\ \mathfrak{Im}(z[t-1]))
     + \mathfrak{Re}(x[t]) + \text{real bias}\
 
@@ -1687,45 +1502,8 @@ class.</p>
 
 r[t] &amp;= (1-\alpha_r)\,r[t-1] \
 
-s[t] &amp;= \mathfrak{Im}(z[t]) \geq (\vartheta[t] + r[t])</span>)</p>
-<p>latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2020-02-02&gt; patch level 2
-L3 programming layer &lt;2020-02-14&gt;
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-
-! LaTeX Error: File `anyfontsize.sty' not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.8 \usepackage
-               {bm}^^M
-No pages of output.
-Transcript written on math.log.
-</p>
-</div>
-<p>The internal state representations are scaled down compared to
+s[t] &amp;= \mathfrak{Im}(z[t]) \geq (\vartheta[t] + r[t])"/></p>
+</div><p>The internal state representations are scaled down compared to
 the actual hardware implementation. This allows for a natural range of
 synaptic weight values as well as the gradient parameters.</p>
 <p>The neuron parameters like threshold, decays are represented as real
