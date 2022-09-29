@@ -1,11 +1,7 @@
-Lava
-====
+Lava API
+========
 
-.. note::
-   API documentation will arrive shortly. In the mean time, please reviewdocstrings in code.
-
-..
-  .. toctree::
-   :maxdepth: 4
+.. toctree::
+   :maxdepth: 10
 
    lava

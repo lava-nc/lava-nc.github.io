@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lava.magma.core.sync.protocols package &mdash; Lava  documentation</title>
+  <title>lava.magma.core.sync.protocols &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,7 +18,9 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.runtime" href="lava.magma.runtime.html" />
+    <link rel="prev" title="lava.magma.core.sync" href="lava.magma.core.sync.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,23 +38,224 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -86,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -135,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -146,8 +362,41 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Lava</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava API reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.magma.html">Magma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -181,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,7 +464,12 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>lava.magma.core.sync.protocols package</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.html">Lava API reference</a> &raquo;</li>
+          <li><a href="lava.magma.html">Magma</a> &raquo;</li>
+          <li><a href="lava.magma.core.html">lava.magma.core</a> &raquo;</li>
+          <li><a href="lava.magma.core.sync.html">lava.magma.core.sync</a> &raquo;</li>
+      <li>lava.magma.core.sync.protocols</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.sync.protocols.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -234,25 +503,49 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-sync-protocols-package">
-<h1>lava.magma.core.sync.protocols package<a class="headerlink" href="#lava-magma-core-sync-protocols-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.sync.protocols.async_protocol">
-<span id="lava-magma-core-sync-protocols-async-protocol-module"></span><h2>lava.magma.core.sync.protocols.async_protocol module<a class="headerlink" href="#module-lava.magma.core.sync.protocols.async_protocol" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="module-lava.magma.core.sync.protocols">
+<span id="lava-magma-core-sync-protocols"></span><h1>lava.magma.core.sync.protocols<a class="headerlink" href="#module-lava.magma.core.sync.protocols" title="Permalink to this headline"></a></h1>
+<div class="section" id="lava-magma-core-sync-protocols-async-protocol">
+<h2>lava.magma.core.sync.protocols.async_protocol<a class="headerlink" href="#lava-magma-core-sync-protocols-async-protocol" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-4c27003acacbfc0403b7bd8dcfe767b9c33e0804.png" alt="Inheritance diagram of lava.magma.core.sync.protocols.async_protocol" usemap="#inheritance81f23a5efb" class="inheritance graphviz" /></div>
+<map id="inheritance81f23a5efb" name="inheritance81f23a5efb">
+<area shape="rect" id="node1" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" target="_top" title="Base class for `SyncProtocols`." alt="" coords="5,5,165,31"/>
+<area shape="rect" id="node2" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol" target="_top" title="Protocol to run processes asynchronously." alt="" coords="28,79,143,104"/>
+</map><span class="target" id="module-lava.magma.core.sync.protocols.async_protocol"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.async_protocol.</span></span><span class="sig-name descname"><span class="pre">AsyncProtocol</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></code></a></p>
+<p>Protocol to run processes asynchronously.</p>
+<p>With the AsyncProtocol, Processes are executed without synchronization
+on specific phases. This means that the Processes could run with
+a varying speed and message passing is possible at any time.</p>
+<p><cite>AsyncProtocol</cite> is currently only implemented for execution on CPU using
+the <cite>PyAsyncProcessModel</cite> in which the <cite>run_async()</cite> function must be
+implemented to define the behavior of the underlying <cite>Process</cite>.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>   <span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">SimpleProcess</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">AsyncProtocol</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">class</span> <span class="nc">SimpleProcessModel</span><span class="p">(</span><span class="n">PyAsyncProcessModel</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="n">u</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>       <span class="n">v</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>       <span class="k">def</span> <span class="nf">run_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>           <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span>               <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_for_stop_cmd</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>                   <span class="k">return</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.phases">
 <span class="sig-name descname"><span class="pre">phases</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.phases" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_funcions">
-<span class="sig-name descname"><span class="pre">proc_funcions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_funcions" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_functions">
+<span class="sig-name descname"><span class="pre">proc_functions</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.async_protocol.AsyncProtocol.proc_functions" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -263,12 +556,110 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.sync.protocols.loihi_protocol">
-<span id="lava-magma-core-sync-protocols-loihi-protocol-module"></span><h2>lava.magma.core.sync.protocols.loihi_protocol module<a class="headerlink" href="#module-lava.magma.core.sync.protocols.loihi_protocol" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-sync-protocols-loihi-protocol">
+<h2>lava.magma.core.sync.protocols.loihi_protocol<a class="headerlink" href="#lava-magma-core-sync-protocols-loihi-protocol" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-a301f33afedb65cd2b4161f10073901a177bbedf.png" alt="Inheritance diagram of lava.magma.core.sync.protocols.loihi_protocol" usemap="#inheritancecdac66ba06" class="inheritance graphviz" /></div>
+<map id="inheritancecdac66ba06" name="inheritancecdac66ba06">
+<area shape="rect" id="node1" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" target="_top" title="Base class for `SyncProtocols`." alt="" coords="5,5,165,31"/>
+<area shape="rect" id="node2" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" target="_top" title="A ProcessModel implementing this synchronization protocol adheres to the" alt="" coords="32,79,139,104"/>
+<area shape="rect" id="node3" href="#lava.magma.core.sync.protocols.loihi_protocol.NxSdkRuntimeService" target="_top" title="NxSdkRuntimeService" alt="" coords="190,5,357,31"/>
+<area shape="rect" id="node4" href="#lava.magma.core.sync.protocols.loihi_protocol.Phase" target="_top" title="Phase" alt="" coords="381,5,453,31"/>
+<area shape="rect" id="node5" href="#lava.magma.core.sync.protocols.loihi_protocol.Proc_Function_With_Guard" target="_top" title="Proc_Function_With_Guard(guard, func)" alt="" coords="477,5,672,31"/>
+</map><span class="target" id="module-lava.magma.core.sync.protocols.loihi_protocol"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.</span></span><span class="sig-name descname"><span class="pre">LoihiProtocol</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></code></a></p>
+<p>A ProcessModel implementing this synchronization protocol adheres to the
+phases of execution of the neuromorphic processor Loihi.</p>
+<p>Each phase is implemented by a dedicated method. Loihi’s phases of
+execution are listed below in order of execution. A ProcessModel adhering
+to this protocol must implement each phase in a dedicated method.
+Additionally, for each phase (except the spiking phase), a “guard” method
+must be implemented that determines whether its respective phase is
+executed in the given time step.</p>
+<p>For example:
+To execute the post management phase (‘run_post_mgmt()’), the function
+<cite>post_guard()</cite> must return True.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># i.e. read out a variable from a neurocore</span>
+</pre></div>
+</div>
+<p><em>Phases</em>
+The phases are executed in this order:</p>
+<ol class="arabic">
+<li><dl>
+<dt>Spiking phase:</dt><dd><p>Synaptic input is served, neuron states are updated and
+output spikes are generated and delivered. This method is always
+executed and does not have a corresponding guard method.</p>
+<dl class="simple">
+<dt>Method:</dt><dd><p>‘run_spk()’ -&gt; None</p>
+</dd>
+<dt>Guard:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Pre management phase (<cite>run_pre_mgmt</cite>):</dt><dd><p>Memory is consolidated before the learning phase.
+In order to jump into this phase, ‘pre_guard’ and <cite>learn_guard</cite>
+must return True.</p>
+<dl class="simple">
+<dt>Method:</dt><dd><p>‘run_pre_mgmt()’ -&gt; None</p>
+</dd>
+<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None, and <cite>pre_guard()</cite> -&gt; None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Learning phase:</dt><dd><p>Activity traces are calculated, learning rules are applied and
+parameters (weights, thresholds, delays, tags, etc) are updated.
+In order to jump into this phase, ‘lrn_guard’ must return True.</p>
+<dl class="simple">
+<dt>Method:</dt><dd><p>‘run_lrn()’ -&gt; None</p>
+</dd>
+<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Post management phase:</dt><dd><p>Memory is consolidated after learning phase. Read and write access
+to neuron states are safe now.
+In order to jump into this phase ‘post_guard’ must return True.</p>
+<dl>
+<dt>Method:</dt><dd><blockquote>
+<div><p>‘run_post_mgmt()’ -&gt; None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Guard:</dt><dd><p><cite>learn_guard()</cite> -&gt; None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Host phase:</dt><dd><p>Memory of the host system is consolidated.
+In order to jump into this phase ‘host_guard’ must return True.</p>
+<dl class="simple">
+<dt>Method:</dt><dd><p>‘run_host_mgmt()’ -&gt; None</p>
+</dd>
+<dt>Guard:</dt><dd><p><cite>host_guard()</cite> -&gt; None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ol>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.phases">
 <span class="sig-name descname"><span class="pre">phases</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[array([1.]),</span> <span class="pre">array([2.]),</span> <span class="pre">array([3.]),</span> <span class="pre">array([4.]),</span> <span class="pre">array([5.])]</span></em><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.phases" title="Permalink to this definition"></a></dt>
@@ -282,8 +673,15 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.runtime_service">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runtime_service</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol.runtime_service" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Return RuntimeService.</p>
+</dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.sync.protocols.loihi_protocol.NxSdkRuntimeService">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.</span></span><span class="sig-name descname"><span class="pre">NxSdkRuntimeService</span></span><a class="headerlink" href="#lava.magma.core.sync.protocols.loihi_protocol.NxSdkRuntimeService" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="py class">
@@ -336,15 +734,15 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.sync.protocols">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.sync.protocols" title="Permalink to this headline"></a></h2>
-</div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.core.sync.html" class="btn btn-neutral float-left" title="lava.magma.core.sync" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.runtime.html" class="btn btn-neutral float-right" title="lava.magma.runtime" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

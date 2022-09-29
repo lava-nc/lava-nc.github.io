@@ -10,7 +10,7 @@ library and a list of evergrowing modules.
 Lava-DL is packaged as ``lava.lib.dl``.
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
 
    slayer/index.rst

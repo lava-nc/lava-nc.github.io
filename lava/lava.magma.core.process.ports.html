@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lava.magma.core.process.ports package &mdash; Lava  documentation</title>
+  <title>lava.magma.core.process.ports &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,7 +18,9 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.core.sync" href="lava.magma.core.sync.html" />
+    <link rel="prev" title="lava.magma.core.process" href="lava.magma.core.process.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,23 +38,224 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -86,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -135,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -146,8 +362,41 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Lava</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava API reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.magma.html">Magma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -181,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,7 +464,12 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>lava.magma.core.process.ports package</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.html">Lava API reference</a> &raquo;</li>
+          <li><a href="lava.magma.html">Magma</a> &raquo;</li>
+          <li><a href="lava.magma.core.html">lava.magma.core</a> &raquo;</li>
+          <li><a href="lava.magma.core.process.html">lava.magma.core.process</a> &raquo;</li>
+      <li>lava.magma.core.process.ports</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.process.ports.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -234,14 +503,20 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-process-ports-package">
-<h1>lava.magma.core.process.ports package<a class="headerlink" href="#lava-magma-core-process-ports-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.process.ports.exceptions">
-<span id="lava-magma-core-process-ports-exceptions-module"></span><h2>lava.magma.core.process.ports.exceptions module<a class="headerlink" href="#module-lava.magma.core.process.ports.exceptions" title="Permalink to this headline"></a></h2>
-<dl class="py exception">
+<div class="section" id="module-lava.magma.core.process.ports">
+<span id="lava-magma-core-process-ports"></span><h1>lava.magma.core.process.ports<a class="headerlink" href="#module-lava.magma.core.process.ports" title="Permalink to this headline"></a></h1>
+<div class="section" id="lava-magma-core-process-ports-exceptions">
+<h2>lava.magma.core.process.ports.exceptions<a class="headerlink" href="#lava-magma-core-process-ports-exceptions" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-982667076ca495fd7f54468e267cf5823ce7de91.png" alt="Inheritance diagram of lava.magma.core.process.ports.exceptions" usemap="#inheritance36c4df946b" class="inheritance graphviz" /></div>
+<map id="inheritance36c4df946b" name="inheritance36c4df946b">
+<area shape="rect" id="node1" href="#lava.magma.core.process.ports.exceptions.ConcatIndexError" target="_top" title="Raised when the axis over which ports should be concatenated is out of" alt="" coords="5,5,140,31"/>
+<area shape="rect" id="node2" href="#lava.magma.core.process.ports.exceptions.ConcatShapeError" target="_top" title="Raised when incompatible ports are tried to be concatenated." alt="" coords="165,5,303,31"/>
+<area shape="rect" id="node3" href="#lava.magma.core.process.ports.exceptions.DuplicateConnectionError" target="_top" title="Raised when an attempt is made to create more than one connection" alt="" coords="328,5,516,31"/>
+<area shape="rect" id="node4" href="#lava.magma.core.process.ports.exceptions.ReshapeError" target="_top" title="Raised when new port shape is incompatible with old shape." alt="" coords="541,5,650,31"/>
+<area shape="rect" id="node5" href="#lava.magma.core.process.ports.exceptions.TransposeIndexError" target="_top" title="Raised when indices in transpose axes are out of bounds for the old" alt="" coords="674,5,829,31"/>
+<area shape="rect" id="node6" href="#lava.magma.core.process.ports.exceptions.TransposeShapeError" target="_top" title="Raised when transpose axes is incompatible with old shape dimension." alt="" coords="853,5,1012,31"/>
+<area shape="rect" id="node7" href="#lava.magma.core.process.ports.exceptions.VarNotSharableError" target="_top" title="Raised when an attempt is made to connect a RefPort or VarPort to a" alt="" coords="1037,5,1191,31"/>
+</map><span class="target" id="module-lava.magma.core.process.ports.exceptions"></span><dl class="py exception">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.exceptions.ConcatIndexError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.exceptions.</span></span><span class="sig-name descname"><span class="pre">ConcatIndexError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.exceptions.ConcatIndexError" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
@@ -295,9 +570,27 @@ non-sharable Var.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.process.ports.ports">
-<span id="lava-magma-core-process-ports-ports-module"></span><h2>lava.magma.core.process.ports.ports module<a class="headerlink" href="#module-lava.magma.core.process.ports.ports" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-process-ports-ports">
+<h2>lava.magma.core.process.ports.ports<a class="headerlink" href="#lava-magma-core-process-ports-ports" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-a65c2a5d449f41868239c503ea1de1631ddfd395.png" alt="Inheritance diagram of lava.magma.core.process.ports.ports" usemap="#inheritance27303b64d6" class="inheritance graphviz" /></div>
+<map id="inheritance27303b64d6" name="inheritance27303b64d6">
+<area shape="rect" id="node2" href="#lava.magma.core.process.ports.ports.AbstractDstPort" target="_top" title="Interface for destination ports such as InPorts and VarPorts in which" alt="" coords="5,225,129,251"/>
+<area shape="rect" id="node5" href="lava.magma.core.process.html#lava.magma.core.process.interfaces.AbstractProcessMember" target="_top" title="A member of a process has a reference to its parent process, a name" alt="" coords="267,79,447,104"/>
+<area shape="rect" id="node7" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" target="_top" title="Interface for source ports such as OutPorts and RefPorts from which" alt="" coords="439,225,562,251"/>
+<area shape="rect" id="node11" href="#lava.magma.core.process.ports.ports.VarPort" target="_top" title="VarPorts are members of a Lava Process and act as a wrapper for" alt="" coords="49,299,121,324"/>
+<area shape="rect" id="node12" href="#lava.magma.core.process.ports.ports.InPort" target="_top" title="Input ports are members of a Lava Process and can be connected to" alt="" coords="145,299,217,324"/>
+<area shape="rect" id="node3" href="#lava.magma.core.process.ports.ports.AbstractIOPort" target="_top" title="Abstract base class for InPorts and OutPorts." alt="" coords="299,225,415,251"/>
+<area shape="rect" id="node13" href="#lava.magma.core.process.ports.ports.OutPort" target="_top" title="Output ports are members of a Lava Process and can be connected to" alt="" coords="337,299,409,324"/>
+<area shape="rect" id="node4" href="#lava.magma.core.process.ports.ports.AbstractPort" target="_top" title="Abstract base class for any type of port of a Lava Process." alt="" coords="305,152,408,177"/>
+<area shape="rect" id="node6" href="#lava.magma.core.process.ports.ports.AbstractRVPort" target="_top" title="Abstract base class for RefPorts and VarPorts." alt="" coords="154,225,274,251"/>
+<area shape="rect" id="node8" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" target="_top" title="Abstract base class interface for any type of port that merely serves" alt="" coords="587,225,732,251"/>
+<area shape="rect" id="node15" href="#lava.magma.core.process.ports.ports.RefPort" target="_top" title="RefPorts are members of a Lava Process and can be connected to" alt="" coords="241,299,313,324"/>
+<area shape="rect" id="node9" href="#lava.magma.core.process.ports.ports.ConcatPort" target="_top" title="A ConcatPort is a virtual port that allows to concatenate multiple" alt="" coords="857,299,950,324"/>
+<area shape="rect" id="node14" href="#lava.magma.core.process.ports.ports.ReIndexPort" target="_top" title="A ReIndexPort is a virtual port that allows to re&#45;index the elements" alt="" coords="465,299,566,324"/>
+<area shape="rect" id="node16" href="#lava.magma.core.process.ports.ports.ReshapePort" target="_top" title="A ReshapePort is a virtual port that allows to change the shape of a" alt="" coords="590,299,694,324"/>
+<area shape="rect" id="node17" href="#lava.magma.core.process.ports.ports.TransposePort" target="_top" title="A TransposePort is a virtual port that allows to permute the dimensions" alt="" coords="719,299,832,324"/>
+<area shape="rect" id="node10" href="#lava.magma.core.process.ports.ports.ImplicitVarPort" target="_top" title="Sub class for VarPort to identify implicitly created VarPorts when" alt="" coords="25,372,144,397"/>
+</map><span class="target" id="module-lava.magma.core.process.ports.ports"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractDstPort">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractDstPort</span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
@@ -309,7 +602,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractIOPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractIOPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractIOPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class for InPorts and OutPorts.
 This class needs no implementation and only serves to establish a clear
@@ -318,7 +611,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.interfaces.AbstractProcessMember" title="lava.magma.core.process.interfaces.AbstractProcessMember"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.interfaces.AbstractProcessMember</span></code></a></p>
 <p>Abstract base class for any type of port of a Lava Process.</p>
 <p>Ports of a process can be connected to ports of other processes to enable
@@ -333,6 +626,11 @@ to. Port to port connections are directional and connecting ports,
 effectively means to associate them with each other as inputs or outputs.
 These connections, imply an a-cyclic graph structure that allows the
 compiler to infer connections between processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>...</em><em>]</em>) – Determines the number of connections created by this port</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.concat_with">
 <span class="sig-name descname"><span class="pre">concat_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#lava.magma.core.process.ports.ports.ConcatPort" title="lava.magma.core.process.ports.ports.ConcatPort"><span class="pre">lava.magma.core.process.ports.ports.ConcatPort</span></a></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.concat_with" title="Permalink to this definition"></a></dt>
@@ -341,10 +639,14 @@ axis by deriving and returning a new virtual ConcatPort. This implies
 resulting ConcatPort can only be forward connected to another port.
 All ports must have the same shape outside of the concatenation
 dimension.</p>
-<p>:param :
-:type : param ports: Port(s) that will be concatenated after this port.
-:param :
-:type : param axis: Axis/dimension along which ports are concatenated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>]</em><em>]</em>) – Port(s) that will be concatenated after this port.</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) – Axis/dimension along which ports are concatenated.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -357,7 +659,7 @@ elements of this port.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_dst_ports">
-<span class="sig-name descname"><span class="pre">get_dst_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_dst_ports" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_dst_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="lava.magma.core.process.ports.ports.AbstractDstPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractDstPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_dst_ports" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the list of all destination ports that this port connects to
 either directly or indirectly (through other ports).</p>
 </dd></dl>
@@ -365,15 +667,17 @@ either directly or indirectly (through other ports).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_incoming_transform_funcs">
 <span class="sig-name descname"><span class="pre">get_incoming_transform_funcs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_incoming_transform_funcs" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the list of all incoming transformation functions for the
-list of all incoming connections.</p>
+<dd><p>Returns the incoming transformation functions for all incoming
+connections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>transform_funcs</strong> – the list of all incoming transformation functions, sorted from
-source to destination port, for all incoming connections</p>
+<dd class="field-odd"><p>A dictionary that maps from the ID of an incoming source port to
+the list of transformation functions implementing the virtual
+ports on the way to the current port. The transformation
+functions in the list are sorted from source to destination port.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list(list(functools.partial))</p>
+<dd class="field-even"><p>dict(list(functools.partial))</p>
 </dd>
 </dl>
 </dd></dl>
@@ -385,11 +689,12 @@ source to destination port, for all incoming connections</p>
 source to the current port.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>virtual_ports</strong> – the list of all incoming virtual ports, sorted from source to
-destination port</p>
+<dd class="field-odd"><p>The string of the tuple is the ID of the source port, the list
+is the list of all incoming virtual ports, sorted from source to
+destination port.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list(AbstractVirtualPorts)</p>
+<dd class="field-even"><p>tuple(str, list(AbstractVirtualPorts))</p>
 </dd>
 </dl>
 </dd></dl>
@@ -397,15 +702,17 @@ destination port</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_outgoing_transform_funcs">
 <span class="sig-name descname"><span class="pre">get_outgoing_transform_funcs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">functools.partial</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_outgoing_transform_funcs" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the list of all outgoing transformation functions for the
-list of all outgoing connections.</p>
+<dd><p>Returns the outgoing transformation functions for all outgoing
+connections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>transform_funcs</strong> – the list of all outgoing transformation functions, sorted from
-source to destination port, for all outgoing connections</p>
+<dd class="field-odd"><p>A dictionary that maps from the ID of a destination port to
+the list of transformation functions implementing the virtual
+ports on the way from the current port. The transformation
+functions in the list are sorted from source to destination port.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list(list(functools.partial))</p>
+<dd class="field-even"><p>dict(list(functools.partial))</p>
 </dd>
 </dl>
 </dd></dl>
@@ -417,18 +724,19 @@ source to destination port, for all outgoing connections</p>
 the current port to the destination port.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>virtual_ports</strong> – the list of all outgoing virtual ports, sorted from source to
-destination port</p>
+<dd class="field-odd"><p>The string of the tuple is the ID of the destination port, the list
+is the list of all outgoing virtual ports, sorted from source to
+destination port.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list(AbstractVirtualPorts)</p>
+<dd class="field-even"><p>tuple(str, list(AbstractVirtualPorts))</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractPort.get_src_ports">
-<span class="sig-name descname"><span class="pre">get_src_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_src_ports" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_src_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_include_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="lava.magma.core.process.ports.ports.AbstractSrcPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractSrcPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractPort.get_src_ports" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the list of all source ports that connect either directly
 or indirectly (through other ports) to this port.</p>
 </dd></dl>
@@ -439,9 +747,11 @@ or indirectly (through other ports) to this port.</p>
 <dd><p>Reshapes this port by deriving and returning a new virtual
 ReshapePort with the new shape. This implies that the resulting
 ReshapePort can only be forward connected to another port.</p>
-<p>:param :
-:type : param new_shape: New shape of port. Number of total elements must
-:param not change.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_shape</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>...</em><em>]</em>) – New shape of port. Number of total elements must not change.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -451,16 +761,19 @@ ReshapePort can only be forward connected to another port.</p>
 a new virtual TransposePort the new permuted dimension. This implies
 that the resulting TransposePort can only be forward connected to
 another port.</p>
-<p>:param :
-:type : param axes: Order of permutation. Number of total elements and number
-:param of dimensions must not change.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>axes</strong> (<em>ty.Optional</em><em>[</em><em>ty.Union</em><em>[</em><em>ty.Tuple</em><em>[</em><em>int</em><em>, </em><em>...</em><em>]</em><em>, </em><em>ty.List</em><em>]</em><em>]</em>) – Order of permutation. Number of total elements and number of
+dimensions must not change.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractRVPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractRVPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractRVPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class for RefPorts and VarPorts.
 This class needs no implementation and only serves to establish a clear
@@ -479,7 +792,7 @@ type hierarchy needed for validating connections.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractVirtualPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractVirtualPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></code></a></p>
 <p>Abstract base class interface for any type of port that merely serves
 to transform the properties of a user-defined port.</p>
@@ -487,9 +800,12 @@ to transform the properties of a user-defined port.</p>
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.connect">
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractPort" title="lava.magma.core.process.ports.ports.AbstractPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this virtual port to other port(s).</p>
-<p>:param :
-:type : param ports: The port(s) to connect to. Connections from an IOPort
-:param to a RVPort and vice versa are not allowed.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>]</em><em>]</em>) – The port(s) to connect to. Connections from an IOPort to a RVPort
+and vice versa are not allowed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -583,7 +899,7 @@ a RefPort connects directly to a Var.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">InPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><span class="pre">lava.magma.core.process.ports.reduce_ops.AbstractReduceOp</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">InPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_op</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><span class="pre">lava.magma.core.process.ports.reduce_ops.AbstractReduceOp</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractDstPort" title="lava.magma.core.process.ports.ports.AbstractDstPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractDstPort</span></code></a></p>
 <p>Input ports are members of a Lava Process and can be connected to
 other ports to facilitate receiving of messages via channels.</p>
@@ -591,13 +907,24 @@ other ports to facilitate receiving of messages via channels.</p>
 or from other InPorts of processes that contain this InPort’s parent
 process as a sub process. Similarly, InPorts can connect to other InPorts
 of nested sub processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>...</em><em>]</em>) – Determines the number of connections created by this port.</p></li>
+<li><p><strong>reduce_op</strong> (<em>ty.Optional</em><em>[</em><em>ty.Type</em><em>[</em><a class="reference internal" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp"><em>AbstractReduceOp</em></a><em>]</em><em>]</em>) – Operation to be applied on incoming data, default: None.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort.connect">
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><span class="pre">lava.magma.core.process.ports.ports.InPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this InPort to other InPort(s) of a nested process. InPorts
 cannot connect to other OutPorts.</p>
-<p>:param :
-:type : param ports: The InPort(s) to connect to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;InPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;InPort&quot;</em><em>]</em><em>]</em>) – The InPort(s) to connect to.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -605,15 +932,18 @@ cannot connect to other OutPorts.</p>
 <span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) to this InPort or connects other
 InPort(s) of parent process to this InPort.</p>
-<p>:param :
-:type : param ports: The AbstractIOPort(s) that connect to this InPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) that connect to this InPort.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">OutPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">OutPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="lava.magma.core.process.ports.ports.AbstractSrcPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractSrcPort</span></code></a></p>
 <p>Output ports are members of a Lava Process and can be connected to
 other ports to facilitate sending of messages via channels.</p>
@@ -626,8 +956,11 @@ sub processes.</p>
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractIOPort" title="lava.magma.core.process.ports.ports.AbstractIOPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractIOPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this OutPort to other InPort(s) of another process
 or to OutPort(s) of its parent process.</p>
-<p>:param :
-:type : param ports: The AbstractIOPort(s) to connect to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) to connect to.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -635,15 +968,18 @@ or to OutPort(s) of its parent process.</p>
 <span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><span class="pre">lava.magma.core.process.ports.ports.OutPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) of a nested process to this OutPort.
 OutPorts cannot receive connections from other InPorts.</p>
-<p>:param :
-:type : param ports: The OutPorts(s) that connect to this OutPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;OutPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;OutPort&quot;</em><em>]</em><em>]</em>) – The OutPorts(s) that connect to this OutPort.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReIndexPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReIndexPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReIndexPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReIndexPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReIndexPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractVirtualPort</span></code></a></p>
 <p>A ReIndexPort is a virtual port that allows to re-index the elements
 of a port before connecting to another port.
@@ -657,7 +993,7 @@ out_port.reindex([3, 1, 0, 2]).connect(in_port)</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">RefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">RefPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></code></a>, <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractSrcPort" title="lava.magma.core.process.ports.ports.AbstractSrcPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.ports.ports.AbstractSrcPort</span></code></a></p>
 <p>RefPorts are members of a Lava Process and can be connected to
 internal Lava Vars of other processes to facilitate direct shared memory
@@ -681,7 +1017,7 @@ RefPort to a Var via the connect_var(..) method.</p>
 or to RefPort(s) of its parent process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ports</strong> – The AbstractRVPort(s) to connect to.</p>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) to connect to.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -691,8 +1027,11 @@ or to RefPort(s) of its parent process.</p>
 <span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.RefPort" title="lava.magma.core.process.ports.ports.RefPort"><span class="pre">lava.magma.core.process.ports.ports.RefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) of a nested process to this RefPort.
 RefPorts cannot receive connections from other VarPorts.</p>
-<p>:param :
-:type : param ports: The RefPort(s) that connect to this RefPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;RefPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;RefPort&quot;</em><em>]</em><em>]</em>) – The RefPort(s) that connect to this RefPort.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -702,7 +1041,7 @@ RefPorts cannot receive connections from other VarPorts.</p>
 memory access.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>variables</strong> – Var or list of Vars to connect to.</p>
+<dd class="field-odd"><p><strong>variables</strong> (<em>ty.Union</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>, </em><em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>]</em><em>]</em>) – Var or list of Vars to connect to.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -835,8 +1174,11 @@ RefPort to a Var via the RefPort.connect_var(..) method.</p>
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.VarPort" title="lava.magma.core.process.ports.ports.VarPort"><span class="pre">lava.magma.core.process.ports.ports.VarPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this VarPort to other VarPort(s) of a nested process.
 VarPorts cannot connect to other RefPorts.</p>
-<p>:param :
-:type : param ports: The VarPort(s) to connect to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;VarPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;VarPort&quot;</em><em>]</em><em>]</em>) – The VarPort(s) to connect to.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -844,8 +1186,11 @@ VarPorts cannot connect to other RefPorts.</p>
 <span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractRVPort" title="lava.magma.core.process.ports.ports.AbstractRVPort"><span class="pre">lava.magma.core.process.ports.ports.AbstractRVPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) to this VarPort or connects other
 VarPort(s) of parent process to this VarPort.</p>
-<p>:param :
-:type : param ports: The AbstractRVPort(s) that connect to this VarPort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) that connect to this VarPort.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -884,9 +1229,13 @@ within a network of Processes.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.process.ports.reduce_ops">
-<span id="lava-magma-core-process-ports-reduce-ops-module"></span><h2>lava.magma.core.process.ports.reduce_ops module<a class="headerlink" href="#module-lava.magma.core.process.ports.reduce_ops" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-process-ports-reduce-ops">
+<h2>lava.magma.core.process.ports.reduce_ops<a class="headerlink" href="#lava-magma-core-process-ports-reduce-ops" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-da93d5ef72f2513a925b915c28752b3291aa69de.png" alt="Inheritance diagram of lava.magma.core.process.ports.reduce_ops" usemap="#inheritance87647c58ab" class="inheritance graphviz" /></div>
+<map id="inheritance87647c58ab" name="inheritance87647c58ab">
+<area shape="rect" id="node2" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" target="_top" title="Reduce operations are required by InPorts to specify how date from" alt="" coords="5,79,148,104"/>
+<area shape="rect" id="node3" href="#lava.magma.core.process.ports.reduce_ops.ReduceSum" target="_top" title="ReduceOp to indicate that multiple inputs to same InPort should be" alt="" coords="27,152,126,177"/>
+</map><span class="target" id="module-lava.magma.core.process.ports.reduce_ops"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.reduce_ops.AbstractReduceOp">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.reduce_ops.</span></span><span class="sig-name descname"><span class="pre">AbstractReduceOp</span></span><a class="headerlink" href="#lava.magma.core.process.ports.reduce_ops.AbstractReduceOp" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
@@ -903,15 +1252,15 @@ added.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.process.ports">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.process.ports" title="Permalink to this headline"></a></h2>
-</div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.core.process.html" class="btn btn-neutral float-left" title="lava.magma.core.process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.core.sync.html" class="btn btn-neutral float-right" title="lava.magma.core.sync" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

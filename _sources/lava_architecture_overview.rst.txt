@@ -1,4 +1,4 @@
-.. https://bashtage.github.io/sphinx-material/rst-cheatsheet/rst-cheatsheet.html
+.. _lava architecture:
 
 Lava Architecture
 =================
@@ -28,8 +28,8 @@ So far, there is no single open software framework today that combines all of th
 Lava's foundational concepts
 ----------------------------
 
-1. Processes:
-^^^^^^^^^^^^^
+1. Processes
+^^^^^^^^^^^^
 
 *Processes* are the fundamental building block in the Lava architecture from which all algorithms and applications are built. *Processes* are stateful objects with internal variables, input and output ports for message-based communication via channels.
 *Processes* come in different forms. A *Process* can be as simple as a single neuron or as complex an entire neural network like a ResNet architecture, or an excitatory/inhibitory network.
@@ -37,19 +37,19 @@ A *Process* could also represent regular program code like a search algorithm, a
 In addition, peripheral devices such as sensors or actuators can also be wrapped into the *Process* abstraction to integrate them seamlessly into a Lava application alongside other computational processes.
 In short, everything in Lava is a *Process*, which has its own private memory and communicates with its environment solely via messages. This makes Lava *Processes* a recursive programming abstraction from which modular, large-scale parallel applications can be built.
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png
   :width: 800
   :align: center
 
 
-2. Behavioral implementations via ProcessModels:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2. Behavioral implementations via ProcessModels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Process* classes themselves only define the interface of a *Process* in terms of state variables, ports, and other class methods for other *Processes* to use or interact with any given *Process*. However, *Processes* do not provide a behavioral implementation to make a *Process* executable on a particular hardware architecture.
 
 The behavioral implementation - i.e. a concrete implementation of variables, ports, channels and internal business logic - is provided via separate *ProcessModel* classes. *Processes* can have one or more *ProcessModels* of the same or different types. We distinguish between two categories of *ProcessModel* types:
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png
   :width: 800
   :align: center
 
@@ -61,7 +61,7 @@ In general, in neuromorphic architectures computation emerges from collective dy
 Fundamentally, all *Processes* within a system or network operate in parallel and communicate asynchronously with each other through the exchange of message tokens. But many use cases require synchronization among *Processes*, for instance to implement a discrete-time dynamical system representing a particular neuron model progressing from one algorithmic time step to the next.
 Lava allows developers to define synchronization protocols that describe how *Processes* in the same synchronization domain synchronize with each other. This *SyncProtocol* is orchestrated by a *Synchronizer* within a *SyncDomain* which exchanges synchronization message tokens with all *Processes* in a *SyncDomain*. The compiler either assigns *Processes* automatically to a *SyncDomain* based on the *SyncProtocol* it implements but also allows users to assign *Processes* manually to *SyncDomains* to customize synchronization among *Processes* in more detail.
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png
   :width: 800
   :align: center
 
@@ -74,14 +74,14 @@ In summary, while *Processes* only provide a universal interface to interact wit
 Overall, this programming model enables quick application prototyping at a high level, agnostic of the intricate constraints and complexities that are often associated with neuromorphic architectures, in the language of choice of a user, while deferring specifics about the hardware architecture for later. Once ready, high-level behavioral models can be replaced or refined by more efficient lower-level implementations (often provided by the Lava process library). At the same time, the availability of different behavioral implementations allows users to run the same application on different hardware platforms such as a CPU or a neuromorphic system when only one of them is available.
 
 
-3. Composability and connectivity:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3. Composability and connectivity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *Processes* are connected via ports with each other for message-based communication over channels. For hierarchical *Processes*, ports of a parent process can also be internally connected to ports of a child *Process* and vice versa within a *SubProcessModel*.
 In general, connections between *Processes* can be feed-forward or recurrent and support branching and joining of connections.
 While ports at the *Process*-level are only responsible for establishing connectivity between *Processes* before compilation, the port implementation at *ProcessModel*-level is responsible for actual message-passing at runtime.
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png
   :width: 800
   :align: center
 
@@ -95,26 +95,27 @@ There are four main types of ports that can be grouped in two different ways:
 Aside from these main port types, there are additional virtual ports that effectively act as directives to the compiler to transform the shape of ports or how to combine multiple ports. Currently, Lava supports *ReshapePorts* and *ConcatPorts* to change the shape of a port or to concatenate multiple ports into one.
 Finally, system-level communication between *Processes* such as for synchronization is also implemented via ports and channels, but those are not managed directly by -- and  therefore are hidden from -- the user.
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png
   :width: 800
   :align: center
 
 
-4. Cross-platform execution:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4. Cross-platform execution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lava supports cross-platform execution of processes on a distributed set of compute nodes. Nodes in Lava have compute resources associated with them such as CPUs or neuro cores, and peripheral resources such as sensors, actuators or hard-disks. Given a graph of *Processes*, their *ProcessModels* and a *RunConfig*, this allows the compiler to map the *Processes* defined in the user system process to one or more *NodeConfigurations*. Depending on which type of node a *Process* is mapped to, a different *ProcessModel* with a node-specific implementation of its variables, ports, channels and behavior is chosen.
 In the end, each node in a *NodeConfiguration* can host one or more *SyncDomains* with one or more *ProcModels* in it. Each such *SyncDomain* also contains a local *RuntimeService* process. The *RuntimeService* is responsible for system management and includes the *Synchronizer* for orchestrating the *SyncProtocol* of the *SyncDomain*. Irrespective of the presence of multiple *SyncDomains* on multiple nodes, all user-defined and system processes communicate seamlessly via one asynchronous message-passing backend with each other and the global Runtime within the user system process.
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png
   :width: 800
   :align: center
 
 
 Lava software stack
--------------
+-------------------
 
-.. image:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png
+.. figure:: https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png
+  :class: with-border
   :width: 800
   :align: center
 

@@ -6,6 +6,7 @@
   <title>MNIST Digit Classification with Lava &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,7 +18,9 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Excitatory-Inhibitory Neural Network with Lava" href="tutorial02_excitatory_inhibitory_network.html" />
+    <link rel="prev" title="Remote Memory Access" href="../in_depth/tutorial07_remote_memory_access.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,23 +38,224 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../getting_started_with_lava.html">Getting Started with Lava</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -86,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -135,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -147,7 +363,40 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../modules.html">Lava</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lava.html">Lava API reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -181,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,6 +464,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../getting_started_with_lava.html">Getting Started with Lava</a> &raquo;</li>
       <li>MNIST Digit Classification with Lava</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.ipynb.txt" rel="nofollow"> View page source</a>
@@ -488,8 +753,8 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="This-tutorial-assumes-that-you:">
 <h2>This tutorial assumes that you:<a class="headerlink" href="#This-tutorial-assumes-that-you:" title="Permalink to this headline"></a></h2>
 <ul class="simple">
-<li><p>have the <a class="reference external" href="../in_depth/tutorial01_installing_lava.ipynb">Lava framework installed</a></p></li>
-<li><p>are familiar with the <a class="reference external" href="../in_depth/tutorial02_processes.ipynb">Process concept in Lava</a></p></li>
+<li><p>have the <a class="reference internal" href="../in_depth/tutorial01_installing_lava.html"><span class="doc">Lava framework installed</span></a></p></li>
+<li><p>are familiar with the <a class="reference internal" href="../in_depth/tutorial02_processes.html"><span class="doc">Process concept in Lava</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="This-tutorial-gives-a-bird’s-eye-view-of">
@@ -521,13 +786,14 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">ty</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="Lava-Processes">
 <h2>Lava Processes<a class="headerlink" href="#Lava-Processes" title="Permalink to this headline"></a></h2>
-<p>Below we create the Lava Process classes. We need to define only the structure of the process here. The details about how the Process will be executed are specified in the <a class="reference external" href="../in_depth/tutorial03_process_models.ipynb">ProcessModels</a> below.</p>
+<p>Below we create the Lava Process classes. We need to define only the structure of the process here. The details about how the Process will be executed are specified in the <a class="reference internal" href="../in_depth/tutorial03_process_models.html"><span class="doc">ProcessModels</span></a> below.</p>
 <p>As mentioned above, we define Processes for - converting input images to binary spikes from those biases (<em>SpikeInput</em>), - the 3-layer fully connected feed-forward network (<em>MnistClassifier</em>) - accumulating the output spikes and inferring the class for an input image (<em>OutputProcess</em>)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -548,32 +814,31 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">SpikeInput</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reads image data from the MNIST dataset and converts it to spikes.</span>
-<span class="sd">    The resulting spike rate is proportional to the pixel value&quot;&quot;&quot;</span>
+<span class="sd">    The resulting spike rate is proportional to the pixel value.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">n_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num_images&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-        <span class="n">n_steps_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num_steps_per_image&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">vth</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">num_images</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+                 <span class="n">num_steps_per_image</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">128</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">784</span><span class="p">,)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spikes_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># Input spikes to the classifier</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>  <span class="c1"># Ground truth labels to OutputProc</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_img</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_steps_img</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">num_images</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">num_steps_per_image</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_img</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ground_truth_label</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;vth&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">vth</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">ImageClassifier</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A 3 layer feed-forward network with LIF and Dense Processes.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trained_weights_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># Using pre-trained weights and biases</span>
-        <span class="n">trained_weights_path</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;trained_weights_path&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
-                                          <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="s1">&#39;mnist_pretrained.npy&#39;</span><span class="p">))</span>
         <span class="n">real_path_trained_wgts</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">trained_weights_path</span><span class="p">)</span>
 
         <span class="n">wb_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">real_path_trained_wgts</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -608,7 +873,7 @@ div.rendered_html tbody tr:hover {
 <span class="sd">    highest spiking rate as the classifier output&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)</span>
         <span class="n">n_img</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;num_images&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_images</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">n_img</span><span class="p">)</span>
@@ -719,14 +984,14 @@ ProcessModel during the spiking phase using <code class="docutils literal notran
 <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">PyImageClassifierModel</span><span class="p">(</span><span class="n">AbstractSubProcessModel</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense0</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">784</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense0</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,),</span> <span class="n">b</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_lif1</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense0</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense0</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_lif1</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
                         <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense1</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,),</span> <span class="n">b</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_lif2</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense1</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense1</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_lif2</span><span class="o">.</span><span class="n">init</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span>
                         <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense2</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span> <span class="n">b</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_output_lif</span><span class="o">.</span><span class="n">init</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense2</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">w_dense2</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="n">proc</span><span class="o">.</span><span class="n">b_output_lif</span><span class="o">.</span><span class="n">init</span><span class="p">,</span>
                               <span class="n">vth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">du</span><span class="o">=</span><span class="mi">4095</span><span class="p">)</span>
 
         <span class="n">proc</span><span class="o">.</span><span class="n">spikes_in</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense0</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
@@ -807,9 +1072,9 @@ ProcessModel during the spiking phase using <code class="docutils literal notran
 <span class="n">num_steps_per_image</span> <span class="o">=</span> <span class="mi">128</span>
 
 <span class="c1"># Create Process instances</span>
-<span class="n">spike_input</span> <span class="o">=</span> <span class="n">SpikeInput</span><span class="p">(</span><span class="n">num_images</span><span class="o">=</span><span class="n">num_images</span><span class="p">,</span>
-                         <span class="n">num_steps_per_image</span><span class="o">=</span><span class="n">num_steps_per_image</span><span class="p">,</span>
-                         <span class="n">vth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">spike_input</span> <span class="o">=</span> <span class="n">SpikeInput</span><span class="p">(</span><span class="n">vth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                         <span class="n">num_images</span><span class="o">=</span><span class="n">num_images</span><span class="p">,</span>
+                         <span class="n">num_steps_per_image</span><span class="o">=</span><span class="n">num_steps_per_image</span><span class="p">)</span>
 <span class="n">mnist_clf</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span>
     <span class="n">trained_weights_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;mnist_pretrained.npy&#39;</span><span class="p">))</span>
 <span class="n">output_proc</span> <span class="o">=</span> <span class="n">OutputProcess</span><span class="p">(</span><span class="n">num_images</span><span class="o">=</span><span class="n">num_images</span><span class="p">)</span>
@@ -828,7 +1093,7 @@ ProcessModel during the spiking phase using <code class="docutils literal notran
 <p>Below, we will run the classifier process in a loop of <code class="docutils literal notranslate"><span class="pre">num_images</span></code> number of iterations. Each iteration will run the Process for <code class="docutils literal notranslate"><span class="pre">num_steps_per_image</span></code> number of time-steps.</p>
 <p>We take this approach to clear the neural states of all three LIF layers inside the classifier after every image. We need to clear the neural states, because the network parameters were trained assuming clear neural states for each inference.</p>
 <blockquote>
-<div><p>Note: Below we have used <code class="docutils literal notranslate"><span class="pre">Var.set()</span></code> function to set the values of internal state variables. The same behaviour can be achieved by using <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code>. See the <a class="reference external" href="../in_depth/tutorial07_remote_memory_access.ipynb">RefPorts tutorial</a> to learn more about how to use <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code> to access internal state variables of Lava Processes.</p>
+<div><p>Note: Below we have used <code class="docutils literal notranslate"><span class="pre">Var.set()</span></code> function to set the values of internal state variables. The same behaviour can be achieved by using <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code>. See the <a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html"><span class="doc">RefPorts tutorial</span></a> to learn more about how to use <code class="docutils literal notranslate"><span class="pre">RefPorts</span></code> to access internal state variables of Lava Processes.</p>
 </div></blockquote>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -893,11 +1158,11 @@ Accuracy    : 88.0
 <div class="section" id="Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">
 <h2>Follow the links below for deep-dive tutorials on the concepts in this tutorial:<a class="headerlink" href="#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:" title="Permalink to this headline"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="../in_depth/tutorial02_processes.ipynb">Processes</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial03_process_models.ipynb">ProcessModel</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial04_execution.ipynb">Execution</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial06_hierarchical_processes.ipynb">SubProcessModels</a> or <a class="reference external" href="../in_depth/tutorial06_hierarchical_processes.ipynb">Hierarchical Processes</a></p></li>
-<li><p><a class="reference external" href="../in_depth/tutorial07_remote_memory_access.ipynb">RefPorts</a></p></li>
+<li><p><a class="reference internal" href="../in_depth/tutorial02_processes.html"><span class="doc">Processes</span></a></p></li>
+<li><p><a class="reference internal" href="../in_depth/tutorial03_process_models.html"><span class="doc">ProcessModel</span></a></p></li>
+<li><p><a class="reference internal" href="../in_depth/tutorial04_execution.html"><span class="doc">Execution</span></a></p></li>
+<li><p><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html"><span class="doc">SubProcessModels</span></a> or <a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html"><span class="doc">Hierarchical Processes</span></a></p></li>
+<li><p><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html"><span class="doc">RefPorts</span></a></p></li>
 </ul>
 <p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org/">Lava documentation</a> or dive into the <a class="reference external" href="https://github.com/lava-nc/lava/">source code</a>.</p>
 <p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to the <a class="reference external" href="http://eepurl.com/hJCyhb">INRC newsletter</a>.</p>
@@ -907,7 +1172,10 @@ Accuracy    : 88.0
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../in_depth/tutorial07_remote_memory_access.html" class="btn btn-neutral float-left" title="Remote Memory Access" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial02_excitatory_inhibitory_network.html" class="btn btn-neutral float-right" title="Excitatory-Inhibitory Neural Network with Lava" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

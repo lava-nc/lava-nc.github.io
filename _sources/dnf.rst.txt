@@ -8,7 +8,7 @@ Dynamic Neural Fields (DNF) are neural attractor networks that generate
 stabilized activity patterns in recurrently connected populations of neurons.
 These activity patterns form the basis of neural representations, decision
 making, working memory, and learning. DNFs are the fundamental
-building block of [dynamic field theory](https://dynamicfieldtheory.org),
+building block of `dynamic field theory <https://dynamicfieldtheory.org>`_
 a mathematical and conceptual framework for modeling cognitive processes in
 a closed behavioral loop.
 
@@ -35,7 +35,7 @@ perception, motion control, behavioral organization, map formation, and
 autonomous (continual) learning. Neuromorphic hardware provides significant
 gains in both processing speed and energy efficiency compared to conventional
 implementations of DNFs on a CPU or GPU (e.g., using
-[cedar](https://cedar.ini.rub.de) or [cosivina](https://github.com/cosivina)).
+`cedar <https://cedar.ini.rub.de>`_ or `cosivina <https://github.com/cosivina>`_).
 
 
 Key features

@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lava.magma.core package &mdash; Lava  documentation</title>
+  <title>lava.magma.core &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,7 +18,9 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.core.learning" href="lava.magma.core.learning.html" />
+    <link rel="prev" title="lava.magma.compiler.subcompilers.py" href="lava.magma.compiler.subcompilers.py.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,23 +38,224 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -86,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -135,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -146,8 +362,41 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Lava</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava API reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.magma.html">Magma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -181,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,7 +464,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>lava.magma.core package</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.html">Lava API reference</a> &raquo;</li>
+          <li><a href="lava.magma.html">Magma</a> &raquo;</li>
+      <li>lava.magma.core</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -234,94 +501,67 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-package">
-<h1>lava.magma.core package<a class="headerlink" href="#lava-magma-core-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-lava.magma.core">
+<span id="lava-magma-core"></span><h1>lava.magma.core<a class="headerlink" href="#module-lava.magma.core" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.model.html">lava.magma.core.model package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.c.html">lava.magma.core.model.c package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.c.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.c.html#module-lava.magma.core.model.c.model">lava.magma.core.model.c.model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.c.html#module-lava.magma.core.model.c.type">lava.magma.core.model.c.type module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.c.html#module-lava.magma.core.model.c">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.learning.html">lava.magma.core.learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-constants">lava.magma.core.learning.constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-learning-rule">lava.magma.core.learning.learning_rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-learning-rule-applier">lava.magma.core.learning.learning_rule_applier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-product-series">lava.magma.core.learning.product_series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-random">lava.magma.core.learning.random</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-string-symbols">lava.magma.core.learning.string_symbols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-symbolic-equation">lava.magma.core.learning.symbolic_equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.learning.html#lava-magma-core-learning-utils">lava.magma.core.learning.utils</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.nc.html">lava.magma.core.model.nc package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.nc.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.nc.html#module-lava.magma.core.model.nc.model">lava.magma.core.model.nc.model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.nc.html#module-lava.magma.core.model.nc">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.model.html">lava.magma.core.model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.py.html">lava.magma.core.model.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.py.html#lava-magma-core-model-py-connection">lava.magma.core.model.py.connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.py.html#lava-magma-core-model-py-model">lava.magma.core.model.py.model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.py.html#lava-magma-core-model-py-ports">lava.magma.core.model.py.ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.py.html#lava-magma-core-model-py-type">lava.magma.core.model.py.type</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.py.html">lava.magma.core.model.py package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.py.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.py.html#module-lava.magma.core.model.py.model">lava.magma.core.model.py.model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.py.html#module-lava.magma.core.model.py.ports">lava.magma.core.model.py.ports module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.py.html#module-lava.magma.core.model.py.type">lava.magma.core.model.py.type module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.py.html#module-lava.magma.core.model.py">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.sub.html">lava.magma.core.model.sub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.sub.html#lava-magma-core-model-sub-model">lava.magma.core.model.sub.model</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.model.sub.html">lava.magma.core.model.sub package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.sub.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.sub.html#module-lava.magma.core.model.sub.model">lava.magma.core.model.sub.model module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.model.sub.html#module-lava.magma.core.model.sub">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#lava-magma-core-model-interfaces">lava.magma.core.model.interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#lava-magma-core-model-model">lava.magma.core.model.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#lava-magma-core-model-spike-type">lava.magma.core.model.spike_type</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.process.html">lava.magma.core.process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.ports.html">lava.magma.core.process.ports</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.process.ports.html#lava-magma-core-process-ports-exceptions">lava.magma.core.process.ports.exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.process.ports.html#lava-magma-core-process-ports-ports">lava.magma.core.process.ports.ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.process.ports.html#lava-magma-core-process-ports-reduce-ops">lava.magma.core.process.ports.reduce_ops</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#module-lava.magma.core.model.interfaces">lava.magma.core.model.interfaces module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#module-lava.magma.core.model.model">lava.magma.core.model.model module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.model.html#module-lava.magma.core.model">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#lava-magma-core-process-connection">lava.magma.core.process.connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#lava-magma-core-process-interfaces">lava.magma.core.process.interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#lava-magma-core-process-message-interface-enum">lava.magma.core.process.message_interface_enum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#lava-magma-core-process-process">lava.magma.core.process.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#lava-magma-core-process-variable">lava.magma.core.process.variable</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.process.html">lava.magma.core.process package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.process.ports.html">lava.magma.core.process.ports package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.process.ports.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.process.ports.html#module-lava.magma.core.process.ports.exceptions">lava.magma.core.process.ports.exceptions module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.process.ports.html#module-lava.magma.core.process.ports.ports">lava.magma.core.process.ports.ports module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.process.ports.html#module-lava.magma.core.process.ports.reduce_ops">lava.magma.core.process.ports.reduce_ops module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.process.ports.html#module-lava.magma.core.process.ports">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.sync.html">lava.magma.core.sync</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.protocols.html">lava.magma.core.sync.protocols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.sync.protocols.html#lava-magma-core-sync-protocols-async-protocol">lava.magma.core.sync.protocols.async_protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.sync.protocols.html#lava-magma-core-sync-protocols-loihi-protocol">lava.magma.core.sync.protocols.loihi_protocol</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#module-lava.magma.core.process.interfaces">lava.magma.core.process.interfaces module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#module-lava.magma.core.process.process">lava.magma.core.process.process module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#module-lava.magma.core.process.variable">lava.magma.core.process.variable module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.process.html#module-lava.magma.core.process">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="lava.magma.core.sync.html">lava.magma.core.sync package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava.magma.core.sync.protocols.html">lava.magma.core.sync.protocols package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.sync.protocols.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.sync.protocols.html#module-lava.magma.core.sync.protocols.async_protocol">lava.magma.core.sync.protocols.async_protocol module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.sync.protocols.html#module-lava.magma.core.sync.protocols.loihi_protocol">lava.magma.core.sync.protocols.loihi_protocol module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lava.magma.core.sync.protocols.html#module-lava.magma.core.sync.protocols">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#module-lava.magma.core.sync.domain">lava.magma.core.sync.domain module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#module-lava.magma.core.sync.protocol">lava.magma.core.sync.protocol module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#module-lava.magma.core.sync">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#lava-magma-core-sync-domain">lava.magma.core.sync.domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava.magma.core.sync.html#lava-magma-core-sync-protocol">lava.magma.core.sync.protocol</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.decorator">
-<span id="lava-magma-core-decorator-module"></span><h2>lava.magma.core.decorator module<a class="headerlink" href="#module-lava.magma.core.decorator" title="Permalink to this headline"></a></h2>
-<dl class="py function">
+<div class="section" id="lava-magma-core-decorator">
+<h2>lava.magma.core.decorator<a class="headerlink" href="#lava-magma-core-decorator" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-lava.magma.core.decorator"></span><dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.core.decorator.implements">
 <span class="sig-prename descclassname"><span class="pre">lava.magma.core.decorator.</span></span><span class="sig-name descname"><span class="pre">implements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.decorator.implements" title="Permalink to this definition"></a></dt>
 <dd><p>Decorates ProcessModel class by adding the class of the Process and
@@ -375,24 +615,54 @@ keywords are appended to the tag-list inherited from the parent.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>&#64;implements(proc=ExampleProcess)
-&#64;tag(‘bit-accurate’, ‘loihi’)
-class ExampleProcModel(AbstractProcessModel):…</p>
-<blockquote>
-<div><p>-&gt; these tags identify a particular ProcessModel as being
-bit-accurate with Loihi hardware platform. Which means,
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">ExampleProcess</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@tag</span><span class="p">(</span><span class="s1">&#39;bit-accurate&#39;</span><span class="p">,</span> <span class="s1">&#39;loihi&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ExampleProcModel</span><span class="p">(</span><span class="n">AbstractProcessModel</span><span class="p">):</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>These tags identify a particular ProcessModel as being
+bit-accurate with Loihi hardware platform. This means that,
 the numerical output produced by such a ProcessModel on a CPU would be
-exactly same as that of Loihi.</p>
-</div></blockquote>
+the same as on Loihi.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.resources">
-<span id="lava-magma-core-resources-module"></span><h2>lava.magma.core.resources module<a class="headerlink" href="#module-lava.magma.core.resources" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-resources">
+<h2>lava.magma.core.resources<a class="headerlink" href="#lava-magma-core-resources" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-fa41ad9c01b27c7b6b97c6095d607e7cac05a8fd.png" alt="Inheritance diagram of lava.magma.core.resources" usemap="#inheritancef76bd67e81" class="inheritance graphviz" /></div>
+<map id="inheritancef76bd67e81" name="inheritancef76bd67e81">
+<area shape="rect" id="node3" href="#lava.magma.core.resources.AbstractResource" target="_top" title="A hardware resource like a compute resource (e.g., a particular type" alt="" coords="584,79,720,104"/>
+<area shape="rect" id="node4" href="#lava.magma.core.resources.AbstractNode" target="_top" title="A node is a resource that has other compute or peripheral resources." alt="" coords="1003,79,1114,104"/>
+<area shape="rect" id="node2" href="#lava.magma.core.resources.AbstractComputeResource" target="_top" title="A compute resource, for example a particular type of neuromorphic" alt="" coords="187,152,381,177"/>
+<area shape="rect" id="node6" href="#lava.magma.core.resources.CPU" target="_top" title="A central processing unit on a regular computer or laptop." alt="" coords="5,225,77,251"/>
+<area shape="rect" id="node8" href="#lava.magma.core.resources.ECPU" target="_top" title="An embedded central processing unit that is part of a neuromorphic" alt="" coords="101,225,173,251"/>
+<area shape="rect" id="node9" href="#lava.magma.core.resources.GPU" target="_top" title="A graphical processing unit." alt="" coords="197,225,269,251"/>
+<area shape="rect" id="node14" href="#lava.magma.core.resources.HostCPU" target="_top" title="A central processing unit on a special host system that holds" alt="" coords="294,225,373,251"/>
+<area shape="rect" id="node21" href="#lava.magma.core.resources.NeuroCore" target="_top" title="A neuromorphic core." alt="" coords="397,225,488,251"/>
+<area shape="rect" id="node5" href="#lava.magma.core.resources.AbstractPeripheralResource" target="_top" title="A hardware resource that is a peripheral device." alt="" coords="551,152,753,177"/>
+<area shape="rect" id="node10" href="#lava.magma.core.resources.GenericNode" target="_top" title="A generic resource with a regular CPU and a hard drive." alt="" coords="916,152,1023,177"/>
+<area shape="rect" id="node16" href="#lava.magma.core.resources.Loihi1System" target="_top" title="A neuromorphic system that carries Loihi 1 chips." alt="" coords="1071,152,1182,177"/>
+<area shape="rect" id="node18" href="#lava.magma.core.resources.Loihi2System" target="_top" title="A neuromorphic system that carries Loihi 2 chips." alt="" coords="1386,152,1497,177"/>
+<area shape="rect" id="node7" href="#lava.magma.core.resources.DVS" target="_top" title="An event&#45;based dynamic vision sensor (DVS)." alt="" coords="512,225,584,251"/>
+<area shape="rect" id="node11" href="#lava.magma.core.resources.HardDrive" target="_top" title="A hard drive in a computer." alt="" coords="608,225,696,251"/>
+<area shape="rect" id="node13" href="#lava.magma.core.resources.HeadNodeHardDrive" target="_top" title="A hard drive attached to a HeadNode (the node on which a user executes" alt="" coords="721,225,877,251"/>
+<area shape="rect" id="node19" href="#lava.magma.core.resources.LMT" target="_top" title="A Lakemont embedded central processing unit." alt="" coords="53,299,125,324"/>
+<area shape="rect" id="node25" href="#lava.magma.core.resources.PB" target="_top" title="A Powell Bute embedded central processing unit." alt="" coords="149,299,221,324"/>
+<area shape="rect" id="node12" href="#lava.magma.core.resources.HeadNode" target="_top" title="The node on which user executes code, perhaps because processes" alt="" coords="901,225,992,251"/>
+<area shape="rect" id="node15" href="#lava.magma.core.resources.KapohoBay" target="_top" title="A KapohoBay system (USB form&#45;factor) that consists of two Loihi 1 chips" alt="" coords="1016,225,1112,251"/>
+<area shape="rect" id="node23" href="#lava.magma.core.resources.Nahuku" target="_top" title="A Nahuku system that carries up to 32 Loihi 1 chips." alt="" coords="1136,225,1208,251"/>
+<area shape="rect" id="node26" href="#lava.magma.core.resources.Pohoiki" target="_top" title="A system configurable to have one or more Nahuku sub systems." alt="" coords="1232,225,1304,251"/>
+<area shape="rect" id="node17" href="#lava.magma.core.resources.KapohoPoint" target="_top" title="The smallest form&#45;factor system with four Loihi 2 chips." alt="" coords="1328,225,1432,251"/>
+<area shape="rect" id="node24" href="#lava.magma.core.resources.OheoGulch" target="_top" title="Development and test system with a single Loihi 2 chip." alt="" coords="1456,225,1549,251"/>
+<area shape="rect" id="node27" href="#lava.magma.core.resources.Unalaska" target="_top" title="Unalaska" alt="" coords="1573,225,1656,251"/>
+<area shape="rect" id="node20" href="#lava.magma.core.resources.Loihi1NeuroCore" target="_top" title="A neuromorphic core on a Loihi 1 chip." alt="" coords="287,299,417,324"/>
+<area shape="rect" id="node22" href="#lava.magma.core.resources.Loihi2NeuroCore" target="_top" title="A neuromorphic core on a Loihi 2 chip." alt="" coords="441,299,572,324"/>
+</map><span class="target" id="module-lava.magma.core.resources"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.AbstractComputeResource">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">AbstractComputeResource</span></span><a class="headerlink" href="#lava.magma.core.resources.AbstractComputeResource" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractResource</span></code></a></p>
+<p>A compute resource, for example a particular type of neuromorphic
+processor or CPU.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -406,42 +676,54 @@ exactly same as that of Loihi.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.AbstractPeripheralResource">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">AbstractPeripheralResource</span></span><a class="headerlink" href="#lava.magma.core.resources.AbstractPeripheralResource" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractResource</span></code></a></p>
+<p>A hardware resource that is a peripheral device.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.AbstractResource">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">AbstractResource</span></span><a class="headerlink" href="#lava.magma.core.resources.AbstractResource" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>A hardware resource like a compute resource (e.g., a particular type
+of neuromorphic processor or a CPU), peripheral device, or complete
+system that is required for a ProcessModel.</p>
+<p>Each ProcessModel lists its required hardware resources with the
+&#64;requires decorator.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.CPU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">CPU</span></span><a class="headerlink" href="#lava.magma.core.resources.CPU" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></code></a></p>
+<p>A central processing unit on a regular computer or laptop.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.DVS">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">DVS</span></span><a class="headerlink" href="#lava.magma.core.resources.DVS" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractPeripheralResource" title="lava.magma.core.resources.AbstractPeripheralResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractPeripheralResource</span></code></a></p>
+<p>An event-based dynamic vision sensor (DVS).</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.ECPU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">ECPU</span></span><a class="headerlink" href="#lava.magma.core.resources.ECPU" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></code></a></p>
+<p>An embedded central processing unit that is part of a neuromorphic
+chip.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.GPU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">GPU</span></span><a class="headerlink" href="#lava.magma.core.resources.GPU" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></code></a></p>
+<p>A graphical processing unit.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.GenericNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">GenericNode</span></span><a class="headerlink" href="#lava.magma.core.resources.GenericNode" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractNode" title="lava.magma.core.resources.AbstractNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractNode</span></code></a></p>
+<p>A generic resource with a regular CPU and a hard drive.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.GenericNode.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.HardDrive'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.GenericNode.resources" title="Permalink to this definition"></a></dt>
@@ -453,6 +735,7 @@ exactly same as that of Loihi.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.HardDrive">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">HardDrive</span></span><a class="headerlink" href="#lava.magma.core.resources.HardDrive" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractPeripheralResource" title="lava.magma.core.resources.AbstractPeripheralResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractPeripheralResource</span></code></a></p>
+<p>A hard drive in a computer.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -460,8 +743,7 @@ exactly same as that of Loihi.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">HeadNode</span></span><a class="headerlink" href="#lava.magma.core.resources.HeadNode" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.GenericNode" title="lava.magma.core.resources.GenericNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.GenericNode</span></code></a></p>
 <p>The node on which user executes code, perhaps because processes
-require access to specific disk location.
-Should probably be solved in a different way in the future.</p>
+require access to specific disk location.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.HeadNode.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.HeadNodeHardDrive'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.HeadNode.resources" title="Permalink to this definition"></a></dt>
@@ -473,18 +755,24 @@ Should probably be solved in a different way in the future.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.HeadNodeHardDrive">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">HeadNodeHardDrive</span></span><a class="headerlink" href="#lava.magma.core.resources.HeadNodeHardDrive" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractPeripheralResource" title="lava.magma.core.resources.AbstractPeripheralResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractPeripheralResource</span></code></a></p>
+<p>A hard drive attached to a HeadNode (the node on which a user executes
+code).</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.HostCPU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">HostCPU</span></span><a class="headerlink" href="#lava.magma.core.resources.HostCPU" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></code></a></p>
+<p>A central processing unit on a special host system that holds
+neuromorphic devices.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.KapohoBay">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">KapohoBay</span></span><a class="headerlink" href="#lava.magma.core.resources.KapohoBay" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.Loihi1System" title="lava.magma.core.resources.Loihi1System"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.Loihi1System</span></code></a></p>
+<p>A KapohoBay system (USB form-factor) that consists of two Loihi 1 chips
+with Lakemont processors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.KapohoBay.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi1NeuroCore'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.LMT'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.KapohoBay.resources" title="Permalink to this definition"></a></dt>
@@ -496,6 +784,7 @@ Should probably be solved in a different way in the future.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.KapohoPoint">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">KapohoPoint</span></span><a class="headerlink" href="#lava.magma.core.resources.KapohoPoint" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.Loihi2System" title="lava.magma.core.resources.Loihi2System"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.Loihi2System</span></code></a></p>
+<p>The smallest form-factor system with four Loihi 2 chips.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.KapohoPoint.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi2NeuroCore'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.LMT'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.PB'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.KapohoPoint.resources" title="Permalink to this definition"></a></dt>
@@ -507,36 +796,42 @@ Should probably be solved in a different way in the future.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.LMT">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">LMT</span></span><a class="headerlink" href="#lava.magma.core.resources.LMT" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.ECPU" title="lava.magma.core.resources.ECPU"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.ECPU</span></code></a></p>
+<p>A Lakemont embedded central processing unit.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Loihi1NeuroCore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">Loihi1NeuroCore</span></span><a class="headerlink" href="#lava.magma.core.resources.Loihi1NeuroCore" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.NeuroCore" title="lava.magma.core.resources.NeuroCore"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.NeuroCore</span></code></a></p>
+<p>A neuromorphic core on a Loihi 1 chip.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Loihi1System">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">Loihi1System</span></span><a class="headerlink" href="#lava.magma.core.resources.Loihi1System" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractNode" title="lava.magma.core.resources.AbstractNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractNode</span></code></a></p>
+<p>A neuromorphic system that carries Loihi 1 chips.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Loihi2NeuroCore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">Loihi2NeuroCore</span></span><a class="headerlink" href="#lava.magma.core.resources.Loihi2NeuroCore" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.NeuroCore" title="lava.magma.core.resources.NeuroCore"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.NeuroCore</span></code></a></p>
+<p>A neuromorphic core on a Loihi 2 chip.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Loihi2System">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">Loihi2System</span></span><a class="headerlink" href="#lava.magma.core.resources.Loihi2System" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractNode" title="lava.magma.core.resources.AbstractNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractNode</span></code></a></p>
+<p>A neuromorphic system that carries Loihi 2 chips.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Nahuku">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">Nahuku</span></span><a class="headerlink" href="#lava.magma.core.resources.Nahuku" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.Loihi1System" title="lava.magma.core.resources.Loihi1System"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.Loihi1System</span></code></a></p>
+<p>A Nahuku system that carries up to 32 Loihi 1 chips.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.Nahuku.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi1NeuroCore'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.LMT'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.Nahuku.resources" title="Permalink to this definition"></a></dt>
@@ -548,12 +843,14 @@ Should probably be solved in a different way in the future.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.NeuroCore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">NeuroCore</span></span><a class="headerlink" href="#lava.magma.core.resources.NeuroCore" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></code></a></p>
+<p>A neuromorphic core.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.resources.OheoGulch">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">OheoGulch</span></span><a class="headerlink" href="#lava.magma.core.resources.OheoGulch" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.Loihi2System" title="lava.magma.core.resources.Loihi2System"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.Loihi2System</span></code></a></p>
+<p>Development and test system with a single Loihi 2 chip.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.resources.OheoGulch.resources">
 <span class="sig-name descname"><span class="pre">resources</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi2NeuroCore'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.LMT'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.PB'&gt;]</span></em><a class="headerlink" href="#lava.magma.core.resources.OheoGulch.resources" title="Permalink to this definition"></a></dt>
@@ -565,6 +862,7 @@ Should probably be solved in a different way in the future.</p>
 <dt class="sig sig-object py" id="lava.magma.core.resources.PB">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.resources.</span></span><span class="sig-name descname"><span class="pre">PB</span></span><a class="headerlink" href="#lava.magma.core.resources.PB" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.resources.ECPU" title="lava.magma.core.resources.ECPU"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.resources.ECPU</span></code></a></p>
+<p>A Powell Bute embedded central processing unit.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -591,20 +889,35 @@ Should probably be solved in a different way in the future.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.run_conditions">
-<span id="lava-magma-core-run-conditions-module"></span><h2>lava.magma.core.run_conditions module<a class="headerlink" href="#module-lava.magma.core.run_conditions" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-run-conditions">
+<h2>lava.magma.core.run_conditions<a class="headerlink" href="#lava-magma-core-run-conditions" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-69bfa50ddb687e023158f1389ef1981d72607512.png" alt="Inheritance diagram of lava.magma.core.run_conditions" usemap="#inheritance3b57513042" class="inheritance graphviz" /></div>
+<map id="inheritance3b57513042" name="inheritance3b57513042">
+<area shape="rect" id="node2" href="#lava.magma.core.run_conditions.AbstractRunCondition" target="_top" title="Base class for run conditions." alt="" coords="47,79,209,104"/>
+<area shape="rect" id="node3" href="#lava.magma.core.run_conditions.RunContinuous" target="_top" title="Runs a Process continuously without a time step limit (non&#45;blocking)." alt="" coords="5,152,125,177"/>
+<area shape="rect" id="node4" href="#lava.magma.core.run_conditions.RunSteps" target="_top" title="Runs a process for a specified number of time steps with respect to a" alt="" coords="149,152,232,177"/>
+</map><span class="target" id="module-lava.magma.core.run_conditions"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.run_conditions.AbstractRunCondition">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_conditions.</span></span><span class="sig-name descname"><span class="pre">AbstractRunCondition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_conditions.AbstractRunCondition" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_conditions.</span></span><span class="sig-name descname"><span class="pre">AbstractRunCondition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocking</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_conditions.AbstractRunCondition" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Specifies run condition until when a process is run.</p>
+<p>Base class for run conditions.</p>
+<p>RunConditions specify for how long a process will run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blocking</strong> (<em>bool</em>) – If set to True, blocks further commands from execution until returns.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.run_conditions.RunContinuous">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_conditions.</span></span><span class="sig-name descname"><span class="pre">RunContinuous</span></span><a class="headerlink" href="#lava.magma.core.run_conditions.RunContinuous" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></code></a></p>
-<p>Runs a Process continuously without a time step limit.</p>
+<p>Runs a Process continuously without a time step limit (non-blocking).</p>
+<p>Using this RunCondition, the runtime runs continuously and non-blocking.
+This means that the runtime must be paused or stopped manually by calling
+<cite>pause()</cite> or <cite>stop()</cite> from the running process.
+The runtime can be continued after <cite>pause()</cite> by calling <cite>run()</cite> again.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -613,97 +926,125 @@ Should probably be solved in a different way in the future.</p>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_conditions.AbstractRunCondition</span></code></a></p>
 <p>Runs a process for a specified number of time steps with respect to a
 SyncDomain assigned to any sub processes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_steps</strong> (<em>int</em>) – Number of steps to be run with respect to the SyncDomain.</p></li>
+<li><p><strong>blocking</strong> (<em>bool</em>) – If set to True, blocks further commands from execution until returns.
+(Default = True)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.run_configs">
-<span id="lava-magma-core-run-configs-module"></span><h2>lava.magma.core.run_configs module<a class="headerlink" href="#module-lava.magma.core.run_configs" title="Permalink to this headline"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi1HwCfg">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi1HwCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">lava.magma.core.sync.domain.SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi1HwCfg" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.RunConfig</span></code></a></p>
-<p>A RunConfig for executing model on Loihi 1 HW.</p>
+<div class="section" id="lava-magma-core-run-configs">
+<h2>lava.magma.core.run_configs<a class="headerlink" href="#lava-magma-core-run-configs" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-46c34e0d6cb57fae52d2614b3403aa3d40c74d53.png" alt="Inheritance diagram of lava.magma.core.run_configs" usemap="#inheritancec8ce03f7ad" class="inheritance graphviz" /></div>
+<map id="inheritancec8ce03f7ad" name="inheritancec8ce03f7ad">
+<area shape="rect" id="node5" href="#lava.magma.core.run_configs.RunConfig" target="_top" title="Basic run configuration and base class for other run configurations." alt="" coords="207,79,295,104"/>
+<area shape="rect" id="node2" href="#lava.magma.core.run_configs.AbstractCProcessModel" target="_top" title="AbstractCProcessModel" alt="" coords="311,5,486,31"/>
+<area shape="rect" id="node3" href="#lava.magma.core.run_configs.AbstractLoihiHWRunCfg" target="_top" title="AbstractLoihiHWRunCfg" alt="" coords="61,225,238,251"/>
+<area shape="rect" id="node8" href="#lava.magma.core.run_configs.Loihi1HwCfg" target="_top" title="A RunConfig for executing model on Loihi1 HW." alt="" coords="5,299,109,324"/>
+<area shape="rect" id="node10" href="#lava.magma.core.run_configs.Loihi2HwCfg" target="_top" title="A RunConfig for executing model on Loihi2 HW." alt="" coords="133,299,237,324"/>
+<area shape="rect" id="node4" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg" target="_top" title="Selects the appropriate ProcessModel for Loihi RunConfigs." alt="" coords="173,152,328,177"/>
+<area shape="rect" id="node6" href="#lava.magma.core.run_configs.AbstractLoihiSimRunCfg" target="_top" title="AbstractLoihiSimRunCfg" alt="" coords="263,225,441,251"/>
+<area shape="rect" id="node9" href="#lava.magma.core.run_configs.Loihi1SimCfg" target="_top" title="Run configuration selects appropriate ProcessModel &#45;&#45; either" alt="" coords="298,299,406,324"/>
+<area shape="rect" id="node7" href="#lava.magma.core.run_configs.AbstractNcProcessModel" target="_top" title="AbstractNcProcessModel" alt="" coords="510,5,693,31"/>
+<area shape="rect" id="node11" href="#lava.magma.core.run_configs.Loihi2SimCfg" target="_top" title="A RunConfig for simulating a Loihi 2 model CPU/GPU." alt="" coords="298,372,406,397"/>
+</map><span class="target" id="module-lava.magma.core.run_configs"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractCProcessModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">AbstractCProcessModel</span></span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractCProcessModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi1SimCfg">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi1SimCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi1SimCfg" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractLoihiHWRunCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">AbstractLoihiHWRunCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiHWRunCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg" title="lava.magma.core.run_configs.AbstractLoihiRunCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.AbstractLoihiRunCfg</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractLoihiRunCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">AbstractLoihiRunCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.RunConfig</span></code></a></p>
-<p>Run configuration selects appropriate ProcessModel – either
-<cite>SubProcessModel</cite> for a hierarchical Process or else a <cite>PyProcessModel</cite>
-for a standard Process.</p>
+<p>Selects the appropriate ProcessModel for Loihi RunConfigs.</p>
 <p>The following set of rules is applied, in that order of precedence:</p>
 <p>1. A dictionary of exceptions <cite>exception_proc_model_map</cite> is checked first,
 in which user specifies key-value pairs <cite>{Process: ProcessModel}</cite> and the
 <cite>ProcessModel</cite> is returned.</p>
 <ol class="arabic" start="2">
-<li><dl class="simple">
-<dt>If there is only 1 <cite>ProcessModel</cite> available:</dt><dd><ol class="loweralpha simple">
+<li><p>If there is only 1 <cite>ProcessModel</cite> available:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>If the user does not specifically ask for any tags,
 the <cite>ProcessModel</cite> is returned</p></li>
 <li><p>If the user asks for a specific tag, then the <cite>ProcessModel</cite> is
 returned only if the tag is found in its list of tags.</p></li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>If there are multiple <a href="#id1"><span class="problematic" id="id2">`</span></a>ProcessModel`s available:</dt><dd><ol class="loweralpha">
-<li><p>If the user asks specifically to look for <cite>SubProcessModel`s and
-they are available,
-(i)   If there is only 1 `SubProcessModel</cite> available,</p>
-<blockquote>
-<div><p>it is returned</p>
+</ul>
 </div></blockquote>
-<ol class="lowerroman simple" start="2">
+</li>
+<li><p>If there are multiple <a href="#id1"><span class="problematic" id="id2">`</span></a>ProcessModel`s available:</p>
+<blockquote>
+<div><ul>
+<li><p>If the user asks specifically to look for <a href="#id3"><span class="problematic" id="id4">`</span></a>SubProcessModel`s and
+they are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If there is only 1 <cite>SubProcessModel</cite> available, it is returned</p></li>
 <li><p>If the user did not ask for any specific tags, the first
 available <cite>SubProcessModel</cite> is returned</p></li>
-<li><p>If user asked for a specific tag, the first valid</p></li>
-</ol>
-<blockquote>
-<div><p><cite>SubProcessModel</cite> is returned, which has the tag in its
-tag-list</p>
+<li><p>If user asked for a specific tag, the first valid
+<cite>SubProcessModel</cite> is returned, which has the tag in its tag-list</p></li>
+</ul>
 </div></blockquote>
 </li>
-<li><p>If user did not explicitly ask for <a href="#id3"><span class="problematic" id="id4">`</span></a>SubProcessModel`s
-(i)   If the user did not also ask for any specific tag, then the</p>
+<li><p>If user did not explicitly ask for <a href="#id5"><span class="problematic" id="id6">`</span></a>SubProcessModel`s:</p>
 <blockquote>
-<div><p>first available <cite>PyProcessModel</cite> is returned</p>
+<div><ul class="simple">
+<li><p>If the user did not also ask for any specific tag, then the
+first available ProcessModel is returned that requires the
+correct computing hardware.</p></li>
+<li><p>If the user asked for a specific tag,
+the hardware-specific ProcessModel which has the tag in its
+tag-list is returned</p></li>
+</ul>
 </div></blockquote>
-<ol class="lowerroman simple" start="2">
-<li><p>If the user asked for a specific tag, the <cite>PyProcessModel</cite>
-which has the tag in its tag-list is returned</p></li>
-</ol>
 </li>
-</ol>
-</dd>
-</dl>
+</ul>
+</div></blockquote>
 </li>
 </ol>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>custom_sync_domains</strong> (<em>List</em><em>[</em><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><em>SyncDomain</em></a><em>]</em>) – list of synchronization domains</p></li>
-<li><p><strong>select_tag</strong> (<em>str</em>) – ProcessModels with this tag need to be selected</p></li>
-<li><p><strong>select_sub_proc_model</strong> (<em>bool</em>) – preferentially select SubProcessModel when True
-and return</p></li>
+<li><p><strong>select_tag</strong> (<em>str</em>) – The RunConfig will select only ProcessModels that have the tag
+‘select_tag’.
+Example: By setting select_tag=”fixed_pt”, it will select ProcessModels
+that implement a fixed-point implementation of the Lava Processes in
+the architecture that is to be executed.</p></li>
+<li><p><strong>select_sub_proc_model</strong> (<em>bool</em>) – When set to True, hierarchical SubProcessModels are selected over
+LeafProcessModels, where available.</p></li>
 <li><p><strong>exception_proc_model_map</strong> (<em>(</em><em>Dict</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a><em>, </em><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a><em>]</em><em>)</em>) – explicit dictionary of {Process: ProcessModel} classes, provided as
 exceptions to the ProcessModel selection logic. The choices made in this
 dict are respected over any logic. For example, {Dense: PyDenseModel}.
 Note that this is a dict mapping classnames to classnames.</p></li>
+<li><p><strong>loglevel</strong> (<em>int</em>) – sets level of event logging, as defined by Python’s ‘logging’
+facility. Default: logging.WARNING</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi1SimCfg.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi1SimCfg.select" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractLoihiRunCfg.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg.select" title="Permalink to this definition"></a></dt>
 <dd><p>Selects an appropriate ProcessModel from a list of ProcessModels for
 a Process, based on user requests.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>proc</strong> (<em>(</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a><em>) </em><em>Process for which ProcessModel is selected</em>) – </p></li>
-<li><p><strong>proc_models</strong> (<em>(</em><em>List</em><em>[</em><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a><em>]</em><em>) </em><em>list of ProcessModels of</em>) – Process</p></li>
+<li><p><strong>proc</strong> (<a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a>) – Process for which ProcessModel is selected</p></li>
+<li><p><strong>proc_models</strong> (<em>List</em><em>[</em><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a><em>]</em>) – List of ProcessModels to select from</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -715,16 +1056,55 @@ a Process, based on user requests.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractLoihiSimRunCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">AbstractLoihiSimRunCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiSimRunCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg" title="lava.magma.core.run_configs.AbstractLoihiRunCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.AbstractLoihiRunCfg</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractNcProcessModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">AbstractNcProcessModel</span></span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractNcProcessModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi1HwCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi1HwCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_run_fxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_run_fxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_allocation_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">EMBEDDED_ALLOCATION_ORDER.NORMAL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi1HwCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.AbstractLoihiHWRunCfg" title="lava.magma.core.run_configs.AbstractLoihiHWRunCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.AbstractLoihiHWRunCfg</span></code></a></p>
+<p>A RunConfig for executing model on Loihi1 HW.
+For Loihi1 HW configurations, the preferred ProcModels are NcProcModels
+that can run on a NeuroCore of a Loihi1NeuroCore
+or, if none is found, CProcModels. This preference can be overwritten by
+a tag provided by the user. This RunConfig will default to a PyProcModel
+if no Loihi1-compatible ProcModel is being found.
+.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi1SimCfg">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi1SimCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi1SimCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.AbstractLoihiSimRunCfg" title="lava.magma.core.run_configs.AbstractLoihiSimRunCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.AbstractLoihiSimRunCfg</span></code></a></p>
+<p>Run configuration selects appropriate ProcessModel – either
+<cite>SubProcessModel</cite> for a hierarchical Process or else a <cite>PyProcessModel</cite>
+for a standard Process.</p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi2HwCfg">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi2HwCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">lava.magma.core.sync.domain.SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi2HwCfg" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.RunConfig</span></code></a></p>
-<p>A RunConfig for executing model on Loihi 2 HW.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi2HwCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_run_fxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_run_fxs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedded_allocation_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">EMBEDDED_ALLOCATION_ORDER.NORMAL</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi2HwCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.AbstractLoihiHWRunCfg" title="lava.magma.core.run_configs.AbstractLoihiHWRunCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.AbstractLoihiHWRunCfg</span></code></a></p>
+<p>A RunConfig for executing model on Loihi2 HW.
+For Loihi2 HW configurations, the preferred ProcModels are NcProcModels
+that can run on a NeuroCore of a Loihi2NeuroCore
+or, if none is found, CProcModels. This preference can be overwritten by
+a tag provided by the user. This RunConfig will default to a PyProcModel
+if no Loihi2-compatible ProcModel is being found.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.run_configs.Loihi2SimCfg">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi2SimCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">lava.magma.core.sync.domain.SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi2SimCfg" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.RunConfig</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">Loihi2SimCfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_sub_proc_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception_proc_model_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.Loihi2SimCfg" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.run_configs.Loihi1SimCfg" title="lava.magma.core.run_configs.Loihi1SimCfg"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.run_configs.Loihi1SimCfg</span></code></a></p>
 <p>A RunConfig for simulating a Loihi 2 model CPU/GPU.</p>
 </dd></dl>
 
@@ -732,25 +1112,32 @@ a Process, based on user requests.</p>
 <dt class="sig sig-object py" id="lava.magma.core.run_configs.RunConfig">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.run_configs.</span></span><span class="sig-name descname"><span class="pre">RunConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_sync_domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><span class="pre">lava.magma.core.sync.domain.SyncDomain</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.RunConfig" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
-<p>Could just have a static ‘select’ method that contains arbitrary code
-how to select a ProcessModel of a Process to get started instead of
-formal rules.</p>
-<p>E.g. If there exists a Loihi1 ProcessModel, pick that. Else if there is
-an EMB ProcessModel, pick that. Or Just always pick PyProcessModel.</p>
-<p>This method could also filter for other tags of  ProcessModel such as
-bit-accurate, floting point, etc.</p>
-<p>RunConfig can also specify how many nodes of a certain type will be
-available. This will allows to allocate all RuntimeService processes
-during compilation process. Downside of this is tht we have to decide
-very early about the cluster size or Loihi system type although this
-could in principle be decided in Runtime. But if we only were to decide
-this in Runtime, then we would still have to create specific instances of
-RuntimeService processes and corresponding channel configuration in
-Runtime which is actually a compiler job.
-As a mitigation one could clearly break compiler and Executable
-generation up into stages that can be called separately. Then once could
-still change such configuration details later and repeat the required
-compilation stages or just do them in the first place.</p>
+<p>Basic run configuration and base class for other run configurations.</p>
+<p>A RunConfig specifies how to execute Processes on a specific hardware
+backend. Its main purpose is to select the appropriate ProcessModels
+given the Processes to be executed and the given tags (i.e. bit-accurate,
+floating, etc) using the <cite>select()</cite> function.</p>
+<p>A RunConfig allows the user to guide the compiler in its choice of
+ProcessModels. When the user compiles/runs a Process for the first time,
+a specific RunConfig must be provided. The compiler will
+follow the selection rules laid out in the select() method of the
+RunConfig to choose the optimal ProcessModel for the Process.</p>
+<p>A RunConfig can filter the ProcessModels by various criteria.
+Examples include the preferred computing resource or user-defined tags.
+It may also specify how many computing nodes of a certain type,
+like embedded CPUs, will be available. This will allow to allocate all
+RuntimeService processes during compilation. A RunConfig can also give hints
+to the compiler which computational nodes are required and which are
+excluded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>custom_sync_domains</strong> (<em>List</em><em>[</em><a class="reference internal" href="lava.magma.core.sync.html#lava.magma.core.sync.domain.SyncDomain" title="lava.magma.core.sync.domain.SyncDomain"><em>SyncDomain</em></a><em>]</em>) – List of user-specified synchronization domains.</p></li>
+<li><p><strong>loglevel</strong> (<em>int</em>) – Sets level of event logging, as defined by Python’s ‘logging’
+facility. Default: logging.WARNING</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.run_configs.RunConfig.exclude_nodes">
 <span class="sig-name descname"><span class="pre">exclude_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.resources.AbstractNode" title="lava.magma.core.resources.AbstractNode"><span class="pre">lava.magma.core.resources.AbstractNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.RunConfig.exclude_nodes" title="Permalink to this definition"></a></dt>
@@ -771,15 +1158,15 @@ compilation stages or just do them in the first place.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core" title="Permalink to this headline"></a></h2>
-</div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.compiler.subcompilers.py.html" class="btn btn-neutral float-left" title="lava.magma.compiler.subcompilers.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.core.learning.html" class="btn btn-neutral float-right" title="lava.magma.core.learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

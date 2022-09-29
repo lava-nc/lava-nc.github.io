@@ -6,6 +6,7 @@
   <title>Lava Architecture &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started With Lava" href="getting_started_with_lava.html" />
+    <link rel="next" title="Getting Started with Lava" href="getting_started_with_lava.html" />
     <link rel="prev" title="Lava Software Framework" href="index.html" /> 
 </head>
 
@@ -42,18 +43,219 @@
 <li class="toctree-l2"><a class="reference internal" href="#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -88,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -107,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -137,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -149,7 +363,40 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/lava.html">Lava API reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -183,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -237,7 +499,7 @@
 }
 </style>
 <div class="section" id="lava-architecture">
-<h1>Lava Architecture<a class="headerlink" href="#lava-architecture" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>Lava Architecture<a class="headerlink" href="#lava-architecture" title="Permalink to this headline"></a></h1>
 <p>Lava is an emerging open-source software framework for neuromorphic computing. Many parts of Lava are still under development. Therefore the following sections describe Lava’s key attributes and fundamental architectural concepts that are partly implemented and partly envisioned today. A deeper dive into these architectural concepts can be found in the ‘Getting started with Lava’ section. We hope to inspire and invite developers to contribute to this open-source effort to solve some of the key challenges of neuromorphic hardware, software and application development.</p>
 <div class="section" id="key-attributes">
 <h2>Key attributes<a class="headerlink" href="#key-attributes" title="Permalink to this headline"></a></h2>
@@ -261,19 +523,23 @@ Neuromorphic hardware systems and Lava mirror this general, massively parallel, 
 <div class="section" id="lava-s-foundational-concepts">
 <h2>Lava’s foundational concepts<a class="headerlink" href="#lava-s-foundational-concepts" title="Permalink to this headline"></a></h2>
 <div class="section" id="processes">
-<h3>1. Processes:<a class="headerlink" href="#processes" title="Permalink to this headline"></a></h3>
+<h3>1. Processes<a class="headerlink" href="#processes" title="Permalink to this headline"></a></h3>
 <p><em>Processes</em> are the fundamental building block in the Lava architecture from which all algorithms and applications are built. <em>Processes</em> are stateful objects with internal variables, input and output ports for message-based communication via channels.
 <em>Processes</em> come in different forms. A <em>Process</em> can be as simple as a single neuron or as complex an entire neural network like a ResNet architecture, or an excitatory/inhibitory network.
 A <em>Process</em> could also represent regular program code like a search algorithm, a system management process or be used for data pre and post processing.
 In addition, peripheral devices such as sensors or actuators can also be wrapped into the <em>Process</em> abstraction to integrate them seamlessly into a Lava application alongside other computational processes.
 In short, everything in Lava is a <em>Process</em>, which has its own private memory and communicates with its environment solely via messages. This makes Lava <em>Processes</em> a recursive programming abstraction from which modular, large-scale parallel applications can be built.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig1_Processes.png" style="width: 800px;" /></a>
+</div>
 </div>
 <div class="section" id="behavioral-implementations-via-processmodels">
-<h3>2. Behavioral implementations via ProcessModels:<a class="headerlink" href="#behavioral-implementations-via-processmodels" title="Permalink to this headline"></a></h3>
+<h3>2. Behavioral implementations via ProcessModels<a class="headerlink" href="#behavioral-implementations-via-processmodels" title="Permalink to this headline"></a></h3>
 <p><em>Process</em> classes themselves only define the interface of a <em>Process</em> in terms of state variables, ports, and other class methods for other <em>Processes</em> to use or interact with any given <em>Process</em>. However, <em>Processes</em> do not provide a behavioral implementation to make a <em>Process</em> executable on a particular hardware architecture.</p>
 <p>The behavioral implementation - i.e. a concrete implementation of variables, ports, channels and internal business logic - is provided via separate <em>ProcessModel</em> classes. <em>Processes</em> can have one or more <em>ProcessModels</em> of the same or different types. We distinguish between two categories of <em>ProcessModel</em> types:</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig2_ProcessModels.png" style="width: 800px;" /></a>
+</div>
 <ul class="simple">
 <li><p><strong>SubProcessModels:</strong> The first way <em>ProcessModels</em> can be implemented is in terms of other <em>Processes</em>. With a <em>SubProcessModel</em>, other sub-<em>Processes</em> can be instantiated, configured, and connected to define the behavior of the parent-<em>Process</em>. The ports of a <em>SubProcessModel</em> can be connected to the ports of its sub-<em>Processes</em> and variables of sub-<em>Processes</em> can be exposed as variables of the parent-<em>Process</em> as needed to make them accessible in its environment. This type of refinement of a parent-<em>Process</em> by means of sub-<em>Processes</em> can be applied recursively and will result in a tree-structured <em>Process</em>/<em>ProcessModel</em> hierarchy which allows to build sophisticated and reusable application modules.</p></li>
 <li><p><strong>LeafProcessModels:</strong> <em>ProcessModels</em> can also be implemented directly as opposed to the composition of other sub-<em>Processes</em>. In this case, we refer to them as <em>LeafProcessModels</em> because they form the leaves of the tree-structured <em>Process</em> hierarchy. Such <em>LeafProcesses</em> can be implemented in a programming language such as <em>Python</em> or <em>C</em>. For different hardware architectures, the <em>LeafProcessModel</em> code either describes computations directly in terms of executable instructions for a von-Neumann processor, possibly using external libraries such as Numpy, TensorFlow or PyTorch. In contrast, compute resources like neuromorphic cores do not execute arbitrary sequences of instructions but gain computational advantages by executing through collective dynamics specified by structural descriptions. In this case, the code of corresponding <em>NcProcessModels</em> for such cores is responsible for the structural allocation and configuration of neural network resources such as axons, synapses, and neurons in a neuro core. In the future, Lava <em>Processes</em> may also model and specify the operation of analog neuromorphic chips with behavioral models that will only approximately match their real-time execution.</p></li>
@@ -281,18 +547,22 @@ In short, everything in Lava is a <em>Process</em>, which has its own private me
 <p>In general, in neuromorphic architectures computation emerges from collective dynamical processes that are often approximate, nondeterministic, and may vary in detailed execution from platform to platform. Therefore Lava views behavior as <em>modeled</em> rather than <em>programmed</em> or <em>specified</em>, and this perspective motivates the name <em>ProcessModel</em>.</p>
 <p>Fundamentally, all <em>Processes</em> within a system or network operate in parallel and communicate asynchronously with each other through the exchange of message tokens. But many use cases require synchronization among <em>Processes</em>, for instance to implement a discrete-time dynamical system representing a particular neuron model progressing from one algorithmic time step to the next.
 Lava allows developers to define synchronization protocols that describe how <em>Processes</em> in the same synchronization domain synchronize with each other. This <em>SyncProtocol</em> is orchestrated by a <em>Synchronizer</em> within a <em>SyncDomain</em> which exchanges synchronization message tokens with all <em>Processes</em> in a <em>SyncDomain</em>. The compiler either assigns <em>Processes</em> automatically to a <em>SyncDomain</em> based on the <em>SyncProtocol</em> it implements but also allows users to assign <em>Processes</em> manually to <em>SyncDomains</em> to customize synchronization among <em>Processes</em> in more detail.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig3_ProcessModel_Sync.png" style="width: 800px;" /></a>
+</div>
 <p>Besides implementing a specific <em>Process</em> and <em>SyncProtocol</em>, a <em>ProcessModel</em> has a specific type (such as <em>PyProcessModel</em>, <em>CProcessModel</em>, <em>SubProcessModel</em>, etc.), has one or more resource requirements, and has one or more tags. Resource requirements specify what compute or peripheral resources a <em>ProcessModel</em> may require in order to execute, such as CPU, neuromorphic core, hard disk, or access to a camera. Furthermore, tags specify additional behavioral attributes of a <em>ProcessModel</em>.</p>
 <p>In order to execute a specific instance of a <em>Process</em>, the compiler will select one of the <em>ProcessModels</em> that implement a given <em>Process</em> class. In order to allow for different selection strategies, the compiler delegates this <em>ProcessModel</em> selection to instances of a separate <em>RunConfig</em> class. Such <em>RunConfigs</em> correspond to a set of rules that determine which <em>ProcessModel</em> to select for a <em>Process</em> given user preferences and the resource requirements and tags of a <em>ProcessModel</em>. For instance, a particular <em>RunConfig</em> may always select the highest-level Python-based implementation of a <em>Process</em> for quick application prototyping on a conventional CPU or GPU architecture without physical access to neuromorphic systems like Intel’s Kapoho Bay or Pohohiki Springs. Another <em>RunConfig</em> might prefer to map <em>Processes</em> to neuro cores or embedded CPUs whenever such neuromorphic systems are available. Lava will provide several pre-configured <em>RunConfigs</em> but allows users to customize them or create their own.</p>
 <p>In summary, while <em>Processes</em> only provide a universal interface to interact with their environment via message passing, one or more <em>ProcessModels</em> are what implement the behavioral model of a <em>Process</em> in different languages and ways tailored to different hardware architectures. This implementation can either be provided directly or by refining a given <em>Process</em> iteratively by implementing its behavior via sub-<em>Processes</em> which allows for code reuse and greater modularity.</p>
 <p>Overall, this programming model enables quick application prototyping at a high level, agnostic of the intricate constraints and complexities that are often associated with neuromorphic architectures, in the language of choice of a user, while deferring specifics about the hardware architecture for later. Once ready, high-level behavioral models can be replaced or refined by more efficient lower-level implementations (often provided by the Lava process library). At the same time, the availability of different behavioral implementations allows users to run the same application on different hardware platforms such as a CPU or a neuromorphic system when only one of them is available.</p>
 </div>
 <div class="section" id="composability-and-connectivity">
-<h3>3. Composability and connectivity:<a class="headerlink" href="#composability-and-connectivity" title="Permalink to this headline"></a></h3>
+<h3>3. Composability and connectivity<a class="headerlink" href="#composability-and-connectivity" title="Permalink to this headline"></a></h3>
 <p><em>Processes</em> are connected via ports with each other for message-based communication over channels. For hierarchical <em>Processes</em>, ports of a parent process can also be internally connected to ports of a child <em>Process</em> and vice versa within a <em>SubProcessModel</em>.
 In general, connections between <em>Processes</em> can be feed-forward or recurrent and support branching and joining of connections.
 While ports at the <em>Process</em>-level are only responsible for establishing connectivity between <em>Processes</em> before compilation, the port implementation at <em>ProcessModel</em>-level is responsible for actual message-passing at runtime.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig4_Connectivity.png" style="width: 800px;" /></a>
+</div>
 <p>The different kinds of ports and variables are part of the same formal class hierarchy. Both ports and variables are members of a <em>Process</em>. As such, both ports and variables communicate or represent numeric data, characterized by a data type that must be specified when allocating them in a <em>Process</em>. Additionally, port and variable implementations have an associated type and support a configurable precision of the numeric data they communicate or represent.
 There are four main types of ports that can be grouped in two different ways:</p>
 <ul class="simple">
@@ -301,18 +571,24 @@ There are four main types of ports that can be grouped in two different ways:</p
 </ul>
 <p>Aside from these main port types, there are additional virtual ports that effectively act as directives to the compiler to transform the shape of ports or how to combine multiple ports. Currently, Lava supports <em>ReshapePorts</em> and <em>ConcatPorts</em> to change the shape of a port or to concatenate multiple ports into one.
 Finally, system-level communication between <em>Processes</em> such as for synchronization is also implemented via ports and channels, but those are not managed directly by – and  therefore are hidden from – the user.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig5_ProcessMembers.png" style="width: 800px;" /></a>
+</div>
 </div>
 <div class="section" id="cross-platform-execution">
-<h3>4. Cross-platform execution:<a class="headerlink" href="#cross-platform-execution" title="Permalink to this headline"></a></h3>
+<h3>4. Cross-platform execution<a class="headerlink" href="#cross-platform-execution" title="Permalink to this headline"></a></h3>
 <p>Lava supports cross-platform execution of processes on a distributed set of compute nodes. Nodes in Lava have compute resources associated with them such as CPUs or neuro cores, and peripheral resources such as sensors, actuators or hard-disks. Given a graph of <em>Processes</em>, their <em>ProcessModels</em> and a <em>RunConfig</em>, this allows the compiler to map the <em>Processes</em> defined in the user system process to one or more <em>NodeConfigurations</em>. Depending on which type of node a <em>Process</em> is mapped to, a different <em>ProcessModel</em> with a node-specific implementation of its variables, ports, channels and behavior is chosen.
 In the end, each node in a <em>NodeConfiguration</em> can host one or more <em>SyncDomains</em> with one or more <em>ProcModels</em> in it. Each such <em>SyncDomain</em> also contains a local <em>RuntimeService</em> process. The <em>RuntimeService</em> is responsible for system management and includes the <em>Synchronizer</em> for orchestrating the <em>SyncProtocol</em> of the <em>SyncDomain</em>. Irrespective of the presence of multiple <em>SyncDomains</em> on multiple nodes, all user-defined and system processes communicate seamlessly via one asynchronous message-passing backend with each other and the global Runtime within the user system process.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig6_NodeConfigs.png" style="width: 800px;" /></a>
+</div>
 </div>
 </div>
 <div class="section" id="lava-software-stack">
 <h2>Lava software stack<a class="headerlink" href="#lava-software-stack" title="Permalink to this headline"></a></h2>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" class="align-center" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" style="width: 800px;" /></a>
+<div class="figure align-center">
+<a class="with-border reference internal image-reference" href="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png"><img alt="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" class="with-border" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/arch/Fig7_SwStack.png" style="width: 800px;" /></a>
+</div>
 <p>The core components of the Lava software stack are comprised of the <em>Communicating Sequential Process</em> API, a powerful compiler, and a runtime. In combination, these components form the <em>Magma</em> layer of Lava, which is the foundation on which new <em>Processes</em> and <em>ProcessModels</em> are built.
 The Lava process library provides a growing collection of generic, low-level, reusable, and widely applicable <em>Processes</em> from which higher-level algorithm and application libraries are built.</p>
 <p>The first libraries, to be released as part of the Lava software framework, are libraries for deep learning (lava-dl), optimization (lava-optim), and dynamic neural fields (lava-dnf). Future libraries will add support for vector symbolic architectures (lava-vsa) and evolutionary optimization (lava-evo).</p>
@@ -327,7 +603,7 @@ We welcome open-source contributions to any of these future libraries and utilit
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Lava Software Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="getting_started_with_lava.html" class="btn btn-neutral float-right" title="Getting Started With Lava" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started_with_lava.html" class="btn btn-neutral float-right" title="Getting Started with Lava" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

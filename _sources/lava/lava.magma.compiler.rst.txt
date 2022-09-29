@@ -1,80 +1,157 @@
-lava.magma.compiler package
-===========================
+lava.magma.compiler
+===================
 
-Subpackages
------------
+.. py:module:: lava.magma.compiler
+
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 10
 
-   lava.magma.compiler.c
+   lava.magma.compiler.builders
    lava.magma.compiler.channels
-   lava.magma.compiler.nc
-   lava.magma.compiler.py
+   lava.magma.compiler.subcompilers
 
-Submodules
-----------
 
-lava.magma.compiler.builder module
-----------------------------------
 
-.. automodule:: lava.magma.compiler.builder
+lava.magma.compiler.channel\_map
+--------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.channel_map
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.channel_map
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.compiler module
------------------------------------
+lava.magma.compiler.compiler
+----------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.compiler
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.compiler
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.exceptions module
--------------------------------------
+lava.magma.compiler.compiler\_graphs
+------------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.compiler_graphs
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.compiler_graphs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lava.magma.compiler.compiler\_utils
+-----------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.compiler_utils
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.compiler_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lava.magma.compiler.exceptions
+------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.exceptions
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.exceptions
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.exec\_var module
-------------------------------------
+lava.magma.compiler.executable
+------------------------------
 
-.. automodule:: lava.magma.compiler.exec_var
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. inheritance-diagram:: lava.magma.compiler.executable
+   :parts: 1
 
-lava.magma.compiler.executable module
--------------------------------------
+
 
 .. automodule:: lava.magma.compiler.executable
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.node module
--------------------------------
+lava.magma.compiler.mappable\_interface
+---------------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.mappable_interface
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.mappable_interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lava.magma.compiler.mapper
+--------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.mapper
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.mapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lava.magma.compiler.node
+------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.node
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.node
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.utils module
---------------------------------
+lava.magma.compiler.utils
+-------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.utils
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.utils
    :members:
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+lava.magma.compiler.var\_model
+------------------------------
 
-.. automodule:: lava.magma.compiler
+.. inheritance-diagram:: lava.magma.compiler.var_model
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.compiler.var_model
    :members:
    :undoc-members:
    :show-inheritance:

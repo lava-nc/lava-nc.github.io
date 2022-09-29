@@ -1,37 +1,32 @@
-lava.magma.compiler.channels package
-====================================
+lava.magma.compiler.channels
+============================
 
-Submodules
-----------
+.. py:module:: lava.magma.compiler.channels
 
-lava.magma.compiler.channels.channel\_utils module
---------------------------------------------------
 
-.. automodule:: lava.magma.compiler.channels.channel_utils
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
-lava.magma.compiler.channels.interfaces module
-----------------------------------------------
+lava.magma.compiler.channels.interfaces
+---------------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.channels.interfaces
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.channels.interfaces
    :members:
    :undoc-members:
    :show-inheritance:
 
-lava.magma.compiler.channels.pypychannel module
------------------------------------------------
+lava.magma.compiler.channels.pypychannel
+----------------------------------------
+
+.. inheritance-diagram:: lava.magma.compiler.channels.pypychannel
+   :parts: 1
+
+
 
 .. automodule:: lava.magma.compiler.channels.pypychannel
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: lava.magma.compiler.channels
    :members:
    :undoc-members:
    :show-inheritance:

@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lava.magma.core.model.py package &mdash; Lava  documentation</title>
+  <title>lava.magma.core.model.py &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -17,7 +18,9 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.magma.core.model.sub" href="lava.magma.core.model.sub.html" />
+    <link rel="prev" title="lava.magma.core.model" href="lava.magma.core.model.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,23 +38,224 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html">Online learning in Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
@@ -86,18 +290,31 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -105,7 +322,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -135,7 +351,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -146,8 +362,41 @@
 <li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">Lava</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava API reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.magma.html">Magma</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -181,7 +430,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -200,7 +464,12 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>lava.magma.core.model.py package</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.html">Lava API reference</a> &raquo;</li>
+          <li><a href="lava.magma.html">Magma</a> &raquo;</li>
+          <li><a href="lava.magma.core.html">lava.magma.core</a> &raquo;</li>
+          <li><a href="lava.magma.core.model.html">lava.magma.core.model</a> &raquo;</li>
+      <li>lava.magma.core.model.py</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.model.py.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -234,16 +503,334 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="lava-magma-core-model-py-package">
-<h1>lava.magma.core.model.py package<a class="headerlink" href="#lava-magma-core-model-py-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</div>
-<div class="section" id="module-lava.magma.core.model.py.model">
-<span id="lava-magma-core-model-py-model-module"></span><h2>lava.magma.core.model.py.model module<a class="headerlink" href="#module-lava.magma.core.model.py.model" title="Permalink to this headline"></a></h2>
+<div class="section" id="module-lava.magma.core.model.py">
+<span id="lava-magma-core-model-py"></span><h1>lava.magma.core.model.py<a class="headerlink" href="#module-lava.magma.core.model.py" title="Permalink to this headline"></a></h1>
+<div class="section" id="lava-magma-core-model-py-connection">
+<h2>lava.magma.core.model.py.connection<a class="headerlink" href="#lava-magma-core-model-py-connection" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-0cdb4d91d7146c5b11413a4365a8555744a0d004.png" alt="Inheritance diagram of lava.magma.core.model.py.connection" usemap="#inheritanceedd4dc7f3b" class="inheritance graphviz" /></div>
+<map id="inheritanceedd4dc7f3b" name="inheritanceedd4dc7f3b">
+<area shape="rect" id="node2" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" target="_top" title="Represents a model that implements the behavior of a Process." alt="" coords="46,79,213,104"/>
+<area shape="rect" id="node3" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" target="_top" title="Abstract interface for Python ProcessModels." alt="" coords="81,152,263,177"/>
+<area shape="rect" id="node4" href="#lava.magma.core.model.py.connection.Connection" target="_top" title="Connection" alt="" coords="190,299,285,324"/>
+<area shape="rect" id="node5" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" target="_top" title="ProcessModel to simulate a Process on Loihi using CPU." alt="" coords="99,225,258,251"/>
+<area shape="rect" id="node6" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate" target="_top" title="Fixed&#45;point, bit&#45;approximate implementation of the Connection base" alt="" coords="5,372,243,397"/>
+<area shape="rect" id="node7" href="#lava.magma.core.model.py.connection.ConnectionModelFloat" target="_top" title="Floating&#45;point implementation of the Connection Process" alt="" coords="267,372,435,397"/>
+</map><span class="target" id="module-lava.magma.core.model.py.connection"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.connection.</span></span><span class="sig-name descname"><span class="pre">Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.lrn_guard">
+<span class="sig-name descname"><span class="pre">lrn_guard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.lrn_guard" title="Permalink to this definition"></a></dt>
+<dd><p>Guard function that determines if lrn phase will get
+executed or not for the current timestep.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.run_lrn">
+<span class="sig-name descname"><span class="pre">run_lrn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.run_lrn" title="Permalink to this definition"></a></dt>
+<dd><p>Function that runs in Learning Phase</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>Function that runs in Spiking Phase</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.s_in_bap">
+<span class="sig-name descname"><span class="pre">s_in_bap</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.s_in_bap" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.tag_1">
+<span class="sig-name descname"><span class="pre">tag_1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.tag_1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.tag_2">
+<span class="sig-name descname"><span class="pre">tag_2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.tag_2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.tx">
+<span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.tx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.ty">
+<span class="sig-name descname"><span class="pre">ty</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.ty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.weights" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.x0">
+<span class="sig-name descname"><span class="pre">x0</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.x0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.x1">
+<span class="sig-name descname"><span class="pre">x1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.x1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.x2">
+<span class="sig-name descname"><span class="pre">x2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.x2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.y0">
+<span class="sig-name descname"><span class="pre">y0</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.y0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.y1">
+<span class="sig-name descname"><span class="pre">y1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.y1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.y2">
+<span class="sig-name descname"><span class="pre">y2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.y2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.Connection.y3">
+<span class="sig-name descname"><span class="pre">y3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.Connection.y3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionModelBitApproximate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.connection.Connection" title="lava.magma.core.model.py.connection.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.connection.Connection</span></code></a></p>
+<p>Fixed-point, bit-approximate implementation of the Connection base
+class.</p>
+<p>This class implements the learning simulation with integer and fixed
+point arithmetic but does not implement the exact behavior of Loihi.
+Nevertheless, the results are comparable to those by Loihi.</p>
+<p>To summarize the behavior:</p>
+<p>Spiking phase:
+run_spk:</p>
+<blockquote>
+<div><p>(1) (Dense) Send activations from past time step to post-synaptic
+neuron Process.
+(2) (Dense) Compute activations to be sent on next time step.
+(3) (Dense) Receive spikes from pre-synaptic neuron Process.
+(4) (Dense) Record within-epoch pre-synaptic spiking time.
+Update pre-synaptic traces if more than one spike during the epoch.
+(5) Receive spikes from post-synaptic neuron Process.
+(6) Record within-epoch pre-synaptic spiking time.
+Update pre-synaptic traces if more than one spike during the epoch.
+(7) Advance trace random generators.</p>
+</div></blockquote>
+<p>Learning phase:
+run_lrn:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Advance synaptic variable random generators.</p></li>
+</ol>
+<p>(2) Compute updates for each active synaptic variable,
+according to associated learning rule,
+based on the state of Vars representing dependencies and factors.
+(3) Update traces based on within-epoch spiking times and trace
+configuration parameters (impulse, decay).
+(4) Reset within-epoch spiking times and dependency Vars</p>
+</div></blockquote>
+<p>Note: The synaptic variable tag_2 currently DOES NOT induce synaptic
+delay in this connections Process. It can be adapted according to its
+learning rule (learned), but it will not affect synaptic activity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>proc_params</strong> (<em>dict</em>) – Parameters from the ProcessModel</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.s_in_bap">
+<span class="sig-name descname"><span class="pre">s_in_bap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.s_in_bap" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tag_1">
+<span class="sig-name descname"><span class="pre">tag_1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tag_1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tag_2">
+<span class="sig-name descname"><span class="pre">tag_2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=6)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tag_2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tx">
+<span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=6)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.tx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.ty">
+<span class="sig-name descname"><span class="pre">ty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=6)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.ty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x0">
+<span class="sig-name descname"><span class="pre">x0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x1">
+<span class="sig-name descname"><span class="pre">x1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=7)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x2">
+<span class="sig-name descname"><span class="pre">x2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=7)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.x2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y0">
+<span class="sig-name descname"><span class="pre">y0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y1">
+<span class="sig-name descname"><span class="pre">y1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=7)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y2">
+<span class="sig-name descname"><span class="pre">y2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=7)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y3">
+<span class="sig-name descname"><span class="pre">y3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=7)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelBitApproximate.y3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.connection.Connection" title="lava.magma.core.model.py.connection.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.connection.Connection</span></code></a></p>
+<p>Floating-point implementation of the Connection Process</p>
+<p>This ProcessModel constitutes a behavioral implementation of Loihi synapses
+written in Python, executing on CPU, and operating in floating-point
+arithmetic.</p>
+<p>To summarize the behavior:</p>
+<p>Spiking phase:
+run_spk:</p>
+<blockquote>
+<div><p>(1) (Dense) Send activations from past time step to post-synaptic
+neuron Process.
+(2) (Dense) Compute activations to be sent on next time step.
+(3) (Dense) Receive spikes from pre-synaptic neuron Process.
+(4) (Dense) Record within-epoch pre-synaptic spiking time.
+Update pre-synaptic traces if more than one spike during the epoch.
+(5) Receive spikes from post-synaptic neuron Process.
+(6) Record within-epoch pre-synaptic spiking time.
+Update pre-synaptic traces if more than one spike during the epoch.</p>
+</div></blockquote>
+<p>Learning phase:
+run_lrn:</p>
+<blockquote>
+<div><p>(1) Compute updates for each active synaptic variable,
+according to associated learning rule,
+based on the state of Vars representing dependencies and factors.
+(2) Update traces based on within-epoch spiking times and trace
+configuration parameters (impulse, decay).
+(3) Reset within-epoch spiking times and dependency Vars</p>
+</div></blockquote>
+<p>Note: The synaptic variable tag_2 currently DOES NOT induce synaptic
+delay in this connections Process. It can be adapted according to its
+learning rule (learned), but it will not affect synaptic activity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>proc_params</strong> (<em>dict</em>) – Parameters from the ProcessModel</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.s_in_bap">
+<span class="sig-name descname"><span class="pre">s_in_bap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.s_in_bap" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.tag_1">
+<span class="sig-name descname"><span class="pre">tag_1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.tag_1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.tag_2">
+<span class="sig-name descname"><span class="pre">tag_2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.tag_2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.tx">
+<span class="sig-name descname"><span class="pre">tx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=6)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.tx" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.ty">
+<span class="sig-name descname"><span class="pre">ty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=6)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.ty" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.x0">
+<span class="sig-name descname"><span class="pre">x0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.x0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.x1">
+<span class="sig-name descname"><span class="pre">x1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.x1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.x2">
+<span class="sig-name descname"><span class="pre">x2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.x2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.y0">
+<span class="sig-name descname"><span class="pre">y0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.y0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.y1">
+<span class="sig-name descname"><span class="pre">y1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.y1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.y2">
+<span class="sig-name descname"><span class="pre">y2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.y2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.connection.ConnectionModelFloat.y3">
+<span class="sig-name descname"><span class="pre">y3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.magma.core.model.py.connection.ConnectionModelFloat.y3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lava-magma-core-model-py-model">
+<h2>lava.magma.core.model.py.model<a class="headerlink" href="#lava-magma-core-model-py-model" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-8b7c0cdd3a24cf51fdb3e493014cac5b163932ae.png" alt="Inheritance diagram of lava.magma.core.model.py.model" usemap="#inheritance9c9cf40b3a" class="inheritance graphviz" /></div>
+<map id="inheritance9c9cf40b3a" name="inheritance9c9cf40b3a">
+<area shape="rect" id="node2" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" target="_top" title="Represents a model that implements the behavior of a Process." alt="" coords="39,79,205,104"/>
+<area shape="rect" id="node3" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" target="_top" title="Abstract interface for Python ProcessModels." alt="" coords="91,152,273,177"/>
+<area shape="rect" id="node4" href="#lava.magma.core.model.py.model.PyAsyncProcessModel" target="_top" title="Process Model for Asynchronous Processes executed on CPU." alt="" coords="5,225,172,251"/>
+<area shape="rect" id="node5" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" target="_top" title="ProcessModel to simulate a Process on Loihi using CPU." alt="" coords="196,225,355,251"/>
+</map><span class="target" id="module-lava.magma.core.model.py.model"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.AbstractPyProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">AbstractPyProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">AbstractPyProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loglevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Abstract interface for Python ProcessModels.</p>
 <dl class="simple">
@@ -285,7 +872,7 @@ to add ports to py_ports and var_ports list.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.AbstractPyProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.AbstractPyProcessModel.proc_params" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -309,9 +896,30 @@ py_ports) and calls the run function.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyAsyncProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyAsyncProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></code></a></p>
-<p>Process Model for Asynchronous Processes.</p>
+<p>Process Model for Asynchronous Processes executed on CPU.</p>
+<p>This ProcessModel is used in combination with the AsyncProtocol to
+implement asynchronous execution. This means that the processes could run
+with a varying speed and message passing is possible at any time.</p>
+<p>In order to use the PyAsyncProcessModel, the <cite>run_async()</cite> function
+must be implemented which defines the behavior of the underlying Process.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">SimpleProcess</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">AsyncProtocol</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SimpleProcessModel</span><span class="p">(</span><span class="n">PyAsyncProcessModel</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">u</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">v</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">run_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_for_stop_cmd</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>            <span class="k">return</span>
+</pre></div>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.Response">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Response</span></span><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.Response" title="Permalink to this definition"></a></dt>
@@ -332,7 +940,7 @@ py_ports) and calls the run function.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.Response.STATUS_DONE">
 <span class="sig-name descname"><span class="pre">STATUS_DONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([0.])</span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.Response.STATUS_DONE" title="Permalink to this definition"></a></dt>
-<dd><p>Signfies Ack or Finished with the Command</p>
+<dd><p>Signifies Ack or Finished with the Command</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -374,7 +982,7 @@ py_ports) and calls the run function.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyAsyncProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyAsyncProcessModel.proc_params" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -413,9 +1021,27 @@ RUN command is received.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyLoihiProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.model.</span></span><span class="sig-name descname"><span class="pre">PyLoihiProcessModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.model.AbstractPyProcessModel" title="lava.magma.core.model.py.model.AbstractPyProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.AbstractPyProcessModel</span></code></a></p>
-<p>ProcessModel for processes that resembles process on Loihi.</p>
+<p>ProcessModel to simulate a Process on Loihi using CPU.</p>
+<p>The PyLoihiProcessModel implements the same phases of execution as the
+Loihi 1/2 processor but is executed on CPU. See the LoihiProtocol for a
+description of the different phases.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">RingBuffer</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@tag</span><span class="p">(</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PySendModel</span><span class="p">(</span><span class="n">AbstractPyRingBuffer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Ring buffer send process model.</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">s_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_step</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">buffer</span><span class="p">])</span>
+</pre></div>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.Phase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Phase</span></span><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.Phase" title="Permalink to this definition"></a></dt>
@@ -543,7 +1169,7 @@ executed or not for the current timestep.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.model.PyLoihiProcessModel.proc_params">
-<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.proc_params" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.model.py.model.PyLoihiProcessModel.proc_params" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -598,9 +1224,39 @@ executed or not for the current timestep.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.model.py.ports">
-<span id="lava-magma-core-model-py-ports-module"></span><h2>lava.magma.core.model.py.ports module<a class="headerlink" href="#module-lava.magma.core.model.py.ports" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-model-py-ports">
+<h2>lava.magma.core.model.py.ports<a class="headerlink" href="#lava-magma-core-model-py-ports" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-524d21097751f306a97d7876d6440d0f5d7e0846.png" alt="Inheritance diagram of lava.magma.core.model.py.ports" usemap="#inheritance3cd5dd3368" class="inheritance graphviz" /></div>
+<map id="inheritance3cd5dd3368" name="inheritance3cd5dd3368">
+<area shape="rect" id="node2" href="lava.magma.core.model.html#lava.magma.core.model.interfaces.AbstractPortImplementation" target="_top" title="AbstractPortImplementation" alt="" coords="1354,79,1561,104"/>
+<area shape="rect" id="node5" href="#lava.magma.core.model.py.ports.AbstractTransformer" target="_top" title="Interface for Transformers that are used in receiving PyPorts to" alt="" coords="1585,79,1740,104"/>
+<area shape="rect" id="node4" href="#lava.magma.core.model.py.ports.AbstractPyPort" target="_top" title="Abstract class for Ports implemented in Python." alt="" coords="1398,152,1517,177"/>
+<area shape="rect" id="node3" href="#lava.magma.core.model.py.ports.AbstractPyIOPort" target="_top" title="Abstract class of an input/output Port implemented in python." alt="" coords="951,225,1083,251"/>
+<area shape="rect" id="node7" href="#lava.magma.core.model.py.ports.PyInPort" target="_top" title="Python implementation of InPort used within AbstractPyProcessModel." alt="" coords="413,299,489,324"/>
+<area shape="rect" id="node12" href="#lava.magma.core.model.py.ports.PyOutPort" target="_top" title="Python implementation of OutPort used within AbstractPyProcessModels." alt="" coords="974,299,1061,324"/>
+<area shape="rect" id="node17" href="#lava.magma.core.model.py.ports.PyRefPort" target="_top" title="Python implementation of RefPort used within AbstractPyProcessModels." alt="" coords="1414,225,1501,251"/>
+<area shape="rect" id="node22" href="#lava.magma.core.model.py.ports.PyVarPort" target="_top" title="Python implementation of VarPort used within AbstractPyProcessModel." alt="" coords="2091,225,2176,251"/>
+<area shape="rect" id="node6" href="#lava.magma.core.model.py.ports.IdentityTransformer" target="_top" title="Transformer that does not transform the data but returns it unchanged." alt="" coords="1563,152,1714,177"/>
+<area shape="rect" id="node29" href="#lava.magma.core.model.py.ports.VirtualPortTransformer" target="_top" title="VirtualPortTransformer" alt="" coords="1738,152,1907,177"/>
+<area shape="rect" id="node8" href="#lava.magma.core.model.py.ports.PyInPortScalarDense" target="_top" title="Python implementation of PyInPort for dense scalar data." alt="" coords="5,372,163,397"/>
+<area shape="rect" id="node9" href="#lava.magma.core.model.py.ports.PyInPortScalarSparse" target="_top" title="Python implementation of PyInPort for sparse scalar data." alt="" coords="187,372,347,397"/>
+<area shape="rect" id="node10" href="#lava.magma.core.model.py.ports.PyInPortVectorDense" target="_top" title="Python implementation of PyInPort for dense vector data." alt="" coords="371,372,530,397"/>
+<area shape="rect" id="node11" href="#lava.magma.core.model.py.ports.PyInPortVectorSparse" target="_top" title="Python implementation of PyInPort for sparse vector data." alt="" coords="554,372,715,397"/>
+<area shape="rect" id="node13" href="#lava.magma.core.model.py.ports.PyOutPortScalarDense" target="_top" title="Python implementation of PyOutPort for dense scalar data." alt="" coords="740,372,908,397"/>
+<area shape="rect" id="node14" href="#lava.magma.core.model.py.ports.PyOutPortScalarSparse" target="_top" title="Python implementation of PyOutPort for sparse scalar data." alt="" coords="932,372,1103,397"/>
+<area shape="rect" id="node15" href="#lava.magma.core.model.py.ports.PyOutPortVectorDense" target="_top" title="Python implementation of PyOutPort for dense vector data." alt="" coords="1127,372,1297,397"/>
+<area shape="rect" id="node16" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse" target="_top" title="Python implementation of PyOutPort for sparse vector data." alt="" coords="1321,372,1493,397"/>
+<area shape="rect" id="node18" href="#lava.magma.core.model.py.ports.PyRefPortScalarDense" target="_top" title="Python implementation of RefPort for dense scalar data." alt="" coords="1085,299,1251,324"/>
+<area shape="rect" id="node19" href="#lava.magma.core.model.py.ports.PyRefPortScalarSparse" target="_top" title="Python implementation of RefPort for sparse scalar data." alt="" coords="1276,299,1447,324"/>
+<area shape="rect" id="node20" href="#lava.magma.core.model.py.ports.PyRefPortVectorDense" target="_top" title="Python implementation of RefPort for dense vector data." alt="" coords="1471,299,1639,324"/>
+<area shape="rect" id="node21" href="#lava.magma.core.model.py.ports.PyRefPortVectorSparse" target="_top" title="Python implementation of RefPort for sparse vector data." alt="" coords="1663,299,1833,324"/>
+<area shape="rect" id="node23" href="#lava.magma.core.model.py.ports.PyVarPortScalarDense" target="_top" title="Python implementation of VarPort for dense scalar data." alt="" coords="1858,299,2025,324"/>
+<area shape="rect" id="node24" href="#lava.magma.core.model.py.ports.PyVarPortScalarSparse" target="_top" title="Python implementation of VarPort for sparse scalar data." alt="" coords="2049,299,2218,324"/>
+<area shape="rect" id="node25" href="#lava.magma.core.model.py.ports.PyVarPortVectorDense" target="_top" title="Python implementation of VarPort for dense vector data." alt="" coords="2242,299,2409,324"/>
+<area shape="rect" id="node26" href="#lava.magma.core.model.py.ports.PyVarPortVectorSparse" target="_top" title="Python implementation of VarPort for sparse vector data." alt="" coords="2433,299,2604,324"/>
+<area shape="rect" id="node27" href="#lava.magma.core.model.py.ports.RefVarTypeMapping" target="_top" title="Class to get the mapping of PyRefPort types to PyVarPort types." alt="" coords="1621,5,1771,31"/>
+<area shape="rect" id="node28" href="#lava.magma.core.model.py.ports.VarPortCmd" target="_top" title="Helper class to specify constants. Used for communication between" alt="" coords="1796,5,1895,31"/>
+</map><span class="target" id="module-lava.magma.core.model.py.ports"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.AbstractPyIOPort">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.ports.</span></span><span class="sig-name descname"><span class="pre">AbstractPyIOPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csp_ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.interfaces.AbstractCspPort" title="lava.magma.compiler.channels.interfaces.AbstractCspPort"><span class="pre">lava.magma.compiler.channels.interfaces.AbstractCspPort</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.AbstractPyIOPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.AbstractPyPort</span></code></a></p>
@@ -777,16 +1433,6 @@ virtual ports on the path to the PyVarPort.</p>
 </dd>
 </dl>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Class</span> <span class="pre">attributes</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">----------------</span></span></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyInPort.VEC_DENSE">
@@ -1027,42 +1673,86 @@ from it. The different class attributes are used to select the type of
 OutPorts via LavaPyType declarations in PyProcModels, e.g., LavaPyType(
 PyOutPort.VEC_DENSE, np.int32, precision=24) creates a PyOutPort.
 A PyOutPort (source) can be connected to one or multiple PyInPorts (target).</p>
-<dl class="simple">
-<dt>VEC_DENSE<span class="classifier">PyOutPortVectorDense, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
-</dd>
-<dt>VEC_SPARSE<span class="classifier">PyOutPortVectorSparse, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data as sparse vector (data + indices),
-so only entries which have changed in a vector need to be communicated.</p>
-</dd>
-<dt>SCALAR_DENSE<span class="classifier">PyOutPortScalarDense, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data element by element for the whole
-data structure. So the CSP channel does need less memory to transfer
-data.</p>
-</dd>
-<dt>SCALAR_SPARSE<span class="classifier">PyOutPortScalarSparse, default=None</span></dt><dd><p>Type of PyInPort. CSP Port sends data element by element, but after each
-element the index of the data entry is also given. So only entries which
-need to be changed need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>csp_ports</strong> (<em>list</em>) – A list of CSP Ports used by this IO Port.</p></li>
+<li><p><strong>process_model</strong> (<a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a>) – The process model used by the process of the Port.</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) – The shape of the Port.</p></li>
+<li><p><strong>d_type</strong> (<em>type</em>) – The data type of the Port.</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.SCALAR_DENSE">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.SCALAR_DENSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarDense" title="lava.magma.core.model.py.ports.PyOutPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortScalarDense</span></code></a></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.SCALAR_SPARSE">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.SCALAR_SPARSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarSparse" title="lava.magma.core.model.py.ports.PyOutPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortScalarSparse</span></code></a></p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.VEC_DENSE">
 <span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.VEC_DENSE" title="Permalink to this definition"></a></dt>
-<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortVectorDense" title="lava.magma.core.model.py.ports.PyOutPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortVectorDense</span></code></a></p>
+<dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortVectorDense" title="lava.magma.core.model.py.ports.PyOutPortVectorDense">PyOutPortVectorDense</a>, default=None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.VEC_SPARSE">
 <span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.VEC_SPARSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data as sparse vector (data + indices),
+so only entries which have changed in a vector need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse" title="lava.magma.core.model.py.ports.PyOutPortVectorSparse">PyOutPortVectorSparse</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.SCALAR_DENSE">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.SCALAR_DENSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data element by element for the whole
+data structure. So the CSP channel does need less memory to transfer
+data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarDense" title="lava.magma.core.model.py.ports.PyOutPortScalarDense">PyOutPortScalarDense</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPort.SCALAR_SPARSE">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPort.SCALAR_SPARSE" title="Permalink to this definition"></a></dt>
+<dd><p>Type of PyInPort. CSP Port sends data element by element, but after each
+element the index of the data entry is also given. So only entries which
+need to be changed need to be communicated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarSparse" title="lava.magma.core.model.py.ports.PyOutPortScalarSparse">PyOutPortScalarSparse</a>, default=None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarDense" title="lava.magma.core.model.py.ports.PyOutPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortScalarDense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortScalarSparse" title="lava.magma.core.model.py.ports.PyOutPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortScalarSparse</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortVectorDense" title="lava.magma.core.model.py.ports.PyOutPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortVectorDense</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse" title="lava.magma.core.model.py.ports.PyOutPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyOutPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -1078,7 +1768,7 @@ need to be changed need to be communicated.</p>
 <dd><p>Abstract method to send data to the connected Port PyInPort (target).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em><em> or </em><em>int</em>) – The data (vector or scalar) to be sent to the PyInPort (target).</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em><em> or </em><em>int</em>) – The data (vector or scalar) to be sent to the InPort (target).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1137,7 +1827,7 @@ need to be changed need to be communicated.</p>
 <p>Python implementation of PyOutPort for sparse vector data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyOutPortVectorSparse.send">
-<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse.send" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyOutPortVectorSparse.send" title="Permalink to this definition"></a></dt>
 <dd><p>TBD</p>
 </dd></dl>
 
@@ -1205,16 +1895,6 @@ virtual ports on the path to the PyRefPort.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Class</span> <span class="pre">attributes</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">----------------</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyRefPort.VEC_DENSE">
 <span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyRefPort.VEC_DENSE" title="Permalink to this definition"></a></dt>
 <dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
@@ -1264,26 +1944,26 @@ need to be changed need to be communicated.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortScalarDense" title="lava.magma.core.model.py.ports.PyRefPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortScalarDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortScalarSparse" title="lava.magma.core.model.py.ports.PyRefPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortScalarSparse</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortVectorDense" title="lava.magma.core.model.py.ports.PyRefPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortVectorDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id7">
-<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPortVectorSparse" title="lava.magma.core.model.py.ports.PyRefPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyRefPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -1503,16 +2183,6 @@ virtual ports on the path to the PyVarPort.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Class</span> <span class="pre">attributes</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">----------------</span></span></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.PyVarPort.VEC_DENSE">
 <span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.PyVarPort.VEC_DENSE" title="Permalink to this definition"></a></dt>
 <dd><p>Type of PyInPort. CSP Port sends data as dense vector.</p>
@@ -1562,26 +2232,26 @@ need to be changed need to be communicated.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id8">
-<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">SCALAR_DENSE</span></span><a class="headerlink" href="#id12" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortScalarDense" title="lava.magma.core.model.py.ports.PyVarPortScalarDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortScalarDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id9">
-<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">SCALAR_SPARSE</span></span><a class="headerlink" href="#id13" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortScalarSparse" title="lava.magma.core.model.py.ports.PyVarPortScalarSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortScalarSparse</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id10">
-<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">VEC_DENSE</span></span><a class="headerlink" href="#id14" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortVectorDense" title="lava.magma.core.model.py.ports.PyVarPortVectorDense"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortVectorDense</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id11">
-<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">VEC_SPARSE</span></span><a class="headerlink" href="#id15" title="Permalink to this definition"></a></dt>
 <dd><p>alias of <a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPortVectorSparse" title="lava.magma.core.model.py.ports.PyVarPortVectorSparse"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.ports.PyVarPortVectorSparse</span></code></a></p>
 </dd></dl>
 
@@ -1711,32 +2381,39 @@ sending a command VarPortCmd.</p>
 the format of the data to process. To connect PyRefPorts and PyVarPorts they
 need to have a compatible data format.
 This class maps the fitting data format between PyRefPorts and PyVarPorts.</p>
-<dl class="simple">
-<dt>mapping<span class="classifier">dict</span></dt><dd><p>Dictionary containing the mapping of compatible PyRefPort types to
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.RefVarTypeMapping.mapping">
+<span class="sig-name descname"><span class="pre">mapping</span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.mapping" title="Permalink to this definition"></a></dt>
+<dd><p>Dictionary containing the mapping of compatible PyRefPort types to
 PyVarPort types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.ports.RefVarTypeMapping.get">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.get" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.get" title="Permalink to this definition"></a></dt>
 <dd><p>Class method to return the compatible PyVarPort type given the
 PyRefPort type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ref_port</strong> (<a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><em>PyRefPort</em></a>) – PyRefPort type to be mapped to a PyVarPort type.</p>
+<dd class="field-odd"><p><strong>ref_port</strong> (<em>ty.Type</em><em>[</em><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><em>PyRefPort</em></a><em>]</em>) – PyRefPort type to be mapped to a PyVarPort type.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>result</strong> – PyVarPort type compatible to given PyRefPort type.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort">PyVarPort</a></p>
+<dd class="field-odd"><p>ty.Type[<a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort">PyVarPort</a>]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.magma.core.model.py.ports.RefVarTypeMapping.mapping">
-<span class="sig-name descname"><span class="pre">mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorSparse'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarSparse'&gt;}</span></em><a class="headerlink" href="#lava.magma.core.model.py.ports.RefVarTypeMapping.mapping" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">lava.magma.core.model.py.ports.PyVarPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortVectorSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortVectorSparse'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarDense'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarDense'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyRefPortScalarSparse'&gt;:</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyVarPortScalarSparse'&gt;}</span></em><a class="headerlink" href="#id16" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1787,9 +2464,12 @@ port the data is received.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.model.py.type">
-<span id="lava-magma-core-model-py-type-module"></span><h2>lava.magma.core.model.py.type module<a class="headerlink" href="#module-lava.magma.core.model.py.type" title="Permalink to this headline"></a></h2>
-<dl class="py class">
+<div class="section" id="lava-magma-core-model-py-type">
+<h2>lava.magma.core.model.py.type<a class="headerlink" href="#lava-magma-core-model-py-type" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-d20b77635e314da9eb054d3fbf975049ea104a42.png" alt="Inheritance diagram of lava.magma.core.model.py.type" usemap="#inheritanceaa1a6341d9" class="inheritance graphviz" /></div>
+<map id="inheritanceaa1a6341d9" name="inheritanceaa1a6341d9">
+<area shape="rect" id="node1" href="#lava.magma.core.model.py.type.LavaPyType" target="_top" title="LavaPyType(cls: Union[type, Type[lava.magma.core.model.py.ports.PyInPort], Type[lava.magma.core.model.py.ports.PyOutPort], Type[lava.magma.core.model.py.ports.PyRefPort]], d_type: type, precision: int = None)" alt="" coords="5,5,104,31"/>
+</map><span class="target" id="module-lava.magma.core.model.py.type"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.model.py.type.LavaPyType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.model.py.type.</span></span><span class="sig-name descname"><span class="pre">LavaPyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.model.py.ports.PyRefPort" title="lava.magma.core.model.py.ports.PyRefPort"><span class="pre">lava.magma.core.model.py.ports.PyRefPort</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.model.py.type.LavaPyType" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -1811,15 +2491,15 @@ port the data is received.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-lava.magma.core.model.py">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.magma.core.model.py" title="Permalink to this headline"></a></h2>
-</div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.magma.core.model.html" class="btn btn-neutral float-left" title="lava.magma.core.model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.magma.core.model.sub.html" class="btn btn-neutral float-right" title="lava.magma.core.model.sub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

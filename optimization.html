@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuromorphic Constraint Optimization &mdash; Lava  documentation</title>
+  <title>Neuromorphic Constraint Optimization Library &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Developer Guide" href="developer_guide.html" />
+    <link rel="next" title="Quadratic Programming with Lava" href="lava/notebooks/tutorial_01_solving_lasso.html" />
     <link rel="prev" title="Dynamic Neural Fields" href="dnf.html" /> 
 </head>
 
@@ -42,18 +43,219 @@
 <li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#key-attributes">Key attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#processes">1. Processes:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started_with_lava.html">Getting Started With Lava</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#application-examples">Application examples:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started_with_lava.html#fundamental-concepts">Fundamental concepts:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html">Spike-timing Dependent Plasticity (STDP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="algorithms.html">Algorithms and Application Libraries</a><ul class="current">
@@ -88,18 +290,28 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#qp-solver">QP Solver</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">QP Solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#coming-up-next-cspsolver">Coming up next: CSPSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -107,7 +319,6 @@
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#contact-information">Contact Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer_guide.html#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#development-roadmap">Development Roadmap</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#initial-release">Initial Release</a></li>
 </ul>
@@ -137,7 +348,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="developer_guide.html#repository-structure">Repository Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id20">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer_guide.html#id17">lava-nc/lava</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
@@ -149,7 +360,40 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lava_api_documentation.html">Lava API Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lava/modules.html">Lava</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/lava.html">Lava API reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="lava-lib-dl/slayer/index.html">SLAYER</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
@@ -183,7 +427,22 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/index.html">Lava - Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -203,7 +462,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="algorithms.html">Algorithms and Application Libraries</a> &raquo;</li>
-      <li>Neuromorphic Constraint Optimization</li>
+      <li>Neuromorphic Constraint Optimization Library</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/optimization.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -237,43 +496,107 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="neuromorphic-constraint-optimization">
-<h1>Neuromorphic Constraint Optimization<a class="headerlink" href="#neuromorphic-constraint-optimization" title="Permalink to this headline"></a></h1>
-<p><strong>A library of solvers that leverage neuromorphic hardware for constrained optimization.</strong></p>
-<p>Constrained optimization searches for the values of input variables that minimize or maximize a given objective function, while the variables are subject to constraints. This kind of problem is ubiquitous throughout scientific domains and industries.
-Constrained optimization is a promising application for neuromorphic computing as
-it <a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">naturally aligns with the dynamics of spiking neural networks</a>. When individual neurons represent states of variables, the neuronal connections can directly encode constraints between the variables: in its simplest form, recurrent inhibitory synapses connect neurons that represent mutually exclusive variable states, while recurrent excitatory synapses link neurons representing reinforcing states. Implemented on massively parallel neuromorphic hardware, such a spiking neural network can simultaneously evaluate conflicts and cost functions involving many variables, and update all variables accordingly. This allows a quick convergence towards an optimal state. In addition, the fine-scale timing dynamics of SNNs allow them to readily escape from local minima.</p>
-<p>This Lava repository currently provides constraint optimization solvers that leverage the benefits of neuromorphic computing for the following problems:</p>
-<ol class="arabic simple">
-<li><p>Quadratic Programming (QP).</p></li>
-</ol>
-<p>In the future, the library will be extended by solvers targeting further constraint optimization problems that are relevant for robotics and operations research.
-The current focus lies on solvers for the following problems:</p>
-<ol class="arabic simple">
-<li><p>Constraint Satisfaction Problems (CSP).</p></li>
-<li><p>Quadratic Unconstrained Binary Optimization (QUBO).</p></li>
-<li><p>Integer Linear Programming (ILP).</p></li>
-<li><p>Linear Programming (LP).</p></li>
-<li><p>Mixed-Integer Linear Programming (MILP).</p></li>
-<li><p>Mixed-Integer Quadratic Programming (MIQP).</p></li>
-</ol>
-<a class="reference external image-reference" href="https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true"><img alt="Overview_Solvers" src="https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true" /></a>
-<div class="line-block">
-<div class="line"><br /></div>
+<div class="section" id="neuromorphic-constraint-optimization-library">
+<h1>Neuromorphic Constraint Optimization Library<a class="headerlink" href="#neuromorphic-constraint-optimization-library" title="Permalink to this headline"></a></h1>
+<p><strong>A library of solvers that leverage neuromorphic hardware for
+constrained optimization.</strong></p>
+<p>Constrained optimization searches for the values of input variables that
+minimize or maximize a given objective function, while the variables are
+subject to constraints. This kind of problem is ubiquitous throughout
+scientific domains and industries. Constrained optimization is a
+promising application for neuromorphic computing as it <a class="reference external" href="https://doi.org/10.1109/JPROC.2021.3067593">naturally aligns
+with the dynamics of spiking neural
+networks</a>. When
+individual neurons represent states of variables, the neuronal
+connections can directly encode constraints between the variables: in
+its simplest form, recurrent inhibitory synapses connect neurons that
+represent mutually exclusive variable states, while recurrent excitatory
+synapses link neurons representing reinforcing states. Implemented on
+massively parallel neuromorphic hardware, such a spiking neural network
+can simultaneously evaluate conflicts and cost functions involving many
+variables, and update all variables accordingly. This allows a quick
+convergence towards an optimal state. In addition, the fine-scale timing
+dynamics of SNNs allow them to readily escape from local minima.</p>
+<p>This Lava repository currently supports the following constraint
+optimization problems:</p>
+<ul class="simple">
+<li><p>Quadratic Programming (QP)</p></li>
+<li><p>Quadratic Unconstrained Binary Optimization (QUBO)</p></li>
+</ul>
+<p>As we continue development, the library will support more constraint
+optimization problems that are relevant for robotics and operations
+research. We currently plan the following development order in such a
+way that new solvers build on the capabilities of existing ones:</p>
+<ul class="simple">
+<li><p>Constraint Satisfaction Problems (CSP)</p></li>
+<li><p>Integer Linear Programming (ILP)</p></li>
+<li><p>Mixed-Integer Linear Programming (MILP)</p></li>
+<li><p>Mixed-Integer Quadratic Programming (MIQP)</p></li>
+<li><p>Linear Programming (LP)</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<img alt="Lava features a growing suite of constraint optimization solvers" src="https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true" />
+<p class="caption"><span class="caption-text">Overview_Solvers</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</div>
+<div class="section" id="taxonomy-of-optimization-problems">
+<h2>Taxonomy of Optimization Problems<a class="headerlink" href="#taxonomy-of-optimization-problems" title="Permalink to this headline"></a></h2>
+<p>More formally, the general form of a constrained optimization problem
+is:</p>
+<div class="math">
+<p><img src="_images/math/0203f8bd532b64c9898f86278716a4e709caef3b.png" alt="\displaystyle{\min_{x} \lbrace f(x) | g_i(x)    \leq  b,    h_i(x)  = c.\rbrace}"/></p>
+</div><p>Where <img class="math" src="_images/math/95aabe3d9002fe03d54b9b9d9fbfc27c0eaeb56f.png" alt="f(x)"/> is the objective function to be optimized while
+<img class="math" src="_images/math/91451bcd556b3fb4efe455c92153f24ed21af9b5.png" alt="g(x)"/> and <img class="math" src="_images/math/87814ea6376716e30635a2069fb939db60df0322.png" alt="h(x)"/> constrain the validity of <img class="math" src="_images/math/95aabe3d9002fe03d54b9b9d9fbfc27c0eaeb56f.png" alt="f(x)"/> to
+regions in the state space satisfying the respective equality and
+inequality constraints. The vector <img class="math" src="_images/math/888f7c323ac0341871e867220ae2d76467d74d6e.png" alt="x"/> can be continuous, discrete
+or a mixture of both. We can then construct the following taxonomy of
+optimization problems according to the characteristics of the variable
+domain and of <img class="math" src="_images/math/5b7752c757e0b691a80ab8227eadb8a8389dc58a.png" alt="f"/>, <img class="math" src="_images/math/157ba5711de84b4c715a0478fd8ae440e596d96e.png" alt="g"/>, and <img class="math" src="_images/math/4c120f773ab4e1c59ad2bd44aae969ce24dd190a.png" alt="h"/>:</p>
+<div class="figure align-default" id="id3">
+<img alt="image" src="https://user-images.githubusercontent.com/83413252/192852018-dbc08018-ddda-4571-8494-cd1fbfa8405f.png" />
+<p class="caption"><span class="caption-text">image</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</div>
+<p>In the long run, lava-optimization aims to offer support to solve all of
+the problems in the figure with a neuromorphic backend.</p>
+</div>
+<div class="section" id="optimizationsolver-and-optimizationproblem-classes">
+<h2>OptimizationSolver and OptimizationProblem Classes<a class="headerlink" href="#optimizationsolver-and-optimizationproblem-classes" title="Permalink to this headline"></a></h2>
+<p>The figure below shows the general architecture of the library. We
+harness the general definition of constraint optimization problems to
+create OptimizationProblem instances by composing Constraints,
+Variables, and Cost classes which describe the characteristics of every
+subproblem class. Note that while a quadratic problem (QP) will be
+described by linear equality and inequality constraints with variables
+on the continuous domain and a quadratic function, a constraint
+satisfaction problem (CSP) will be described by discrete constraints,
+defined by variable subsets and a binary relation describing the
+mutually allowed values for such discrete variables and will have a
+constant cost function with the pure goal of satisfying constraints.</p>
+<p>An API for every problem class can be created by inheriting from
+OptimizationSolver and composing particular flavors of Constraints,
+Variables, and Cost.</p>
+<div class="figure align-default" id="id4">
+<img alt="image" src="https://user-images.githubusercontent.com/83413252/192851930-919035a7-122d-4a82-8032-f1acc6da717b.png" />
+<p class="caption"><span class="caption-text">image</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</div>
+<p>The instance of an Optimization problem is the valid input for
+instantiating the generic OptimizationSolver class. In this way, the
+OptimizationSolver interface is left fixed and the OptimizationProblem
+allows the greatest flexibility for creating new APIs. Under the hood,
+the OptimizationSolver understands the compossite structure of the
+OptimizationProblem and will in turn compose the required solver
+components and Lava processes.</p>
 </div>
 <div class="section" id="tutorials">
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline"></a></h2>
-<div class="section" id="qp-solver">
-<h3>QP Solver<a class="headerlink" href="#qp-solver" title="Permalink to this headline"></a></h3>
-<ol class="arabic simple">
-<li><p>[Solving LASSO.](<a class="reference external" href="https://github.com/lava-nc/lava-optimization/tree/main/tutorials/qp/tutorial_01_solving_lasso.ipynb">https://github.com/lava-nc/lava-optimization/tree/main/tutorials/qp/tutorial_01_solving_lasso.ipynb</a>)</p></li>
-</ol>
+<div class="section" id="qp-tutorial">
+<h3>QP Tutorial<a class="headerlink" href="#qp-tutorial" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava-optimization/blob/release/v0.2.0/tutorials/tutorial_01_solving_lasso.ipynb">Solving
+LASSO.</a></p></li>
+</ul>
 </div>
-</div>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
-<div class="section" id="id1">
-<h3>QP Solver<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<div class="section" id="solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">
+<h3>Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)<a class="headerlink" href="#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated" title="Permalink to this headline"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">lava.lib.optimization.problems.problems</span> <span class="kn">import</span> <span class="n">QP</span>
 <span class="kn">from</span> <span class="nn">lava.lib.optimization.solvers.qp.solver</span> <span class="kn">import</span> <span class="n">QPSolver</span>
@@ -288,47 +611,192 @@ The current focus lies on solvers for the following problems:</p>
 <span class="n">iterations</span> <span class="o">=</span> <span class="mi">400</span>
 <span class="n">problem</span> <span class="o">=</span> <span class="n">QP</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 <span class="n">solver</span> <span class="o">=</span> <span class="n">QPSolver</span><span class="p">(</span>
-<span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
-<span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span>
-<span class="n">alpha_decay_schedule</span><span class="o">=</span><span class="n">alpha_d</span><span class="p">,</span>
-<span class="n">beta_growth_schedule</span><span class="o">=</span><span class="n">beta_g</span><span class="p">,</span>
-<span class="p">)</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+                <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span>
+                <span class="n">alpha_decay_schedule</span><span class="o">=</span><span class="n">alpha_d</span><span class="p">,</span>
+                <span class="n">beta_growth_schedule</span><span class="o">=</span><span class="n">beta_g</span><span class="p">,</span>
+                <span class="p">)</span>
 <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="coming-up-next-cspsolver">
-<h3>Coming up next: CSPSolver<a class="headerlink" href="#coming-up-next-cspsolver" title="Permalink to this headline"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.lib.optimization</span> <span class="kn">import</span> <span class="n">CspSolver</span>
-
-<span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">]</span>
-<span class="n">domains</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">var1</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="n">var2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span> <span class="n">var3</span> <span class="o">=</span><span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">})</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">CspSolver</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">domains</span><span class="p">,</span> <span class="n">constraints</span><span class="p">))</span>
-<span class="n">solution</span><span class="p">,</span> <span class="n">t_sol</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;Loihi1&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="qubo-tutorial">
+<h3>QUBO Tutorial<a class="headerlink" href="#qubo-tutorial" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava-optimization/blob/release/v0.2.0/tutorials/tutorial_02_solving_qubos.ipynb">Solving
+MIS.</a></p></li>
+</ul>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span><span class="p">,</span> <span class="n">t_sol</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;Loihi2&#39;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">time_to_solution</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">solver</span><span class="o">.</span><span class="n">energy_to_solution</span><span class="p">)</span>
+<div class="section" id="solving-qubo-using-the-generic-optimizationsolver">
+<h3>Solving QUBO using the Generic OptimizationSolver<a class="headerlink" href="#solving-qubo-using-the-generic-optimizationsolver" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from lava.lib.optimization.solvers.generic.solver import solve, OptimizationSolver
+from lava.lib.optimization.problems.problems import QUBO
+
+q1 = np.asarray([[-5, 2, 4, 0],
+                 [ 2,-3, 1, 0],
+                 [ 4, 1,-8, 5],
+                 [ 0, 0, 5,-6]]))
+
+q2 = -np.asarray([[ 1,-3,-3,-3],
+                  [-3, 1, 0, 0],
+                  [-3, 0, 1,-3],
+                  [-3, 0,-3, 1]]))
+
+# Define problems:
+qubo1 = QUBO(q1)
+qubo2 = QUBO(q2)
+
+# solve using solve:
+sol_qubo1 = solve(problem=qubo1, timeout=-1, backend=“Loihi2”)
+sol_qubo2 = solve(problem=qubo2, timeout=-1, backend=“Loihi2”)
+
+# Solve using OptimizationSolver:
+solver = OptimizationSolver(problem=qubo1)
+
+solutions = []
+for trial in range(10):
+    solution = solver.solve(timeout=3000, target_cost=-50, backend=“Loihi2”)
+    solutions.append(solution)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
-<ol class="arabic simple">
-<li><p>Working installation of Lava [see Lava installation tutorial.](<a class="reference external" href="https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb">https://github.com/lava-nc/lava/blob/main/src/lava/tutorials/in_depth/tutorial01_installing_lava.ipynb</a>)</p></li>
-</ol>
+<ul class="simple">
+<li><p>Working installation of Lava, installed automatically with poetry
+below. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial01_installing_lava.ipynb">For custom installs see Lava installation
+tutorial.</a></p></li>
+</ul>
 </div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h2>
-<ol class="arabic simple">
-<li><p>Clone the lava-optimization repository.</p></li>
-<li><p>Add lava-optimization/src to your PYTHONPATH variable. For example, run
-“export PYTHONPATH=$PYTHONPATH:$(pwd)” from lava-optimization/src/
-on your terminal (You should do this only after having added Lava to your PYTHONPATH.
-This order is required for namespaces to be well defined).</p></li>
-</ol>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<div class="section" id="linux-macos">
+<h3>[Linux/MacOS]<a class="headerlink" href="#linux-macos" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
+git clone git@github.com:lava-nc/lava-optimization.git
+<span class="nb">cd</span> lava-optimization
+curl -sSL https://install.python-poetry.org <span class="p">|</span> python3 -
+poetry config virtualenvs.in-project <span class="nb">true</span>
+poetry install
+<span class="nb">source</span> .venv/bin/activate
+pytest
+</pre></div>
+</div>
+</div>
+<div class="section" id="windows">
+<h3>[Windows]<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Commands using PowerShell</span>
+<span class="nb">cd </span><span class="nv">$HOME</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="n">lava-nc</span><span class="p">/</span><span class="n">lava-optimization</span><span class="p">.</span><span class="n">git</span>
+<span class="nb">cd </span><span class="n">lava-optimization</span>
+<span class="n">python3</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">-U</span> <span class="n">pip</span>
+<span class="nb">curl </span><span class="n">-sSL</span> <span class="n">https</span><span class="p">://</span><span class="n">install</span><span class="p">.</span><span class="n">python-poetry</span><span class="p">.</span><span class="n">org</span> <span class="p">|</span> <span class="n">python3</span> <span class="p">-</span>
+<span class="n">poetry</span> <span class="n">config</span> <span class="n">virtualenvs</span><span class="p">.</span><span class="k">in</span><span class="n">-project</span> <span class="n">true</span>
+<span class="n">poetry</span> <span class="n">install</span>
+<span class="n">pytest</span>
+</pre></div>
+</div>
+<p>You should expect the following output after running the unit tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest
+============================= test session starts ==============================
+platform linux -- Python 3.8.10, pytest-7.1.2, pluggy-1.0.0
+rootdir: /home/user/src/lava-optimization, configfile: pyproject.toml, testpaths: tests
+plugins: cov-3.0.0
+collected 14 items
+
+tests/lava/lib/optimization/solvers/qp/test_models.py .......                                                                                                           [ 50%]
+tests/lava/lib/optimization/solvers/qp/test_process.py .......                                                                                                          [100%]
+
+---------- coverage: platform linux, python 3.8.10-final-0 -----------
+Name                                                Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------------
+src/lava/lib/optimization/__init__.py                   0      0   100%
+src/lava/lib/optimization/problems/__init__.py          0      0   100%
+src/lava/lib/optimization/problems/problems.py         43     29    33%   48-107, 111, 115, 119, 123, 127
+src/lava/lib/optimization/solvers/__init__.py           0      0   100%
+src/lava/lib/optimization/solvers/qp/__init__.py        0      0   100%
+src/lava/lib/optimization/solvers/qp/models.py        136      4    97%   97-98, 102-104
+src/lava/lib/optimization/solvers/qp/processes.py      75      0   100%
+src/lava/lib/optimization/solvers/qp/solver.py         26     18    31%   42-45, 62-104
+---------------------------------------------------------------------------------
+TOTAL                                                 280     51    82%
+
+Required test coverage of 45.0% reached. Total coverage: 81.79%
+
+=============== 14 passed in 8.95s ==============================================
+</pre></div>
+</div>
+</div>
+<div class="section" id="alternative-installing-lava-via-conda">
+<h3>[Alternative] Installing Lava via Conda<a class="headerlink" href="#alternative-installing-lava-via-conda" title="Permalink to this headline"></a></h3>
+<p>If you use the Conda package manager, you can simply install the Lava
+package via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install lava-optimization -c conda-forge
+</pre></div>
+</div>
+<p>Alternatively with intel numpy and scipy:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n lava-optimization <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9 -c intel
+conda activate lava-optimization
+conda install -n lava-optimization -c intel numpy scipy
+conda install -n lava-optimization -c conda-forge lava-optimization --freeze-installed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Tutorials<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Recommended-Tutorials-before-starting">Recommended Tutorials before starting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#A-QP-solver-on-Loihi">A QP solver on Loihi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#The-LASSO-problem-as-an-LCA">The LASSO problem as an LCA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Problem-Setup">Problem Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Simple-Solver-Interface">Solving the QP with Lava: Simple Solver Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Solving-the-QP-with-Lava:-Application">Solving the QP with Lava: Application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#MPC-iteration-k-Data">MPC iteration k Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#MPC-Iteration-k+1-Data">MPC Iteration k+1 Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Running-MPCs-in-Lava">Running MPCs in Lava</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#Future-features">Future features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_01_solving_lasso.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Recommended-tutorials-before-starting">Recommended tutorials before starting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Set-up-the-environment">Set up the environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#An-intuitive-description-of-Lava’s-QUBO-solver">An intuitive description of Lava’s QUBO solver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#The-QUBO-formalism">The QUBO formalism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Lava’s-QUBO-solver">Lava’s QUBO solver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#A-quick-start-to-solving-QUBOs-on-Loihi-2">A quick start to solving QUBOs on Loihi 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Define-a-QUBO-workload">Define a QUBO workload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Provide-a-set-of-hyperparameters">Provide a set of hyperparameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Solve-the-QUBO-on-a-CPU-or-Loihi-2">Solve the QUBO on a CPU or Loihi 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Maximum-Independent-Sets-as-example-application">Maximum Independent Sets as example application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#The-QUBO-formulation">The QUBO formulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Utility-functions">Utility functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Define-and-solve-the-QUBO-workload">Define and solve the QUBO workload</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#Future-features">Future features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#How-to-learn-more?">How to learn more?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lava/notebooks/tutorial_02_solving_qubos.html#References">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -337,7 +805,7 @@ This order is required for namespaces to be well defined).</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dnf.html" class="btn btn-neutral float-left" title="Dynamic Neural Fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="developer_guide.html" class="btn btn-neutral float-right" title="Developer Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lava/notebooks/tutorial_01_solving_lasso.html" class="btn btn-neutral float-right" title="Quadratic Programming with Lava" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
