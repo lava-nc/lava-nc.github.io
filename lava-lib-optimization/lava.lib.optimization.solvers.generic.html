@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lava.lib.optimization.solvers.generic &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.lib.optimization.solvers.generic.monitoring_processes" href="lava.lib.optimization.solvers.generic.monitoring_processes.html" />
+    <link rel="prev" title="lava.lib.optimization.solvers" href="lava.lib.optimization.solvers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html">Spike-timing Dependent Plasticity (STDP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lava/lava.html">Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="lava.lib.optimization.html">Lava - Optimization</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.lib.optimization.html">Lava - Optimization</a> &raquo;</li>
+          <li><a href="lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a> &raquo;</li>
+      <li>lava.lib.optimization.solvers.generic</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lava-lib-optimization/lava.lib.optimization.solvers.generic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="lava-lib-optimization-solvers-generic">
+<h1>lava.lib.optimization.solvers.generic<a class="headerlink" href="#lava-lib-optimization-solvers-generic" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.html">lava.lib.optimization.solvers.generic.monitoring_processes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.html">lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.html#lava-lib-optimization-solvers-generic-monitoring-processes-solution-readout-models">lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.html#lava-lib-optimization-solvers-generic-monitoring-processes-solution-readout-process">lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-builder">
+<h2>lava.lib.optimization.solvers.generic.builder<a class="headerlink" href="#lava-lib-optimization-solvers-generic-builder" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-32cfe6d23f06de1467fbe830eddf941b78b042a0.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.builder" usemap="#inheritance60098c4c59" class="inheritance graphviz" /></div>
+<map id="inheritance60098c4c59" name="inheritance60098c4c59">
+<area shape="rect" id="node1" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder" target="_top" title="Builder to dynamically create the process and model for the solver of an" alt="" coords="5,5,164,31"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.builder"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.builder.</span></span><span class="sig-name descname"><span class="pre">SolverProcessBuilder</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Builder to dynamically create the process and model for the solver of an
+optimization problem.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.create_solver_model">
+<span class="sig-name descname"><span class="pre">create_solver_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_cost</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requirements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.html#lava.magma.core.resources.AbstractComputeResource" title="lava.magma.core.resources.AbstractComputeResource"><span class="pre">lava.magma.core.resources.AbstractComputeResource</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../lava/lava.magma.core.sync.html#lava.magma.core.sync.protocol.AbstractSyncProtocol" title="lava.magma.core.sync.protocol.AbstractSyncProtocol"><span class="pre">lava.magma.core.sync.protocol.AbstractSyncProtocol</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.create_solver_model" title="Permalink to this definition"></a></dt>
+<dd><p>Create and set the model class for the solver process in the
+building pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_cost</strong> (<em>A cost value provided by the user as a target for the</em>) – </p></li>
+<li><p><strong>solver</strong> (<em>solution to be found by the</em>) – </p></li>
+<li><p><strong>is</strong> (<em>when a solution with such cost</em>) – </p></li>
+<li><p><strong>read</strong> (<em>found and</em>) – </p></li>
+<li><p><strong>ends.</strong> (<em>execution</em>) – </p></li>
+<li><p><strong>requirements</strong> (<em>specifies which resources the ProcessModel requires.</em>) – </p></li>
+<li><p><strong>protocol</strong> (<em>The SyncProtocol that the ProcessModel implements.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.create_solver_process">
+<span class="sig-name descname"><span class="pre">create_solver_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.lib.optimization.problems.html#lava.lib.optimization.problems.problems.OptimizationProblem" title="lava.lib.optimization.problems.problems.OptimizationProblem"><span class="pre">lava.lib.optimization.problems.problems.OptimizationProblem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">hyperparameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.create_solver_process" title="Permalink to this definition"></a></dt>
+<dd><p>Create and set a solver process for the specified optimization
+problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem</strong> (<em>Optimization problem defined by cost and constraints which</em>) – </p></li>
+<li><p><strong>their</strong> (<em>will be used to ensemble the necessary variables and ports with</em>) – </p></li>
+<li><p><strong>specification.</strong> (<em>shape and initial values deriving from the problem</em>) – </p></li>
+<li><p><strong>hyperparameters</strong> (<em>A dictionary specifying values for steps_to_fire</em><em>,</em>) – </p></li>
+<li><p><strong>noise_amplitude</strong> – </p></li>
+<li><p><strong>are</strong> (<em>step_size and init_value. All but the last</em>) – </p></li>
+<li><p><strong>integers</strong> – </p></li>
+<li><p><strong>the</strong> (<em>the initial value is an array-like of initial values for</em>) – </p></li>
+<li><p><strong>problem.</strong> (<em>variables defining the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.solver_model">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solver_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">lava.magma.core.model.model.AbstractProcessModel</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.solver_model" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the solver process model if already created.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.solver_process">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solver_process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.solver_process" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the solver process if already created.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.update_parent_process">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_parent_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.update_parent_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.verify_model_exists">
+<span class="sig-name descname"><span class="pre">verify_model_exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.verify_model_exists" title="Permalink to this definition"></a></dt>
+<dd><p>Assert the solver process model has already been created.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.verify_process_exists">
+<span class="sig-name descname"><span class="pre">verify_process_exists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.builder.SolverProcessBuilder.verify_process_exists" title="Permalink to this definition"></a></dt>
+<dd><p>Assert the solver process has already been created.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-dataclasses">
+<h2>lava.lib.optimization.solvers.generic.dataclasses<a class="headerlink" href="#lava-lib-optimization-solvers-generic-dataclasses" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-57ca8c239e1f9e5ec5954ad4a885af3eb4a72172.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.dataclasses" usemap="#inheritance80c89834d6" class="inheritance graphviz" /></div>
+<map id="inheritance80c89834d6" name="inheritance80c89834d6">
+<area shape="rect" id="node1" href="#lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing" target="_top" title="Processes implementing an optimization problem&#39;s constraints and their" alt="" coords="5,5,156,31"/>
+<area shape="rect" id="node2" href="#lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer" target="_top" title="Processes implementing an optimization problem&#39;s cost function." alt="" coords="180,5,296,31"/>
+<area shape="rect" id="node3" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader" target="_top" title="Processes for checking convergence and reading network state encoding" alt="" coords="320,5,463,31"/>
+<area shape="rect" id="node4" href="#lava.lib.optimization.solvers.generic.dataclasses.ProximalGradientMinimizer" target="_top" title="ProximalGradientMinimizer(augmented_terms: lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess)" alt="" coords="487,5,688,31"/>
+<area shape="rect" id="node5" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation" target="_top" title="Processes implementing the variables of an optimization problem." alt="" coords="713,5,899,31"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.dataclasses"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.dataclasses.</span></span><span class="sig-name descname"><span class="pre">ConstraintEnforcing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuous</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Processes implementing an optimization problem’s constraints and their
+enforcing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.continuous">
+<span class="sig-name descname"><span class="pre">continuous</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.continuous" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.discrete">
+<span class="sig-name descname"><span class="pre">discrete</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.discrete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.mixed">
+<span class="sig-name descname"><span class="pre">mixed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ConstraintEnforcing.mixed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.dataclasses.</span></span><span class="sig-name descname"><span class="pre">CostMinimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefficients_2nd_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../lava/lava.proc.dense.html#lava.proc.dense.process.Dense" title="lava.proc.dense.process.Dense"><span class="pre">lava.proc.dense.process.Dense</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Processes implementing an optimization problem’s cost function.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.coefficients_2nd_order">
+<span class="sig-name descname"><span class="pre">coefficients_2nd_order</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.proc.dense.html#lava.proc.dense.process.Dense" title="lava.proc.dense.process.Dense"><span class="pre">lava.proc.dense.process.Dense</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.coefficients_2nd_order" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.gradient_out">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gradient_out</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.gradient_out" title="Permalink to this definition"></a></dt>
+<dd><p>Port sending gradient descent components to the dynamical systems.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.state_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.CostMinimizer.state_in" title="Permalink to this definition"></a></dt>
+<dd><p>Port receiving input from dynamical systems representing
+variables.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.dataclasses.</span></span><span class="sig-name descname"><span class="pre">MacroStateReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">read_gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../lava/lava.proc.read_gate.html#lava.proc.read_gate.process.ReadGate" title="lava.proc.read_gate.process.ReadGate"><span class="pre">lava.proc.read_gate.process.ReadGate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">solution_readout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.html#lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout" title="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout"><span class="pre">lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost_convergence_check</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker" title="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sat_convergence_check</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker" title="lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Processes for checking convergence and reading network state encoding
+the solution .</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.cost_convergence_check">
+<span class="sig-name descname"><span class="pre">cost_convergence_check</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker" title="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.cost_convergence_check" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.cost_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cost_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.cost_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.min_cost">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_cost</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.min_cost" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate">
+<span class="sig-name descname"><span class="pre">read_gate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.proc.read_gate.html#lava.proc.read_gate.process.ReadGate" title="lava.proc.read_gate.process.ReadGate"><span class="pre">lava.proc.read_gate.process.ReadGate</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_cost_out">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_gate_cost_out</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_cost_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_in_port">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_gate_in_port</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_in_port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_req_stop">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_gate_req_stop</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_req_stop" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_solution_out">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_gate_solution_out</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.read_gate_solution_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.ref_port">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ref_port</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.ref_port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.sat_convergence_check">
+<span class="sig-name descname"><span class="pre">sat_convergence_check</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker" title="lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.sat_convergence_check" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.satisfaction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">satisfaction</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.satisfaction" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout">
+<span class="sig-name descname"><span class="pre">solution_readout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.html#lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout" title="lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout"><span class="pre">lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process.SolutionReadout</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_cost_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution_readout_cost_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_cost_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_req_stop_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution_readout_req_stop_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_req_stop_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_solution_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solution_readout_solution_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.solution_readout_solution_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.update_buffer">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_buffer</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.MacroStateReader.update_buffer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ProximalGradientMinimizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.dataclasses.</span></span><span class="sig-name descname"><span class="pre">ProximalGradientMinimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">augmented_terms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ProximalGradientMinimizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.ProximalGradientMinimizer.augmented_terms">
+<span class="sig-name descname"><span class="pre">augmented_terms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess</span></a></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.ProximalGradientMinimizer.augmented_terms" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.dataclasses.</span></span><span class="sig-name descname"><span class="pre">VariablesImplementation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuous</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Processes implementing the variables of an optimization problem.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.continuous">
+<span class="sig-name descname"><span class="pre">continuous</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.continuous" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.discrete">
+<span class="sig-name descname"><span class="pre">discrete</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.discrete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.gradient_in">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gradient_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.gradient_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.importances">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">importances</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.importances" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.local_cost">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">local_cost</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.local_cost" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.state_out">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_out</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.state_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.variables_assignment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">variables_assignment</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.dataclasses.VariablesImplementation.variables_assignment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-hierarchical-processes">
+<h2>lava.lib.optimization.solvers.generic.hierarchical_processes<a class="headerlink" href="#lava-lib-optimization-solvers-generic-hierarchical-processes" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-57132aa2d64d570f0e1adfa16d2c12e2c7e8e7ac.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.hierarchical_processes" usemap="#inheritance55c0c7bfb3" class="inheritance graphviz" /></div>
+<map id="inheritance55c0c7bfb3" name="inheritance55c0c7bfb3">
+<area shape="rect" id="node1" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" target="_top" title="The notion of a Process is inspired by the Communicating Sequential" alt="" coords="938,5,1065,31"/>
+<area shape="rect" id="node2" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess" target="_top" title="Process implementing cost coefficients as synapses." alt="" coords="5,79,192,104"/>
+<area shape="rect" id="node3" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess" target="_top" title="Process implementing continuous constraints via neurons and synapses." alt="" coords="216,79,435,104"/>
+<area shape="rect" id="node4" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess" target="_top" title="Process which implementation holds the evolution of continuous" alt="" coords="459,79,664,104"/>
+<area shape="rect" id="node5" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker" target="_top" title="Process that continuously monitors cost convergence." alt="" coords="689,79,877,104"/>
+<area shape="rect" id="node6" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess" target="_top" title="Process implementing discrete constraints via synapses." alt="" coords="901,79,1101,104"/>
+<area shape="rect" id="node7" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess" target="_top" title="Process which implementation holds the evolution of discrete variables" alt="" coords="1125,79,1312,104"/>
+<area shape="rect" id="node8" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess" target="_top" title="Process implementing continuous constraints via neurons and synapses." alt="" coords="1337,79,1522,104"/>
+<area shape="rect" id="node9" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker" target="_top" title="Process that continuously monitors satisfiability convergence." alt="" coords="1546,79,1726,104"/>
+<area shape="rect" id="node10" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire" target="_top" title="Event&#45;driven stochastic discrete dynamical system with two outputs." alt="" coords="1751,79,1948,104"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.hierarchical_processes"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">AugmentedTermsProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.AugmentedTermsProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process implementing cost coefficients as synapses.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">ContinuousConstraintsProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousConstraintsProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process implementing continuous constraints via neurons and synapses.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">ContinuousVariablesProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.ContinuousVariablesProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process which implementation holds the evolution of continuous
+variables on the solver of an optimization problem.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">CostConvergenceChecker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process that continuously monitors cost convergence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>The expected shape of the input cost components.</em>) – </p></li>
+<li><p><strong>name</strong> (<em>Name of the Process. Default is 'Process_ID'</em><em>, </em><em>where ID is an</em>) – </p></li>
+<li><p><strong>automatically.</strong> (<em>integer value that is determined</em>) – </p></li>
+<li><p><strong>log_config</strong> (<em>Configuration options for logging.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.cost_components">
+<span class="sig-name descname"><span class="pre">cost_components</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.cost_components" title="Permalink to this definition"></a></dt>
+<dd><p>Additive contributions to the total cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort">InPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.update_buffer">
+<span class="sig-name descname"><span class="pre">update_buffer</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.update_buffer" title="Permalink to this definition"></a></dt>
+<dd><p>Notifies the next process about the detection of a better cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort">OutPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.min_cost">
+<span class="sig-name descname"><span class="pre">min_cost</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker.min_cost" title="Permalink to this definition"></a></dt>
+<dd><p>Current minimum cost, i.e., the lowest reported cost so far.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">DiscreteConstraintsProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteConstraintsProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process implementing discrete constraints via synapses.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">DiscreteVariablesProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process which implementation holds the evolution of discrete variables
+on the solver of an optimization problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>a tuple of the form</em><em> (</em><em>number of variables</em><em>, </em><em>domain size</em><em>)</em><em>.</em>) – </p></li>
+<li><p><strong>step_size</strong> (<em>The coefficient of the variables indicating their relative</em>) – linear contribution to the cost function. Usually corresponds to the
+linear term or the diagonal of the quadratic term on the cost function.</p></li>
+<li><p><strong>cost_diagonal</strong> (<em>The diagonal of the coefficient of the quadratic term on the</em>) – cost function.</p></li>
+<li><p><strong>name</strong> (<em>Name of the Process. Default is 'Process_ID'</em><em>, </em><em>where ID is an</em>) – integer value that is determined automatically.</p></li>
+<li><p><strong>log_config</strong> (<em>Configuration options for logging.z</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.a_in">
+<span class="sig-name descname"><span class="pre">a_in</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.a_in" title="Permalink to this definition"></a></dt>
+<dd><p>The addition of all inputs (per dynamical system) at this timestep
+will be received by this port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort">InPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.s_out" title="Permalink to this definition"></a></dt>
+<dd><p>The payload to be exchanged between the underlying dynamical systems
+when these fire.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort">OutPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.local_cost">
+<span class="sig-name descname"><span class="pre">local_cost</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.local_cost" title="Permalink to this definition"></a></dt>
+<dd><p>The cost components per dynamical system underlying these
+variables, i.e., c_i = sum_j{Q_{ij} cdot x_i}  will be sent through
+this port. The cost integrator will then complete the cost computation
+by adding all contributions, i.e., x^T cdot Q cdot x = sum_i{c_i}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort">OutPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.variable_assignment">
+<span class="sig-name descname"><span class="pre">variable_assignment</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess.variable_assignment" title="Permalink to this definition"></a></dt>
+<dd><p>Holds the current value assigned to the variables by
+the solver network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">MixedConstraintsProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.MixedConstraintsProcess" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process implementing continuous constraints via neurons and synapses.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">SatConvergenceChecker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.SatConvergenceChecker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Process that continuously monitors satisfiability convergence.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.</span></span><span class="sig-name descname"><span class="pre">StochasticIntegrateAndFire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.process.process.AbstractProcess</span></code></a></p>
+<p>Event-driven stochastic discrete dynamical system with two outputs.</p>
+<p>The main output is intended as input to other dynamical systems on
+the network, whilst the second output is to transfer local information to be
+integrated by an auxiliary dynamical system or circuit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>The shape of the set of dynamical systems to be created.</em>) – </p></li>
+<li><p><strong>init_state</strong> (<em>The starting value of the state variable.</em>) – </p></li>
+<li><p><strong>step_size</strong> (<em>a value to be added to the state variable at each timestep.</em>) – </p></li>
+<li><p><strong>noise_amplitude</strong> (<em>The width/range for the stochastic perturbation to the</em>) – </p></li>
+<li><p><strong>the</strong> (<em>state variable. A random number within this range will be added to</em>) – </p></li>
+<li><p><strong>timestep.</strong> (<em>state variable at each</em>) – </p></li>
+<li><p><strong>input_duration</strong> (<em>Number of timesteps by which each input should be preserved.</em>) – </p></li>
+<li><p><strong>min_state</strong> (<em>The minimum value for the state variable. The state variable</em>) – </p></li>
+<li><p><strong>value.</strong> (<em>will be truncated at this value if updating results in a lower</em>) – </p></li>
+<li><p><strong>min_integration</strong> (<em>The minimum value for the total input</em><em> (</em><em>addition of all</em>) – </p></li>
+<li><p><strong>truncated</strong> (<em>valid inputs at a given timestep</em><em>)</em><em>. The total input value will be</em>) – </p></li>
+<li><p><strong>lower</strong> (<em>at this value if adding current and preserved inputs results in a</em>) – </p></li>
+<li><p><strong>value.</strong> – </p></li>
+<li><p><strong>steps_to_fire</strong> (<em>After how many timesteps would the dynamical system fire</em>) – </p></li>
+<li><p><strong>0</strong> (<em>and reset without stochastic perturbation. Note that if noise_amplitude &gt;</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>:param :
+:param the system will stochastically deviate from this value.:
+:param refractory_period:
+:type refractory_period: number of timesteps to wait after firing and reset before
+:param resuming updating.:
+:param cost_diagonal:
+:type cost_diagonal: The linear coefficients on the cost function of the
+:param optimization problem where this system will be used.:
+:param name:
+:type name: Name of the Process. Default is ‘Process_ID’, where ID is an
+:param integer value that is determined automatically.:
+:param log_config:
+:type log_config: Configuration options for logging.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.added_input">
+<span class="sig-name descname"><span class="pre">added_input</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.added_input" title="Permalink to this definition"></a></dt>
+<dd><p>The addition of all inputs (per dynamical system) at this
+timestep will be received by this port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort">InPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.replace_assignment">
+<span class="sig-name descname"><span class="pre">replace_assignment</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.replace_assignment" title="Permalink to this definition"></a></dt>
+<dd><p>Todo: deprecate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort">InPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.messages">
+<span class="sig-name descname"><span class="pre">messages</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.messages" title="Permalink to this definition"></a></dt>
+<dd><p>The payload to be sent to other dynamical systems when firing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort">OutPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.local_cost">
+<span class="sig-name descname"><span class="pre">local_cost</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire.local_cost" title="Permalink to this definition"></a></dt>
+<dd><p>the cost component corresponding to this dynamical system, i.e.,
+c_i = sum_j{Q_{ij} cdot x_i}  will be sent through this port. The cost
+integrator will then complete the cost computation  by adding all
+contributions, i.e., x^T cdot Q cdot x = sum_i{c_i}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort">OutPort</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-models">
+<h2>lava.lib.optimization.solvers.generic.models<a class="headerlink" href="#lava-lib-optimization-solvers-generic-models" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-426ad8053152f9f73119feacc6d220aaa3617e40.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.models" usemap="#inheritancef1444d01f7" class="inheritance graphviz" /></div>
+<map id="inheritancef1444d01f7" name="inheritancef1444d01f7">
+<area shape="rect" id="node1" href="#lava.lib.optimization.solvers.generic.models.SolverModelBuilder" target="_top" title="SolverModelBuilder" alt="" coords="5,5,155,31"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.models"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.models.SolverModelBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.models.</span></span><span class="sig-name descname"><span class="pre">SolverModelBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver_process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.models.SolverModelBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.models.SolverModelBuilder.create_constructor">
+<span class="sig-name descname"><span class="pre">create_constructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_cost</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.models.SolverModelBuilder.create_constructor" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.models.SolverModelBuilder.solver_model">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solver_model</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.models.SolverModelBuilder.solver_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-processes">
+<h2>lava.lib.optimization.solvers.generic.processes<a class="headerlink" href="#lava-lib-optimization-solvers-generic-processes" title="Permalink to this headline"></a></h2>
+<span class="target" id="module-lava.lib.optimization.solvers.generic.processes"></span></div>
+<div class="section" id="lava-lib-optimization-solvers-generic-solver">
+<h2>lava.lib.optimization.solvers.generic.solver<a class="headerlink" href="#lava-lib-optimization-solvers-generic-solver" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-a659ced524176ad35b720a765859459618142c9b.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.solver" usemap="#inheritance504d5dfd6c" class="inheritance graphviz" /></div>
+<map id="inheritance504d5dfd6c" name="inheritance504d5dfd6c">
+<area shape="rect" id="node1" href="#lava.lib.optimization.solvers.generic.solver.OptimizationSolver" target="_top" title="Generic solver for constrained optimization problems defined by" alt="" coords="5,5,152,31"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.solver"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.solver.OptimizationSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.solver.</span></span><span class="sig-name descname"><span class="pre">OptimizationSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="lava.lib.optimization.problems.html#lava.lib.optimization.problems.problems.OptimizationProblem" title="lava.lib.optimization.problems.problems.OptimizationProblem"><span class="pre">lava.lib.optimization.problems.problems.OptimizationProblem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.solver.OptimizationSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generic solver for constrained optimization problems defined by
+variables, cost and constraints.</p>
+<p>The problem should behave according to the OptimizationProblem’s
+interface so that the Lava solver can be built correctly.</p>
+<p>A Lava OptimizationSolverProcess and a Lava OptimizationSolverModel will
+be created from the problem specification. The dynamics of such process
+implements the algorithms that search a solution to the problem and
+reports it to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem</strong> (<em>Optimization problem to be solved.</em>) – </p></li>
+<li><p><strong>run_cfg</strong> (<em>Run configuration for the OptimizationSolverProcess.0</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.solver.OptimizationSolver.run_cfg">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_cfg</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.solver.OptimizationSolver.run_cfg" title="Permalink to this definition"></a></dt>
+<dd><p>Run configuration for process model selection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.solver.OptimizationSolver.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">timeout:</span> <span class="pre">int,</span> <span class="pre">target_cost:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">backend:</span> <span class="pre">typing.Union[lava.magma.core.resources.CPU,</span> <span class="pre">lava.magma.core.resources.Loihi2NeuroCore,</span> <span class="pre">lava.magma.core.resources.NeuroCore,</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;,</span> <span class="pre">hyperparameters:</span> <span class="pre">typing.Optional[typing.Dict[str,</span> <span class="pre">typing.Union[int,</span> <span class="pre">numpy.typing._array_like._SupportsArray[numpy.dtype],</span> <span class="pre">numpy.typing._nested_sequence._NestedSequence[numpy.typing._array_like._SupportsArray[numpy.dtype]],</span> <span class="pre">bool,</span> <span class="pre">float,</span> <span class="pre">complex,</span> <span class="pre">str,</span> <span class="pre">bytes,</span> <span class="pre">numpy.typing._nested_sequence._NestedSequence[typing.Union[bool,</span> <span class="pre">int,</span> <span class="pre">float,</span> <span class="pre">complex,</span> <span class="pre">str,</span> <span class="pre">bytes]]]]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.solver.OptimizationSolver.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Create solver from problem spec and run until target_cost or timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> (<em>Maximum number of iterations</em><em> (</em><em>timesteps</em><em>) </em><em>to be run. If set to</em>) – </p></li>
+<li><p><strong>a</strong> (<em>-1 then the solver will run continuously in non-blocking mode until</em>) – solution is found.</p></li>
+<li><p><strong>target_cost</strong> (<em>A cost value provided by the user as a target for the</em>) – </p></li>
+<li><p><strong>solver</strong> (<em>solution to be found by the</em>) – </p></li>
+<li><p><strong>is</strong> (<em>when a solution with such cost</em>) – </p></li>
+<li><p><strong>read</strong> (<em>found and</em>) – </p></li>
+<li><p><strong>ends.</strong> (<em>execution</em>) – </p></li>
+<li><p><strong>backend</strong> (<em>Specifies the backend where the main solver network will be</em>) – </p></li>
+<li><p><strong>deployed.</strong> – </p></li>
+<li><p><strong>hyperparameters</strong> (<em>A dictionary specifying values for steps_to_fire</em><em>,</em>) – </p></li>
+<li><p><strong>noise_amplitude</strong> – </p></li>
+<li><p><strong>are</strong> (<em>step_size and init_value. All but the last</em>) – </p></li>
+<li><p><strong>integers</strong> – </p></li>
+<li><p><strong>the</strong> (<em>the initial value is an array-like of initial values for</em>) – </p></li>
+<li><p><strong>problem.</strong> (<em>variables defining the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>solution</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>candidate solution to the input optimization problem.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.solver.solve">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.solver.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem:</span> <span class="pre">lava.lib.optimization.problems.problems.OptimizationProblem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_cost:</span> <span class="pre">typing.Optional[int]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend:</span> <span class="pre">typing.Union[lava.magma.core.resources.CPU</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava.magma.core.resources.Loihi2NeuroCore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava.magma.core.resources.NeuroCore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi2NeuroCore'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.typing._array_like._SupportsArray</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing._nested_sequence._NestedSequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">complex</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.solver.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Create solver from problem spec and run until target_cost or timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem</strong> (<em>Optimization problem to be solved.</em>) – </p></li>
+<li><p><strong>timeout</strong> (<em>Maximum number of iterations</em><em> (</em><em>timesteps</em><em>) </em><em>to be run. If set to</em>) – </p></li>
+<li><p><strong>a</strong> (<em>-1 then the solver will run continuously in non-blocking mode until</em>) – solution is found.</p></li>
+<li><p><strong>target_cost</strong> (<em>A cost value provided by the user as a target for the</em>) – </p></li>
+<li><p><strong>solver</strong> (<em>solution to be found by the</em>) – </p></li>
+<li><p><strong>is</strong> (<em>when a solution with such cost</em>) – </p></li>
+<li><p><strong>read</strong> (<em>found and</em>) – </p></li>
+<li><p><strong>ends.</strong> (<em>execution</em>) – </p></li>
+<li><p><strong>backend</strong> (<em>Specifies the backend where the main solver network will be</em>) – </p></li>
+<li><p><strong>deployed.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>solution</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>candidate solution to the input optimization problem.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="lava-lib-optimization-solvers-generic-sub-process-models">
+<h2>lava.lib.optimization.solvers.generic.sub_process_models<a class="headerlink" href="#lava-lib-optimization-solvers-generic-sub-process-models" title="Permalink to this headline"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-2ba49b0dcff312b63caa101b001cdef9be5d6a01.png" alt="Inheritance diagram of lava.lib.optimization.solvers.generic.sub_process_models" usemap="#inheritance1c1c3884e4" class="inheritance graphviz" /></div>
+<map id="inheritance1c1c3884e4" name="inheritance1c1c3884e4">
+<area shape="rect" id="node2" href="../lava/lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" target="_top" title="Represents a model that implements the behavior of a Process." alt="" coords="279,79,446,104"/>
+<area shape="rect" id="node3" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.model.AbstractPyProcessModel" target="_top" title="Abstract interface for Python ProcessModels." alt="" coords="150,152,333,177"/>
+<area shape="rect" id="node4" href="../lava/lava.magma.core.model.sub.html#lava.magma.core.model.sub.model.AbstractSubProcessModel" target="_top" title="Abstract base class for any ProcessModel that derives the behavior of" alt="" coords="359,152,550,177"/>
+<area shape="rect" id="node8" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" target="_top" title="ProcessModel to simulate a Process on Loihi using CPU." alt="" coords="45,225,203,251"/>
+<area shape="rect" id="node5" href="#lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel" target="_top" title="Model for the CostConvergence process." alt="" coords="227,225,455,251"/>
+<area shape="rect" id="node6" href="#lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel" target="_top" title="Model for the DiscreteVariables process." alt="" coords="480,225,656,251"/>
+<area shape="rect" id="node10" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF" target="_top" title="Model for the StochasticIntegrateAndFire process." alt="" coords="680,225,947,251"/>
+<area shape="rect" id="node7" href="#lava.lib.optimization.solvers.generic.sub_process_models.NetL2" target="_top" title="NetL2" alt="" coords="361,5,433,31"/>
+<area shape="rect" id="node9" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel" target="_top" title="CPU Model for the StochasticIntegrateAndFire process." alt="" coords="5,299,243,324"/>
+</map><span class="target" id="module-lava.lib.optimization.solvers.generic.sub_process_models"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.sub_process_models.</span></span><span class="sig-name descname"><span class="pre">CostConvergenceCheckerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.model.sub.html#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="lava.magma.core.model.sub.model.AbstractSubProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.sub.model.AbstractSubProcessModel</span></code></a></p>
+<p>Model for the CostConvergence process.</p>
+<p>The model composes a CostIntegrator unit with incomming connections,
+in this way, downstream processes can be directly connected to the
+CostConvergence process.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker" title="lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.CostConvergenceChecker</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.CostConvergenceCheckerModel.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.sub_process_models.</span></span><span class="sig-name descname"><span class="pre">DiscreteVariablesModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.model.sub.html#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="lava.magma.core.model.sub.model.AbstractSubProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.sub.model.AbstractSubProcessModel</span></code></a></p>
+<p>Model for the DiscreteVariables process.</p>
+<p>The model composes a population of StochasticIntegrateAndFire units and
+connects them via Dense processes as to represent integer or binary
+variables.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess" title="lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.DiscreteVariablesProcess</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.DiscreteVariablesModel.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.NetL2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.sub_process_models.</span></span><span class="sig-name descname"><span class="pre">NetL2</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.NetL2" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.sub_process_models.</span></span><span class="sig-name descname"><span class="pre">StochasticIntegrateAndFireModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.ProcessParameters" title="lava.magma.core.process.process.ProcessParameters"><span class="pre">ProcessParameters</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.py.model.PyLoihiProcessModel</span></code></a></p>
+<p>CPU Model for the StochasticIntegrateAndFire process.</p>
+<p>The model computes stochastic gradient and local cost both based on
+the input received from the recurrent connectivity ot other units.
+# Todo deprecate in favour of QuboScif.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.added_input">
+<span class="sig-name descname"><span class="pre">added_input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><span class="pre">lava.magma.core.model.py.ports.PyInPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.added_input" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.assignment">
+<span class="sig-name descname"><span class="pre">assignment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.assignment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.cost_diagonal">
+<span class="sig-name descname"><span class="pre">cost_diagonal</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.cost_diagonal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.do_fire">
+<span class="sig-name descname"><span class="pre">do_fire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.do_fire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.firing">
+<span class="sig-name descname"><span class="pre">firing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.firing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire" title="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.input_duration">
+<span class="sig-name descname"><span class="pre">input_duration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.input_duration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.integration">
+<span class="sig-name descname"><span class="pre">integration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.integration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.is_satisfied">
+<span class="sig-name descname"><span class="pre">is_satisfied</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_assignment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.is_satisfied" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.iterate_dynamics">
+<span class="sig-name descname"><span class="pre">iterate_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">added_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.iterate_dynamics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.local_cost">
+<span class="sig-name descname"><span class="pre">local_cost</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.local_cost" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.messages">
+<span class="sig-name descname"><span class="pre">messages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><span class="pre">lava.magma.core.model.py.ports.PyOutPort</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.messages" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_cost">
+<span class="sig-name descname"><span class="pre">min_cost</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_cost" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_integration">
+<span class="sig-name descname"><span class="pre">min_integration</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_integration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_state">
+<span class="sig-name descname"><span class="pre">min_state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.min_state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.noise_amplitude">
+<span class="sig-name descname"><span class="pre">noise_amplitude</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.noise_amplitude" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.prev_assignment">
+<span class="sig-name descname"><span class="pre">prev_assignment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.prev_assignment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.refractory_period">
+<span class="sig-name descname"><span class="pre">refractory_period</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.refractory_period" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.reset_state">
+<span class="sig-name descname"><span class="pre">reset_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">firing_vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.reset_state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>Function that runs in Spiking Phase</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.state">
+<span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.state" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.step_size">
+<span class="sig-name descname"><span class="pre">step_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.step_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.steps_to_fire">
+<span class="sig-name descname"><span class="pre">steps_to_fire</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModel.steps_to_fire" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.sub_process_models.</span></span><span class="sig-name descname"><span class="pre">StochasticIntegrateAndFireModelSCIF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.model.sub.html#lava.magma.core.model.sub.model.AbstractSubProcessModel" title="lava.magma.core.model.sub.model.AbstractSubProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.model.sub.model.AbstractSubProcessModel</span></code></a></p>
+<p>Model for the StochasticIntegrateAndFire process.</p>
+<p>The process is just a wrapper over the QuboScif process.
+# Todo deprecate in favour of QuboScif.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire" title="lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.lib.optimization.solvers.generic.hierarchical_processes.StochasticIntegrateAndFire</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="../lava/lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../lava/lava.magma.core.html#lava.magma.core.resources.AbstractResource" title="lava.magma.core.resources.AbstractResource"><span class="pre">AbstractResource</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.Loihi2NeuroCore'&gt;]</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.sub_process_models.StochasticIntegrateAndFireModelSCIF.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-lava.lib.optimization.solvers.generic"></span></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.lib.optimization.solvers.html" class="btn btn-neutral float-left" title="lava.lib.optimization.solvers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.lib.optimization.solvers.generic.monitoring_processes.html" class="btn btn-neutral float-right" title="lava.lib.optimization.solvers.generic.monitoring_processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

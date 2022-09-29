@@ -1,0 +1,367 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# PilotNet SDNN Example\n",
+    "\n",
+    "This tutorial demonstrates how to use __lava__ to perform inference on a PilotNet SDNN on both CPU and Loihi 2 neurocore.\n",
+    "\n",
+    "![PilotNet Inference](images/pilotnet_sdnn.PNG)\n",
+    "\n",
+    "The network receives video input, recorded from a dashboard camera of a driving car (__Dataloader__). The data is encoded efficiently as the difference between individual frames (__Encoder__). The data passes through the PilotNet SDNN, which was trained with __lava-dl__ and is built using its __Network Exchange__ module (netx.hdf5.Network), which automatically generates a Lava process from the training artifact. The network estimates the angle of the steering wheel of the car, which is decoded from the network's raw output (__Decoder__) and sent to a visualization (__Monitor__) and logging system (__Logger__).\n",
+    "\n",
+    "The core of the tutorial is lava-dl's Network Exchange module, which is available as `lava.lib.dl.netx.{hdf5, blocks, utils}`.\n",
+    "* `hdf5` implements automatic network generation.\n",
+    "* `blocks` implements individual layer blocks.\n",
+    "* `utils` implements hdf5 reading utilities. \n",
+    "\n",
+    "In addition, it also demonstrates how different lava processes can be connected with each other for real time interaction between them even though the underlying processes can be run on various backends, including Loihi 2.\n",
+    "\n",
+    "Switching between Loihi 2 hardware and CPU simulation is as simple as changing the run configuration settings."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import logging\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "from lava.magma.core.run_configs import Loihi2HwCfg\n",
+    "from lava.magma.core.run_conditions import RunSteps\n",
+    "from lava.proc import io\n",
+    "\n",
+    "from lava.lib.dl import netx\n",
+    "from dataset import PilotNetDataset\n",
+    "from utils import PilotNetEncoder, PilotNetNxEncoderModel, get_input_transform"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Import modules for Loihi2 execution\n",
+    "\n",
+    "Check if Loihi2 compiker is available and import related modules."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ImportError",
+     "evalue": "cannot import name 'profiling' from 'lava.utils' (unknown location)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mImportError\u001b[0m                               Traceback (most recent call last)",
+      "\u001b[1;32m/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb Cell 4\u001b[0m in \u001b[0;36m<cell line: 9>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=6'>7</a>\u001b[0m \u001b[39m# os.environ['BOARD'] = 'ncl-og-01'\u001b[39;00m\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=8'>9</a>\u001b[0m \u001b[39mif\u001b[39;00m loihi2_is_available:\n\u001b[1;32m     <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=9'>10</a>\u001b[0m     \u001b[39m# TODO: remove lava.utils.profiler in lava-nc\u001b[39;00m\n\u001b[0;32m---> <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=10'>11</a>\u001b[0m     \u001b[39mfrom\u001b[39;00m \u001b[39mlava\u001b[39;00m\u001b[39m.\u001b[39;00m\u001b[39mutils\u001b[39;00m \u001b[39mimport\u001b[39;00m profiling \u001b[39mas\u001b[39;00m n3_profiler\n\u001b[1;32m     <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=11'>12</a>\u001b[0m     \u001b[39mprint\u001b[39m(\u001b[39mf\u001b[39m\u001b[39m'\u001b[39m\u001b[39mRunning on \u001b[39m\u001b[39m{\u001b[39;00mLoihi2\u001b[39m.\u001b[39mpartition\u001b[39m}\u001b[39;00m\u001b[39m'\u001b[39m)\n\u001b[1;32m     <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_sdnn/energy_runtime.ipynb#W3sdnNjb2RlLXJlbW90ZQ%3D%3D?line=12'>13</a>\u001b[0m     compression \u001b[39m=\u001b[39m io\u001b[39m.\u001b[39mencoder\u001b[39m.\u001b[39mCompression\u001b[39m.\u001b[39mDELTA_SPARSE_8\n",
+      "\u001b[0;31mImportError\u001b[0m: cannot import name 'profiling' from 'lava.utils' (unknown location)"
+     ]
+    }
+   ],
+   "source": [
+    "from lava.utils.system import Loihi2\n",
+    "Loihi2.preferred_partition = 'kp_stack'\n",
+    "loihi2_is_available = Loihi2.is_loihi2_available\n",
+    "\n",
+    "# To remove\n",
+    "import os\n",
+    "# os.environ['BOARD'] = 'ncl-og-01'\n",
+    "\n",
+    "if loihi2_is_available:\n",
+    "    # TODO: remove lava.utils.profiler in lava-nc\n",
+    "    from lava.utils import n3_profiler\n",
+    "    print(f'Running on {Loihi2.partition}')\n",
+    "    compression = io.encoder.Compression.DELTA_SPARSE_8\n",
+    "else:\n",
+    "    print(\"Loihi2 compiler is not available in this system. \"\n",
+    "          \"This tutorial will execute on CPU backend.\")\n",
+    "    raise RuntimeError('Energy benchmarking is not supported in CPU execution.')\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create network block\n",
+    "\n",
+    "PilotNet SDNN is described by the hdf5 file interface `network.net` exported after training. You can refer to the training tutorial that trains the networks and exports hdf5 file interface at [`tutorials/lava/lib/dl/slayer/pilotnet/train.ipynb`](https://github.com/lava-nc/lava-dl/blob/main/tutorials/lava/lib/dl/slayer/pilotnet/train.ipynb)\n",
+    "\n",
+    "A network block can be created by simply instantiating `netx.hdf5.Network` with the path of the desired hdf5 network description file.\n",
+    "* The input layer is accessible as `net.in_layer`.\n",
+    "* The output layer is accessible as `net.out_layer`.\n",
+    "* All the constituent layers are accessible as a list: `net.layers`.\n",
+    "\n",
+    "![PilotNet Inference](images/pilotnet_sdnn_network.PNG)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "num_steps = 2000\n",
+    "net = netx.hdf5.Network(net_config='network.net', skip_layers=1)\n",
+    "print(net)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create Dataset instance\n",
+    "Typically the user would write it or provide it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "transform = get_input_transform(net.net_config)\n",
+    "full_set = PilotNetDataset(\n",
+    "    path='../data',\n",
+    "    size=net.inp.shape[:2],\n",
+    "    transform=transform,  # input transform\n",
+    "    visualize=True,  # visualize ensures the images are returned in sequence\n",
+    "    sample_offset=10550,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create Dataloader\n",
+    "The dataloader process reads data from the dataset objects and sends out the input frame and ground truth as spikes.\n",
+    "\n",
+    "![PilotNet Inference](images/pilotnet_sdnn_dataloader.PNG)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dataloader = io.dataloader.SpikeDataloader(dataset=full_set)\n",
+    "input_encoder = PilotNetEncoder(shape=net.inp.shape,\n",
+    "                                net_config=net.net_config,\n",
+    "                                compression=compression)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dataloader.s_out.connect(input_encoder.inp)\n",
+    "input_encoder.out.connect(net.inp)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Run the network\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "power_logger = n3_profiler.Loihi2Power(num_steps=num_steps)\n",
+    "runtime_logger = n3_profiler.Loihi2Runtime()\n",
+    "memory_logger = n3_profiler.Loihi2Memory()\n",
+    "activity_logger = n3_profiler.Loihi2Activity()\n",
+    "\n",
+    "pre_run_fxs = [\n",
+    "    lambda b: power_logger.attach(b),\n",
+    "    lambda b: runtime_logger.attach(b),\n",
+    "    # lambda b: memory_logger.attach(b),\n",
+    "    # lambda b: activity_logger.attach(b),\n",
+    "]\n",
+    "post_run_fxs = [\n",
+    "    lambda b: power_logger.get_results(),\n",
+    "    lambda b: runtime_logger.get_results(),\n",
+    "    # lambda b: memory_logger.get_results(),\n",
+    "    # lambda b: activity_logger.get_results(),\n",
+    "]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "exception_proc_model_map = {\n",
+    "    io.encoder.DeltaEncoder: io.encoder.PyDeltaEncoderModelSparse,\n",
+    "    PilotNetEncoder: PilotNetNxEncoderModel,\n",
+    "}\n",
+    "run_config = Loihi2HwCfg(exception_proc_model_map=exception_proc_model_map,\n",
+    "                        pre_run_fxs=pre_run_fxs,\n",
+    "                        post_run_fxs=post_run_fxs)\n",
+    "net._log_config.level = logging.INFO\n",
+    "net.run(condition=RunSteps(num_steps=num_steps), run_cfg=run_config)\n",
+    "net.stop()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# runtime measurements\n",
+    "inference_rate = 1e6 / runtime_logger.time_per_step\n",
+    "total_inference_time = num_steps * runtime_logger.time_per_step * 1e-6\n",
+    "print(f'Throughput : {inference_rate:.2f} fps.')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "runtime_logger.time_per_step"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# power measurements\n",
+    "time_stamp = power_logger.time_stamp\n",
+    "vdd_p = power_logger.vdd  # neurocore power\n",
+    "vddm_p = power_logger.vddm  # memory power\n",
+    "vddio_p = power_logger.vddio  # IO power\n",
+    "total_power = vdd_p + vddm_p + vddio_p\n",
+    "num_measurements = len(vdd_p)\n",
+    "time = time_stamp * 2 * total_inference_time / time_stamp.max()\n",
+    "\n",
+    "num_chips = 1\n",
+    "if Loihi2.partition in ['kp', 'kp_stack']:\n",
+    "    num_chips = 8\n",
+    "\n",
+    "# per chip static power\n",
+    "static_total_power = np.mean(total_power[num_measurements // 2:]) / num_chips\n",
+    "static_vdd_p = np.mean(vdd_p[num_measurements // 2:]) / num_chips\n",
+    "static_vddm_p = np.mean(vddm_p[num_measurements // 2:]) / num_chips\n",
+    "static_vddio_p = np.mean(vddio_p[num_measurements // 2:]) / num_chips\n",
+    "\n",
+    "# compensate for static power of multiple chip\n",
+    "total_power -= (num_chips - 1) * static_total_power\n",
+    "vdd_p -= (num_chips - 1) * static_vdd_p\n",
+    "vddm_p -= (num_chips - 1) * static_vddm_p\n",
+    "vddio_p -= (num_chips - 1) * static_vddio_p\n",
+    "\n",
+    "from scipy import signal\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot(signal.medfilt(total_power, 51), label='Total Power')\n",
+    "ax.plot(signal.medfilt(vdd_p, 51), label='VDD Power')\n",
+    "ax.plot(signal.medfilt(vddm_p, 51), label='VDD-M Power')\n",
+    "ax.plot(signal.medfilt(vddio_p, 51), label='VDD-IO Power')\n",
+    "ax.axvspan(0, num_measurements // 2, color='green', alpha=0.1)\n",
+    "ax.set_ylabel('Power (W)')\n",
+    "ax.set_xticks([])\n",
+    "ax.legend()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# First half power measurements are when the network is running\n",
+    "# and the second half power measurements are when the board is done executing \n",
+    "total_power_mean = np.mean(total_power[:num_measurements // 2])\n",
+    "vdd_p_mean = np.mean(vdd_p[:num_measurements // 2])\n",
+    "vddm_p_mean = np.mean(vddm_p[:num_measurements // 2])\n",
+    "vddio_p_mean = np.mean(vddio_p[:num_measurements // 2])\n",
+    "print(f'Total Power   : {total_power_mean:.6f} W')\n",
+    "print(f'Dynamic Power : {total_power_mean - static_total_power:.6f} W')\n",
+    "print(f'Static Power  : {static_total_power:.6f} W')\n",
+    "print(f'VDD Power     : {vdd_p_mean:.6f} W')\n",
+    "print(f'VDD-M Power   : {vddm_p_mean:.6f} W')\n",
+    "print(f'VDD-IO Power  : {vddio_p_mean:.6f} W')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "total_energy = total_power_mean / inference_rate\n",
+    "dynamic_energy = (total_power_mean - static_total_power) / inference_rate\n",
+    "print(f'Total Energy per inference   : {total_energy * 1e3:.6f} mJ')\n",
+    "print(f'Dynamic Energy per inference : {dynamic_energy * 1e3:.6f} mJ')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "'''@2000 steps\n",
+    "Throughput : 34.72 fps.\n",
+    "\n",
+    "Total Power   : 0.247882 W\n",
+    "Dynamic Power : 0.003026 W\n",
+    "Static Power  : 0.244857 W\n",
+    "VDD Power     : 0.100399 W\n",
+    "VDD-M Power   : 0.145534 W\n",
+    "VDD-IO Power  : 0.001950 W\n",
+    "\n",
+    "Total Energy per inference   : 7.138505 mJ\n",
+    "Dynamic Energy per inference : 0.087130 mJ\n",
+    "'''"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  },
+  "vscode": {
+   "interpreter": {
+    "hash": "7ebb4c32c029abbab1fd16ef4d8ac43152261b56d4033e55d2744ce843ecba08"
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

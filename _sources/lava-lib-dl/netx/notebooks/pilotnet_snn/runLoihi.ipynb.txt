@@ -1,0 +1,458 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# PilotNet SNN Example\n",
+    "\n",
+    "Network excange module is available as `lava.lib.dl.netx.{hdf5, blocks, utils}`.\n",
+    "* `hdf5` implements automatic network generation.\n",
+    "* `blocks` implements individual layer blocks.\n",
+    "* `utils` implements hdf5 reading utilities. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from PIL import Image\n",
+    "\n",
+    "from lava.magma.core.process.process import AbstractProcess\n",
+    "from lava.magma.core.process.variable import Var\n",
+    "from lava.magma.core.process.ports.ports import InPort, OutPort\n",
+    "from lava.magma.core.model.py.model import PyLoihiProcessModel\n",
+    "from lava.magma.core.run_configs import Loihi1SimCfg\n",
+    "from lava.magma.core.run_conditions import RunSteps\n",
+    "from lava.magma.core.model.py.ports import PyInPort, PyOutPort\n",
+    "from lava.magma.core.model.py.type import LavaPyType\n",
+    "from lava.magma.core.resources import CPU\n",
+    "from lava.magma.core.decorator import implements, requires, tag\n",
+    "from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol\n",
+    "from lava.proc.conv.process import Conv\n",
+    "from lava.proc import io\n",
+    "\n",
+    "from lava.lib.dl import netx\n",
+    "from dataset import PilotNetDataset"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Import modules for Loihi2 execution\n",
+    "\n",
+    "Check if Loihi2 compiker is available and import related modules."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "loihi2_is_available = netx.utils.Loihi2Exec.is_loihi2_available\n",
+    "\n",
+    "if loihi2_is_available:\n",
+    "    import logging\n",
+    "    from lava.magma.core.run_configs import Loihi2HwCfg\n",
+    "    from lava.proc import embedded_io as eio\n",
+    "else:\n",
+    "    print(\"Loihi2 compiler is not available in this system. \"\n",
+    "          \"This tutorial will execute on CPU backend.\")\n",
+    "# loihi2_is_available = False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create network block\n",
+    "\n",
+    "A network block can be created by simply instantiating `netx.hdf5.Network` with the path of the desired hdf5 network description file.\n",
+    "* The input layer is accessible as `net.in_layer`.\n",
+    "* The output layer is accessible as `net.out_layer`.\n",
+    "* All the constituent layers are accessible as as a list: `net.layers`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "|   Type   |  W  |  H  |  C  | ker | str | pad | dil | grp |delay|\n",
+      "|Input     |  200|   66|    3|     |     |     |     |     |False|\n",
+      "|Conv      |   99|   32|   24| 3, 3| 2, 2| 0, 0| 1, 1|    1|False|\n",
+      "|Conv      |   49|   15|   36| 3, 3| 2, 2| 0, 0| 1, 1|    1|False|\n",
+      "|Conv      |   24|    7|   48| 3, 3| 2, 2| 0, 0| 1, 1|    1|False|\n",
+      "|Conv      |   22|    4|   64| 3, 3| 1, 2| 0, 1| 1, 1|    1|False|\n",
+      "|Conv      |   20|    2|   64| 3, 3| 1, 1| 0, 0| 1, 1|    1|False|\n",
+      "|Dense     |    1|    1|  100|     |     |     |     |     |False|\n",
+      "|Dense     |    1|    1|   50|     |     |     |     |     |False|\n",
+      "|Dense     |    1|    1|   10|     |     |     |     |     |False|\n",
+      "|Dense     |    1|    1|    1|     |     |     |     |     |False|\n"
+     ]
+    }
+   ],
+   "source": [
+    "net = netx.hdf5.Network(net_config='network.net', reset_interval=16, reset_offset=1)\n",
+    "print(net)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "There are 10 layers in network:\n",
+      "Input : Process_1 , shape : (200, 66, 3)\n",
+      "Conv  : Process_3 , shape : (99, 32, 24)\n",
+      "Conv  : Process_6 , shape : (49, 15, 36)\n",
+      "Conv  : Process_9 , shape : (24, 7, 48)\n",
+      "Conv  : Process_12, shape : (22, 4, 64)\n",
+      "Conv  : Process_15, shape : (20, 2, 64)\n",
+      "Dense : Process_18, shape : (100,)\n",
+      "Dense : Process_21, shape : (50,)\n",
+      "Dense : Process_24, shape : (10,)\n",
+      "Dense : Process_27, shape : (1,)\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f'There are {len(net)} layers in network:')\n",
+    "\n",
+    "for l in net.layers:\n",
+    "    print(f'{l.__class__.__name__:5s} : {l.name:10s}, shape : {l.shape}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "num_samples = 201\n",
+    "steps_per_sample = net.reset_interval\n",
+    "readout_offset = (steps_per_sample - 1) + len(net.layers)\n",
+    "num_steps = num_samples * steps_per_sample + 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Create Dataset instance\n",
+    "Typically the user would write it or provide it."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "full_set = PilotNetDataset(\n",
+    "    path='../data', \n",
+    "    transform=net.in_layer.transform, # input transform\n",
+    "    visualize=True, # visualize ensures the images are returned in sequence\n",
+    "    sample_offset=10550,\n",
+    ")\n",
+    "train_set = PilotNetDataset(\n",
+    "    path='../data', \n",
+    "    transform=net.in_layer.transform, # input transform\n",
+    "    train=True,\n",
+    ")\n",
+    "test_set = PilotNetDataset(\n",
+    "    path='../data', \n",
+    "    transform=net.in_layer.transform, # input transform\n",
+    "    train=False,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Instantiate Dataloader"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sample: 10550"
+     ]
+    }
+   ],
+   "source": [
+    "# dataloader = io.dataloader.StateDataloader(\n",
+    "#     dataset=full_set,\n",
+    "#     interval=steps_per_sample,\n",
+    "# )\n",
+    "dataloader = io.dataloader.SpikeDataloader(dataset=full_set,\n",
+    "                                           interval=steps_per_sample)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Delta Encoder"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class FrameDiff(AbstractProcess):\n",
+    "    def __init__(self, shape, interval=1, offset=0) -> None:\n",
+    "        super().__init__(shape=shape)\n",
+    "        self.old_frame = Var(shape=shape)\n",
+    "        self.frame = Var(shape=shape)\n",
+    "        self.interval = Var(shape=(1,), init=interval)\n",
+    "        self.offset = Var(shape=(1,), init=offset)\n",
+    "        self.diff = OutPort(shape=shape)\n",
+    "        self.inp = InPort(shape=shape)\n",
+    "\n",
+    "@implements(proc=FrameDiff, protocol=LoihiProtocol)\n",
+    "@requires(CPU)\n",
+    "class PyFrameDiffModel(PyLoihiProcessModel):\n",
+    "    diff = LavaPyType(PyOutPort.VEC_DENSE, np.int32)  #TODO: make it VEC_SPARSE\n",
+    "    inp = LavaPyType(PyInPort.VEC_DENSE, np.int32)\n",
+    "    old_frame = LavaPyType(np.ndarray, np.int32)\n",
+    "    frame = LavaPyType(np.ndarray, np.int32)\n",
+    "    interval = LavaPyType(np.ndarray, np.int32)\n",
+    "    offset = LavaPyType(np.ndarray, np.int32)\n",
+    "\n",
+    "    def run_spk(self) -> None:\n",
+    "        self.frame = self.inp.recv()\n",
+    "        if (self.time_step - 1) % self.interval == self.offset:\n",
+    "            self.diff.send((self.frame - self.old_frame))\n",
+    "            self.old_frame = self.frame"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Connect Input and Output"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "net.in_layer.neuron.du.init = 4095  # Make current state persistent\n",
+    "kernel = np.eye(3).reshape(3, 1, 1, 3)\n",
+    "input_conv = Conv(weight=kernel, input_shape=net.inp.shape)\n",
+    "\n",
+    "gt_logger = io.sink.RingBuffer(shape=(1,), buffer=num_steps)\n",
+    "output_logger = io.sink.RingBuffer(shape=net.out.shape, buffer=num_steps)\n",
+    "input_encoder = FrameDiff(shape=net.inp.shape, interval=steps_per_sample)\n",
+    "\n",
+    "# input_adapter = eio.state.WriteConv(shape=net.inp.shape, interval=steps_per_sample)\n",
+    "input_adapter = eio.spike.PyToN3ConvAdapter(shape=input_conv.s_in.shape, interval=steps_per_sample, offset=1)\n",
+    "out_adapter = eio.state.Read(shape=net.out.shape)\n",
+    "\n",
+    "dataloader.ground_truth.connect(gt_logger.a_in)\n",
+    "# dataloader.connect_var(input_encoder.frame)\n",
+    "dataloader.s_out.connect(input_encoder.inp)\n",
+    "input_encoder.diff.connect(input_adapter.inp)\n",
+    "# input_adapter.connect_var(net.in_layer.neuron.u)\n",
+    "input_adapter.out.connect(input_conv.s_in)\n",
+    "input_conv.a_out.connect(net.in_layer.neuron.a_in)\n",
+    "out_adapter.connect_var(net.out_layer.neuron.v)\n",
+    "out_adapter.out.connect(output_logger.a_in)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(36, 3, 3, 24)"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# net.layers[2].synapse.weight.init.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Run"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Customize Run Configuration"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# class CustomRunConfig(Loihi1SimCfg):\n",
+    "#     def select(self, proc, proc_models):\n",
+    "#         # customize run config to always use float model for io.sink.RingBuffer\n",
+    "#         if isinstance(proc, io.sink.RingBuffer):\n",
+    "#             return io.sink.PyReceiveModelFloat\n",
+    "#         else:\n",
+    "#             return super().select(proc, proc_models)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Run the network"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "could not broadcast input array from shape (9,) into shape (3,)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[1;32m/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb Cell 21\u001b[0m in \u001b[0;36m<cell line: 4>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb#X24sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1'>2</a>\u001b[0m net\u001b[39m.\u001b[39m_log_config\u001b[39m.\u001b[39mlevel \u001b[39m=\u001b[39m logging\u001b[39m.\u001b[39mINFO\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb#X24sdnNjb2RlLXJlbW90ZQ%3D%3D?line=2'>3</a>\u001b[0m run_config \u001b[39m=\u001b[39m Loihi2HwCfg()\n\u001b[0;32m----> <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb#X24sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3'>4</a>\u001b[0m net\u001b[39m.\u001b[39;49mrun(condition\u001b[39m=\u001b[39;49mRunSteps(num_steps\u001b[39m=\u001b[39;49mnum_steps), run_cfg\u001b[39m=\u001b[39;49mrun_config)\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb#X24sdnNjb2RlLXJlbW90ZQ%3D%3D?line=4'>5</a>\u001b[0m output \u001b[39m=\u001b[39m output_logger\u001b[39m.\u001b[39mdata\u001b[39m.\u001b[39mget()\u001b[39m.\u001b[39mflatten()\n\u001b[1;32m      <a href='vscode-notebook-cell://ssh-remote%2Bncl-gpu-04/home/sshresth/lava-nc/lava-dl/tutorials/lava/lib/dl/netx/pilotnet_snn/runLoihi.ipynb#X24sdnNjb2RlLXJlbW90ZQ%3D%3D?line=5'>6</a>\u001b[0m gts \u001b[39m=\u001b[39m gt_logger\u001b[39m.\u001b[39mdata\u001b[39m.\u001b[39mget()\u001b[39m.\u001b[39mflatten()\n",
+      "File \u001b[0;32m~/lava-nc/lava/src/lava/magma/core/process/process.py:338\u001b[0m, in \u001b[0;36mAbstractProcess.run\u001b[0;34m(self, condition, run_cfg, compile_config)\u001b[0m\n\u001b[1;32m    333\u001b[0m \u001b[39mif\u001b[39;00m \u001b[39mnot\u001b[39;00m run_cfg:\n\u001b[1;32m    334\u001b[0m     \u001b[39mraise\u001b[39;00m \u001b[39mValueError\u001b[39;00m(\u001b[39m\"\u001b[39m\u001b[39mThe Processes that are to be executed have \u001b[39m\u001b[39m\"\u001b[39m\n\u001b[1;32m    335\u001b[0m                      \u001b[39m\"\u001b[39m\u001b[39mnot been compiled yet. This requires that a\u001b[39m\u001b[39m\"\u001b[39m\n\u001b[1;32m    336\u001b[0m                      \u001b[39m\"\u001b[39m\u001b[39mRunConfig is passed to the run() method.\u001b[39m\u001b[39m\"\u001b[39m)\n\u001b[0;32m--> 338\u001b[0m executable \u001b[39m=\u001b[39m \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49mcompile(run_cfg, compile_config)\n\u001b[1;32m    339\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_runtime \u001b[39m=\u001b[39m Runtime(executable,\n\u001b[1;32m    340\u001b[0m                         ActorType\u001b[39m.\u001b[39mMultiProcessing,\n\u001b[1;32m    341\u001b[0m                         loglevel\u001b[39m=\u001b[39m\u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_log_config\u001b[39m.\u001b[39mlevel)\n\u001b[1;32m    342\u001b[0m executable\u001b[39m.\u001b[39massign_runtime_to_all_processes(\u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_runtime)\n",
+      "File \u001b[0;32m~/lava-nc/lava/src/lava/magma/core/process/process.py:364\u001b[0m, in \u001b[0;36mAbstractProcess.compile\u001b[0;34m(self, run_cfg, compile_config)\u001b[0m\n\u001b[1;32m    362\u001b[0m \u001b[39mfrom\u001b[39;00m \u001b[39mlava\u001b[39;00m\u001b[39m.\u001b[39;00m\u001b[39mmagma\u001b[39;00m\u001b[39m.\u001b[39;00m\u001b[39mcompiler\u001b[39;00m\u001b[39m.\u001b[39;00m\u001b[39mcompiler\u001b[39;00m \u001b[39mimport\u001b[39;00m Compiler\n\u001b[1;32m    363\u001b[0m compiler \u001b[39m=\u001b[39m Compiler(compile_config, \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_log_config\u001b[39m.\u001b[39mlevel)\n\u001b[0;32m--> 364\u001b[0m \u001b[39mreturn\u001b[39;00m compiler\u001b[39m.\u001b[39;49mcompile(\u001b[39mself\u001b[39;49m, run_cfg)\n",
+      "File \u001b[0;32m~/lava-nc/lava/src/lava/magma/compiler/compiler.py:132\u001b[0m, in \u001b[0;36mCompiler.compile\u001b[0;34m(self, process, run_cfg)\u001b[0m\n\u001b[1;32m    130\u001b[0m proc_groups: ty\u001b[39m.\u001b[39mList[ProcGroup] \u001b[39m=\u001b[39m proc_group_digraph\u001b[39m.\u001b[39mget_proc_groups()\n\u001b[1;32m    131\u001b[0m channel_map \u001b[39m=\u001b[39m ChannelMap\u001b[39m.\u001b[39mfrom_proc_groups(proc_groups)\n\u001b[0;32m--> 132\u001b[0m proc_builders, channel_map \u001b[39m=\u001b[39m \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49m_compile_proc_groups(\n\u001b[1;32m    133\u001b[0m     proc_groups, channel_map\n\u001b[1;32m    134\u001b[0m )\n\u001b[1;32m    135\u001b[0m py_builders, c_builders, nc_builders \u001b[39m=\u001b[39m split_proc_builders_by_type(\n\u001b[1;32m    136\u001b[0m     proc_builders\n\u001b[1;32m    137\u001b[0m )\n\u001b[1;32m    139\u001b[0m node_configs \u001b[39m=\u001b[39m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_create_node_cfgs(proc_groups)\n",
+      "File \u001b[0;32m~/lava-nc/lava/src/lava/magma/compiler/compiler.py:224\u001b[0m, in \u001b[0;36mCompiler._compile_proc_groups\u001b[0;34m(self, proc_groups, channel_map)\u001b[0m\n\u001b[1;32m    218\u001b[0m subcompiler_to_procs \u001b[39m=\u001b[39m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_map_subcompiler_type_to_procs(\n\u001b[1;32m    219\u001b[0m     proc_group\n\u001b[1;32m    220\u001b[0m )\n\u001b[1;32m    222\u001b[0m \u001b[39m# Create all the SubCompiler instances required for this\u001b[39;00m\n\u001b[1;32m    223\u001b[0m \u001b[39m# ProcGroup and append them to the list of all SubCompilers.\u001b[39;00m\n\u001b[0;32m--> 224\u001b[0m pg_subcompilers \u001b[39m=\u001b[39m \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49m_create_subcompilers(subcompiler_to_procs)\n\u001b[1;32m    225\u001b[0m subcompilers\u001b[39m.\u001b[39mappend(pg_subcompilers)\n\u001b[1;32m    227\u001b[0m \u001b[39m# Compile this ProcGroup.\u001b[39;00m\n",
+      "File \u001b[0;32m~/lava-nc/lava/src/lava/magma/compiler/compiler.py:309\u001b[0m, in \u001b[0;36mCompiler._create_subcompilers\u001b[0;34m(self, compiler_type_to_procs)\u001b[0m\n\u001b[1;32m    305\u001b[0m \u001b[39m# Go through all required subcompiler classes...\u001b[39;00m\n\u001b[1;32m    306\u001b[0m \u001b[39mfor\u001b[39;00m idx, (subcompiler_class, procs) \u001b[39min\u001b[39;00m \\\n\u001b[1;32m    307\u001b[0m         \u001b[39menumerate\u001b[39m(compiler_type_to_procs\u001b[39m.\u001b[39mitems()):\n\u001b[1;32m    308\u001b[0m     \u001b[39m# ...create the subcompiler instance...\u001b[39;00m\n\u001b[0;32m--> 309\u001b[0m     compiler \u001b[39m=\u001b[39m subcompiler_class(procs, \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49m_compile_config)\n\u001b[1;32m    310\u001b[0m     \u001b[39m# ...and add it to the list.\u001b[39;00m\n\u001b[1;32m    311\u001b[0m     subcompilers\u001b[39m.\u001b[39mappend(compiler)\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/magma/compiler/subcompilers/nc/ncproc_compiler.py:124\u001b[0m, in \u001b[0;36mNcProcCompiler.__init__\u001b[0;34m(self, proc_group, compile_config, net_factory, regnet_factory)\u001b[0m\n\u001b[1;32m    122\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_regnet_factory \u001b[39m=\u001b[39m regnet_factory \u001b[39mor\u001b[39;00m MergedRegNetFactory()\n\u001b[1;32m    123\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_instantiate_process_models()\n\u001b[0;32m--> 124\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_process_to_net \u001b[39m=\u001b[39m \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49m_create_and_allocate_nets()\n\u001b[1;32m    125\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_process_to_npg \u001b[39m=\u001b[39m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_create_neuro_proc_groups()\n\u001b[1;32m    126\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_npg_to_reg_nets \u001b[39m=\u001b[39m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_create_reg_nets()\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/magma/compiler/subcompilers/nc/ncproc_compiler.py:140\u001b[0m, in \u001b[0;36mNcProcCompiler._create_and_allocate_nets\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    138\u001b[0m     process_model \u001b[39m=\u001b[39m ty\u001b[39m.\u001b[39mcast(AbstractNcProcessModel, process\u001b[39m.\u001b[39mmodel)\n\u001b[1;32m    139\u001b[0m     \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_create_nc_ports_and_nc_vars(process_model, net)\n\u001b[0;32m--> 140\u001b[0m     process_model\u001b[39m.\u001b[39;49mallocate(net)\n\u001b[1;32m    141\u001b[0m     process_to_net[process] \u001b[39m=\u001b[39m net\n\u001b[1;32m    142\u001b[0m \u001b[39mreturn\u001b[39;00m process_to_net\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/proc/conv/ncmodels.py:108\u001b[0m, in \u001b[0;36mNcL2ModelConv.allocate\u001b[0;34m(self, net)\u001b[0m\n\u001b[1;32m     83\u001b[0m dilation \u001b[39m=\u001b[39m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39mdilation\u001b[39m.\u001b[39mvar\u001b[39m.\u001b[39mget()\n\u001b[1;32m     85\u001b[0m syn_cfg: Nodes \u001b[39m=\u001b[39m net\u001b[39m.\u001b[39msyn_cfg\u001b[39m.\u001b[39mallocate_conv(\n\u001b[1;32m     86\u001b[0m     shape\u001b[39m=\u001b[39m(\u001b[39m1\u001b[39m,),\n\u001b[1;32m     87\u001b[0m     input_x\u001b[39m=\u001b[39minput_shape[\u001b[39m0\u001b[39m],\n\u001b[0;32m   (...)\u001b[0m\n\u001b[1;32m    105\u001b[0m     wgt_exp\u001b[39m=\u001b[39mwgt_exp,\n\u001b[1;32m    106\u001b[0m )\n\u001b[0;32m--> 108\u001b[0m syn: Nodes \u001b[39m=\u001b[39m net\u001b[39m.\u001b[39;49msyn\u001b[39m.\u001b[39;49mallocate_conv(shape\u001b[39m=\u001b[39;49mweight\u001b[39m.\u001b[39;49mshape,\n\u001b[1;32m    109\u001b[0m                                    weights\u001b[39m=\u001b[39;49mweight,\n\u001b[1;32m    110\u001b[0m                                    delays\u001b[39m=\u001b[39;49m\u001b[39m0\u001b[39;49m)\n\u001b[1;32m    112\u001b[0m \u001b[39m# Allocate dendritic accumulators\u001b[39;00m\n\u001b[1;32m    113\u001b[0m dend_acc_cfg: Nodes \u001b[39m=\u001b[39m net\u001b[39m.\u001b[39mdend_acc_cfg\u001b[39m.\u001b[39mallocate(shape\u001b[39m=\u001b[39m\u001b[39m1\u001b[39m,\n\u001b[1;32m    114\u001b[0m                                                 num_delay_bits\u001b[39m=\u001b[39m\u001b[39m0\u001b[39m)\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/magma/core/model/nc/net.py:387\u001b[0m, in \u001b[0;36mSynL2.allocate_conv\u001b[0;34m(self, **kwargs)\u001b[0m\n\u001b[1;32m    385\u001b[0m old_num_homotables \u001b[39m=\u001b[39m \u001b[39mlen\u001b[39m(\u001b[39mself\u001b[39m\u001b[39m.\u001b[39mdata)\n\u001b[1;32m    386\u001b[0m \u001b[39mself\u001b[39m\u001b[39m.\u001b[39m_is_conv_alloc \u001b[39m=\u001b[39m \u001b[39mTrue\u001b[39;00m\n\u001b[0;32m--> 387\u001b[0m new_nodes \u001b[39m=\u001b[39m \u001b[39mself\u001b[39;49m\u001b[39m.\u001b[39;49m_allocate(\u001b[39m*\u001b[39;49m\u001b[39m*\u001b[39;49mkwargs)\n\u001b[1;32m    388\u001b[0m \u001b[39mif\u001b[39;00m \u001b[39mlen\u001b[39m(\u001b[39mself\u001b[39m\u001b[39m.\u001b[39mdata) \u001b[39m>\u001b[39m old_num_homotables:\n\u001b[1;32m    389\u001b[0m     \u001b[39mself\u001b[39m\u001b[39m.\u001b[39mconv_data\u001b[39m.\u001b[39mappend(\u001b[39mTrue\u001b[39;00m)\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/magma/core/model/nc/tables.py:534\u001b[0m, in \u001b[0;36mHeteroTable._allocate\u001b[0;34m(self, shape, **kwargs)\u001b[0m\n\u001b[1;32m    532\u001b[0m     \u001b[39melse\u001b[39;00m:\n\u001b[1;32m    533\u001b[0m         vals \u001b[39m=\u001b[39m np\u001b[39m.\u001b[39marray([kwargs[c]])\n\u001b[0;32m--> 534\u001b[0m     new_entries[:, kwargs_order[c]] \u001b[39m=\u001b[39m vals\u001b[39m.\u001b[39mflatten()\n\u001b[1;32m    536\u001b[0m idx, fn \u001b[39m=\u001b[39m \u001b[39mzip\u001b[39m(\u001b[39m*\u001b[39m\u001b[39msorted\u001b[39m(\u001b[39mzip\u001b[39m(kwargs_order\u001b[39m.\u001b[39mvalues(), kwargs_order\u001b[39m.\u001b[39mkeys())))\n\u001b[1;32m    537\u001b[0m new_entries\u001b[39m.\u001b[39mfield_names \u001b[39m+\u001b[39m\u001b[39m=\u001b[39m fn\n",
+      "File \u001b[0;32m~/lava-nc/frameworks.ai.lava.lava/src/lava/magma/core/model/nc/tables.py:374\u001b[0m, in \u001b[0;36mHomoTable.__setitem__\u001b[0;34m(self, idx, value)\u001b[0m\n\u001b[1;32m    372\u001b[0m     \u001b[39mreturn\u001b[39;00m\n\u001b[1;32m    373\u001b[0m \u001b[39m# default behavior\u001b[39;00m\n\u001b[0;32m--> 374\u001b[0m \u001b[39msuper\u001b[39;49m()\u001b[39m.\u001b[39;49m\u001b[39m__setitem__\u001b[39;49m(idx, value)\n",
+      "\u001b[0;31mValueError\u001b[0m: could not broadcast input array from shape (9,) into shape (3,)"
+     ]
+    }
+   ],
+   "source": [
+    "# run_config = CustomRunConfig(select_tag='fixed_pt')\n",
+    "net._log_config.level = logging.INFO\n",
+    "run_config = Loihi2HwCfg()\n",
+    "net.run(condition=RunSteps(num_steps=num_steps), run_cfg=run_config)\n",
+    "output = output_logger.data.get().flatten()\n",
+    "gts = gt_logger.data.get().flatten()\n",
+    "net.stop()\n",
+    "output = (output.astype(np.int32) << 8) >> 8  # reinterpret the data as 24 bit signed value\n",
+    "results = output[readout_offset - 1::16]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Evaluate Results\n",
+    "Plot and compare the results with the dataset ground truth.\n",
+    "\n",
+    "Here, we will also compare the Lava output with a known output for the same sequence on Loihi hardware. The results should match 1:1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "results = results.flatten()/steps_per_sample/32/64\n",
+    "# results = results[1:] - results[:-1]\n",
+    "loihi = np.load('3x3pred.npy')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(15, 10))\n",
+    "plt.plot(loihi, linewidth=5, label='Loihi output')\n",
+    "plt.plot(results, label='Lava output')\n",
+    "plt.plot(gts, label='Ground truth')\n",
+    "plt.xlabel(f'Sample frames (+{full_set.sample_offset})')\n",
+    "plt.ylabel('Steering angle (radians)')\n",
+    "plt.legend()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "error = np.sum((loihi - results)**2)\n",
+    "print(f'{error=}')"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  },
+  "vscode": {
+   "interpreter": {
+    "hash": "7ebb4c32c029abbab1fd16ef4d8ac43152261b56d4033e55d2744ce843ecba08"
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walk through Lava &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Processes" href="../in_depth/tutorial02_processes.html" />
+    <link rel="prev" title="Installing Lava" href="../in_depth/tutorial01_installing_lava.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../getting_started_with_lava.html">Getting Started with Lava</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial08_stdp.html">Spike-timing Dependent Plasticity (STDP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial08_stdp.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#id1">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#id17">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lava.html">Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.read_gate.html">lava.proc.read_gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.scif.html">lava.proc.scif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dl/netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../getting_started_with_lava.html">Getting Started with Lava</a> &raquo;</li>
+      <li>Walk through Lava</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/lava/notebooks/end_to_end/tutorial00_tour_through_lava.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p><em>Copyright (C) 2022 Intel Corporation</em> <em>SPDX-License-Identifier: BSD-3-Clause</em> <em>See: https://spdx.org/licenses/</em></p>
+<hr class="docutils" />
+<div class="section" id="Walk-through-Lava">
+<h1>Walk through Lava<a class="headerlink" href="#Walk-through-Lava" title="Permalink to this headline"></a></h1>
+<p>Lava is an open-source software library dedicated to the development of algorithms for neuromorphic computation. To that end, Lava provides an easy-to-use Python interface for creating the bits and pieces required for such a neuromorphic algorithm. For easy development, Lava allows to run and test all neuromorphic algorithms on standard von-Neumann hardware like CPU, before they can be deployed on neuromorphic processors such as the Intel Loihi 1/2 processor to leverage their speed and power
+advantages. Furthermore, Lava is designed to be extensible to custom implementations of neuromorphic behavior and to support new hardware backends.</p>
+<p>Lava can fundamentally be used at two different levels: Either by using existing resources which can be used to create complex algorithms while requiring almost no deep neuromorphic knowledge. Or, for custom behavior, Lava can be easily extended with new behavior defined in Python and C.</p>
+<p><img alt="lava_overview.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/lava_overview.png" /></p>
+<p>This tutorial gives an high-level overview over the key components of Lava. For illustration, we will use a simple working example: a feed-forward multi-layer LIF network executed locally on CPU. In the first section of the tutorial, we use the internal resources of Lava to construct such a network and in the second section, we demonstrate how to extend Lava with a custom process using the example of an input generator.</p>
+<p>In addition to the core Lava library described in the present tutorial, the following tutorials guide you to use high level functionalities: - <a class="reference external" href="https://github.com/lava-nc/lava-dl">lava-dl</a> for deep learning applications - <a class="reference external" href="https://github.com/lava-nc/lava-optimization">lava-optimization</a> for constraint optimization - <a class="reference external" href="https://github.com/lava-nc/lava-dnf">lava-dnf</a> for Dynamic Neural Fields</p>
+<div class="section" id="1.-Usage-of-the-Process-Library">
+<h2>1. Usage of the Process Library<a class="headerlink" href="#1.-Usage-of-the-Process-Library" title="Permalink to this headline"></a></h2>
+<p>In this section, we will use a simple 2-layered feed-forward network of LIF neurons executed on CPU as canonical example.</p>
+<p>The fundamental building block in the Lava architecture is the <code class="docutils literal notranslate"><span class="pre">Process</span></code>. A <code class="docutils literal notranslate"><span class="pre">Process</span></code> describes a functional group, such as a population of <code class="docutils literal notranslate"><span class="pre">LIF</span></code> neurons, which runs asynchronously and parallel and communicates via <code class="docutils literal notranslate"><span class="pre">Channels</span></code>. A <code class="docutils literal notranslate"><span class="pre">Process</span></code> can take different forms and does not necessarily be a population of neurons, for example it could be a complete network, program code or the interface to a sensor (see figure below).</p>
+<p><img alt="process_overview.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/proc_overview.png" /></p>
+<p>For convenience, Lava provides a growing Process Library in which many commonly used <code class="docutils literal notranslate"><span class="pre">Processes</span></code> are publicly available. In the first section of this tutorial, we will use the <code class="docutils literal notranslate"><span class="pre">Processes</span></code> of the Process Library to create and execute a multi-layer LIF network. Take a look at the <a class="reference external" href="https://lava-nc.org">documentation</a> to find out what other <code class="docutils literal notranslate"><span class="pre">Processes</span></code> are implemented in the Process Library.</p>
+<p>Let’s start by importing the classes <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> and take a brief look at the docstring.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
+<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
+
+LIF<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">Init signature:</span> LIF<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-red-fg">Docstring:</span>
+Leaky-Integrate-and-Fire (LIF) neural Process.
+
+LIF dynamics abstracts to:
+u[t] = u[t-1] * (1-du) + a_in         # neuron current
+v[t] = v[t-1] * (1-dv) + u[t] + bias  # neuron voltage
+s_out = v[t] &gt; vth                    # spike if threshold is exceeded
+v[t] = 0                              # reset at spike
+
+Parameters
+----------
+shape : tuple(int)
+    Number and topology of LIF neurons.
+u : float, list, numpy.ndarray, optional
+    Initial value of the neurons&#39; current.
+v : float, list, numpy.ndarray, optional
+    Initial value of the neurons&#39; voltage (membrane potential).
+du : float, optional
+    Inverse of decay time-constant for current decay. Currently, only a
+    single decay can be set for the entire population of neurons.
+dv : float, optional
+    Inverse of decay time-constant for voltage decay. Currently, only a
+    single decay can be set for the entire population of neurons.
+bias_mant : float, list, numpy.ndarray, optional
+    Mantissa part of neuron bias.
+bias_exp : float, list, numpy.ndarray, optional
+    Exponent part of neuron bias, if needed. Mostly for fixed point
+    implementations. Ignored for floating point implementations.
+vth : float, optional
+    Neuron threshold voltage, exceeding which, the neuron will spike.
+    Currently, only a single threshold can be set for the entire
+    population of neurons.
+
+Example
+-------
+&gt;&gt;&gt; lif = LIF(shape=(200, 15), du=10, dv=5)
+This will create 200x15 LIF neurons that all have the same current decay
+of 10 and voltage decay of 5.
+<span class="ansi-red-fg">Init docstring:</span> Initializes a new Process.
+<span class="ansi-red-fg">File:</span>           ~/lava-nc/lava/src/lava/proc/lif/process.py
+<span class="ansi-red-fg">Type:</span>           ProcessPostInitCaller
+<span class="ansi-red-fg">Subclasses:</span>     LIFReset
+
+</pre></div></div>
+</div>
+<p>The docstring gives insights about the parameters and internal dynamics of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> neuron. <code class="docutils literal notranslate"><span class="pre">Dense</span></code> is used to connect to a neuron population in an all-to-all fashion, often implemented as a matrix-vector product.</p>
+<p>In the next box, we will create the <code class="docutils literal notranslate"><span class="pre">Processes</span></code> we need to implement a multi-layer LIF (LIF-Dense-LIF) network.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Create processes</span>
+<span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">),</span>                         <span class="c1"># Number and topological layout of units in the process</span>
+           <span class="n">vth</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>                             <span class="c1"># Membrane threshold</span>
+           <span class="n">dv</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse membrane time-constant</span>
+           <span class="n">du</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse synaptic time-constant</span>
+           <span class="n">bias_mant</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">),</span>           <span class="c1"># Bias added to the membrane voltage in every timestep</span>
+           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;lif1&quot;</span><span class="p">)</span>
+
+<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>     <span class="c1"># Initial value of the weights, chosen randomly</span>
+              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">),</span>                         <span class="c1"># Number and topological layout of units in the process</span>
+           <span class="n">vth</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>                             <span class="c1"># Membrane threshold</span>
+           <span class="n">dv</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse membrane time-constant</span>
+           <span class="n">du</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse synaptic time-constant</span>
+           <span class="n">bias_mant</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>                        <span class="c1"># Bias added to the membrane voltage in every timestep</span>
+           <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>As you can see, we can either specify parameters with scalars, then all units share the same initial value for this parameter, or with a tuple (or list, or numpy array) to set the parameter individually per unit.</p>
+<div class="section" id="Processes">
+<h3>Processes<a class="headerlink" href="#Processes" title="Permalink to this headline"></a></h3>
+<p>Let’s investigate the objects we just created. As mentioned before, both, <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> are examples of <code class="docutils literal notranslate"><span class="pre">Processes</span></code>, the main building block in Lava.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Process</span></code> holds three key components (see figure below):</p>
+<ul class="simple">
+<li><p>Input ports</p></li>
+<li><p>Variables</p></li>
+<li><p>Output ports</p></li>
+</ul>
+<p><img alt="process.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/proc.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Vars</span></code> are used to store internal states of the <code class="docutils literal notranslate"><span class="pre">Process</span></code> while the <code class="docutils literal notranslate"><span class="pre">Ports</span></code> are used to define the connectivity between the <code class="docutils literal notranslate"><span class="pre">Processes</span></code>. Note that a <code class="docutils literal notranslate"><span class="pre">Process</span></code> only defines the <code class="docutils literal notranslate"><span class="pre">Vars</span></code> and <code class="docutils literal notranslate"><span class="pre">Ports</span></code> but not the behavior. This is done separately in a <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code>. To separate the interface from the behavioral implementation has the advantage that we can define the behavior of a <code class="docutils literal notranslate"><span class="pre">Process</span></code> for multiple hardware backends using multiple <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> without changing the
+interface. We will get into more detail about <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> in the second part of this tutorial.</p>
+</div>
+<div class="section" id="Ports-and-connections">
+<h3>Ports and connections<a class="headerlink" href="#Ports-and-connections" title="Permalink to this headline"></a></h3>
+<p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">Ports</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> processes we just created. The output <code class="docutils literal notranslate"><span class="pre">Port</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> neuron is called <code class="docutils literal notranslate"><span class="pre">s_out</span></code>, which stands for ‘spiking’ output. The input <code class="docutils literal notranslate"><span class="pre">Port</span></code> is called <code class="docutils literal notranslate"><span class="pre">a_in</span></code> which stands for ‘activation’ input.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif1</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">member_names</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;s_out&#39;]
+</pre></div></div>
+</div>
+<p>For example, we can see the size of the <code class="docutils literal notranslate"><span class="pre">Port</span></code> which is in particular important because <code class="docutils literal notranslate"><span class="pre">Ports</span></code> can only connect if their shape matches.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">assert</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Similarly we can investigate the input port of the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif2</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">member_names</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;a_in&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">assert</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we know about the input and output <code class="docutils literal notranslate"><span class="pre">Ports</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> <code class="docutils literal notranslate"><span class="pre">Processes</span></code>, we can <code class="docutils literal notranslate"><span class="pre">connect</span></code> the network to complete the LIF-Dense-LIF structure.</p>
+<p><img alt="process_comm.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/procs.png" /></p>
+<p>As can be seen in the figure above, by <code class="docutils literal notranslate"><span class="pre">connecting</span></code> two processes, a <code class="docutils literal notranslate"><span class="pre">Channel</span></code> between them is created which means that messages between those two <code class="docutils literal notranslate"><span class="pre">Processes</span></code> can be exchanged.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Connect the OutPort of lif1 to the InPort of dense</span>
+<span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+
+<span class="c1"># Connect the OutPort of dense to the InPort of lif2</span>
+<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Variables">
+<h3>Variables<a class="headerlink" href="#Variables" title="Permalink to this headline"></a></h3>
+<p>Similar to the <code class="docutils literal notranslate"><span class="pre">Ports</span></code>, we can investigate the <code class="docutils literal notranslate"><span class="pre">Vars</span></code> of a <code class="docutils literal notranslate"><span class="pre">Process</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif1</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">member_names</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;bias_exp&#39;, &#39;bias_mant&#39;, &#39;du&#39;, &#39;dv&#39;, &#39;u&#39;, &#39;v&#39;, &#39;vth&#39;]
+</pre></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Vars</span></code> are also accessible as member variables. We can print details of a specific <code class="docutils literal notranslate"><span class="pre">Var</span></code> to see the shape, initial value and current value. The <code class="docutils literal notranslate"><span class="pre">shareable</span></code> attribute controls whether a <code class="docutils literal notranslate"><span class="pre">Var</span></code> can be manipulated via remote memory access. Learn more about about this topic in the <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial07_remote_memory_access.ipynb">remote memory access tutorial</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Variable: v
+    shape: (3,)
+    init: 0
+    shareable: True
+    value: 0
+</pre></div></div>
+</div>
+<p>We can take a look at the random weights of <code class="docutils literal notranslate"><span class="pre">Dense</span></code> by calling the <code class="docutils literal notranslate"><span class="pre">get</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dense</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[0.48667088, 0.24619592, 0.89903799],
+       [0.96371252, 0.58821522, 0.37490556]])
+</pre></div></div>
+</div>
+<div class="alert alert-block alert-info"><p>Note: There is also a <code class="docutils literal notranslate"><span class="pre">set</span></code> function available to change the value of a <code class="docutils literal notranslate"><span class="pre">Var</span></code> after the network was executed.</p>
+</div></div>
+<div class="section" id="Record-internal-Vars-over-time">
+<h3>Record internal Vars over time<a class="headerlink" href="#Record-internal-Vars-over-time" title="Permalink to this headline"></a></h3>
+<p>In order to record the evolution of the internal <code class="docutils literal notranslate"><span class="pre">Vars</span></code> over time, we need a <code class="docutils literal notranslate"><span class="pre">Monitor</span></code>. For this example, we want to record the membrane potential of both <code class="docutils literal notranslate"><span class="pre">LIF</span></code> Processes, hence we need two <code class="docutils literal notranslate"><span class="pre">Monitors</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
+
+<span class="n">monitor_lif1</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+<span class="n">monitor_lif2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>We can define the <code class="docutils literal notranslate"><span class="pre">Var</span></code> that a <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> should record, as well as the recording duration, using the <code class="docutils literal notranslate"><span class="pre">probe</span></code> function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">monitor_lif1</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
+<span class="n">monitor_lif2</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="alert alert-block alert-info"><p>Note: Currently, the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> can only record a single <code class="docutils literal notranslate"><span class="pre">Var</span></code> per <code class="docutils literal notranslate"><span class="pre">Process</span></code> and supports only CPU. This functionality will be extended in future releases.</p>
+</div></div>
+<div class="section" id="Execution">
+<h3>Execution<a class="headerlink" href="#Execution" title="Permalink to this headline"></a></h3>
+<p>Now, that we finished to set up the network and recording <code class="docutils literal notranslate"><span class="pre">Processes</span></code>, we can execute the network by simply calling the <code class="docutils literal notranslate"><span class="pre">run</span></code> function of one of the <code class="docutils literal notranslate"><span class="pre">Processes</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">run</span></code> function requires two parameters, a <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code> and a <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code>. The <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code> defines <em>how</em> the network runs (i.e. for how long) while the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> defines on which hardware backend the <code class="docutils literal notranslate"><span class="pre">Processes</span></code> should be mapped and executed.</p>
+<div class="section" id="Run-Conditions">
+<h4>Run Conditions<a class="headerlink" href="#Run-Conditions" title="Permalink to this headline"></a></h4>
+<p>Let’s investigate the different possibilities for <code class="docutils literal notranslate"><span class="pre">RunConditions</span></code>. One option is <code class="docutils literal notranslate"><span class="pre">RunContinuous</span></code> which executes the network continuously and non-blocking until <code class="docutils literal notranslate"><span class="pre">pause</span></code> or <code class="docutils literal notranslate"><span class="pre">stop</span></code> is called.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunContinuous</span>
+<span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunContinuous</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>The second option is <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code>, which allows you to define an exact amount of time steps the network should run.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span><span class="p">,</span> <span class="n">RunContinuous</span>
+
+<span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>For this example. we will use <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code> and let the network run exactly <code class="docutils literal notranslate"><span class="pre">num_steps</span></code> time steps.</p>
+</div>
+<div class="section" id="RunConfigs">
+<h4>RunConfigs<a class="headerlink" href="#RunConfigs" title="Permalink to this headline"></a></h4>
+<p>Next, we need to provide a <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code>. As mentioned above, The <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> defines on which hardware backend the network is executed.</p>
+<p>For example, we could run the network on the Loihi1 processor using the <code class="docutils literal notranslate"><span class="pre">Loihi1HwCfg</span></code>, on Loihi2 using the <code class="docutils literal notranslate"><span class="pre">Loihi2HwCfg</span></code>, or on CPU using the <code class="docutils literal notranslate"><span class="pre">Loihi1SimCfg</span></code>. The compiler and runtime then automatically select the correct <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> such that the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> can be fulfilled.</p>
+<p>For this section of the tutorial, we will run our network on CPU, later we will show how to run the same network on the Loihi2 processor.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+
+<span class="n">run_cfg</span> <span class="o">=</span> <span class="n">Loihi1SimCfg</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execute">
+<h4>Execute<a class="headerlink" href="#Execute" title="Permalink to this headline"></a></h4>
+<p>Finally, we can simply call the <code class="docutils literal notranslate"><span class="pre">run</span></code> function of the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> process and provide the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_condition</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Retrieve-recorded-data">
+<h3>Retrieve recorded data<a class="headerlink" href="#Retrieve-recorded-data" title="Permalink to this headline"></a></h3>
+<p>After the simulation has stopped, we can call <code class="docutils literal notranslate"><span class="pre">get_data</span></code> on the two monitors to retrieve the recorded membrane potentials.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data_lif1</span> <span class="o">=</span> <span class="n">monitor_lif1</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">data_lif2</span> <span class="o">=</span> <span class="n">monitor_lif2</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Alternatively, we can also use the provided <code class="docutils literal notranslate"><span class="pre">plot</span></code> functionality of the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code>, to plot the recorded data. As we can see, the bias of the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population drives the membrane potential to the threshold which generates output spikes. Those output spikes are passed through the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer as input to the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Create a subplot for each monitor</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c1"># Plot the recorded data</span>
+<span class="n">monitor_lif1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+<span class="n">monitor_lif2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_40_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_40_0.png" />
+</div>
+</div>
+<p>As a last step we can stop the runtime by calling the <code class="docutils literal notranslate"><span class="pre">stop</span></code> function. <code class="docutils literal notranslate"><span class="pre">Stop</span></code> will terminate the <code class="docutils literal notranslate"><span class="pre">Runtime</span></code> and all states will be lost.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif2</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Summary">
+<h3>Summary<a class="headerlink" href="#Summary" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>There are many tools available in the Process Library to construct basic networks</p></li>
+<li><p>The fundamental building block in Lava is the <code class="docutils literal notranslate"><span class="pre">Process</span></code></p></li>
+<li><p>Each <code class="docutils literal notranslate"><span class="pre">Process</span></code> consists of <code class="docutils literal notranslate"><span class="pre">Vars</span></code> and <code class="docutils literal notranslate"><span class="pre">Ports</span></code></p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">Process</span></code> defines a common interface across hardware backends, but not the behavior</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> defines the behavior of a <code class="docutils literal notranslate"><span class="pre">Process</span></code> for a specific hardware backend</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vars</span></code> store internal states, <code class="docutils literal notranslate"><span class="pre">Ports</span></code> are used to implement communication channels between processes</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> defines on which hardware backend the network runs</p></li>
+</ul>
+</div>
+<div class="section" id="Learn-more-about">
+<h3>Learn more about<a class="headerlink" href="#Learn-more-about" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial02_processes.ipynb">Processes</a> and <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial06_hierarchical_processes.ipynb">hierarchical Processes</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial05_connect_processes.ipynb">Possible connectivity patterns</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial07_remote_memory_access.ipynb">Remote memory access</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial04_execution.ipynb">Execution</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="2.-Create-a-custom-Process">
+<h2>2. Create a custom Process<a class="headerlink" href="#2.-Create-a-custom-Process" title="Permalink to this headline"></a></h2>
+<p>In the previous section of this tutorial, we used <code class="docutils literal notranslate"><span class="pre">Processes</span></code> which were available in the Process Library. In many cases, this might be sufficient and the Process Library is constantly growing. Nevertheless, the Process Library can not cover all use-cases. Hence, Lava makes it very easy to create new <code class="docutils literal notranslate"><span class="pre">Processes</span></code>. In the following section, we want to show how to implement a custom <code class="docutils literal notranslate"><span class="pre">Process</span></code> and the corresponding behavior using a <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code>.</p>
+<p>The example of the previous section implemented a bias driven LIF-Dense-LIF network. One crucial aspect which is missing this example, is the input/output interaction with sensors and actuators. Commonly used sensors would be Dynamic Vision Sensors or artificial cochleas, but for demonstration purposes we will implement a simple <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>. The purpose of the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> is to output random spikes to drive the LIF-Dense-LIF network.</p>
+<p>Let’s start by importing the necessary classes from Lava.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">OutPort</span>
+</pre></div>
+</div>
+</div>
+<p>All <code class="docutils literal notranslate"><span class="pre">Processes</span></code> in Lava inherit from a common base class called <code class="docutils literal notranslate"><span class="pre">AbstractProcess</span></code>. Additionally, we need <code class="docutils literal notranslate"><span class="pre">Var</span></code> for storing the spike probability and <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> to define the output connections for our <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">SpikeGenerator</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Spike generator process provides spikes to subsequent Processes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape: tuple</span>
+<span class="sd">        defines the dimensionality of the generated spikes per timestep</span>
+<span class="sd">    spike_prob: int</span>
+<span class="sd">        spike probability in percent</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">spike_prob</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spike_prob</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span> <span class="n">init</span><span class="o">=</span><span class="n">spike_prob</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p>The constructor of <code class="docutils literal notranslate"><span class="pre">Var</span></code> requires the shape of the data to be stored and some initial value. We use this functionality to store the spike data. Similarly, we define an <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> for our <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>.</p>
+<div class="section" id="Create-a-new-ProcessModel">
+<h3>Create a new ProcessModel<a class="headerlink" href="#Create-a-new-ProcessModel" title="Permalink to this headline"></a></h3>
+<p>As mentioned earlier, the <code class="docutils literal notranslate"><span class="pre">Process</span></code> only defines the interface but not the behavior of the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>. We will do that in a separate <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> which has the advantage that we can define the behavior of a <code class="docutils literal notranslate"><span class="pre">Process</span></code> on different hardware backends without changing the interface (see figure below). More details about the different kinds of <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> can be found in the dedicated in-depth tutorials
+(<a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial03_process_models.ipynb">here</a> and <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial06_hierarchical_processes.ipynb">here</a>). Lava automatically selects the correct <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> for each <code class="docutils literal notranslate"><span class="pre">Process</span></code> given the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code>.</p>
+<p><img alt="process_models.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/proc_models.png" /></p>
+<p>So, let’s go ahead and define the behavior of the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> on a CPU in Python. Later in this tutorial we will show how to implement the same behavior on an embedded CPU in C and how to implement the behavior of a <code class="docutils literal notranslate"><span class="pre">LIF</span></code> process on a Loihi2 neuro-core.</p>
+<p>We first import all necessary classes from Lava.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyOutPort</span>
+</pre></div>
+</div>
+</div>
+<p>All <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> defined to run on CPU are written in Python and inherit from the common class called <code class="docutils literal notranslate"><span class="pre">PyLoihiProcessModel</span></code>. Further, we use the decorators <code class="docutils literal notranslate"><span class="pre">requires</span></code> and <code class="docutils literal notranslate"><span class="pre">implements</span></code> to define which computational resources (i.e. CPU, GPU, Loihi1NeuroCore, Loihi2NeuroCore) are required to execute this <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> and which <code class="docutils literal notranslate"><span class="pre">Process</span></code> it implements. Finally, we need to specify the types of <code class="docutils literal notranslate"><span class="pre">Vars</span></code> and <code class="docutils literal notranslate"><span class="pre">Ports</span></code> in our <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> using <code class="docutils literal notranslate"><span class="pre">LavaPyType</span></code> and <code class="docutils literal notranslate"><span class="pre">PyOutPort</span></code>.</p>
+<div class="alert alert-block alert-info"><p>Note: It is important to mention that the <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> needs to implement the exact same Vars and Ports of the parent process using the same class attribute names.</p>
+</div><p>Additionally, we define that our <code class="docutils literal notranslate"><span class="pre">PySpikeGeneratorModel</span></code> follows the <code class="docutils literal notranslate"><span class="pre">LoihiProtocol</span></code>. The <code class="docutils literal notranslate"><span class="pre">LoihiProtocol</span></code> defines that the execution of a model follows a specific sequence of phases. For example, there is the <em>spiking phase</em> (<code class="docutils literal notranslate"><span class="pre">run_spk</span></code>) in which input spikes are received, internal <code class="docutils literal notranslate"><span class="pre">Vars</span></code> are updated and output spikes are sent. There are other phases such as the <em>learning phase</em> (<code class="docutils literal notranslate"><span class="pre">run_lrn</span></code>) in which online learning takes place, or the <em>post management phase</em> (<code class="docutils literal notranslate"><span class="pre">run_post_mgmt</span></code>) in
+which memory content is updated. As the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> basically just sends out spikes, the correct place to implement its behavior is the <code class="docutils literal notranslate"><span class="pre">run_spk</span></code> phase.</p>
+<p>To implement the behavior, we need to have access to the global simulation time. We can easily access the simulation time with <code class="docutils literal notranslate"><span class="pre">self.time_step</span></code> and use that to index the <code class="docutils literal notranslate"><span class="pre">spike_data</span></code> and send out the corresponding spikes through the <code class="docutils literal notranslate"><span class="pre">OutPort</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">SpikeGenerator</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
+<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PySpikeGeneratorModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Spike Generator process model.&quot;&quot;&quot;</span>
+    <span class="n">spike_prob</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">s_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Generate random spike data</span>
+        <span class="n">spike_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">spike_prob</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">spike_prob</span><span class="o">/</span><span class="mi">100</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Send spikes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">spike_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="alert alert-block alert-info"><p>Note: For the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> we only needed an <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> which provides the <code class="docutils literal notranslate"><span class="pre">send</span></code> function to send data. For the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> the corresponding function to receive data is called <code class="docutils literal notranslate"><span class="pre">recv</span></code>.</p>
+</div><p>Next, we want to redefine our network as in the example before with the exception that we turn off all biases.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create processes</span>
+<span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">),</span>                         <span class="c1"># Number of units in this process</span>
+           <span class="n">vth</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>                             <span class="c1"># Membrane threshold</span>
+           <span class="n">dv</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse membrane time-constant</span>
+           <span class="n">du</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse synaptic time-constant</span>
+           <span class="n">bias_mant</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>                        <span class="c1"># Bias added to the membrane voltage in every timestep</span>
+           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;lif1&quot;</span><span class="p">)</span>
+
+<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>     <span class="c1"># Initial value of the weights, chosen randomly</span>
+              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dense&#39;</span><span class="p">)</span>
+
+<span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">),</span>                         <span class="c1"># Number of units in this process</span>
+           <span class="n">vth</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>                             <span class="c1"># Membrane threshold</span>
+           <span class="n">dv</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse membrane time-constant</span>
+           <span class="n">du</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>                              <span class="c1"># Inverse synaptic time-constant</span>
+           <span class="n">bias_mant</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>                        <span class="c1"># Bias added to the membrane voltage in every timestep</span>
+           <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Connect the OutPort of lif1 to the InPort of dense</span>
+<span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+
+<span class="c1"># Connect the OutPort of dense to the InPort of lif2</span>
+<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+
+<span class="c1"># Create Monitors to record membrane potentials</span>
+<span class="n">monitor_lif1</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+<span class="n">monitor_lif2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+
+<span class="c1"># Probe membrane potentials from the two LIF populations</span>
+<span class="n">monitor_lif1</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
+<span class="n">monitor_lif2</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Use-the-custom-SpikeGenerator">
+<h3>Use the custom SpikeGenerator<a class="headerlink" href="#Use-the-custom-SpikeGenerator" title="Permalink to this headline"></a></h3>
+<p>We instantiate the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> as usual with the shape of the fist <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
+<p>To define the connectivity between the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> and the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population, we us another <code class="docutils literal notranslate"><span class="pre">Dense</span></code> Layer. Now, we can connect its <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> to the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer and the <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer to the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> of the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Instantiate SpikeGenerator</span>
+<span class="n">spike_gen</span> <span class="o">=</span> <span class="n">SpikeGenerator</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">),</span> <span class="n">spike_prob</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Instantiate Dense</span>
+<span class="n">dense_input</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="c1"># one-to-one connectivity</span>
+
+<span class="c1"># Connect spike_gen to dense_input</span>
+<span class="n">spike_gen</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_input</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+
+<span class="c1"># Connect dense_input to LIF1 population</span>
+<span class="n">dense_input</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Execute-and-plot">
+<h3>Execute and plot<a class="headerlink" href="#Execute-and-plot" title="Permalink to this headline"></a></h3>
+<p>Now that our network is complete, we can execute it the same way as before using the <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code> and <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> we created in the previous example.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_condition</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And now, we can retrieve the recorded data and plot the membrane potentials of the two <code class="docutils literal notranslate"><span class="pre">LIF</span></code> populations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a subplot for each monitor</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c1"># Plot the recorded data</span>
+<span class="n">monitor_lif1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+<span class="n">monitor_lif2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_64_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_64_0.png" />
+</div>
+</div>
+<p>As we can see, the spikes provided by the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> are sucessfully sent to the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population. which in turn sends its output spikes to the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">lif2</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Summary<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Define custom a <code class="docutils literal notranslate"><span class="pre">Process</span></code> by inheritance from <code class="docutils literal notranslate"><span class="pre">AbstractProcess</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vars</span></code> are used to store internal data in the <code class="docutils literal notranslate"><span class="pre">Process</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ports</span></code> are used to connect to other <code class="docutils literal notranslate"><span class="pre">Processes</span></code></p></li>
+<li><p>The behavior of a <code class="docutils literal notranslate"><span class="pre">Process</span></code> is defined in a <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> are aware of their hardware backend, they get selected automatically by the compiler/runtime</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PyProcessModels</span></code> run on CPU</p></li>
+<li><p>Number and names of <code class="docutils literal notranslate"><span class="pre">Vars</span></code> and <code class="docutils literal notranslate"><span class="pre">Ports</span></code> of a <code class="docutils literal notranslate"><span class="pre">ProcessModel</span></code> must match those of the <code class="docutils literal notranslate"><span class="pre">Process</span></code> it implements</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Learn more about<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial03_process_models.ipynb">ProcessModels</a></p></li>
+</ul>
+</div>
+<div class="section" id="How-to-learn-more?">
+<h3>How to learn more?<a class="headerlink" href="#How-to-learn-more?" title="Permalink to this headline"></a></h3>
+<p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org/">Lava documentation</a> or dive deeper with the <a class="reference external" href="https://github.com/lava-nc/lava/tree/main/tutorials/in_depth">in-depth tutorials</a>.</p>
+<p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to <a class="reference external" href="http://eepurl.com/hJCyhb">our newsletter</a>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../in_depth/tutorial01_installing_lava.html" class="btn btn-neutral float-left" title="Installing Lava" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../in_depth/tutorial02_processes.html" class="btn btn-neutral float-right" title="Processes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

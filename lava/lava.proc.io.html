@@ -360,7 +360,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="lava.html">Lava</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="lava.magma.html">Magma</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava.magma.compiler.html">lava.magma.compiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava.magma.core.html">lava.magma.core</a></li>
@@ -462,7 +462,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
-          <li><a href="lava.html">Lava API reference</a> &raquo;</li>
+          <li><a href="lava.html">Lava</a> &raquo;</li>
           <li><a href="lava.proc.html">Lava process library</a> &raquo;</li>
       <li>lava.proc.io</li>
       <li class="wy-breadcrumbs-aside">
@@ -1333,11 +1333,46 @@ executed or not for the current timestep.</p>
 <span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.data" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.model_id">
+<span class="sig-name descname"><span class="pre">model_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.model_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.process_to_service">
+<span class="sig-name descname"><span class="pre">process_to_service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspSendPort" title="lava.magma.compiler.channels.pypychannel.CspSendPort"><span class="pre">CspSendPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.process_to_service" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.py_ports">
+<span class="sig-name descname"><span class="pre">py_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><span class="pre">AbstractPyPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.py_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.run_spk">
 <span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.run_spk" title="Permalink to this definition"></a></dt>
 <dd><p>Receive spikes and store in an internal variable</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.service_to_process">
+<span class="sig-name descname"><span class="pre">service_to_process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort"><span class="pre">CspRecvPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.service_to_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.var_id_to_var_map">
+<span class="sig-name descname"><span class="pre">var_id_to_var_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.var_id_to_var_map" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.sink.AbstractPyReceiveModel.var_ports">
+<span class="sig-name descname"><span class="pre">var_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.sink.AbstractPyReceiveModel.var_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1558,6 +1593,26 @@ memory. Works as a substitute for probing.</p>
 <span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.data" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.model_id">
+<span class="sig-name descname"><span class="pre">model_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.model_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.proc_params">
+<span class="sig-name descname"><span class="pre">proc_params</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ProcessParameters'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.proc_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.process_to_service">
+<span class="sig-name descname"><span class="pre">process_to_service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspSendPort" title="lava.magma.compiler.channels.pypychannel.CspSendPort"><span class="pre">CspSendPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.process_to_service" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.py_ports">
+<span class="sig-name descname"><span class="pre">py_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.AbstractPyPort" title="lava.magma.core.model.py.ports.AbstractPyPort"><span class="pre">AbstractPyPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.py_ports" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.run_spk">
 <span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.run_spk" title="Permalink to this definition"></a></dt>
@@ -1567,6 +1622,21 @@ memory. Works as a substitute for probing.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.s_out">
 <span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.service_to_process">
+<span class="sig-name descname"><span class="pre">service_to_process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.compiler.channels.html#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="lava.magma.compiler.channels.pypychannel.CspRecvPort"><span class="pre">CspRecvPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.service_to_process" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.var_id_to_var_map">
+<span class="sig-name descname"><span class="pre">var_id_to_var_map</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ty.Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.var_id_to_var_map" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.source.AbstractPyRingBuffer.var_ports">
+<span class="sig-name descname"><span class="pre">var_ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyVarPort" title="lava.magma.core.model.py.ports.PyVarPort"><span class="pre">PyVarPort</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.proc.io.source.AbstractPyRingBuffer.var_ports" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
