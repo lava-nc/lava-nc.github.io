@@ -1,15 +1,12 @@
 lava.lib.optimization.solvers
 =============================
 
+.. py:module:: lava.lib.optimization.solvers
+
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
+   lava.lib.optimization.solvers.bayesian
    lava.lib.optimization.solvers.generic
    lava.lib.optimization.solvers.qp
-
-
-.. automodule:: lava.lib.optimization.solvers
-   :members:
-   :undoc-members:
-   :show-inheritance:

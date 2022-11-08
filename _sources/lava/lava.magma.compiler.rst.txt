@@ -5,7 +5,7 @@ lava.magma.compiler
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.compiler.builders
    lava.magma.compiler.channels

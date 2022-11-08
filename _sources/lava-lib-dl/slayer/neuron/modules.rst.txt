@@ -2,6 +2,6 @@ Neuron
 ======
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    neuron.rst

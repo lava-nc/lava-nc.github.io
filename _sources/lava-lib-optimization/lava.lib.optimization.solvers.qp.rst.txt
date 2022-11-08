@@ -1,6 +1,8 @@
 lava.lib.optimization.solvers.qp
 ================================
 
+.. py:module:: lava.lib.optimization.solvers.qp
+
 
 
 lava.lib.optimization.solvers.qp.models
@@ -38,12 +40,6 @@ lava.lib.optimization.solvers.qp.solver
 
 
 .. automodule:: lava.lib.optimization.solvers.qp.solver
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-.. automodule:: lava.lib.optimization.solvers.qp
    :members:
    :undoc-members:
    :show-inheritance:

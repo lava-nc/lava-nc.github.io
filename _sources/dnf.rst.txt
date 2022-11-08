@@ -27,8 +27,8 @@ What is lava-dnf?
 lava-dnf is a library within the Lava software framework. The main building 
 blocks in Lava are processes. lava-dnf provides
 processes and other software infrastructure to build architectures composed of
-DNFs. It also provides tools to direct sensory input to
-neural architectures and to read output, for instance for motor control.
+DNFs. In particular, it provides functions that generate connectivity patterns
+common to DNF architectures.
 
 The primary focus of lava-dnf today is on robotic applications: sensing and
 perception, motion control, behavioral organization, map formation, and
@@ -49,17 +49,17 @@ Building DNF architectures
 #. Forward connectivity to connect multiple DNFs
 #. Structured input from spike generators
 
+Running DNF architectures
+
+#. On CPU (Python simulation)
+#. On Loihi 2
+
 Examples demonstrating basic DNF regimes and instabilities
 
 #. Detection of input
 #. Selection of input
 #. Working memory of input
-#. Neural oscillator
-
-Infrastructure
-
-#. Sensor and data input/output
-#. Plotting
+#. Relational networks
 
 
 Example
@@ -67,17 +67,18 @@ Example
 
 .. code-block:: python
 
-   from lava.lib.dnf.populations import Population
-   from lava.lib.dnf.kernels import SelectiveKernel
-   from lava.lib.dnf.connect import connect
-   from lava.lib.dnf.operations import Instar, OneToOne
-   
-   # create population of 20x20 spiking neurons
-   dnf = Population(shape=(20, 20))
-   
-   # create a selective kernel
-   kernel = SelectiveKernel(amp_exc=18, width_exc=[4, 4], global_inh=-15)
-   
-   # apply the kernel to the population to create a DNF with a selective regime
-   connect(dnf, dnf, [Instar(kernel)])
+    from lava.proc.lif.process import LIF
+    from lava.lib.dnf.kernels.kernels import SelectiveKernel
+    from lava.lib.dnf.connect.connect import connect
+    from lava.lib.dnf.operations.operations import Convolution
+
+    # Create a population of 20x20 spiking neurons.
+    dnf = LIF(shape=(20, 20))
+
+    # Create a selective kernel.
+    kernel = SelectiveKernel(amp_exc=18, width_exc=[4, 4], global_inh=-15)
+
+    # Apply the kernel to the population to create a DNF with a selective
+    # regime.
+    connect(dnf.s_out, dnf.a_in, [Convolution(kernel)])
 

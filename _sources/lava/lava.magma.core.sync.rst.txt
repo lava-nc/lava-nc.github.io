@@ -5,7 +5,7 @@ lava.magma.core.sync
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.core.sync.protocols
 

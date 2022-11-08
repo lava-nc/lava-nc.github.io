@@ -22,5 +22,6 @@ This guide to programming Lava will provide a growing collection of learning res
     ../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.ipynb
     ../lava/notebooks/in_depth/tutorial08_stdp.ipynb
     ../lava/notebooks/in_depth/tutorial09_custom_learning_rules.ipynb
+    ../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.ipynb
 
 

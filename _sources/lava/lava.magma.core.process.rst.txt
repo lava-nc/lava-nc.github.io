@@ -5,7 +5,7 @@ lava.magma.core.process
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.core.process.ports
 
@@ -46,6 +46,19 @@ lava.magma.core.process.message\_interface\_enum
 
 
 .. automodule:: lava.magma.core.process.message_interface_enum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+lava.magma.core.process.neuron
+------------------------------
+
+.. inheritance-diagram:: lava.magma.core.process.neuron
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.core.process.neuron
    :members:
    :undoc-members:
    :show-inheritance:

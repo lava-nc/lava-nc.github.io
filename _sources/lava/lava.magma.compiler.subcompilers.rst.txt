@@ -5,7 +5,7 @@ lava.magma.compiler.subcompilers
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.compiler.subcompilers.py
 

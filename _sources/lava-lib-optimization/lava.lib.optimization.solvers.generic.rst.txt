@@ -1,10 +1,17 @@
 lava.lib.optimization.solvers.generic
 =====================================
 
-.. toctree::
-   :maxdepth: 10
+.. py:module:: lava.lib.optimization.solvers.generic
 
+
+.. toctree::
+   :maxdepth: 2
+
+   lava.lib.optimization.solvers.generic.cost_integrator
+   lava.lib.optimization.solvers.generic.read_gate
+   lava.lib.optimization.solvers.generic.scif
    lava.lib.optimization.solvers.generic.monitoring_processes
+
 
 
 lava.lib.optimization.solvers.generic.builder
@@ -46,19 +53,6 @@ lava.lib.optimization.solvers.generic.hierarchical\_processes
    :undoc-members:
    :show-inheritance:
 
-lava.lib.optimization.solvers.generic.models
---------------------------------------------
-
-.. inheritance-diagram:: lava.lib.optimization.solvers.generic.models
-   :parts: 1
-
-
-
-.. automodule:: lava.lib.optimization.solvers.generic.models
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 lava.lib.optimization.solvers.generic.processes
 -----------------------------------------------
 
@@ -94,12 +88,6 @@ lava.lib.optimization.solvers.generic.sub\_process\_models
 
 
 .. automodule:: lava.lib.optimization.solvers.generic.sub_process_models
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-.. automodule:: lava.lib.optimization.solvers.generic
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spike-timing Dependent Plasticity (STDP) &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -14,7 +15,9 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -232,7 +235,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#Plot-spike-trains">Plot spike trains</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Plot-traces">Plot traces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
@@ -254,6 +256,33 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html">Three Factor Learning with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-three-factor-learning-rule-interfaces-in-Lava">Defining three-factor learning rule interfaces in Lava</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Reward-modulated-Spike-Timing-Dependent-Plasticity-(R-STDP)-learning-rule">Reward-modulated Spike-Timing Dependent Plasticity (R-STDP) learning rule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-a-simple-learning-network-with-localized-reward-signals">Defining a simple learning network with localized reward signals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-network-parameters-and-weights">Initialize network parameters and weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Generate-binary-input-and-graded-reward-spikes">Generate binary input and graded reward spikes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-Network-Processes">Initialize Network Processes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Connect-Network-Processes">Connect Network Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Create-monitors-to-observe-the-weight-and-trace-dynamics-during-learning">Create monitors to observe the weight and trace dynamics during learning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Run-the-network">Run the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Visualize-the-learning-results">Visualize the learning results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-eligibility-trace-dynamics">Plot eligibility trace dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-reward-trace-dynamics">Plot reward trace dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Advanced-Topic:-Implementing-custom-learning-rule-interfaces">Advanced Topic: Implementing custom learning rule interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
 </ul>
 </li>
 </ul>
@@ -307,9 +336,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#id1">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../tutorial_01_solving_lasso.html">Quadratic Programming with Lava</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../tutorial_02_solving_qubos.html">Quadratic Unconstrained Binary Optimization (QUBO) with Lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../optimization.html#id1">Tutorials</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -369,15 +396,12 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../lava.proc.html">Lava process library</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.conv.html">lava.proc.conv</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.cost_integrator.html">lava.proc.cost_integrator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.dense.html">lava.proc.dense</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.io.html">lava.proc.io</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.lif.html">lava.proc.lif</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.monitor.html">lava.proc.monitor</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.read_gate.html">lava.proc.read_gate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.receiver.html">lava.proc.receiver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../lava.proc.scif.html">lava.proc.scif</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.sdn.html">lava.proc.sdn</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../lava.proc.spiker.html">lava.proc.spiker</a></li>
 </ul>
@@ -426,9 +450,40 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/index.html">Lava - Dynamic Neural Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.html">Lava - Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.connect.html">lava.lib.dnf.connect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.connect.html#lava-lib-dnf-connect-connect">lava.lib.dnf.connect.connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.connect.html#lava-lib-dnf-connect-exceptions">lava.lib.dnf.connect.exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.kernels.html">lava.lib.dnf.kernels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.kernels.html#lava-lib-dnf-kernels-kernels">lava.lib.dnf.kernels.kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.operations.html">lava.lib.dnf.operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-enums">lava.lib.dnf.operations.enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-exceptions">lava.lib.dnf.operations.exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-operations">lava.lib.dnf.operations.operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-shape-handlers">lava.lib.dnf.operations.shape_handlers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.inputs.html">lava.lib.dnf.inputs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.inputs.gauss_pattern.html">lava.lib.dnf.inputs.gauss_pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.inputs.rate_code_spike_gen.html">lava.lib.dnf.inputs.rate_code_spike_gen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.utils.html">lava.lib.dnf.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-convenience">lava.lib.dnf.utils.convenience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-math">lava.lib.dnf.utils.math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-plotting">lava.lib.dnf.utils.plotting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-validation">lava.lib.dnf.utils.validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.bayesian.html">lava.lib.optimization.problems.bayesian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
@@ -437,8 +492,14 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.bayesian.html">lava.lib.optimization.solvers.bayesian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.utils.html">lava.lib.optimization.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.utils.generators.html">lava.lib.optimization.utils.generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../lava-lib-optimization/lava.lib.optimization.utils.html#lava-lib-optimization-utils-solver-tuner">lava.lib.optimization.utils.solver_tuner</a></li>
 </ul>
 </li>
 </ul>
@@ -682,11 +743,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -695,10 +757,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -710,12 +776,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -744,11 +813,11 @@ div.rendered_html tbody tr:hover {
 </style>
 <p><em>Copyright (C) 2021 Intel Corporation</em> <em>SPDX-License-Identifier: BSD-3-Clause</em> <em>See: https://spdx.org/licenses/</em></p>
 <hr class="docutils" />
-<div class="section" id="Spike-timing-Dependent-Plasticity-(STDP)">
-<h1>Spike-timing Dependent Plasticity (STDP)<a class="headerlink" href="#Spike-timing-Dependent-Plasticity-(STDP)" title="Permalink to this headline"></a></h1>
+<section id="Spike-timing-Dependent-Plasticity-(STDP)">
+<h1>Spike-timing Dependent Plasticity (STDP)<a class="headerlink" href="#Spike-timing-Dependent-Plasticity-(STDP)" title="Permalink to this heading"></a></h1>
 <p><strong>Motivation</strong><em>: In this tutorial, we will demonstrate usage of a software model of Loihi’s learning engine, exposed in Lava. This involves the LearningRule object for learning rule and other learning-related information encapsulation and the LearningDense Lava Process modelling learning-enabled connections.</em></p>
-<div class="section" id="This-tutorial-assumes-that-you:">
-<h2>This tutorial assumes that you:<a class="headerlink" href="#This-tutorial-assumes-that-you:" title="Permalink to this headline"></a></h2>
+<section id="This-tutorial-assumes-that-you:">
+<h2>This tutorial assumes that you:<a class="headerlink" href="#This-tutorial-assumes-that-you:" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>have the <a class="reference external" href="../../in_depth/tutorial01_installing_lava.ipynb">Lava framework installed</a></p></li>
 <li><p>are familiar with the <a class="reference external" href="../../in_depth/tutorial02_processes.ipynb">Process concept in Lava</a></p></li>
@@ -757,17 +826,16 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>This tutorial gives a bird’s-eye view of how to make use of the available learning rules in Lavas Process Library. For this purpose, we will create a network of LIF and Dense processes with one plastic connection and generate frozen patterns of activity. We can easily choose between a floating point simulation of the learning engine and a fixed point simulation, which approximates the behavior on the Loihi neuromorphic hardware. We also will create monitors to observe the behavior of the weights
 and activity traces of the neurons and learning rules.</p>
-<div class="section" id="STDP-from-Lavas-Process-Library">
-<h3>STDP from Lavas Process Library<a class="headerlink" href="#STDP-from-Lavas-Process-Library" title="Permalink to this headline"></a></h3>
+<section id="STDP-from-Lavas-Process-Library">
+<h3>STDP from Lavas Process Library<a class="headerlink" href="#STDP-from-Lavas-Process-Library" title="Permalink to this heading"></a></h3>
 <p>Let’s first generate the random, frozen input and define all parameters for the network.</p>
-<div class="section" id="Parameters">
-<h4>Parameters<a class="headerlink" href="#Parameters" title="Permalink to this headline"></a></h4>
+<section id="Parameters">
+<h4>Parameters<a class="headerlink" href="#Parameters" title="Permalink to this heading"></a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Set this tag to &quot;fixed_pt&quot; or &quot;floating_pt&quot; to choose the corresponding models.</span>
 <span class="n">SELECT_TAG</span> <span class="o">=</span> <span class="s2">&quot;floating_pt&quot;</span>
@@ -811,16 +879,15 @@ and activity traces of the neurons and learning rules.</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Define-STDP-learning-rule">
-<h4>Define STDP learning rule<a class="headerlink" href="#Define-STDP-learning-rule" title="Permalink to this headline"></a></h4>
+</section>
+<section id="Define-STDP-learning-rule">
+<h4>Define STDP learning rule<a class="headerlink" href="#Define-STDP-learning-rule" title="Permalink to this heading"></a></h4>
 <p>Next, lets instatiate the STDP learning rule from the Lava Process Library. The STDPLoihi learning rule provides the parameters as described in Gerstner and al. 1996 (see also <a class="reference external" href="http://www.scholarpedia.org/article/Spike-timing_dependent_plasticity">http://www.scholarpedia.org/article/Spike-timing_dependent_plasticity</a>).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">lava.proc.learning_rules.stdp_learning_rule</span> <span class="kn">import</span> <span class="n">STDPLoihi</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.learning_rules.stdp_learning_rule</span> <span class="kn">import</span> <span class="n">STDPLoihi</span>
 </pre></div>
 </div>
 </div>
@@ -828,29 +895,28 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">stdp</span> <span class="o">=</span> <span class="n">STDPLoihi</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stdp</span> <span class="o">=</span> <span class="n">STDPLoihi</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">A_plus</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">A_minus</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">tau_plus</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                  <span class="n">tau_minus</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                 <span class="n">t_epoch</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                 <span class="n">t_epoch</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Create-Network">
-<h4>Create Network<a class="headerlink" href="#Create-Network" title="Permalink to this headline"></a></h4>
+</section>
+<section id="Create-Network">
+<h4>Create Network<a class="headerlink" href="#Create-Network" title="Permalink to this heading"></a></h4>
 <p>The following diagram depics the Lava Process architecture used in this tutorial. It consists of: - 2 Constant pattern generators for injection spike trains to LIF neurons. - 2 <em>LIF</em> Processes representing pre- and post-synaptic Leaky Integrate-and-Fire neurons. - 1 <em>Dense</em> Process representing learning-enable connection between LIF neurons.</p>
 <blockquote>
 <div><p><strong>Note:</strong> All neuronal population (spike generator, LIF) are composed of only 1 neuron in this tutorial.</p>
 </div></blockquote>
 <p><img alt="Architecture.svg" src="https://raw.githubusercontent.com/lava-nc/lava-docs/main/_static/images/tutorial_learning/learning_tutorial_architecture.svg" /></p>
-</div>
-</div>
-</div>
-<div class="section" id="The-plastic-connection-Process">
-<h2>The plastic connection Process<a class="headerlink" href="#The-plastic-connection-Process" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+</section>
+<section id="The-plastic-connection-Process">
+<h2>The plastic connection Process<a class="headerlink" href="#The-plastic-connection-Process" title="Permalink to this heading"></a></h2>
 <p>We now instantiate our plastic Dense process. The Dense Process provides the following Vars and Ports relevant for plasticity:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -879,7 +945,7 @@ and activity traces of the neurons and learning rules.</p>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x0</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/ed7fb0260e58d3ca5851e823ff991dae4cde5671.png" alt="x_0"/> dependency.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzEwLjg4NjI3cHQnIGhlaWdodD0nNi45NDA2MzZwdCcgdmlld0JveD0nNTYuNDEzMjY3IDYwLjYwNjA1MiAxMC44ODYyNyA2Ljk0MDYzNic+CjxkZWZzPgo8cGF0aCBpZD0nZzEtNDgnIGQ9J00zLjg5NzM4NS0yLjU0MjQ2NkMzLjg5NzM4NS0zLjM5NTI2OCAzLjgwOTcxNC0zLjkxMzMyNSAzLjU0NjctNC40MjM0MTJDMy4xOTYwMTUtNS4xMjQ3ODIgMi41NTA0MzYtNS4zMDAxMjUgMi4xMTIwOC01LjMwMDEyNUMxLjEwNzg0Ni01LjMwMDEyNSAuNzQxMjItNC41NTA5MzQgLjYyOTYzOS00LjMyNzc3MUMuMzQyNzE1LTMuNzQ1OTUzIC4zMjY3NzUtMi45NTY5MTIgLjMyNjc3NS0yLjU0MjQ2NkMuMzI2Nzc1LTIuMDE2NDM4IC4zNTA2ODUtMS4yMTE0NTcgLjczMzI1LS41NzM4NDhDMS4wOTk4NzUgLjAxNTk0IDEuNjg5NjY0IC4xNjczNzIgMi4xMTIwOCAuMTY3MzcyQzIuNDk0NjQ1IC4xNjczNzIgMy4xODAwNzUgLjA0NzgyMSAzLjU3ODU4LS43NDEyMkMzLjg3MzQ3NC0xLjMxNTA2OCAzLjg5NzM4NS0yLjAyNDQwOCAzLjg5NzM4NS0yLjU0MjQ2NlpNMi4xMTIwOC0uMDU1NzkxQzEuODQxMDk2LS4wNTU3OTEgMS4yOTExNTgtLjE4MzMxMyAxLjEyMzc4Ni0xLjAyMDE3NEMxLjAzNjExNS0xLjQ3NDQ3MSAxLjAzNjExNS0yLjIyMzY2MSAxLjAzNjExNS0yLjYzODEwN0MxLjAzNjExNS0zLjE4ODA0NSAxLjAzNjExNS0zLjc0NTk1MyAxLjEyMzc4Ni00LjE4NDMwOUMxLjI5MTE1OC00Ljk5NzI2IDEuOTEyODI3LTUuMDc2OTYxIDIuMTEyMDgtNS4wNzY5NjFDMi4zODMwNjQtNS4wNzY5NjEgMi45MzMwMDEtNC45NDE0NjkgMy4wOTI0MDMtNC4yMTYxODlDMy4xODgwNDUtMy43Nzc4MzMgMy4xODgwNDUtMy4xODAwNzUgMy4xODgwNDUtMi42MzgxMDdDMy4xODgwNDUtMi4xNjc4NyAzLjE4ODA0NS0xLjQ1MDU2IDMuMDkyNDAzLTEuMDA0MjM0QzIuOTI1MDMxLS4xNjczNzIgMi4zNzUwOTMtLjA1NTc5MSAyLjExMjA4LS4wNTU3OTFaJy8+CjxwYXRoIGlkPSdnMC0xMjAnIGQ9J001LjY2Njc1LTQuODc3NzA5QzUuMjg0MTg0LTQuODA1OTc4IDUuMTQwNzIyLTQuNTE5MDU0IDUuMTQwNzIyLTQuMjkxOTA1QzUuMTQwNzIyLTQuMDA0OTgxIDUuMzY3ODctMy45MDkzNCA1LjUzNTI0My0zLjkwOTM0QzUuODkzODk4LTMuOTA5MzQgNi4xNDQ5NTYtNC4yMjAxNzQgNi4xNDQ5NTYtNC41NDI5NjRDNi4xNDQ5NTYtNS4wNDUwODEgNS41NzExMDgtNS4yNzIyMjkgNS4wNjg5OTEtNS4yNzIyMjlDNC4zMzk3MjYtNS4yNzIyMjkgMy45MzMyNS00LjU1NDkxOSAzLjgyNTY1NC00LjMyNzc3MUMzLjU1MDY4NS01LjIyNDQwOCAyLjgwOTQ2NS01LjI3MjIyOSAyLjU5NDI3MS01LjI3MjIyOUMxLjM3NDg0NC01LjI3MjIyOSAuNzI5MjY1LTMuNzA2MTAyIC43MjkyNjUtMy40NDMwODhDLjcyOTI2NS0zLjM5NTI2OCAuNzc3MDg2LTMuMzM1NDkyIC44NjA3NzItMy4zMzU0OTJDLjk1NjQxMy0zLjMzNTQ5MiAuOTgwMzI0LTMuNDA3MjIzIDEuMDA0MjM0LTMuNDU1MDQ0QzEuNDEwNzEtNC43ODIwNjcgMi4yMTE3MDYtNS4wMzMxMjYgMi41NTg0MDYtNS4wMzMxMjZDMy4wOTYzODktNS4wMzMxMjYgMy4yMDM5ODUtNC41MzEwMDkgMy4yMDM5ODUtNC4yNDQwODVDMy4yMDM5ODUtMy45ODEwNzEgMy4xMzIyNTQtMy43MDYxMDIgMi45ODg3OTItMy4xMzIyNTRMMi41ODIzMTYtMS40OTQzOTZDMi40MDI5ODktLjc3NzA4NiAyLjA1NjI4OS0uMTE5NTUyIDEuNDIyNjY1LS4xMTk1NTJDMS4zNjI4ODktLjExOTU1MiAxLjA2NDAxLS4xMTk1NTIgLjgxMjk1MS0uMjc0OTY5QzEuMjQzMzM3LS4zNTg2NTUgMS4zMzg5NzktLjcxNzMxIDEuMzM4OTc5LS44NjA3NzJDMS4zMzg5NzktMS4wOTk4NzUgMS4xNTk2NTEtMS4yNDMzMzcgLjkzMjUwMy0xLjI0MzMzN0MuNjQ1NTc5LTEuMjQzMzM3IC4zMzQ3NDUtLjk5MjI3OSAuMzM0NzQ1LS42MDk3MTRDLjMzNDc0NS0uMTA3NTk3IC44OTY2MzggLjExOTU1MiAxLjQxMDcxIC4xMTk1NTJDMS45ODQ1NTggLjExOTU1MiAyLjM5MTAzNC0uMzM0NzQ1IDIuNjQyMDkyLS44MjQ5MDdDMi44MzMzNzUtLjExOTU1MiAzLjQzMTEzMyAuMTE5NTUyIDMuODczNDc0IC4xMTk1NTJDNS4wOTI5MDIgLjExOTU1MiA1LjczODQ4MS0xLjQ0NjU3NSA1LjczODQ4MS0xLjcwOTU4OUM1LjczODQ4MS0xLjc2OTM2NSA1LjY5MDY2LTEuODE3MTg2IDUuNjE4OTI5LTEuODE3MTg2QzUuNTExMzMzLTEuODE3MTg2IDUuNDk5Mzc3LTEuNzU3NDEgNS40NjM1MTItMS42NjE3NjhDNS4xNDA3MjItLjYwOTcxNCA0LjQ0NzMyMy0uMTE5NTUyIDMuOTA5MzQtLjExOTU1MkMzLjQ5MDkwOS0uMTE5NTUyIDMuMjYzNzYxLS40MzAzODYgMy4yNjM3NjEtLjkyMDU0OEMzLjI2Mzc2MS0xLjE4MzU2MiAzLjMxMTU4Mi0xLjM3NDg0NCAzLjUwMjg2NC0yLjE2Mzg4NUwzLjkyMTI5NS0zLjc4OTc4OEM0LjEwMDYyMy00LjUwNzA5OCA0LjUwNzA5OC01LjAzMzEyNiA1LjA1NzAzNi01LjAzMzEyNkM1LjA4MDk0Ni01LjAzMzEyNiA1LjQxNTY5MS01LjAzMzEyNiA1LjY2Njc1LTQuODc3NzA5WicvPgo8L2RlZnM+CjxnIGlkPSdwYWdlMSc+Cjx1c2UgeD0nNTYuNDEzMjY3JyB5PSc2NS43NTM0MjUnIHhsaW5rOmhyZWY9JyNnMC0xMjAnLz4KPHVzZSB4PSc2My4wNjUzNTQnIHk9JzY3LjU0NjY4OCcgeGxpbms6aHJlZj0nI2cxLTQ4Jy8+CjwvZz4KPC9zdmc+" alt="x_0"/> dependency.</p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">tx</span></code></p></td>
@@ -887,15 +953,15 @@ and activity traces of the neurons and learning rules.</p>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x1</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/5ea99039cd8359fa2e14317dbfae4497ebbc1360.png" alt="x_1"/> trace.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzEwLjg4NjI3cHQnIGhlaWdodD0nNi45NDA2MzZwdCcgdmlld0JveD0nNTYuNDEzMjY3IDYwLjYwNjA1MiAxMC44ODYyNyA2Ljk0MDYzNic+CjxkZWZzPgo8cGF0aCBpZD0nZzEtNDknIGQ9J00yLjUwMjYxNS01LjA3Njk2MUMyLjUwMjYxNS01LjI5MjE1NCAyLjQ4NjY3NS01LjMwMDEyNSAyLjI3MTQ4Mi01LjMwMDEyNUMxLjk0NDcwNy00Ljk4MTMyIDEuNTIyMjkxLTQuNzkwMDM3IC43NjUxMzEtNC43OTAwMzdWLTQuNTI3MDI0Qy45ODAzMjQtNC41MjcwMjQgMS40MTA3MS00LjUyNzAyNCAxLjg3Mjk3Ni00Ljc0MjIxN1YtLjY1MzU0OUMxLjg3Mjk3Ni0uMzU4NjU1IDEuODQ5MDY2LS4yNjMwMTQgMS4wOTE5MDUtLjI2MzAxNEguODEyOTUxVjBDMS4xMzk3MjYtLjAyMzkxIDEuODI1MTU2LS4wMjM5MSAyLjE4MzgxMS0uMDIzOTFTMy4yMzU4NjYtLjAyMzkxIDMuNTYyNjQgMFYtLjI2MzAxNEgzLjI4MzY4NkMyLjUyNjUyNi0uMjYzMDE0IDIuNTAyNjE1LS4zNTg2NTUgMi41MDI2MTUtLjY1MzU0OVYtNS4wNzY5NjFaJy8+CjxwYXRoIGlkPSdnMC0xMjAnIGQ9J001LjY2Njc1LTQuODc3NzA5QzUuMjg0MTg0LTQuODA1OTc4IDUuMTQwNzIyLTQuNTE5MDU0IDUuMTQwNzIyLTQuMjkxOTA1QzUuMTQwNzIyLTQuMDA0OTgxIDUuMzY3ODctMy45MDkzNCA1LjUzNTI0My0zLjkwOTM0QzUuODkzODk4LTMuOTA5MzQgNi4xNDQ5NTYtNC4yMjAxNzQgNi4xNDQ5NTYtNC41NDI5NjRDNi4xNDQ5NTYtNS4wNDUwODEgNS41NzExMDgtNS4yNzIyMjkgNS4wNjg5OTEtNS4yNzIyMjlDNC4zMzk3MjYtNS4yNzIyMjkgMy45MzMyNS00LjU1NDkxOSAzLjgyNTY1NC00LjMyNzc3MUMzLjU1MDY4NS01LjIyNDQwOCAyLjgwOTQ2NS01LjI3MjIyOSAyLjU5NDI3MS01LjI3MjIyOUMxLjM3NDg0NC01LjI3MjIyOSAuNzI5MjY1LTMuNzA2MTAyIC43MjkyNjUtMy40NDMwODhDLjcyOTI2NS0zLjM5NTI2OCAuNzc3MDg2LTMuMzM1NDkyIC44NjA3NzItMy4zMzU0OTJDLjk1NjQxMy0zLjMzNTQ5MiAuOTgwMzI0LTMuNDA3MjIzIDEuMDA0MjM0LTMuNDU1MDQ0QzEuNDEwNzEtNC43ODIwNjcgMi4yMTE3MDYtNS4wMzMxMjYgMi41NTg0MDYtNS4wMzMxMjZDMy4wOTYzODktNS4wMzMxMjYgMy4yMDM5ODUtNC41MzEwMDkgMy4yMDM5ODUtNC4yNDQwODVDMy4yMDM5ODUtMy45ODEwNzEgMy4xMzIyNTQtMy43MDYxMDIgMi45ODg3OTItMy4xMzIyNTRMMi41ODIzMTYtMS40OTQzOTZDMi40MDI5ODktLjc3NzA4NiAyLjA1NjI4OS0uMTE5NTUyIDEuNDIyNjY1LS4xMTk1NTJDMS4zNjI4ODktLjExOTU1MiAxLjA2NDAxLS4xMTk1NTIgLjgxMjk1MS0uMjc0OTY5QzEuMjQzMzM3LS4zNTg2NTUgMS4zMzg5NzktLjcxNzMxIDEuMzM4OTc5LS44NjA3NzJDMS4zMzg5NzktMS4wOTk4NzUgMS4xNTk2NTEtMS4yNDMzMzcgLjkzMjUwMy0xLjI0MzMzN0MuNjQ1NTc5LTEuMjQzMzM3IC4zMzQ3NDUtLjk5MjI3OSAuMzM0NzQ1LS42MDk3MTRDLjMzNDc0NS0uMTA3NTk3IC44OTY2MzggLjExOTU1MiAxLjQxMDcxIC4xMTk1NTJDMS45ODQ1NTggLjExOTU1MiAyLjM5MTAzNC0uMzM0NzQ1IDIuNjQyMDkyLS44MjQ5MDdDMi44MzMzNzUtLjExOTU1MiAzLjQzMTEzMyAuMTE5NTUyIDMuODczNDc0IC4xMTk1NTJDNS4wOTI5MDIgLjExOTU1MiA1LjczODQ4MS0xLjQ0NjU3NSA1LjczODQ4MS0xLjcwOTU4OUM1LjczODQ4MS0xLjc2OTM2NSA1LjY5MDY2LTEuODE3MTg2IDUuNjE4OTI5LTEuODE3MTg2QzUuNTExMzMzLTEuODE3MTg2IDUuNDk5Mzc3LTEuNzU3NDEgNS40NjM1MTItMS42NjE3NjhDNS4xNDA3MjItLjYwOTcxNCA0LjQ0NzMyMy0uMTE5NTUyIDMuOTA5MzQtLjExOTU1MkMzLjQ5MDkwOS0uMTE5NTUyIDMuMjYzNzYxLS40MzAzODYgMy4yNjM3NjEtLjkyMDU0OEMzLjI2Mzc2MS0xLjE4MzU2MiAzLjMxMTU4Mi0xLjM3NDg0NCAzLjUwMjg2NC0yLjE2Mzg4NUwzLjkyMTI5NS0zLjc4OTc4OEM0LjEwMDYyMy00LjUwNzA5OCA0LjUwNzA5OC01LjAzMzEyNiA1LjA1NzAzNi01LjAzMzEyNkM1LjA4MDk0Ni01LjAzMzEyNiA1LjQxNTY5MS01LjAzMzEyNiA1LjY2Njc1LTQuODc3NzA5WicvPgo8L2RlZnM+CjxnIGlkPSdwYWdlMSc+Cjx1c2UgeD0nNTYuNDEzMjY3JyB5PSc2NS43NTM0MjUnIHhsaW5rOmhyZWY9JyNnMC0xMjAnLz4KPHVzZSB4PSc2My4wNjUzNTQnIHk9JzY3LjU0NjY4OCcgeGxpbms6aHJlZj0nI2cxLTQ5Jy8+CjwvZz4KPC9zdmc+" alt="x_1"/> trace.</p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">x2</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/b7bda214149c6fe0d7c6c494b0c896805bf51262.png" alt="x_2"/> trace.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzEwLjg4NjI3cHQnIGhlaWdodD0nNi45NDA2MzZwdCcgdmlld0JveD0nNTYuNDEzMjY3IDYwLjYwNjA1MiAxMC44ODYyNyA2Ljk0MDYzNic+CjxkZWZzPgo8cGF0aCBpZD0nZzEtNTAnIGQ9J00yLjI0NzU3Mi0xLjYyNTkwM0MyLjM3NTA5My0xLjc0NTQ1NSAyLjcwOTgzOC0yLjAwODQ2OCAyLjgzNzM2LTIuMTIwMDVDMy4zMzE1MDctMi41NzQzNDYgMy44MDE3NDMtMy4wMTI3MDIgMy44MDE3NDMtMy43Mzc5ODNDMy44MDE3NDMtNC42ODY0MjYgMy4wMDQ3MzItNS4zMDAxMjUgMi4wMDg0NjgtNS4zMDAxMjVDMS4wNTIwNTUtNS4zMDAxMjUgLjQyMjQxNi00LjU3NDg0NCAuNDIyNDE2LTMuODY1NTA0Qy40MjI0MTYtMy40NzQ5NjkgLjczMzI1LTMuNDE5MTc4IC44NDQ4MzItMy40MTkxNzhDMS4wMTIyMDQtMy40MTkxNzggMS4yNTkyNzgtMy41Mzg3MyAxLjI1OTI3OC0zLjg0MTU5NEMxLjI1OTI3OC00LjI1NjA0IC44NjA3NzItNC4yNTYwNCAuNzY1MTMxLTQuMjU2MDRDLjk5NjI2NC00LjgzNzg1OCAxLjUzMDI2Mi01LjAzNzExMSAxLjkyMDc5Ny01LjAzNzExMUMyLjY2MjAxNy01LjAzNzExMSAzLjA0NDU4My00LjQwNzQ3MiAzLjA0NDU4My0zLjczNzk4M0MzLjA0NDU4My0yLjkwOTA5MSAyLjQ2Mjc2NS0yLjMwMzM2MiAxLjUyMjI5MS0xLjMzODk3OUwuNTE4MDU3LS4zMDI4NjRDLjQyMjQxNi0uMjE1MTkzIC40MjI0MTYtLjE5OTI1MyAuNDIyNDE2IDBIMy41NzA2MUwzLjgwMTc0My0xLjQyNjY1SDMuNTU0NjdDMy41MzA3Ni0xLjI2NzI0OCAzLjQ2Njk5OS0uODY4NzQyIDMuMzcxMzU3LS43MTczMUMzLjMyMzUzNy0uNjUzNTQ5IDIuNzE3ODA4LS42NTM1NDkgMi41OTAyODYtLjY1MzU0OUgxLjE3MTYwNkwyLjI0NzU3Mi0xLjYyNTkwM1onLz4KPHBhdGggaWQ9J2cwLTEyMCcgZD0nTTUuNjY2NzUtNC44Nzc3MDlDNS4yODQxODQtNC44MDU5NzggNS4xNDA3MjItNC41MTkwNTQgNS4xNDA3MjItNC4yOTE5MDVDNS4xNDA3MjItNC4wMDQ5ODEgNS4zNjc4Ny0zLjkwOTM0IDUuNTM1MjQzLTMuOTA5MzRDNS44OTM4OTgtMy45MDkzNCA2LjE0NDk1Ni00LjIyMDE3NCA2LjE0NDk1Ni00LjU0Mjk2NEM2LjE0NDk1Ni01LjA0NTA4MSA1LjU3MTEwOC01LjI3MjIyOSA1LjA2ODk5MS01LjI3MjIyOUM0LjMzOTcyNi01LjI3MjIyOSAzLjkzMzI1LTQuNTU0OTE5IDMuODI1NjU0LTQuMzI3NzcxQzMuNTUwNjg1LTUuMjI0NDA4IDIuODA5NDY1LTUuMjcyMjI5IDIuNTk0MjcxLTUuMjcyMjI5QzEuMzc0ODQ0LTUuMjcyMjI5IC43MjkyNjUtMy43MDYxMDIgLjcyOTI2NS0zLjQ0MzA4OEMuNzI5MjY1LTMuMzk1MjY4IC43NzcwODYtMy4zMzU0OTIgLjg2MDc3Mi0zLjMzNTQ5MkMuOTU2NDEzLTMuMzM1NDkyIC45ODAzMjQtMy40MDcyMjMgMS4wMDQyMzQtMy40NTUwNDRDMS40MTA3MS00Ljc4MjA2NyAyLjIxMTcwNi01LjAzMzEyNiAyLjU1ODQwNi01LjAzMzEyNkMzLjA5NjM4OS01LjAzMzEyNiAzLjIwMzk4NS00LjUzMTAwOSAzLjIwMzk4NS00LjI0NDA4NUMzLjIwMzk4NS0zLjk4MTA3MSAzLjEzMjI1NC0zLjcwNjEwMiAyLjk4ODc5Mi0zLjEzMjI1NEwyLjU4MjMxNi0xLjQ5NDM5NkMyLjQwMjk4OS0uNzc3MDg2IDIuMDU2Mjg5LS4xMTk1NTIgMS40MjI2NjUtLjExOTU1MkMxLjM2Mjg4OS0uMTE5NTUyIDEuMDY0MDEtLjExOTU1MiAuODEyOTUxLS4yNzQ5NjlDMS4yNDMzMzctLjM1ODY1NSAxLjMzODk3OS0uNzE3MzEgMS4zMzg5NzktLjg2MDc3MkMxLjMzODk3OS0xLjA5OTg3NSAxLjE1OTY1MS0xLjI0MzMzNyAuOTMyNTAzLTEuMjQzMzM3Qy42NDU1NzktMS4yNDMzMzcgLjMzNDc0NS0uOTkyMjc5IC4zMzQ3NDUtLjYwOTcxNEMuMzM0NzQ1LS4xMDc1OTcgLjg5NjYzOCAuMTE5NTUyIDEuNDEwNzEgLjExOTU1MkMxLjk4NDU1OCAuMTE5NTUyIDIuMzkxMDM0LS4zMzQ3NDUgMi42NDIwOTItLjgyNDkwN0MyLjgzMzM3NS0uMTE5NTUyIDMuNDMxMTMzIC4xMTk1NTIgMy44NzM0NzQgLjExOTU1MkM1LjA5MjkwMiAuMTE5NTUyIDUuNzM4NDgxLTEuNDQ2NTc1IDUuNzM4NDgxLTEuNzA5NTg5QzUuNzM4NDgxLTEuNzY5MzY1IDUuNjkwNjYtMS44MTcxODYgNS42MTg5MjktMS44MTcxODZDNS41MTEzMzMtMS44MTcxODYgNS40OTkzNzctMS43NTc0MSA1LjQ2MzUxMi0xLjY2MTc2OEM1LjE0MDcyMi0uNjA5NzE0IDQuNDQ3MzIzLS4xMTk1NTIgMy45MDkzNC0uMTE5NTUyQzMuNDkwOTA5LS4xMTk1NTIgMy4yNjM3NjEtLjQzMDM4NiAzLjI2Mzc2MS0uOTIwNTQ4QzMuMjYzNzYxLTEuMTgzNTYyIDMuMzExNTgyLTEuMzc0ODQ0IDMuNTAyODY0LTIuMTYzODg1TDMuOTIxMjk1LTMuNzg5Nzg4QzQuMTAwNjIzLTQuNTA3MDk4IDQuNTA3MDk4LTUuMDMzMTI2IDUuMDU3MDM2LTUuMDMzMTI2QzUuMDgwOTQ2LTUuMDMzMTI2IDUuNDE1NjkxLTUuMDMzMTI2IDUuNjY2NzUtNC44Nzc3MDlaJy8+CjwvZGVmcz4KPGcgaWQ9J3BhZ2UxJz4KPHVzZSB4PSc1Ni40MTMyNjcnIHk9JzY1Ljc1MzQyNScgeGxpbms6aHJlZj0nI2cwLTEyMCcvPgo8dXNlIHg9JzYzLjA2NTM1NCcgeT0nNjcuNTQ2Njg4JyB4bGluazpocmVmPScjZzEtNTAnLz4KPC9nPgo8L3N2Zz4=" alt="x_2"/> trace.</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">y0</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/c02d829cecb5c5b40b5a00db3dc936351b671e07.png" alt="y_0"/> dependency.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzkuOTQxODg2cHQnIGhlaWdodD0nNy40NzE5OHB0JyB2aWV3Qm94PSc1Ni40MTMyNjcgNjAuNjA2MDUyIDkuOTQxODg2IDcuNDcxOTgnPgo8ZGVmcz4KPHBhdGggaWQ9J2cxLTQ4JyBkPSdNMy44OTczODUtMi41NDI0NjZDMy44OTczODUtMy4zOTUyNjggMy44MDk3MTQtMy45MTMzMjUgMy41NDY3LTQuNDIzNDEyQzMuMTk2MDE1LTUuMTI0NzgyIDIuNTUwNDM2LTUuMzAwMTI1IDIuMTEyMDgtNS4zMDAxMjVDMS4xMDc4NDYtNS4zMDAxMjUgLjc0MTIyLTQuNTUwOTM0IC42Mjk2MzktNC4zMjc3NzFDLjM0MjcxNS0zLjc0NTk1MyAuMzI2Nzc1LTIuOTU2OTEyIC4zMjY3NzUtMi41NDI0NjZDLjMyNjc3NS0yLjAxNjQzOCAuMzUwNjg1LTEuMjExNDU3IC43MzMyNS0uNTczODQ4QzEuMDk5ODc1IC4wMTU5NCAxLjY4OTY2NCAuMTY3MzcyIDIuMTEyMDggLjE2NzM3MkMyLjQ5NDY0NSAuMTY3MzcyIDMuMTgwMDc1IC4wNDc4MjEgMy41Nzg1OC0uNzQxMjJDMy44NzM0NzQtMS4zMTUwNjggMy44OTczODUtMi4wMjQ0MDggMy44OTczODUtMi41NDI0NjZaTTIuMTEyMDgtLjA1NTc5MUMxLjg0MTA5Ni0uMDU1NzkxIDEuMjkxMTU4LS4xODMzMTMgMS4xMjM3ODYtMS4wMjAxNzRDMS4wMzYxMTUtMS40NzQ0NzEgMS4wMzYxMTUtMi4yMjM2NjEgMS4wMzYxMTUtMi42MzgxMDdDMS4wMzYxMTUtMy4xODgwNDUgMS4wMzYxMTUtMy43NDU5NTMgMS4xMjM3ODYtNC4xODQzMDlDMS4yOTExNTgtNC45OTcyNiAxLjkxMjgyNy01LjA3Njk2MSAyLjExMjA4LTUuMDc2OTYxQzIuMzgzMDY0LTUuMDc2OTYxIDIuOTMzMDAxLTQuOTQxNDY5IDMuMDkyNDAzLTQuMjE2MTg5QzMuMTg4MDQ1LTMuNzc3ODMzIDMuMTg4MDQ1LTMuMTgwMDc1IDMuMTg4MDQ1LTIuNjM4MTA3QzMuMTg4MDQ1LTIuMTY3ODcgMy4xODgwNDUtMS40NTA1NiAzLjA5MjQwMy0xLjAwNDIzNEMyLjkyNTAzMS0uMTY3MzcyIDIuMzc1MDkzLS4wNTU3OTEgMi4xMTIwOC0uMDU1NzkxWicvPgo8cGF0aCBpZD0nZzAtMTIxJyBkPSdNMy4xNDQyMDkgMS4zMzg5NzlDMi44MjE0MiAxLjc5MzI3NSAyLjM1NTE2OCAyLjE5OTc1MSAxLjc2OTM2NSAyLjE5OTc1MUMxLjYyNTkwMyAyLjE5OTc1MSAxLjA1MjA1NSAyLjE3NTg0MSAuODcyNzI3IDEuNjI1OTAzQy45MDg1OTMgMS42Mzc4NTggLjk2ODM2OSAxLjYzNzg1OCAuOTkyMjc5IDEuNjM3ODU4QzEuMzUwOTM0IDEuNjM3ODU4IDEuNTkwMDM3IDEuMzI3MDI0IDEuNTkwMDM3IDEuMDUyMDU1UzEuMzYyODg5IC42ODE0NDUgMS4xODM1NjIgLjY4MTQ0NUMuOTkyMjc5IC42ODE0NDUgLjU3Mzg0OCAuODI0OTA3IC41NzM4NDggMS40MTA3MUMuNTczODQ4IDIuMDIwNDIzIDEuMDg3OTIgMi40Mzg4NTQgMS43NjkzNjUgMi40Mzg4NTRDMi45NjQ4ODIgMi40Mzg4NTQgNC4xNzIzNTQgMS4zMzg5NzkgNC41MDcwOTggLjAxMTk1NUw1LjY3ODcwNS00LjY1MDU2QzUuNjkwNjYtNC43MTAzMzYgNS43MTQ1Ny00Ljc4MjA2NyA1LjcxNDU3LTQuODUzNzk4QzUuNzE0NTctNS4wMzMxMjYgNS41NzExMDgtNS4xNTI2NzcgNS4zOTE3ODEtNS4xNTI2NzdDNS4yODQxODQtNS4xNTI2NzcgNS4wMzMxMjYtNS4xMDQ4NTcgNC45Mzc0ODQtNC43NDYyMDJMNC4wNTI4MDItMS4yMzEzODJDMy45OTMwMjYtMS4wMTYxODkgMy45OTMwMjYtLjk5MjI3OSAzLjg5NzM4NS0uODYwNzcyQzMuNjU4MjgxLS41MjYwMjcgMy4yNjM3NjEtLjExOTU1MiAyLjY4OTkxMy0uMTE5NTUyQzIuMDIwNDIzLS4xMTk1NTIgMS45NjA2NDgtLjc3NzA4NiAxLjk2MDY0OC0xLjA5OTg3NUMxLjk2MDY0OC0xLjc4MTMyIDIuMjgzNDM3LTIuNzAxODY4IDIuNjA2MjI3LTMuNTYyNjRDMi43Mzc3MzMtMy45MDkzNCAyLjgwOTQ2NS00LjA3NjcxMiAyLjgwOTQ2NS00LjMxNTgxNkMyLjgwOTQ2NS00LjgxNzkzMyAyLjQ1MDgwOS01LjI3MjIyOSAxLjg2NTAwNi01LjI3MjIyOUMuNzY1MTMxLTUuMjcyMjI5IC4zMjI3OS0zLjUzODczIC4zMjI3OS0zLjQ0MzA4OEMuMzIyNzktMy4zOTUyNjggLjM3MDYxLTMuMzM1NDkyIC40NTQyOTYtMy4zMzU0OTJDLjU2MTg5My0zLjMzNTQ5MiAuNTczODQ4LTMuMzgzMzEzIC42MjE2NjktMy41NTA2ODVDLjkwODU5My00LjU1NDkxOSAxLjM2Mjg4OS01LjAzMzEyNiAxLjgyOTE0MS01LjAzMzEyNkMxLjkzNjczNy01LjAzMzEyNiAyLjEzOTk3NS01LjAzMzEyNiAyLjEzOTk3NS00LjYzODYwNUMyLjEzOTk3NS00LjMyNzc3MSAyLjAwODQ2OC0zLjk4MTA3MSAxLjgyOTE0MS0zLjUyNjc3NUMxLjI0MzMzNy0xLjk2MDY0OCAxLjI0MzMzNy0xLjU2NjEyNyAxLjI0MzMzNy0xLjI3OTIwM0MxLjI0MzMzNy0uMTQzNDYyIDIuMDU2Mjg5IC4xMTk1NTIgMi42NTQwNDcgLjExOTU1MkMzLjAwMDc0NyAuMTE5NTUyIDMuNDMxMTMzIC4wMTE5NTUgMy44NDk1NjQtLjQzMDM4NkwzLjg2MTUxOS0uNDE4NDMxQzMuNjgyMTkyIC4yODY5MjQgMy41NjI2NCAuNzUzMTc2IDMuMTQ0MjA5IDEuMzM4OTc5WicvPgo8L2RlZnM+CjxnIGlkPSdwYWdlMSc+Cjx1c2UgeD0nNTYuNDEzMjY3JyB5PSc2NS43NTM0MjUnIHhsaW5rOmhyZWY9JyNnMC0xMjEnLz4KPHVzZSB4PSc2Mi4xMjA5NycgeT0nNjcuNTQ2Njg4JyB4bGluazpocmVmPScjZzEtNDgnLz4KPC9nPgo8L3N2Zz4=" alt="y_0"/> dependency.</p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ty</span></code></p></td>
@@ -903,15 +969,15 @@ and activity traces of the neurons and learning rules.</p>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">y1</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/7a4a430067dab11b32cfcddbd7d7fd6b5f4d3070.png" alt="y_1"/> trace.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzkuOTQxODg2cHQnIGhlaWdodD0nNy40NzE5OHB0JyB2aWV3Qm94PSc1Ni40MTMyNjcgNjAuNjA2MDUyIDkuOTQxODg2IDcuNDcxOTgnPgo8ZGVmcz4KPHBhdGggaWQ9J2cxLTQ5JyBkPSdNMi41MDI2MTUtNS4wNzY5NjFDMi41MDI2MTUtNS4yOTIxNTQgMi40ODY2NzUtNS4zMDAxMjUgMi4yNzE0ODItNS4zMDAxMjVDMS45NDQ3MDctNC45ODEzMiAxLjUyMjI5MS00Ljc5MDAzNyAuNzY1MTMxLTQuNzkwMDM3Vi00LjUyNzAyNEMuOTgwMzI0LTQuNTI3MDI0IDEuNDEwNzEtNC41MjcwMjQgMS44NzI5NzYtNC43NDIyMTdWLS42NTM1NDlDMS44NzI5NzYtLjM1ODY1NSAxLjg0OTA2Ni0uMjYzMDE0IDEuMDkxOTA1LS4yNjMwMTRILjgxMjk1MVYwQzEuMTM5NzI2LS4wMjM5MSAxLjgyNTE1Ni0uMDIzOTEgMi4xODM4MTEtLjAyMzkxUzMuMjM1ODY2LS4wMjM5MSAzLjU2MjY0IDBWLS4yNjMwMTRIMy4yODM2ODZDMi41MjY1MjYtLjI2MzAxNCAyLjUwMjYxNS0uMzU4NjU1IDIuNTAyNjE1LS42NTM1NDlWLTUuMDc2OTYxWicvPgo8cGF0aCBpZD0nZzAtMTIxJyBkPSdNMy4xNDQyMDkgMS4zMzg5NzlDMi44MjE0MiAxLjc5MzI3NSAyLjM1NTE2OCAyLjE5OTc1MSAxLjc2OTM2NSAyLjE5OTc1MUMxLjYyNTkwMyAyLjE5OTc1MSAxLjA1MjA1NSAyLjE3NTg0MSAuODcyNzI3IDEuNjI1OTAzQy45MDg1OTMgMS42Mzc4NTggLjk2ODM2OSAxLjYzNzg1OCAuOTkyMjc5IDEuNjM3ODU4QzEuMzUwOTM0IDEuNjM3ODU4IDEuNTkwMDM3IDEuMzI3MDI0IDEuNTkwMDM3IDEuMDUyMDU1UzEuMzYyODg5IC42ODE0NDUgMS4xODM1NjIgLjY4MTQ0NUMuOTkyMjc5IC42ODE0NDUgLjU3Mzg0OCAuODI0OTA3IC41NzM4NDggMS40MTA3MUMuNTczODQ4IDIuMDIwNDIzIDEuMDg3OTIgMi40Mzg4NTQgMS43NjkzNjUgMi40Mzg4NTRDMi45NjQ4ODIgMi40Mzg4NTQgNC4xNzIzNTQgMS4zMzg5NzkgNC41MDcwOTggLjAxMTk1NUw1LjY3ODcwNS00LjY1MDU2QzUuNjkwNjYtNC43MTAzMzYgNS43MTQ1Ny00Ljc4MjA2NyA1LjcxNDU3LTQuODUzNzk4QzUuNzE0NTctNS4wMzMxMjYgNS41NzExMDgtNS4xNTI2NzcgNS4zOTE3ODEtNS4xNTI2NzdDNS4yODQxODQtNS4xNTI2NzcgNS4wMzMxMjYtNS4xMDQ4NTcgNC45Mzc0ODQtNC43NDYyMDJMNC4wNTI4MDItMS4yMzEzODJDMy45OTMwMjYtMS4wMTYxODkgMy45OTMwMjYtLjk5MjI3OSAzLjg5NzM4NS0uODYwNzcyQzMuNjU4MjgxLS41MjYwMjcgMy4yNjM3NjEtLjExOTU1MiAyLjY4OTkxMy0uMTE5NTUyQzIuMDIwNDIzLS4xMTk1NTIgMS45NjA2NDgtLjc3NzA4NiAxLjk2MDY0OC0xLjA5OTg3NUMxLjk2MDY0OC0xLjc4MTMyIDIuMjgzNDM3LTIuNzAxODY4IDIuNjA2MjI3LTMuNTYyNjRDMi43Mzc3MzMtMy45MDkzNCAyLjgwOTQ2NS00LjA3NjcxMiAyLjgwOTQ2NS00LjMxNTgxNkMyLjgwOTQ2NS00LjgxNzkzMyAyLjQ1MDgwOS01LjI3MjIyOSAxLjg2NTAwNi01LjI3MjIyOUMuNzY1MTMxLTUuMjcyMjI5IC4zMjI3OS0zLjUzODczIC4zMjI3OS0zLjQ0MzA4OEMuMzIyNzktMy4zOTUyNjggLjM3MDYxLTMuMzM1NDkyIC40NTQyOTYtMy4zMzU0OTJDLjU2MTg5My0zLjMzNTQ5MiAuNTczODQ4LTMuMzgzMzEzIC42MjE2NjktMy41NTA2ODVDLjkwODU5My00LjU1NDkxOSAxLjM2Mjg4OS01LjAzMzEyNiAxLjgyOTE0MS01LjAzMzEyNkMxLjkzNjczNy01LjAzMzEyNiAyLjEzOTk3NS01LjAzMzEyNiAyLjEzOTk3NS00LjYzODYwNUMyLjEzOTk3NS00LjMyNzc3MSAyLjAwODQ2OC0zLjk4MTA3MSAxLjgyOTE0MS0zLjUyNjc3NUMxLjI0MzMzNy0xLjk2MDY0OCAxLjI0MzMzNy0xLjU2NjEyNyAxLjI0MzMzNy0xLjI3OTIwM0MxLjI0MzMzNy0uMTQzNDYyIDIuMDU2Mjg5IC4xMTk1NTIgMi42NTQwNDcgLjExOTU1MkMzLjAwMDc0NyAuMTE5NTUyIDMuNDMxMTMzIC4wMTE5NTUgMy44NDk1NjQtLjQzMDM4NkwzLjg2MTUxOS0uNDE4NDMxQzMuNjgyMTkyIC4yODY5MjQgMy41NjI2NCAuNzUzMTc2IDMuMTQ0MjA5IDEuMzM4OTc5WicvPgo8L2RlZnM+CjxnIGlkPSdwYWdlMSc+Cjx1c2UgeD0nNTYuNDEzMjY3JyB5PSc2NS43NTM0MjUnIHhsaW5rOmhyZWY9JyNnMC0xMjEnLz4KPHVzZSB4PSc2Mi4xMjA5NycgeT0nNjcuNTQ2Njg4JyB4bGluazpocmVmPScjZzEtNDknLz4KPC9nPgo8L3N2Zz4=" alt="y_1"/> trace.</p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">y2</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/f5f424471e1f942a67eedbdbb512954c4e722fe8.png" alt="y_2"/> trace.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzkuOTQxODg2cHQnIGhlaWdodD0nNy40NzE5OHB0JyB2aWV3Qm94PSc1Ni40MTMyNjcgNjAuNjA2MDUyIDkuOTQxODg2IDcuNDcxOTgnPgo8ZGVmcz4KPHBhdGggaWQ9J2cxLTUwJyBkPSdNMi4yNDc1NzItMS42MjU5MDNDMi4zNzUwOTMtMS43NDU0NTUgMi43MDk4MzgtMi4wMDg0NjggMi44MzczNi0yLjEyMDA1QzMuMzMxNTA3LTIuNTc0MzQ2IDMuODAxNzQzLTMuMDEyNzAyIDMuODAxNzQzLTMuNzM3OTgzQzMuODAxNzQzLTQuNjg2NDI2IDMuMDA0NzMyLTUuMzAwMTI1IDIuMDA4NDY4LTUuMzAwMTI1QzEuMDUyMDU1LTUuMzAwMTI1IC40MjI0MTYtNC41NzQ4NDQgLjQyMjQxNi0zLjg2NTUwNEMuNDIyNDE2LTMuNDc0OTY5IC43MzMyNS0zLjQxOTE3OCAuODQ0ODMyLTMuNDE5MTc4QzEuMDEyMjA0LTMuNDE5MTc4IDEuMjU5Mjc4LTMuNTM4NzMgMS4yNTkyNzgtMy44NDE1OTRDMS4yNTkyNzgtNC4yNTYwNCAuODYwNzcyLTQuMjU2MDQgLjc2NTEzMS00LjI1NjA0Qy45OTYyNjQtNC44Mzc4NTggMS41MzAyNjItNS4wMzcxMTEgMS45MjA3OTctNS4wMzcxMTFDMi42NjIwMTctNS4wMzcxMTEgMy4wNDQ1ODMtNC40MDc0NzIgMy4wNDQ1ODMtMy43Mzc5ODNDMy4wNDQ1ODMtMi45MDkwOTEgMi40NjI3NjUtMi4zMDMzNjIgMS41MjIyOTEtMS4zMzg5NzlMLjUxODA1Ny0uMzAyODY0Qy40MjI0MTYtLjIxNTE5MyAuNDIyNDE2LS4xOTkyNTMgLjQyMjQxNiAwSDMuNTcwNjFMMy44MDE3NDMtMS40MjY2NUgzLjU1NDY3QzMuNTMwNzYtMS4yNjcyNDggMy40NjY5OTktLjg2ODc0MiAzLjM3MTM1Ny0uNzE3MzFDMy4zMjM1MzctLjY1MzU0OSAyLjcxNzgwOC0uNjUzNTQ5IDIuNTkwMjg2LS42NTM1NDlIMS4xNzE2MDZMMi4yNDc1NzItMS42MjU5MDNaJy8+CjxwYXRoIGlkPSdnMC0xMjEnIGQ9J00zLjE0NDIwOSAxLjMzODk3OUMyLjgyMTQyIDEuNzkzMjc1IDIuMzU1MTY4IDIuMTk5NzUxIDEuNzY5MzY1IDIuMTk5NzUxQzEuNjI1OTAzIDIuMTk5NzUxIDEuMDUyMDU1IDIuMTc1ODQxIC44NzI3MjcgMS42MjU5MDNDLjkwODU5MyAxLjYzNzg1OCAuOTY4MzY5IDEuNjM3ODU4IC45OTIyNzkgMS42Mzc4NThDMS4zNTA5MzQgMS42Mzc4NTggMS41OTAwMzcgMS4zMjcwMjQgMS41OTAwMzcgMS4wNTIwNTVTMS4zNjI4ODkgLjY4MTQ0NSAxLjE4MzU2MiAuNjgxNDQ1Qy45OTIyNzkgLjY4MTQ0NSAuNTczODQ4IC44MjQ5MDcgLjU3Mzg0OCAxLjQxMDcxQy41NzM4NDggMi4wMjA0MjMgMS4wODc5MiAyLjQzODg1NCAxLjc2OTM2NSAyLjQzODg1NEMyLjk2NDg4MiAyLjQzODg1NCA0LjE3MjM1NCAxLjMzODk3OSA0LjUwNzA5OCAuMDExOTU1TDUuNjc4NzA1LTQuNjUwNTZDNS42OTA2Ni00LjcxMDMzNiA1LjcxNDU3LTQuNzgyMDY3IDUuNzE0NTctNC44NTM3OThDNS43MTQ1Ny01LjAzMzEyNiA1LjU3MTEwOC01LjE1MjY3NyA1LjM5MTc4MS01LjE1MjY3N0M1LjI4NDE4NC01LjE1MjY3NyA1LjAzMzEyNi01LjEwNDg1NyA0LjkzNzQ4NC00Ljc0NjIwMkw0LjA1MjgwMi0xLjIzMTM4MkMzLjk5MzAyNi0xLjAxNjE4OSAzLjk5MzAyNi0uOTkyMjc5IDMuODk3Mzg1LS44NjA3NzJDMy42NTgyODEtLjUyNjAyNyAzLjI2Mzc2MS0uMTE5NTUyIDIuNjg5OTEzLS4xMTk1NTJDMi4wMjA0MjMtLjExOTU1MiAxLjk2MDY0OC0uNzc3MDg2IDEuOTYwNjQ4LTEuMDk5ODc1QzEuOTYwNjQ4LTEuNzgxMzIgMi4yODM0MzctMi43MDE4NjggMi42MDYyMjctMy41NjI2NEMyLjczNzczMy0zLjkwOTM0IDIuODA5NDY1LTQuMDc2NzEyIDIuODA5NDY1LTQuMzE1ODE2QzIuODA5NDY1LTQuODE3OTMzIDIuNDUwODA5LTUuMjcyMjI5IDEuODY1MDA2LTUuMjcyMjI5Qy43NjUxMzEtNS4yNzIyMjkgLjMyMjc5LTMuNTM4NzMgLjMyMjc5LTMuNDQzMDg4Qy4zMjI3OS0zLjM5NTI2OCAuMzcwNjEtMy4zMzU0OTIgLjQ1NDI5Ni0zLjMzNTQ5MkMuNTYxODkzLTMuMzM1NDkyIC41NzM4NDgtMy4zODMzMTMgLjYyMTY2OS0zLjU1MDY4NUMuOTA4NTkzLTQuNTU0OTE5IDEuMzYyODg5LTUuMDMzMTI2IDEuODI5MTQxLTUuMDMzMTI2QzEuOTM2NzM3LTUuMDMzMTI2IDIuMTM5OTc1LTUuMDMzMTI2IDIuMTM5OTc1LTQuNjM4NjA1QzIuMTM5OTc1LTQuMzI3NzcxIDIuMDA4NDY4LTMuOTgxMDcxIDEuODI5MTQxLTMuNTI2Nzc1QzEuMjQzMzM3LTEuOTYwNjQ4IDEuMjQzMzM3LTEuNTY2MTI3IDEuMjQzMzM3LTEuMjc5MjAzQzEuMjQzMzM3LS4xNDM0NjIgMi4wNTYyODkgLjExOTU1MiAyLjY1NDA0NyAuMTE5NTUyQzMuMDAwNzQ3IC4xMTk1NTIgMy40MzExMzMgLjAxMTk1NSAzLjg0OTU2NC0uNDMwMzg2TDMuODYxNTE5LS40MTg0MzFDMy42ODIxOTIgLjI4NjkyNCAzLjU2MjY0IC43NTMxNzYgMy4xNDQyMDkgMS4zMzg5NzlaJy8+CjwvZGVmcz4KPGcgaWQ9J3BhZ2UxJz4KPHVzZSB4PSc1Ni40MTMyNjcnIHk9JzY1Ljc1MzQyNScgeGxpbms6aHJlZj0nI2cwLTEyMScvPgo8dXNlIHg9JzYyLjEyMDk3JyB5PSc2Ny41NDY2ODgnIHhsaW5rOmhyZWY9JyNnMS01MCcvPgo8L2c+Cjwvc3ZnPg==" alt="y_2"/> trace.</p></td>
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">y3</span></code></p></td>
-<td><p>State of <img class="math" src="../../../_images/math/11b8c64a04f523c2254e0dcd0514733e6cf3d0ee.png" alt="y_3"/> trace.</p></td>
+<td><p>State of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzkuOTQxODg2cHQnIGhlaWdodD0nNy40NzE5OHB0JyB2aWV3Qm94PSc1Ni40MTMyNjcgNjAuNjA2MDUyIDkuOTQxODg2IDcuNDcxOTgnPgo8ZGVmcz4KPHBhdGggaWQ9J2cxLTUxJyBkPSdNMi4wMTY0MzgtMi42NjIwMTdDMi42NDYwNzctMi42NjIwMTcgMy4wNDQ1ODMtMi4xOTk3NTEgMy4wNDQ1ODMtMS4zNjI4ODlDMy4wNDQ1ODMtLjM2NjYyNSAyLjQ3ODcwNS0uMDcxNzMxIDIuMDU2Mjg5LS4wNzE3MzFDMS42MTc5MzMtLjA3MTczMSAxLjAyMDE3NC0uMjMxMTMzIC43NDEyMi0uNjUzNTQ5QzEuMDI4MTQ0LS42NTM1NDkgMS4yMjczOTctLjgzNjg2MiAxLjIyNzM5Ny0xLjA5OTg3NUMxLjIyNzM5Ny0xLjM1NDkxOSAxLjA0NDA4NS0xLjUzODIzMiAuNzg5MDQxLTEuNTM4MjMyQy41NzM4NDgtMS41MzgyMzIgLjM1MDY4NS0xLjQwMjc0IC4zNTA2ODUtMS4wODM5MzVDLjM1MDY4NS0uMzI2Nzc1IDEuMTYzNjM2IC4xNjczNzIgMi4wNzIyMjkgLjE2NzM3MkMzLjEzMjI1NCAuMTY3MzcyIDMuODczNDc0LS41NjU4NzggMy44NzM0NzQtMS4zNjI4ODlDMy44NzM0NzQtMi4wMjQ0MDggMy4zNDc0NDctMi42MzAxMzcgMi41MzQ0OTYtMi44MDU0NzlDMy4xNjQxMzQtMy4wMjg2NDMgMy42MzQzNzEtMy41NzA2MSAzLjYzNDM3MS00LjIwODIxOVMyLjkxNzA2MS01LjMwMDEyNSAyLjA4ODE2OS01LjMwMDEyNUMxLjIzNTM2Ny01LjMwMDEyNSAuNTg5Nzg4LTQuODM3ODU4IC41ODk3ODgtNC4yMzIxM0MuNTg5Nzg4LTMuOTM3MjM1IC43ODkwNDEtMy44MDk3MTQgLjk5NjI2NC0zLjgwOTcxNEMxLjI0MzMzNy0zLjgwOTcxNCAxLjQwMjc0LTMuOTg1MDU2IDEuNDAyNzQtNC4yMTYxODlDMS40MDI3NC00LjUxMTA4MyAxLjE0NzY5Ni00LjYyMjY2NSAuOTcyMzU0LTQuNjMwNjM1QzEuMzA3MDk4LTUuMDY4OTkxIDEuOTIwNzk3LTUuMDkyOTAyIDIuMDY0MjU5LTUuMDkyOTAyQzIuMjcxNDgyLTUuMDkyOTAyIDIuODc3MjEtNS4wMjkxNDEgMi44NzcyMS00LjIwODIxOUMyLjg3NzIxLTMuNjUwMzExIDIuNjQ2MDc3LTMuMzE1NTY3IDIuNTM0NDk2LTMuMTg4MDQ1QzIuMjk1MzkyLTIuOTQwOTcxIDIuMTEyMDgtMi45MjUwMzEgMS42MjU5MDMtMi44OTMxNTFDMS40NzQ0NzEtMi44ODUxODEgMS40MTA3MS0yLjg3NzIxIDEuNDEwNzEtMi43NzM1OTlDMS40MTA3MS0yLjY2MjAxNyAxLjQ4MjQ0MS0yLjY2MjAxNyAxLjYxNzkzMy0yLjY2MjAxN0gyLjAxNjQzOFonLz4KPHBhdGggaWQ9J2cwLTEyMScgZD0nTTMuMTQ0MjA5IDEuMzM4OTc5QzIuODIxNDIgMS43OTMyNzUgMi4zNTUxNjggMi4xOTk3NTEgMS43NjkzNjUgMi4xOTk3NTFDMS42MjU5MDMgMi4xOTk3NTEgMS4wNTIwNTUgMi4xNzU4NDEgLjg3MjcyNyAxLjYyNTkwM0MuOTA4NTkzIDEuNjM3ODU4IC45NjgzNjkgMS42Mzc4NTggLjk5MjI3OSAxLjYzNzg1OEMxLjM1MDkzNCAxLjYzNzg1OCAxLjU5MDAzNyAxLjMyNzAyNCAxLjU5MDAzNyAxLjA1MjA1NVMxLjM2Mjg4OSAuNjgxNDQ1IDEuMTgzNTYyIC42ODE0NDVDLjk5MjI3OSAuNjgxNDQ1IC41NzM4NDggLjgyNDkwNyAuNTczODQ4IDEuNDEwNzFDLjU3Mzg0OCAyLjAyMDQyMyAxLjA4NzkyIDIuNDM4ODU0IDEuNzY5MzY1IDIuNDM4ODU0QzIuOTY0ODgyIDIuNDM4ODU0IDQuMTcyMzU0IDEuMzM4OTc5IDQuNTA3MDk4IC4wMTE5NTVMNS42Nzg3MDUtNC42NTA1NkM1LjY5MDY2LTQuNzEwMzM2IDUuNzE0NTctNC43ODIwNjcgNS43MTQ1Ny00Ljg1Mzc5OEM1LjcxNDU3LTUuMDMzMTI2IDUuNTcxMTA4LTUuMTUyNjc3IDUuMzkxNzgxLTUuMTUyNjc3QzUuMjg0MTg0LTUuMTUyNjc3IDUuMDMzMTI2LTUuMTA0ODU3IDQuOTM3NDg0LTQuNzQ2MjAyTDQuMDUyODAyLTEuMjMxMzgyQzMuOTkzMDI2LTEuMDE2MTg5IDMuOTkzMDI2LS45OTIyNzkgMy44OTczODUtLjg2MDc3MkMzLjY1ODI4MS0uNTI2MDI3IDMuMjYzNzYxLS4xMTk1NTIgMi42ODk5MTMtLjExOTU1MkMyLjAyMDQyMy0uMTE5NTUyIDEuOTYwNjQ4LS43NzcwODYgMS45NjA2NDgtMS4wOTk4NzVDMS45NjA2NDgtMS43ODEzMiAyLjI4MzQzNy0yLjcwMTg2OCAyLjYwNjIyNy0zLjU2MjY0QzIuNzM3NzMzLTMuOTA5MzQgMi44MDk0NjUtNC4wNzY3MTIgMi44MDk0NjUtNC4zMTU4MTZDMi44MDk0NjUtNC44MTc5MzMgMi40NTA4MDktNS4yNzIyMjkgMS44NjUwMDYtNS4yNzIyMjlDLjc2NTEzMS01LjI3MjIyOSAuMzIyNzktMy41Mzg3MyAuMzIyNzktMy40NDMwODhDLjMyMjc5LTMuMzk1MjY4IC4zNzA2MS0zLjMzNTQ5MiAuNDU0Mjk2LTMuMzM1NDkyQy41NjE4OTMtMy4zMzU0OTIgLjU3Mzg0OC0zLjM4MzMxMyAuNjIxNjY5LTMuNTUwNjg1Qy45MDg1OTMtNC41NTQ5MTkgMS4zNjI4ODktNS4wMzMxMjYgMS44MjkxNDEtNS4wMzMxMjZDMS45MzY3MzctNS4wMzMxMjYgMi4xMzk5NzUtNS4wMzMxMjYgMi4xMzk5NzUtNC42Mzg2MDVDMi4xMzk5NzUtNC4zMjc3NzEgMi4wMDg0NjgtMy45ODEwNzEgMS44MjkxNDEtMy41MjY3NzVDMS4yNDMzMzctMS45NjA2NDggMS4yNDMzMzctMS41NjYxMjcgMS4yNDMzMzctMS4yNzkyMDNDMS4yNDMzMzctLjE0MzQ2MiAyLjA1NjI4OSAuMTE5NTUyIDIuNjU0MDQ3IC4xMTk1NTJDMy4wMDA3NDcgLjExOTU1MiAzLjQzMTEzMyAuMDExOTU1IDMuODQ5NTY0LS40MzAzODZMMy44NjE1MTktLjQxODQzMUMzLjY4MjE5MiAuMjg2OTI0IDMuNTYyNjQgLjc1MzE3NiAzLjE0NDIwOSAxLjMzODk3OVonLz4KPC9kZWZzPgo8ZyBpZD0ncGFnZTEnPgo8dXNlIHg9JzU2LjQxMzI2NycgeT0nNjUuNzUzNDI1JyB4bGluazpocmVmPScjZzAtMTIxJy8+Cjx1c2UgeD0nNjIuMTIwOTcnIHk9JzY3LjU0NjY4OCcgeGxpbms6aHJlZj0nI2cxLTUxJy8+CjwvZz4KPC9zdmc+" alt="y_3"/> trace.</p></td>
 </tr>
 </tbody>
 </table>
@@ -919,10 +985,9 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
 <span class="kn">from</span> <span class="nn">lava.proc.io.source</span> <span class="kn">import</span> <span class="n">RingBuffer</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">LearningDense</span> <span class="k">as</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">LearningDense</span><span class="p">,</span> <span class="n">Dense</span>
 </pre></div>
 </div>
 </div>
@@ -930,8 +995,7 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Create input devices</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create input devices</span>
 <span class="n">pattern_pre</span> <span class="o">=</span> <span class="n">RingBuffer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">spike_raster_pre</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 <span class="n">pattern_post</span> <span class="o">=</span> <span class="n">RingBuffer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">spike_raster_post</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
@@ -951,9 +1015,9 @@ and activity traces of the neurons and learning rules.</p>
               <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif_pre&#39;</span><span class="p">)</span>
 
 <span class="c1"># Create plastic connection</span>
-<span class="n">plast_conn</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_plast_conn</span><span class="p">,</span>
-                   <span class="n">learning_rule</span><span class="o">=</span><span class="n">stdp</span><span class="p">,</span>
-                   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">)</span>
+<span class="n">plast_conn</span> <span class="o">=</span> <span class="n">LearningDense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_plast_conn</span><span class="p">,</span>
+                           <span class="n">learning_rule</span><span class="o">=</span><span class="n">stdp</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">)</span>
 
 <span class="c1"># Create post-synaptic neuron</span>
 <span class="n">lif_post</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -985,8 +1049,7 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
 </pre></div>
 </div>
 </div>
@@ -994,8 +1057,7 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Create monitors</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create monitors</span>
 <span class="n">mon_pre_trace</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
 <span class="n">mon_post_trace</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
 <span class="n">mon_pre_spikes</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
@@ -1015,9 +1077,8 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
 </pre></div>
 </div>
 </div>
@@ -1025,9 +1086,8 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Running</span>
-<span class="n">pattern_pre</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="n">SELECT_TAG</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Running</span>
+<span class="n">pattern_pre</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="n">SELECT_TAG</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1035,8 +1095,7 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Get data from monitors</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get data from monitors</span>
 <span class="n">pre_trace</span> <span class="o">=</span> <span class="n">mon_pre_trace</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span>
 <span class="n">post_trace</span> <span class="o">=</span> <span class="n">mon_post_trace</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;y1&#39;</span><span class="p">]</span>
 <span class="n">pre_spikes</span> <span class="o">=</span> <span class="n">mon_pre_spikes</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;lif_pre&#39;</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
@@ -1049,8 +1108,7 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Stopping</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stopping</span>
 <span class="n">pattern_pre</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1060,20 +1118,18 @@ and activity traces of the neurons and learning rules.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Plot-spike-trains">
-<h2>Plot spike trains<a class="headerlink" href="#Plot-spike-trains" title="Permalink to this headline"></a></h2>
+</section>
+<section id="Plot-spike-trains">
+<h2>Plot spike trains<a class="headerlink" href="#Plot-spike-trains" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Plotting pre- and post- spike arrival</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting pre- and post- spike arrival</span>
 <span class="k">def</span> <span class="nf">plot_spikes</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">legend</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="n">offsets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 
@@ -1105,15 +1161,14 @@ and activity traces of the neurons and learning rules.</p>
 <img alt="../../../_images/lava_notebooks_in_depth_tutorial08_stdp_22_0.png" src="../../../_images/lava_notebooks_in_depth_tutorial08_stdp_22_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Plot-traces">
-<h2>Plot traces<a class="headerlink" href="#Plot-traces" title="Permalink to this headline"></a></h2>
+</section>
+<section id="Plot-traces">
+<h2>Plot traces<a class="headerlink" href="#Plot-traces" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Plotting trace dynamics</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting trace dynamics</span>
 
 <span class="k">def</span> <span class="nf">plot_time_series</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -1156,15 +1211,14 @@ and activity traces of the neurons and learning rules.</p>
 <img alt="../../../_images/lava_notebooks_in_depth_tutorial08_stdp_24_2.png" src="../../../_images/lava_notebooks_in_depth_tutorial08_stdp_24_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Plot-STDP-learning-window-and-weight-changes">
-<h2>Plot STDP learning window and weight changes<a class="headerlink" href="#Plot-STDP-learning-window-and-weight-changes" title="Permalink to this headline"></a></h2>
+</section>
+<section id="Plot-STDP-learning-window-and-weight-changes">
+<h2>Plot STDP learning window and weight changes<a class="headerlink" href="#Plot-STDP-learning-window-and-weight-changes" title="Permalink to this heading"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">extract_stdp_weight_changes</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">spikes_pre</span><span class="p">,</span> <span class="n">spikes_post</span><span class="p">,</span> <span class="n">wgt</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_stdp_weight_changes</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">spikes_pre</span><span class="p">,</span> <span class="n">spikes_post</span><span class="p">,</span> <span class="n">wgt</span><span class="p">):</span>
     <span class="c1"># Compute the weight changes for every weight change event</span>
     <span class="n">w_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">wgt</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">w_diff</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">wgt</span><span class="p">)</span>
@@ -1243,20 +1297,8 @@ and activity traces of the neurons and learning rules.</p>
 </div>
 </div>
 <p>As can be seen, the actual weight changes follow the defined STDP with a certain amout of noise. If the tag is set to <code class="docutils literal notranslate"><span class="pre">fixed_pt</span></code>, the weight changes get more quantized, but still follow the correct trend.</p>
-<p>Find out how to create you own custom learning rule in the <a class="reference external" href="../../in_depth/tutorial09_custom_learning_rules.ipynb">next tutorial</a>.</p>
-</div>
-<div class="section" id="Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">
-<h2>Follow the links below for deep-dive tutorials on the concepts in this tutorial:<a class="headerlink" href="#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:" title="Permalink to this headline"></a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="../../in_depth/tutorial02_processes.ipynb">Processes</a></p></li>
-<li><p><a class="reference external" href="../../in_depth/tutorial03_process_models.ipynb">ProcessModel</a></p></li>
-<li><p><a class="reference external" href="../../in_depth/tutorial04_execution.ipynb">Execution</a></p></li>
-<li><p><a class="reference external" href="../../in_depth/tutorial05_connect_processes.ipynb">Connecting Processes</a></p></li>
-</ul>
-<p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org/">Lava documentation</a> or dive into the <a class="reference external" href="https://github.com/lava-nc/lava/">source code</a>.</p>
-<p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to the <a class="reference external" href="http://eepurl.com/hJCyhb">INRC newsletter</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

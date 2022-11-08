@@ -31,6 +31,19 @@ lava.magma.core.model.py.model
    :undoc-members:
    :show-inheritance:
 
+lava.magma.core.model.py.neuron
+-------------------------------
+
+.. inheritance-diagram:: lava.magma.core.model.py.neuron
+   :parts: 1
+
+
+
+.. automodule:: lava.magma.core.model.py.neuron
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 lava.magma.core.model.py.ports
 ------------------------------
 

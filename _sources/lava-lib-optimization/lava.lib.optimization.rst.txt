@@ -1,15 +1,12 @@
 Lava - Optimization
 ===================
 
+.. py:module:: lava.lib.optimization
+
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    lava.lib.optimization.problems
    lava.lib.optimization.solvers
-
-
-.. automodule:: lava.lib.optimization
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   lava.lib.optimization.utils

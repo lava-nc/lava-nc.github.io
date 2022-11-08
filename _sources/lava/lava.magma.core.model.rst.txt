@@ -5,7 +5,7 @@ lava.magma.core.model
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.core.model.py
    lava.magma.core.model.sub

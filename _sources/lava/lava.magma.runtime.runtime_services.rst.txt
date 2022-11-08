@@ -5,7 +5,7 @@ lava.magma.runtime.runtime\_services
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.runtime.runtime_services.channel_broker
 

@@ -1,6 +1,8 @@
 lava.lib.optimization.solvers.generic.monitoring\_processes.solution\_readout
 =============================================================================
 
+.. py:module:: lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout
+
 
 
 lava.lib.optimization.solvers.generic.monitoring\_processes.solution\_readout.models
@@ -25,12 +27,6 @@ lava.lib.optimization.solvers.generic.monitoring\_processes.solution\_readout.pr
 
 
 .. automodule:: lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout.process
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-.. automodule:: lava.lib.optimization.solvers.generic.monitoring_processes.solution_readout
    :members:
    :undoc-members:
    :show-inheritance:

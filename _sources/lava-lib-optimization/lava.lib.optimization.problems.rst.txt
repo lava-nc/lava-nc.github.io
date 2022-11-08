@@ -1,6 +1,14 @@
 lava.lib.optimization.problems
 ==============================
 
+.. py:module:: lava.lib.optimization.problems
+
+
+.. toctree::
+   :maxdepth: 2
+
+   lava.lib.optimization.problems.bayesian
+
 
 
 lava.lib.optimization.problems.coefficients
@@ -64,12 +72,6 @@ lava.lib.optimization.problems.variables
 
 
 .. automodule:: lava.lib.optimization.problems.variables
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-.. automodule:: lava.lib.optimization.problems
    :members:
    :undoc-members:
    :show-inheritance:

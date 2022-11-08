@@ -14,7 +14,7 @@ Magma is the sub-package of Lava providing the main components of Lava
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.compiler
    lava.magma.core

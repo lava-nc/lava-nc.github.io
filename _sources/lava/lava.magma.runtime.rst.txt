@@ -5,7 +5,7 @@ lava.magma.runtime
 
 
 .. toctree::
-   :maxdepth: 10
+   :maxdepth: 2
 
    lava.magma.runtime.message_infrastructure
    lava.magma.runtime.runtime_services

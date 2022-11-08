@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lava.lib.dnf.operations &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lava.lib.dnf.inputs" href="lava.lib.dnf.inputs.html" />
+    <link rel="prev" title="lava.lib.dnf.kernels" href="lava.lib.dnf.kernels.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html">Spike-timing Dependent Plasticity (STDP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html">Three Factor Learning with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-three-factor-learning-rule-interfaces-in-Lava">Defining three-factor learning rule interfaces in Lava</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Reward-modulated-Spike-Timing-Dependent-Plasticity-(R-STDP)-learning-rule">Reward-modulated Spike-Timing Dependent Plasticity (R-STDP) learning rule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-a-simple-learning-network-with-localized-reward-signals">Defining a simple learning network with localized reward signals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-network-parameters-and-weights">Initialize network parameters and weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Generate-binary-input-and-graded-reward-spikes">Generate binary input and graded reward spikes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-Network-Processes">Initialize Network Processes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Connect-Network-Processes">Connect Network Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Create-monitors-to-observe-the-weight-and-trace-dynamics-during-learning">Create monitors to observe the weight and trace dynamics during learning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Run-the-network">Run the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Visualize-the-learning-results">Visualize the learning results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-eligibility-trace-dynamics">Plot eligibility trace dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-reward-trace-dynamics">Plot reward trace dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Advanced-Topic:-Implementing-custom-learning-rule-interfaces">Advanced Topic: Implementing custom learning rule interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#id17">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../lava_api_documentation.html">Lava API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../lava/lava.html">Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava/lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-dl/index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/slayer/utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/slayer/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-dl/netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-dl/netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="lava.lib.dnf.html">Lava - Dynamic Neural Fields</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.dnf.connect.html">lava.lib.dnf.connect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.connect.html#lava-lib-dnf-connect-connect">lava.lib.dnf.connect.connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.connect.html#lava-lib-dnf-connect-exceptions">lava.lib.dnf.connect.exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.dnf.kernels.html">lava.lib.dnf.kernels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.kernels.html#lava-lib-dnf-kernels-kernels">lava.lib.dnf.kernels.kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">lava.lib.dnf.operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lava-lib-dnf-operations-enums">lava.lib.dnf.operations.enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lava-lib-dnf-operations-exceptions">lava.lib.dnf.operations.exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lava-lib-dnf-operations-operations">lava.lib.dnf.operations.operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lava-lib-dnf-operations-shape-handlers">lava.lib.dnf.operations.shape_handlers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.dnf.inputs.html">lava.lib.dnf.inputs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.inputs.gauss_pattern.html">lava.lib.dnf.inputs.gauss_pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.inputs.rate_code_spike_gen.html">lava.lib.dnf.inputs.rate_code_spike_gen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="lava.lib.dnf.utils.html">lava.lib.dnf.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.utils.html#lava-lib-dnf-utils-convenience">lava.lib.dnf.utils.convenience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.utils.html#lava-lib-dnf-utils-math">lava.lib.dnf.utils.math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.utils.html#lava-lib-dnf-utils-plotting">lava.lib.dnf.utils.plotting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lava.lib.dnf.utils.html#lava-lib-dnf-utils-validation">lava.lib.dnf.utils.validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.bayesian.html">lava.lib.optimization.problems.bayesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.bayesian.html">lava.lib.optimization.solvers.bayesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.utils.html">lava.lib.optimization.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.utils.generators.html">lava.lib.optimization.utils.generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lava-lib-optimization/lava.lib.optimization.utils.html#lava-lib-optimization-utils-solver-tuner">lava.lib.optimization.utils.solver_tuner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
+          <li><a href="lava.lib.dnf.html">Lava - Dynamic Neural Fields</a> &raquo;</li>
+      <li>lava.lib.dnf.operations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lava-lib-dnf/lava.lib.dnf.operations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="module-lava.lib.dnf.operations">
+<span id="lava-lib-dnf-operations"></span><h1>lava.lib.dnf.operations<a class="headerlink" href="#module-lava.lib.dnf.operations" title="Permalink to this heading"></a></h1>
+<section id="lava-lib-dnf-operations-enums">
+<h2>lava.lib.dnf.operations.enums<a class="headerlink" href="#lava-lib-dnf-operations-enums" title="Permalink to this heading"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-7b6c80dfd963d80c5cc2558723644ef487c8e07a.png" alt="Inheritance diagram of lava.lib.dnf.operations.enums" usemap="#inheritance44ca4d646e" class="inheritance graphviz" /></div>
+<map id="inheritance44ca4d646e" name="inheritance44ca4d646e">
+<area shape="rect" id="node1" href="#lava.lib.dnf.operations.enums.BorderType" target="_top" title="An enumeration." alt="" coords="5,79,100,104"/>
+<area shape="rect" id="node3" href="#lava.lib.dnf.operations.enums.ReduceMethod" target="_top" title="Enum for reduce methods of ReduceDims operation" alt="" coords="124,79,243,104"/>
+</map><span class="target" id="module-lava.lib.dnf.operations.enums"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.BorderType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.enums.</span></span><span class="sig-name descname"><span class="pre">BorderType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.enums.BorderType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.BorderType.CIRCULAR">
+<span class="sig-name descname"><span class="pre">CIRCULAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#lava.lib.dnf.operations.enums.BorderType.CIRCULAR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.BorderType.PADDED">
+<span class="sig-name descname"><span class="pre">PADDED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#lava.lib.dnf.operations.enums.BorderType.PADDED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.BorderType.validate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.enums.BorderType.validate" title="Permalink to this definition"></a></dt>
+<dd><p>Validate type of &lt;border_type&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.ReduceMethod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.enums.</span></span><span class="sig-name descname"><span class="pre">ReduceMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.enums.ReduceMethod" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for reduce methods of ReduceDims operation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.ReduceMethod.MEAN">
+<span class="sig-name descname"><span class="pre">MEAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#lava.lib.dnf.operations.enums.ReduceMethod.MEAN" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.ReduceMethod.SUM">
+<span class="sig-name descname"><span class="pre">SUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#lava.lib.dnf.operations.enums.ReduceMethod.SUM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.enums.ReduceMethod.validate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduce_method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.enums.ReduceMethod.validate" title="Permalink to this definition"></a></dt>
+<dd><p>Validate type of &lt;reduce_op&gt;</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="lava-lib-dnf-operations-exceptions">
+<h2>lava.lib.dnf.operations.exceptions<a class="headerlink" href="#lava-lib-dnf-operations-exceptions" title="Permalink to this heading"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-b966c6802fa45558972084c636e0aff6230d091b.png" alt="Inheritance diagram of lava.lib.dnf.operations.exceptions" usemap="#inheritance3347ca1c38" class="inheritance graphviz" /></div>
+<map id="inheritance3347ca1c38" name="inheritance3347ca1c38">
+<area shape="rect" id="node1" href="#lava.lib.dnf.operations.exceptions.MisconfiguredOpError" target="_top" title="Exception that is raised when an operation is misconfigured." alt="" coords="5,5,168,31"/>
+</map><span class="target" id="module-lava.lib.dnf.operations.exceptions"></span><dl class="py exception">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.exceptions.MisconfiguredOpError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.exceptions.</span></span><span class="sig-name descname"><span class="pre">MisconfiguredOpError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.exceptions.MisconfiguredOpError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception that is raised when an operation is misconfigured.</p>
+<section id="parameters">
+<h3>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>msg<span class="classifier">str (optional)</span></dt><dd><p>custom exception message that overwrites the default</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="lava-lib-dnf-operations-operations">
+<h2>lava.lib.dnf.operations.operations<a class="headerlink" href="#lava-lib-dnf-operations-operations" title="Permalink to this heading"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-e48b5ab4093941a64a27bd4e515b1f974764611c.png" alt="Inheritance diagram of lava.lib.dnf.operations.operations" usemap="#inheritance7e1e3182b3" class="inheritance graphviz" /></div>
+<map id="inheritance7e1e3182b3" name="inheritance7e1e3182b3">
+<area shape="rect" id="node2" href="#lava.lib.dnf.operations.operations.AbstractOperation" target="_top" title="Abstract Operation, subclasses of which can be used to parameterize the" alt="" coords="483,79,623,104"/>
+<area shape="rect" id="node3" href="#lava.lib.dnf.operations.operations.Convolution" target="_top" title="Creates connectivity that resembles a convolution with a kernel." alt="" coords="5,152,105,177"/>
+<area shape="rect" id="node4" href="#lava.lib.dnf.operations.operations.ExpandAlongDiagonal" target="_top" title="Creates connectivity that projects the output of a source population" alt="" coords="129,152,294,177"/>
+<area shape="rect" id="node5" href="#lava.lib.dnf.operations.operations.ExpandDims" target="_top" title="Operation that expands the dimensionality of the input by projecting" alt="" coords="318,152,422,177"/>
+<area shape="rect" id="node6" href="#lava.lib.dnf.operations.operations.Flip" target="_top" title="Creates connectivity that flips all specified dimensions." alt="" coords="446,152,518,177"/>
+<area shape="rect" id="node7" href="#lava.lib.dnf.operations.operations.ReduceAlongDiagonal" target="_top" title="Creates connectivity that projects the output of a source population" alt="" coords="542,152,707,177"/>
+<area shape="rect" id="node8" href="#lava.lib.dnf.operations.operations.ReduceDims" target="_top" title="Operation that reduces the dimensionality of the input by projecting" alt="" coords="731,152,835,177"/>
+<area shape="rect" id="node9" href="#lava.lib.dnf.operations.operations.ReorderDims" target="_top" title="Operation that reorders the dimensions in the input to a specified new" alt="" coords="859,152,966,177"/>
+<area shape="rect" id="node10" href="#lava.lib.dnf.operations.operations.Weights" target="_top" title="Operation that generates one&#45;to&#45;one connectivity with given weights for" alt="" coords="990,152,1065,177"/>
+</map><span class="target" id="module-lava.lib.dnf.operations.operations"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.AbstractOperation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">AbstractOperation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape_handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract Operation, subclasses of which can be used to parameterize the
+connect() function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shape_handler</strong> (<a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><em>AbstractShapeHandler</em></a>) – handles, configures, and validates the input and output shape of the
+operation</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.AbstractOperation.compute_weights">
+<span class="sig-name descname"><span class="pre">compute_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.AbstractOperation.compute_weights" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the connectivity weight matrix of the operation.
+This public method only validates the configuration of the
+operation. The actual weights are computed in the
+abstract method _compute_weights().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>connectivity weight matrix</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.AbstractOperation.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.AbstractOperation.configure" title="Permalink to this definition"></a></dt>
+<dd><p>Configures an operation by setting its input and output shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – input shape of the operation</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.AbstractOperation.input_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.operations.AbstractOperation.input_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Return the output shape of the operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.AbstractOperation.output_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.operations.AbstractOperation.output_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Return the output shape of the operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.Convolution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">Convolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">border_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BorderType.PADDED</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.Convolution" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Creates connectivity that resembles a convolution with a kernel.
+Perhaps contrary to other implementations of the convolution, this
+operation always leaves the shape of the input intact. That is, a
+Convolution operation applied, for instance, to the output of a
+population of neurons of shape (42, 42) will also yield an output of
+shape (42, 42).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kernel</strong> (<a class="reference internal" href="lava.lib.dnf.kernels.html#lava.lib.dnf.kernels.kernels.Kernel" title="lava.lib.dnf.kernels.kernels.Kernel"><em>Kernel</em></a>) – kernel of weights that the input will be convolved with; must be of the
+same dimensionality as the input</p></li>
+<li><p><strong>border_types</strong> (<a class="reference internal" href="#lava.lib.dnf.operations.enums.BorderType" title="lava.lib.dnf.operations.enums.BorderType"><em>BorderType</em></a><em> or </em><em>list</em><em>(</em><a class="reference internal" href="#lava.lib.dnf.operations.enums.BorderType" title="lava.lib.dnf.operations.enums.BorderType"><em>BorderType</em></a><em>)</em>) – determines how the Convolution operation treats borders; valid values
+are (1) PADDED, in which case the borders will be padded with a value
+that can be specified in the Kernel or (2) CIRCULAR, in which case
+the values from the other side of the input will be used as ‘padding’
+(this is sometimes also called “wrapped”)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.Convolution.border_types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.lib.dnf.operations.enums.BorderType" title="lava.lib.dnf.operations.enums.BorderType"><span class="pre">BorderType</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.operations.Convolution.border_types" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the list of border types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#lava.lib.dnf.operations.enums.BorderType" title="lava.lib.dnf.operations.enums.BorderType"><code class="xref py py-class docutils literal notranslate"><span class="pre">BorderType</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.Convolution.kernel">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.lib.dnf.kernels.html#lava.lib.dnf.kernels.kernels.Kernel" title="lava.lib.dnf.kernels.kernels.Kernel"><span class="pre">Kernel</span></a></em><a class="headerlink" href="#lava.lib.dnf.operations.operations.Convolution.kernel" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the kernel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="lava.lib.dnf.kernels.html#lava.lib.dnf.kernels.kernels.Kernel" title="lava.lib.dnf.kernels.kernels.Kernel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kernel</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.ExpandAlongDiagonal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">ExpandAlongDiagonal</span></span><a class="headerlink" href="#lava.lib.dnf.operations.operations.ExpandAlongDiagonal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Creates connectivity that projects the output of a source population
+onto the diagonal of the target population, where the target
+population has twice the number of dimensions as the source
+population. The dimensions of the source population can only have odd
+sizes. For instance, if the source population is a grid of
+neurons of shape (99, 79), the operation will project the output of
+that two-dimensional population into a 4D target population of shape
+(50, 40, 50, 40) along its diagonal. Each entry in the output shape is
+computed by out_size = (in_size + 1) / 2.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.ExpandDims">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">ExpandDims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dims_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.ExpandDims" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Operation that expands the dimensionality of the input by projecting
+the dimensions of the input to the newly added dimensions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.Flip">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">Flip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.Flip" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Creates connectivity that flips all specified dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dims</strong> (<em>tuple</em><em>(</em><em>int</em><em>) or </em><em>int</em>) – indices of the dimensions that are to be flipped</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.ReduceAlongDiagonal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">ReduceAlongDiagonal</span></span><a class="headerlink" href="#lava.lib.dnf.operations.operations.ReduceAlongDiagonal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Creates connectivity that projects the output of a source population
+along its diagonal. For instance, if the source population is a grid of
+neurons of shape (40, 40), the operation will project (sum) the output of
+that two-dimensional population along its diagonal, yielding a
+one-dimensional output of shape (79,). The output size is computed by
+79 = 40 * 2 - 1.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.ReduceDims">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">ReduceDims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduce_dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduce_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ReduceMethod.SUM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.ReduceDims" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Operation that reduces the dimensionality of the input by projecting
+a specified subset of dimensions onto the remaining dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reduce_dims</strong> (<em>int</em><em> or </em><em>tuple</em><em>(</em><em>int</em><em>)</em>) – indices of dimension that will be reduced/removed</p></li>
+<li><p><strong>reduce_method</strong> (<a class="reference internal" href="#lava.lib.dnf.operations.enums.ReduceMethod" title="lava.lib.dnf.operations.enums.ReduceMethod"><em>ReduceMethod</em></a>) – method by which the dimensions will be reduced (SUM or MEAN)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.ReorderDims">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">ReorderDims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.ReorderDims" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Operation that reorders the dimensions in the input to a specified new
+order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – new order of the dimensions (see ReorderDimsShapeHandler)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.operations.Weights">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.operations.</span></span><span class="sig-name descname"><span class="pre">Weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.operations.Weights" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractOperation</span></code></a></p>
+<p>Operation that generates one-to-one connectivity with given weights for
+every synapse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>float</em>) – weight used for every connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="lava-lib-dnf-operations-shape-handlers">
+<h2>lava.lib.dnf.operations.shape_handlers<a class="headerlink" href="#lava-lib-dnf-operations-shape-handlers" title="Permalink to this heading"></a></h2>
+<div class="graphviz"><img src="../_images/inheritance-7c946bc132099441e9fe9bbd22ce14fbf65755e0.png" alt="Inheritance diagram of lava.lib.dnf.operations.shape_handlers" usemap="#inheritance8abf6fd3c5" class="inheritance graphviz" /></div>
+<map id="inheritance8abf6fd3c5" name="inheritance8abf6fd3c5">
+<area shape="rect" id="node2" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" target="_top" title="Abstract class for handling input and output shape of the" alt="" coords="759,79,926,104"/>
+<area shape="rect" id="node3" href="#lava.lib.dnf.operations.shape_handlers.ExpandAlongDiagonalShapeHandler" target="_top" title="Shape handler for the ExpandAlongDiagonal operation, which projects" alt="" coords="5,152,261,177"/>
+<area shape="rect" id="node4" href="#lava.lib.dnf.operations.shape_handlers.ExpandDimsShapeHandler" target="_top" title="Shape handler for operations that expand the dimensionality. New" alt="" coords="285,152,480,177"/>
+<area shape="rect" id="node6" href="#lava.lib.dnf.operations.shape_handlers.KeepShapeShapeHandler" target="_top" title="Shape handler for operations that do not change the shape of the" alt="" coords="505,152,690,177"/>
+<area shape="rect" id="node7" href="#lava.lib.dnf.operations.shape_handlers.ReduceAlongDiagonalShapeHandler" target="_top" title="Shape handler for the ReduceAlongDiagonal operation, which projects" alt="" coords="715,152,971,177"/>
+<area shape="rect" id="node8" href="#lava.lib.dnf.operations.shape_handlers.ReduceDimsShapeHandler" target="_top" title="Shape handler for operations that reduce the dimensionality of the" alt="" coords="995,152,1189,177"/>
+<area shape="rect" id="node9" href="#lava.lib.dnf.operations.shape_handlers.ReorderDimsShapeHandler" target="_top" title="Shape handler for operations that reorder the input shape." alt="" coords="1214,152,1413,177"/>
+<area shape="rect" id="node10" href="#lava.lib.dnf.operations.shape_handlers.ReshapeShapeHandler" target="_top" title="Shape handler for operations that reshape the input, changing" alt="" coords="1437,152,1606,177"/>
+<area shape="rect" id="node5" href="#lava.lib.dnf.operations.shape_handlers.FlipShapeHandler" target="_top" title="Shape handler for the Flip operation that flips specified dimensions." alt="" coords="529,225,666,251"/>
+</map><span class="target" id="module-lava.lib.dnf.operations.shape_handlers"></span><dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">AbstractShapeHandler</span></span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class for handling input and output shape of the
+AbstractOperation class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.assert_configured">
+<span class="sig-name descname"><span class="pre">assert_configured</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.assert_configured" title="Permalink to this definition"></a></dt>
+<dd><p>Assert that input and output shape is configured.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.configure" title="Permalink to this definition"></a></dt>
+<dd><p>Configures the input and output shape of an operation given an input
+shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – input shape of an operation</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.input_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.input_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Return the input shape of the handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.output_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler.output_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Return the output shape of the handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ExpandAlongDiagonalShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ExpandAlongDiagonalShapeHandler</span></span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ExpandAlongDiagonalShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for the ExpandAlongDiagonal operation, which projects
+diagonally onto a multi-dimensional population.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ExpandDimsShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ExpandDimsShapeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dims_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ExpandDimsShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for operations that expand the dimensionality. New
+dimensions (axes) will be appended to the already existing ones of the
+input. Their sizes must be specified using the &lt;new_dims_shape&gt; argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_dims_shape</strong> (<em>int</em><em> or </em><em>tuple</em><em>(</em><em>int</em><em>)</em>) – shape of the added dimensions; they will be appended to the shape
+of the input, for instance an input shape (2,) and
+new_dims_shape=(6, 8) will produce an output shape (2, 6, 8)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ExpandDimsShapeHandler.new_dims_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">new_dims_shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ExpandDimsShapeHandler.new_dims_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Return the &lt;new_dims_shape&gt; attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.FlipShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">FlipShapeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.FlipShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.KeepShapeShapeHandler" title="lava.lib.dnf.operations.shape_handlers.KeepShapeShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeepShapeShapeHandler</span></code></a></p>
+<p>Shape handler for the Flip operation that flips specified dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dims</strong> (<em>tuple</em><em>(</em><em>int</em><em>) or </em><em>int</em>) – indices of the dimensions that are to be flipped</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.FlipShapeHandler.dims">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.FlipShapeHandler.dims" title="Permalink to this definition"></a></dt>
+<dd><p>Return the &lt;dims&gt; that are to be flipped</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.KeepShapeShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">KeepShapeShapeHandler</span></span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.KeepShapeShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for operations that do not change the shape of the
+input.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReduceAlongDiagonalShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ReduceAlongDiagonalShapeHandler</span></span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReduceAlongDiagonalShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for the ReduceAlongDiagonal operation, which projects
+diagonally from a multi-dimensional population.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReduceDimsShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ReduceDimsShapeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduce_dims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReduceDimsShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for operations that reduce the dimensionality of the
+input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduce_dims</strong> (<em>int</em><em> or </em><em>tuple</em><em>(</em><em>int</em><em>)</em>) – indices of the dimensions to remove</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReduceDimsShapeHandler.reduce_dims">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reduce_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReduceDimsShapeHandler.reduce_dims" title="Permalink to this definition"></a></dt>
+<dd><p>Return the output shape of the handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReorderDimsShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ReorderDimsShapeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReorderDimsShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for operations that reorder the input shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – order of the dimensions of the output; for instance if the input shape
+is (1, 2, 3) and order=(0, 2, 1), the output shape will be (1, 3, 2);
+must have the same number of elements as the input and output shape</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReorderDimsShapeHandler.order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReorderDimsShapeHandler.order" title="Permalink to this definition"></a></dt>
+<dd><p>Return the order of the handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">...</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dnf.operations.shape_handlers.ReshapeShapeHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.operations.shape_handlers.</span></span><span class="sig-name descname"><span class="pre">ReshapeShapeHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.operations.shape_handlers.ReshapeShapeHandler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler" title="lava.lib.dnf.operations.shape_handlers.AbstractShapeHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractShapeHandler</span></code></a></p>
+<p>Shape handler for operations that reshape the input, changing
+the shape but keeping the number of elements constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>output_shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – output shape of an operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lava.lib.dnf.kernels.html" class="btn btn-neutral float-left" title="lava.lib.dnf.kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.lib.dnf.inputs.html" class="btn btn-neutral float-right" title="lava.lib.dnf.inputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
