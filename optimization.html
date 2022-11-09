@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neuromorphic Constraint Optimization Library &mdash; Lava  documentation</title>
+  <title>Neuromorphic Constrained Optimization Library &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -319,24 +319,26 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constraint Optimization Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neuromorphic Constrained Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#about-the-project">About the Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#qp-tutorial">QP Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qubo-tutorial">QUBO Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quadratic-programming">Quadratic Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quadratic-uncosntrained-binary-optimization">Quadratic Uncosntrained Binary Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#linux-macos">[Linux/MacOS]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#windows">[Windows]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#solving-qp-problems">Solving QP problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solving-qubo">Solving QUBO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Tutorials</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -523,7 +525,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="algorithms.html">Algorithms and Application Libraries</a> &raquo;</li>
-      <li>Neuromorphic Constraint Optimization Library</li>
+      <li>Neuromorphic Constrained Optimization Library</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/optimization.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -557,10 +559,12 @@
     text-align: unset;
 }
 </style>
-<section id="neuromorphic-constraint-optimization-library">
-<h1>Neuromorphic Constraint Optimization Library<a class="headerlink" href="#neuromorphic-constraint-optimization-library" title="Permalink to this heading"></a></h1>
+<section id="neuromorphic-constrained-optimization-library">
+<h1>Neuromorphic Constrained Optimization Library<a class="headerlink" href="#neuromorphic-constrained-optimization-library" title="Permalink to this heading"></a></h1>
 <p><strong>A library of solvers that leverage neuromorphic hardware for
 constrained optimization.</strong></p>
+<section id="about-the-project">
+<h2>About the Project<a class="headerlink" href="#about-the-project" title="Permalink to this heading"></a></h2>
 <p>Constrained optimization searches for the values of input variables that
 minimize or maximize a given objective function, while the variables are
 subject to constraints. This kind of problem is ubiquitous throughout
@@ -578,31 +582,32 @@ can simultaneously evaluate conflicts and cost functions involving many
 variables, and update all variables accordingly. This allows a quick
 convergence towards an optimal state. In addition, the fine-scale timing
 dynamics of SNNs allow them to readily escape from local minima.</p>
-<p>This Lava repository currently supports the following constraint
-optimization problems:</p>
+<p>This Lava repository currently supports solvers for the following
+constrained optimization problems:</p>
 <ul class="simple">
 <li><p>Quadratic Programming (QP)</p></li>
 <li><p>Quadratic Unconstrained Binary Optimization (QUBO)</p></li>
 </ul>
-<p>As we continue development, the library will support more constraint
+<p>As we continue development, the library will support more constrained
 optimization problems that are relevant for robotics and operations
 research. We currently plan the following development order in such a
 way that new solvers build on the capabilities of existing ones:</p>
 <ul class="simple">
-<li><p>Constraint Satisfaction Problems (CSP)</p></li>
+<li><p>Constraint Satisfaction Problems (CSP) [problem interface already
+available]</p></li>
 <li><p>Integer Linear Programming (ILP)</p></li>
 <li><p>Mixed-Integer Linear Programming (MILP)</p></li>
 <li><p>Mixed-Integer Quadratic Programming (MIQP)</p></li>
 <li><p>Linear Programming (LP)</p></li>
 </ul>
-<figure class="align-default" id="id2">
-<img alt="Lava features a growing suite of constraint optimization solvers" src="https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true" />
+<figure class="align-default" id="id1">
+<img alt="Lava features a growing suite of constrained optimization solvers" src="https://user-images.githubusercontent.com/83413252/135428779-d128aaaa-54ed-4ae1-a5b1-8e0fcc08c96e.png?raw=true" />
 <figcaption>
-<p><span class="caption-text">Overview_Solvers</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Overview_Solvers</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <section id="taxonomy-of-optimization-problems">
-<h2>Taxonomy of Optimization Problems<a class="headerlink" href="#taxonomy-of-optimization-problems" title="Permalink to this heading"></a></h2>
+<h3>Taxonomy of Optimization Problems<a class="headerlink" href="#taxonomy-of-optimization-problems" title="Permalink to this heading"></a></h3>
 <p>More formally, the general form of a constrained optimization problem
 is:</p>
 <div class="math">
@@ -614,122 +619,122 @@ inequality constraints. The vector <img class="math" src="data:image/svg+xml;bas
 or a mixture of both. We can then construct the following taxonomy of
 optimization problems according to the characteristics of the variable
 domain and of <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzcuMDQ2NDM3cHQnIGhlaWdodD0nMTAuNjI2Nzk4cHQnIHZpZXdCb3g9JzU2LjQxMzI2NyA1Ny40NTEyMzMgNy4wNDY0MzcgMTAuNjI2Nzk4Jz4KPGRlZnM+CjxwYXRoIGlkPSdnMC0xMDInIGQ9J001LjMzMjAwNS00LjgwNTk3OEM1LjU3MTEwOC00LjgwNTk3OCA1LjY2Njc1LTQuODA1OTc4IDUuNjY2NzUtNS4wMzMxMjZDNS42NjY3NS01LjE1MjY3NyA1LjU3MTEwOC01LjE1MjY3NyA1LjM1NTkxNS01LjE1MjY3N0g0LjM4NzU0N0M0LjYxNDY5NS02LjM4NDA2IDQuNzgyMDY3LTcuMjMyODc3IDQuODc3NzA5LTcuNjE1NDQyQzQuOTQ5NDQtNy45MDIzNjYgNS4yMDA0OTgtOC4xNzczMzUgNS41MTEzMzMtOC4xNzczMzVDNS43NjIzOTEtOC4xNzczMzUgNi4wMTM0NS04LjA2OTczOCA2LjEzMzAwMS03Ljk2MjE0MkM1LjY2Njc1LTcuOTE0MzIxIDUuNTIzMjg4LTcuNTY3NjIxIDUuNTIzMjg4LTcuMzY0Mzg0QzUuNTIzMjg4LTcuMTI1MjggNS43MDI2MTUtNi45ODE4MTggNS45Mjk3NjMtNi45ODE4MThDNi4xNjg4NjctNi45ODE4MTggNi41Mjc1MjItNy4xODUwNTYgNi41Mjc1MjItNy42MzkzNTJDNi41Mjc1MjItOC4xNDE0NjkgNi4wMjU0MDUtOC40MTY0MzggNS40OTkzNzctOC40MTY0MzhDNC45ODUzMDUtOC40MTY0MzggNC40ODMxODgtOC4wMzM4NzMgNC4yNDQwODUtNy41Njc2MjFDNC4wMjg4OTItNy4xNDkxOTEgMy45MDkzNC02LjcxODgwNCAzLjYzNDM3MS01LjE1MjY3N0gyLjgzMzM3NUMyLjYwNjIyNy01LjE1MjY3NyAyLjQ4NjY3NS01LjE1MjY3NyAyLjQ4NjY3NS00LjkzNzQ4NEMyLjQ4NjY3NS00LjgwNTk3OCAyLjU1ODQwNi00LjgwNTk3OCAyLjc5NzUwOS00LjgwNTk3OEgzLjU2MjY0QzMuMzQ3NDQ3LTMuNjk0MTQ3IDIuODU3Mjg1LS45OTIyNzkgMi41ODIzMTYgLjI4NjkyNEMyLjM3OTA3OCAxLjMyNzAyNCAyLjE5OTc1MSAyLjE5OTc1MSAxLjYwMTk5MyAyLjE5OTc1MUMxLjU2NjEyNyAyLjE5OTc1MSAxLjIxOTQyNyAyLjE5OTc1MSAxLjAwNDIzNCAxLjk3MjYwM0MxLjYxMzk0OCAxLjkyNDc4MiAxLjYxMzk0OCAxLjM5ODc1NSAxLjYxMzk0OCAxLjM4NjhDMS42MTM5NDggMS4xNDc2OTYgMS40MzQ2MiAxLjAwNDIzNCAxLjIwNzQ3MiAxLjAwNDIzNEMuOTY4MzY5IDEuMDA0MjM0IC42MDk3MTQgMS4yMDc0NzIgLjYwOTcxNCAxLjY2MTc2OEMuNjA5NzE0IDIuMTc1ODQxIDEuMTM1NzQxIDIuNDM4ODU0IDEuNjAxOTkzIDIuNDM4ODU0QzIuODIxNDIgMi40Mzg4NTQgMy4zMjM1MzcgLjI1MTA1OSAzLjQ1NTA0NC0uMzQ2N0MzLjY3MDIzNy0xLjI2NzI0OCA0LjI1NjA0LTQuNDQ3MzIzIDQuMzE1ODE2LTQuODA1OTc4SDUuMzMyMDA1WicvPgo8L2RlZnM+CjxnIGlkPSdwYWdlMSc+Cjx1c2UgeD0nNTYuNDEzMjY3JyB5PSc2NS43NTM0MjUnIHhsaW5rOmhyZWY9JyNnMC0xMDInLz4KPC9nPgo8L3N2Zz4=" alt="f"/>, <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzYuMDM0MjZwdCcgaGVpZ2h0PSc3LjQ3MTk4cHQnIHZpZXdCb3g9JzU2LjQxMzI2NyA2MC42MDYwNTIgNi4wMzQyNiA3LjQ3MTk4Jz4KPGRlZnM+CjxwYXRoIGlkPSdnMC0xMDMnIGQ9J000LjA0MDg0Ny0xLjUxODMwNkMzLjk5MzAyNi0xLjMyNzAyNCAzLjk2OTExNi0xLjI3OTIwMyAzLjgxMzY5OS0xLjA5OTg3NUMzLjMyMzUzNy0uNDY2MjUyIDIuODIxNDItLjIzOTEwMyAyLjQ1MDgwOS0uMjM5MTAzQzIuMDU2Mjg5LS4yMzkxMDMgMS42ODU2NzktLjU0OTkzOCAxLjY4NTY3OS0xLjM3NDg0NEMxLjY4NTY3OS0yLjAwODQ2OCAyLjA0NDMzNC0zLjM0NzQ0NyAyLjMwNzM0Ny0zLjg4NTQzQzIuNjU0MDQ3LTQuNTU0OTE5IDMuMTkyMDMtNS4wMzMxMjYgMy42OTQxNDctNS4wMzMxMjZDNC40ODMxODgtNS4wMzMxMjYgNC42Mzg2MDUtNC4wNTI4MDIgNC42Mzg2MDUtMy45ODEwNzFMNC42MDI3NC0zLjgxMzY5OUw0LjA0MDg0Ny0xLjUxODMwNlpNNC43ODIwNjctNC40ODMxODhDNC42MjY2NS00LjgyOTg4OCA0LjI5MTkwNS01LjI3MjIyOSAzLjY5NDE0Ny01LjI3MjIyOUMyLjM5MTAzNC01LjI3MjIyOSAuOTA4NTkzLTMuNjM0MzcxIC45MDg1OTMtMS44NTMwNTFDLjkwODU5My0uNjA5NzE0IDEuNjYxNzY4IDAgMi40MjY4OTkgMEMzLjA2MDUyMyAwIDMuNjIyNDE2LS41MDIxMTcgMy44Mzc2MDktLjc0MTIyTDMuNTc0NTk1IC4zMzQ3NDVDMy40MDcyMjMgLjk5MjI3OSAzLjMzNTQ5MiAxLjI5MTE1OCAyLjkwNTEwNiAxLjcwOTU4OUMyLjQxNDk0NCAyLjE5OTc1MSAxLjk2MDY0OCAyLjE5OTc1MSAxLjY5NzYzNCAyLjE5OTc1MUMxLjMzODk3OSAyLjE5OTc1MSAxLjA0MDEgMi4xNzU4NDEgLjc0MTIyIDIuMDgwMTk5QzEuMTIzNzg2IDEuOTcyNjAzIDEuMjE5NDI3IDEuNjM3ODU4IDEuMjE5NDI3IDEuNTA2MzUxQzEuMjE5NDI3IDEuMzE1MDY4IDEuMDc1OTY1IDEuMTIzNzg2IC44MTI5NTEgMS4xMjM3ODZDLjUyNjAyNyAxLjEyMzc4NiAuMjE1MTkzIDEuMzYyODg5IC4yMTUxOTMgMS43NTc0MUMuMjE1MTkzIDIuMjQ3NTcyIC43MDUzNTUgMi40Mzg4NTQgMS43MjE1NDQgMi40Mzg4NTRDMy4yNjM3NjEgMi40Mzg4NTQgNC4wNjQ3NTcgMS40NDY1NzUgNC4yMjAxNzQgLjgwMDk5Nkw1LjU0NzE5OC00LjU1NDkxOUM1LjU4MzA2NC00LjY5ODM4MSA1LjU4MzA2NC00LjcyMjI5MSA1LjU4MzA2NC00Ljc0NjIwMkM1LjU4MzA2NC00LjkxMzU3NCA1LjQ1MTU1Ny01LjA0NTA4MSA1LjI3MjIyOS01LjA0NTA4MUM0Ljk4NTMwNS01LjA0NTA4MSA0LjgxNzkzMy00LjgwNTk3OCA0Ljc4MjA2Ny00LjQ4MzE4OFonLz4KPC9kZWZzPgo8ZyBpZD0ncGFnZTEnPgo8dXNlIHg9JzU2LjQxMzI2NycgeT0nNjUuNzUzNDI1JyB4bGluazpocmVmPScjZzAtMTAzJy8+CjwvZz4KPC9zdmc+" alt="g"/>, and <img class="math" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPCEtLSBUaGlzIGZpbGUgd2FzIGdlbmVyYXRlZCBieSBkdmlzdmdtIDIuOC4xIC0tPgo8c3ZnIHZlcnNpb249JzEuMScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB4bWxuczp4bGluaz0naHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluaycgd2lkdGg9JzYuNzM4NTU1cHQnIGhlaWdodD0nOC4zMDIxOTFwdCcgdmlld0JveD0nNTYuNDEzMjY3IDU3LjQ1MTIzMyA2LjczODU1NSA4LjMwMjE5MSc+CjxkZWZzPgo8cGF0aCBpZD0nZzAtMTA0JyBkPSdNMy4zNTk0MDItNy45OTgwMDdDMy4zNzEzNTctOC4wNDU4MjggMy4zOTUyNjgtOC4xMTc1NTkgMy4zOTUyNjgtOC4xNzczMzVDMy4zOTUyNjgtOC4yOTY4ODcgMy4yNzU3MTYtOC4yOTY4ODcgMy4yNTE4MDYtOC4yOTY4ODdDMy4yMzk4NTEtOC4yOTY4ODcgMi42NTQwNDctOC4yNDkwNjYgMi41OTQyNzEtOC4yMzcxMTFDMi4zOTEwMzQtOC4yMjUxNTYgMi4yMTE3MDYtOC4yMDEyNDUgMS45OTY1MTMtOC4xODkyOUMxLjY5NzYzNC04LjE2NTM4IDEuNjEzOTQ4LTguMTUzNDI1IDEuNjEzOTQ4LTcuOTM4MjMyQzEuNjEzOTQ4LTcuODE4NjggMS43MDk1ODktNy44MTg2OCAxLjg3Njk2MS03LjgxODY4QzIuNDYyNzY1LTcuODE4NjggMi40NzQ3Mi03LjcxMTA4MyAyLjQ3NDcyLTcuNTkxNTMyQzIuNDc0NzItNy41MTk4MDEgMi40NTA4MDktNy40MjQxNTkgMi40Mzg4NTQtNy4zODgyOTRMLjcwNTM1NS0uNDY2MjUyQy42NTc1MzQtLjI4NjkyNCAuNjU3NTM0LS4yNjMwMTQgLjY1NzUzNC0uMTkxMjgzQy42NTc1MzQgLjA3MTczMSAuODYwNzcyIC4xMTk1NTIgLjk4MDMyNCAuMTE5NTUyQzEuMTgzNTYyIC4xMTk1NTIgMS4zMzg5NzktLjAzNTg2NiAxLjM5ODc1NS0uMTY3MzcyTDEuOTM2NzM3LTIuMzMxMjU4QzEuOTk2NTEzLTIuNTk0MjcxIDIuMDY4MjQ0LTIuODQ1MzMgMi4xMjgwMi0zLjEwODM0NEMyLjI1OTUyNy0zLjYxMDQ2MSAyLjI1OTUyNy0zLjYyMjQxNiAyLjQ4NjY3NS0zLjk2OTExNlMzLjI1MTgwNi01LjAzMzEyNiA0LjE3MjM1NC01LjAzMzEyNkM0LjY1MDU2LTUuMDMzMTI2IDQuODE3OTMzLTQuNjc0NDcxIDQuODE3OTMzLTQuMTk2MjY0QzQuODE3OTMzLTMuNTI2Nzc1IDQuMzUxNjgxLTIuMjIzNjYxIDQuMDg4NjY3LTEuNTA2MzUxQzMuOTgxMDcxLTEuMjE5NDI3IDMuOTIxMjk1LTEuMDY0MDEgMy45MjEyOTUtLjg0ODgxN0MzLjkyMTI5NS0uMzEwODM0IDQuMjkxOTA1IC4xMTk1NTIgNC44NjU3NTMgLjExOTU1MkM1Ljk3NzU4NCAuMTE5NTUyIDYuMzk2MDE1LTEuNjM3ODU4IDYuMzk2MDE1LTEuNzA5NTg5QzYuMzk2MDE1LTEuNzY5MzY1IDYuMzQ4MTk0LTEuODE3MTg2IDYuMjc2NDYzLTEuODE3MTg2QzYuMTY4ODY3LTEuODE3MTg2IDYuMTU2OTEyLTEuNzgxMzIgNi4wOTcxMzYtMS41NzgwODJDNS44MjIxNjctLjYyMTY2OSA1LjM3OTgyNi0uMTE5NTUyIDQuOTAxNjE5LS4xMTk1NTJDNC43ODIwNjctLjExOTU1MiA0LjU5MDc4NS0uMTMxNTA3IDQuNTkwNzg1LS41MTQwNzJDNC41OTA3ODUtLjgyNDkwNyA0LjczNDI0Ny0xLjIwNzQ3MiA0Ljc4MjA2Ny0xLjMzODk3OUM0Ljk5NzI2LTEuOTEyODI3IDUuNTM1MjQzLTMuMzIzNTM3IDUuNTM1MjQzLTQuMDE2OTM2QzUuNTM1MjQzLTQuNzM0MjQ3IDUuMTE2ODEyLTUuMjcyMjI5IDQuMjA4MjE5LTUuMjcyMjI5QzMuNTI2Nzc1LTUuMjcyMjI5IDIuOTI5MDE2LTQuOTQ5NDQgMi40Mzg4NTQtNC4zMjc3NzFMMy4zNTk0MDItNy45OTgwMDdaJy8+CjwvZGVmcz4KPGcgaWQ9J3BhZ2UxJz4KPHVzZSB4PSc1Ni40MTMyNjcnIHk9JzY1Ljc1MzQyNScgeGxpbms6aHJlZj0nI2cwLTEwNCcvPgo8L2c+Cjwvc3ZnPg==" alt="h"/>:</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id2">
 <img alt="image" src="https://user-images.githubusercontent.com/83413252/192852018-dbc08018-ddda-4571-8494-cd1fbfa8405f.png" />
 <figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>In the long run, lava-optimization aims to offer support to solve all of
 the problems in the figure with a neuromorphic backend.</p>
 </section>
 <section id="optimizationsolver-and-optimizationproblem-classes">
-<h2>OptimizationSolver and OptimizationProblem Classes<a class="headerlink" href="#optimizationsolver-and-optimizationproblem-classes" title="Permalink to this heading"></a></h2>
+<h3>OptimizationSolver and OptimizationProblem Classes<a class="headerlink" href="#optimizationsolver-and-optimizationproblem-classes" title="Permalink to this heading"></a></h3>
 <p>The figure below shows the general architecture of the library. We
 harness the general definition of constraint optimization problems to
-create OptimizationProblem instances by composing Constraints,
-Variables, and Cost classes which describe the characteristics of every
-subproblem class. Note that while a quadratic problem (QP) will be
-described by linear equality and inequality constraints with variables
-on the continuous domain and a quadratic function, a constraint
-satisfaction problem (CSP) will be described by discrete constraints,
-defined by variable subsets and a binary relation describing the
-mutually allowed values for such discrete variables and will have a
-constant cost function with the pure goal of satisfying constraints.</p>
+create <code class="docutils literal notranslate"><span class="pre">OptimizationProblem</span></code> instances by composing <code class="docutils literal notranslate"><span class="pre">Constraints</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Variables</span></code>, and <code class="docutils literal notranslate"><span class="pre">Cost</span></code> classes which describe the characteristics
+of every subproblem class. Note that while a quadratic problem (QP) will
+be described by linear equality and inequality constraints with
+variables on the continuous domain and a quadratic function. A
+constraint satisfaction problem (CSP) will be described by discrete
+constraints, defined by variable subsets and a binary relation
+describing the mutually allowed values for such discrete variables and
+will have a constant cost function with the pure goal of satisfying
+constraints.</p>
 <p>An API for every problem class can be created by inheriting from
-OptimizationSolver and composing particular flavors of Constraints,
-Variables, and Cost.</p>
-<figure class="align-default" id="id4">
+<code class="docutils literal notranslate"><span class="pre">OptimizationSolver</span></code> and composing particular flavors of
+<code class="docutils literal notranslate"><span class="pre">Constraints</span></code>, <code class="docutils literal notranslate"><span class="pre">Variables</span></code>, and <code class="docutils literal notranslate"><span class="pre">Cost</span></code>.</p>
+<figure class="align-default" id="id3">
 <img alt="image" src="https://user-images.githubusercontent.com/83413252/192851930-919035a7-122d-4a82-8032-f1acc6da717b.png" />
 <figcaption>
-<p><span class="caption-text">image</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text">image</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p>The instance of an Optimization problem is the valid input for
-instantiating the generic OptimizationSolver class. In this way, the
-OptimizationSolver interface is left fixed and the OptimizationProblem
-allows the greatest flexibility for creating new APIs. Under the hood,
-the OptimizationSolver understands the compossite structure of the
-OptimizationProblem and will in turn compose the required solver
-components and Lava processes.</p>
+<p>The instance of an <code class="docutils literal notranslate"><span class="pre">Optimization</span> <span class="pre">problem</span></code> is the valid input for
+instantiating the generic <code class="docutils literal notranslate"><span class="pre">OptimizationSolver</span></code> class. In this way, the
+<code class="docutils literal notranslate"><span class="pre">OptimizationSolver</span></code> interface is left fixed and the
+<code class="docutils literal notranslate"><span class="pre">OptimizationProblem</span></code> allows the greatest flexibility for creating new
+APIs. Under the hood, the <code class="docutils literal notranslate"><span class="pre">OptimizationSolver</span></code> understands the
+composite structure of the <code class="docutils literal notranslate"><span class="pre">OptimizationProblem</span></code> and will in turn
+compose the required solver components and Lava processes.</p>
+</section>
 </section>
 <section id="tutorials">
 <h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h2>
-<section id="qp-tutorial">
-<h3>QP Tutorial<a class="headerlink" href="#qp-tutorial" title="Permalink to this heading"></a></h3>
+<section id="quadratic-programming">
+<h3>Quadratic Programming<a class="headerlink" href="#quadratic-programming" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/lava-nc/lava-optimization/blob/release/v0.2.0/tutorials/tutorial_01_solving_lasso.ipynb">Solving
 LASSO.</a></p></li>
 </ul>
 </section>
-<section id="solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">
-<h3>Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)<a class="headerlink" href="#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated" title="Permalink to this heading"></a></h3>
+<section id="quadratic-uncosntrained-binary-optimization">
+<h3>Quadratic Uncosntrained Binary Optimization<a class="headerlink" href="#quadratic-uncosntrained-binary-optimization" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/lava-nc/lava-optimization/blob/release/v0.2.0/tutorials/tutorial_02_solving_qubos.ipynb">Solving Maximum Independent
+Set.</a></p></li>
+</ul>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="solving-qp-problems">
+<h3>Solving QP problems<a class="headerlink" href="#solving-qp-problems" title="Permalink to this heading"></a></h3>
+<p>Currently, QP problems can be solved using the specific <code class="docutils literal notranslate"><span class="pre">QPSolver</span></code>. In
+future releases, this will be merged with the generic API of
+<code class="docutils literal notranslate"><span class="pre">OptimizationSolver</span></code> (used in the next example).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">lava.lib.optimization.problems.problems</span> <span class="kn">import</span> <span class="n">QP</span>
 <span class="kn">from</span> <span class="nn">lava.lib.optimization.solvers.qp.solver</span> <span class="kn">import</span> <span class="n">QPSolver</span>
 
+<span class="c1"># Define QP problem</span>
 <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 <span class="n">A</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 
+<span class="n">problem</span> <span class="o">=</span> <span class="n">QP</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="c1"># Define hyper-parameters</span>
 <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">1</span>
 <span class="n">alpha_d</span><span class="p">,</span> <span class="n">beta_g</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span>
 <span class="n">iterations</span> <span class="o">=</span> <span class="mi">400</span>
-<span class="n">problem</span> <span class="o">=</span> <span class="n">QP</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">QPSolver</span><span class="p">(</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
-                <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span>
-                <span class="n">alpha_decay_schedule</span><span class="o">=</span><span class="n">alpha_d</span><span class="p">,</span>
-                <span class="n">beta_growth_schedule</span><span class="o">=</span><span class="n">beta_g</span><span class="p">,</span>
-                <span class="p">)</span>
+
+<span class="c1"># Solve using QPSolver</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">QPSolver</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+                  <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span>
+                  <span class="n">alpha_decay_schedule</span><span class="o">=</span><span class="n">alpha_d</span><span class="p">,</span>
+                  <span class="n">beta_growth_schedule</span><span class="o">=</span><span class="n">beta_g</span><span class="p">)</span>
 <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="qubo-tutorial">
-<h3>QUBO Tutorial<a class="headerlink" href="#qubo-tutorial" title="Permalink to this heading"></a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/lava-nc/lava-optimization/blob/release/v0.2.0/tutorials/tutorial_02_solving_qubos.ipynb">Solving
-MIS.</a></p></li>
-</ul>
-</section>
-<section id="solving-qubo-using-the-generic-optimizationsolver">
-<h3>Solving QUBO using the Generic OptimizationSolver<a class="headerlink" href="#solving-qubo-using-the-generic-optimizationsolver" title="Permalink to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from lava.lib.optimization.solvers.generic.solver import solve, OptimizationSolver
+<section id="solving-qubo">
+<h3>Solving QUBO<a class="headerlink" href="#solving-qubo" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import numpy as np
 from lava.lib.optimization.problems.problems import QUBO
+from lava.lib.optimization.solvers.generic.solver import OptimizationSolver
 
-q1 = np.asarray([[-5, 2, 4, 0],
-                 [ 2,-3, 1, 0],
-                 [ 4, 1,-8, 5],
-                 [ 0, 0, 5,-6]]))
+# Define QUBO problem
+q = np.array([[-5, 2, 4, 0],
+              [ 2,-3, 1, 0],
+              [ 4, 1,-8, 5],
+              [ 0, 0, 5,-6]]))
 
-q2 = -np.asarray([[ 1,-3,-3,-3],
-                  [-3, 1, 0, 0],
-                  [-3, 0, 1,-3],
-                  [-3, 0,-3, 1]]))
+qubo = QUBO(q)
 
-# Define problems:
-qubo1 = QUBO(q1)
-qubo2 = QUBO(q2)
-
-# solve using solve:
-sol_qubo1 = solve(problem=qubo1, timeout=-1, backend=“Loihi2”)
-sol_qubo2 = solve(problem=qubo2, timeout=-1, backend=“Loihi2”)
-
-# Solve using OptimizationSolver:
+# Solve using generic OptimizationSolver
 solver = OptimizationSolver(problem=qubo1)
-
-solutions = []
-for trial in range(10):
-    solution = solver.solve(timeout=3000, target_cost=-50, backend=“Loihi2”)
-    solutions.append(solution)
+solution = solver.solve(timeout=3000, target_cost=-50, backend=“Loihi2”)
 </pre></div>
 </div>
 </section>
 </section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Working installation of Lava, installed automatically with poetry
 below. <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial01_installing_lava.ipynb">For custom installs see Lava installation
@@ -737,9 +742,9 @@ tutorial.</a></p></li>
 </ul>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
 <section id="linux-macos">
-<h3>[Linux/MacOS]<a class="headerlink" href="#linux-macos" title="Permalink to this heading"></a></h3>
+<h4>[Linux/MacOS]<a class="headerlink" href="#linux-macos" title="Permalink to this heading"></a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$HOME</span>
 git clone git@github.com:lava-nc/lava-optimization.git
 <span class="nb">cd</span> lava-optimization
@@ -752,7 +757,7 @@ pytest
 </div>
 </section>
 <section id="windows">
-<h3>[Windows]<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<h4>[Windows]<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h4>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Commands using PowerShell</span>
 <span class="nb">cd </span><span class="nv">$HOME</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="n">com</span><span class="p">:</span><span class="n">lava-nc</span><span class="p">/</span><span class="n">lava-optimization</span><span class="p">.</span><span class="n">git</span>
@@ -766,36 +771,7 @@ pytest
 <span class="n">pytest</span>
 </pre></div>
 </div>
-<p>You should expect the following output after running the unit tests:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pytest
-============================= test session starts ==============================
-platform linux -- Python 3.8.10, pytest-7.1.2, pluggy-1.0.0
-rootdir: /home/user/src/lava-optimization, configfile: pyproject.toml, testpaths: tests
-plugins: cov-3.0.0
-collected 14 items
-
-tests/lava/lib/optimization/solvers/qp/test_models.py .......                                                                                                           [ 50%]
-tests/lava/lib/optimization/solvers/qp/test_process.py .......                                                                                                          [100%]
-
----------- coverage: platform linux, python 3.8.10-final-0 -----------
-Name                                                Stmts   Miss  Cover   Missing
----------------------------------------------------------------------------------
-src/lava/lib/optimization/__init__.py                   0      0   100%
-src/lava/lib/optimization/problems/__init__.py          0      0   100%
-src/lava/lib/optimization/problems/problems.py         43     29    33%   48-107, 111, 115, 119, 123, 127
-src/lava/lib/optimization/solvers/__init__.py           0      0   100%
-src/lava/lib/optimization/solvers/qp/__init__.py        0      0   100%
-src/lava/lib/optimization/solvers/qp/models.py        136      4    97%   97-98, 102-104
-src/lava/lib/optimization/solvers/qp/processes.py      75      0   100%
-src/lava/lib/optimization/solvers/qp/solver.py         26     18    31%   42-45, 62-104
----------------------------------------------------------------------------------
-TOTAL                                                 280     51    82%
-
-Required test coverage of 45.0% reached. Total coverage: 81.79%
-
-=============== 14 passed in 8.95s ==============================================
-</pre></div>
-</div>
+</section>
 </section>
 <section id="alternative-installing-lava-via-conda">
 <h3>[Alternative] Installing Lava via Conda<a class="headerlink" href="#alternative-installing-lava-via-conda" title="Permalink to this heading"></a></h3>
@@ -812,11 +788,6 @@ conda install -n lava-optimization -c conda-forge lava-optimization --freeze-ins
 </pre></div>
 </div>
 </section>
-</section>
-<section id="id1">
-<h2>Tutorials<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 </section>
 
