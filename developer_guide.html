@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Developer Guide &mdash; Lava  documentation</title>
@@ -12,10 +12,9 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -23,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lava API Documentation" href="lava_api_documentation.html" />
-    <link rel="prev" title="Neuromorphic Constraint Optimization Library" href="optimization.html" /> 
+    <link rel="prev" title="Neuromorphic Constrained Optimization Library" href="optimization.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Lava
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Lava
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +66,6 @@
 <li class="toctree-l4"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
@@ -319,24 +321,26 @@
 <li class="toctree-l3"><a class="reference internal" href="dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Neuromorphic Constrained Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#about-the-project">About the Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#qp-tutorial">QP Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#quadratic-programming">Quadratic Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#quadratic-uncosntrained-binary-optimization">Quadratic Uncosntrained Binary Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#installation">Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#linux-macos">[Linux/MacOS]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qp-problems">Solving QP problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#solving-qubo">Solving QUBO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="optimization.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="optimization.html#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="optimization.html#id1">Tutorials</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -406,7 +410,7 @@
 <li class="toctree-l4"><a class="reference internal" href="lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava/lava.utils.html">Lava Utils</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
@@ -521,8 +525,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Developer Guide</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/developer_guide.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -587,11 +591,6 @@
 <section id="initial-release">
 <h3>Initial Release<a class="headerlink" href="#initial-release" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 5%" />
-<col style="width: 82%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
 <th class="head"><p>HW support</p></th>
@@ -729,19 +728,19 @@ Please link your pull request to the issue covering the request upon pull reques
 <li><p>Get the code locally</p>
 <ul>
 <li><p>Clone your fork to your local machine</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:&lt;user-name&gt;/lava.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:&lt;user-name&gt;/lava.git
 </pre></div>
 </div>
 </li>
 <li><p>Alternatively add a remote from your local repository to your fork</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote add lava-fork git@github.com:&lt;user-name&gt;/lava.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>lava-fork<span class="w"> </span>git@github.com:&lt;user-name&gt;/lava.git
 </pre></div>
 </div>
 </li>
 </ul>
 </li>
 <li><p>Create a new descriptive branch</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b &lt;branch-name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;branch-name&gt;
 </pre></div>
 </div>
 </li>
@@ -750,23 +749,23 @@ Please link your pull request to the issue covering the request upon pull reques
 <li><p>Make code changes</p></li>
 <li><p>Run linting and unit tests</p>
 <div class="highlight-bash notranslate" id="lint-unit-tests"><div class="highlight"><pre><span></span><span class="c1"># Install poetry</span>
-pip install <span class="s2">&quot;poetry&gt;=1.1.13&quot;</span>
-poetry config virtualenvs.in-project <span class="nb">true</span>
-poetry install
-poetry shell
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;poetry&gt;=1.1.13&quot;</span>
+poetry<span class="w"> </span>config<span class="w"> </span>virtualenvs.in-project<span class="w"> </span><span class="nb">true</span>
+poetry<span class="w"> </span>install
+poetry<span class="w"> </span>shell
 
 <span class="c1"># Run linting</span>
-flakeheaven lint src/lava tests
+flakeheaven<span class="w"> </span>lint<span class="w"> </span>src/lava<span class="w"> </span>tests
 
 <span class="c1"># Run unit tests</span>
 pytest
 
 <span class="c1"># Run Secuity Linting</span>
-bandit -r src/lava/.
+bandit<span class="w"> </span>-r<span class="w"> </span>src/lava/.
 
 <span class="c1">#### If security linting fails run bandit directly</span>
 <span class="c1">#### and format failures</span>
-bandit -r src/lava/. --format custom --msg-template <span class="s1">&#39;{abspath}:{line}: {test_id}[bandit]: {severity}: {msg}&#39;</span>
+bandit<span class="w"> </span>-r<span class="w"> </span>src/lava/.<span class="w"> </span>--format<span class="w"> </span>custom<span class="w"> </span>--msg-template<span class="w"> </span><span class="s1">&#39;{abspath}:{line}: {test_id}[bandit]: {severity}: {msg}&#39;</span>
 </pre></div>
 </div>
 </li>
@@ -789,9 +788,9 @@ bandit -r src/lava/. --format custom --msg-template <span class="s1">&#39;{abspa
 </div>
 </li>
 <li><p>Commit code changes to your branch</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add &lt;code&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>&lt;code&gt;
 <span class="c1"># Sign your commit and add a commit summary</span>
-git commit -sm <span class="s2">&quot;&lt;title-description&gt;&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-sm<span class="w"> </span><span class="s2">&quot;&lt;title-description&gt;&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -800,9 +799,9 @@ git commit -sm <span class="s2">&quot;&lt;title-description&gt;&quot;</span>
 <li><p>Push this branch to your fork</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you cloned</span>
-git push -u origin &lt;branch-name&gt;
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>&lt;branch-name&gt;
 <span class="c1"># If you added remote lava-fork</span>
-git push -u lava-fork &lt;branch-name&gt;
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>lava-fork<span class="w"> </span>&lt;branch-name&gt;
 </pre></div>
 </div>
 </div></blockquote>
@@ -1084,7 +1083,7 @@ git push -u lava-fork &lt;branch-name&gt;
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="optimization.html" class="btn btn-neutral float-left" title="Neuromorphic Constraint Optimization Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="optimization.html" class="btn btn-neutral float-left" title="Neuromorphic Constrained Optimization Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="lava_api_documentation.html" class="btn btn-neutral float-right" title="Lava API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

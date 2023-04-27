@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PilotNet Sigma-Delta Neural Network (SDNN) Training &mdash; Lava  documentation</title>
@@ -12,10 +12,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -29,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../../index.html" class="icon icon-home"> Lava
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Lava
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -61,7 +64,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
@@ -317,24 +319,26 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constrained Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#about-the-project">About the Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qp-tutorial">QP Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#quadratic-programming">Quadratic Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#quadratic-uncosntrained-binary-optimization">Quadratic Uncosntrained Binary Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#installation">Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#linux-macos">[Linux/MacOS]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qp-problems">Solving QP problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qubo">Solving QUBO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#id1">Tutorials</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -404,7 +408,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.utils.html">Lava Utils</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
@@ -519,8 +523,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>PilotNet Sigma-Delta Neural Network (SDNN) Training</li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PilotNet Sigma-Delta Neural Network (SDNN) Training</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../_sources/lava-lib-dl/slayer/notebooks/pilotnet/train.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -640,10 +644,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -819,7 +824,7 @@ div.rendered_html tbody tr:hover {
 <table><tr><td><p><img alt="Drawing" src="../../../../_images/delta_encoder.png" /></p>
 </td><td><p><img alt="Drawing" src="../../../../_images/sigma_decoder.png" /></p>
 </td></tr></table><p><strong>Sigma-delta neural networks</strong> consists of two main units: <em>sigma</em> decoder in the dendrite and <em>delta</em> encoder in the axon. Delta encoder uses differential encoding on the output activation of a regular ANN activation, for e.g. ReLU. In addition it only sends activation to the next layer when the encoded message magnitude is larger than its threshold. The sigma unit accumulates the sparse event messages and accumulates it to restore the original value.</p>
-<table><tr><!-- <td> <img src="images/sdnn.png" alt="Drawing" style="height: 300px;"/> </td> --><td><p><img alt="0c84d32ce1e24092bf6b1025a4bc5cf5" class="no-scaled-link" src="../../../../_images/sdnn.png" style="height: 300px;" /></p>
+<table><tr><!-- <td> <img src="images/sdnn.png" alt="Drawing" style="height: 300px;"/> </td> --><td><p><img alt="a64001293e0848258dcef4e6490d59fb" class="no-scaled-link" src="../../../../_images/sdnn.png" style="height: 300px;" /></p>
 </td></tr></table><p>A sigma-delta neuron is simply a regular activation wrapped around by a sigma unit at it’s input and a delta unit at its output.</p>
 <p>When the input to the network is a temporal sequence, the activations do not change much. Therefore, the message between the layers are reduced which in turn reduces the synaptic computation in the next layer. In addition, the graded event values can encode the change in magnitude in one time-step. Therefore there is no increase in latency at the cost of time-steps unlike the rate coded Spiking Neural Networks.</p>
 <table><tr><td><p><img alt="Drawing" src="../../../../_images/temporal_redundancy.png" /></p>
@@ -1201,6 +1206,9 @@ Events sparsity: 11.55x
 Synops sparsity: 12.18x
 </pre></div></div>
 </div>
+<p>If you want to learn more about Sigma-Delta neurons, take a look at the <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial10_sigma_delta_neurons.ipynb">Lava tutorial</a>.</p>
+<p>Find out more about Lava and have a look at the <a class="reference external" href="https://lava-nc.org/">Lava documentation</a> or dive into the <a class="reference external" href="https://github.com/lava-nc/lava/">source code</a>.</p>
+<p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to the <a class="reference external" href="http://eepurl.com/hJCyhb">INRC newsletter</a>.</p>
 </section>
 
 

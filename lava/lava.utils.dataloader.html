@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.utils.dataloader &mdash; Lava  documentation</title>
@@ -12,10 +12,9 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -23,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lava - Deep Learning" href="../lava-lib-dl/index.html" />
-    <link rel="prev" title="lava.utils" href="lava.utils.html" /> 
+    <link rel="prev" title="Lava Utils" href="lava.utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Lava
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lava
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +66,6 @@
 <li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
@@ -319,24 +321,26 @@
 <li class="toctree-l3"><a class="reference internal" href="../dnf.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constraint Optimization Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">Neuromorphic Constrained Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#about-the-project">About the Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../optimization.html#tutorials">Tutorials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qp-tutorial">QP Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems-after-merging-with-the-optimizationsolver-qpsolver-will-be-deprecated">Solving QP problems (After merging with the OptimizationSolver QPSolver will be deprecated)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#qubo-tutorial">QUBO Tutorial</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo-using-the-generic-optimizationsolver">Solving QUBO using the Generic OptimizationSolver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#quadratic-programming">Quadratic Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#quadratic-uncosntrained-binary-optimization">Quadratic Uncosntrained Binary Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#installation">Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#linux-macos">[Linux/MacOS]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../optimization.html#windows">[Windows]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qp-problems">Solving QP problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#solving-qubo">Solving QUBO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../optimization.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../optimization.html#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../optimization.html#id1">Tutorials</a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -406,7 +410,7 @@
 <li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
 </ul>
 </li>
-<li class="toctree-l3 current"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="lava.utils.html">Lava Utils</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">lava.utils.dataloader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
@@ -521,11 +525,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
-          <li><a href="lava.html">Lava</a> &raquo;</li>
-          <li><a href="lava.utils.html">lava.utils</a> &raquo;</li>
-      <li>lava.utils.dataloader</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../lava_api_documentation.html">Lava API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="lava.html">Lava</a></li>
+          <li class="breadcrumb-item"><a href="lava.utils.html">Lava Utils</a></li>
+      <li class="breadcrumb-item active">lava.utils.dataloader</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.utils.dataloader.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -563,16 +567,19 @@
 <span id="lava-utils-dataloader"></span><h1>lava.utils.dataloader<a class="headerlink" href="#module-lava.utils.dataloader" title="Permalink to this heading"></a></h1>
 <section id="lava-utils-dataloader-mnist">
 <h2>lava.utils.dataloader.mnist<a class="headerlink" href="#lava-utils-dataloader-mnist" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-472823e2412939de5bb9b54825862c54d9728c66.png" alt="Inheritance diagram of lava.utils.dataloader.mnist" usemap="#inheritance8577227394" class="inheritance graphviz" /></div>
-<map id="inheritance8577227394" name="inheritance8577227394">
-<area shape="rect" id="node1" href="#lava.utils.dataloader.mnist.MnistDataset" target="_top" title="MnistDataset" alt="" coords="5,5,115,31"/>
-</map><span class="target" id="module-lava.utils.dataloader.mnist"></span><dl class="py class">
+digraph inheritance8577227394 {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;MnistDataset&quot; [URL=&quot;#lava.utils.dataloader.mnist.MnistDataset&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
+}
+<span class="target" id="module-lava.utils.dataloader.mnist"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.utils.dataloader.mnist.</span></span><span class="sig-name descname"><span class="pre">MnistDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/pweidel/lava-nc/lava/src/lava/utils/dataloader/mnist.npy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.utils.dataloader.mnist.</span></span><span class="sig-name descname"><span class="pre">MnistDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/runner/.cache/pypoetry/virtualenvs/lava-docs-3AV8dzPR-py3.10/src/lava/src/lava/utils/dataloader/mnist.npy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decompress_convert_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/pweidel/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/pweidel/lava-nc/lava/src/lava/utils/dataloader'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decompress_convert_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/runner/.cache/pypoetry/virtualenvs/lava-docs-3AV8dzPR-py3.10/src/lava/src/lava/utils/dataloader/temp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/runner/.cache/pypoetry/virtualenvs/lava-docs-3AV8dzPR-py3.10/src/lava/src/lava/utils/dataloader'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.decompress_convert_save" title="Permalink to this definition"></a></dt>
 <dd><p>download_path (str): path of downloaded raw MNIST dataset in IDX
 format
 save_path (str): path at which processed npy file will be saved</p>
@@ -585,7 +592,7 @@ test_labels = data[1][1]; shape = 10000 x 1</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.utils.dataloader.mnist.MnistDataset.download_mnist">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">download_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/pweidel/lava-nc/lava/src/lava/utils/dataloader/temp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.download_mnist" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">download_mnist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/runner/.cache/pypoetry/virtualenvs/lava-docs-3AV8dzPR-py3.10/src/lava/src/lava/utils/dataloader/temp'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.dataloader.mnist.MnistDataset.download_mnist" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -637,7 +644,7 @@ test_labels = data[1][1]; shape = 10000 x 1</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lava.utils.html" class="btn btn-neutral float-left" title="lava.utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lava.utils.html" class="btn btn-neutral float-left" title="Lava Utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../lava-lib-dl/index.html" class="btn btn-neutral float-right" title="Lava - Deep Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

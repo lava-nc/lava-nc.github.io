@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>lava.magma.core.process &mdash; Lava  documentation</title>
@@ -12,10 +12,9 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -31,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Lava
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lava
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -63,7 +66,6 @@
 <li class="toctree-l4"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#When-running-tests-if-you-see-‘OSError:-[Errno-24]-Too-many-open-files’-consider-setting-ulimit-using-ulimit--n-4096">When running tests if you see ‘OSError: [Errno 24] Too many open files’ consider setting ulimit using <code class="docutils literal notranslate"><span class="pre">ulimit</span> <span class="pre">-n</span> <span class="pre">4096</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
@@ -408,7 +410,7 @@
 <li class="toctree-l4"><a class="reference internal" href="lava.proc.spiker.html">lava.proc.spiker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">lava.utils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lava.utils.html">Lava Utils</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="lava.utils.dataloader.html">lava.utils.dataloader</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
@@ -523,12 +525,12 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../lava_api_documentation.html">Lava API Documentation</a> &raquo;</li>
-          <li><a href="lava.html">Lava</a> &raquo;</li>
-          <li><a href="lava.magma.html">Magma</a> &raquo;</li>
-          <li><a href="lava.magma.core.html">lava.magma.core</a> &raquo;</li>
-      <li>lava.magma.core.process</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../lava_api_documentation.html">Lava API Documentation</a></li>
+          <li class="breadcrumb-item"><a href="lava.html">Lava</a></li>
+          <li class="breadcrumb-item"><a href="lava.magma.html">Magma</a></li>
+          <li class="breadcrumb-item"><a href="lava.magma.core.html">lava.magma.core</a></li>
+      <li class="breadcrumb-item active">lava.magma.core.process</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lava/lava.magma.core.process.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -576,13 +578,17 @@
 </div>
 <section id="lava-magma-core-process-connection">
 <h2>lava.magma.core.process.connection<a class="headerlink" href="#lava-magma-core-process-connection" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-7e9c56c63888f2d481d544eed3f907bfc3666ef8.png" alt="Inheritance diagram of lava.magma.core.process.connection" usemap="#inheritancef6b2905e3e" class="inheritance graphviz" /></div>
-<map id="inheritancef6b2905e3e" name="inheritancef6b2905e3e">
-<area shape="rect" id="node1" href="#lava.magma.core.process.process.AbstractProcess" target="_top" title="The notion of a Process is inspired by the Communicating Sequential" alt="" coords="43,5,169,31"/>
-<area shape="rect" id="node2" href="#lava.magma.core.process.connection.LearningConnectionProcess" target="_top" title="Base class for connection Processes." alt="" coords="5,79,207,104"/>
-</map><span class="target" id="module-lava.magma.core.process.connection"></span><dl class="py class">
+digraph inheritancef6b2905e3e {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;AbstractProcess&quot; [URL=&quot;#lava.magma.core.process.process.AbstractProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;The notion of a Process is inspired by the Communicating Sequential&quot;];
+  &quot;LearningConnectionProcess&quot; [URL=&quot;#lava.magma.core.process.connection.LearningConnectionProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Base class for connection Processes.&quot;];
+  &quot;AbstractProcess&quot; -&gt; &quot;LearningConnectionProcess&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.connection"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.connection.LearningConnectionProcess">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.connection.</span></span><span class="sig-name descname"><span class="pre">LearningConnectionProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.connection.</span></span><span class="sig-name descname"><span class="pre">LearningConnectionProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rule</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a></p>
 <p>Base class for connection Processes.</p>
 <p>This base class holds all necessary Vars, Ports and functionality for
@@ -592,7 +598,7 @@ online learning in fixed and floating point simulations.</p>
 <span class="sig-name descname"><span class="pre">s_in_bap</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.s_in_bap" title="Permalink to this definition"></a></dt>
 <dd><p>Input port to receive back-propagating action potentials (BAP)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort">InPort</a></p>
 </dd>
 </dl>
@@ -604,7 +610,7 @@ online learning in fixed and floating point simulations.</p>
 <dd><p>Conditional for pre-synaptic spike times (is 1 if pre-synaptic neurons
 spiked in this time-step).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -615,7 +621,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">tx</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.tx" title="Permalink to this definition"></a></dt>
 <dd><p>Within-epoch spike times of pre-synaptic neurons.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -626,7 +632,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">x1</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.x1" title="Permalink to this definition"></a></dt>
 <dd><p>First pre-synaptic trace.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -637,7 +643,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">x2</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.x2" title="Permalink to this definition"></a></dt>
 <dd><p>Second pre-synaptic trace.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -649,7 +655,7 @@ spiked in this time-step).</p>
 <dd><p>Conditional for post-synaptic spike times (is 1 if post-synaptic neurons
 spiked in this time-step).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -660,7 +666,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">ty</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.ty" title="Permalink to this definition"></a></dt>
 <dd><p>Within-epoch spike times of post-synaptic neurons.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -671,7 +677,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">y1</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.y1" title="Permalink to this definition"></a></dt>
 <dd><p>First post-synaptic trace.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -682,7 +688,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">y2</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.y2" title="Permalink to this definition"></a></dt>
 <dd><p>Second post-synaptic trace.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -693,7 +699,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">y3</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.y3" title="Permalink to this definition"></a></dt>
 <dd><p>Third post-synaptic trace.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -704,7 +710,7 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">tag_1</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.tag_1" title="Permalink to this definition"></a></dt>
 <dd><p>Tag synaptic variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
@@ -715,14 +721,14 @@ spiked in this time-step).</p>
 <span class="sig-name descname"><span class="pre">tag_2</span></span><a class="headerlink" href="#lava.magma.core.process.connection.LearningConnectionProcess.tag_2" title="Permalink to this definition"></a></dt>
 <dd><p>Delay synaptic variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var">Var</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>shape</strong> (<em>tuple</em><em>, </em><em>ndarray</em>) – Shape of the connection in format (post, pre) order.</p></li>
 <li><p><strong>learning_rule</strong> (<a class="reference internal" href="lava.magma.core.learning.html#lava.magma.core.learning.learning_rule.LoihiLearningRule" title="lava.magma.core.learning.learning_rule.LoihiLearningRule"><em>LoihiLearningRule</em></a>) – Learning rule which determines the parameters for online learning.</p></li>
@@ -734,11 +740,17 @@ spiked in this time-step).</p>
 </section>
 <section id="lava-magma-core-process-interfaces">
 <h2>lava.magma.core.process.interfaces<a class="headerlink" href="#lava-magma-core-process-interfaces" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-dd1d4451bd6c56aaf7c3f284e3a47b202c01f1f4.png" alt="Inheritance diagram of lava.magma.core.process.interfaces" usemap="#inheritance7be31f2f3f" class="inheritance graphviz" /></div>
-<map id="inheritance7be31f2f3f" name="inheritance7be31f2f3f">
-<area shape="rect" id="node2" href="#lava.magma.core.process.interfaces.AbstractProcessMember" target="_top" title="A member of a process has a reference to its parent process, a name" alt="" coords="5,79,185,104"/>
-<area shape="rect" id="node3" href="#lava.magma.core.process.interfaces.IdGeneratorSingleton" target="_top" title="A singleton class that generates globally unique ids to distinguish" alt="" coords="210,79,370,104"/>
-</map><span class="target" id="module-lava.magma.core.process.interfaces"></span><dl class="py class">
+digraph inheritance7be31f2f3f {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
+  &quot;AbstractProcessMember&quot; [URL=&quot;#lava.magma.core.process.interfaces.AbstractProcessMember&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A member of a process has a reference to its parent process, a name&quot;];
+  &quot;ABC&quot; -&gt; &quot;AbstractProcessMember&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;IdGeneratorSingleton&quot; [URL=&quot;#lava.magma.core.process.interfaces.IdGeneratorSingleton&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A singleton class that generates globally unique ids to distinguish&quot;];
+  &quot;ABC&quot; -&gt; &quot;IdGeneratorSingleton&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.interfaces"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.interfaces.AbstractProcessMember">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.interfaces.</span></span><span class="sig-name descname"><span class="pre">AbstractProcessMember</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.interfaces.AbstractProcessMember" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
@@ -748,22 +760,12 @@ and a shape because it is generally tensor-valued.</p>
 <dt class="sig sig-object py" id="lava.magma.core.process.interfaces.AbstractProcessMember.name">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#lava.magma.core.process.interfaces.AbstractProcessMember.name" title="Permalink to this definition"></a></dt>
 <dd><p>Returns name of ProcessMember.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.interfaces.AbstractProcessMember.process">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a></em><a class="headerlink" href="#lava.magma.core.process.interfaces.AbstractProcessMember.process" title="Permalink to this definition"></a></dt>
 <dd><p>Returns parent process of ProcessMember.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess">AbstractProcess</a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -771,11 +773,6 @@ and a shape because it is generally tensor-valued.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.magma.core.process.interfaces.AbstractProcessMember.size" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the size of the tensor-valued ProcessMember which is the
 product of all elements of its shape.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -791,7 +788,7 @@ other unique objects.</p>
 <span class="sig-name descname"><span class="pre">get_next_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.interfaces.IdGeneratorSingleton.get_next_id" title="Permalink to this definition"></a></dt>
 <dd><p>Returns next id.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd>
 </dl>
@@ -808,10 +805,17 @@ other unique objects.</p>
 </section>
 <section id="lava-magma-core-process-message-interface-enum">
 <h2>lava.magma.core.process.message_interface_enum<a class="headerlink" href="#lava-magma-core-process-message-interface-enum" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-98e58d71a35981ce91a3be2f22986a45e1239785.png" alt="Inheritance diagram of lava.magma.core.process.message_interface_enum" usemap="#inheritanceff5ea15e00" class="inheritance graphviz" /></div>
-<map id="inheritanceff5ea15e00" name="inheritanceff5ea15e00">
-<area shape="rect" id="node1" href="#lava.magma.core.process.message_interface_enum.ActorType" target="_top" title="An enumeration." alt="" coords="5,152,92,177"/>
-</map><span class="target" id="module-lava.magma.core.process.message_interface_enum"></span><dl class="py class">
+digraph inheritanceff5ea15e00 {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;ActorType&quot; [URL=&quot;#lava.magma.core.process.message_interface_enum.ActorType&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;An enumeration.&quot;];
+  &quot;IntEnum&quot; -&gt; &quot;ActorType&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Enum&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Generic enumeration.&quot;];
+  &quot;IntEnum&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Enum where members are also (and must be) ints&quot;];
+  &quot;Enum&quot; -&gt; &quot;IntEnum&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.message_interface_enum"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.message_interface_enum.ActorType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.message_interface_enum.</span></span><span class="sig-name descname"><span class="pre">ActorType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.message_interface_enum.ActorType" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
@@ -826,10 +830,13 @@ other unique objects.</p>
 </section>
 <section id="lava-magma-core-process-neuron">
 <h2>lava.magma.core.process.neuron<a class="headerlink" href="#lava-magma-core-process-neuron" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-c0c65a1d8e133061a39f36441d350b7bf598be31.png" alt="Inheritance diagram of lava.magma.core.process.neuron" usemap="#inheritance749cdcf648" class="inheritance graphviz" /></div>
-<map id="inheritance749cdcf648" name="inheritance749cdcf648">
-<area shape="rect" id="node1" href="#lava.magma.core.process.neuron.LearningNeuronProcess" target="_top" title="Base class for plastic neuron processes." alt="" coords="5,5,180,31"/>
-</map><span class="target" id="module-lava.magma.core.process.neuron"></span><dl class="py class">
+digraph inheritance749cdcf648 {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;LearningNeuronProcess&quot; [URL=&quot;#lava.magma.core.process.neuron.LearningNeuronProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Base class for plastic neuron processes.&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.neuron"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.neuron.LearningNeuronProcess">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.neuron.</span></span><span class="sig-name descname"><span class="pre">LearningNeuronProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rule</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.neuron.LearningNeuronProcess" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -837,7 +844,7 @@ other unique objects.</p>
 <p>This base class holds all necessary Vars, Ports and functionality for
 online learning in fixed and floating point simulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>shape</strong> (<em>tuple:</em>) – Shape of the neuron process.</p></li>
 <li><p><strong>learning_rule</strong> (<a class="reference internal" href="lava.magma.core.learning.html#lava.magma.core.learning.learning_rule.LoihiLearningRule" title="lava.magma.core.learning.learning_rule.LoihiLearningRule"><em>LoihiLearningRule</em></a>) – Learning rule which determines the parameters for online learning.</p></li>
@@ -849,16 +856,22 @@ online learning in fixed and floating point simulations.</p>
 </section>
 <section id="lava-magma-core-process-process">
 <h2>lava.magma.core.process.process<a class="headerlink" href="#lava-magma-core-process-process" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-760fbb797b0c9c8894659d643659e1df5c771a34.png" alt="Inheritance diagram of lava.magma.core.process.process" usemap="#inheritanceb0d64743c3" class="inheritance graphviz" /></div>
-<map id="inheritanceb0d64743c3" name="inheritanceb0d64743c3">
-<area shape="rect" id="node4" href="#lava.magma.core.process.interfaces.IdGeneratorSingleton" target="_top" title="A singleton class that generates globally unique ids to distinguish" alt="" coords="5,79,165,104"/>
-<area shape="rect" id="node2" href="#lava.magma.core.process.process.AbstractProcess" target="_top" title="The notion of a Process is inspired by the Communicating Sequential" alt="" coords="146,5,273,31"/>
-<area shape="rect" id="node3" href="#lava.magma.core.process.process.Collection" target="_top" title="Represents a collection of objects. Member objects can be accessed via" alt="" coords="297,5,383,31"/>
-<area shape="rect" id="node8" href="#lava.magma.core.process.process.ProcessServer" target="_top" title="ProcessServer singleton keeps track of all existing processes and issues" alt="" coords="28,152,143,177"/>
-<area shape="rect" id="node5" href="#lava.magma.core.process.process.LogConfig" target="_top" title="Configuration options for logging that can be passed into a Process." alt="" coords="407,5,494,31"/>
-<area shape="rect" id="node6" href="#lava.magma.core.process.process.ProcessParameters" target="_top" title="Wrapper around a dictionary that is used to pass parameters from a" alt="" coords="519,5,665,31"/>
-<area shape="rect" id="node7" href="#lava.magma.core.process.process.ProcessPostInitCaller" target="_top" title="Metaclass for AbstractProcess that overwrites __call__() in order to" alt="" coords="690,5,849,31"/>
-</map><span class="target" id="module-lava.magma.core.process.process"></span><dl class="py class">
+digraph inheritanceb0d64743c3 {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
+  &quot;AbstractProcess&quot; [URL=&quot;#lava.magma.core.process.process.AbstractProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;The notion of a Process is inspired by the Communicating Sequential&quot;];
+  &quot;Collection&quot; [URL=&quot;#lava.magma.core.process.process.Collection&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Represents a collection of objects. Member objects can be accessed via&quot;];
+  &quot;IdGeneratorSingleton&quot; [URL=&quot;#lava.magma.core.process.interfaces.IdGeneratorSingleton&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A singleton class that generates globally unique ids to distinguish&quot;];
+  &quot;ABC&quot; -&gt; &quot;IdGeneratorSingleton&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;LogConfig&quot; [URL=&quot;#lava.magma.core.process.process.LogConfig&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Configuration options for logging that can be passed into a Process.&quot;];
+  &quot;ProcessParameters&quot; [URL=&quot;#lava.magma.core.process.process.ProcessParameters&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Wrapper around a dictionary that is used to pass parameters from a&quot;];
+  &quot;ProcessPostInitCaller&quot; [URL=&quot;#lava.magma.core.process.process.ProcessPostInitCaller&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Metaclass for AbstractProcess that overwrites __call__() in order to&quot;];
+  &quot;ProcessServer&quot; [URL=&quot;#lava.magma.core.process.process.ProcessServer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;ProcessServer singleton keeps track of all existing processes and issues&quot;];
+  &quot;IdGeneratorSingleton&quot; -&gt; &quot;ProcessServer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.process"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.process.</span></span><span class="sig-name descname"><span class="pre">AbstractProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -963,7 +976,7 @@ calling the corresponding ‘pause()’ or ‘stop()’ methods.</p>
 <p>In order to save time setting up Processes for future use, Processes
 can also be saved and reloaded from disk.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>proc_params</strong> – Any keyword arguments that get passed from child
 Processes will be stored in the AbstractProcess member
@@ -985,19 +998,31 @@ free compute resources.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.__enter__">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.__enter__" title="Permalink to this definition"></a></dt>
+<dd><p>Executed when Process enters a “with” block of a context manager.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.__exit__">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exc_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_tb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.__exit__" title="Permalink to this definition"></a></dt>
+<dd><p>Stop the runtime when exiting “with” block of a context manager.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.compile">
 <span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.compile" title="Permalink to this definition"></a></dt>
 <dd><p>Compiles this and any process connected to this process and
 returns the resulting Executable that can either be serialized or
 passed to Runtime.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>run_cfg</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><em>RunConfig</em></a>) – Used by the compiler to select a ProcessModel for each Process.</p></li>
 <li><p><strong>compile_config</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Configuration options for the Compiler and SubCompilers.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="lava.magma.compiler.html#lava.magma.compiler.executable.Executable" title="lava.magma.compiler.executable.Executable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executable</span></code></a></p>
 </dd>
 </dl>
@@ -1025,22 +1050,12 @@ passed to Runtime.</p>
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.model">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.model" title="Permalink to this definition"></a></dt>
 <dd><p>Return model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel">AbstractProcessModel</a></p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.model_class">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><span class="pre">AbstractProcessModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.model_class" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Type</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'AbstractProcessModel'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.model_class" title="Permalink to this definition"></a></dt>
 <dd><p>Return model class</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[AbstractProcessModel]</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1078,7 +1093,7 @@ involved compute nodes.</p></li>
 being no longer satisfied, run() can be called again to resume
 execution from the current state.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>condition</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_conditions.AbstractRunCondition" title="lava.magma.core.run_conditions.AbstractRunCondition"><em>AbstractRunCondition</em></a>) – Specifies for how long to run the Process.</p></li>
 <li><p><strong>run_cfg</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) – Used by the compiler to select a ProcessModel for each Process.
@@ -1135,7 +1150,7 @@ RunCondition is met by blocking execution at command line level.</p>
 dot-notation (SomeCollection.some_object_name). Collection also offers an
 iterator to iterate all member objects.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>process</strong> (<a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a>) – Parent Process that holds the Collection</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – Name of the Collection</p></li>
@@ -1147,7 +1162,7 @@ iterator to iterate all member objects.</p>
 <span class="sig-name descname"><span class="pre">add_members</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">members</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.Collection.add_members" title="Permalink to this definition"></a></dt>
 <dd><p>Adds members to a Collection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>members</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>mem_type</em><em>]</em>) – Dictionary of Collection members, where the key is
 the string name of the member and the value is the member.</p>
 </dd>
@@ -1159,7 +1174,7 @@ the string name of the member and the value is the member.</p>
 <span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.Collection.has" title="Permalink to this definition"></a></dt>
 <dd><p>Returns True if member is in collection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 </dl>
@@ -1170,7 +1185,7 @@ the string name of the member and the value is the member.</p>
 <span class="sig-name descname"><span class="pre">is_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.Collection.is_empty" title="Permalink to this definition"></a></dt>
 <dd><p>Returns True if Collection has no members.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
 </dd>
 </dl>
@@ -1186,22 +1201,12 @@ the string name of the member and the value is the member.</p>
 <dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.member_names">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">member_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.Collection.member_names" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the names of Collection members.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.Collection.members">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">members</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><span class="pre">mem_type</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.Collection.members" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the members of the Collection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ty.List[mem_type]</p>
-</dd>
-</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1213,32 +1218,32 @@ the string name of the member and the value is the member.</p>
 <p>Configuration options for logging that can be passed into a Process.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.date_format">
-<span class="sig-name descname"><span class="pre">date_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%m/%d/%Y</span> <span class="pre">%I:%M:%S%p'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.date_format" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">date_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%m/%d/%Y</span> <span class="pre">%I:%M:%S%p'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.date_format" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.file">
-<span class="sig-name descname"><span class="pre">file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.file" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.file" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.format">
-<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%(asctime)s:%(levelname)s:</span> <span class="pre">%(name)s</span> <span class="pre">-</span> <span class="pre">%(message)s'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.format" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'%(asctime)s:%(levelname)s:</span> <span class="pre">%(name)s</span> <span class="pre">-</span> <span class="pre">%(message)s'</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.format" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.level">
-<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.level_console">
-<span class="sig-name descname"><span class="pre">level_console</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level_console" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">level_console</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.level_console" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.LogConfig.logs_to_file">
-<span class="sig-name descname"><span class="pre">logs_to_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.logs_to_file" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">logs_to_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#lava.magma.core.process.process.LogConfig.logs_to_file" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1253,7 +1258,7 @@ initial dictionary of parameters. Any further changes via the __setitem__
 method may not overwrite existing values. To overwrite a value, use the
 method overwrite().</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>initial_parameters</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – Initial dictionary of parameters for a Process/ProcessModel.</p>
 </dd>
 </dl>
@@ -1268,7 +1273,7 @@ method overwrite().</p>
 <dd><p>Sets a key-value pair without checking whether the key is already
 present in ProcessParameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
@@ -1293,12 +1298,12 @@ is called.</p>
 new globally unique process ids.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.ProcessServer.instance">
-<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.process.ProcessServer" title="lava.magma.core.process.process.ProcessServer"><span class="pre">ProcessServer</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.process.process.ProcessServer.instance" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><a class="reference internal" href="#lava.magma.core.process.process.ProcessServer" title="lava.magma.core.process.process.ProcessServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessServer</span></code></a><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.process.process.ProcessServer.instance" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.ProcessServer.is_not_initialized">
-<span class="sig-name descname"><span class="pre">is_not_initialized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#lava.magma.core.process.process.ProcessServer.is_not_initialized" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_not_initialized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#lava.magma.core.process.process.ProcessServer.is_not_initialized" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -1312,7 +1317,7 @@ new globally unique process ids.</p>
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.ProcessServer.register" title="Permalink to this definition"></a></dt>
 <dd><p>Registers a process with ProcessServer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd>
 </dl>
@@ -1329,13 +1334,21 @@ new globally unique process ids.</p>
 </section>
 <section id="lava-magma-core-process-variable">
 <h2>lava.magma.core.process.variable<a class="headerlink" href="#lava-magma-core-process-variable" title="Permalink to this heading"></a></h2>
-<div class="graphviz"><img src="../_images/inheritance-8f531567c4be5df64fbc5768bd2a947234ecb108.png" alt="Inheritance diagram of lava.magma.core.process.variable" usemap="#inheritance717a12d7af" class="inheritance graphviz" /></div>
-<map id="inheritance717a12d7af" name="inheritance717a12d7af">
-<area shape="rect" id="node2" href="#lava.magma.core.process.interfaces.AbstractProcessMember" target="_top" title="A member of a process has a reference to its parent process, a name" alt="" coords="5,79,185,104"/>
-<area shape="rect" id="node3" href="#lava.magma.core.process.interfaces.IdGeneratorSingleton" target="_top" title="A singleton class that generates globally unique ids to distinguish" alt="" coords="210,79,370,104"/>
-<area shape="rect" id="node4" href="#lava.magma.core.process.variable.Var" target="_top" title="Represents a Lava variable. A Var implements the state of a Process and" alt="" coords="59,152,131,177"/>
-<area shape="rect" id="node5" href="#lava.magma.core.process.variable.VarServer" target="_top" title="VarServer singleton keeps track of all existing Vars and issues" alt="" coords="247,152,333,177"/>
-</map><span class="target" id="module-lava.magma.core.process.variable"></span><dl class="py class">
+digraph inheritance717a12d7af {
+bgcolor=transparent;
+rankdir=TB;
+size=&quot;&quot;;
+  &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
+  &quot;AbstractProcessMember&quot; [URL=&quot;#lava.magma.core.process.interfaces.AbstractProcessMember&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A member of a process has a reference to its parent process, a name&quot;];
+  &quot;ABC&quot; -&gt; &quot;AbstractProcessMember&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;IdGeneratorSingleton&quot; [URL=&quot;#lava.magma.core.process.interfaces.IdGeneratorSingleton&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A singleton class that generates globally unique ids to distinguish&quot;];
+  &quot;ABC&quot; -&gt; &quot;IdGeneratorSingleton&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Var&quot; [URL=&quot;#lava.magma.core.process.variable.Var&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Represents a Lava variable. A Var implements the state of a Process and&quot;];
+  &quot;AbstractProcessMember&quot; -&gt; &quot;Var&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;VarServer&quot; [URL=&quot;#lava.magma.core.process.variable.VarServer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;VarServer singleton keeps track of all existing Vars and issues&quot;];
+  &quot;IdGeneratorSingleton&quot; -&gt; &quot;VarServer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}
+<span class="target" id="module-lava.magma.core.process.variable"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.Var">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.variable.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shareable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.interfaces.AbstractProcessMember" title="lava.magma.core.process.interfaces.AbstractProcessMember"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcessMember</span></code></a></p>
@@ -1389,7 +1402,7 @@ Both, this and ‘other_var’ must have the same ‘shape’ and be both
 <dd><p>Gets and returns value of Var. If this Var aliases another Var,
 then get() is delegated to aliased Var.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
 </dd>
 </dl>
@@ -1425,12 +1438,12 @@ strict sub-Process of this Var’s Process.</p>
 new globally unique Var ids.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.VarServer.instance">
-<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.variable.VarServer" title="lava.magma.core.process.variable.VarServer"><span class="pre">VarServer</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.process.variable.VarServer.instance" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><a class="reference internal" href="#lava.magma.core.process.variable.VarServer" title="lava.magma.core.process.variable.VarServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarServer</span></code></a><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.core.process.variable.VarServer.instance" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.VarServer.is_not_initialized">
-<span class="sig-name descname"><span class="pre">is_not_initialized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#lava.magma.core.process.variable.VarServer.is_not_initialized" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">is_not_initialized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#lava.magma.core.process.variable.VarServer.is_not_initialized" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -1444,7 +1457,7 @@ new globally unique Var ids.</p>
 <span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.VarServer.register" title="Permalink to this definition"></a></dt>
 <dd><p>Registers a Var with VarServer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
 </dd>
 </dl>
