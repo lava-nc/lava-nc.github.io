@@ -963,6 +963,31 @@ selected using mode argument.</p>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.quantize.quantize_hook_fx">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.quantize.</span></span><span class="sig-name descname"><span class="pre">quantize_hook_fx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.quantize.quantize_hook_fx" title="Permalink to this definition"></a></dt>
+<dd><p>Quantize prehook function to use in slayer synapse pre-hook for
+quantization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.tensor</em>) – Input tensor.</p></li>
+<li><p><strong>scale</strong> (<em>int</em><em>, </em><em>optional</em>) – Quantization decimal scale corresponding to 1.0 value,
+by default (1 &lt;&lt; 6).</p></li>
+<li><p><strong>num_bits</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of bits to use in quantization, by default 8.</p></li>
+<li><p><strong>descale</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to descale the fixed point number to integer or keep it as
+fixed point number. By default False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Quantized tensor.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-lava.lib.dl.slayer.utils.stats">
 <span id="learning-statistics"></span><h2>Learning Statistics<a class="headerlink" href="#module-lava.lib.dl.slayer.utils.stats" title="Permalink to this heading"></a></h2>
@@ -1306,6 +1331,33 @@ number. 1 means an identity matrix.</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.utils.dotdict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">dotdict</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.dotdict" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Dot notation access to dictionary attributes. For e.g. <code class="docutils literal notranslate"><span class="pre">my_dict[&quot;key&quot;]</span></code>
+is same as <code class="docutils literal notranslate"><span class="pre">my_dict.key</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.utils.event_rate">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.utils.</span></span><span class="sig-name descname"><span class="pre">event_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.utils.utils.event_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the rate of event (non-zero value) in a torch tensor. If
+the tensor has more than one time dimesion, first dimension is ignored
+as it represents initialization events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.tensor</em>) – Input torch tensor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Average event rate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1757,6 +1809,14 @@ number. 1 means an identity matrix.</p></li>
 <dd class="field-odd"><p>torch tensor</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.utils.dotdict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.utils.</span></span><span class="sig-name descname"><span class="pre">dotdict</span></span><a class="headerlink" href="#lava.lib.dl.slayer.utils.dotdict" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Dot notation access to dictionary attributes. For e.g. <code class="docutils literal notranslate"><span class="pre">my_dict[&quot;key&quot;]</span></code>
+is same as <code class="docutils literal notranslate"><span class="pre">my_dict.key</span></code></p>
 </dd></dl>
 
 <dl class="py function">

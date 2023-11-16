@@ -666,8 +666,6 @@ size=&quot;&quot;;
   &quot;OutPort&quot; [URL=&quot;../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Output ports are members of a Lava Process and can be connected to&quot;];
   &quot;AbstractIOPort&quot; -&gt; &quot;OutPort&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;AbstractSrcPort&quot; -&gt; &quot;OutPort&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;ReIndexPort&quot; [URL=&quot;../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.ReIndexPort&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A ReIndexPort is a virtual port that allows to re-index the elements&quot;];
-  &quot;AbstractVirtualPort&quot; -&gt; &quot;ReIndexPort&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;RefPort&quot; [URL=&quot;../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.RefPort&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;RefPorts are members of a Lava Process and can be connected to&quot;];
   &quot;AbstractRVPort&quot; -&gt; &quot;RefPort&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;AbstractSrcPort&quot; -&gt; &quot;RefPort&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
@@ -911,12 +909,15 @@ type hierarchy needed for validating connections.</p>
 to transform the properties of a user-defined port.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.AbstractVirtualPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this virtual port to other port(s).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>]</em><em>]</em>) – The port(s) to connect to. Connections from an IOPort to a RVPort
-and vice versa are not allowed.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractPort&quot;</em><em>]</em><em>]</em>) – The port(s) to connect to. Connections from an IOPort to a RVPort
+and vice versa are not allowed.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1030,24 +1031,30 @@ of nested sub processes.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this InPort to other InPort(s) of a nested process. InPorts
 cannot connect to other OutPorts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;InPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;InPort&quot;</em><em>]</em><em>]</em>) – The InPort(s) to connect to.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;InPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;InPort&quot;</em><em>]</em><em>]</em>) – The InPort(s) to connect to.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.InPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.InPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) to this InPort or connects other
 InPort(s) of parent process to this InPort.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) that connect to this InPort.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) that connect to this InPort.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1066,42 +1073,34 @@ Similarly, OutPorts can receive connections from other OutPorts of nested
 sub processes.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this OutPort to other InPort(s) of another process
 or to OutPort(s) of its parent process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) to connect to.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractIOPort&quot;</em><em>]</em><em>]</em>) – The AbstractIOPort(s) to connect to.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.OutPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.OutPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other OutPort(s) of a nested process to this OutPort.
 OutPorts cannot receive connections from other InPorts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;OutPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;OutPort&quot;</em><em>]</em><em>]</em>) – The OutPorts(s) that connect to this OutPort.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;OutPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;OutPort&quot;</em><em>]</em><em>]</em>) – The OutPorts(s) that connect to this OutPort.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.ReIndexPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.ports.ports.</span></span><span class="sig-name descname"><span class="pre">ReIndexPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.ReIndexPort" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.ports.ports.AbstractVirtualPort" title="lava.magma.core.process.ports.ports.AbstractVirtualPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractVirtualPort</span></code></a></p>
-<p>A ReIndexPort is a virtual port that allows to re-index the elements
-of a port before connecting to another port.
-It is used by the compiler to map the indices of the underlying
-tensor-valued data array from the derived to the new shape.</p>
-<p class="rubric">Example</p>
-<p>out_port = OutPort((2, 2))
-in_port = InPort((2, 2))
-out_port.reindex([3, 1, 0, 2]).connect(in_port)</p>
 </dd></dl>
 
 <dl class="py class">
@@ -1125,36 +1124,45 @@ Alternatively, VarPorts can be created dynamically by connecting a
 RefPort to a Var via the connect_var(..) method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this RefPort to other VarPort(s) of another process
 or to RefPort(s) of its parent process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) to connect to.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) to connect to.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) of a nested process to this RefPort.
 RefPorts cannot receive connections from other VarPorts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;RefPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;RefPort&quot;</em><em>]</em><em>]</em>) – The RefPort(s) that connect to this RefPort.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;RefPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;RefPort&quot;</em><em>]</em><em>]</em>) – The RefPort(s) that connect to this RefPort.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.RefPort.connect_var">
-<span class="sig-name descname"><span class="pre">connect_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_var" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.RefPort.connect_var" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this RefPort to Lava Process Var(s) to facilitate shared
 memory access.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>variables</strong> (<em>ty.Union</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>, </em><em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>]</em><em>]</em>) – Var or list of Vars to connect to.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (<em>ty.Union</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>, </em><em>ty.List</em><em>[</em><a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.variable.Var" title="lava.magma.core.process.variable.Var"><em>Var</em></a><em>]</em><em>]</em>) – Var or list of Vars to connect to.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1294,24 +1302,30 @@ Alternatively, VarPorts can be created dynamically by connecting a
 RefPort to a Var via the RefPort.connect_var(..) method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.VarPort.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Connects this VarPort to other VarPort(s) of a nested process.
 VarPorts cannot connect to other RefPorts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;VarPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;VarPort&quot;</em><em>]</em><em>]</em>) – The VarPort(s) to connect to.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;VarPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;VarPort&quot;</em><em>]</em><em>]</em>) – The VarPort(s) to connect to.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.ports.ports.VarPort.connect_from">
-<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect_from" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_configs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.ports.ports.VarPort.connect_from" title="Permalink to this definition"></a></dt>
 <dd><p>Connects other RefPort(s) to this VarPort or connects other
 VarPort(s) of parent process to this VarPort.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) that connect to this VarPort.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ports</strong> (<em>ty.Union</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>, </em><em>ty.List</em><em>[</em><em>&quot;AbstractRVPort&quot;</em><em>]</em><em>]</em>) – The AbstractRVPort(s) that connect to this VarPort.</p></li>
+<li><p><strong>connection_configs</strong> (<em>ConnectionConfigs</em>) – Configuration for this connection. See “ConnectionConfig” class.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

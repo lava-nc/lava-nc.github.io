@@ -598,7 +598,7 @@ size=&quot;&quot;;
   &quot;AbstractPyDenseModelFloat&quot; -&gt; &quot;PyDenseModelFloat&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyLearningConnection&quot; [URL=&quot;../lava.magma.core.model.py.html#lava.magma.core.model.py.connection.PyLearningConnection&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Base class for learning connection ProcessModels in Python / CPU.&quot;];
   &quot;AbstractLearningConnection&quot; -&gt; &quot;PyLearningConnection&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
-  &quot;PyLearningDenseModelBitApproximate&quot; [URL=&quot;../lava/lava.proc.dense.html#lava.proc.dense.models.PyLearningDenseModelBitApproximate&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Conn Process with Dense synaptic connections that is&quot;];
+  &quot;PyLearningDenseModelBitApproximate&quot; [URL=&quot;../lava/lava.proc.dense.html#lava.proc.dense.models.PyLearningDenseModelBitApproximate&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Conn Process with Dense synaptic connections that&quot;];
   &quot;LearningConnectionModelBitApproximate&quot; -&gt; &quot;PyLearningDenseModelBitApproximate&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;AbstractPyDenseModelBitAcc&quot; -&gt; &quot;PyLearningDenseModelBitApproximate&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyLearningDenseModelFloat&quot; [URL=&quot;../lava/lava.proc.dense.html#lava.proc.dense.models.PyLearningDenseModelFloat&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Conn Process with Dense synaptic connections in&quot;];
@@ -613,15 +613,16 @@ size=&quot;&quot;;
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyLoihiProcessModel</span></code></a></p>
 <p>Abstract Conn Process with Dense synaptic connections which incorporates
 delays into the Conn Process.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.a_buff">
+<span class="sig-name descname"><span class="pre">a_buff</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.a_buff" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.calc_act">
 <span class="sig-name descname"><span class="pre">calc_act</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_in</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.calc_act" title="Permalink to this definition"></a></dt>
-<dd><p>Calculate the activations by performing del_wgts * s_in. This matrix
-is then summed across each row to get the activations to the output
-neurons for different delays. This activation vector is reshaped to a
-matrix of the form
-(n_flat_output_neurons * (max_delay + 1), n_flat_output_neurons)
-which is then transposed to get the activation matrix.</p>
+<dd><p>Calculate the activation matrix based on s_in by performing
+delay_wgts * s_in.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
@@ -629,14 +630,23 @@ which is then transposed to get the activation matrix.</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.delays">
+<span class="sig-name descname"><span class="pre">delays</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.delays" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.get_del_wgts">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_del_wgts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.get_del_wgts" title="Permalink to this definition"></a></dt>
-<dd><p>Use self.weights and self.delays to create a matrix where the
-weights are separated by delay. Returns 2D matrix of form
+<dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.get_delay_wgts_mat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_delay_wgts_mat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.get_delay_wgts_mat" title="Permalink to this definition"></a></dt>
+<dd><p>Create a matrix where the synaptic weights are separated
+by their corresponding delays. The first matrix contains all the
+weights, where the delay is equal to zero. The second matrix
+contains all the weights, where the delay is equal to one and so on.
+These matrices are then stacked together vertically.</p>
+<p>Returns 2D matrix of form
 :rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
 <p>(num_flat_output_neurons * max_delay + 1, num_flat_input_neurons) where
-del_wgts[</p>
+delay_wgts[</p>
 <blockquote>
 <div><p>k * num_flat_output_neurons : (k + 1) * num_flat_output_neurons, :</p>
 </div></blockquote>
@@ -656,6 +666,11 @@ them to a_buff.
 This order of operations ensures that delays of 0 correspond to
 the next time step.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.dense.models.AbstractPyDelayDenseModel.weights">
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.proc.dense.models.AbstractPyDelayDenseModel.weights" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -938,9 +953,9 @@ Process.</p>
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyLearningDenseModelBitApproximate">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.dense.models.</span></span><span class="sig-name descname"><span class="pre">PyLearningDenseModelBitApproximate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.dense.models.PyLearningDenseModelBitApproximate" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.connection.LearningConnectionModelBitApproximate" title="lava.magma.core.model.py.connection.LearningConnectionModelBitApproximate"><code class="xref py py-class docutils literal notranslate"><span class="pre">LearningConnectionModelBitApproximate</span></code></a>, <a class="reference internal" href="#lava.proc.dense.models.AbstractPyDenseModelBitAcc" title="lava.proc.dense.models.AbstractPyDenseModelBitAcc"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPyDenseModelBitAcc</span></code></a></p>
-<p>Implementation of Conn Process with Dense synaptic connections that is
-bit-accurate with Loihi’s hardware implementation of Dense, which means,
-it mimics Loihi behaviour bit-by-bit.</p>
+<p>Implementation of Conn Process with Dense synaptic connections that
+uses similar constraints as Loihi’s hardware implementation of dense
+connectivity but does not reproduce Loihi bit-by-bit.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.dense.models.PyLearningDenseModelBitApproximate.implements_process">
 <span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.dense.models.PyLearningDenseModelBitApproximate.implements_process" title="Permalink to this definition"></a></dt>

@@ -883,10 +883,10 @@ The numpy array is assumed to be of nEvent x event dimension.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.lib.dl.slayer.io.tensor_to_event">
 <span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.io.</span></span><span class="sig-name descname"><span class="pre">tensor_to_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.io.tensor_to_event" title="Permalink to this definition"></a></dt>
-<dd><p>Returns td_event event from a numpy array (of dimension 3 or 4).
-The numpy array must be of dimension (channels, height, time) or <code class="docutils literal notranslate"><span class="pre">CHT</span></code>
+<dd><p>Returns td_event event from a numpy or torch tensor (of dimension 3 or 4).
+The array or tensor must be of dimension (channels, height, time) or <code class="docutils literal notranslate"><span class="pre">CHT</span></code>
 for 1D data.
-The numpy array must be of dimension (channels, height, width, time) or
+The array or tensor must be of dimension (channels, height, width, time) or
 <code class="docutils literal notranslate"><span class="pre">CHWT</span></code> for 2D data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

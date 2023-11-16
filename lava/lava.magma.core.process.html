@@ -1028,6 +1028,37 @@ passed to Runtime.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.create_runtime">
+<span class="sig-name descname"><span class="pre">create_runtime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.create_runtime" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a runtime for this process and all connected processes by
+compiling the process to an executable and assigning that executable to
+the process and connected processes.</p>
+<p>See Process.run() for information on Process blocking, which must be
+specified in the run_cfg passed to create_runtime.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>run_cfg</strong> (<a class="reference internal" href="lava.magma.core.html#lava.magma.core.run_configs.RunConfig" title="lava.magma.core.run_configs.RunConfig"><em>RunConfig</em></a><em>, </em><em>optional</em>) – Used by the compiler to select a ProcessModel for each Process.
+Must be provided when Processes have to be compiled, can be
+omitted otherwise.</p></li>
+<li><p><strong>compile_config</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>, </em><em>optional</em>) – Configuration options for the Compiler and SubCompilers.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.folded_view">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">folded_view</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><span class="pre">AbstractProcess</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.folded_view" title="Permalink to this definition"></a></dt>
+<dd><p>Return folded view process</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.folded_view_inst_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">folded_view_inst_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.folded_view_inst_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.is_compiled">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_compiled</span></span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.is_compiled" title="Permalink to this definition"></a></dt>
@@ -1065,6 +1096,11 @@ passed to Runtime.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.propagate_folded_views">
+<span class="sig-name descname"><span class="pre">propagate_folded_views</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.propagate_folded_views" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.process.process.AbstractProcess.register_sub_procs">
 <span class="sig-name descname"><span class="pre">register_sub_procs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">procs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.process.AbstractProcess.register_sub_procs" title="Permalink to this definition"></a></dt>
 <dd><p>Registers other processes as sub processes of this process.</p>
@@ -1076,7 +1112,7 @@ passed to Runtime.</p>
 <dd><p>Executes this and any connected Processes that form a Process
 network. If any Process has not been compiled, it is automatically
 compiled before execution.</p>
-<p>When RunConfig.blocking is True, the Processes are executed for as long
+<p>When condition.blocking is True, the Processes are executed for as long
 as the RunCondition is satisfied. Otherwise, the method run() returns
 immediately while the Processes are executed. In this case,
 the methods wait(), pause(), and stop() can be used to
@@ -1092,6 +1128,8 @@ involved compute nodes.</p></li>
 <p>If a run has been suspended by either pause() or a RunCondition
 being no longer satisfied, run() can be called again to resume
 execution from the current state.</p>
+<p>NOTE: run_cfg will be ignored when re-running a previously compiled
+process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1350,7 +1388,7 @@ size=&quot;&quot;;
 }
 <span class="target" id="module-lava.magma.core.process.variable"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.core.process.variable.Var">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.variable.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shareable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.process.variable.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shareable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Unnamed</span> <span class="pre">variable'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.process.variable.Var" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.core.process.interfaces.AbstractProcessMember" title="lava.magma.core.process.interfaces.AbstractProcessMember"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcessMember</span></code></a></p>
 <p>Represents a Lava variable. A Var implements the state of a Process and
 is part of its public user interface. Vars have the following properties:</p>

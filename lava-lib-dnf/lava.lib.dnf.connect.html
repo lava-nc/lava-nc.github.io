@@ -568,7 +568,7 @@
 <h2>lava.lib.dnf.connect.connect<a class="headerlink" href="#lava-lib-dnf-connect-connect" title="Permalink to this heading"></a></h2>
 <span class="target" id="module-lava.lib.dnf.connect.connect"></span><dl class="py function">
 <dt class="sig sig-object py" id="lava.lib.dnf.connect.connect.connect">
-<span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.connect.connect.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.connect.connect.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dnf.connect.connect.</span></span><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_op</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dnf.connect.connect.connect" title="Permalink to this definition"></a></dt>
 <dd><p>Creates and returns a Connections Process &lt;conn&gt; and connects the source
 OutPort &lt;src_op&gt; to the InPort of &lt;conn&gt; and the OutPort of &lt;conn&gt; to the
 InPort of &lt;dst_ip&gt;.</p>
@@ -584,13 +584,16 @@ between source and destination.</p>
 <li><p><strong>dst_ip</strong> (<a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.InPort" title="lava.magma.core.process.ports.ports.InPort"><em>InPort</em></a>) – InPort of the destination Process that will be connected</p></li>
 <li><p><strong>ops</strong> (<em>list</em><em>(</em><a class="reference internal" href="lava.lib.dnf.operations.html#lava.lib.dnf.operations.operations.AbstractOperation" title="lava.lib.dnf.operations.operations.AbstractOperation"><em>AbstractOperation</em></a><em>)</em><em>, </em><em>optional</em>) – list of operations that describes how the connection between
 &lt;src_op&gt; and &lt;dst_ip&gt; will be created</p></li>
+<li><p><strong>connection_class</strong> (<em>type</em><em>(</em><em>Sparse</em><em>) or </em><em>type</em><em>(</em><a class="reference internal" href="../lava-lib-dl/bootstrap/block/block.html#lava.lib.dl.bootstrap.block.cuba.Dense" title="lava.lib.dl.bootstrap.block.cuba.Dense"><em>Dense</em></a><em>)</em><em>, </em><em>optional</em>) – Class of the process used between src_op and dst_ip. If connection_class
+is None the connection process will be defined automatically
+(currently a Sparse Process is used in that case).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>connections</strong> – process containing the connections between &lt;src_op&gt; and &lt;dst_ip&gt;</p>
+<dd class="field-even"><p><strong>connections</strong> – Process containing the connections between &lt;src_op&gt; and &lt;dst_ip&gt;</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess">AbstractProcess</a></p>
+<dd class="field-odd"><p>Sparse or Dense Process</p>
 </dd>
 </dl>
 </dd></dl>

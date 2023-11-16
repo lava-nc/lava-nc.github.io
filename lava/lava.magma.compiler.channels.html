@@ -598,6 +598,16 @@ size=&quot;&quot;;
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.compiler.channels.interfaces.AbstractCspPort.is_msg_size_static">
+<span class="sig-name descname"><span class="pre">is_msg_size_static</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.interfaces.AbstractCspPort.is_msg_size_static" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.compiler.channels.interfaces.AbstractCspPort.join">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.interfaces.AbstractCspPort.join" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -749,7 +759,7 @@ size=&quot;&quot;;
 }
 <span class="target" id="module-lava.magma.compiler.channels.pypychannel"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.channels.pypychannel.CspRecvPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">CspRecvPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">CspRecvPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_watchdog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join_watchdog</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspRecvPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.channels.interfaces.AbstractCspRecvPort" title="lava.magma.compiler.channels.interfaces.AbstractCspRecvPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractCspRecvPort</span></code></a></p>
 <p>CspRecvPort is a low level recv port implementation based on CSP
 semantics. It can be understood as the output port of a CSP channel.</p>
@@ -827,16 +837,21 @@ optionally return the head element without removing it.</p>
 <p>Utility class to allow waiting for multiple channels to become ready</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.compiler.channels.pypychannel.CspSelector.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspSelector.select" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">channel_actions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspSelector.select" title="Permalink to this definition"></a></dt>
 <dd><p>Wait for any channel to become ready, then execute the corresponding
 callable and return the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.channels.pypychannel.CspSendPort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">CspSendPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ack</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspSendPort" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">CspSendPort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">req</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">io_watchdog</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join_watchdog</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.CspSendPort" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.channels.interfaces.AbstractCspSendPort" title="lava.magma.compiler.channels.interfaces.AbstractCspSendPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractCspSendPort</span></code></a></p>
 <p>CspSendPort is a low level send port implementation based on CSP
 semantics. It can be understood as the input port of a CSP channel.</p>
@@ -909,7 +924,7 @@ Does not block.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.channels.pypychannel.PyPyChannel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">PyPyChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_infrastructure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.PyPyChannel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.channels.pypychannel.</span></span><span class="sig-name descname"><span class="pre">PyPyChannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_infrastructure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_send_watchdog=&lt;lava.magma.compiler.channels.watchdog.NoOPWatchdog</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_join_watchdog=&lt;lava.magma.compiler.channels.watchdog.NoOPWatchdog</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_recv_watchdog=&lt;lava.magma.compiler.channels.watchdog.NoOPWatchdog</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_join_watchdog=&lt;lava.magma.compiler.channels.watchdog.NoOPWatchdog</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.channels.pypychannel.PyPyChannel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.channels.interfaces.Channel" title="lava.magma.compiler.channels.interfaces.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a></p>
 <p>Helper class to create the set of send and recv port and encapsulate
 them inside a common structure. We call this a PyPyChannel</p>

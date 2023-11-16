@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sigma-Delta Neurons &mdash; Lava  documentation</title>
+  <title>Serialization of Lava networks &mdash; Lava  documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -524,9 +524,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Sigma-Delta Neurons</li>
+      <li class="breadcrumb-item active">Serialization of Lava networks</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../../_sources/lava/notebooks/in_depth/tutorial10_sigma_delta_neurons.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/lava/notebooks/in_depth/tutorial11_serialization.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -813,189 +813,111 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p><em>Copyright (C) 2022 Intel Corporation</em> <em>SPDX-License-Identifier: BSD-3-Clause</em> <em>See: https://spdx.org/licenses/</em></p>
+<p><em>Copyright (C) 2023 Intel Corporation</em> <em>SPDX-License-Identifier: BSD-3-Clause</em> <em>See: https://spdx.org/licenses/</em></p>
 <hr class="docutils" />
-<section id="Sigma-Delta-Neurons">
-<h1>Sigma-Delta Neurons<a class="headerlink" href="#Sigma-Delta-Neurons" title="Permalink to this heading"></a></h1>
-<section id="Introduction">
-<h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this heading"></a></h2>
-<p>Many temporal signals are slow and do not change in a shorter time-scale. Nevertheless, in classical ANNs, computation is executed every timestep even if the information is redundant over time. By encoding the temporal signal with a delta-encoder, we can minimize the computational costs without increasing delay.</p>
-<table><tr><td><p><img alt="Drawing" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif" /></p>
-</td></tr></table><p><strong>Sigma-delta neural networks</strong> consists of two main units: <em>sigma</em> decoder in the dendrite and <em>delta</em> encoder in the axon. Delta encoder uses differential encoding on the output activation of a regular ANN activation, for e.g. ReLU. In addition it only sends activation to the next layer when the encoded message magnitude is larger than its threshold. The sigma unit accumulates the sparse event messages and accumulates it to restore the original value.</p>
-<table><tr><td><p><img alt="Drawing" src="https://raw.githubusercontent.com/lava-nc/lava-dl/main/tutorials/lava/lib/dl/slayer/pilotnet/images/delta_encoder.png" /></p>
-</td><td><p><img alt="Drawing" src="https://raw.githubusercontent.com/lava-nc/lava-dl/main/tutorials/lava/lib/dl/slayer/pilotnet/images/sigma_decoder.png" /></p>
-</td></tr></table><p>A sigma-delta neuron is simply a regular activation wrapped around by a sigma unit at it’s input and a delta unit at its output.</p>
+<section id="Serialization-of-Lava-networks">
+<h1>Serialization of Lava networks<a class="headerlink" href="#Serialization-of-Lava-networks" title="Permalink to this heading"></a></h1>
+<p>A Lava network can be saved to and later loaded from a file, this is also called serialization. Serialization of Lava networks, a list of Lava processes which are optionally connected and/or compiled, is based on the pickle module from python. The pickle module implements binary protocols for serializing and de-serializing a Python object structure.</p>
+<p><img alt="84fef9a4cc26412cbc409fd3ea29a42e" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_images/lava_notebooks_in_depth_tutorial11_serialization.png" style="width: 600px;" /></p>
+<p>Serialization of compiled Lava networks allows to easily share bigger Lava networks and to execute pre-compiled networks. This enables to run networks which take a long time to compile faster, which decreases the time to execution. Pre-compilation also enables the execution of complex networks on embedded environments, which otherwise would suffer from long compilation times.</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><strong>⚠️ Warning</strong></div>
+<div class="line">Using <code class="docutils literal notranslate"><span class="pre">save</span></code> and <code class="docutils literal notranslate"><span class="pre">load</span></code> is not secure. Only load data you trust. As it uses pickle it is possible to construct malicious data which will execute arbitrary code during loading. Never load data that could have come from an untrusted source, or that could have been tampered with.</div>
+</div>
+<p>Consider signing data with <code class="docutils literal notranslate"><span class="pre">hmac</span></code> if you need to ensure that it has not been tampered with.</p>
+</div></blockquote>
+<section id="Interface">
+<h2>Interface<a class="headerlink" href="#Interface" title="Permalink to this heading"></a></h2>
+<p>A list of configured Lava processes can be stored in a file by calling <code class="docutils literal notranslate"><span class="pre">save</span></code>. The arguments are a Lava process or a list of Lava processes, a string defining the path and name of the file and a Executable object. The Executable object is needed to store compiled Lava networks.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>save(processes, filename, executable=None)
+</pre></div>
+</div>
+<p>As default file extension <code class="docutils literal notranslate"><span class="pre">.pickle</span></code> is used, if no other file extension is provided in the argument <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+<p>Stored Lava processes and their corresponding executable can be retrieved by calling <code class="docutils literal notranslate"><span class="pre">load</span></code>. The argument is a string defining the path and name of the file. The function returns the list of stored Lava processes and the corresponding executable.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>processes, executable = load(filename)
+</pre></div>
+</div>
+</section>
+<section id="Example">
+<h2>Example<a class="headerlink" href="#Example" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">PIL</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">from</span> <span class="nn">lava.proc.io.source</span> <span class="kn">import</span> <span class="n">RingBuffer</span> <span class="k">as</span> <span class="n">Input</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
 <span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.proc.sdn.process</span> <span class="kn">import</span> <span class="n">SigmaDelta</span><span class="p">,</span> <span class="n">ActivationMode</span><span class="p">,</span> <span class="n">Delta</span>
-<span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
-<span class="kn">from</span> <span class="nn">lava.proc.bit_check.process</span> <span class="kn">import</span> <span class="n">BitCheck</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
 <span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
+<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<span class="kn">from</span> <span class="nn">lava.utils.serialization</span> <span class="kn">import</span> <span class="n">save</span><span class="p">,</span> <span class="n">load</span>
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Create-input-time-series-and-neuron">
-<h2>Create input time-series and neuron<a class="headerlink" href="#Create-input-time-series-and-neuron" title="Permalink to this heading"></a></h2>
-<p>In order to demonstrate the capabilities of the sigma-delta neuron and how much computational costs can be saved, we will simulate such a neuron and execute it on a representative time-series. We chose to model this time-series as an sinusoidal with overlapping frequencies and then apply the a standard ReLU function on it.</p>
+<p>A simple LIF-&gt;Dense-&gt;LIF network is configured.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_size</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">post_size</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Create network</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">post_size</span><span class="p">,</span> <span class="n">pre_size</span><span class="p">))</span>
+
+<span class="n">lif_in</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">pre_size</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LIF_neuron input&quot;</span><span class="p">)</span>
+<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Dense&quot;</span><span class="p">)</span>
+<span class="n">lif_out</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">post_size</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LIF_neuron output&quot;</span><span class="p">)</span>
+
+<span class="c1"># Connect the processes</span>
+<span class="n">lif_in</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_out</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>In order to store a compiled version of the Lava network an <code class="docutils literal notranslate"><span class="pre">executable</span></code> is needed. Calling <code class="docutils literal notranslate"><span class="pre">compile</span></code> on a Lava process compiles the process and all its connected processes and returns an <code class="docutils literal notranslate"><span class="pre">executable</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create executable</span>
+<span class="n">ex</span> <span class="o">=</span> <span class="n">lif_in</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Storing all Lava processes and the corresponding executable in a file using <code class="docutils literal notranslate"><span class="pre">save</span></code>. &gt; <strong>ℹ️ Note</strong></div>
+<div class="line">&gt; The context manager <code class="docutils literal notranslate"><span class="pre">TemporaryDirectory</span></code> is used to prevent write permission errors and ensure the clean up of created files from this tutorial. The context manager is not necessary or recommended when using <code class="docutils literal notranslate"><span class="pre">save</span></code> and <code class="docutils literal notranslate"><span class="pre">load</span></code>.</div>
+</div>
+<p>Afterwords, the list of processes and their corresponding executable are retrieved from the file using <code class="docutils literal notranslate"><span class="pre">load</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Context manager is used only to ensure clean up</span>
+<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdirname</span><span class="p">:</span>
+    <span class="c1"># Store the Lava network</span>
+    <span class="n">save</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="p">[</span><span class="n">lif_in</span><span class="p">,</span> <span class="n">lif_out</span><span class="p">,</span> <span class="n">dense</span><span class="p">],</span>
+         <span class="n">filename</span><span class="o">=</span><span class="n">tmpdirname</span> <span class="o">+</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+         <span class="n">executable</span><span class="o">=</span><span class="n">ex</span><span class="p">)</span>
+
+    <span class="c1"># Load executable again</span>
+    <span class="n">procs</span><span class="p">,</span> <span class="n">loaded_ex</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">tmpdirname</span> <span class="o">+</span> <span class="s2">&quot;test.pickle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The list of processes was assigned to <code class="docutils literal notranslate"><span class="pre">procs</span></code>. These process instances are not equal to the instances created initially, although they contain the same information and behave the same way. Also the loaded executable is not equal to the initially created executable.</p>
+<p>Looking at the list of processes shows which processes have been loaded from the file. To use the processes again they can be assigned to new variables.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_sim</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mf">0.5</span>
-
-<span class="c1"># Interesting input time-series</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
-<span class="n">inp_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">+</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">200</span>
-
-<span class="c1"># ReLU of input</span>
-<span class="n">relu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">inp_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Input&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ReLU&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (steps)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">relu</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/relu.png&quot;</span><span class="p">)))</span>
-
-<span class="n">MACs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ANN MACs: </span><span class="si">{</span><span class="n">MACs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-ANN MACs: 200
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../../_images/lava_notebooks_in_depth_tutorial10_sigma_delta_neurons_3_1.png" src="../../../_images/lava_notebooks_in_depth_tutorial10_sigma_delta_neurons_3_1.png" />
-</div>
-</div>
-<p>For this, and any other time-series, a standard ANN must multiply and accumulate (MAC) once per timestep.</p>
-</section>
-<section id="Create-encoding-and-Sigma-Delta-neuron">
-<h2>Create encoding and Sigma-Delta neuron<a class="headerlink" href="#Create-encoding-and-Sigma-Delta-neuron" title="Permalink to this heading"></a></h2>
-<p>Now, let’s encode the same input using delta-encoding and pass it through a sigma-delta neuron. First, we have to create the corresponding processes and connect them in a feed-forward manner.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input process</span>
-<span class="n">inp</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">inp_data</span><span class="p">)</span>
-<span class="n">inp_proj</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-                 <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="c1"># Delta encoding</span>
-<span class="n">delta</span> <span class="o">=</span> <span class="n">Delta</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span>
-              <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-              <span class="n">cum_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">delta_proj</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-                   <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="c1"># Create one Sigma-Delta neuron</span>
-<span class="n">neuron</span> <span class="o">=</span> <span class="n">SigmaDelta</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span>
-                    <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-                    <span class="n">act_mode</span><span class="o">=</span><span class="n">ActivationMode</span><span class="o">.</span><span class="n">RELU</span><span class="p">,</span>
-                    <span class="n">cum_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Connect input to neuron</span>
-<span class="n">inp</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">inp_proj</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">inp_proj</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-<span class="n">delta</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">delta_proj</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">delta_proj</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Record-states">
-<h2>Record states<a class="headerlink" href="#Record-states" title="Permalink to this heading"></a></h2>
-<p>To record the internal dynamics of the encoding and the sigma-delta neuron, we also create Monitors and probe the states we want to measure.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mon</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon2</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">residue</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon3</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon3</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">act</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon4</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon4</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon5</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon5</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Create-sigma-overflow-check">
-<h2>Create sigma overflow check<a class="headerlink" href="#Create-sigma-overflow-check" title="Permalink to this heading"></a></h2>
-<p>We can check that the sigma neuron is not overflowing 24-bit value using the BitCheck process.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="n">BitCheck</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">bc</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">connect_var</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">sigma</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Execution">
-<h2>Execution<a class="headerlink" href="#Execution" title="Permalink to this heading"></a></h2>
-<p>Now, we can pass the input through our network and retrieve the recorded data.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neuron</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">t_sim</span><span class="p">),</span>
-           <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">))</span>
-
-
-<span class="n">sigma_process_key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">mon</span><span class="o">.</span><span class="n">get_data</span><span class="p">()))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sigma_process_key</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">delta_process_key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">mon5</span><span class="o">.</span><span class="n">get_data</span><span class="p">()))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">delta_process_key</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="n">neuron_out</span> <span class="o">=</span> <span class="n">mon</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">neuron_residue</span> <span class="o">=</span> <span class="n">mon2</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;residue&#39;</span><span class="p">]</span>
-<span class="n">neuron_act</span> <span class="o">=</span> <span class="n">mon3</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;act&#39;</span><span class="p">]</span>
-<span class="n">neuron_sigma</span> <span class="o">=</span> <span class="n">mon4</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
-<span class="n">delta_out</span> <span class="o">=</span> <span class="n">mon5</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">delta_process_key</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">bc_overflowed</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">bc</span><span class="o">.</span><span class="n">overflowed</span><span class="p">)</span>
-<span class="n">neuron</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bc_overflowed</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">procs</span><span class="p">)</span>
+<span class="n">input_lif</span> <span class="o">=</span> <span class="n">procs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">output_lif</span> <span class="o">=</span> <span class="n">procs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1004,77 +926,49 @@ ANN MACs: 200
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-sigma_process_key=&#39;Process_4&#39;
-delta_process_key=&#39;Process_2&#39;
-bc_overflowed=False
+[&lt;lava.proc.lif.process.LIF object at 0x7fc461a4ff40&gt;, &lt;lava.proc.lif.process.LIF object at 0x7fc461abf370&gt;, &lt;lava.proc.dense.process.Dense object at 0x7fc461abfc40&gt;]
 </pre></div></div>
 </div>
-</section>
-<section id="Plot">
-<h2>Plot<a class="headerlink" href="#Plot" title="Permalink to this heading"></a></h2>
-<p>The delta encoding compares its internal state with the input signal. If the difference between input and internal state exceeds a pre-definde (or learnable) threshold, a spike is emitted. If the difference is negative, a spike with negative payload is emitted, if the difference is positive the payload is positive. If a spike is emitted, the internal state is updated to the value of the current input.</p>
-<p>As can be seen, the spiking activity is much sparser than the original signal, which will reduce computational power as only the spikes are transmitted to the next layer.</p>
-<p>The sigma part of the sigma-delta neuron resores/decodes the input by accumulating the payload of the incoming spikes. Then, the ReLU function can be applied and the resulting activation is again encoded using a delta-encoder.</p>
+<p>Using the loaded <code class="docutils literal notranslate"><span class="pre">executable</span></code> a runtime needs to be created in order to execute the compiled Lava network. If <code class="docutils literal notranslate"><span class="pre">create_runtime</span></code> is not used, then the processes will be compiled again when calling <code class="docutils literal notranslate"><span class="pre">run</span></code>. For pre-compiled networks this should be avoided.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the runtime from the loaded executable</span>
+<span class="n">input_lif</span><span class="o">.</span><span class="n">create_runtime</span><span class="p">(</span><span class="n">executable</span><span class="o">=</span><span class="n">loaded_ex</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, the network is executed and the voltage and current of the input and output LIF neurons are stored.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">output_lif_in_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">pre_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
+<span class="n">output_lif_out_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">post_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
+
+<span class="c1"># Execute the network and retrieve voltage and current</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
+        <span class="n">input_lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">output_lif_in_v</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">output_lif_out_u</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_lif</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">input_lif</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Showing the results.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Input&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">inp_data</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inp_data</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">vth</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Delta encoding&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_out</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sigma&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_sigma</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Activation&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_act</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">relu</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">neuron_act</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">vth</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Delta&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_out</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/sdn.png&quot;</span><span class="p">)));</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../../_images/lava_notebooks_in_depth_tutorial10_sigma_delta_neurons_14_0.png" src="../../../_images/lava_notebooks_in_depth_tutorial10_sigma_delta_neurons_14_0.png" />
-</div>
-</div>
-</section>
-<section id="Computational-costs">
-<h2>Computational costs<a class="headerlink" href="#Computational-costs" title="Permalink to this heading"></a></h2>
-<p>Using the sigma-delta neuron the activation, and hence the computation cost, is drastically reduced after decoding the input signal.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MACs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">syn_ops</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">delta_out</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ANN MACs: </span><span class="si">{</span><span class="n">MACs</span><span class="si">}</span><span class="s2">, Sigma-Delta SynOps: </span><span class="si">{</span><span class="n">syn_ops</span><span class="si">}</span><span class="s2">, reduction: </span><span class="si">{</span><span class="nb">int</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">syn_ops</span><span class="o">/</span><span class="n">MACs</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Voltage of 2 input LIF neurons over time steps: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_lif_in_v</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current of 3 output LIF neurons over time steps: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_lif_out_u</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1083,14 +977,20 @@ bc_overflowed=False
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-ANN MACs: 200, Sigma-Delta SynOps: 63, reduction: 68%
+Voltage of 2 input LIF neurons over time steps:
+[[100.   0. 100.   0. 100.]
+ [100.   0. 100.   0. 100.]]
+Current of 3 output LIF neurons over time steps:
+[[ 0.  0. 20. 20. 40.]
+ [ 0.  0. 20. 20. 40.]
+ [ 0.  0. 20. 20. 40.]]
 </pre></div></div>
 </div>
+<p>A hierarchical process can also be stored to a file and all used sub-processes will be available after retrieving it again from a file. This is helpful to create a pre-compiled network, which can be accessed and executed through a single variable.</p>
 </section>
 <section id="How-to-learn-more?">
 <h2>How to learn more?<a class="headerlink" href="#How-to-learn-more?" title="Permalink to this heading"></a></h2>
-<p>In order to learn more about the application of Sigma-Delta neurons, take a look at the tutorials about <a class="reference external" href="https://github.com/bamsumit/lava-dl/blob/main/tutorials/lava/lib/dl/slayer/pilotnet/train.ipynb">training a spiking deep neural network</a> in <a class="reference external" href="https://lava-nc.org/dl.html">lava-dl</a>.</p>
-<p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org/%20%22Lava%20Documentation%22">Lava documentation</a>.</p>
+<p>If you want to find out more about Lava, have a look at the <a class="reference external" href="https://lava-nc.org">Lava documentation</a>.</p>
 <p>To receive regular updates on the latest developments and releases of the Lava Software Framework please subscribe to the <a class="reference external" href="http://eepurl.com/hJCyhb">INRC newsletter</a>.</p>
 </section>
 </section>

@@ -613,6 +613,8 @@ size=&quot;&quot;;
   &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
   &quot;CallbackFx&quot; [URL=&quot;../lava/lava.magma.core.html#lava.magma.core.callback_fx.CallbackFx&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Base class for callback functions which are executed before&quot;];
   &quot;ABC&quot; -&gt; &quot;CallbackFx&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;IterableCallBack&quot; [URL=&quot;../lava/lava.magma.core.html#lava.magma.core.callback_fx.IterableCallBack&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;NxSDK callback function to execute iterable of function pointers&quot;];
+  &quot;NxSdkCallbackFx&quot; -&gt; &quot;IterableCallBack&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;NxBoard&quot; [URL=&quot;../lava/lava.magma.core.html#lava.magma.core.callback_fx.NxBoard&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
   &quot;NxSdkCallbackFx&quot; [URL=&quot;../lava/lava.magma.core.html#lava.magma.core.callback_fx.NxSdkCallbackFx&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Abstract class for callback functions processed in the&quot;];
   &quot;CallbackFx&quot; -&gt; &quot;NxSdkCallbackFx&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
@@ -657,6 +659,34 @@ special CallbackFx classes for each compute ressource.</p>
 <dt class="sig sig-object py" id="lava.magma.core.callback_fx.CallbackFx.send_data_to_runtime_service">
 <span class="sig-name descname"><span class="pre">send_data_to_runtime_service</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.callback_fx.CallbackFx.send_data_to_runtime_service" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.core.callback_fx.IterableCallBack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.core.callback_fx.</span></span><span class="sig-name descname"><span class="pre">IterableCallBack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pre_run_fxs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_run_fxs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.callback_fx.IterableCallBack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.core.callback_fx.NxSdkCallbackFx" title="lava.magma.core.callback_fx.NxSdkCallbackFx"><code class="xref py py-class docutils literal notranslate"><span class="pre">NxSdkCallbackFx</span></code></a></p>
+<p>NxSDK callback function to execute iterable of function pointers
+as pre and post run.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.callback_fx.IterableCallBack.post_run_callback">
+<span class="sig-name descname"><span class="pre">post_run_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_id_to_var_model_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.callback_fx.IterableCallBack.post_run_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.magma.core.callback_fx.IterableCallBack.pre_run_callback">
+<span class="sig-name descname"><span class="pre">pre_run_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_id_to_var_model_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.callback_fx.IterableCallBack.pre_run_callback" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -1213,13 +1243,13 @@ facility. Default: logging.WARNING</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.core.run_configs.AbstractLoihiRunCfg.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg.select" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.core.run_configs.AbstractLoihiRunCfg.select" title="Permalink to this definition"></a></dt>
 <dd><p>Selects an appropriate ProcessModel from a list of ProcessModels for
 a Process, based on user requests.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>proc</strong> (<a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a>) – Process for which ProcessModel is selected</p></li>
+<li><p><strong>process</strong> (<a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><em>AbstractProcess</em></a>) – Process for which ProcessModel is selected</p></li>
 <li><p><strong>proc_models</strong> (<em>List</em><em>[</em><a class="reference internal" href="lava.magma.core.model.html#lava.magma.core.model.model.AbstractProcessModel" title="lava.magma.core.model.model.AbstractProcessModel"><em>AbstractProcessModel</em></a><em>]</em>) – List of ProcessModels to select from</p></li>
 </ul>
 </dd>

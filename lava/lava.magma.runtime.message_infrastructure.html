@@ -572,17 +572,18 @@ digraph inheritancefcce92b215 {
 bgcolor=transparent;
 rankdir=TB;
 size=&quot;&quot;;
-  &quot;MessageInfrastructureFactory&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Creates the message infrastructure instance based on type&quot;];
+  &quot;MessageInfrastructureFactory&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Factory class to create the messaging infrastructure&quot;];
 }
 <span class="target" id="module-lava.magma.runtime.message_infrastructure.factory"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.message_infrastructure.factory.</span></span><span class="sig-name descname"><span class="pre">MessageInfrastructureFactory</span></span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Creates the message infrastructure instance based on type</p>
+<p>Factory class to create the messaging infrastructure</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory.create">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factory_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.factory.MessageInfrastructureFactory.create" title="Permalink to this definition"></a></dt>
-<dd><p>type of actor framework being chosen</p>
+<dd><p>Creates the message infrastructure instance based on type
+of actor framework being chosen.</p>
 </dd></dl>
 
 </dd></dl>
@@ -595,15 +596,17 @@ bgcolor=transparent;
 rankdir=TB;
 size=&quot;&quot;;
   &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
-  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Interface to provide the ability to create actors which can&quot;];
+  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A Message Infrastructure Interface which can create actors which would&quot;];
   &quot;ABC&quot; -&gt; &quot;MessageInfrastructureInterface&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
 }
 <span class="target" id="module-lava.magma.runtime.message_infrastructure.message_infrastructure_interface"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.message_infrastructure.message_infrastructure_interface.</span></span><span class="sig-name descname"><span class="pre">MessageInfrastructureInterface</span></span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<p>Interface to provide the ability to create actors which can
-communicate via message passing</p>
+<p>A Message Infrastructure Interface which can create actors which would
+participate in message passing/exchange, start and stop them as well as
+declare the underlying Channel Infrastructure Class to be used for message
+passing implementation.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface.actors">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">actors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface.actors" title="Permalink to this definition"></a></dt>
@@ -652,13 +655,15 @@ size=&quot;&quot;;
   &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
   &quot;BaseProcess&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Process objects represent activity that is run in a separate process&quot;];
   &quot;CPyChannel&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.CPyChannel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
-  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Interface to provide the ability to create actors which can&quot;];
+  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A Message Infrastructure Interface which can create actors which would&quot;];
   &quot;ABC&quot; -&gt; &quot;MessageInfrastructureInterface&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;MultiProcessing&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.MultiProcessing&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implements message passing using shared memory and multiprocessing&quot;];
   &quot;MessageInfrastructureInterface&quot; -&gt; &quot;MultiProcessing&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;NcPyChannel&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.NcPyChannel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
   &quot;Process&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;];
   &quot;BaseProcess&quot; -&gt; &quot;Process&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyCChannel&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.PyCChannel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
+  &quot;PyNcChannel&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.PyNcChannel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;];
   &quot;SystemProcess&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.multiprocessing.SystemProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Wraps a process so that the exceptions can be collected if present&quot;];
   &quot;Process&quot; -&gt; &quot;SystemProcess&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
 }
@@ -723,8 +728,20 @@ implementation for the same</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.multiprocessing.NcPyChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.message_infrastructure.multiprocessing.</span></span><span class="sig-name descname"><span class="pre">NcPyChannel</span></span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.multiprocessing.NcPyChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.multiprocessing.PyCChannel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.message_infrastructure.multiprocessing.</span></span><span class="sig-name descname"><span class="pre">PyCChannel</span></span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.multiprocessing.PyCChannel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.runtime.message_infrastructure.multiprocessing.PyNcChannel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.message_infrastructure.multiprocessing.</span></span><span class="sig-name descname"><span class="pre">PyNcChannel</span></span><a class="headerlink" href="#lava.magma.runtime.message_infrastructure.multiprocessing.PyNcChannel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
@@ -761,7 +778,7 @@ bgcolor=transparent;
 rankdir=TB;
 size=&quot;&quot;;
   &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
-  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Interface to provide the ability to create actors which can&quot;];
+  &quot;MessageInfrastructureInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.message_infrastructure_interface.MessageInfrastructureInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;A Message Infrastructure Interface which can create actors which would&quot;];
   &quot;ABC&quot; -&gt; &quot;MessageInfrastructureInterface&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;NxBoardMsgInterface&quot; [URL=&quot;../lava/lava.magma.runtime.message_infrastructure.html#lava.magma.runtime.message_infrastructure.nx.NxBoardMsgInterface&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implements message passing using nx board&quot;];
   &quot;MessageInfrastructureInterface&quot; -&gt; &quot;NxBoardMsgInterface&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];

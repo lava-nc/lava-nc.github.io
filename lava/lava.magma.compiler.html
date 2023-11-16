@@ -1030,7 +1030,7 @@ ProcDiGraph. Each node retains the attributes of the original nodes.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.compiler_graphs.ProcGroupDiGraphs">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.compiler_graphs.</span></span><span class="sig-name descname"><span class="pre">ProcGroupDiGraphs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.compiler_graphs.ProcGroupDiGraphs" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.compiler_graphs.</span></span><span class="sig-name descname"><span class="pre">ProcGroupDiGraphs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.compiler_graphs.ProcGroupDiGraphs" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.compiler_graphs.AbstractProcGroupDiGraphs" title="lava.magma.compiler.compiler_graphs.AbstractProcGroupDiGraphs"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcGroupDiGraphs</span></code></a></p>
 <p>Concrete subclass of <cite>AbstractProcGroupDiGraphs</cite> that generates
 and holds various directed graphs needed to generate ProcGroups needed
@@ -1211,6 +1211,12 @@ sub-Processes inside their SubProcessModels.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="lava.magma.compiler.compiler_graphs.annotate_folded_view">
+<span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.compiler_graphs.</span></span><span class="sig-name descname"><span class="pre">annotate_folded_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folded_procs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.compiler_graphs.annotate_folded_view" title="Permalink to this definition"></a></dt>
+<dd><p>Annotate folded views and propagate them recursively</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="lava.magma.compiler.compiler_graphs.find_processes">
 <span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.compiler_graphs.</span></span><span class="sig-name descname"><span class="pre">find_processes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seen_procs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.compiler_graphs.find_processes" title="Permalink to this definition"></a></dt>
 <dd><p>Find all processes that are connected to <cite>proc</cite>.</p>
@@ -1337,7 +1343,7 @@ size=&quot;&quot;;
 }
 <span class="target" id="module-lava.magma.compiler.executable"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.executable.</span></span><span class="sig-name descname"><span class="pre">Executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_builders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_builders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_configs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_domains</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_service_builders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_channel_builders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.executable.</span></span><span class="sig-name descname"><span class="pre">Executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_builders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_builders</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_configs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_domains</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_service_builders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_channel_builders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watchdog_manager_builder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.executable.Executable" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Produced by compiler and contains everything the Runtime needs to run
 process.</p>
@@ -1366,6 +1372,11 @@ later point.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.process_list">
+<span class="sig-name descname"><span class="pre">process_list</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[AbstractProcess]</span></em><a class="headerlink" href="#lava.magma.compiler.executable.Executable.process_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.runtime_service_builders">
 <span class="sig-name descname"><span class="pre">runtime_service_builders</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional[ty.Dict[SyncDomain,</span> <span class="pre">RuntimeServiceBuilder]]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.executable.Executable.runtime_service_builders" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -1378,6 +1389,11 @@ later point.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.sync_domains">
 <span class="sig-name descname"><span class="pre">sync_domains</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[SyncDomain]</span></em><a class="headerlink" href="#lava.magma.compiler.executable.Executable.sync_domains" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.executable.Executable.watchdog_manager_builder">
+<span class="sig-name descname"><span class="pre">watchdog_manager_builder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">WatchdogManagerBuilder</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.executable.Executable.watchdog_manager_builder" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1561,6 +1577,8 @@ size=&quot;&quot;;
   &quot;LoihiPortInitializer&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.utils.LoihiPortInitializer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;This address needs to be defined based on var model&quot;];
   &quot;PortInitializer&quot; -&gt; &quot;LoihiPortInitializer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;Mappable&quot; -&gt; &quot;LoihiPortInitializer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;LoihiPyInPortInitializer&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.utils.LoihiPyInPortInitializer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;LoihiPyInPortInitializer(name: str, shape: Tuple[int, ...], d_type: type, port_type: str, size: int, transform_funcs: Dict[str, List[functools.partial]] = None, var_model: Optional[lava.magma.compiler.var_model.LoihiVarModel] = None, connected_port_type: Optional[lava.magma.compiler.utils.LoihiConnectedPortType] = None, connected_port_encoding_type: Optional[lava.magma.compiler.utils.LoihiConnectedPortEncodingType] = None, spike_type: Optional[lava.magma.core.model.spike_type.SpikeType] = None, connection_config: Optional[lava.magma.core.process.ports.connection_config.ConnectionConfig] = None)&quot;];
+  &quot;LoihiCInPortInitializer&quot; -&gt; &quot;LoihiPyInPortInitializer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;LoihiVarInitializer&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.utils.LoihiVarInitializer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;LoihiVarInitializer(name: str, shape: Tuple[int, ...], value: Any, var_id: int, d_type: type)&quot;];
   &quot;VarInitializer&quot; -&gt; &quot;LoihiVarInitializer&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;LoihiVarPortInitializer&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.utils.LoihiVarPortInitializer&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;LoihiVarPortInitializer(name: str, shape: Tuple[int, ...], d_type: type, port_type: str, size: int, transform_funcs: Dict[str, List[functools.partial]] = None, var_model: Optional[lava.magma.compiler.var_model.LoihiVarModel] = None)&quot;];
@@ -1634,6 +1652,11 @@ size=&quot;&quot;;
 <span class="sig-name descname"><span class="pre">C_PY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#lava.magma.compiler.utils.LoihiConnectedPortType.C_PY" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.LoihiConnectedPortType.PY_NC">
+<span class="sig-name descname"><span class="pre">PY_NC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#lava.magma.compiler.utils.LoihiConnectedPortType.PY_NC" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1699,6 +1722,17 @@ size=&quot;&quot;;
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.compiler.utils.LoihiPortInitializer.var_model">
 <span class="sig-name descname"><span class="pre">var_model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><a class="reference internal" href="#lava.magma.compiler.var_model.LoihiVarModel" title="lava.magma.compiler.var_model.LoihiVarModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiVarModel</span></code></a><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.utils.LoihiPortInitializer.var_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.LoihiPyInPortInitializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.utils.</span></span><span class="sig-name descname"><span class="pre">LoihiPyInPortInitializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform_funcs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connected_port_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connected_port_encoding_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.utils.LoihiPyInPortInitializer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.utils.LoihiCInPortInitializer" title="lava.magma.compiler.utils.LoihiCInPortInitializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiCInPortInitializer</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.utils.LoihiPyInPortInitializer.connection_config">
+<span class="sig-name descname"><span class="pre">connection_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionConfig</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.utils.LoihiPyInPortInitializer.connection_config" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1838,13 +1872,18 @@ size=&quot;&quot;;
   &quot;ABC&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Helper class that provides a standard way to create an ABC using&quot;];
   &quot;AbstractVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.AbstractVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;AbstractVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1)&quot;];
   &quot;ABC&quot; -&gt; &quot;AbstractVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;AxonEncoder&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.AxonEncoder&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Encoding for axon field&quot;];
+  &quot;ByteEncoder&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.ByteEncoder&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Encodes ptr, len, base&quot;];
   &quot;CVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.CVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;CVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1, address: 'ty.List[LoihiAddress]' = None, field_name: 'ty.Optional[str]' = None, register_name: 'ty.Optional[str]' = None, register_length: 'ty.Optional[int]' = None, variable_offset: 'ty.Optional[int]' = None, variable_length: 'ty.Optional[int]' = None, union_type: 'ty.Optional[bool]' = False, sub_type: 'ty.Optional[str]' = None)&quot;];
   &quot;LoihiVarModel&quot; -&gt; &quot;CVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;ChipEncoder&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.ChipEncoder&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Encoding for chip field&quot;];
   &quot;ConvInVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.ConvInVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;ConvInVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1, x_dim: 'int' = 0, y_dim: 'int' = 0, f_dim: 'int' = 0, x_split: 'int' = 0, f_split: 'int' = 0, regions: 'ty.List[Region]' = None)&quot;];
   &quot;AbstractVarModel&quot; -&gt; &quot;ConvInVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;Mappable&quot; -&gt; &quot;ConvInVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;ConvNeuronVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.ConvNeuronVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;ConvNeuronVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1, address: 'ty.List[LoihiAddress]' = None, field_name: 'ty.Optional[str]' = None, register_name: 'ty.Optional[str]' = None, register_length: 'ty.Optional[int]' = None, variable_offset: 'ty.Optional[int]' = None, variable_length: 'ty.Optional[int]' = None, union_type: 'ty.Optional[bool]' = False, sub_type: 'ty.Optional[str]' = None, alloc_dims: 'ty.List[ty.Tuple[int, int, int]]' = None, valid_dims: 'ty.List[ty.Tuple[int, int, int]]' = None, var_shape: 'ty.Tuple[int, int, int]' = None)&quot;];
   &quot;LoihiNeuronVarModel&quot; -&gt; &quot;ConvNeuronVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;CoreEncoder&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.CoreEncoder&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Encodes a core xyp&quot;];
+  &quot;DecodeConfig&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.DecodeConfig&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;DecodeConfig(receive_mode: 'int', decode_mode: 'int')&quot;];
   &quot;LoihiAddress&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.LoihiAddress&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;LoihiAddress(physical_chip_id: 'ChipIdx', physical_core_id: 'CoreIdx', logical_chip_id: 'ChipIdx', logical_core_id: 'CoreIdx', logical_idx_addr: 'int', length: 'int', stride: 'int')&quot;];
   &quot;LoihiInAxonAddress&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.LoihiInAxonAddress&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;LoihiInAxonAddress(physical_chip_id: 'ChipIdx', physical_core_id: 'CoreIdx', logical_chip_id: 'ChipIdx', logical_core_id: 'CoreIdx', logical_idx_addr: 'int', length: 'int', stride: 'int', profile_id: 'int')&quot;];
   &quot;LoihiAddress&quot; -&gt; &quot;LoihiInAxonAddress&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
@@ -1861,11 +1900,15 @@ size=&quot;&quot;;
   &quot;Mappable&quot; -&gt; &quot;LoihiVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;Mappable&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.mappable_interface.Mappable&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Interface to make entity mappable.&quot;];
   &quot;ABC&quot; -&gt; &quot;Mappable&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;NcSpikeIOVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.NcSpikeIOVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;NcSpikeIOVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1, address: 'ty.List[LoihiAddress]' = None, field_name: 'ty.Optional[str]' = None, register_name: 'ty.Optional[str]' = None, register_length: 'ty.Optional[int]' = None, variable_offset: 'ty.Optional[int]' = None, variable_length: 'ty.Optional[int]' = None, union_type: 'ty.Optional[bool]' = False, sub_type: 'ty.Optional[str]' = None, msg_queue_id: 'int' = 0, num_message_bits: 'int' = 8, interface: 'SpikeIOInterface' = &lt;SpikeIOInterface.ETHERNET: 0&gt;, spike_io_port: 'SpikeIOPort' = &lt;SpikeIOPort.ETHERNET: 'p'&gt;, spike_io_mode: 'SpikeIOMode' = &lt;SpikeIOMode.TIME_COMPARE: 1&gt;, decode_config: 'ty.Optional[DecodeConfig]' = None, time_compare: 'ty.Optional[TimeCompare]' = None, spike_encoder: 'ty.Optional[SpikeEncoder]' = None)&quot;];
+  &quot;NcVarModel&quot; -&gt; &quot;NcSpikeIOVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;NcVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.NcVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;NcVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1, address: 'ty.List[LoihiAddress]' = None, field_name: 'ty.Optional[str]' = None, register_name: 'ty.Optional[str]' = None, register_length: 'ty.Optional[int]' = None, variable_offset: 'ty.Optional[int]' = None, variable_length: 'ty.Optional[int]' = None, union_type: 'ty.Optional[bool]' = False, sub_type: 'ty.Optional[str]' = None)&quot;];
   &quot;LoihiVarModel&quot; -&gt; &quot;NcVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyVarModel&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.PyVarModel&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;PyVarModel(var: 'InitVar[Var]' = None, node_id: 'int' = -1, runtime_srv_id: 'int' = -1)&quot;];
   &quot;AbstractVarModel&quot; -&gt; &quot;PyVarModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;Region&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.Region&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Region(x_min: 'int', x_max: 'int', y_min: 'int', y_max: 'int', logical_chip_idx: 'ChipIdx', logical_core_idx: 'CoreIdx', physical_chip_idx: 'ChipIdx' = None, physical_core_idx: 'CoreIdx' = None)&quot;];
+  &quot;SpikeEncoder&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.SpikeEncoder&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;SpikeEncoder(islong: 'int', core: 'CoreEncoder', axon: 'AxonEncoder', chip: 'ChipEncoder', payload: 'ty.List[ByteEncoder]')&quot;];
+  &quot;TimeCompare&quot; [URL=&quot;../lava/lava.magma.compiler.html#lava.magma.compiler.var_model.TimeCompare&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Used by SpikeBlock to determine when to inject spikes&quot;];
 }
 <span class="target" id="module-lava.magma.compiler.var_model"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.AbstractVarModel">
@@ -1889,9 +1932,70 @@ size=&quot;&quot;;
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.AxonEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">AxonEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.AxonEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encoding for axon field</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.AxonEncoder.hi">
+<span class="sig-name descname"><span class="pre">hi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.AxonEncoder.hi" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.AxonEncoder.lo">
+<span class="sig-name descname"><span class="pre">lo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.AxonEncoder.lo" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ByteEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">ByteEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.ByteEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encodes ptr, len, base</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ByteEncoder.base">
+<span class="sig-name descname"><span class="pre">base</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ByteEncoder.base" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ByteEncoder.len">
+<span class="sig-name descname"><span class="pre">len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ByteEncoder.len" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ByteEncoder.ptr">
+<span class="sig-name descname"><span class="pre">ptr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ByteEncoder.ptr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.CVarModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">CVarModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">union_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.CVarModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.var_model.LoihiVarModel" title="lava.magma.compiler.var_model.LoihiVarModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiVarModel</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ChipEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">ChipEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.ChipEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encoding for chip field</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ChipEncoder.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ChipEncoder.x" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ChipEncoder.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ChipEncoder.y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.ChipEncoder.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.ChipEncoder.z" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py data">
@@ -1975,10 +2079,48 @@ size=&quot;&quot;;
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.CoreEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">CoreEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.CoreEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encodes a core xyp</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.CoreEncoder.p">
+<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.CoreEncoder.p" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.CoreEncoder.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.CoreEncoder.x" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.CoreEncoder.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">ByteEncoder(base=0,</span> <span class="pre">len=0,</span> <span class="pre">ptr=0)</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.CoreEncoder.y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.CoreIdx">
 <span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">CoreIdx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.CoreIdx" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.DecodeConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">DecodeConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">receive_mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode_mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.DecodeConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.DecodeConfig.decode_mode">
+<span class="sig-name descname"><span class="pre">decode_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.DecodeConfig.decode_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.DecodeConfig.receive_mode">
+<span class="sig-name descname"><span class="pre">receive_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.DecodeConfig.receive_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.LoihiAddress">
@@ -2132,6 +2274,52 @@ size=&quot;&quot;;
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">NcSpikeIOVarModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">union_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_queue_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SpikeIOInterface.ETHERNET</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_io_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SpikeIOPort.ETHERNET</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_io_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SpikeIOMode.TIME_COMPARE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decode_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_compare</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_encoder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.var_model.NcVarModel" title="lava.magma.compiler.var_model.NcVarModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">NcVarModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.decode_config">
+<span class="sig-name descname"><span class="pre">decode_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional[DecodeConfig]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.decode_config" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.interface">
+<span class="sig-name descname"><span class="pre">interface</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SpikeIOInterface</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.interface" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.msg_queue_id">
+<span class="sig-name descname"><span class="pre">msg_queue_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.msg_queue_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.num_message_bits">
+<span class="sig-name descname"><span class="pre">num_message_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.num_message_bits" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_encoder">
+<span class="sig-name descname"><span class="pre">spike_encoder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional[SpikeEncoder]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_encoder" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_io_mode">
+<span class="sig-name descname"><span class="pre">spike_io_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SpikeIOMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_io_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_io_port">
+<span class="sig-name descname"><span class="pre">spike_io_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">SpikeIOPort</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'p'</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.spike_io_port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcSpikeIOVarModel.time_compare">
+<span class="sig-name descname"><span class="pre">time_compare</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.Optional[TimeCompare]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.NcSpikeIOVarModel.time_compare" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.NcVarModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">NcVarModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_srv_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">union_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.NcVarModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.compiler.var_model.LoihiVarModel" title="lava.magma.compiler.var_model.LoihiVarModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiVarModel</span></code></a></p>
@@ -2185,6 +2373,64 @@ size=&quot;&quot;;
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.magma.compiler.var_model.Region.y_min">
 <span class="sig-name descname"><span class="pre">y_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.Region.y_min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">SpikeEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">islong</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder.axon">
+<span class="sig-name descname"><span class="pre">axon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.AxonEncoder" title="lava.magma.compiler.var_model.AxonEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxonEncoder</span></code></a></em><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder.axon" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder.chip">
+<span class="sig-name descname"><span class="pre">chip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.ChipEncoder" title="lava.magma.compiler.var_model.ChipEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChipEncoder</span></code></a></em><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder.chip" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder.core">
+<span class="sig-name descname"><span class="pre">core</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#lava.magma.compiler.var_model.CoreEncoder" title="lava.magma.compiler.var_model.CoreEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreEncoder</span></code></a></em><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder.core" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder.islong">
+<span class="sig-name descname"><span class="pre">islong</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder.islong" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.SpikeEncoder.payload">
+<span class="sig-name descname"><span class="pre">payload</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="#lava.magma.compiler.var_model.ByteEncoder" title="lava.magma.compiler.var_model.ByteEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ByteEncoder</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#lava.magma.compiler.var_model.SpikeEncoder.payload" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.TimeCompare">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.compiler.var_model.</span></span><span class="sig-name descname"><span class="pre">TimeCompare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_time_bits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.compiler.var_model.TimeCompare" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Used by SpikeBlock to determine when to inject spikes</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.TimeCompare.num_time_bits">
+<span class="sig-name descname"><span class="pre">num_time_bits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.TimeCompare.num_time_bits" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.TimeCompare.time_len">
+<span class="sig-name descname"><span class="pre">time_len</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.TimeCompare.time_len" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.TimeCompare.time_mode">
+<span class="sig-name descname"><span class="pre">time_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.TimeCompare.time_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.magma.compiler.var_model.TimeCompare.time_ptr">
+<span class="sig-name descname"><span class="pre">time_ptr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><a class="headerlink" href="#lava.magma.compiler.var_model.TimeCompare.time_ptr" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

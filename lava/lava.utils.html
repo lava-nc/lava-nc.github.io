@@ -638,17 +638,27 @@ size=&quot;&quot;;
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.utils.system.Loihi2.set_environ_settings">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_environ_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partititon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.system.Loihi2.set_environ_settings" title="Permalink to this definition"></a></dt>
-<dd><p>Sets the os environment for execution on Loihi.</p>
+<dd><p>Sets the os environment for execution on Loihi.
+:type partititon: <code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]
+:param partititon: Loihi partition name, by default None.
+:type partititon: str, optional</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>partititon</strong> (<em>str</em><em>, </em><em>optional</em>) – Loihi partition name, by default None.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.utils.system.deprecated">
+<span class="sig-prename descclassname"><span class="pre">lava.utils.system.</span></span><span class="sig-name descname"><span class="pre">deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">__msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.system.deprecated" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[<code class="xref py py-class docutils literal notranslate"><span class="pre">TypeVar</span></code>(<code class="docutils literal notranslate"><span class="pre">_T</span></code>)], <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeVar</span></code>(<code class="docutils literal notranslate"><span class="pre">_T</span></code>)]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -673,7 +683,7 @@ bgcolor=transparent;
 rankdir=TB;
 size=&quot;&quot;;
   &quot;Enum&quot; [fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,tooltip=&quot;Generic enumeration.&quot;];
-  &quot;OptimizedWeights&quot; [URL=&quot;../lava/lava.utils.html#lava.utils.weightutils.OptimizedWeights&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;OptimizedWeights(weights: numpy.ndarray, num_weight_bits: int, weight_exp: int)&quot;];
+  &quot;OptimizedWeights&quot; [URL=&quot;../lava/lava.utils.html#lava.utils.weightutils.OptimizedWeights&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;OptimizedWeights(weights: Union[numpy.ndarray, scipy.sparse._base.spmatrix], num_weight_bits: int, weight_exp: int)&quot;];
   &quot;SignMode&quot; [URL=&quot;../lava/lava.utils.html#lava.utils.weightutils.SignMode&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Enumeration of sign mode of weights.&quot;];
   &quot;Enum&quot; -&gt; &quot;SignMode&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
 }
@@ -693,7 +703,7 @@ size=&quot;&quot;;
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.utils.weightutils.OptimizedWeights.weights">
-<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#lava.utils.weightutils.OptimizedWeights.weights" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">spmatrix</span></code><span class="pre">]</span></em><a class="headerlink" href="#lava.utils.weightutils.OptimizedWeights.weights" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -733,7 +743,7 @@ sign mode and number of weight bits.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>weights</strong> (<em>numpy.ndarray</em>) – Weight matrix that is to be truncated.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.ndarray</em><em>, </em><em>spmatrix</em>) – Weight matrix that is to be truncated.</p></li>
 <li><p><strong>sign_mode</strong> (<a class="reference internal" href="#lava.utils.weightutils.SignMode" title="lava.utils.weightutils.SignMode"><em>SignMode</em></a>) – Sign mode to use for truncation.</p></li>
 <li><p><strong>num_bits</strong> (<em>int</em>) – Number of bits to use to clip the weights to.</p></li>
 </ul>
@@ -773,7 +783,7 @@ matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>weights</strong> (<em>np.ndarray</em>) – Standard 8-bit signed weight matrix.</p></li>
+<li><p><strong>weights</strong> (<em>np.ndarray</em><em>, </em><em>spmatrix</em>) – Standard 8-bit signed weight matrix.</p></li>
 <li><p><strong>sign_mode</strong> (<a class="reference internal" href="#lava.utils.weightutils.SignMode" title="lava.utils.weightutils.SignMode"><em>SignMode</em></a>) – Determines whether the weights are purely excitatory, inhibitory,
 or mixed sign.</p></li>
 <li><p><strong>loihi2</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to optimize for Loihi 2. By default False.</p></li>
@@ -796,7 +806,7 @@ sign mode and number of weight bits.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>weights</strong> (<em>numpy.ndarray</em>) – Weight matrix that is to be truncated.</p></li>
+<li><p><strong>weights</strong> (<em>numpy.ndarray</em><em>, </em><em>spmatrix</em>) – Weight matrix that is to be truncated.</p></li>
 <li><p><strong>sign_mode</strong> (<a class="reference internal" href="#lava.utils.weightutils.SignMode" title="lava.utils.weightutils.SignMode"><em>SignMode</em></a>) – Sign mode to use for truncation. See SignMode class for the
 correct values.</p></li>
 <li><p><strong>num_weight_bits</strong> (<em>int</em>) – Number of bits to use for the weight matrix.</p></li>

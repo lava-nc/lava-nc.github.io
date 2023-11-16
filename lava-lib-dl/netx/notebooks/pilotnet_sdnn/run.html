@@ -845,7 +845,7 @@ from the network’s raw output (<strong>Decoder</strong>) and sent to a visuali
 </section>
 <section id="Import-modules-for-Loihi2-execution">
 <h1>Import modules for Loihi2 execution<a class="headerlink" href="#Import-modules-for-Loihi2-execution" title="Permalink to this heading"></a></h1>
-<p>Check if Loihi2 compiker is available and import related modules.</p>
+<p>Check if Loihi2 compiler is available and import related modules.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -920,7 +920,7 @@ Running on oheogulch
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 There are 9 layers in the network:
-Conv  : Process_3 , shape : (99, 32, 24)
+Conv  : in_layer  , shape : (99, 32, 24)
 Conv  : Process_6 , shape : (49, 15, 36)
 Conv  : Process_9 , shape : (24, 7, 48)
 Conv  : Process_12, shape : (22, 4, 64)
@@ -928,7 +928,7 @@ Conv  : Process_15, shape : (20, 2, 64)
 Dense : Process_18, shape : (100,)
 Dense : Process_21, shape : (50,)
 Dense : Process_24, shape : (10,)
-Dense : Process_27, shape : (1,)
+Dense : out_layer , shape : (1,)
 </pre></div></div>
 </div>
 </section>
@@ -1109,7 +1109,7 @@ Dense : Process_27, shape : (1,)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x7f7d78f4d0a0&gt;
+&lt;matplotlib.legend.Legend at 0x7f86f1e55ca0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

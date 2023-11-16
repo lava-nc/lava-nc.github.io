@@ -962,6 +962,16 @@ size=&quot;&quot;;
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.encoder.AbstractPyDeltaEncoderModel.a_max">
+<span class="sig-name descname"><span class="pre">a_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.io.encoder.AbstractPyDeltaEncoderModel.a_max" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.io.encoder.AbstractPyDeltaEncoderModel.a_min">
+<span class="sig-name descname"><span class="pre">a_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.io.encoder.AbstractPyDeltaEncoderModel.a_min" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.io.encoder.AbstractPyDeltaEncoderModel.act">
 <span class="sig-name descname"><span class="pre">act</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.io.encoder.AbstractPyDeltaEncoderModel.act" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -1053,7 +1063,7 @@ data.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.io.encoder.DeltaEncoder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.io.encoder.</span></span><span class="sig-name descname"><span class="pre">DeltaEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Compression.DENSE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.io.encoder.DeltaEncoder" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.io.encoder.</span></span><span class="sig-name descname"><span class="pre">DeltaEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Compression.DENSE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.io.encoder.DeltaEncoder" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a></p>
 <p>Delta encoding with threshold.</p>
 <p>Delta encoding looks at the difference of new input and sends only the
@@ -1068,9 +1078,12 @@ act     = act_new</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>shape</strong> (<em>Tuple</em>) – Shape of the sigma process.</p></li>
 <li><p><strong>vth</strong> (<em>int</em><em> or </em><em>float</em>) – Threshold of the delta encoder.</p></li>
-<li><p><strong>spike_exp</strong> (<em>int</em>) – Scaling exponent with base 2 for the spike message.
+<li><p><strong>spike_exp</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – Scaling exponent with base 2 for the spike message.
 Note: This should only be used for fixed point models.
 Default is 0.</p></li>
+<li><p><strong>num_bits</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – Precision for spike output. It is applied before spike_exp. If None,
+precision is not enforced, i.e. the spike output is unbounded.
+Default is None.</p></li>
 <li><p><strong>compression</strong> (<a class="reference internal" href="#lava.proc.io.encoder.Compression" title="lava.proc.io.encoder.Compression"><em>Compression</em></a>) – Data compression mode, by default DENSE compression.</p></li>
 </ul>
 </dd>
@@ -1135,6 +1148,13 @@ Default is 0.</p></li>
 <dt class="sig sig-object py" id="lava.proc.io.encoder.PyDeltaEncoderModelSparse.a_in">
 <span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.io.encoder.PyDeltaEncoderModelSparse.a_in" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.io.encoder.PyDeltaEncoderModelSparse.decode_encode_delta_sparse_8">
+<span class="sig-name descname"><span class="pre">decode_encode_delta_sparse_8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packed_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed_idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.io.encoder.PyDeltaEncoderModelSparse.decode_encode_delta_sparse_8" title="Permalink to this definition"></a></dt>
+<dd><p>Python decoding script for delta_sparse_8 encoding. It is useful for
+debug and verify the encoding.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.proc.io.encoder.PyDeltaEncoderModelSparse.encode_delta_sparse_8">

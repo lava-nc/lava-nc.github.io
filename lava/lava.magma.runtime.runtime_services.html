@@ -748,7 +748,31 @@ size=&quot;&quot;;
   &quot;PyRuntimeService&quot; [URL=&quot;../lava/lava.magma.runtime.runtime_services.html#lava.magma.runtime.runtime_services.runtime_service.PyRuntimeService&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Abstract RuntimeService for Python, it provides base methods&quot;];
   &quot;AbstractRuntimeService&quot; -&gt; &quot;PyRuntimeService&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
 }
-<span class="target" id="module-lava.magma.runtime.runtime_services.runtime_service"></span><dl class="py class">
+<span class="target" id="module-lava.magma.runtime.runtime_services.runtime_service"></span><p>The RuntimeService interface is responsible for
+coordinating the execution of a group of process models belonging to a common
+synchronization domain. The domain will follow a SyncProtocol or will be
+asynchronous. The processes and their corresponding process models are
+selected by the Runtime dependent on the RunConfiguration assigned at the
+start of execution. For each group of processes which follow the same
+protocol and execute on the same node, the Runtime creates a RuntimeService.
+Each RuntimeService coordinates all actions and commands from the Runtime,
+transmitting them to the processes under its management and
+returning action and command responses back to Runtime.</p>
+<p>RuntimeService Types:</p>
+<dl>
+<dt>PyRuntimeService: (Abstract Class) Coordinates process models executing on</dt><dd><p>the CPU and written in Python.
+Concrete Implementations:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>LoihiPyRuntimeService: Coordinates process models executing on
+the CPU and written in Python and following the LoihiProtocol.</p></li>
+<li><p>AsyncPyRuntimeService: Coordinates process models executing on
+the CPU and written in Python and following the AsyncProtocol.</p></li>
+</ol>
+</div></blockquote>
+</dd>
+</dl>
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.magma.runtime.runtime_services.runtime_service.AsyncPyRuntimeService">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.magma.runtime.runtime_services.runtime_service.</span></span><span class="sig-name descname"><span class="pre">AsyncPyRuntimeService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.magma.runtime.runtime_services.runtime_service.AsyncPyRuntimeService" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.magma.runtime.runtime_services.runtime_service.PyRuntimeService" title="lava.magma.runtime.runtime_services.runtime_service.PyRuntimeService"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyRuntimeService</span></code></a></p>

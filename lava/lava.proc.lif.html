@@ -597,6 +597,8 @@ size=&quot;&quot;;
   &quot;AbstractPyLifModelFixed&quot; -&gt; &quot;PyLifModelBitAcc&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyLifModelFloat&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.models.PyLifModelFloat&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Leaky-Integrate-and-Fire neural process in floating&quot;];
   &quot;AbstractPyLifModelFloat&quot; -&gt; &quot;PyLifModelFloat&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;PyLifRefractoryModelFloat&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.models.PyLifRefractoryModelFloat&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Leaky-Integrate-and-Fire neural process with&quot;];
+  &quot;AbstractPyLifModelFloat&quot; -&gt; &quot;PyLifRefractoryModelFloat&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyLifResetModelBitAcc&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.models.PyLifResetModelBitAcc&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Leaky-Integrate-and-Fire neural process with reset&quot;];
   &quot;AbstractPyLifModelFixed&quot; -&gt; &quot;PyLifResetModelBitAcc&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PyLifResetModelFloat&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.models.PyLifResetModelFloat&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Implementation of Leaky-Integrate-and-Fire neural process with reset&quot;];
@@ -1018,6 +1020,78 @@ point implementation.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifRefractoryModelFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFloat" title="lava.proc.lif.models.AbstractPyLifModelFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPyLifModelFloat</span></code></a></p>
+<p>Implementation of Leaky-Integrate-and-Fire neural process with
+refractory period in floating point precision.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.proc.lif.process.LIFRefractory" title="lava.proc.lif.process.LIFRefractory"><code class="xref py py-class docutils literal notranslate"><span class="pre">LIFRefractory</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.process_spikes">
+<span class="sig-name descname"><span class="pre">process_spikes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike_vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.process_spikes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.refractory_period_end">
+<span class="sig-name descname"><span class="pre">refractory_period_end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.refractory_period_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[ty.Type[AbstractResource]]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>The run function that performs the actual computation during
+execution orchestrated by a PyLoihiProcessModel using the
+LoihiProtocol.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyOutPort</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.spiking_activation">
+<span class="sig-name descname"><span class="pre">spiking_activation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.spiking_activation" title="Permalink to this definition"></a></dt>
+<dd><p>Spiking activation function for LIF Refractory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.subthr_dynamics">
+<span class="sig-name descname"><span class="pre">subthr_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">activation_in</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.subthr_dynamics" title="Permalink to this definition"></a></dt>
+<dd><p>Sub-threshold dynamics of current and voltage variables for
+all refractory LIF models. This is where the ‘leaky integration’
+happens.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['floating_pt']</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.lif.models.PyLifRefractoryModelFloat.vth">
+<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'float'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.proc.lif.models.PyLifRefractoryModelFloat.vth" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.lif.models.PyLifResetModelBitAcc">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.models.</span></span><span class="sig-name descname"><span class="pre">PyLifResetModelBitAcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.models.PyLifResetModelBitAcc" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.models.AbstractPyLifModelFixed" title="lava.proc.lif.models.AbstractPyLifModelFixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPyLifModelFixed</span></code></a></p>
@@ -1284,6 +1358,8 @@ size=&quot;&quot;;
   &quot;AbstractProcess&quot; [URL=&quot;../lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;The notion of a Process is inspired by the Communicating Sequential&quot;];
   &quot;LIF&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.process.LIF&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Leaky-Integrate-and-Fire (LIF) neural Process.&quot;];
   &quot;AbstractLIF&quot; -&gt; &quot;LIF&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;LIFRefractory&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.process.LIFRefractory&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Leaky-Integrate-and-Fire (LIF) process with refractory period.&quot;];
+  &quot;LIF&quot; -&gt; &quot;LIFRefractory&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;LIFReset&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.process.LIFReset&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Leaky-Integrate-and-Fire (LIF) neural Process that resets its internal&quot;];
   &quot;LIF&quot; -&gt; &quot;LIFReset&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;LearningLIF&quot; [URL=&quot;../lava/lava.proc.lif.html#lava.proc.lif.process.LearningLIF&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Leaky-Integrate-and-Fire (LIF) neural Process with learning enabled.&quot;];
@@ -1335,6 +1411,41 @@ population of neurons.</p></li>
 <span class="go">This will create 200x15 LIF neurons that all have the same current decay</span>
 <span class="go">of 10 and voltage decay of 5.</span>
 </pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.lif.process.LIFRefractory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.lif.process.</span></span><span class="sig-name descname"><span class="pre">LIFRefractory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">du</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias_mant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refractory_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.lif.process.LIFRefractory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-class docutils literal notranslate"><span class="pre">LIF</span></code></a></p>
+<p>Leaky-Integrate-and-Fire (LIF) process with refractory period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – Number and topology of LIF neurons.</p></li>
+<li><p><strong>u</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ current.</p></li>
+<li><p><strong>v</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Initial value of the neurons’ voltage (membrane potential).</p></li>
+<li><p><strong>du</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for current decay. Currently, only a
+single decay can be set for the entire population of neurons.</p></li>
+<li><p><strong>dv</strong> (<em>float</em><em>, </em><em>optional</em>) – Inverse of decay time-constant for voltage decay. Currently, only a
+single decay can be set for the entire population of neurons.</p></li>
+<li><p><strong>bias_mant</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Mantissa part of neuron bias.</p></li>
+<li><p><strong>bias_exp</strong> (<em>float</em><em>, </em><em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>optional</em>) – Exponent part of neuron bias, if needed. Mostly for fixed point
+implementations. Ignored for floating point implementations.</p></li>
+<li><p><strong>vth</strong> (<em>float</em><em>, </em><em>optional</em>) – Neuron threshold voltage, exceeding which, the neuron will spike.
+Currently, only a single threshold can be set for the entire
+population of neurons.</p></li>
+<li><p><strong>refractory_period</strong> (<em>int</em><em>, </em><em>optional</em>) – The interval of the refractory period. 1 timestep by default.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#lava.proc.lif.process.LIF" title="lava.proc.lif.process.LIF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lava.proc.lif.process.LIF</span></code></a></dt><dd><p>‘Regular’ leaky-integrate-and-fire neuron for</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">documentation</span></code></p>
 </div>
 </dd></dl>
 

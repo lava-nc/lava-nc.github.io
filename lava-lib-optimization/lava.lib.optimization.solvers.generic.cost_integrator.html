@@ -589,17 +589,44 @@ size=&quot;&quot;;
 <dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.model.PyLoihiProcessModel" title="lava.magma.core.model.py.model.PyLoihiProcessModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyLoihiProcessModel</span></code></a></p>
 <p>CPU model for the CostIntegrator process.</p>
 <p>The process adds up local cost components from downstream units comming as
-spike payload. It has a min_cost variable which keeps track of the best
+spike payload. It has a cost_min variable which keeps track of the best
 cost seen so far, if the new cost is better, the minimum cost is updated
-and send as an output spike to an upstream process.</p>
+and send as an output spike to an upstream process.
+Note that cost_min is divided into the first and last three bytes.
+cost_min = cost_min_first_byte &lt;&lt; 24 + cost_min_last_bytes</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost">
-<span class="sig-name descname"><span class="pre">cost</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_first_byte">
+<span class="sig-name descname"><span class="pre">cost_first_byte</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_first_byte" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_in">
 <span class="sig-name descname"><span class="pre">cost_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyInPort" title="lava.magma.core.model.py.ports.PyInPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyInPort</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_last_bytes">
+<span class="sig-name descname"><span class="pre">cost_last_bytes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_last_bytes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_min_first_byte">
+<span class="sig-name descname"><span class="pre">cost_min_first_byte</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=8)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_min_first_byte" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_min_last_bytes">
+<span class="sig-name descname"><span class="pre">cost_min_last_bytes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_min_last_bytes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_out_first_byte">
+<span class="sig-name descname"><span class="pre">cost_out_first_byte</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyOutPort</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_out_first_byte" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_out_last_bytes">
+<span class="sig-name descname"><span class="pre">cost_out_last_bytes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyOutPort</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.cost_out_last_bytes" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -615,11 +642,6 @@ and send as an output spike to an upstream process.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.min_cost">
-<span class="sig-name descname"><span class="pre">min_cost</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=32)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.min_cost" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.required_resources">
 <span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[ty.Type[AbstractResource]]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.required_resources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -630,11 +652,6 @@ and send as an output spike to an upstream process.</p>
 <dd><p>Execute spiking phase, integrate input, update dynamics and send
 messages out.</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.update_buffer">
-<span class="sig-name descname"><span class="pre">update_buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../lava/lava.magma.core.model.py.html#lava.magma.core.model.py.ports.PyOutPort" title="lava.magma.core.model.py.ports.PyOutPort"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyOutPort</span></code></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">precision=None)</span></em><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.models.CostIntegratorModel.update_buffer" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -651,7 +668,7 @@ size=&quot;&quot;;
 }
 <span class="target" id="module-lava.lib.optimization.solvers.generic.cost_integrator.process"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.optimization.solvers.generic.cost_integrator.process.CostIntegrator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.cost_integrator.process.</span></span><span class="sig-name descname"><span class="pre">CostIntegrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16777216</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.process.CostIntegrator" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.solvers.generic.cost_integrator.process.</span></span><span class="sig-name descname"><span class="pre">CostIntegrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.solvers.generic.cost_integrator.process.CostIntegrator" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../lava/lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a></p>
 <p>Node that integrates cost components and produces output when a better
 cost is found.</p>
@@ -667,12 +684,19 @@ log_config: Configuration options for logging.</p></li>
 <li><p><strong>cost_in</strong> – input to be additively integrated.</p></li>
 <li><p><strong>OutPorts</strong> – </p></li>
 <li><p><strong>--------</strong> – </p></li>
-<li><p><strong>update_buffer</strong> – OutPort which notifies the next process about the
-detection of a better cost.</p></li>
+<li><p><strong>cost_out_last_bytes</strong> (<a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><em>OutPort</em></a>) – Notifies the next process about the detection of a better cost.
+Messages the last 3 byte of the new best cost.
+Total cost = cost_out_first_byte &lt;&lt; 24 + cost_out_last_bytes.</p></li>
+<li><p><strong>cost_out_first_byte</strong> (<a class="reference internal" href="../lava/lava.magma.core.process.ports.html#lava.magma.core.process.ports.ports.OutPort" title="lava.magma.core.process.ports.ports.OutPort"><em>OutPort</em></a>) – Notifies the next process about the detection of a better cost.
+Messages the first byte of the new best cost.</p></li>
 <li><p><strong>Vars</strong> – </p></li>
 <li><p><strong>----</strong> – </p></li>
 <li><p><strong>cost</strong> – Holds current cost as addition of input spikes’ payloads</p></li>
-<li><p><strong>min_cost</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Current minimum cost, i.e., the lowest reported cost so far.</p></li>
+<li><p><strong>cost_min_last_bytes</strong> – Current minimum cost, i.e., the lowest reported cost so far.
+Saves the last 3 bytes.
+cost_min = cost_min_first_byte &lt;&lt; 24 + cost_min_last_bytes</p></li>
+<li><p><strong>cost_min_first_byte</strong> – Current minimum cost, i.e., the lowest reported cost so far.
+Saves the first byte.</p></li>
 </ul>
 </dd>
 </dl>

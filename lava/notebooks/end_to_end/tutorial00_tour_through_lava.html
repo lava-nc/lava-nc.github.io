@@ -889,10 +889,9 @@ Example
 This will create 200x15 LIF neurons that all have the same current decay
 of 10 and voltage decay of 5.
 <span class="ansi-red-fg">Init docstring:</span> Initializes a new Process.
-<span class="ansi-red-fg">File:</span>           ~/lava-nc/lava/src/lava/proc/lif/process.py
+<span class="ansi-red-fg">File:</span>           ~/Documents/lava/src/lava/proc/lif/process.py
 <span class="ansi-red-fg">Type:</span>           ProcessPostInitCaller
 <span class="ansi-red-fg">Subclasses:</span>     LIFReset
-
 </pre></div></div>
 </div>
 <p>The docstring gives insights about the parameters and internal dynamics of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> neuron. <code class="docutils literal notranslate"><span class="pre">Dense</span></code> is used to connect to a neuron population in an all-to-all fashion, often implemented as a matrix-vector product.</p>
@@ -940,69 +939,40 @@ interface. We will get into more detail about <code class="docutils literal notr
 <section id="Ports-and-connections">
 <h3>Ports and connections<a class="headerlink" href="#Ports-and-connections" title="Permalink to this heading"></a></h3>
 <p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">Ports</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> processes we just created. The output <code class="docutils literal notranslate"><span class="pre">Port</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> neuron is called <code class="docutils literal notranslate"><span class="pre">s_out</span></code>, which stands for ‘spiking’ output. The input <code class="docutils literal notranslate"><span class="pre">Port</span></code> is called <code class="docutils literal notranslate"><span class="pre">a_in</span></code> which stands for ‘activation’ input.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif1</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">member_names</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[&#39;s_out&#39;]
-</pre></div></div>
-</div>
 <p>For example, we can see the size of the <code class="docutils literal notranslate"><span class="pre">Port</span></code> which is in particular important because <code class="docutils literal notranslate"><span class="pre">Ports</span></code> can only connect if their shape matches.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Similarly we can investigate the input port of the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif2</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">member_names</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="p">[</span><span class="n">lif1</span><span class="p">,</span> <span class="n">lif2</span><span class="p">,</span> <span class="n">dense</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">proc</span><span class="o">.</span><span class="n">in_ports</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proc: </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1">  Name: </span><span class="si">{</span><span class="n">port</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1">  Size: </span><span class="si">{</span><span class="n">port</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">proc</span><span class="o">.</span><span class="n">out_ports</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Proc: </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1">  Name: </span><span class="si">{</span><span class="n">port</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s1">&lt;5</span><span class="si">}</span><span class="s1">  Size: </span><span class="si">{</span><span class="n">port</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&#39;a_in&#39;]
+Proc: lif1   Name: a_in   Size: 3
+Proc: lif1   Name: s_out  Size: 3
+Proc: lif2   Name: a_in   Size: 2
+Proc: lif2   Name: s_out  Size: 2
+Proc: dense  Name: s_in   Size: 3
+Proc: dense  Name: a_out  Size: 2
 </pre></div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 <p>Now that we know about the input and output <code class="docutils literal notranslate"><span class="pre">Ports</span></code> of the <code class="docutils literal notranslate"><span class="pre">LIF</span></code> and <code class="docutils literal notranslate"><span class="pre">Dense</span></code> <code class="docutils literal notranslate"><span class="pre">Processes</span></code>, we can <code class="docutils literal notranslate"><span class="pre">connect</span></code> the network to complete the LIF-Dense-LIF structure.</p>
 <p><img alt="process_comm.png" src="https://raw.githubusercontent.com/lava-nc/lava-docs/dev/walk-through-tutorial/_static/images/tutorial00/procs.png" /></p>
 <p>As can be seen in the figure above, by <code class="docutils literal notranslate"><span class="pre">connecting</span></code> two processes, a <code class="docutils literal notranslate"><span class="pre">Channel</span></code> between them is created which means that messages between those two <code class="docutils literal notranslate"><span class="pre">Processes</span></code> can be exchanged.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect the OutPort of lif1 to the InPort of dense</span>
-<span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-
-<span class="c1"># Connect the OutPort of dense to the InPort of lif2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
 <span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1011,48 +981,34 @@ interface. We will get into more detail about <code class="docutils literal notr
 <section id="Variables">
 <h3>Variables<a class="headerlink" href="#Variables" title="Permalink to this heading"></a></h3>
 <p>Similar to the <code class="docutils literal notranslate"><span class="pre">Ports</span></code>, we can investigate the <code class="docutils literal notranslate"><span class="pre">Vars</span></code> of a <code class="docutils literal notranslate"><span class="pre">Process</span></code>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif1</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">member_names</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[&#39;bias_exp&#39;, &#39;bias_mant&#39;, &#39;du&#39;, &#39;dv&#39;, &#39;u&#39;, &#39;v&#39;, &#39;vth&#39;]
-</pre></div></div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">Vars</span></code> are also accessible as member variables. We can print details of a specific <code class="docutils literal notranslate"><span class="pre">Var</span></code> to see the shape, initial value and current value. The <code class="docutils literal notranslate"><span class="pre">shareable</span></code> attribute controls whether a <code class="docutils literal notranslate"><span class="pre">Var</span></code> can be manipulated via remote memory access. Learn more about about this topic in the <a class="reference external" href="https://github.com/lava-nc/lava/blob/main/tutorials/in_depth/tutorial07_remote_memory_access.ipynb">remote memory access tutorial</a>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">lif1</span><span class="o">.</span><span class="n">vars</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Var: </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">:</span><span class="s1">&lt;9</span><span class="si">}</span><span class="s1">  Shape: </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">  Init: </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">init</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Variable: v
-    shape: (3,)
-    init: 0
-    shareable: True
-    value: 0
+Var: bias_exp   Shape: (3,)  Init: 0
+Var: bias_mant  Shape: (3,)  Init: (1.1, 1.2, 1.3)
+Var: du         Shape: (1,)  Init: 0.1
+Var: dv         Shape: (1,)  Init: 0.1
+Var: u          Shape: (3,)  Init: 0
+Var: v          Shape: (3,)  Init: 0
+Var: vth        Shape: (1,)  Init: 10.0
 </pre></div></div>
 </div>
 <p>We can take a look at the random weights of <code class="docutils literal notranslate"><span class="pre">Dense</span></code> by calling the <code class="docutils literal notranslate"><span class="pre">get</span></code> function.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="alert alert-block alert-info"><p>Note: There is also a <code class="docutils literal notranslate"><span class="pre">set</span></code> function available to change the value of a <code class="docutils literal notranslate"><span class="pre">Var</span></code> after the network was executed.</p>
+</div><div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dense</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -1060,45 +1016,37 @@ Variable: v
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([[0.48667088, 0.24619592, 0.89903799],
-       [0.96371252, 0.58821522, 0.37490556]])
+array([[0.39348157, 0.11634913, 0.17421253],
+       [0.51148951, 0.9046173 , 0.04863679]])
 </pre></div></div>
 </div>
-<div class="alert alert-block alert-info"><p>Note: There is also a <code class="docutils literal notranslate"><span class="pre">set</span></code> function available to change the value of a <code class="docutils literal notranslate"><span class="pre">Var</span></code> after the network was executed.</p>
-</div></section>
+</section>
 <section id="Record-internal-Vars-over-time">
 <h3>Record internal Vars over time<a class="headerlink" href="#Record-internal-Vars-over-time" title="Permalink to this heading"></a></h3>
 <p>In order to record the evolution of the internal <code class="docutils literal notranslate"><span class="pre">Vars</span></code> over time, we need a <code class="docutils literal notranslate"><span class="pre">Monitor</span></code>. For this example, we want to record the membrane potential of both <code class="docutils literal notranslate"><span class="pre">LIF</span></code> Processes, hence we need two <code class="docutils literal notranslate"><span class="pre">Monitors</span></code>.</p>
+<p>We can define the <code class="docutils literal notranslate"><span class="pre">Var</span></code> that a <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> should record, as well as the recording duration, using the <code class="docutils literal notranslate"><span class="pre">probe</span></code> function.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
 
 <span class="n">monitor_lif1</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
 <span class="n">monitor_lif2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<p>We can define the <code class="docutils literal notranslate"><span class="pre">Var</span></code> that a <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> should record, as well as the recording duration, using the <code class="docutils literal notranslate"><span class="pre">probe</span></code> function.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="n">monitor_lif1</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif1</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
 <span class="n">monitor_lif2</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="alert alert-block alert-info"><p>Note: Currently, the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code> can only record a single <code class="docutils literal notranslate"><span class="pre">Var</span></code> per <code class="docutils literal notranslate"><span class="pre">Process</span></code> and supports only CPU. This functionality will be extended in future releases.</p>
-</div></section>
+</section>
 <section id="Execution">
 <h3>Execution<a class="headerlink" href="#Execution" title="Permalink to this heading"></a></h3>
 <p>Now, that we finished to set up the network and recording <code class="docutils literal notranslate"><span class="pre">Processes</span></code>, we can execute the network by simply calling the <code class="docutils literal notranslate"><span class="pre">run</span></code> function of one of the <code class="docutils literal notranslate"><span class="pre">Processes</span></code>.</p>
@@ -1107,20 +1055,21 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <h4>Run Conditions<a class="headerlink" href="#Run-Conditions" title="Permalink to this heading"></a></h4>
 <p>Let’s investigate the different possibilities for <code class="docutils literal notranslate"><span class="pre">RunConditions</span></code>. One option is <code class="docutils literal notranslate"><span class="pre">RunContinuous</span></code> which executes the network continuously and non-blocking until <code class="docutils literal notranslate"><span class="pre">pause</span></code> or <code class="docutils literal notranslate"><span class="pre">stop</span></code> is called.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunContinuous</span>
+
 <span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunContinuous</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <p>The second option is <code class="docutils literal notranslate"><span class="pre">RunSteps</span></code>, which allows you to define an exact amount of time steps the network should run.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span><span class="p">,</span> <span class="n">RunContinuous</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
 
 <span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
 </pre></div>
@@ -1134,7 +1083,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <p>For example, we could run the network on the Loihi1 processor using the <code class="docutils literal notranslate"><span class="pre">Loihi1HwCfg</span></code>, on Loihi2 using the <code class="docutils literal notranslate"><span class="pre">Loihi2HwCfg</span></code>, or on CPU using the <code class="docutils literal notranslate"><span class="pre">Loihi1SimCfg</span></code>. The compiler and runtime then automatically select the correct <code class="docutils literal notranslate"><span class="pre">ProcessModels</span></code> such that the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> can be fulfilled.</p>
 <p>For this section of the tutorial, we will run our network on CPU, later we will show how to run the same network on the Loihi2 processor.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
@@ -1148,7 +1097,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <h4>Execute<a class="headerlink" href="#Execute" title="Permalink to this heading"></a></h4>
 <p>Finally, we can simply call the <code class="docutils literal notranslate"><span class="pre">run</span></code> function of the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> process and provide the <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> and <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_condition</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
@@ -1161,7 +1110,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <h3>Retrieve recorded data<a class="headerlink" href="#Retrieve-recorded-data" title="Permalink to this heading"></a></h3>
 <p>After the simulation has stopped, we can call <code class="docutils literal notranslate"><span class="pre">get_data</span></code> on the two monitors to retrieve the recorded membrane potentials.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_lif1</span> <span class="o">=</span> <span class="n">monitor_lif1</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
@@ -1171,7 +1120,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 </div>
 <p>Alternatively, we can also use the provided <code class="docutils literal notranslate"><span class="pre">plot</span></code> functionality of the <code class="docutils literal notranslate"><span class="pre">Monitor</span></code>, to plot the recorded data. As we can see, the bias of the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population drives the membrane potential to the threshold which generates output spikes. Those output spikes are passed through the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer as input to the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
@@ -1193,12 +1142,12 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_40_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_40_0.png" />
+<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_27_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_27_0.png" />
 </div>
 </div>
-<p>As a last step we can stop the runtime by calling the <code class="docutils literal notranslate"><span class="pre">stop</span></code> function. <code class="docutils literal notranslate"><span class="pre">Stop</span></code> will terminate the <code class="docutils literal notranslate"><span class="pre">Runtime</span></code> and all states will be lost.</p>
+<p>As a last step we must stop the runtime by calling the <code class="docutils literal notranslate"><span class="pre">stop</span></code> function. <code class="docutils literal notranslate"><span class="pre">Stop</span></code> will terminate the <code class="docutils literal notranslate"><span class="pre">Runtime</span></code> and all states will be lost.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif2</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -1234,7 +1183,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <p>The example of the previous section implemented a bias driven LIF-Dense-LIF network. One crucial aspect which is missing this example, is the input/output interaction with sensors and actuators. Commonly used sensors would be Dynamic Vision Sensors or artificial cochleas, but for demonstration purposes we will implement a simple <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>. The purpose of the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> is to output random spikes to drive the LIF-Dense-LIF network.</p>
 <p>Let’s start by importing the necessary classes from Lava.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
@@ -1245,7 +1194,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 </div>
 <p>All <code class="docutils literal notranslate"><span class="pre">Processes</span></code> in Lava inherit from a common base class called <code class="docutils literal notranslate"><span class="pre">AbstractProcess</span></code>. Additionally, we need <code class="docutils literal notranslate"><span class="pre">Var</span></code> for storing the spike probability and <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> to define the output connections for our <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpikeGenerator</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
@@ -1274,7 +1223,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 <p>So, let’s go ahead and define the behavior of the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> on a CPU in Python. Later in this tutorial we will show how to implement the same behavior on an embedded CPU in C and how to implement the behavior of a <code class="docutils literal notranslate"><span class="pre">LIF</span></code> process on a Loihi2 neuro-core.</p>
 <p>We first import all necessary classes from Lava.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
@@ -1292,7 +1241,7 @@ array([[0.48667088, 0.24619592, 0.89903799],
 which memory content is updated. As the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> basically just sends out spikes, the correct place to implement its behavior is the <code class="docutils literal notranslate"><span class="pre">run_spk</span></code> phase.</p>
 <p>To implement the behavior, we need to have access to the global simulation time. We can easily access the simulation time with <code class="docutils literal notranslate"><span class="pre">self.time_step</span></code> and use that to index the <code class="docutils literal notranslate"><span class="pre">spike_data</span></code> and send out the corresponding spikes through the <code class="docutils literal notranslate"><span class="pre">OutPort</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">SpikeGenerator</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
@@ -1314,7 +1263,7 @@ which memory content is updated. As the <code class="docutils literal notranslat
 <div class="alert alert-block alert-info"><p>Note: For the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> we only needed an <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> which provides the <code class="docutils literal notranslate"><span class="pre">send</span></code> function to send data. For the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> the corresponding function to receive data is called <code class="docutils literal notranslate"><span class="pre">recv</span></code>.</p>
 </div><p>Next, we want to redefine our network as in the example before with the exception that we turn off all biases.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create processes</span>
@@ -1357,7 +1306,7 @@ which memory content is updated. As the <code class="docutils literal notranslat
 <p>We instantiate the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> as usual with the shape of the fist <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
 <p>To define the connectivity between the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> and the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population, we us another <code class="docutils literal notranslate"><span class="pre">Dense</span></code> Layer. Now, we can connect its <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> to the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer and the <code class="docutils literal notranslate"><span class="pre">OutPort</span></code> of the <code class="docutils literal notranslate"><span class="pre">Dense</span></code> layer to the <code class="docutils literal notranslate"><span class="pre">InPort</span></code> of the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate SpikeGenerator</span>
@@ -1379,7 +1328,7 @@ which memory content is updated. As the <code class="docutils literal notranslat
 <h3>Execute and plot<a class="headerlink" href="#Execute-and-plot" title="Permalink to this heading"></a></h3>
 <p>Now that our network is complete, we can execute it the same way as before using the <code class="docutils literal notranslate"><span class="pre">RunCondition</span></code> and <code class="docutils literal notranslate"><span class="pre">RunConfig</span></code> we created in the previous example.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_condition</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
@@ -1388,7 +1337,7 @@ which memory content is updated. As the <code class="docutils literal notranslat
 </div>
 <p>And now, we can retrieve the recorded data and plot the membrane potentials of the two <code class="docutils literal notranslate"><span class="pre">LIF</span></code> populations.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a subplot for each monitor</span>
@@ -1406,12 +1355,12 @@ which memory content is updated. As the <code class="docutils literal notranslat
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_64_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_64_0.png" />
+<img alt="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_48_0.png" src="../../../_images/lava_notebooks_end_to_end_tutorial00_tour_through_lava_48_0.png" />
 </div>
 </div>
 <p>As we can see, the spikes provided by the <code class="docutils literal notranslate"><span class="pre">SpikeGenerator</span></code> are sucessfully sent to the first <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population. which in turn sends its output spikes to the second <code class="docutils literal notranslate"><span class="pre">LIF</span></code> population.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif2</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>

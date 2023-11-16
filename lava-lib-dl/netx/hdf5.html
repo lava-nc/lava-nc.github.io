@@ -568,7 +568,7 @@
 <p>HDF5 network exchange module.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.dl.netx.hdf5.Network">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.hdf5.</span></span><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.hdf5.</span></span><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_fc_layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network" title="Permalink to this definition"></a></dt>
 <dd><p>Generates a Lava process for the network described in hdf5 config.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -591,6 +591,9 @@ orchestrated with a timestep offset as per the layer number. If that is
 not desired, it can be changed by directly accessing the layer’s
 neuron’s reset parameter. None means no reset. Defaults to None.</p></li>
 <li><p><strong>reset_offset</strong> (<em>int</em>) – determines the phase shift of network reset if enabled. Defaults to 0.</p></li>
+<li><p><strong>spike_exp</strong> (<em>int</em>) – determines the decimal place of graded spike. Defaults to 6.</p></li>
+<li><p><strong>sparse_fc_layer</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, all fully-connected layer synapses will be interpreted as
+Sparse types in Lava.</p></li>
 </ul>
 </dd>
 </dl>
@@ -618,7 +621,7 @@ neuron’s reset parameter. None means no reset. Defaults to None.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.netx.hdf5.Network.create_conv">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_conv" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_conv" title="Permalink to this definition"></a></dt>
 <dd><p>Creates conv layer from layer configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -630,6 +633,7 @@ spike.</p></li>
 <li><p><strong>reset_interval</strong> (<em>int</em><em>, </em><em>optional</em>) – the reset interval. None means no reset. Default is None.</p></li>
 <li><p><strong>reset_offset</strong> (<em>int</em>) – the offset/phase of reset. It is only valid of reset_interval is
 not None.</p></li>
+<li><p><strong>spike_exp</strong> (<em>int</em>) – determines the decimal place of graded spike. Defaults to 6.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -647,7 +651,7 @@ not None.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.netx.hdf5.Network.create_dense">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_dense" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_message_bits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse_synapse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_dense" title="Permalink to this definition"></a></dt>
 <dd><p>Creates dense layer from layer configuration</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -658,6 +662,7 @@ spike.</p></li>
 <li><p><strong>reset_interval</strong> (<em>int</em><em>, </em><em>optional</em>) – the reset interval. None means no reset. Default is None.</p></li>
 <li><p><strong>reset_offset</strong> (<em>int</em>) – the offset/phase of reset. It is only valid of reset_interval is
 not None.</p></li>
+<li><p><strong>spike_exp</strong> (<em>int</em>) – determines the decimal place of graded spike. Defaults to 6.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -675,7 +680,7 @@ not None.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.netx.hdf5.Network.create_input">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_input" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.create_input" title="Permalink to this definition"></a></dt>
 <dd><p>Creates input layer from layer configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -684,6 +689,7 @@ not None.</p></li>
 <li><p><strong>reset_interval</strong> (<em>int</em><em>, </em><em>optional</em>) – the reset interval. None means no reset. Default is None.</p></li>
 <li><p><strong>reset_offset</strong> (<em>int</em>) – the offset/phase of reset. It is only valid of reset_interval is
 not None.</p></li>
+<li><p><strong>spike_exp</strong> (<em>int</em>) – determines the decimal place of graded spike. Defaults to 6.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -701,7 +707,7 @@ not None.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.dl.netx.hdf5.Network.get_neuron_params">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.get_neuron_params" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spike_exp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.hdf5.Network.get_neuron_params" title="Permalink to this definition"></a></dt>
 <dd><p>Provides the correct neuron configuration process and parameters
 from the neuron description in hdf5 config.</p>
 <dl class="field-list simple">
@@ -713,6 +719,7 @@ processing may be done.</p></li>
 <li><p><strong>reset_interval</strong> (<em>int</em><em>, </em><em>optional</em>) – the reset interval. None means no reset. Default is None.</p></li>
 <li><p><strong>reset_offset</strong> (<em>int</em>) – the offset/phase of reset. It is only valid of reset_interval is
 not None.</p></li>
+<li><p><strong>spike_exp</strong> (<em>int</em>) – determines the decimal place of graded spike. Defaults to 6.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

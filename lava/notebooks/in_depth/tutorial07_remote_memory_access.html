@@ -825,7 +825,7 @@ div.rendered_html tbody tr:hover {
 on the embedded CPU.</p>
 <p>In Lava, even remote memory access between Processes is realized via message-passing to remain true to the overall event-based message passing concept. The read/write is implemented via channels and message passing between processes and the remote process modifies its memory itself based on instructions from another process. However, as a convenience feature, <em>RefPorts</em> and <em>VarPorts</em> syntactically simplify the act of interacting with remote Vars.</p>
 <p>Thus, <em>RefPorts</em> allow in Lava one <em>Process</em> to access the internal <em>Vars</em> of another <em>Process</em>. <em>RefPorts</em> give access to other <em>Vars</em> as if it was an internal <em>Var</em>.</p>
-<p><img alt="755cda96d0c94113b6f97b9c4682f68b" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_rma.png" style="width: 400px;" /></p>
+<p><img alt="696da0737e3e4df0a7730392bc26716f" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_rma.png" style="width: 400px;" /></p>
 <p>In this tutorial, we will create minimal Processes and ProcessModels to demonstrate reading and writing of Vars using RefPorts and VarPorts. Furthermore, we will explain the possibilities to connect RefPorts with VarPorts and Vars as well as the difference of explicitly and implicitly created VarPorts.</p>
 <section id="Recommended-tutorials-before-starting:">
 <h2>Recommended tutorials before starting:<a class="headerlink" href="#Recommended-tutorials-before-starting:" title="Permalink to this heading"></a></h2>
@@ -841,7 +841,7 @@ on the embedded CPU.</p>
 <section id="Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">
 <h2>Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em><a class="headerlink" href="#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference internal" href="tutorial03_process_models.html"><span class="doc">ProcessModel Tutorial</span></a> walks through the creation of <em>Processes</em> and corresponding <em>ProcessModels</em>. In order to demonstrate RefPorts we create a minimal process P1 with a <em>RefPort</em> <code class="docutils literal notranslate"><span class="pre">ref</span></code> and a minimal process P2 with a <em>Var</em> <code class="docutils literal notranslate"><span class="pre">var</span></code>.</p>
-<p><img alt="d2ee117bd15946a98640867610be3a08" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig02_rma.png" style="width: 400px;" /></p>
+<p><img alt="68654a42787748f28d2eadc3676e91e8" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig02_rma.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -1016,7 +1016,7 @@ Value of var: [15] at time step: 5
 <section id="Options-to-connect-RefPorts-and-VarPorts">
 <h2>Options to connect RefPorts and VarPorts<a class="headerlink" href="#Options-to-connect-RefPorts-and-VarPorts" title="Permalink to this heading"></a></h2>
 <p><em>RefPorts</em> can be connected in different ways to <em>Vars</em> and <em>VarPorts</em>. <em>RefPorts</em> and <em>VarPorts</em> can also be connected to themselves in case of hierarchical processes.</p>
-<p><img alt="a079dcde77d249649247f29be1d77b2b" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig03_rma.png" style="width: 400px;" /></p>
+<p><img alt="749335c36ec3432895e07c982db2b197" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig03_rma.png" style="width: 400px;" /></p>
 <ul class="simple">
 <li><p><em>RefPorts</em> can be connected to <em>RefPorts</em> or <em>VarPorts</em> using <code class="docutils literal notranslate"><span class="pre">connect(..)</span></code></p></li>
 <li><p><em>RefPorts</em> can be connected to <em>Vars</em> using <code class="docutils literal notranslate"><span class="pre">connect_var(..)</span></code></p></li>
