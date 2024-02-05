@@ -829,17 +829,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">PIL</span>
-<span class="kn">import</span> <span class="nn">urllib</span>
-<span class="kn">from</span> <span class="nn">lava.proc.io.source</span> <span class="kn">import</span> <span class="n">RingBuffer</span> <span class="k">as</span> <span class="n">Input</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.proc.sdn.process</span> <span class="kn">import</span> <span class="n">SigmaDelta</span><span class="p">,</span> <span class="n">ActivationMode</span><span class="p">,</span> <span class="n">Delta</span>
-<span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
-<span class="kn">from</span> <span class="nn">lava.proc.bit_check.process</span> <span class="kn">import</span> <span class="n">BitCheck</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+import PIL
+import urllib
+from lava.proc.io.source import RingBuffer as Input
+from lava.proc.dense.process import Dense
+from lava.proc.sdn.process import SigmaDelta, ActivationMode, Delta
+from lava.proc.monitor.process import Monitor
+from lava.proc.bit_check.process import BitCheck
+from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.run_configs import Loihi2SimCfg
 </pre></div>
 </div>
 </div>
@@ -851,37 +851,37 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_sim</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mf">0.5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t_sim = 200
+vth = 0.5
 
-<span class="c1"># Interesting input time-series</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
-<span class="n">inp_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">+</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">200</span>
+# Interesting input time-series
+time = np.arange(t_sim)
+inp_data = np.atleast_2d(np.sin(time / 100 * 2 * np.pi) - 2 * np.sin(time / 100 * 3 * np.pi)) + time / 200
 
-<span class="c1"># ReLU of input</span>
-<span class="n">relu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">inp_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+# ReLU of input
+relu = np.maximum(inp_data, 0)
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+fig = plt.figure(figsize=(10, 5))
+ax = plt.subplot2grid((2, 2), (0, 0))
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Input&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax.set_ylabel(&quot;Input&quot;)
+ax.set_xticks([])
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+ax.plot(inp_data[0])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;ReLU&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (steps)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">relu</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+ax = plt.subplot2grid((2, 2), (1, 0))
+ax.set_ylabel(&quot;ReLU&quot;)
+ax.set_xlabel(&quot;Time (steps)&quot;)
+ax.plot(relu[0]);
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/relu.png&quot;</span><span class="p">)))</span>
+ax = plt.subplot2grid((2, 2), (0, 1), rowspan=4)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.imshow(PIL.Image.open(urllib.request.urlopen(&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/relu.png&quot;)))
 
-<span class="n">MACs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+MACs = len(inp_data[0])
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ANN MACs: </span><span class="si">{</span><span class="n">MACs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;ANN MACs: {MACs}&quot;)
 </pre></div>
 </div>
 </div>
@@ -909,30 +909,30 @@ ANN MACs: 200
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input process</span>
-<span class="n">inp</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">inp_data</span><span class="p">)</span>
-<span class="n">inp_proj</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-                 <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Input process
+inp = Input(data=inp_data)
+inp_proj = Dense(weights=np.eye(1),
+                 num_message_bits=8)
 
-<span class="c1"># Delta encoding</span>
-<span class="n">delta</span> <span class="o">=</span> <span class="n">Delta</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span>
-              <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-              <span class="n">cum_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+# Delta encoding
+delta = Delta(shape=(1, ),
+              vth=vth,
+              cum_error=True)
 
-<span class="n">delta_proj</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-                   <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+delta_proj = Dense(weights=np.eye(1),
+                   num_message_bits=8)
 
-<span class="c1"># Create one Sigma-Delta neuron</span>
-<span class="n">neuron</span> <span class="o">=</span> <span class="n">SigmaDelta</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span>
-                    <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-                    <span class="n">act_mode</span><span class="o">=</span><span class="n">ActivationMode</span><span class="o">.</span><span class="n">RELU</span><span class="p">,</span>
-                    <span class="n">cum_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+# Create one Sigma-Delta neuron
+neuron = SigmaDelta(shape=(1, ),
+                    vth=vth,
+                    act_mode=ActivationMode.RELU,
+                    cum_error=True)
 
-<span class="c1"># Connect input to neuron</span>
-<span class="n">inp</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">inp_proj</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">inp_proj</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
-<span class="n">delta</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">delta_proj</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">delta_proj</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+# Connect input to neuron
+inp.s_out.connect(inp_proj.s_in)
+inp_proj.a_out.connect(delta.a_in)
+delta.s_out.connect(delta_proj.s_in)
+delta_proj.a_out.connect(neuron.a_in)
 </pre></div>
 </div>
 </div>
@@ -944,16 +944,16 @@ ANN MACs: 200
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mon</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon2</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">residue</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon3</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon3</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">act</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon4</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon4</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
-<span class="n">mon5</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon5</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mon = Monitor()
+mon.probe(neuron.s_out, t_sim)
+mon2 = Monitor()
+mon2.probe(neuron.residue, t_sim)
+mon3 = Monitor()
+mon3.probe(neuron.act, t_sim)
+mon4 = Monitor()
+mon4.probe(neuron.sigma, t_sim)
+mon5 = Monitor()
+mon5.probe(delta.s_out, t_sim)
 </pre></div>
 </div>
 </div>
@@ -965,8 +965,8 @@ ANN MACs: 200
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="n">BitCheck</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">bc</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">connect_var</span><span class="p">(</span><span class="n">neuron</span><span class="o">.</span><span class="n">sigma</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bc = BitCheck(bits=24)
+bc.state.connect_var(neuron.sigma)
 </pre></div>
 </div>
 </div>
@@ -978,24 +978,24 @@ ANN MACs: 200
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neuron</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">t_sim</span><span class="p">),</span>
-           <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>neuron.run(condition=RunSteps(num_steps=t_sim),
+           run_cfg=Loihi2SimCfg(select_tag=&#39;floating_pt&#39;))
 
 
-<span class="n">sigma_process_key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">mon</span><span class="o">.</span><span class="n">get_data</span><span class="p">()))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sigma_process_key</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">delta_process_key</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">mon5</span><span class="o">.</span><span class="n">get_data</span><span class="p">()))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">delta_process_key</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+sigma_process_key = next(iter(mon.get_data()))
+print (f&#39;{sigma_process_key=}&#39;)
+delta_process_key = next(iter(mon5.get_data()))
+print (f&#39;{delta_process_key=}&#39;)
 
-<span class="n">neuron_out</span> <span class="o">=</span> <span class="n">mon</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">neuron_residue</span> <span class="o">=</span> <span class="n">mon2</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;residue&#39;</span><span class="p">]</span>
-<span class="n">neuron_act</span> <span class="o">=</span> <span class="n">mon3</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;act&#39;</span><span class="p">]</span>
-<span class="n">neuron_sigma</span> <span class="o">=</span> <span class="n">mon4</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">sigma_process_key</span><span class="p">][</span><span class="s1">&#39;sigma&#39;</span><span class="p">]</span>
-<span class="n">delta_out</span> <span class="o">=</span> <span class="n">mon5</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">delta_process_key</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">bc_overflowed</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">bc</span><span class="o">.</span><span class="n">overflowed</span><span class="p">)</span>
-<span class="n">neuron</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+neuron_out = mon.get_data()[sigma_process_key][&#39;s_out&#39;]
+neuron_residue = mon2.get_data()[sigma_process_key][&#39;residue&#39;]
+neuron_act = mon3.get_data()[sigma_process_key][&#39;act&#39;]
+neuron_sigma = mon4.get_data()[sigma_process_key][&#39;sigma&#39;]
+delta_out = mon5.get_data()[delta_process_key][&#39;s_out&#39;]
+bc_overflowed = bool(bc.overflowed)
+neuron.stop()
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bc_overflowed</span><span class="si">=}</span><span class="s1">&#39;</span><span class="p">)</span>
+print(f&#39;{bc_overflowed=}&#39;)
 </pre></div>
 </div>
 </div>
@@ -1019,40 +1019,40 @@ bc_overflowed=False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(15, 15))
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Input&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">inp_data</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inp_data</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">vth</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax = plt.subplot2grid((5, 2), (0, 0))
+ax.set_ylabel(&quot;Input&quot;)
+ax.plot(inp_data[0])
+ax.hlines(np.arange(np.min(inp_data) // vth, np.max(inp_data) // vth + 1) * vth, 0, t_sim, linestyle=&#39;--&#39;, alpha=0.7, color=&#39;orange&#39;)
+ax.set_xticks([])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Delta encoding&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_out</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax = plt.subplot2grid((5, 2), (1, 0))
+ax.set_ylabel(&quot;Delta encoding&quot;)
+ax.plot(delta_out)
+ax.set_xticks([])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sigma&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_sigma</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax = plt.subplot2grid((5, 2), (2, 0))
+ax.set_ylabel(&quot;Sigma&quot;)
+ax.plot(neuron_sigma)
+ax.set_xticks([])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Activation&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_act</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">relu</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">neuron_act</span><span class="p">)</span> <span class="o">//</span> <span class="n">vth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">vth</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t_sim</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax = plt.subplot2grid((5, 2), (3, 0))
+ax.set_ylabel(&quot;Activation&quot;)
+ax.plot(neuron_act)
+ax.plot(relu[0])
+ax.hlines(np.arange(np.max(neuron_act) // vth + 1) * vth, 0, t_sim, linestyle=&#39;--&#39;, alpha=0.7, color=&#39;orange&#39;)
+ax.set_xticks([])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Delta&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">neuron_out</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+ax = plt.subplot2grid((5, 2), (4, 0))
+ax.set_ylabel(&quot;Delta&quot;)
+ax.plot(neuron_out)
+ax.set_xticks([])
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/sdn.png&quot;</span><span class="p">)));</span>
+ax = plt.subplot2grid((5, 2), (1, 1), rowspan=4)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.imshow(PIL.Image.open(urllib.request.urlopen(&quot;https://raw.githubusercontent.com/lava-nc/lava-docs/img/sig-delta-neuron/_static/images/tutorial10/sdn.png&quot;)));
 </pre></div>
 </div>
 </div>
@@ -1071,10 +1071,10 @@ bc_overflowed=False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MACs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">syn_ops</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">delta_out</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>MACs = len(inp_data[0])
+syn_ops = len(np.where(delta_out != 0)[0])
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ANN MACs: </span><span class="si">{</span><span class="n">MACs</span><span class="si">}</span><span class="s2">, Sigma-Delta SynOps: </span><span class="si">{</span><span class="n">syn_ops</span><span class="si">}</span><span class="s2">, reduction: </span><span class="si">{</span><span class="nb">int</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">syn_ops</span><span class="o">/</span><span class="n">MACs</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+print(f&quot;ANN MACs: {MACs}, Sigma-Delta SynOps: {syn_ops}, reduction: {int((1 - (syn_ops/MACs)) * 100)}%&quot;)
 </pre></div>
 </div>
 </div>

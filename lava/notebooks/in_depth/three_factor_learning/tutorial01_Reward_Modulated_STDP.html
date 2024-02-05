@@ -852,18 +852,18 @@ Plasticity</a>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.learning_rules.r_stdp_learning_rule</span> <span class="kn">import</span> <span class="n">RewardModulatedSTDP</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.learning_rules.r_stdp_learning_rule import RewardModulatedSTDP
 
-<span class="n">R_STDP</span> <span class="o">=</span> <span class="n">RewardModulatedSTDP</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                             <span class="n">A_plus</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                             <span class="n">A_minus</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span>
-                             <span class="n">pre_trace_decay_tau</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                             <span class="n">post_trace_decay_tau</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                             <span class="n">pre_trace_kernel_magnitude</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
-                             <span class="n">post_trace_kernel_magnitude</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
-                             <span class="n">eligibility_trace_decay_tau</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                             <span class="n">t_epoch</span><span class="o">=</span><span class="mi">1</span>
-                             <span class="p">)</span>
+R_STDP = RewardModulatedSTDP(learning_rate=1,
+                             A_plus=2,
+                             A_minus=-2,
+                             pre_trace_decay_tau=10,
+                             post_trace_decay_tau=10,
+                             pre_trace_kernel_magnitude=16,
+                             post_trace_kernel_magnitude=16,
+                             eligibility_trace_decay_tau=0.5,
+                             t_epoch=1
+                             )
 </pre></div>
 </div>
 </div>
@@ -881,19 +881,19 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="c1"># Set this tag to &quot;fixed_pt&quot; or &quot;floating_pt&quot; to choose the corresponding models.</span>
-<span class="n">SELECT_TAG</span> <span class="o">=</span> <span class="s2">&quot;fixed_pt&quot;</span>
+# Set this tag to &quot;fixed_pt&quot; or &quot;floating_pt&quot; to choose the corresponding models.
+SELECT_TAG = &quot;fixed_pt&quot;
 
-<span class="c1"># LIF parameters</span>
-<span class="k">if</span> <span class="n">SELECT_TAG</span> <span class="o">==</span> <span class="s2">&quot;fixed_pt&quot;</span><span class="p">:</span>
-    <span class="n">du</span> <span class="o">=</span> <span class="mi">4095</span>
-    <span class="n">dv</span> <span class="o">=</span> <span class="mi">4095</span>
-<span class="k">elif</span> <span class="n">SELECT_TAG</span> <span class="o">==</span> <span class="s2">&quot;floating_pt&quot;</span><span class="p">:</span>
-    <span class="n">du</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">dv</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mi">240</span>
+# LIF parameters
+if SELECT_TAG == &quot;fixed_pt&quot;:
+    du = 4095
+    dv = 4095
+elif SELECT_TAG == &quot;floating_pt&quot;:
+    du = 1
+    dv = 1
+vth = 240
 </pre></div>
 </div>
 </div>
@@ -905,32 +905,32 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pre-synaptic neuron parameters</span>
-<span class="n">num_neurons_pre</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">shape_lif_pre</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_neurons_pre</span><span class="p">,</span> <span class="p">)</span>
-<span class="n">shape_conn_pre</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_neurons_pre</span><span class="p">,</span> <span class="n">num_neurons_pre</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Pre-synaptic neuron parameters
+num_neurons_pre = 1
+shape_lif_pre = (num_neurons_pre, )
+shape_conn_pre = (num_neurons_pre, num_neurons_pre)
 
-<span class="c1"># SpikeIn -&gt; pre-synaptic LIF connection weight</span>
-<span class="n">wgt_inp_pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">num_neurons_pre</span><span class="p">)</span> <span class="o">*</span> <span class="mi">250</span>
-
-
-<span class="c1"># Post-synaptic neuron parameters</span>
-<span class="n">num_neurons_post</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">shape_lif_post</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_neurons_post</span><span class="p">,</span> <span class="p">)</span>
-<span class="n">shape_conn_post</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_neurons_post</span><span class="p">,</span> <span class="n">num_neurons_pre</span><span class="p">)</span>
-
-<span class="c1"># SpikeIn -&gt; post-synaptic LIF connection weight</span>
-<span class="n">wgt_inp_post</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">num_neurons_post</span><span class="p">)</span> <span class="o">*</span> <span class="mi">250</span>
+# SpikeIn -&gt; pre-synaptic LIF connection weight
+wgt_inp_pre = np.eye(num_neurons_pre) * 250
 
 
-<span class="c1"># Third-factor input weights</span>
-<span class="c1"># Graded SpikeIn -&gt; post-synaptic LIF connection weight</span>
-<span class="n">wgt_inp_reward</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">num_neurons_post</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+# Post-synaptic neuron parameters
+num_neurons_post = 2
+shape_lif_post = (num_neurons_post, )
+shape_conn_post = (num_neurons_post, num_neurons_pre)
+
+# SpikeIn -&gt; post-synaptic LIF connection weight
+wgt_inp_post = np.eye(num_neurons_post) * 250
 
 
-<span class="c1"># pre-LIF -&gt; post-LIF connection initial weight (learning-enabled)</span>
-<span class="c1"># Plastic synapse</span>
-<span class="n">wgt_plast_conn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">shape_conn_post</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+# Third-factor input weights
+# Graded SpikeIn -&gt; post-synaptic LIF connection weight
+wgt_inp_reward = np.eye(num_neurons_post) * 100
+
+
+# pre-LIF -&gt; post-LIF connection initial weight (learning-enabled)
+# Plastic synapse
+wgt_plast_conn = np.full(shape_conn_post, 50)
 </pre></div>
 </div>
 </div>
@@ -941,7 +941,7 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">generate_post_spikes</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import generate_post_spikes
 </pre></div>
 </div>
 </div>
@@ -949,28 +949,28 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of simulation time steps</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Number of simulation time steps
+num_steps = 200
+time = list(range(1, num_steps + 1))
 
-<span class="c1"># Spike times</span>
-<span class="n">spike_prob</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">]</span>
+# Spike times
+spike_prob = [0.03, 0.09]
 
-<span class="c1"># Create random spike rasters</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">156</span><span class="p">)</span>
-<span class="n">spike_raster_pre</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_neurons_pre</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
-<span class="n">np</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">spike_raster_pre</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_neurons_pre</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">spike_prob</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+# Create random spike rasters
+np.random.seed(156)
+spike_raster_pre = np.zeros((num_neurons_pre, num_steps))
+np.place(spike_raster_pre, np.random.rand(num_neurons_pre, num_steps) &lt; spike_prob[0], 1)
 
-<span class="c1"># Create post spikes raster</span>
-<span class="n">spike_raster_post</span> <span class="o">=</span> <span class="n">generate_post_spikes</span><span class="p">(</span><span class="n">spike_raster_pre</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">spike_prob</span><span class="p">)</span>
+# Create post spikes raster
+spike_raster_post = generate_post_spikes(spike_raster_pre, num_steps, spike_prob)
 
-<span class="c1"># Create graded reward input spikes</span>
-<span class="n">graded_reward_spikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_neurons_post</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">):</span>
-        <span class="n">graded_reward_spikes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">170</span><span class="p">):</span>
-        <span class="n">graded_reward_spikes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+# Create graded reward input spikes
+graded_reward_spikes = np.zeros((num_neurons_post, num_steps))
+for index in range(num_steps):
+    if index in range(50, 70):
+        graded_reward_spikes[0][index] = 6
+    if index in range(150, 170):
+        graded_reward_spikes[1][index] = 8
 </pre></div>
 </div>
 </div>
@@ -981,10 +981,10 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.io.source</span> <span class="kn">import</span> <span class="n">RingBuffer</span> <span class="k">as</span> <span class="n">SpikeIn</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">LearningDense</span><span class="p">,</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">RSTDPLIF</span><span class="p">,</span> <span class="n">RSTDPLIFModelFloat</span><span class="p">,</span> <span class="n">RSTDPLIFBitAcc</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.lif.process import LIF
+from lava.proc.io.source import RingBuffer as SpikeIn
+from lava.proc.dense.process import LearningDense, Dense
+from utils import RSTDPLIF, RSTDPLIFModelFloat, RSTDPLIFBitAcc
 </pre></div>
 </div>
 </div>
@@ -992,45 +992,45 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create input devices</span>
-<span class="n">pattern_pre</span> <span class="o">=</span> <span class="n">SpikeIn</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">spike_raster_pre</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
-<span class="n">pattern_post</span> <span class="o">=</span> <span class="n">SpikeIn</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">spike_raster_post</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create input devices
+pattern_pre = SpikeIn(data=spike_raster_pre.astype(int))
+pattern_post = SpikeIn(data=spike_raster_post.astype(int))
 
-<span class="c1"># Create graded reward input device</span>
-<span class="n">reward_pattern_post</span> <span class="o">=</span> <span class="n">SpikeIn</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">graded_reward_spikes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+# Create graded reward input device
+reward_pattern_post = SpikeIn(data=graded_reward_spikes.astype(float))
 
-<span class="c1"># Create input connectivity</span>
-<span class="n">conn_inp_pre</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_inp_pre</span><span class="p">)</span>
-<span class="n">conn_inp_post</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_inp_post</span><span class="p">)</span>
-<span class="n">conn_inp_reward</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_inp_reward</span><span class="p">,</span> <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+# Create input connectivity
+conn_inp_pre = Dense(weights=wgt_inp_pre)
+conn_inp_post = Dense(weights=wgt_inp_post)
+conn_inp_reward = Dense(weights=wgt_inp_reward, num_message_bits=5)
 
-<span class="c1"># Create pre-synaptic neurons</span>
-<span class="n">lif_pre</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-              <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-              <span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-              <span class="n">dv</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-              <span class="n">bias_mant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-              <span class="n">bias_exp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-              <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-              <span class="n">shape</span><span class="o">=</span><span class="n">shape_lif_pre</span><span class="p">,</span>
-              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif_pre&#39;</span><span class="p">)</span>
+# Create pre-synaptic neurons
+lif_pre = LIF(u=0,
+              v=0,
+              du=du,
+              dv=du,
+              bias_mant=0,
+              bias_exp=0,
+              vth=vth,
+              shape=shape_lif_pre,
+              name=&#39;lif_pre&#39;)
 
-<span class="c1"># Create plastic connection</span>
-<span class="n">plast_conn</span> <span class="o">=</span> <span class="n">LearningDense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">wgt_plast_conn</span><span class="p">,</span>
-                           <span class="n">learning_rule</span><span class="o">=</span><span class="n">R_STDP</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">)</span>
+# Create plastic connection
+plast_conn = LearningDense(weights=wgt_plast_conn,
+                           learning_rule=R_STDP,
+                           name=&#39;plastic_dense&#39;)
 
-<span class="c1"># Create post-synaptic neuron</span>
-<span class="n">lif_post</span> <span class="o">=</span> <span class="n">RSTDPLIF</span><span class="p">(</span><span class="n">u</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="n">v</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-                    <span class="n">dv</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-                    <span class="n">bias_mant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="n">bias_exp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                    <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-                    <span class="n">shape</span><span class="o">=</span><span class="n">shape_lif_post</span><span class="p">,</span>
-                    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif_post&#39;</span><span class="p">,</span>
-                    <span class="n">learning_rule</span><span class="o">=</span><span class="n">R_STDP</span><span class="p">)</span>
+# Create post-synaptic neuron
+lif_post = RSTDPLIF(u=0,
+                    v=0,
+                    du=du,
+                    dv=du,
+                    bias_mant=0,
+                    bias_exp=0,
+                    vth=vth,
+                    shape=shape_lif_post,
+                    name=&#39;lif_post&#39;,
+                    learning_rule=R_STDP)
 </pre></div>
 </div>
 </div>
@@ -1040,28 +1040,28 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect network</span>
-<span class="n">pattern_pre</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">conn_inp_pre</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">conn_inp_pre</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_pre</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Connect network
+pattern_pre.s_out.connect(conn_inp_pre.s_in)
+conn_inp_pre.a_out.connect(lif_pre.a_in)
 
-<span class="n">pattern_post</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">conn_inp_post</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">conn_inp_post</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_post</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+pattern_post.s_out.connect(conn_inp_post.s_in)
+conn_inp_post.a_out.connect(lif_post.a_in)
 
-<span class="c1"># Reward ports</span>
-<span class="n">reward_pattern_post</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">conn_inp_reward</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">conn_inp_reward</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_post</span><span class="o">.</span><span class="n">a_third_factor_in</span><span class="p">)</span>
+# Reward ports
+reward_pattern_post.s_out.connect(conn_inp_reward.s_in)
+conn_inp_reward.a_out.connect(lif_post.a_third_factor_in)
 
-<span class="n">lif_pre</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">plast_conn</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_post</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+lif_pre.s_out.connect(plast_conn.s_in)
+plast_conn.a_out.connect(lif_post.a_in)
 
-<span class="c1"># Connect reward trace callback</span>
-<span class="c1"># Sending the post synaptic spikes</span>
-<span class="n">lif_post</span><span class="o">.</span><span class="n">s_out_bap</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">s_in_bap</span><span class="p">)</span>
+# Connect reward trace callback
+# Sending the post synaptic spikes
+lif_post.s_out_bap.connect(plast_conn.s_in_bap)
 
-<span class="n">lif_post</span><span class="o">.</span><span class="n">s_out_y1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">s_in_y1</span><span class="p">)</span>
+lif_post.s_out_y1.connect(plast_conn.s_in_y1)
 
-<span class="c1"># Sending graded reward spikes</span>
-<span class="n">lif_post</span><span class="o">.</span><span class="n">s_out_y2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">s_in_y2</span><span class="p">)</span>
+# Sending graded reward spikes
+lif_post.s_out_y2.connect(plast_conn.s_in_y2)
 </pre></div>
 </div>
 </div>
@@ -1072,27 +1072,27 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.monitor.process import Monitor
 
-<span class="c1"># Create monitors</span>
-<span class="n">mon_pre_trace</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_post_trace</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_reward_trace</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_pre_spikes</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_post_spikes</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_weight</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_tag</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_s_in_y2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">mon_y2</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+# Create monitors
+mon_pre_trace = Monitor()
+mon_post_trace = Monitor()
+mon_reward_trace = Monitor()
+mon_pre_spikes = Monitor()
+mon_post_spikes = Monitor()
+mon_weight = Monitor()
+mon_tag = Monitor()
+mon_s_in_y2 = Monitor()
+mon_y2 = Monitor()
 
-<span class="c1"># Connect monitors</span>
-<span class="n">mon_pre_trace</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">x1</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_post_trace</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">y1</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_reward_trace</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif_post</span><span class="o">.</span><span class="n">s_out_y2</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_pre_spikes</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif_pre</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_post_spikes</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">lif_post</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_weight</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
-<span class="n">mon_tag</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">plast_conn</span><span class="o">.</span><span class="n">tag_1</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">)</span>
+# Connect monitors
+mon_pre_trace.probe(plast_conn.x1, num_steps)
+mon_post_trace.probe(plast_conn.y1, num_steps)
+mon_reward_trace.probe(lif_post.s_out_y2, num_steps)
+mon_pre_spikes.probe(lif_pre.s_out, num_steps)
+mon_post_spikes.probe(lif_post.s_out, num_steps)
+mon_weight.probe(plast_conn.weights, num_steps)
+mon_tag.probe(plast_conn.tag_1, num_steps)
 </pre></div>
 </div>
 </div>
@@ -1104,8 +1104,8 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.run_configs import Loihi2SimCfg
 </pre></div>
 </div>
 </div>
@@ -1113,8 +1113,8 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Running</span>
-<span class="n">pattern_pre</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="n">SELECT_TAG</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Running
+pattern_pre.run(condition=RunSteps(num_steps=num_steps), run_cfg=Loihi2SimCfg(select_tag=SELECT_TAG))
 </pre></div>
 </div>
 </div>
@@ -1122,16 +1122,16 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get data from monitors</span>
-<span class="n">pre_trace</span> <span class="o">=</span> <span class="n">mon_pre_trace</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span>
-<span class="n">post_trace</span> <span class="o">=</span> <span class="n">mon_post_trace</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;y1&#39;</span><span class="p">]</span>
-<span class="n">reward_trace</span> <span class="o">=</span> <span class="n">mon_reward_trace</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;lif_post&#39;</span><span class="p">][</span><span class="s1">&#39;s_out_y2&#39;</span><span class="p">]</span>
-<span class="n">pre_spikes</span> <span class="o">=</span> <span class="n">mon_pre_spikes</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;lif_pre&#39;</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">post_spikes</span> <span class="o">=</span> <span class="n">mon_post_spikes</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;lif_post&#39;</span><span class="p">][</span><span class="s1">&#39;s_out&#39;</span><span class="p">]</span>
-<span class="n">weights_neuron_A</span> <span class="o">=</span> <span class="n">mon_weight</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;weights&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">weights_neuron_B</span> <span class="o">=</span> <span class="n">mon_weight</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;weights&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">tag_neuron_A</span> <span class="o">=</span> <span class="n">mon_tag</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;tag_1&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">tag_neuron_B</span> <span class="o">=</span> <span class="n">mon_tag</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;plastic_dense&#39;</span><span class="p">][</span><span class="s1">&#39;tag_1&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Get data from monitors
+pre_trace = mon_pre_trace.get_data()[&#39;plastic_dense&#39;][&#39;x1&#39;]
+post_trace = mon_post_trace.get_data()[&#39;plastic_dense&#39;][&#39;y1&#39;]
+reward_trace = mon_reward_trace.get_data()[&#39;lif_post&#39;][&#39;s_out_y2&#39;]
+pre_spikes = mon_pre_spikes.get_data()[&#39;lif_pre&#39;][&#39;s_out&#39;]
+post_spikes = mon_post_spikes.get_data()[&#39;lif_post&#39;][&#39;s_out&#39;]
+weights_neuron_A = mon_weight.get_data()[&#39;plastic_dense&#39;][&#39;weights&#39;][:, 0, 0]
+weights_neuron_B = mon_weight.get_data()[&#39;plastic_dense&#39;][&#39;weights&#39;][:, 1, 0]
+tag_neuron_A = mon_tag.get_data()[&#39;plastic_dense&#39;][&#39;tag_1&#39;][:, 0, 0]
+tag_neuron_B = mon_tag.get_data()[&#39;plastic_dense&#39;][&#39;tag_1&#39;][:, 1, 0]
 </pre></div>
 </div>
 </div>
@@ -1139,8 +1139,8 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stopping</span>
-<span class="n">pattern_pre</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Stopping
+pattern_pre.stop()
 </pre></div>
 </div>
 </div>
@@ -1155,7 +1155,7 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_spikes</span><span class="p">,</span> <span class="n">plot_time_series</span><span class="p">,</span> <span class="n">plot_time_series_subplots</span><span class="p">,</span> <span class="n">plot_spikes_time_series</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import plot_spikes, plot_time_series, plot_time_series_subplots, plot_spikes_time_series
 </pre></div>
 </div>
 </div>
@@ -1163,14 +1163,14 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot spikes</span>
-<span class="n">plot_spikes</span><span class="p">(</span><span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">post_spikes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">post_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pre_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]],</span>
-            <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-            <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Post-synaptic Neuron B&#39;</span><span class="p">,</span> <span class="s1">&#39;Post-synaptic Neuron A&#39;</span><span class="p">,</span> <span class="s1">&#39;Pre-synaptic&#39;</span><span class="p">],</span>
-            <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#ff9912&#39;</span><span class="p">,</span>      <span class="s1">&#39;#458b00&#39;</span><span class="p">,</span>  <span class="s1">&#39;#f14a16&#39;</span><span class="p">],</span>
-            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Spike arrival&#39;</span><span class="p">,</span>
-            <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-            <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plot spikes
+plot_spikes(spikes=[np.where(post_spikes[:, 1])[0], np.where(post_spikes[:, 0])[0], np.where(pre_spikes[:, 0])[0]],
+            figsize=(14, 4),
+            legend=[&#39;Post-synaptic Neuron B&#39;, &#39;Post-synaptic Neuron A&#39;, &#39;Pre-synaptic&#39;],
+            colors=[&#39;#ff9912&#39;,      &#39;#458b00&#39;,  &#39;#f14a16&#39;],
+            title=&#39;Spike arrival&#39;,
+            num_steps=num_steps
+            )
 </pre></div>
 </div>
 </div>
@@ -1186,15 +1186,15 @@ populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_spikes_time_series</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                        <span class="n">time_series</span><span class="o">=</span><span class="n">pre_trace</span><span class="p">,</span>
-                        <span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pre_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]],</span>
-                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-                        <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pre-synaptic Neuron&#39;</span><span class="p">],</span>
-                        <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#f14a16&#39;</span><span class="p">,</span>
-                        <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pre-synaptic Trace Dynamics&#39;</span><span class="p">],</span>
-                        <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-                        <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_spikes_time_series(time=time,
+                        time_series=pre_trace,
+                        spikes=[np.where(pre_spikes[:, 0])[0]],
+                        figsize=(14, 6),
+                        legend=[&#39;Pre-synaptic Neuron&#39;],
+                        colors=&#39;#f14a16&#39;,
+                        title=[&#39;Pre-synaptic Trace Dynamics&#39;],
+                        num_steps=num_steps
+                        )
 </pre></div>
 </div>
 </div>
@@ -1211,25 +1211,25 @@ the first pre-synaptic spike happens at time step 15 as shown in the first plot 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_spikes_time_series</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                        <span class="n">time_series</span><span class="o">=</span><span class="n">post_trace</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-                        <span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">post_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]],</span>
-                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-                        <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Post-synaptic Neuron A&#39;</span><span class="p">],</span>
-                        <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#458b00&#39;</span><span class="p">,</span>
-                        <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Post-synaptic Trace Dynamics (Neuron A)&#39;</span><span class="p">],</span>
-                        <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-                        <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_spikes_time_series(time=time,
+                        time_series=post_trace[:, 0],
+                        spikes=[np.where(post_spikes[:, 0])[0]],
+                        figsize=(14, 6),
+                        legend=[&#39;Post-synaptic Neuron A&#39;],
+                        colors=&#39;#458b00&#39;,
+                        title=[&#39;Post-synaptic Trace Dynamics (Neuron A)&#39;],
+                        num_steps=num_steps
+                        )
 
-<span class="n">plot_spikes_time_series</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                        <span class="n">time_series</span><span class="o">=</span><span class="n">post_trace</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
-                        <span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">post_spikes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]],</span>
-                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-                        <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Post-synaptic Neuron B&#39;</span><span class="p">],</span>
-                        <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#ff9912&#39;</span><span class="p">,</span>
-                        <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Post-synaptic Trace Dynamics (Neuron B)&#39;</span><span class="p">],</span>
-                        <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-                        <span class="p">)</span>
+plot_spikes_time_series(time=time,
+                        time_series=post_trace[:, 1],
+                        spikes=[np.where(post_spikes[:, 1])[0]],
+                        figsize=(14, 6),
+                        legend=[&#39;Post-synaptic Neuron B&#39;],
+                        colors=&#39;#ff9912&#39;,
+                        title=[&#39;Post-synaptic Trace Dynamics (Neuron B)&#39;],
+                        num_steps=num_steps
+                        )
 </pre></div>
 </div>
 </div>
@@ -1251,17 +1251,17 @@ the first pre-synaptic spike happens at time step 15 as shown in the first plot 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting tag dynamics (dt)</span>
-<span class="n">plot_time_series_subplots</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                          <span class="n">time_series_y1</span><span class="o">=</span><span class="n">tag_neuron_A</span><span class="p">,</span>
-                          <span class="n">time_series_y2</span><span class="o">=</span><span class="n">tag_neuron_B</span><span class="p">,</span>
-                          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Trace value&quot;</span><span class="p">,</span>
-                          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tag Dynamics (dt) for Post-synaptic Neurons&quot;</span><span class="p">,</span>
-                          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-                          <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">],</span>
-                          <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neuron A&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuron B&#39;</span><span class="p">],</span>
-                          <span class="n">leg_loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span>
-                         <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plotting tag dynamics (dt)
+plot_time_series_subplots(time=time,
+                          time_series_y1=tag_neuron_A,
+                          time_series_y2=tag_neuron_B,
+                          ylabel=&quot;Trace value&quot;,
+                          title=&quot;Tag Dynamics (dt) for Post-synaptic Neurons&quot;,
+                          figsize=(14, 4),
+                          color=[&#39;#458b00&#39;, &#39;#ff9912&#39;],
+                          legend=[&#39;Neuron A&#39;, &#39;Neuron B&#39;],
+                          leg_loc=&quot;lower left&quot;
+                         )
 </pre></div>
 </div>
 </div>
@@ -1281,27 +1281,27 @@ advent of pre-synaptic spike at time step 15, the tag trace of the post-synaptic
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting reward trace dynamics</span>
-<span class="n">plot_time_series_subplots</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                          <span class="n">time_series_y1</span><span class="o">=</span><span class="n">reward_trace</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-                          <span class="n">time_series_y2</span><span class="o">=</span><span class="n">reward_trace</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
-                          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Trace value&quot;</span><span class="p">,</span>
-                          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Reward Trace for Post-synaptic Neurons&quot;</span><span class="p">,</span>
-                          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-                          <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">],</span>
-                          <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neuron A&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuron B&#39;</span><span class="p">]</span>
-                         <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plotting reward trace dynamics
+plot_time_series_subplots(time=time,
+                          time_series_y1=reward_trace[:, 0],
+                          time_series_y2=reward_trace[:, 1],
+                          ylabel=&quot;Trace value&quot;,
+                          title=&quot;Reward Trace for Post-synaptic Neurons&quot;,
+                          figsize=(14, 4),
+                          color=[&#39;#458b00&#39;, &#39;#ff9912&#39;],
+                          legend=[&#39;Neuron A&#39;, &#39;Neuron B&#39;]
+                         )
 
-<span class="c1"># Plotting weight dynamics</span>
-<span class="n">plot_time_series_subplots</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                          <span class="n">time_series_y1</span><span class="o">=</span><span class="n">weights_neuron_A</span><span class="p">,</span>
-                          <span class="n">time_series_y2</span><span class="o">=</span><span class="n">weights_neuron_B</span><span class="p">,</span>
-                          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Trace value&quot;</span><span class="p">,</span>
-                          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Weight Dynamics (dw) for Plastic Connections&quot;</span><span class="p">,</span>
-                          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-                          <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">],</span>
-                          <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Neuron A&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuron B&#39;</span><span class="p">]</span>
-                         <span class="p">)</span>
+# Plotting weight dynamics
+plot_time_series_subplots(time=time,
+                          time_series_y1=weights_neuron_A,
+                          time_series_y2=weights_neuron_B,
+                          ylabel=&quot;Trace value&quot;,
+                          title=&quot;Weight Dynamics (dw) for Plastic Connections&quot;,
+                          figsize=(14, 4),
+                          color=[&#39;#458b00&#39;, &#39;#ff9912&#39;],
+                          legend=[&#39;Neuron A&#39;, &#39;Neuron B&#39;]
+                         )
 </pre></div>
 </div>
 </div>
@@ -1339,86 +1339,86 @@ reward/third-factor value is non-zero. The weight dynamics of ‘Neuron A’ can
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.learning.learning_rule</span> <span class="kn">import</span> <span class="n">Loihi3FLearningRule</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.learning.utils</span> <span class="kn">import</span> <span class="n">float_to_literal</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.learning.learning_rule import Loihi3FLearningRule
+from lava.magma.core.learning.utils import float_to_literal
 
 
-<span class="k">class</span> <span class="nc">RewardModulatedSTDP</span><span class="p">(</span><span class="n">Loihi3FLearningRule</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">A_plus</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">A_minus</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">pre_trace_decay_tau</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">post_trace_decay_tau</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">pre_trace_kernel_magnitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">post_trace_kernel_magnitude</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="n">eligibility_trace_decay_tau</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-            <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">kwargs</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Reward-Modulated Spike-timing dependent plasticity (STDP)</span>
-<span class="sd">        as defined in Frémaux, Nicolas, and Wulfram Gerstner.</span>
-<span class="sd">        &quot;Neuromodulated spike-timing-dependent plasticity, and</span>
-<span class="sd">        theory of three-factor learning rules.&quot; Frontiers in</span>
-<span class="sd">        neural circuits 9 (2016).</span>
+class RewardModulatedSTDP(Loihi3FLearningRule):
+    def __init__(
+            self,
+            learning_rate: float,
+            A_plus: float,
+            A_minus: float,
+            pre_trace_decay_tau: float,
+            post_trace_decay_tau: float,
+            pre_trace_kernel_magnitude: float,
+            post_trace_kernel_magnitude: float,
+            eligibility_trace_decay_tau: float,
+            *args,
+            **kwargs
+    ):
+        &quot;&quot;&quot;
+        Reward-Modulated Spike-timing dependent plasticity (STDP)
+        as defined in Frémaux, Nicolas, and Wulfram Gerstner.
+        &quot;Neuromodulated spike-timing-dependent plasticity, and
+        theory of three-factor learning rules.&quot; Frontiers in
+        neural circuits 9 (2016).
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ==========</span>
+        Parameters
+        ==========
 
-<span class="sd">        learning_rate: float</span>
-<span class="sd">            Overall learning rate scaling the intensity of weight changes.</span>
-<span class="sd">        A_plus:</span>
-<span class="sd">            Scaling the weight change on pre-synaptic spike times.</span>
-<span class="sd">        A_minus:</span>
-<span class="sd">            Scaling the weight change on post-synaptic spike times.</span>
-<span class="sd">        pre_trace_decay_tau:</span>
-<span class="sd">            Decay time constant of the pre-synaptic activity trace.</span>
-<span class="sd">        post_trace_decay_tau:</span>
-<span class="sd">            Decay time constant of the post-synaptic activity trace.</span>
-<span class="sd">        pre_trace_kernel_magnitude:</span>
-<span class="sd">            The magnitude of increase to the pre-synaptic trace value</span>
-<span class="sd">            at the instant of pre-synaptic spike.</span>
-<span class="sd">        post_trace_kernel_magnitude:</span>
-<span class="sd">            The magnitude of increase to the post-synaptic trace value</span>
-<span class="sd">            at the instant of post-synaptic spike.</span>
-<span class="sd">        eligibility_trace_decay_tau:</span>
-<span class="sd">            Decay time constant of the eligibility trace.</span>
+        learning_rate: float
+            Overall learning rate scaling the intensity of weight changes.
+        A_plus:
+            Scaling the weight change on pre-synaptic spike times.
+        A_minus:
+            Scaling the weight change on post-synaptic spike times.
+        pre_trace_decay_tau:
+            Decay time constant of the pre-synaptic activity trace.
+        post_trace_decay_tau:
+            Decay time constant of the post-synaptic activity trace.
+        pre_trace_kernel_magnitude:
+            The magnitude of increase to the pre-synaptic trace value
+            at the instant of pre-synaptic spike.
+        post_trace_kernel_magnitude:
+            The magnitude of increase to the post-synaptic trace value
+            at the instant of post-synaptic spike.
+        eligibility_trace_decay_tau:
+            Decay time constant of the eligibility trace.
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="n">float_to_literal</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">A_plus</span> <span class="o">=</span> <span class="n">float_to_literal</span><span class="p">(</span><span class="n">A_plus</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">A_minus</span> <span class="o">=</span> <span class="n">float_to_literal</span><span class="p">(</span><span class="n">A_minus</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pre_trace_decay_tau</span> <span class="o">=</span> <span class="n">pre_trace_decay_tau</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">post_trace_decay_tau</span> <span class="o">=</span> <span class="n">post_trace_decay_tau</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pre_trace_kernel_magnitude</span> <span class="o">=</span> <span class="n">pre_trace_kernel_magnitude</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">post_trace_kernel_magnitude</span> <span class="o">=</span> <span class="n">post_trace_kernel_magnitude</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eligibility_trace_decay_tau</span> <span class="o">=</span> \
-            <span class="n">float_to_literal</span><span class="p">(</span><span class="n">eligibility_trace_decay_tau</span><span class="p">)</span>
+        &quot;&quot;&quot;
+        self.learning_rate = float_to_literal(learning_rate)
+        self.A_plus = float_to_literal(A_plus)
+        self.A_minus = float_to_literal(A_minus)
+        self.pre_trace_decay_tau = pre_trace_decay_tau
+        self.post_trace_decay_tau = post_trace_decay_tau
+        self.pre_trace_kernel_magnitude = pre_trace_kernel_magnitude
+        self.post_trace_kernel_magnitude = post_trace_kernel_magnitude
+        self.eligibility_trace_decay_tau = \
+            float_to_literal(eligibility_trace_decay_tau)
 
-        <span class="c1"># Trace impulse values</span>
-        <span class="n">x1_impulse</span> <span class="o">=</span> <span class="n">pre_trace_kernel_magnitude</span>
+        # Trace impulse values
+        x1_impulse = pre_trace_kernel_magnitude
 
-        <span class="c1"># Trace decay constants</span>
-        <span class="n">x1_tau</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_trace_decay_tau</span>
+        # Trace decay constants
+        x1_tau = self.pre_trace_decay_tau
 
-        <span class="c1"># Eligibility trace represented as dt</span>
-        <span class="n">dt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A_minus</span><span class="si">}</span><span class="s2"> * x0 * y1 + &quot;</span> \
-             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">A_plus</span><span class="si">}</span><span class="s2"> * y0 * x1 - &quot;</span> \
-             <span class="sa">f</span><span class="s2">&quot;u0 * t * </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">eligibility_trace_decay_tau</span><span class="si">}</span><span class="s2">&quot;</span>
+        # Eligibility trace represented as dt
+        dt = f&quot;{self.learning_rate} * {self.A_minus} * x0 * y1 + &quot; \
+             f&quot;{self.learning_rate} * {self.A_plus} * y0 * x1 - &quot; \
+             f&quot;u0 * t * {self.eligibility_trace_decay_tau}&quot;
 
-        <span class="c1"># Reward-modulated weight update</span>
-        <span class="n">dw</span> <span class="o">=</span> <span class="s2">&quot; u0 * t * y2 &quot;</span>
+        # Reward-modulated weight update
+        dw = &quot; u0 * t * y2 &quot;
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">dw</span><span class="o">=</span><span class="n">dw</span><span class="p">,</span>
-            <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span>
-            <span class="n">x1_impulse</span><span class="o">=</span><span class="n">x1_impulse</span><span class="p">,</span>
-            <span class="n">x1_tau</span><span class="o">=</span><span class="n">x1_tau</span><span class="p">,</span>
-            <span class="o">*</span><span class="n">args</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">kwargs</span>
-        <span class="p">)</span>
+        super().__init__(
+            dw=dw,
+            dt=dt,
+            x1_impulse=x1_impulse,
+            x1_tau=x1_tau,
+            *args,
+            **kwargs
+        )
 </pre></div>
 </div>
 </div>

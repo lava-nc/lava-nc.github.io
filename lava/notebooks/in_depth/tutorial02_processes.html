@@ -835,7 +835,7 @@ div.rendered_html tbody tr:hover {
 </li><li><p>ports that share data with other Processes, and</p>
 </li><li><p>an API that facilitates user interaction.</p>
 </li></ol><p>A <em>Process</em> can thus be as simple as a single neuron or a synapse, as complex as a full neural network, and as non-neuromorphic as a streaming interface for a peripheral device or an executed instance of regular program code.</p>
-<p><img alt="b4c35967e4ac41dba51402892c5b16d7" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig01_processes.png" style="width: 1000px;" /></p>
+<p><img alt="d9d730bd0faa4799b70c027a75fbba62" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig01_processes.png" style="width: 1000px;" /></p>
 <p><em>Processes</em> are independent from each other as they primarily operate on their own local memory while they pass messages between each other via channels. Different <em>Processes</em> thus proceed their computations simultaneously and asynchronously, mirroring the high parallelism inherent in neuromorphic hardware. The parallel <em>Processes</em> are furthermore safe against side effects from shared-memory interaction.</p>
 <p>Once a <em>Process</em> has been coded in Python, Lava allows to run it seamlessly across different backends such as a CPU, a GPU, or neuromorphic cores. Developers can thus easily test and benchmark their applications on classical computing hardware and then deploy it to neuromorphic hardware. Furthermore, Lava takes advantage of distributed, heterogeneous hardware such as Loihi as it can run some <em>Processes</em> on neuromorphic cores and in parallel others on embedded conventional CPUs and GPUs.</p>
 <p>While Lava provides a growing <a class="reference external" href="https://github.com/lava-nc/lava/tree/main/src/lava/proc">library of Processes</a>, you can easily write your own processes that suit your needs.</p>
@@ -844,12 +844,12 @@ div.rendered_html tbody tr:hover {
 <h2>How to build a <em>Process</em>?<a class="headerlink" href="#How-to-build-a-Process?" title="Permalink to this heading"></a></h2>
 <section id="Overall-architecture">
 <h3>Overall architecture<a class="headerlink" href="#Overall-architecture" title="Permalink to this heading"></a></h3>
-<p>All <em>Processes</em> in Lava share a universal architecture as they inherit from the same <em>AbstractProcess</em> class. Each <em>Process</em> consists of the following four key components. <img alt="10241d251db948a1a549c83ea19a4ac0" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig02_architectural_components.png" style="width: 1000px;" /></p>
+<p>All <em>Processes</em> in Lava share a universal architecture as they inherit from the same <em>AbstractProcess</em> class. Each <em>Process</em> consists of the following four key components. <img alt="22c85741a1f14f48b33d5a4476faeab6" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig02_architectural_components.png" style="width: 1000px;" /></p>
 </section>
 <section id="AbstractProcess:-Defining-Vars,-Ports,-and-the-API">
 <h3><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API<a class="headerlink" href="#AbstractProcess:-Defining-Vars,-Ports,-and-the-API" title="Permalink to this heading"></a></h3>
 <p>When you create your own new process, you need to inherit from the AbstractProcess class. As an example, we will implement the <em>class LIF</em>, a group of leaky integrate-and-fire (LIF) neurons.</p>
-<p><img alt="13d0bb69d0704e0ea192003e17fed12e" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig03_lifs.png" style="width: 780px;" /></p>
+<p><img alt="a95d72bc58894560af2e85a621085fe8" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig03_lifs.png" style="width: 780px;" /></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
@@ -921,40 +921,40 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
+from lava.magma.core.process.process import AbstractProcess
+from lava.magma.core.process.variable import Var
+from lava.magma.core.process.ports.ports import InPort, OutPort
 
 
-<span class="k">class</span> <span class="nc">LIF</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leaky-Integrate-and-Fire neural process with activation input and spike</span>
-<span class="sd">    output ports a_in and s_out.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">du</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;du&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dv</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bias&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vth&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+class LIF(AbstractProcess):
+    &quot;&quot;&quot;Leaky-Integrate-and-Fire neural process with activation input and spike
+    output ports a_in and s_out.
+    &quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super().__init__()
+        shape = kwargs.get(&quot;shape&quot;, (1,))
+        self.a_in = InPort(shape=shape)
+        self.s_out = OutPort(shape=shape)
+        self.u = Var(shape=shape, init=0)
+        self.v = Var(shape=shape, init=0)
+        self.du = Var(shape=(1,), init=kwargs.pop(&quot;du&quot;, 0))
+        self.dv = Var(shape=(1,), init=kwargs.pop(&quot;dv&quot;, 0))
+        self.bias = Var(shape=shape, init=kwargs.pop(&quot;bias&quot;, 0))
+        self.vth = Var(shape=(1,), init=kwargs.pop(&quot;vth&quot;, 10))
 
-    <span class="k">def</span> <span class="nf">print_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prints all variables of a LIF process and their values.&quot;&quot;&quot;</span>
+    def print_vars(self):
+        &quot;&quot;&quot;Prints all variables of a LIF process and their values.&quot;&quot;&quot;
 
-        <span class="n">sp</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;  &quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variables of the LIF:&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;u:    </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;v:    </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;du:   </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;dv:   </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;bias: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sp</span> <span class="o">+</span> <span class="s2">&quot;vth:  </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vth</span><span class="o">.</span><span class="n">get</span><span class="p">())))</span>
+        sp = 3 * &quot;  &quot;
+        print(&quot;Variables of the LIF:&quot;)
+        print(sp + &quot;u:    {}&quot;.format(str(self.u.get())))
+        print(sp + &quot;v:    {}&quot;.format(str(self.v.get())))
+        print(sp + &quot;du:   {}&quot;.format(str(self.du.get())))
+        print(sp + &quot;dv:   {}&quot;.format(str(self.dv.get())))
+        print(sp + &quot;bias: {}&quot;.format(str(self.bias.get())))
+        print(sp + &quot;vth:  {}&quot;.format(str(self.vth.get())))
 </pre></div>
 </div>
 </div>
@@ -972,36 +972,36 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span><span class="p">,</span> <span class="n">tag</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
+from lava.magma.core.model.py.ports import PyInPort, PyOutPort
+from lava.magma.core.model.py.type import LavaPyType
+from lava.magma.core.resources import CPU
+from lava.magma.core.decorator import implements, requires, tag
+from lava.magma.core.model.py.model import PyLoihiProcessModel
 
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="nd">@tag</span><span class="p">(</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyLifModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">a_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">s_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">u</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">bias</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">du</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">dv</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">vth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+@implements(proc=LIF, protocol=LoihiProtocol)
+@requires(CPU)
+@tag(&#39;floating_pt&#39;)
+class PyLifModel(PyLoihiProcessModel):
+    a_in: PyInPort = LavaPyType(PyInPort.VEC_DENSE, float)
+    s_out: PyOutPort = LavaPyType(PyOutPort.VEC_DENSE, bool, precision=1)
+    u: np.ndarray = LavaPyType(np.ndarray, float)
+    v: np.ndarray = LavaPyType(np.ndarray, float)
+    bias: np.ndarray = LavaPyType(np.ndarray, float)
+    du: float = LavaPyType(float, float)
+    dv: float = LavaPyType(float, float)
+    vth: float = LavaPyType(float, float)
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">a_in_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">+=</span> <span class="n">a_in_data</span>
-        <span class="n">bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="n">bias</span>
-        <span class="n">s_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">s_out</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Reset voltage to 0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">s_out</span><span class="p">)</span>
+    def run_spk(self):
+        a_in_data = self.a_in.recv()
+        self.u[:] = self.u * (1 - self.du)
+        self.u[:] += a_in_data
+        bias = self.bias
+        self.v[:] = self.v * (1 - self.dv) + self.u + bias
+        s_out = self.v &gt;= self.vth
+        self.v[s_out] = 0  # Reset voltage to 0
+        self.s_out.send(s_out)
 </pre></div>
 </div>
 </div>
@@ -1013,9 +1013,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_neurons</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_neurons = 3
 
-<span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">du</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+lif = LIF(shape=(3,), du=0, dv=0, bias=3, vth=10)
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(lif.v.get())
 </pre></div>
 </div>
 </div>
@@ -1052,7 +1052,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif</span><span class="o">.</span><span class="n">print_vars</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lif.print_vars()
 </pre></div>
 </div>
 </div>
@@ -1079,10 +1079,10 @@ Variables of the LIF:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_configs import Loihi1SimCfg
+from lava.magma.core.run_conditions import RunSteps
 
-<span class="n">lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+lif.run(condition=RunSteps(num_steps=1), run_cfg=Loihi1SimCfg())
 </pre></div>
 </div>
 </div>
@@ -1091,7 +1091,7 @@ Variables of the LIF:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(lif.v.get())
 </pre></div>
 </div>
 </div>
@@ -1111,8 +1111,8 @@ Variables of the LIF:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lif.v.set(np.array([1, 2, 3]) )
+print(lif.v.get())
 </pre></div>
 </div>
 </div>
@@ -1131,7 +1131,7 @@ Variables of the LIF:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lif</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lif.stop()
 </pre></div>
 </div>
 </div>

@@ -841,11 +841,11 @@ div.rendered_html tbody tr:hover {
 <li><p>Finally, we want our system to be able to perform open-set recognition, i.e. rather than performing recognition purely on the known classes (close-set recognition), we also want to recognize instances from unknown classes (Figure 2, <a class="reference external" href="https://www.nature.com/articles/s41598-020-63649-6">Shu et al. 2020</a>). For this purpose, we will use prototypes with a radius (or margin) of recognition defined around them (Figure 3). In terms of the spiking (LIF) neurons, this margin translates to the
 voltage threshold for spiking.</p></li>
 </ul>
-<center><p><img alt="3c553455d7354cf6a4295adf3988cfa4" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/continual_learning.png" /></p>
+<center><p><img alt="acd1082014ef47dd8c94b290d09576a8" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/continual_learning.png" /></p>
 <center><center><figcaption align="center"><p>Figure 1. Continual Learning (image credit: Matthias De Lange)</p>
-</figcaption><center><p><img alt="e172483515cb45b8b068d973a1a3eab8" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/open_set_recognition.png" /></p>
+</figcaption><center><p><img alt="9853dc2be74d4029acc39f8531f687d8" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/open_set_recognition.png" /></p>
 <center><figcaption align="center"><p>Figure 2. Open-set recognition</p>
-</figcaption><center><center><p><img alt="402da3a45bc1495894d673aecf039922" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/knn_clp.jpg" /></p>
+</figcaption><center><center><p><img alt="1fa7ca4ecca0474a92ff5992cf033c95" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/knn_clp.jpg" /></p>
 <center><center><figcaption align="center"><p>Figure 3. The concept of prototypes in the brain. (Left) Learning by hard all examples is akin to k-NN. (Right) Learning an abstract concept from the seen examples is the idea behind the prototypes and what CLP uses</p>
 </figcaption><center></section>
 <section id="Similarity-Measure:-Why-Cosine-Similarity?">
@@ -853,12 +853,12 @@ voltage threshold for spiking.</p></li>
 <p>The prototype-based methods generally use Euclidean distance as the similarity measure. However, in high-dimensional space, the Euclidean distance starts to lose its meaning because of the curse of dimensionality. In addition, calculating the Euclidean distance requires types of operations (vector length, squaring) that are not supported on Loihi or are just not local computations. The cheapest operation available in Loihi is the dot product between the input spikes and the weights. We can
 efficiently compute this dot product, especially with the graded spikes in Loihi 2. However, the dot product is not a reliable similarity measure as long as the vectors have different lengths. Therefore, we will normalize all input vectors and inject them as graded spikes. As the weights are learned from these inputs, they are also normalized. Consequently, the dot product between inputs and weights corresponds to the cosine similarity between the non-normalized original input and the normalized
 weights. These stored weights are the learned prototypes.</p>
-<center><p><img alt="11fea276ca3542d6a3194cbee3b24b23" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/cosine_similarity_formula.png" /></p>
+<center><p><img alt="5bde6812fec54e8d8dcc2774062824c6" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/cosine_similarity_formula.png" /></p>
 <center><p>From the literature, we know that cosine similarity works well for high-dimensional spaces (<a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Hersche_Constrained_Few-Shot_Class-Incremental_Learning_CVPR_2022_paper.pdf">Hersche et al. 2022</a>). As our main problem domain is visual processing, which generally has high-dimensional input, implicitly using cosine-similarity fits our purposes. Implicitly because we arrive at cosine similarity using the dot-product of normalized vectors. From the
 CLP’s perspective, it still performs a dot product similarity. This will play an essential role in deriving the learning rules and interpreting the similarity measure.</p>
 <p>In Figure 4, we see prototypes with some recognition margin around them. On the left panel, a prototype with Euclidean similarity defines a point in Euclidean space and a circle in 2D (or a sphere in 3D) with a given radius (i.e., recognition threshold) around it. On the middle panel, we the prototype vectors with cosine similarity. In this case, both input and prototype vectors can have different lengths: the similarity is measured as the angle between the input vector and the weight vectors.
 Hence the recognition margins are circular and spherical sectors in 2D and 3D, respectively. On the right panel, we see our case: all input and weight vectors are normalized, i.e., they fall on the surface of a hyper-sphere. The recognition margins are defined solely on this surface: an arc of a circle in 2D and a piece (cap) on the sphere’s surface. Therefore, CLP will perform its computation always on this kind of surface.</p>
-<center><p><img alt="90c3b2004f894411b32dc639ae6c245d" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/sim_measure_and_protos.png" /></p>
+<center><p><img alt="bd8a87d5d7184909adf993a90a78c8d6" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/sim_measure_and_protos.png" /></p>
 <center><center><figcaption align="center"><p>Figure 4. Prototypes with different similarity measures in 2D and 3D. (a) Euclidean distance/similarity, (b) cosine similarity, (c) Dot product similarity on normalized vectors. Figures are adopted from [Liu et al. 2017].</p>
 </figcaption><center><p>References: <a class="reference external" href="https://link.springer.com/article/10.1007/s11432-021-3316-x">Zhu et al. 2022</a>, <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Liu_SphereFace_Deep_Hypersphere_CVPR_2017_paper.pdf">Liu et al. 2017</a></p>
 </section>
@@ -869,24 +869,24 @@ Hence the recognition margins are circular and spherical sectors in 2D and 3D, r
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">ty</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.learning.constants</span> <span class="kn">import</span> <span class="n">GradedSpikeCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import typing as ty
+import matplotlib.pylab as plt
+from lava.magma.core.learning.constants import GradedSpikeCfg
 
-<span class="kn">from</span> <span class="nn">lava.utils.weightutils</span> <span class="kn">import</span> <span class="n">SignMode</span>
+from lava.utils.weightutils import SignMode
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.learning.learning_rule</span> <span class="kn">import</span> <span class="n">Loihi3FLearningRule</span>
+from lava.magma.core.learning.learning_rule import Loihi3FLearningRule
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.proc.clp.prototype_lif.process</span> <span class="kn">import</span> <span class="n">PrototypeLIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.clp.novelty_detector.process</span> <span class="kn">import</span> <span class="n">NoveltyDetector</span>
-<span class="kn">from</span> <span class="nn">lava.proc.clp.nsm.process</span> <span class="kn">import</span> <span class="n">Readout</span><span class="p">,</span> <span class="n">Allocator</span>
-<span class="kn">from</span> <span class="nn">lava.proc.io.source</span> <span class="kn">import</span> <span class="n">RingBuffer</span><span class="p">,</span> <span class="n">PySendModelFixed</span>
-<span class="kn">from</span> <span class="nn">lava.proc.monitor.process</span> <span class="kn">import</span> <span class="n">Monitor</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LearningDense</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.models</span> <span class="kn">import</span> <span class="n">PyLearningDenseModelBitApproximate</span>
+from lava.magma.core.run_configs import Loihi2SimCfg
+from lava.magma.core.run_conditions import RunSteps
+from lava.proc.clp.prototype_lif.process import PrototypeLIF
+from lava.proc.clp.novelty_detector.process import NoveltyDetector
+from lava.proc.clp.nsm.process import Readout, Allocator
+from lava.proc.io.source import RingBuffer, PySendModelFixed
+from lava.proc.monitor.process import Monitor
+from lava.proc.dense.process import Dense, LearningDense
+from lava.proc.dense.models import PyLearningDenseModelBitApproximate
 </pre></div>
 </div>
 </div>
@@ -899,25 +899,25 @@ Hence the recognition margins are circular and spherical sectors in 2D and 3D, r
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate synthetic data</span>
-<span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
-<span class="n">cov</span> <span class="o">=</span> <span class="mf">0.07</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">class_samples</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">54</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Generate synthetic data
+centers = np.array([[0.7, 0.7], [0.5, 1.6], [1.7, 0.3]])
+cov = 0.07**2 * np.eye(2)
+class_samples = 5
+n_samples = 15
+np.random.seed(seed=54)
 
-<span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]),</span> <span class="n">cov</span><span class="p">,</span> <span class="n">class_samples</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">x_2</span><span class="p">,</span> <span class="n">y_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]),</span> <span class="n">cov</span><span class="p">,</span> <span class="n">class_samples</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">x_3</span><span class="p">,</span> <span class="n">y_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]),</span> <span class="n">cov</span><span class="p">,</span> <span class="n">class_samples</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+x_1, y_1 = np.random.multivariate_normal(np.squeeze(centers[0,:]), cov, class_samples).T
+x_2, y_2 = np.random.multivariate_normal(np.squeeze(centers[1,:]), cov, class_samples).T
+x_3, y_3 = np.random.multivariate_normal(np.squeeze(centers[2,:]), cov, class_samples).T
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_1</span><span class="p">,</span> <span class="n">y_1</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_2</span><span class="p">,</span> <span class="n">y_2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x_3</span><span class="p">,</span> <span class="n">y_3</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-<span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))))</span>
-<span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">cluster_ids</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+X = np.vstack((np.array([x_1, y_1]).T, np.array([x_2, y_2]).T, np.array([x_3, y_3]).T))
+cluster_ids = np.hstack((np.ones((1,5)), 2*np.ones((1,5)), 3*np.ones((1,5))))
+cluster_ids = np.squeeze(cluster_ids.astype(int))
+y = np.hstack((np.ones((1,5)), 2*np.ones((1,10))))
+y = np.squeeze(y.astype(int))
 
-<span class="c1">#Normalize the vectors</span>
-<span class="n">inp_pattern</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+#Normalize the vectors
+inp_pattern = X / np.expand_dims(np.linalg.norm(X, axis=1), axis=1)
 <br/><br/><br/></pre></div>
 </div>
 </div>
@@ -925,8 +925,8 @@ Hence the recognition margins are circular and spherical sectors in 2D and 3D, r
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster id of each input pattern:&quot;</span><span class="p">,</span> <span class="n">cluster_ids</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Label of each input pattern:     &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Cluster id of each input pattern:&quot;, cluster_ids)
+print(&quot;Label of each input pattern:     &quot;, y)
 </pre></div>
 </div>
 </div>
@@ -943,33 +943,33 @@ Label of each input pattern:      [1 1 1 1 1 2 2 2 2 2 2 2 2 2 2]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 1&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, axes = plt.subplots(figsize=(12, 5), nrows=1, ncols=2)
+plt.sca(axes[0])
+plt.scatter(X[y == 1, 0], X[y == 1, 1], label=&quot;Class 0&quot;)
+plt.scatter(X[y == 2, 0], X[y == 2, 1], label=&quot;Class 1&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Original Input Data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+plt.xlim([0, 2])
+plt.ylim([0, 2])
+plt.xlabel(&quot;Feature Dimension 0&quot;)
+plt.ylabel(&quot;Feature Dimension 1&quot;)
+plt.title(&quot;Original Input Data&quot;)
+plt.legend()
 
-<span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 1&quot;</span><span class="p">)</span>
+plt.sca(axes[1])
+plt.scatter(inp_pattern[y == 1, 0], inp_pattern[y == 1, 1], label=&quot;Class 0&quot;)
+plt.scatter(inp_pattern[y == 2, 0], inp_pattern[y == 2, 1], label=&quot;Class 1&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 1&quot;</span><span class="p">)</span>
+plt.xlim([0, 2])
+plt.ylim([0, 2])
+plt.xlabel(&quot;Feature Dimension 0&quot;)
+plt.ylabel(&quot;Feature Dimension 1&quot;)
 
-<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Normalized Input Data&quot;</span><span class="p">)</span>
+theta = np.linspace(0, np.pi * 0.5)
+plt.plot(np.cos(theta), np.sin(theta), linewidth=1, c=&#39;k&#39;)
+plt.title(&quot;Normalized Input Data&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -985,13 +985,13 @@ Label of each input pattern:      [1 1 1 1 1 2 2 2 2 2 2 2 2 2 2]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inp_pattern</span><span class="p">,</span> <span class="n">inp_pattern</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sims</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Normalized Similarity between vectors&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Vector index&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Vector index&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sims = np.dot(inp_pattern, inp_pattern.T)
+plt.figure()
+plt.imshow(sims)
+plt.colorbar()
+plt.title(&quot;Normalized Similarity between vectors&quot;)
+plt.xlabel(&quot;Vector index&quot;)
+plt.ylabel(&quot;Vector index&quot;)
 <br/></pre></div>
 </div>
 </div>
@@ -1011,7 +1011,7 @@ Text(0, 0.5, &#39;Vector index&#39;)
 <img alt="../../../../_images/lava_notebooks_in_depth_clp_tutorial01_one-shot_learning_with_novelty_detection_10_1.png" src="../../../../_images/lava_notebooks_in_depth_clp_tutorial01_one-shot_learning_with_novelty_detection_10_1.png" />
 </div>
 </div>
-<center><p><img alt="435631f42d15440099cbb4b4404d4c46" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/neural_diagram.png" /></p>
+<center><p><img alt="b8e05c2a7f374b42b65916122f6da46b" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/neural_diagram.png" /></p>
 <center><center><figcaption align="center"><p>Figure 5. CLP Diagram. The main components of the CLP algorithm and their connections are depicted.</p>
 </figcaption><center><p>This first version of CLP includes the features like novelty detection, one-shot learning, and supervised and unsupervised labeling of the learned prototypes. The normalized input vectors are one-by-one injected into the prototype neurons through prototype weights/synapses. Suppose none of the prototype neurons spike after the input injection. In that case, this is detected by the novelty detector via coincidence detection between the presence of the input and the absence of any output. Once
 this is detected, the novelty detector sends a strong third-factor signal to the prototype population. It aims explicitly at the unallocated neuron in this population. As a result, this prototype neuron learns the input in one shot, effectively memorizing the input as a prototype. The outputs of prototype neurons are sent to the Readout module, which interprets the prototype index as a prediction label. Note that one class may have more than one prototype. Therefore, the Readout module keeps a
@@ -1019,35 +1019,35 @@ dictionary that maps the prototype ids to the labels. If a user provides a label
 with an instance from this unknown class, the Readout module automatically changes the pseudo-label to this actual label.</p>
 <p>All these modules are implemented as processes in Lava (Figure 6): PrototypeLIF, NoveltyDetector, and Readout. The input process is connected to the PrototypeLIF process via a LearningDense process - a dense connection of plastic synapses. To understand the learning setup and connections, we refer the reader to the following tutorial on <a class="reference internal" href="../three_factor_learning/tutorial01_Reward_Modulated_STDP.html"><span class="doc">the reward-modulated learning rule</span></a>.</p>
 <p>The system described in Figure 6 runs on a CPU, though with the Loihi protocol. The Loihi 2 implementation will be coming soon.</p>
-<center><p><img alt="b625b0c8a77d41eeaaadd9652ad5edcb" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/lava_diagram.png" /></p>
+<center><p><img alt="b426f7773fb04b3c839b3e103a955796" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/lava_diagram.png" /></p>
 <center><center><figcaption align="center"><p>Figure 6. CLP Lava Diagram.</p>
 </figcaption><center><p>Let’s first set the parameters for all the processes.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># General params</span>
-<span class="n">t_wait</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># the waiting window for novelty detection after input injection</span>
-<span class="n">n_protos</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># number of the prototypes</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># the feature dimension of the input</span>
-<span class="n">b_fraction</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># The fraction of the fixed point representation used to translate floating point input to graded spikes</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># General params
+t_wait = 4  # the waiting window for novelty detection after input injection
+n_protos = 3  # number of the prototypes
+n_features = 2  # the feature dimension of the input
+b_fraction = 8  # The fraction of the fixed point representation used to translate floating point input to graded spikes
 
-<span class="c1"># The time difference between two consecutive inputs</span>
-<span class="n">n_steps_per_sample</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="c1"># number of time steps that the processes will run</span>
-<span class="n">num_steps</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_steps_per_sample</span>
+# The time difference between two consecutive inputs
+n_steps_per_sample = 12
+# number of time steps that the processes will run
+num_steps = (n_samples + 1) * n_steps_per_sample
 
-<span class="c1"># PrototypeLIF neural dynamics parameters</span>
-<span class="n">du</span> <span class="o">=</span> <span class="mi">4095</span>
-<span class="n">dv</span> <span class="o">=</span> <span class="mi">4095</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mi">63500</span>
+# PrototypeLIF neural dynamics parameters
+du = 4095
+dv = 4095
+vth = 63500
 
-<span class="c1"># Learning rule parameters</span>
-<span class="n">x1_tau</span> <span class="o">=</span> <span class="mi">65535</span>  <span class="c1"># Pre-trace decay constant. The high values means no decay</span>
-<span class="n">t_epoch</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Epoch length</span>
+# Learning rule parameters
+x1_tau = 65535  # Pre-trace decay constant. The high values means no decay
+t_epoch = 1  # Epoch length
 
-<span class="c1"># Config for writing graded payload of the input spike to x1-trace</span>
-<span class="n">graded_spike_cfg</span> <span class="o">=</span> <span class="n">GradedSpikeCfg</span><span class="o">.</span><span class="n">OVERWRITE</span>
+# Config for writing graded payload of the input spike to x1-trace
+graded_spike_cfg = GradedSpikeCfg.OVERWRITE
 </pre></div>
 </div>
 </div>
@@ -1056,11 +1056,11 @@ with an instance from this unknown class, the Readout module automatically chang
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># No pattern is stored yet. None of the prototypes are allocated</span>
-<span class="n">weights_proto</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># No pattern is stored yet. None of the prototypes are allocated
+weights_proto = np.array([[0, 0], [0, 0], [0, 0]])
 
-<span class="c1"># Weights also should be in the fixed point representation if starting with some non-zero weights.</span>
-<span class="n">weights_proto</span> <span class="o">=</span> <span class="n">weights_proto</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">b_fraction</span>
+# Weights also should be in the fixed point representation if starting with some non-zero weights.
+weights_proto = weights_proto * 2 ** b_fraction
 </pre></div>
 </div>
 </div>
@@ -1069,9 +1069,9 @@ with an instance from this unknown class, the Readout module automatically chang
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Novelty detection input connection weights  (all-to-one connections)</span>
-<span class="n">weights_in_aval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
-<span class="n">weights_out_aval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_protos</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Novelty detection input connection weights  (all-to-one connections)
+weights_in_aval = np.ones(shape=(1, n_features))
+weights_out_aval = np.ones(shape=(1, n_protos))
 </pre></div>
 </div>
 </div>
@@ -1080,16 +1080,16 @@ with an instance from this unknown class, the Readout module automatically chang
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The graded spike array for input</span>
-<span class="n">s_pattern_inp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_features</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The graded spike array for input
+s_pattern_inp = np.zeros((n_features, num_steps))
 
-<span class="c1"># Convert normalized input patterns to 8-bit fixed-point patterns</span>
-<span class="n">inp_pattern_fixed</span> <span class="o">=</span> <span class="p">(</span><span class="n">inp_pattern</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">b_fraction</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;inp_fixed: &quot;</span><span class="p">,</span> <span class="n">inp_pattern_fixed</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s_pat_inp: &quot;</span><span class="p">,</span> <span class="n">s_pattern_inp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="n">n_steps_per_sample</span><span class="p">:</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+# Convert normalized input patterns to 8-bit fixed-point patterns
+inp_pattern_fixed = (inp_pattern * 2 ** b_fraction).astype(np.int32)
+print(&quot;inp_fixed: &quot;, inp_pattern_fixed)
+print(&quot;s_pat_inp: &quot;, s_pattern_inp[:, 1:-n_steps_per_sample:n_steps_per_sample])
 
-<span class="c1"># Create input spike pattern that inject these inputs every n_steps_per_sample time step</span>
-<span class="n">s_pattern_inp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="n">n_steps_per_sample</span><span class="p">:</span><span class="n">n_steps_per_sample</span><span class="p">]</span> <span class="o">=</span> <span class="n">inp_pattern_fixed</span><span class="o">.</span><span class="n">T</span>
+# Create input spike pattern that inject these inputs every n_steps_per_sample time step
+s_pattern_inp[:, 1:-n_steps_per_sample:n_steps_per_sample] = inp_pattern_fixed.T
 </pre></div>
 </div>
 </div>
@@ -1122,12 +1122,12 @@ s_pat_inp:  [[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The graded spike array for the user-provided label</span>
-<span class="n">s_user_label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The graded spike array for the user-provided label
+s_user_label = np.zeros((1, num_steps))
 
-<span class="n">s_user_label</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">s_user_label</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">s_user_label</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">113</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+s_user_label[0, 10] = 1
+s_user_label[0, 33] = 2
+s_user_label[0, 113] = 2
 </pre></div>
 </div>
 </div>
@@ -1146,12 +1146,12 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a custom LearningRule. Define dw as a string</span>
-<span class="n">dw</span> <span class="o">=</span> <span class="s2">&quot;2^-3*y1*x1*y0&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create a custom LearningRule. Define dw as a string
+dw = &quot;2^-3*y1*x1*y0&quot;
 
-<span class="n">learning_rule</span> <span class="o">=</span> <span class="n">Loihi3FLearningRule</span><span class="p">(</span><span class="n">dw</span><span class="o">=</span><span class="n">dw</span><span class="p">,</span>
-                                    <span class="n">x1_tau</span><span class="o">=</span><span class="n">x1_tau</span><span class="p">,</span>
-                                    <span class="n">t_epoch</span><span class="o">=</span><span class="n">t_epoch</span><span class="p">)</span>
+learning_rule = Loihi3FLearningRule(dw=dw,
+                                    x1_tau=x1_tau,
+                                    t_epoch=t_epoch)
 </pre></div>
 </div>
 </div>
@@ -1160,51 +1160,51 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Processes</span>
-<span class="n">data_input</span> <span class="o">=</span> <span class="n">RingBuffer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">s_pattern_inp</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Processes
+data_input = RingBuffer(data=s_pattern_inp)
 
-<span class="n">user_label_input</span> <span class="o">=</span> <span class="n">RingBuffer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">s_user_label</span><span class="p">)</span>
+user_label_input = RingBuffer(data=s_user_label)
 
-<span class="n">nvl_det</span> <span class="o">=</span> <span class="n">NoveltyDetector</span><span class="p">(</span><span class="n">t_wait</span><span class="o">=</span><span class="n">t_wait</span><span class="p">)</span>
+nvl_det = NoveltyDetector(t_wait=t_wait)
 
-<span class="n">allocator</span> <span class="o">=</span> <span class="n">Allocator</span><span class="p">(</span><span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">)</span>
+allocator = Allocator(n_protos=n_protos)
 
-<span class="n">readout_layer</span> <span class="o">=</span> <span class="n">Readout</span><span class="p">(</span><span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span>
-                        <span class="n">proto_labels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_protos</span><span class="p">)))</span>
+readout_layer = Readout(n_protos=n_protos,
+                        proto_labels=np.zeros((1, n_protos)))
 
-<span class="c1"># Prototype Lif Process</span>
-<span class="n">prototypes</span> <span class="o">=</span> <span class="n">PrototypeLIF</span><span class="p">(</span><span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-                          <span class="n">dv</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span>
-                          <span class="n">bias_mant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                          <span class="n">bias_exp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                          <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-                          <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_protos</span><span class="p">,),</span>
-                          <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lif_prototypes&#39;</span><span class="p">,</span>
-                          <span class="n">sign_mode</span><span class="o">=</span><span class="n">SignMode</span><span class="o">.</span><span class="n">EXCITATORY</span><span class="p">,</span>
-                          <span class="n">learning_rule</span><span class="o">=</span><span class="n">learning_rule</span><span class="p">)</span>
+# Prototype Lif Process
+prototypes = PrototypeLIF(du=du,
+                          dv=dv,
+                          bias_mant=0,
+                          bias_exp=0,
+                          vth=vth,
+                          shape=(n_protos,),
+                          name=&#39;lif_prototypes&#39;,
+                          sign_mode=SignMode.EXCITATORY,
+                          learning_rule=learning_rule)
 
-<span class="n">dense_proto</span> <span class="o">=</span> <span class="n">LearningDense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights_proto</span><span class="p">,</span>
-                            <span class="n">learning_rule</span><span class="o">=</span><span class="n">learning_rule</span><span class="p">,</span>
-                            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;proto_weights&quot;</span><span class="p">,</span>
-                            <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                            <span class="n">graded_spike_cfg</span><span class="o">=</span><span class="n">graded_spike_cfg</span><span class="p">)</span>
+dense_proto = LearningDense(weights=weights_proto,
+                            learning_rule=learning_rule,
+                            name=&quot;proto_weights&quot;,
+                            num_message_bits=8,
+                            graded_spike_cfg=graded_spike_cfg)
 
-<span class="c1"># Incoming (Dense) connection processes for NoveltyDetector</span>
-<span class="n">dense_in_aval</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights_in_aval</span><span class="p">)</span>
-<span class="n">dense_out_aval</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights_out_aval</span><span class="p">)</span>
+# Incoming (Dense) connection processes for NoveltyDetector
+dense_in_aval = Dense(weights=weights_in_aval)
+dense_out_aval = Dense(weights=weights_out_aval)
 
-<span class="c1"># NoveltyDetector --&gt; Allocator connection</span>
-<span class="n">dense_nvl_alloc</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+# NoveltyDetector --&gt; Allocator connection
+dense_nvl_alloc = Dense(weights=np.ones(shape=(1, 1)))
 
-<span class="c1"># Allocator --&gt; 3rd-factor channel of the PrototypeLIF</span>
-<span class="n">dense_alloc_3rd_factor</span>  <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_protos</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
-                                 <span class="n">num_message_bits</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+# Allocator --&gt; 3rd-factor channel of the PrototypeLIF
+dense_alloc_3rd_factor  = Dense(weights=np.ones(shape=(n_protos, 1)),
+                                 num_message_bits=8)
 
-<span class="c1"># Monitor processes</span>
-<span class="n">monitor_nvl</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">monitor_protos</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">monitor_weights</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
-<span class="n">monitor_preds</span> <span class="o">=</span> <span class="n">Monitor</span><span class="p">()</span>
+# Monitor processes
+monitor_nvl = Monitor()
+monitor_protos = Monitor()
+monitor_weights = Monitor()
+monitor_preds = Monitor()
 </pre></div>
 </div>
 </div>
@@ -1215,36 +1215,36 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connections</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Connections
 
-<span class="c1"># Data input -&gt; PrototypeLIF connection</span>
-<span class="n">data_input</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense_proto</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">prototypes</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+# Data input -&gt; PrototypeLIF connection
+data_input.s_out.connect(dense_proto.s_in)
+dense_proto.a_out.connect(prototypes.a_in)
 
-<span class="c1"># Data input -&gt; NoveltyDetector connection for input_available signal</span>
-<span class="n">data_input</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_in_aval</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense_in_aval</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nvl_det</span><span class="o">.</span><span class="n">input_aval_in</span><span class="p">)</span>
+# Data input -&gt; NoveltyDetector connection for input_available signal
+data_input.s_out.connect(dense_in_aval.s_in)
+dense_in_aval.a_out.connect(nvl_det.input_aval_in)
 
-<span class="c1"># PrototypeLIF -&gt; NoveltyDetector connection for output_available signal</span>
-<span class="n">prototypes</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_out_aval</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense_out_aval</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nvl_det</span><span class="o">.</span><span class="n">output_aval_in</span><span class="p">)</span>
+# PrototypeLIF -&gt; NoveltyDetector connection for output_available signal
+prototypes.s_out.connect(dense_out_aval.s_in)
+dense_out_aval.a_out.connect(nvl_det.output_aval_in)
 
-<span class="c1"># Novelty detector -&gt; Dense -&gt; Allocator connection</span>
-<span class="n">nvl_det</span><span class="o">.</span><span class="n">novelty_detected_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_nvl_alloc</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense_nvl_alloc</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">allocator</span><span class="o">.</span><span class="n">trigger_in</span><span class="p">)</span>
+# Novelty detector -&gt; Dense -&gt; Allocator connection
+nvl_det.novelty_detected_out.connect(dense_nvl_alloc.s_in)
+dense_nvl_alloc.a_out.connect(allocator.trigger_in)
 
-<span class="c1"># Allocator  -&gt; Dense -&gt; PrototypeLIF connection</span>
-<span class="n">allocator</span><span class="o">.</span><span class="n">allocate_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_alloc_3rd_factor</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense_alloc_3rd_factor</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">prototypes</span><span class="o">.</span><span class="n">a_third_factor_in</span><span class="p">)</span>
+# Allocator  -&gt; Dense -&gt; PrototypeLIF connection
+allocator.allocate_out.connect(dense_alloc_3rd_factor.s_in)
+dense_alloc_3rd_factor.a_out.connect(prototypes.a_third_factor_in)
 
-<span class="n">prototypes</span><span class="o">.</span><span class="n">s_out_bap</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">s_in_bap</span><span class="p">)</span>
+prototypes.s_out_bap.connect(dense_proto.s_in_bap)
 
-<span class="c1"># Sending y1 spike</span>
-<span class="n">prototypes</span><span class="o">.</span><span class="n">s_out_y1</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">s_in_y1</span><span class="p">)</span>
+# Sending y1 spike
+prototypes.s_out_y1.connect(dense_proto.s_in_y1)
 
-<span class="c1"># Prototype Neurons&#39; outputs connect to the inference input of the Readout process</span>
-<span class="n">prototypes</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">readout_layer</span><span class="o">.</span><span class="n">inference_in</span><span class="p">)</span>
-<span class="n">user_label_input</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">readout_layer</span><span class="o">.</span><span class="n">label_in</span><span class="p">)</span>
+# Prototype Neurons&#39; outputs connect to the inference input of the Readout process
+prototypes.s_out.connect(readout_layer.inference_in)
+user_label_input.s_out.connect(readout_layer.label_in)
 </pre></div>
 </div>
 </div>
@@ -1252,11 +1252,11 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Probe novelty detector and prototypes</span>
-<span class="n">monitor_nvl</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">nvl_det</span><span class="o">.</span><span class="n">novelty_detected_out</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">monitor_protos</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">prototypes</span><span class="o">.</span><span class="n">s_out</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">monitor_preds</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">readout_layer</span><span class="o">.</span><span class="n">user_output</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">monitor_weights</span><span class="o">.</span><span class="n">probe</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Probe novelty detector and prototypes
+monitor_nvl.probe(target=nvl_det.novelty_detected_out, num_steps=num_steps)
+monitor_protos.probe(target=prototypes.s_out, num_steps=num_steps)
+monitor_preds.probe(target=readout_layer.user_output, num_steps=num_steps)
+monitor_weights.probe(target=dense_proto.weights, num_steps=num_steps)
 </pre></div>
 </div>
 </div>
@@ -1265,33 +1265,33 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run</span>
-<span class="n">exception_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">LearningDense</span><span class="p">:</span> <span class="n">PyLearningDenseModelBitApproximate</span>
-<span class="p">}</span>
-<span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">run_cfg</span> <span class="o">=</span> <span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="s2">&quot;fixed_pt&quot;</span><span class="p">,</span>
-                       <span class="n">exception_proc_model_map</span><span class="o">=</span><span class="n">exception_map</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Run
+exception_map = {
+        LearningDense: PyLearningDenseModelBitApproximate
+}
+run_cond = RunSteps(num_steps=num_steps)
+run_cfg = Loihi2SimCfg(select_tag=&quot;fixed_pt&quot;,
+                       exception_proc_model_map=exception_map)
 
-<span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-<span class="c1"># Get results</span>
-<span class="n">novelty_spikes</span> <span class="o">=</span> <span class="n">monitor_nvl</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-<span class="n">novelty_spikes</span> <span class="o">=</span> <span class="n">novelty_spikes</span><span class="p">[</span><span class="n">nvl_det</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
-    <span class="n">nvl_det</span><span class="o">.</span><span class="n">novelty_detected_out</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+# Get results
+novelty_spikes = monitor_nvl.get_data()
+novelty_spikes = novelty_spikes[nvl_det.name][
+    nvl_det.novelty_detected_out.name]
 
-<span class="n">proto_spikes</span> <span class="o">=</span> <span class="n">monitor_protos</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-<span class="n">proto_spikes</span> <span class="o">=</span> <span class="n">proto_spikes</span><span class="p">[</span><span class="n">prototypes</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">prototypes</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+proto_spikes = monitor_protos.get_data()
+proto_spikes = proto_spikes[prototypes.name][prototypes.s_out.name]
 
-<span class="n">preds</span> <span class="o">=</span> <span class="n">monitor_preds</span><span class="o">.</span><span class="n">get_data</span><span class="p">()[</span><span class="n">readout_layer</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
-    <span class="n">readout_layer</span><span class="o">.</span><span class="n">user_output</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+preds = monitor_preds.get_data()[readout_layer.name][
+    readout_layer.user_output.name]
 
-<span class="n">result_weights</span> <span class="o">=</span> <span class="n">monitor_weights</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-<span class="n">result_weights</span> <span class="o">=</span> <span class="n">result_weights</span><span class="p">[</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
-    <span class="n">dense_proto</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+result_weights = monitor_weights.get_data()
+result_weights = result_weights[dense_proto.name][
+    dense_proto.weights.name]
 
-<span class="c1"># Stop the run</span>
-<span class="n">prototypes</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# Stop the run
+prototypes.stop()
 <br/></pre></div>
 </div>
 </div>
@@ -1299,7 +1299,7 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span>  <span class="n">plot_multiple_time_series</span><span class="p">,</span> <span class="n">plot_spikes_time_series</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import  plot_multiple_time_series, plot_spikes_time_series
 </pre></div>
 </div>
 </div>
@@ -1310,24 +1310,24 @@ together a 6-bit right shift and a 3-bit left shift, we get a 3-bit right shift.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">plot_spikes_time_series</span><span class="p">(</span>
-        <span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="p">[:,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s_pattern_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]],</span>
-        <span class="n">time_series</span><span class="o">=</span><span class="n">preds</span><span class="p">,</span>
-        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
-        <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Prototype Neuron 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 1&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Prototype Neuron 0&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Novelty Spikes&#39;</span><span class="p">,</span> <span class="s1">&#39;Input Injection&#39;</span><span class="p">],</span>
-        <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">,</span> <span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;#f14a16&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
-        <span class="n">y_label_time_series</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Spike Raster Plot&#39;</span><span class="p">,</span>
-        <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>time = np.arange(num_steps)
+plot_spikes_time_series(
+        spikes=[np.where(proto_spikes[:, 2])[0],
+                np.where(proto_spikes[:, 1])[0],
+                np.where(proto_spikes[:, 0])[0],
+                np.where(novelty_spikes[:, :])[0],
+                np.where(s_pattern_inp[0, :])[0]],
+        time_series=preds,
+        time=time,
+        figsize=(20, 8),
+        legend=[&#39;Prototype Neuron 2&#39;, &#39;Prototype Neuron 1&#39;,
+                &#39;Prototype Neuron 0&#39;,
+                &#39;Novelty Spikes&#39;, &#39;Input Injection&#39;],
+        colors=[&#39;blue&#39;, &#39;#ff9912&#39;, &#39;#458b00&#39;, &#39;purple&#39;, &#39;#f14a16&#39;, &#39;blue&#39;],
+        y_label_time_series=&#39;Predictions&#39;,
+        title=&#39;Spike Raster Plot&#39;,
+        num_steps=num_steps
+)
 </pre></div>
 </div>
 </div>
@@ -1422,7 +1422,7 @@ the same cluster (the second green spike), and Readout outputs the label <code c
 <p>The 3rd input pattern is from cluster 1, and as expected, the novelty detector spikes again, allocating the <code class="docutils literal notranslate"><span class="pre">Prototype</span> <span class="pre">Neuron</span> <span class="pre">1</span></code>this time. However, the label is provided together this time, so the labeling of the newly allocated neuron happens immediately (with the label <code class="docutils literal notranslate"><span class="pre">2</span></code>). The next pattern is also from cluster 1, so the newly allocated neuron spikes and the correct label is predicted.</p>
 <p>Finally, the fifth input pattern is from an unsee cluster (cluster 2). Hence, a novelty spike follows it after some time and allocates the <code class="docutils literal notranslate"><span class="pre">Prototype</span> <span class="pre">Neuron</span> <span class="pre">2</span></code> and has been assigned the pseudo-label <code class="docutils literal notranslate"><span class="pre">-3</span></code>. All the next input patterns from this cluster are recognized as <code class="docutils literal notranslate"><span class="pre">-3</span></code>. After one of those input patterns, the actual label (<code class="docutils literal notranslate"><span class="pre">3</span></code>) is provided so that the label of the <code class="docutils literal notranslate"><span class="pre">Prototype</span> <span class="pre">Neuron</span> <span class="pre">2</span></code> is updated to <code class="docutils literal notranslate"><span class="pre">3</span></code>. After that, the patterns from this cluster are predicted with the label <code class="docutils literal notranslate"><span class="pre">3</span></code>.
 One can validate the correct prototype neuron spikes for each input by comparing it to the table above of the accurate cluster ids and labels.</p>
-<center><p><img alt="3045b19b7e3a4636ba0117a67333510d" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/readout_labeling_analysis.png" /></p>
+<center><p><img alt="d718b65ca3db4c8298c8eb92d500b8d3" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/readout_labeling_analysis.png" /></p>
 <center><center><figcaption align="center"><p>Figure 7. Readout and labeling analysis.</p>
 </figcaption><center></section>
 <section id="Visualization-of-Learning">
@@ -1431,18 +1431,18 @@ One can validate the correct prototype neuron spikes for each input by comparing
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting weight dynamics</span>
-<span class="n">plot_multiple_time_series</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-                          <span class="n">time_series_list</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">result_weights</span><span class="p">,</span>
-                                                      <span class="p">(</span><span class="n">num_steps</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span>
-                          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Weight value&quot;</span><span class="p">,</span>
-                          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Weight Dynamics (dw) for Plastic Connections of the Prototype Neurons&quot;</span><span class="p">,</span>
-                          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
-                          <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="s1">&#39;tab:olive&#39;</span><span class="p">,</span> <span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;tab:cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;tab:purple&#39;</span><span class="p">,</span> <span class="s1">&#39;tab:pink&#39;</span><span class="p">],</span>
-                          <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;$W_</span><span class="si">{00}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$W_</span><span class="si">{01}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$W_</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;$W_</span><span class="si">{11}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$W_</span><span class="si">{20}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$W_</span><span class="si">{21}</span><span class="s1">$&#39;</span><span class="p">]</span>
-                          <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plotting weight dynamics
+plot_multiple_time_series(time=time,
+                          time_series_list=np.reshape(result_weights,
+                                                      (num_steps, -1)),
+                          ylabel=&quot;Weight value&quot;,
+                          title=&quot;Weight Dynamics (dw) for Plastic Connections of the Prototype Neurons&quot;,
+                          figsize=(20, 7),
+                          color=[&#39;tab:orange&#39;, &#39;tab:olive&#39;, &#39;tab:blue&#39;,
+                                 &#39;tab:cyan&#39;, &#39;tab:purple&#39;, &#39;tab:pink&#39;],
+                          legend=[&#39;$W_{00}$&#39;, &#39;$W_{01}$&#39;, &#39;$W_{10}$&#39;,
+                                  &#39;$W_{11}$&#39;, &#39;$W_{20}$&#39;, &#39;$W_{21}$&#39;]
+                          )
 </pre></div>
 </div>
 </div>
@@ -1459,68 +1459,68 @@ One can validate the correct prototype neuron spikes for each input by comparing
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 1&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, axes = plt.subplots(figsize=(12, 5), nrows=1, ncols=2)
+plt.sca(axes[0])
+plt.scatter(inp_pattern[y == 1, 0], inp_pattern[y == 1, 1], label=&quot;Class 0&quot;)
+plt.scatter(inp_pattern[y == 2, 0], inp_pattern[y == 2, 1], label=&quot;Class 1&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Original Input Data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+plt.xlim([0, 2])
+plt.ylim([0, 2])
+plt.xlabel(&quot;Feature Dimension 0&quot;)
+plt.ylabel(&quot;Feature Dimension 1&quot;)
+plt.title(&quot;Original Input Data&quot;)
+plt.legend()
 
-<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Normalized Input Data (floating)&quot;</span><span class="p">)</span>
+theta = np.linspace(0, np.pi * 0.5)
+plt.plot(np.cos(theta), np.sin(theta), linewidth=1, c=&#39;k&#39;)
+plt.title(&quot;Normalized Input Data (floating)&quot;)
 
-<span class="n">w_0</span> <span class="o">=</span> <span class="n">result_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">w_1</span> <span class="o">=</span> <span class="n">result_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">w_2</span> <span class="o">=</span> <span class="n">result_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+w_0 = result_weights[-1, 0, :]
+w_1 = result_weights[-1, 1, :]
+w_2 = result_weights[-1, 2, :]
 
-<span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern_fixed</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern_fixed</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inp_pattern_fixed</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">inp_pattern_fixed</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Class 1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w_0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w_0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;P0&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-          <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w_1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w_1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;P1&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:brown&#39;</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-          <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">w_2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">w_2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;P2&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:purple&#39;</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-          <span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+plt.sca(axes[1])
+plt.scatter(inp_pattern_fixed[y == 1, 0], inp_pattern_fixed[y == 1, 1],
+            label=&quot;Class 0&quot;)
+plt.scatter(inp_pattern_fixed[y == 2, 0], inp_pattern_fixed[y == 2, 1],
+            label=&quot;Class 1&quot;)
+plt.arrow(0, 0, w_0[0], w_0[1], label=&quot;P0&quot;, color=&#39;tab:green&#39;, head_width=10,
+          length_includes_head=True)
+plt.arrow(0, 0, w_1[0], w_1[1], label=&quot;P1&quot;, color=&#39;tab:brown&#39;, head_width=10,
+          length_includes_head=True)
+plt.arrow(0, 0, w_2[0], w_2[1], label=&quot;P2&quot;, color=&#39;tab:purple&#39;, head_width=10,
+          length_includes_head=True)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">512</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 0&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Feature Dimension 1&quot;</span><span class="p">)</span>
+plt.xlim([0, 512])
+plt.ylim([0, 512])
+plt.xlabel(&quot;Feature Dimension 0&quot;)
+plt.ylabel(&quot;Feature Dimension 1&quot;)
 
-<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
-<span class="n">xx</span> <span class="o">=</span> <span class="mi">256</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">yy</span> <span class="o">=</span> <span class="mi">256</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">examples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+theta = np.linspace(0, np.pi * 0.5)[:, None]
+xx = 256 * np.cos(theta)
+yy = 256 * np.sin(theta)
+examples = np.concatenate((xx, yy), axis=1)
+plt.plot(xx, yy, linewidth=1, c=&#39;k&#39;)
 
-<span class="n">sims_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">w_0</span><span class="p">)</span>
-<span class="n">sims_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">w_1</span><span class="p">)</span>
-<span class="n">sims_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">w_2</span><span class="p">)</span>
+sims_0 = np.dot(examples, w_0)
+sims_1 = np.dot(examples, w_1)
+sims_2 = np.dot(examples, w_2)
 
-<span class="n">margin_0</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="n">sims_0</span> <span class="o">&gt;</span> <span class="n">vth</span><span class="p">]</span>
-<span class="n">margin_1</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="n">sims_1</span> <span class="o">&gt;</span> <span class="n">vth</span><span class="p">]</span>
-<span class="n">margin_2</span> <span class="o">=</span> <span class="n">examples</span><span class="p">[</span><span class="n">sims_2</span> <span class="o">&gt;</span> <span class="n">vth</span><span class="p">]</span>
+margin_0 = examples[sims_0 &gt; vth]
+margin_1 = examples[sims_1 &gt; vth]
+margin_2 = examples[sims_2 &gt; vth]
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">margin_0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">margin_0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;margin P0&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">margin_1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">margin_1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;tab:brown&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;margin P1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">margin_2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">margin_2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;tab:purple&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;margin P1&#39;</span><span class="p">)</span>
+plt.scatter(margin_0[:, 0], margin_0[:, 1], c=&#39;tab:green&#39;, alpha=0.3,
+            label=&#39;margin P0&#39;)
+plt.scatter(margin_1[:, 0], margin_1[:, 1], c=&#39;tab:brown&#39;, alpha=0.3,
+            label=&#39;margin P1&#39;)
+plt.scatter(margin_2[:, 0], margin_2[:, 1], c=&#39;tab:purple&#39;, alpha=0.3,
+            label=&#39;margin P1&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Normalized Input Data (8-bit fixed) and learned prototypes&quot;</span><span class="p">)</span>
+plt.title(&quot;Normalized Input Data (8-bit fixed) and learned prototypes&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>

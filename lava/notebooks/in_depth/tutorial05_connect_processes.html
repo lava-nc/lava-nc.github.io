@@ -837,13 +837,13 @@ div.rendered_html tbody tr:hover {
 <section id="Create-a-connection">
 <h2>Create a connection<a class="headerlink" href="#Create-a-connection" title="Permalink to this heading"></a></h2>
 <p>The objective is to connect <em>Process</em> <em>P1</em> with <em>Process</em> <em>P2</em>. <em>P1</em> has an output <em>Port</em> <em>OutPort</em> called <em>out</em> and <em>P2</em> has an input port <em>InPort</em> called <em>inp</em>. Data from <em>P1</em> provided to the <em>Port</em> <em>out</em> should be transfered to <em>P2</em> and received from <em>Port</em> <em>inp</em>.</p>
-<p><img alt="08a291a4cbe74985a893a82203401a94" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig01.png" style="width: 400px;" /></p>
+<p><img alt="b3fdb58a438f4d309e2401c90824f4a9" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig01.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.process.process import AbstractProcess
+from lava.magma.core.process.ports.ports import InPort, OutPort
 </pre></div>
 </div>
 </div>
@@ -852,20 +852,20 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minimal process with an OutPort</span>
-<span class="k">class</span> <span class="nc">P1</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Minimal process with an OutPort
+class P1(AbstractProcess):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        shape = kwargs.get(&#39;shape&#39;, (2,))
+        self.out = OutPort(shape=shape)
 
 
-<span class="c1"># Minimal process with an InPort</span>
-<span class="k">class</span> <span class="nc">P2</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inp</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+# Minimal process with an InPort
+class P2(AbstractProcess):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        shape = kwargs.get(&#39;shape&#39;, (2,))
+        self.inp = InPort(shape=shape)
 </pre></div>
 </div>
 </div>
@@ -876,13 +876,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span><span class="p">,</span> <span class="n">tag</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from lava.magma.core.model.py.model import PyLoihiProcessModel
+from lava.magma.core.decorator import implements, requires, tag
+from lava.magma.core.resources import CPU
+from lava.magma.core.model.py.type import LavaPyType
+from lava.magma.core.model.py.ports import PyInPort, PyOutPort
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
 </pre></div>
 </div>
 </div>
@@ -890,30 +890,30 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A minimal PyProcModel implementing P1</span>
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">P1</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="nd">@tag</span><span class="p">(</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyProcModelA</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># A minimal PyProcModel implementing P1
+@implements(proc=P1, protocol=LoihiProtocol)
+@requires(CPU)
+@tag(&#39;floating_pt&#39;)
+class PyProcModelA(PyLoihiProcessModel):
+    out: PyOutPort = LavaPyType(PyOutPort.VEC_DENSE, int)
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sent output data of P1: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+    def run_spk(self):
+        data = np.array([1, 2])
+        self.out.send(data)
+        print(&quot;Sent output data of P1: {}&quot;.format(data))
 
 
 
-<span class="c1"># A minimal PyProcModel implementing P2</span>
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">P2</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="nd">@tag</span><span class="p">(</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyProcModelB</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">inp</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+# A minimal PyProcModel implementing P2
+@implements(proc=P2, protocol=LoihiProtocol)
+@requires(CPU)
+@tag(&#39;floating_pt&#39;)
+class PyProcModelB(PyLoihiProcessModel):
+    inp: PyInPort = LavaPyType(PyInPort.VEC_DENSE, int)
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">in_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Received input data for P2: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">in_data</span><span class="p">))</span>
+    def run_spk(self):
+        in_data = self.inp.recv()
+        print(&quot;Received input data for P2: {}&quot;.format(in_data))
 </pre></div>
 </div>
 </div>
@@ -922,17 +922,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender = P1()
+recv = P2()
 
-<span class="c1"># Connecting output port to an input port</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
+# Connecting output port to an input port
+sender.out.connect(recv.inp)
 
-<span class="n">sender</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+sender = P1()
+recv = P2()
 
-<span class="c1"># ... or connecting an input port from an output port</span>
-<span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="o">.</span><span class="n">connect_from</span><span class="p">(</span><span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="p">)</span>
+# ... or connecting an input port from an output port
+recv.inp.connect_from(sender.out)
 </pre></div>
 </div>
 </div>
@@ -941,8 +941,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_configs import Loihi1SimCfg
+from lava.magma.core.run_conditions import RunSteps
 </pre></div>
 </div>
 </div>
@@ -950,8 +950,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Loihi1SimCfg</span><span class="p">())</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender.run(RunSteps(num_steps=1), Loihi1SimCfg())
+sender.stop()
 </pre></div>
 </div>
 </div>
@@ -969,7 +969,7 @@ Received input data for P2: [1 2]
 <section id="Possible-connections">
 <h2>Possible connections<a class="headerlink" href="#Possible-connections" title="Permalink to this heading"></a></h2>
 <p>This first example was very simple. In principle, <em>Processes</em> can have multiple input and output <em>Ports</em> which can be freely connected with each other. Also, <em>Processes</em> which execute on different compute resources can be connected in the same way.</p>
-<p><img alt="df433dde8eee41518c87a21ff5c03482" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig02.png" style="width: 400px;" /></p>
+<p><img alt="a5414b3b9c50475e9da53fe12e2dd239" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig02.png" style="width: 400px;" /></p>
 <section id="There-are-some-things-to-consider-though:">
 <h3>There are some things to consider though:<a class="headerlink" href="#There-are-some-things-to-consider-though:" title="Permalink to this heading"></a></h3>
 <ul class="simple">
@@ -982,29 +982,29 @@ Received input data for P2: [1 2]
 </section>
 <section id="Connect-multiple-InPorts-from-a-single-OutPort">
 <h2>Connect multiple <em>InPorts</em> from a single <em>OutPort</em><a class="headerlink" href="#Connect-multiple-InPorts-from-a-single-OutPort" title="Permalink to this heading"></a></h2>
-<p><img alt="8d3d44dd894844c89e82e3350a7e8fd1" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig04.png" style="width: 400px;" /></p>
+<p><img alt="a90822c81c7c4ce4acbd5838d00848d4" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig04.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv1</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
-<span class="n">recv2</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
-<span class="n">recv3</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender = P1()
+recv1 = P2()
+recv2 = P2()
+recv3 = P2()
 
-<span class="c1"># An OutPort can connect to multiple InPorts</span>
-<span class="c1"># Either at once...</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">([</span><span class="n">recv1</span><span class="o">.</span><span class="n">inp</span><span class="p">,</span> <span class="n">recv2</span><span class="o">.</span><span class="n">inp</span><span class="p">,</span> <span class="n">recv3</span><span class="o">.</span><span class="n">inp</span><span class="p">])</span>
+# An OutPort can connect to multiple InPorts
+# Either at once...
+sender.out.connect([recv1.inp, recv2.inp, recv3.inp])
 
-<span class="n">sender</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv1</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
-<span class="n">recv2</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
-<span class="n">recv3</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+sender = P1()
+recv1 = P2()
+recv2 = P2()
+recv3 = P2()
 
-<span class="c1"># ... or consecutively</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv1</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv2</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv3</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
+# ... or consecutively
+sender.out.connect(recv1.inp)
+sender.out.connect(recv2.inp)
+sender.out.connect(recv3.inp)
 </pre></div>
 </div>
 </div>
@@ -1012,8 +1012,8 @@ Received input data for P2: [1 2]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Loihi1SimCfg</span><span class="p">())</span>
-<span class="n">sender</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender.run(RunSteps(num_steps=1), Loihi1SimCfg())
+sender.stop()
 </pre></div>
 </div>
 </div>
@@ -1033,29 +1033,29 @@ Received input data for P2: [1 2]
 <section id="Connecting-multiple-InPorts-to-a-single-OutPort">
 <h2>Connecting multiple <em>InPorts</em> to a single <em>OutPort</em><a class="headerlink" href="#Connecting-multiple-InPorts-to-a-single-OutPort" title="Permalink to this heading"></a></h2>
 <p>If multiple input <em>Ports</em> connect to the same output <em>Port</em> the default behavior is that the data from each input <em>Port</em> is added up at the output <em>Port</em>.</p>
-<p><img alt="02a1e21449fd4e049b94eebbada72110" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig05.png" style="width: 400px;" /></p>
+<p><img alt="09a08957741e4ec9b55d413576f134c4" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial06/fig05.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender1</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">sender2</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">sender3</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender1 = P1()
+sender2 = P1()
+sender3 = P1()
+recv = P2()
 
-<span class="c1"># An InPort can connect to multiple OutPorts</span>
-<span class="c1"># Either at once...</span>
-<span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="o">.</span><span class="n">connect_from</span><span class="p">([</span><span class="n">sender1</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="n">sender2</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="n">sender3</span><span class="o">.</span><span class="n">out</span><span class="p">])</span>
+# An InPort can connect to multiple OutPorts
+# Either at once...
+recv.inp.connect_from([sender1.out, sender2.out, sender3.out])
 
-<span class="n">sender1</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">sender2</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">sender3</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">recv</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+sender1 = P1()
+sender2 = P1()
+sender3 = P1()
+recv = P2()
 
-<span class="c1"># ... or consecutively</span>
-<span class="n">sender1</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
-<span class="n">sender2</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
-<span class="n">sender3</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">recv</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
+# ... or consecutively
+sender1.out.connect(recv.inp)
+sender2.out.connect(recv.inp)
+sender3.out.connect(recv.inp)
 </pre></div>
 </div>
 </div>
@@ -1063,8 +1063,8 @@ Received input data for P2: [1 2]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sender1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">Loihi1SimCfg</span><span class="p">())</span>
-<span class="n">sender1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sender1.run(RunSteps(num_steps=1), Loihi1SimCfg())
+sender1.stop()
 </pre></div>
 </div>
 </div>

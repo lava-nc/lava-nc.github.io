@@ -822,7 +822,7 @@ div.rendered_html tbody tr:hover {
 <h1>Hierarchical <em>Processes</em> and <em>SubProcessModels</em><a class="headerlink" href="#Hierarchical-Processes-and-SubProcessModels" title="Permalink to this heading"></a></h1>
 <p>Previous tutorials have briefly covered that there are two categories of <em>ProcessModels</em>: <em>LeafProcessModels</em> and <em>SubProcessModels</em>. The <a class="reference internal" href="tutorial03_process_models.html"><span class="doc">ProcessModel Tutorial</span></a> explained <em>LeafProcessModels</em> in detail. These implement the behavior of a <em>Process</em> directly, in the language (for example, Python or Loihi Neurocore API) required for a particular compute resource (for example, a CPU or Loihi Neurocores). <em>SubProcessModels</em>, by contrast, allow users to implement
 and compose the behavior of a process <em>using other processes</em>. This enables the creation of <em>Hierarchical Processes</em> and reuse of primitive <em>ProcessModels</em> to realize more complex <em>ProcessModels</em>. <em>SubProcessModels</em> inherit all compute resource requirements from the sub <em>Processes</em> they instantiate.</p>
-<p><img alt="a55c0283343a43a6975437ff7d4cb753" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_subprocessmodels.png" /></p>
+<p><img alt="33bba737ee6d4f87a50972cd1493d8b6" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_subprocessmodels.png" /></p>
 <p>In this tutorial, we will create a Dense Layer Hierarchical <em>Process</em> that has the behavior of Leaky-Integrate-and-Fire (LIF) neurons. The Dense Layer <em>ProcessModel</em> implements this behavior via the primitive LIF and Dense Connection <em>Processes</em> and their respective <em>PyLoihiProcessModels</em>.</p>
 <section id="Recommended-tutorials-before-starting:">
 <h2>Recommended tutorials before starting:<a class="headerlink" href="#Recommended-tutorials-before-starting:" title="Permalink to this heading"></a></h2>
@@ -843,23 +843,23 @@ and compose the behavior of a process <em>using other processes</em>. This enabl
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.process.process import AbstractProcess
+from lava.magma.core.process.variable import Var
+from lava.magma.core.process.ports.ports import InPort, OutPort
 
 
-<span class="k">class</span> <span class="nc">Dense</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dense connections between neurons.</span>
-<span class="sd">    Realizes the following abstract behavior:</span>
-<span class="sd">    a_out = W * s_in</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+class Dense(AbstractProcess):
+    &quot;&quot;&quot;Dense connections between neurons.
+    Realizes the following abstract behavior:
+    a_out = W * s_in
+    &quot;&quot;&quot;
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;weights&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        shape = kwargs.get(&quot;shape&quot;, (1, 1))
+        self.s_in = InPort(shape=(shape[1],))
+        self.a_out = OutPort(shape=(shape[0],))
+        self.weights = Var(shape=shape, init=kwargs.pop(&quot;weights&quot;, 0))
 </pre></div>
 </div>
 </div>
@@ -870,26 +870,26 @@ and compose the behavior of a process <em>using other processes</em>. This enabl
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
+from lava.magma.core.model.py.ports import PyInPort, PyOutPort
+from lava.magma.core.model.py.type import LavaPyType
+from lava.magma.core.resources import CPU
+from lava.magma.core.decorator import implements, requires
+from lava.magma.core.model.py.model import PyLoihiProcessModel
 
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">Dense</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyDenseModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">s_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
-    <span class="n">a_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">weights</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+@implements(proc=Dense, protocol=LoihiProtocol)
+@requires(CPU)
+class PyDenseModel(PyLoihiProcessModel):
+    s_in: PyInPort = LavaPyType(PyInPort.VEC_DENSE, bool)
+    a_out: PyOutPort = LavaPyType(PyOutPort.VEC_DENSE, float)
+    weights: np.ndarray = LavaPyType(np.ndarray, float)
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">s_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-        <span class="n">a_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[:,</span> <span class="n">s_in</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">a_out</span><span class="p">)</span>
+    def run_spk(self):
+        s_in = self.s_in.recv()
+        a_out = self.weights[:, s_in].sum(axis=1)
+        self.a_out.send(a_out)
 </pre></div>
 </div>
 </div>
@@ -900,42 +900,42 @@ and compose the behavior of a process <em>using other processes</em>. This enabl
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.process.process import AbstractProcess
+from lava.magma.core.process.variable import Var
+from lava.magma.core.process.ports.ports import InPort, OutPort
 
 
-<span class="k">class</span> <span class="nc">LIF</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leaky-Integrate-and-Fire (LIF) neural Process.</span>
-<span class="sd">    LIF dynamics abstracts to:</span>
-<span class="sd">    u[t] = u[t-1] * (1-du) + a_in              # neuron current</span>
-<span class="sd">    v[t] = v[t-1] * (1-dv) + u[t] + bias_mant  # neuron voltage</span>
-<span class="sd">    s_out = v[t] &gt; vth                         # spike if threshold is exceeded</span>
-<span class="sd">    v[t] = 0                                   # reset at spike</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    du: Inverse of decay time-constant for current decay.</span>
-<span class="sd">    dv: Inverse of decay time-constant for voltage decay.</span>
-<span class="sd">    bias: Neuron bias.</span>
-<span class="sd">    vth: Neuron threshold voltage, exceeding which, the neuron will spike.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-        <span class="n">du</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;du&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">dv</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">bias_mant</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bias_mant&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">vth</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vth&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+class LIF(AbstractProcess):
+    &quot;&quot;&quot;Leaky-Integrate-and-Fire (LIF) neural Process.
+    LIF dynamics abstracts to:
+    u[t] = u[t-1] * (1-du) + a_in              # neuron current
+    v[t] = v[t-1] * (1-dv) + u[t] + bias_mant  # neuron voltage
+    s_out = v[t] &gt; vth                         # spike if threshold is exceeded
+    v[t] = 0                                   # reset at spike
+    Parameters
+    ----------
+    du: Inverse of decay time-constant for current decay.
+    dv: Inverse of decay time-constant for voltage decay.
+    bias: Neuron bias.
+    vth: Neuron threshold voltage, exceeding which, the neuron will spike.
+    &quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        shape = kwargs.get(&quot;shape&quot;, (1,))
+        du = kwargs.pop(&quot;du&quot;, 0)
+        dv = kwargs.pop(&quot;dv&quot;, 0)
+        bias_mant = kwargs.pop(&quot;bias_mant&quot;, 0)
+        vth = kwargs.pop(&quot;vth&quot;, 10)
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">du</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">du</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dv</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">dv</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bias_mant</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">bias_mant</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">vth</span><span class="p">)</span>
+        self.shape = shape
+        self.a_in = InPort(shape=shape)
+        self.s_out = OutPort(shape=shape)
+        self.u = Var(shape=shape, init=0)
+        self.v = Var(shape=shape, init=0)
+        self.du = Var(shape=(1,), init=du)
+        self.dv = Var(shape=(1,), init=dv)
+        self.bias_mant = Var(shape=shape, init=bias_mant)
+        self.vth = Var(shape=(1,), init=vth)
 </pre></div>
 </div>
 </div>
@@ -946,34 +946,34 @@ and compose the behavior of a process <em>using other processes</em>. This enabl
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
+from lava.magma.core.model.py.ports import PyInPort, PyOutPort
+from lava.magma.core.model.py.type import LavaPyType
+from lava.magma.core.resources import CPU
+from lava.magma.core.decorator import implements, requires
+from lava.magma.core.model.py.model import PyLoihiProcessModel
 
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyLifModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">a_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">s_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">u</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">bias_mant</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">du</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">dv</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-    <span class="n">vth</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+@implements(proc=LIF, protocol=LoihiProtocol)
+@requires(CPU)
+class PyLifModel(PyLoihiProcessModel):
+    a_in: PyInPort = LavaPyType(PyInPort.VEC_DENSE, float)
+    s_out: PyOutPort = LavaPyType(PyOutPort.VEC_DENSE, bool, precision=1)
+    u: np.ndarray = LavaPyType(np.ndarray, float)
+    v: np.ndarray = LavaPyType(np.ndarray, float)
+    bias_mant: np.ndarray = LavaPyType(np.ndarray, float)
+    du: float = LavaPyType(float, float)
+    dv: float = LavaPyType(float, float)
+    vth: float = LavaPyType(float, float)
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">a_in_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">+=</span> <span class="n">a_in_data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dv</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias_mant</span>
-        <span class="n">s_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vth</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">s_out</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Reset voltage to 0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">s_out</span><span class="p">)</span>
+    def run_spk(self):
+        a_in_data = self.a_in.recv()
+        self.u[:] = self.u * (1 - self.du)
+        self.u[:] += a_in_data
+        self.v[:] = self.v * (1 - self.dv) + self.u + self.bias_mant
+        s_out = self.v &gt;= self.vth
+        self.v[s_out] = 0  # Reset voltage to 0
+        self.s_out.send(s_out)
 </pre></div>
 </div>
 </div>
@@ -987,29 +987,29 @@ neurons. The OutPort of our <em>Hierarchical Process</em> is <code class="docuti
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DenseLayer</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Combines Dense and LIF Processes.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">du</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;du&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">dv</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;dv&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">bias_mant</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bias_mant&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">bias_exp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;bias_exp&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">vth</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vth&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="n">weights</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;weights&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class DenseLayer(AbstractProcess):
+    &quot;&quot;&quot;Combines Dense and LIF Processes.
+    &quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        shape = kwargs.get(&quot;shape&quot;, (1, 1))
+        du = kwargs.pop(&quot;du&quot;, 0)
+        dv = kwargs.pop(&quot;dv&quot;, 0)
+        bias_mant = kwargs.pop(&quot;bias_mant&quot;, 0)
+        bias_exp = kwargs.pop(&quot;bias_exp&quot;, 0)
+        vth = kwargs.pop(&quot;vth&quot;, 10)
+        weights = kwargs.pop(&quot;weights&quot;, 0)
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">s_out</span> <span class="o">=</span> <span class="n">OutPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],))</span>
+        self.s_in = InPort(shape=(shape[1],))
+        self.s_out = OutPort(shape=(shape[0],))
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bias_mant</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="n">init</span><span class="o">=</span><span class="n">bias_mant</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">du</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">du</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dv</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">dv</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vth</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="n">vth</span><span class="p">)</span>
+        self.weights = Var(shape=shape, init=weights)
+        self.u = Var(shape=(shape[0],), init=0)
+        self.v = Var(shape=(shape[0],), init=0)
+        self.bias_mant = Var(shape=(shape[0],), init=bias_mant)
+        self.du = Var(shape=(1,), init=du)
+        self.dv = Var(shape=(1,), init=dv)
+        self.vth = Var(shape=(1,), init=vth)
 </pre></div>
 </div>
 </div>
@@ -1027,48 +1027,48 @@ example, we will implement the LIF and Dense <em>Processes</em> with the <em>PyL
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.sub.model</span> <span class="kn">import</span> <span class="n">AbstractSubProcessModel</span>
+from lava.proc.dense.process import Dense
+from lava.magma.core.model.sub.model import AbstractSubProcessModel
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span>
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
+from lava.magma.core.decorator import implements
 
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">DenseLayer</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">SubDenseLayerModel</span><span class="p">(</span><span class="n">AbstractSubProcessModel</span><span class="p">):</span>
+@implements(proc=DenseLayer, protocol=LoihiProtocol)
+class SubDenseLayerModel(AbstractSubProcessModel):
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds sub Process structure of the Process.&quot;&quot;&quot;</span>
+    def __init__(self, proc):
+        &quot;&quot;&quot;Builds sub Process structure of the Process.&quot;&quot;&quot;
 
-        <span class="c1"># Instantiate child processes</span>
-        <span class="c1"># The input shape is a 2D vector (shape of the weight matrix).</span>
-        <span class="n">shape</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">proc_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">weights</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">proc_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;weights&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">bias_mant</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">proc_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bias_mant&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">vth</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">proc_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vth&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        # Instantiate child processes
+        # The input shape is a 2D vector (shape of the weight matrix).
+        shape = proc.proc_params.get(&quot;shape&quot;, (1, 1))
+        weights = proc.proc_params.get(&quot;weights&quot;, (1, 1))
+        bias_mant = proc.proc_params.get(&quot;bias_mant&quot;, (1, 1))
+        vth = proc.proc_params.get(&quot;vth&quot;, (1, 1))
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="n">bias_mant</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">)</span>
+        self.dense = Dense(weights=weights)
+        self.lif = LIF(shape=(shape[0], ), bias_mant=bias_mant, vth=vth)
 
-        <span class="c1"># Connect the parent InPort to the InPort of the Dense child-Process.</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+        # Connect the parent InPort to the InPort of the Dense child-Process.
+        proc.in_ports.s_in.connect(self.dense.in_ports.s_in)
 
-        <span class="c1"># Connect the OutPort of the Dense child-Process to the InPort of the</span>
-        <span class="c1"># LIF child-Process.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+        # Connect the OutPort of the Dense child-Process to the InPort of the
+        # LIF child-Process.
+        self.dense.out_ports.a_out.connect(self.lif.in_ports.a_in)
 
-        <span class="c1"># Connect the OutPort of the LIF child-Process to the OutPort of the</span>
-        <span class="c1"># parent Process.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">proc</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">s_out</span><span class="p">)</span>
+        # Connect the OutPort of the LIF child-Process to the OutPort of the
+        # parent Process.
+        self.lif.out_ports.s_out.connect(proc.out_ports.s_out)
 
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">u</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">bias_mant</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">bias_mant</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">du</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">du</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">dv</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">dv</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">vth</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">vth</span><span class="p">)</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dense</span><span class="o">.</span><span class="n">vars</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+        proc.vars.u.alias(self.lif.vars.u)
+        proc.vars.v.alias(self.lif.vars.v)
+        proc.vars.bias_mant.alias(self.lif.vars.bias_mant)
+        proc.vars.du.alias(self.lif.vars.du)
+        proc.vars.dv.alias(self.lif.vars.dv)
+        proc.vars.vth.alias(self.lif.vars.vth)
+        proc.vars.weights.alias(self.dense.vars.weights)
 </pre></div>
 </div>
 </div>
@@ -1081,37 +1081,37 @@ example, we will implement the LIF and Dense <em>Processes</em> with the <em>PyL
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">RunConfig</span><span class="p">,</span> <span class="n">Loihi1SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.proc.io</span> <span class="kn">import</span> <span class="n">sink</span><span class="p">,</span> <span class="n">source</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_configs import RunConfig, Loihi1SimCfg
+from lava.magma.core.run_conditions import RunSteps
+from lava.proc.io import sink, source
 
-<span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1"># Create the weight matrix.</span>
-<span class="n">weights0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
-<span class="n">weights0</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">weights1</span> <span class="o">=</span> <span class="n">weights0</span>
-<span class="c1"># Instantiate two DenseLayers.</span>
-<span class="n">layer0</span> <span class="o">=</span> <span class="n">DenseLayer</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights0</span><span class="p">,</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">layer1</span> <span class="o">=</span> <span class="n">DenseLayer</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights1</span><span class="p">,</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="c1"># Connect the first DenseLayer to the second DenseLayer.</span>
-<span class="n">layer0</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">layer1</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+dim = (3, 3)
+# Create the weight matrix.
+weights0 = np.zeros(shape=dim)
+weights0[1,1]=1
+weights1 = weights0
+# Instantiate two DenseLayers.
+layer0 = DenseLayer(shape=dim, weights=weights0, bias_mant=4, vth=10)
+layer1 = DenseLayer(shape=dim, weights=weights1, bias_mant=4, vth=10)
+# Connect the first DenseLayer to the second DenseLayer.
+layer0.s_out.connect(layer1.s_in)
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Layer 1 weights: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">layer1</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> ----- </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+print(&#39;Layer 1 weights: \n&#39;, layer1.weights.get(),&#39;\n&#39;)
+print(&#39;\n ----- \n&#39;)
 
-<span class="n">rcfg</span> <span class="o">=</span> <span class="n">Loihi1SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="s1">&#39;floating_pt&#39;</span><span class="p">,</span> <span class="n">select_sub_proc_model</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+rcfg = Loihi1SimCfg(select_tag=&#39;floating_pt&#39;, select_sub_proc_model=True)
 
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
-    <span class="c1"># Run the entire network of Processes.</span>
-    <span class="n">layer1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">rcfg</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t: &#39;</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Layer 0 v: &#39;</span><span class="p">,</span> <span class="n">layer0</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Layer 1 u: &#39;</span><span class="p">,</span> <span class="n">layer1</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Layer 1 v: &#39;</span><span class="p">,</span> <span class="n">layer1</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
-    <span class="c1">#print(&#39;Layer 1 spikes: &#39;, layer1.spikes.get())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> ----- </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+for t in range(9):
+    # Run the entire network of Processes.
+    layer1.run(condition=RunSteps(num_steps=1), run_cfg=rcfg)
+    print(&#39;t: &#39;,t)
+    print(&#39;Layer 0 v: &#39;, layer0.v.get())
+    print(&#39;Layer 1 u: &#39;, layer1.u.get())
+    print(&#39;Layer 1 v: &#39;, layer1.v.get())
+    #print(&#39;Layer 1 spikes: &#39;, layer1.spikes.get())
+    print(&#39;\n ----- \n&#39;)
 
-<span class="n">layer1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+layer1.stop()
 </pre></div>
 </div>
 </div>

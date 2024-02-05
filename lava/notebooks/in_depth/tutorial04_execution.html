@@ -840,9 +840,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_conditions import RunSteps
 
-<span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">blocking</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+run_condition = RunSteps(num_steps=42, blocking=False)
 </pre></div>
 </div>
 </div>
@@ -851,9 +851,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunContinuous</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_conditions import RunContinuous
 
-<span class="n">run_condition</span> <span class="o">=</span> <span class="n">RunContinuous</span><span class="p">()</span>
+run_condition = RunContinuous()
 </pre></div>
 </div>
 </div>
@@ -868,9 +868,9 @@ child <em>Process</em>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="n">run_cfg</span> <span class="o">=</span> <span class="n">Loihi1SimCfg</span><span class="p">()</span>
+run_cfg = Loihi1SimCfg()
 </pre></div>
 </div>
 </div>
@@ -879,15 +879,15 @@ child <em>Process</em>.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.lif.process import LIF
+from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="c1"># create a Process for a LIF neuron</span>
-<span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+# create a Process for a LIF neuron
+lif = LIF(shape=(1,))
 
-<span class="c1"># execute that Process for 42 time steps in simulation</span>
-<span class="n">lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# execute that Process for 42 time steps in simulation
+lif.run(condition=RunSteps(num_steps=42), run_cfg=Loihi1SimCfg())
 </pre></div>
 </div>
 </div>
@@ -901,24 +901,24 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from lava.proc.lif.process import LIF
+from lava.proc.dense.process import Dense
+from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="c1"># create processes</span>
-<span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+# create processes
+lif1 = LIF(shape=(1,))
+dense = Dense(weights=np.eye(1))
+lif2 = LIF(shape=(1,))
 
-<span class="c1"># connect the OutPort of lif1 to the InPort of dense</span>
-<span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="c1"># connect the OutPort of dense to the InPort of lif2</span>
-<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+# connect the OutPort of lif1 to the InPort of dense
+lif1.s_out.connect(dense.s_in)
+# connect the OutPort of dense to the InPort of lif2
+dense.a_out.connect(lif2.a_in)
 
-<span class="c1"># execute Process lif2 and all Processes connected to it (dense, lif1)</span>
-<span class="n">lif2</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# execute Process lif2 and all Processes connected to it (dense, lif1)
+lif2.run(condition=RunSteps(num_steps=42), run_cfg=Loihi1SimCfg())
 </pre></div>
 </div>
 </div>
@@ -933,31 +933,31 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunContinuous</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from lava.proc.lif.process import LIF
+from lava.magma.core.run_conditions import RunContinuous
+from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="n">lif3</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">))</span>
+lif3 = LIF(shape=(1, ))
 
-<span class="c1"># start continuous execution</span>
-<span class="n">lif3</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunContinuous</span><span class="p">(),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# start continuous execution
+lif3.run(condition=RunContinuous(), run_cfg=Loihi1SimCfg())
 
-<span class="c1"># pause execution</span>
-<span class="n">lif3</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+# pause execution
+lif3.pause()
 
-<span class="c1"># inspect the state of the Process, here, the voltage variable &#39;v&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lif3</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+# inspect the state of the Process, here, the voltage variable &#39;v&#39;
+print(lif3.v.get())
 
-<span class="c1"># manipulate the state of the Process, here, resetting the voltage to zero</span>
-<span class="n">lif3</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]))</span>
+# manipulate the state of the Process, here, resetting the voltage to zero
+lif3.v.set(np.array([0]))
 
-<span class="c1"># resume continuous execution</span>
-<span class="n">lif3</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunContinuous</span><span class="p">(),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# resume continuous execution
+lif3.run(condition=RunContinuous(), run_cfg=Loihi1SimCfg())
 
-<span class="c1"># terminate execution;</span>
-<span class="c1"># after this, you no longer have access to the state of lif</span>
-<span class="n">lif3</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# terminate execution;
+# after this, you no longer have access to the state of lif
+lif3.stop()
 <br/></pre></div>
 </div>
 </div>
@@ -980,12 +980,12 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.lif.process import LIF
+from lava.proc.dense.process import Dense
 
-<span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">lif2</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+lif1 = LIF(shape=(1,))
+dense = Dense(weights=np.eye(1))
+lif2 = LIF(shape=(1,))
 </pre></div>
 </div>
 </div>
@@ -996,9 +996,9 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># connect the processes</span>
-<span class="n">lif1</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif2</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># connect the processes
+lif1.s_out.connect(dense.s_in)
+dense.a_out.connect(lif2.a_in)
 </pre></div>
 </div>
 </div>
@@ -1009,14 +1009,14 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.compiler.compiler</span> <span class="kn">import</span> <span class="n">Compiler</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.compiler.compiler import Compiler
+from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="c1"># create a compiler</span>
-<span class="n">compiler</span> <span class="o">=</span> <span class="n">Compiler</span><span class="p">()</span>
+# create a compiler
+compiler = Compiler()
 
-<span class="c1"># compile the Process (and all connected Processes) into an executable</span>
-<span class="n">executable</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">lif2</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# compile the Process (and all connected Processes) into an executable
+executable = compiler.compile(lif2, run_cfg=Loihi1SimCfg())
 </pre></div>
 </div>
 </div>
@@ -1027,21 +1027,21 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.runtime.runtime</span> <span class="kn">import</span> <span class="n">Runtime</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.message_interface_enum</span> <span class="kn">import</span> <span class="n">ActorType</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.runtime.runtime import Runtime
+from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.process.message_interface_enum import ActorType
 
-<span class="c1"># create and initialize a runtime</span>
-<span class="n">mp</span> <span class="o">=</span> <span class="n">ActorType</span><span class="o">.</span><span class="n">MultiProcessing</span>
-<span class="n">runtime</span> <span class="o">=</span> <span class="n">Runtime</span><span class="p">(</span><span class="n">exe</span><span class="o">=</span><span class="n">executable</span><span class="p">,</span>
-                  <span class="n">message_infrastructure_type</span><span class="o">=</span><span class="n">mp</span><span class="p">)</span>
-<span class="n">runtime</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+# create and initialize a runtime
+mp = ActorType.MultiProcessing
+runtime = Runtime(exe=executable,
+                  message_infrastructure_type=mp)
+runtime.initialize()
 
-<span class="c1"># start execution</span>
-<span class="n">runtime</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">run_condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+# start execution
+runtime.start(run_condition=RunSteps(num_steps=42))
 
-<span class="c1"># stop execution</span>
-<span class="n">runtime</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# stop execution
+runtime.stop()
 </pre></div>
 </div>
 </div>
@@ -1050,23 +1050,23 @@ connected.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.proc.lif.process import LIF
+from lava.proc.dense.process import Dense
+from lava.magma.core.run_conditions import RunSteps
+from lava.magma.core.run_configs import Loihi1SimCfg
 
-<span class="c1"># create Processes</span>
-<span class="n">lif</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
-<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+# create Processes
+lif = LIF(shape=(1,))
+dense = Dense(weights=np.eye(1))
 
-<span class="c1"># connect Processes</span>
-<span class="n">lif</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
+# connect Processes
+lif.s_out.connect(dense.s_in)
 
-<span class="c1"># execute Processes</span>
-<span class="n">lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
+# execute Processes
+lif.run(condition=RunSteps(num_steps=42), run_cfg=Loihi1SimCfg())
 
-<span class="c1"># stop Processes</span>
-<span class="n">lif</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# stop Processes
+lif.stop()
 </pre></div>
 </div>
 </div>

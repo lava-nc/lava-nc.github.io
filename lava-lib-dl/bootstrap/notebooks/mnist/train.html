@@ -848,22 +848,22 @@ CUBA LIF):</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os, sys
+import h5py
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+import torch
+import torch.nn.functional as F
+from torch.utils.data import Dataset, DataLoader
+from torchvision import datasets, transforms
 
-<span class="c1"># import slayer from lava-dl</span>
-<span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
-<span class="kn">import</span> <span class="nn">lava.lib.dl.bootstrap</span> <span class="k">as</span> <span class="nn">bootstrap</span>
+# import slayer from lava-dl
+import lava.lib.dl.slayer as slayer
+import lava.lib.dl.bootstrap as bootstrap
 
-<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+import IPython.display as display
+from matplotlib import animation
 </pre></div>
 </div>
 </div>
@@ -877,53 +877,53 @@ CUBA LIF):</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_steps</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Network</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time_steps</span> <span class="o">=</span> <span class="n">time_steps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Network(torch.nn.Module):
+    def __init__(self, time_steps=16):
+        super(Network, self).__init__()
+        self.time_steps = time_steps
 
-        <span class="n">neuron_params</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;threshold&#39;</span>     <span class="p">:</span> <span class="mf">1.25</span><span class="p">,</span>
-                <span class="s1">&#39;current_decay&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># this must be 1 to use batchnorm</span>
-                <span class="s1">&#39;voltage_decay&#39;</span> <span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
-                <span class="s1">&#39;tau_grad&#39;</span>      <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s1">&#39;scale_grad&#39;</span>    <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="n">neuron_params_norm</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="o">**</span><span class="n">neuron_params</span><span class="p">,</span>
-                <span class="c1"># &#39;norm&#39;    : slayer.neuron.norm.MeanOnlyBatchNorm,</span>
-            <span class="p">}</span>
+        neuron_params = {
+                &#39;threshold&#39;     : 1.25,
+                &#39;current_decay&#39; : 1, # this must be 1 to use batchnorm
+                &#39;voltage_decay&#39; : 0.03,
+                &#39;tau_grad&#39;      : 1,
+                &#39;scale_grad&#39;    : 1,
+            }
+        neuron_params_norm = {
+                **neuron_params,
+                # &#39;norm&#39;    : slayer.neuron.norm.MeanOnlyBatchNorm,
+            }
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span>
-                <span class="n">bootstrap</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">neuron_params</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="c1"># enable affine transform at input</span>
-                <span class="n">bootstrap</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">neuron_params_norm</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-                <span class="n">bootstrap</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">neuron_params_norm</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-                <span class="n">bootstrap</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">cuba</span><span class="o">.</span><span class="n">Affine</span><span class="p">(</span><span class="n">neuron_params</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-            <span class="p">])</span>
+        self.blocks = torch.nn.ModuleList([
+                bootstrap.block.cuba.Input(neuron_params, weight=1, bias=0), # enable affine transform at input
+                bootstrap.block.cuba.Dense(neuron_params_norm, 28*28, 512, weight_norm=True, weight_scale=2),
+                bootstrap.block.cuba.Dense(neuron_params_norm, 512, 512, weight_norm=True, weight_scale=2),
+                bootstrap.block.cuba.Affine(neuron_params, 512, 10, weight_norm=True, weight_scale=2),
+            ])
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-        <span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">base_mode</span> <span class="o">==</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">ANN</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">replicate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_steps</span><span class="p">)</span>
+    def forward(self, x, mode):
+        N, C, H, W = x.shape
+        if mode.base_mode == bootstrap.Mode.ANN:
+            x = x.reshape([N, C, H, W, 1])
+        else:
+            x = slayer.utils.time.replicate(x, self.time_steps)
 
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        x = x.reshape(N, -1, x.shape[-1])
 
-        <span class="k">for</span> <span class="n">block</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+        for block, m in zip(self.blocks, mode):
+            x = block(x, mode=m)
 
-        <span class="k">return</span> <span class="n">x</span>
+        return x
 
-    <span class="k">def</span> <span class="nf">export_hdf5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="c1"># network export to hdf5 format</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">simulation</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;simulation&#39;</span><span class="p">)</span>
-        <span class="n">simulation</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">simulation</span><span class="p">[</span><span class="s1">&#39;tSample&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_steps</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;layer&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
-            <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    def export_hdf5(self, filename):
+        # network export to hdf5 format
+        h = h5py.File(filename, &#39;w&#39;)
+        simulation = h.create_group(&#39;simulation&#39;)
+        simulation[&#39;Ts&#39;] = 1
+        simulation[&#39;tSample&#39;] = self.time_steps
+        layer = h.create_group(&#39;layer&#39;)
+        for i, b in enumerate(self.blocks):
+            b.export_hdf5(layer.create_group(f&#39;{i}&#39;))
 </pre></div>
 </div>
 </div>
@@ -935,47 +935,47 @@ CUBA LIF):</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_folder</span> <span class="o">=</span> <span class="s1">&#39;Trained&#39;</span>
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">trained_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trained_folder = &#39;Trained&#39;
+os.makedirs(trained_folder, exist_ok=True)
 
-<span class="c1"># device = torch.device(&#39;cpu&#39;)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+# device = torch.device(&#39;cpu&#39;)
+device = torch.device(&#39;cuda&#39;)
 
-<span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+net = Network().to(device)
 
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
 
-<span class="c1"># Dataset and dataLoader instances.</span>
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-        <span class="n">root</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span>
-        <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">RandomAffine</span><span class="p">(</span>
-                <span class="n">degrees</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                <span class="n">translate</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span>
-                <span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">),</span>
-                <span class="n">shear</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)),</span>
-        <span class="p">]),</span>
-        <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
+# Dataset and dataLoader instances.
+training_set = datasets.MNIST(
+        root=&#39;data/&#39;,
+        train=True,
+        transform=transforms.Compose([
+            transforms.RandomAffine(
+                degrees=10,
+                translate=(0.05, 0.05),
+                scale=(0.95, 1.05),
+                shear=5,
+            ),
+            transforms.ToTensor(),
+            transforms.Normalize((0.5), (0.5)),
+        ]),
+        download=True,
+    )
 
-<span class="n">testing_set</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-        <span class="n">root</span><span class="o">=</span><span class="s1">&#39;data/&#39;</span><span class="p">,</span>
-        <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)),</span>
-        <span class="p">]),</span>
-    <span class="p">)</span>
+testing_set = datasets.MNIST(
+        root=&#39;data/&#39;,
+        train=False,
+        transform=transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5), (0.5)),
+        ]),
+    )
 
-<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">training_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">test_loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">testing_set</span> <span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+train_loader = DataLoader(dataset=training_set, batch_size=32, shuffle=True)
+test_loader  = DataLoader(dataset=testing_set , batch_size=32, shuffle=True)
 
-<span class="n">stats</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">LearningStats</span><span class="p">()</span>
-<span class="n">scheduler</span> <span class="o">=</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">routine</span><span class="o">.</span><span class="n">Scheduler</span><span class="p">()</span>
+stats = slayer.utils.LearningStats()
+scheduler = bootstrap.routine.Scheduler()
 </pre></div>
 </div>
 </div>
@@ -987,58 +987,58 @@ CUBA LIF):</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-        <span class="n">mode</span> <span class="o">=</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>epochs = 100
+for epoch in range(epochs):
+    for i, (input, label) in enumerate(train_loader, 0):
+        net.train()
+        mode = scheduler.mode(epoch, i, net.training)
 
-        <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-        <span class="n">rate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        input = input.to(device)
+        output = net.forward(input, mode)
+        rate = torch.mean(output, dim=-1).reshape((input.shape[0], -1))
 
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        loss = F.cross_entropy(rate, label.to(device))
+        prediction = rate.data.max(1, keepdim=True)[1].cpu().flatten()
 
-        <span class="n">stats</span><span class="o">.</span><span class="n">training</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-        <span class="n">stats</span><span class="o">.</span><span class="n">training</span><span class="o">.</span><span class="n">loss_sum</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">stats</span><span class="o">.</span><span class="n">training</span><span class="o">.</span><span class="n">correct_samples</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">prediction</span> <span class="o">==</span> <span class="n">label</span> <span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        stats.training.num_samples += len(label)
+        stats.training.loss_sum += loss.cpu().data.item() * input.shape[0]
+        stats.training.correct_samples += torch.sum( prediction == label ).data.item()
 
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
 
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-        <span class="n">mode</span> <span class="o">=</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+    for i, (input, label) in enumerate(test_loader, 0):
+        net.eval()
+        mode = scheduler.mode(epoch, i, net.training)
 
-        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-            <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">scheduler</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">training</span><span class="p">))</span>
-            <span class="n">rate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        with torch.no_grad():
+            input = input.to(device)
+            output = net.forward(input, mode=scheduler.mode(epoch, i, net.training))
+            rate = torch.mean(output, dim=-1).reshape((input.shape[0], -1))
 
-            <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">label</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
-            <span class="n">prediction</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            loss = F.cross_entropy(rate, label.to(device))
+            prediction = rate.data.max(1, keepdim=True)[1].cpu().flatten()
 
-        <span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-        <span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">loss_sum</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">correct_samples</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">prediction</span> <span class="o">==</span> <span class="n">label</span> <span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        stats.testing.num_samples += len(label)
+        stats.testing.loss_sum += loss.cpu().data.item() * input.shape[0]
+        stats.testing.correct_samples += torch.sum( prediction == label ).data.item()
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    print(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
 
-    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">base_mode</span> <span class="o">==</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">routine</span><span class="o">.</span><span class="n">Mode</span><span class="o">.</span><span class="n">SNN</span><span class="p">:</span>
-        <span class="n">scheduler</span><span class="o">.</span><span class="n">sync_snn_stat</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">2d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">]</span><span class="se">\n</span><span class="s1">SNN Testing: </span><span class="si">{</span><span class="n">scheduler</span><span class="o">.</span><span class="n">snn_stat</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    if mode.base_mode == bootstrap.routine.Mode.SNN:
+        scheduler.sync_snn_stat(stats.testing)
+        print(&#39;\r&#39;, &#39; &#39;*len(f&#39;\r[Epoch {epoch:2d}/{epochs}] {stats}&#39;))
+        print(mode)
+        print(f&#39;[Epoch {epoch:2d}/{epochs}]\nSNN Testing: {scheduler.snn_stat}&#39;)
 
-        <span class="k">if</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">snn_stat</span><span class="o">.</span><span class="n">best_accuracy</span><span class="p">:</span>
-            <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">)</span>
-        <span class="n">scheduler</span><span class="o">.</span><span class="n">update_snn_stat</span><span class="p">()</span>
+        if scheduler.snn_stat.best_accuracy:
+            torch.save(net.state_dict(), trained_folder + &#39;/network.pt&#39;)
+        scheduler.update_snn_stat()
 
-    <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-    <span class="n">stats</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    stats.update()
+    stats.save(trained_folder + &#39;/&#39;)
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1098,7 @@ SNN Testing: loss =     0.02705 (min =     0.02592)    accuracy = 0.99150 (max =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stats.plot(figsize=(15, 5))
 </pre></div>
 </div>
 </div>
@@ -1124,8 +1124,8 @@ SNN Testing: loss =     0.02705 (min =     0.02592)    accuracy = 0.99150 (max =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.net&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>net.load_state_dict(torch.load(trained_folder + &#39;/network.pt&#39;))
+net.export_hdf5(trained_folder + &#39;/network.net&#39;)
 </pre></div>
 </div>
 </div>
@@ -1137,13 +1137,13 @@ SNN Testing: loss =     0.02705 (min =     0.02592)    accuracy = 0.99150 (max =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">scheduler</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
-    <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/inp</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
-    <span class="n">out_event</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">tensor_to_event</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">out_anim</span> <span class="o">=</span> <span class="n">out_event</span><span class="o">.</span><span class="n">anim</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">2400</span><span class="p">)</span>
-    <span class="n">out_anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/out</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">,</span> <span class="n">animation</span><span class="o">.</span><span class="n">PillowWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>output = net(input.to(device), mode=scheduler.mode(100, 0, False))
+for i in range(5):
+    img = (2*input[i].reshape(28, 28).cpu().data.numpy()-1) * 255
+    Image.fromarray(img).convert(&#39;RGB&#39;).save(f&#39;gifs/inp{i}.png&#39;)
+    out_event = slayer.io.tensor_to_event(output[i].cpu().data.numpy().reshape(1, 10, -1))
+    out_anim = out_event.anim(plt.figure(figsize=(10, 3.5)), frame_rate=2400)
+    out_anim.save(f&#39;gifs/out{i}.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
 <br/></pre></div>
 </div>
 </div>
@@ -1151,16 +1151,16 @@ SNN Testing: loss =     0.02705 (min =     0.02592)    accuracy = 0.99150 (max =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_td</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">gif</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;&lt;td&gt; &lt;img src=&quot;</span><span class="si">{</span><span class="n">gif</span><span class="si">}</span><span class="s1">&quot; alt=&quot;Drawing&quot; style=&quot;height: 150px;&quot;/&gt; &lt;/td&gt;&#39;</span>
-<span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;table&gt;&#39;</span>
-<span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;Input&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Output&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&#39;</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;tr&gt;&#39;</span>
-    <span class="n">html</span> <span class="o">+=</span> <span class="n">img_td</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/inp</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">+=</span> <span class="n">img_td</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;gifs/out</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.gif&#39;</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/tr&gt;&#39;</span>
-<span class="n">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;/tr&gt;&lt;/table&gt;&#39;</span>
-<span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>img_td = lambda gif: f&#39;&lt;td&gt; &lt;img src=&quot;{gif}&quot; alt=&quot;Drawing&quot; style=&quot;height: 150px;&quot;/&gt; &lt;/td&gt;&#39;
+html = &#39;&lt;table&gt;&#39;
+html += &#39;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;&lt;b&gt;Input&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Output&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&#39;
+for i in range(5):
+    html += &#39;&lt;tr&gt;&#39;
+    html += img_td(f&#39;gifs/inp{i}.png&#39;)
+    html += img_td(f&#39;gifs/out{i}.gif&#39;)
+    html += &#39;&lt;/tr&gt;&#39;
+html += &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
+display.HTML(html)
 </pre></div>
 </div>
 </div>

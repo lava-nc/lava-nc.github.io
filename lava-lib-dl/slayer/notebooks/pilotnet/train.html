@@ -824,7 +824,7 @@ div.rendered_html tbody tr:hover {
 <table><tr><td><p><img alt="Drawing" src="../../../../_images/delta_encoder.png" /></p>
 </td><td><p><img alt="Drawing" src="../../../../_images/sigma_decoder.png" /></p>
 </td></tr></table><p><strong>Sigma-delta neural networks</strong> consists of two main units: <em>sigma</em> decoder in the dendrite and <em>delta</em> encoder in the axon. Delta encoder uses differential encoding on the output activation of a regular ANN activation, for e.g. ReLU. In addition it only sends activation to the next layer when the encoded message magnitude is larger than its threshold. The sigma unit accumulates the sparse event messages and accumulates it to restore the original value.</p>
-<table><tr><!-- <td> <img src="images/sdnn.png" alt="Drawing" style="height: 300px;"/> </td> --><td><p><img alt="d4e93d96d9674958a04488ee5c16481d" class="no-scaled-link" src="../../../../_images/sdnn.png" style="height: 300px;" /></p>
+<table><tr><!-- <td> <img src="images/sdnn.png" alt="Drawing" style="height: 300px;"/> </td> --><td><p><img alt="32261468f8e14d60a384cc1dee533acb" class="no-scaled-link" src="../../../../_images/sdnn.png" style="height: 300px;" /></p>
 </td></tr></table><p>A sigma-delta neuron is simply a regular activation wrapped around by a sigma unit at it’s input and a delta unit at its output.</p>
 <p>When the input to the network is a temporal sequence, the activations do not change much. Therefore, the message between the layers are reduced which in turn reduces the synaptic computation in the next layer. In addition, the graded event values can encode the change in magnitude in one time-step. Therefore there is no increase in latency at the cost of time-steps unlike the rate coded Spiking Neural Networks.</p>
 <table><tr><td><p><img alt="Drawing" src="../../../../_images/temporal_redundancy.png" /></p>
@@ -839,20 +839,20 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys, os
+import numpy as np
+import matplotlib.pyplot as plt
+import h5py
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+import torch
+from torch.utils.data import DataLoader
+from torchvision import transforms
+import torch.nn.functional as F
 
-<span class="kn">import</span> <span class="nn">lava.lib.dl.slayer</span> <span class="k">as</span> <span class="nn">slayer</span>
+import lava.lib.dl.slayer as slayer
 
-<span class="kn">from</span> <span class="nn">pilotnet_dataset</span> <span class="kn">import</span> <span class="n">PilotNetDataset</span>
-<span class="kn">import</span> <span class="nn">utils</span>
+from pilotnet_dataset import PilotNetDataset
+import utils
 </pre></div>
 </div>
 </div>
@@ -860,7 +860,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">4205</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>torch.manual_seed(4205)
 </pre></div>
 </div>
 </div>
@@ -882,9 +882,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">event_rate_loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-    <span class="n">mean_event_rate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">mean_event_rate</span> <span class="o">-</span> <span class="n">max_rate</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mean_event_rate</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def event_rate_loss(x, max_rate=0.01):
+    mean_event_rate = torch.mean(torch.abs(x))
+    return F.mse_loss(F.relu(mean_event_rate - max_rate), torch.zeros_like(mean_event_rate))
 </pre></div>
 </div>
 </div>
@@ -903,76 +903,76 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Network</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Network(torch.nn.Module):
+    def __init__(self):
+        super(Network, self).__init__()
 
-        <span class="n">sdnn_params</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># sigma-delta neuron parameters</span>
-                <span class="s1">&#39;threshold&#39;</span>     <span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>    <span class="c1"># delta unit threshold</span>
-                <span class="s1">&#39;tau_grad&#39;</span>      <span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>    <span class="c1"># delta unit surrogate gradient relaxation parameter</span>
-                <span class="s1">&#39;scale_grad&#39;</span>    <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>      <span class="c1"># delta unit surrogate gradient scale parameter</span>
-                <span class="s1">&#39;requires_grad&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>   <span class="c1"># trainable threshold</span>
-                <span class="s1">&#39;shared_param&#39;</span>  <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>   <span class="c1"># layer wise threshold</span>
-                <span class="s1">&#39;activation&#39;</span>    <span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span> <span class="c1"># activation function</span>
-            <span class="p">}</span>
-        <span class="n">sdnn_cnn_params</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># conv layer has additional mean only batch norm</span>
-                <span class="o">**</span><span class="n">sdnn_params</span><span class="p">,</span>                                 <span class="c1"># copy all sdnn_params</span>
-                <span class="s1">&#39;norm&#39;</span> <span class="p">:</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">MeanOnlyBatchNorm</span><span class="p">,</span> <span class="c1"># mean only quantized batch normalizaton</span>
-            <span class="p">}</span>
-        <span class="n">sdnn_dense_params</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># dense layers have additional dropout units enabled</span>
-                <span class="o">**</span><span class="n">sdnn_cnn_params</span><span class="p">,</span>                        <span class="c1"># copy all sdnn_cnn_params</span>
-                <span class="s1">&#39;dropout&#39;</span> <span class="p">:</span> <span class="n">slayer</span><span class="o">.</span><span class="n">neuron</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span> <span class="c1"># neuron dropout</span>
-            <span class="p">}</span>
+        sdnn_params = { # sigma-delta neuron parameters
+                &#39;threshold&#39;     : 0.1,    # delta unit threshold
+                &#39;tau_grad&#39;      : 0.5,    # delta unit surrogate gradient relaxation parameter
+                &#39;scale_grad&#39;    : 1,      # delta unit surrogate gradient scale parameter
+                &#39;requires_grad&#39; : True,   # trainable threshold
+                &#39;shared_param&#39;  : True,   # layer wise threshold
+                &#39;activation&#39;    : F.relu, # activation function
+            }
+        sdnn_cnn_params = { # conv layer has additional mean only batch norm
+                **sdnn_params,                                 # copy all sdnn_params
+                &#39;norm&#39; : slayer.neuron.norm.MeanOnlyBatchNorm, # mean only quantized batch normalizaton
+            }
+        sdnn_dense_params = { # dense layers have additional dropout units enabled
+                **sdnn_cnn_params,                        # copy all sdnn_cnn_params
+                &#39;dropout&#39; : slayer.neuron.Dropout(p=0.2), # neuron dropout
+            }
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="c1"># sequential network blocks</span>
-                <span class="c1"># delta encoding of the input</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">sdnn_params</span><span class="p">),</span>
-                <span class="c1"># convolution layers</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Conv</span><span class="p">(</span><span class="n">sdnn_cnn_params</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="c1"># flatten layer</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
-                <span class="c1"># dense layers</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">sdnn_dense_params</span><span class="p">,</span> <span class="mi">64</span><span class="o">*</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">sdnn_dense_params</span><span class="p">,</span>   <span class="mi">100</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">sdnn_dense_params</span><span class="p">,</span>    <span class="mi">50</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-                <span class="c1"># linear readout with sigma decoding of output</span>
-                <span class="n">slayer</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">sigma_delta</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="n">sdnn_dense_params</span><span class="p">,</span>   <span class="mi">10</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="n">weight_scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="p">])</span>
+        self.blocks = torch.nn.ModuleList([# sequential network blocks
+                # delta encoding of the input
+                slayer.block.sigma_delta.Input(sdnn_params),
+                # convolution layers
+                slayer.block.sigma_delta.Conv(sdnn_cnn_params,  3, 24, 3, padding=0, stride=2, weight_scale=2, weight_norm=True),
+                slayer.block.sigma_delta.Conv(sdnn_cnn_params, 24, 36, 3, padding=0, stride=2, weight_scale=2, weight_norm=True),
+                slayer.block.sigma_delta.Conv(sdnn_cnn_params, 36, 64, 3, padding=(1, 0), stride=(2, 1), weight_scale=2, weight_norm=True),
+                slayer.block.sigma_delta.Conv(sdnn_cnn_params, 64, 64, 3, padding=0, stride=1, weight_scale=2, weight_norm=True),
+                # flatten layer
+                slayer.block.sigma_delta.Flatten(),
+                # dense layers
+                slayer.block.sigma_delta.Dense(sdnn_dense_params, 64*40, 100, weight_scale=2, weight_norm=True),
+                slayer.block.sigma_delta.Dense(sdnn_dense_params,   100,  50, weight_scale=2, weight_norm=True),
+                slayer.block.sigma_delta.Dense(sdnn_dense_params,    50,  10, weight_scale=2, weight_norm=True),
+                # linear readout with sigma decoding of output
+                slayer.block.sigma_delta.Output(sdnn_dense_params,   10,   1, weight_scale=2, weight_norm=True)
+            ])
 
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">event_cost</span> <span class="o">=</span> <span class="mi">0</span>
+    def forward(self, x):
+        count = []
+        event_cost = 0
 
-        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span>
-            <span class="c1"># forward computation is as simple as calling the blocks in a loop</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="s1">&#39;neuron&#39;</span><span class="p">):</span>
-                <span class="n">event_cost</span> <span class="o">+=</span> <span class="n">event_rate_loss</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                <span class="n">count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        for block in self.blocks:
+            # forward computation is as simple as calling the blocks in a loop
+            x = block(x)
+            if hasattr(block, &#39;neuron&#39;):
+                event_cost += event_rate_loss(x)
+                count.append(torch.sum(torch.abs((x[..., 1:]) &gt; 0).to(x.dtype)).item())
 
-        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">event_cost</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        return x, event_cost, torch.FloatTensor(count).reshape((1, -1)).to(x.device)
 
-    <span class="k">def</span> <span class="nf">grad_flow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-        <span class="c1"># helps monitor the gradient flow</span>
-        <span class="n">grad</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">synapse</span><span class="o">.</span><span class="n">grad_norm</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;synapse&#39;</span><span class="p">)]</span>
+    def grad_flow(self, path):
+        # helps monitor the gradient flow
+        grad = [b.synapse.grad_norm for b in self.blocks if hasattr(b, &#39;synapse&#39;)]
 
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;gradFlow.png&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        plt.figure()
+        plt.semilogy(grad)
+        plt.savefig(path + &#39;gradFlow.png&#39;)
+        plt.close()
 
-        <span class="k">return</span> <span class="n">grad</span>
+        return grad
 
-    <span class="k">def</span> <span class="nf">export_hdf5</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="c1"># network export to hdf5 format</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="s1">&#39;layer&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
-            <span class="n">b</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">create_group</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    def export_hdf5(self, filename):
+        # network export to hdf5 format
+        h = h5py.File(filename, &#39;w&#39;)
+        layer = h.create_group(&#39;layer&#39;)
+        for i, b in enumerate(self.blocks):
+            b.export_hdf5(layer.create_group(f&#39;{i}&#39;))
 </pre></div>
 </div>
 </div>
@@ -983,19 +983,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span>  <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># batch size</span>
-<span class="n">lr</span>     <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># leaerning rate</span>
-<span class="n">lam</span>    <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># lagrangian for event rate loss</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># training epochs</span>
-<span class="n">steps</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">]</span> <span class="c1"># learning rate reduction milestones</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>batch  = 8  # batch size
+lr     = 0.001 # leaerning rate
+lam    = 0.01  # lagrangian for event rate loss
+epochs = 200  # training epochs
+steps  = [60, 120, 160] # learning rate reduction milestones
 
-<span class="n">trained_folder</span> <span class="o">=</span> <span class="s1">&#39;Trained&#39;</span>
-<span class="n">logs_folder</span> <span class="o">=</span> <span class="s1">&#39;Logs&#39;</span>
+trained_folder = &#39;Trained&#39;
+logs_folder = &#39;Logs&#39;
 
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">trained_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">logs_folder</span>   <span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+os.makedirs(trained_folder, exist_ok=True)
+os.makedirs(logs_folder   , exist_ok=True)
 
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+device = torch.device(&#39;cuda&#39;)
 </pre></div>
 </div>
 </div>
@@ -1006,40 +1006,40 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>net = Network().to(device)
 
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">RAdam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+optimizer = torch.optim.RAdam(net.parameters(), lr=lr, weight_decay=1e-5)
 
-<span class="c1"># Datasets</span>
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">PilotNetDataset</span><span class="p">(</span>
-    <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">100</span><span class="p">]),</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)),</span>
-    <span class="p">]),</span>
-<span class="p">)</span>
-<span class="n">testing_set</span> <span class="o">=</span> <span class="n">PilotNetDataset</span><span class="p">(</span>
-    <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span> <span class="mi">100</span><span class="p">]),</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-        <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)),</span>
-    <span class="p">]),</span>
-<span class="p">)</span>
+# Datasets
+training_set = PilotNetDataset(
+    train=True,
+    transform=transforms.Compose([
+        transforms.Resize([33, 100]),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+    ]),
+)
+testing_set = PilotNetDataset(
+    train=False,
+    transform=transforms.Compose([
+        transforms.Resize([33, 100]),
+        transforms.ToTensor(),
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+    ]),
+)
 
-<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">training_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">test_loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">testing_set</span> <span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+train_loader = DataLoader(dataset=training_set, batch_size=batch, shuffle=True, num_workers=8)
+test_loader  = DataLoader(dataset=testing_set , batch_size=batch, shuffle=True, num_workers=8)
 
-<span class="n">stats</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">LearningStats</span><span class="p">()</span>
-<span class="n">assistant</span> <span class="o">=</span> <span class="n">slayer</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Assistant</span><span class="p">(</span>
-        <span class="n">net</span><span class="o">=</span><span class="n">net</span><span class="p">,</span>
-        <span class="n">error</span><span class="o">=</span><span class="k">lambda</span> <span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">target</span><span class="o">.</span><span class="n">flatten</span><span class="p">()),</span>
-        <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
-        <span class="n">stats</span><span class="o">=</span><span class="n">stats</span><span class="p">,</span>
-        <span class="n">count_log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">lam</span><span class="o">=</span><span class="n">lam</span>
-    <span class="p">)</span>
+stats = slayer.utils.LearningStats()
+assistant = slayer.utils.Assistant(
+        net=net,
+        error=lambda output, target: F.mse_loss(output.flatten(), target.flatten()),
+        optimizer=optimizer,
+        stats=stats,
+        count_log=True,
+        lam=lam
+    )
 </pre></div>
 </div>
 </div>
@@ -1057,32 +1057,32 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">steps</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">param_group</span> <span class="ow">in</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Learning rate reduction from&#39;</span><span class="p">,</span> <span class="n">param_group</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">])</span>
-            <span class="n">param_group</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">/</span><span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for epoch in range(epochs):
+    if epoch in steps:
+        for param_group in optimizer.param_groups:
+            print(&#39;\nLearning rate reduction from&#39;, param_group[&#39;lr&#39;])
+            param_group[&#39;lr&#39;] /= 10/3
 
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span> <span class="c1"># training loop</span>
-        <span class="n">assistant</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">3d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    for i, (input, ground_truth) in enumerate(train_loader): # training loop
+        assistant.train(input, ground_truth)
+        print(f&#39;\r[Epoch {epoch:3d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
 
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">):</span> <span class="c1"># testing loop</span>
-        <span class="n">assistant</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">[Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">3d</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    for i, (input, ground_truth) in enumerate(test_loader): # testing loop
+        assistant.test(input, ground_truth)
+        print(f&#39;\r[Epoch {epoch:3d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
 
-    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">50</span>==49: print()
-    <span class="k">if</span> <span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">best_loss</span><span class="p">:</span>
-        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">)</span>
-    <span class="n">stats</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-    <span class="n">stats</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    if epoch%50==49: print()
+    if stats.testing.best_loss:
+        torch.save(net.state_dict(), trained_folder + &#39;/network.pt&#39;)
+    stats.update()
+    stats.save(trained_folder + &#39;/&#39;)
 
-    <span class="c1"># gradient flow monitoring</span>
-    <span class="n">net</span><span class="o">.</span><span class="n">grad_flow</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    # gradient flow monitoring
+    net.grad_flow(trained_folder + &#39;/&#39;)
 
-    <span class="c1"># checkpoint saves</span>
-    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">10</span> == 0:
-        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">({</span><span class="s1">&#39;net&#39;</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()},</span> <span class="n">logs_folder</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;/checkpoint</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">.pt&#39;</span><span class="p">)</span>
+    # checkpoint saves
+    if epoch%10 == 0:
+        torch.save({&#39;net&#39;: net.state_dict(), &#39;optimizer&#39;: optimizer.state_dict()}, logs_folder + f&#39;/checkpoint{epoch}.pt&#39;)
 </pre></div>
 </div>
 </div>
@@ -1111,7 +1111,7 @@ Learning rate reduction from 8.999999999999999e-05
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stats.plot(figsize=(15, 5))
 </pre></div>
 </div>
 </div>
@@ -1130,8 +1130,8 @@ Learning rate reduction from 8.999999999999999e-05
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.pt&#39;</span><span class="p">))</span>
-<span class="n">net</span><span class="o">.</span><span class="n">export_hdf5</span><span class="p">(</span><span class="n">trained_folder</span> <span class="o">+</span> <span class="s1">&#39;/network.net&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>net.load_state_dict(torch.load(trained_folder + &#39;/network.pt&#39;))
+net.export_hdf5(trained_folder + &#39;/network.net&#39;)
 </pre></div>
 </div>
 </div>
@@ -1145,14 +1145,14 @@ Learning rate reduction from 8.999999999999999e-05
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">):</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">assistant</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">ground_truth</span><span class="p">)</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="c1"># count skips first events</span>
-    <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">Event count : &#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">count</span><span class="p">]),</span> <span class="sa">f</span><span class="s1">&#39;| </span><span class="si">{</span><span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counts = []
+for i, (input, ground_truth) in enumerate(test_loader):
+    _, count = assistant.test(input, ground_truth)
+    count = (count.flatten()/(input.shape[-1]-1)/input.shape[0]).tolist() # count skips first events
+    counts.append(count)
+    print(&#39;\rEvent count : &#39; + &#39;, &#39;.join([f&#39;{c:.4f}&#39; for c in count]), f&#39;| {stats.testing}&#39;, end=&#39;&#39;)
 
-<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+counts = np.mean(counts, axis=0)
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1172,7 @@ Event count : 2170.5430, 224.2953, 372.4000, 507.9524, 28.2095, 4.7143, 1.0000, 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">compare_ops</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">mse</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">min_loss</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>utils.compare_ops(net, counts, mse=stats.testing.min_loss)
 </pre></div>
 </div>
 </div>

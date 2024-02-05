@@ -825,7 +825,7 @@ div.rendered_html tbody tr:hover {
 on the embedded CPU.</p>
 <p>In Lava, even remote memory access between Processes is realized via message-passing to remain true to the overall event-based message passing concept. The read/write is implemented via channels and message passing between processes and the remote process modifies its memory itself based on instructions from another process. However, as a convenience feature, <em>RefPorts</em> and <em>VarPorts</em> syntactically simplify the act of interacting with remote Vars.</p>
 <p>Thus, <em>RefPorts</em> allow in Lava one <em>Process</em> to access the internal <em>Vars</em> of another <em>Process</em>. <em>RefPorts</em> give access to other <em>Vars</em> as if it was an internal <em>Var</em>.</p>
-<p><img alt="cfae5446b8204b58b944aa5df7109ba3" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_rma.png" style="width: 400px;" /></p>
+<p><img alt="7af224bd2cec4650b4de33cec406caa4" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig01_rma.png" style="width: 400px;" /></p>
 <p>In this tutorial, we will create minimal Processes and ProcessModels to demonstrate reading and writing of Vars using RefPorts and VarPorts. Furthermore, we will explain the possibilities to connect RefPorts with VarPorts and Vars as well as the difference of explicitly and implicitly created VarPorts.</p>
 <section id="Recommended-tutorials-before-starting:">
 <h2>Recommended tutorials before starting:<a class="headerlink" href="#Recommended-tutorials-before-starting:" title="Permalink to this heading"></a></h2>
@@ -841,28 +841,28 @@ on the embedded CPU.</p>
 <section id="Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">
 <h2>Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em><a class="headerlink" href="#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference internal" href="tutorial03_process_models.html"><span class="doc">ProcessModel Tutorial</span></a> walks through the creation of <em>Processes</em> and corresponding <em>ProcessModels</em>. In order to demonstrate RefPorts we create a minimal process P1 with a <em>RefPort</em> <code class="docutils literal notranslate"><span class="pre">ref</span></code> and a minimal process P2 with a <em>Var</em> <code class="docutils literal notranslate"><span class="pre">var</span></code>.</p>
-<p><img alt="833d4e51c09147dfbfd1419723ac57c4" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig02_rma.png" style="width: 400px;" /></p>
+<p><img alt="7c0d7ba8fd0342fdbbc92ae23c28490e" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig02_rma.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">RefPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.process.process import AbstractProcess
+from lava.magma.core.process.variable import Var
+from lava.magma.core.process.ports.ports import RefPort
 
 
-<span class="c1"># A minimal process with a Var and a RefPort</span>
-<span class="k">class</span> <span class="nc">P1</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">RefPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+# A minimal process with a Var and a RefPort
+class P1(AbstractProcess):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.ref = RefPort(shape=(1,))
 
 
-<span class="c1"># A minimal process with a Var</span>
-<span class="k">class</span> <span class="nc">P2</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+# A minimal process with a Var
+class P2(AbstractProcess):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.var = Var(shape=(1,), init=5)
 </pre></div>
 </div>
 </div>
@@ -873,41 +873,41 @@ on the embedded CPU.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyRefPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
-
-
-<span class="c1"># A minimal PyProcModel implementing P1</span>
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">P1</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyProcModel1</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">ref</span><span class="p">:</span> <span class="n">PyRefPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyRefPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="k">def</span> <span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Retrieve current value of the Var of P2</span>
-        <span class="n">cur_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value of var: </span><span class="si">{}</span><span class="s2"> at time step: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_val</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span><span class="p">))</span>
-
-        <span class="c1"># Add the current time step to the current value</span>
-        <span class="n">new_data</span> <span class="o">=</span> <span class="n">cur_val</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_step</span>
-        <span class="c1"># Write the new value to the Var of P2</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+from lava.magma.core.sync.protocols.loihi_protocol import LoihiProtocol
+from lava.magma.core.model.py.ports import PyRefPort
+from lava.magma.core.model.py.type import LavaPyType
+from lava.magma.core.resources import CPU
+from lava.magma.core.decorator import implements, requires
+from lava.magma.core.model.py.model import PyLoihiProcessModel
 
 
-<span class="c1"># A minimal PyProcModel implementing P2</span>
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">P2</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyProcModel2</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">var</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+# A minimal PyProcModel implementing P1
+@implements(proc=P1, protocol=LoihiProtocol)
+@requires(CPU)
+class PyProcModel1(PyLoihiProcessModel):
+    ref: PyRefPort = LavaPyType(PyRefPort.VEC_DENSE, int)
+
+    def post_guard(self):
+        return True
+
+    def run_post_mgmt(self):
+        # Retrieve current value of the Var of P2
+        cur_val = self.ref.read()
+        print(&quot;Value of var: {} at time step: {}&quot;.format(cur_val, self.time_step))
+
+        # Add the current time step to the current value
+        new_data = cur_val + self.time_step
+        # Write the new value to the Var of P2
+        self.ref.write(new_data)
+
+
+# A minimal PyProcModel implementing P2
+@implements(proc=P2, protocol=LoihiProtocol)
+@requires(CPU)
+class PyProcModel2(PyLoihiProcessModel):
+    var: np.ndarray = LavaPyType(np.ndarray, np.int32)
 </pre></div>
 </div>
 </div>
@@ -920,19 +920,19 @@ on the embedded CPU.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi1SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.run_configs import Loihi1SimCfg
+from lava.magma.core.run_conditions import RunSteps
 
-<span class="c1"># Create process P1 and P2</span>
-<span class="n">proc1</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">proc2</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+# Create process P1 and P2
+proc1 = P1()
+proc2 = P2()
 
-<span class="c1"># Connect RefPort &#39;ref&#39; of P1 with Var &#39;var&#39; of P2 using an implicit VarPort</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">connect_var</span><span class="p">(</span><span class="n">proc2</span><span class="o">.</span><span class="n">var</span><span class="p">)</span>
+# Connect RefPort &#39;ref&#39; of P1 with Var &#39;var&#39; of P2 using an implicit VarPort
+proc1.ref.connect_var(proc2.var)
 
-<span class="c1"># Run the network for 5 time steps</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# Run the network for 5 time steps
+proc1.run(condition=RunSteps(num_steps=5), run_cfg=Loihi1SimCfg())
+proc1.stop()
 </pre></div>
 </div>
 </div>
@@ -956,14 +956,14 @@ Value of var: [15] at time step: 5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">VarPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.process.ports.ports import VarPort
 
-<span class="c1"># A minimal process with a Var and an explicit VarPort</span>
-<span class="k">class</span> <span class="nc">P2</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">init</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">var_port</span> <span class="o">=</span> <span class="n">VarPort</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">)</span>
+# A minimal process with a Var and an explicit VarPort
+class P2(AbstractProcess):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.var = Var(shape=(1,), init=5)
+        self.var_port = VarPort(self.var)
 </pre></div>
 </div>
 </div>
@@ -971,14 +971,14 @@ Value of var: [15] at time step: 5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyVarPort</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.magma.core.model.py.ports import PyVarPort
 
-<span class="c1"># A minimal PyProcModel implementing P2</span>
-<span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">P2</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
-<span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyProcModel2</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
-    <span class="n">var</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-    <span class="n">var_port</span><span class="p">:</span> <span class="n">PyVarPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyVarPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+# A minimal PyProcModel implementing P2
+@implements(proc=P2, protocol=LoihiProtocol)
+@requires(CPU)
+class PyProcModel2(PyLoihiProcessModel):
+    var: np.ndarray = LavaPyType(np.ndarray, np.int32)
+    var_port: PyVarPort = LavaPyType(PyVarPort.VEC_DENSE, int)
 </pre></div>
 </div>
 </div>
@@ -987,16 +987,16 @@ Value of var: [15] at time step: 5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create process P1 and P2</span>
-<span class="n">proc1</span> <span class="o">=</span> <span class="n">P1</span><span class="p">()</span>
-<span class="n">proc2</span> <span class="o">=</span> <span class="n">P2</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create process P1 and P2
+proc1 = P1()
+proc2 = P2()
 
-<span class="c1"># Connect RefPort &#39;ref&#39; of P1 with VarPort &#39;var_port&#39; of P2</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">proc2</span><span class="o">.</span><span class="n">var_port</span><span class="p">)</span>
+# Connect RefPort &#39;ref&#39; of P1 with VarPort &#39;var_port&#39; of P2
+proc1.ref.connect(proc2.var_port)
 
-<span class="c1"># Run the network for 5 time steps</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi1SimCfg</span><span class="p">())</span>
-<span class="n">proc1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+# Run the network for 5 time steps
+proc1.run(condition=RunSteps(num_steps=5), run_cfg=Loihi1SimCfg())
+proc1.stop()
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1016,7 @@ Value of var: [15] at time step: 5
 <section id="Options-to-connect-RefPorts-and-VarPorts">
 <h2>Options to connect RefPorts and VarPorts<a class="headerlink" href="#Options-to-connect-RefPorts-and-VarPorts" title="Permalink to this heading"></a></h2>
 <p><em>RefPorts</em> can be connected in different ways to <em>Vars</em> and <em>VarPorts</em>. <em>RefPorts</em> and <em>VarPorts</em> can also be connected to themselves in case of hierarchical processes.</p>
-<p><img alt="e9ebad97247643b6b2470d2badafe5b6" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig03_rma.png" style="width: 400px;" /></p>
+<p><img alt="92b31c953b994962962ae6723e18a450" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial07/fig03_rma.png" style="width: 400px;" /></p>
 <ul class="simple">
 <li><p><em>RefPorts</em> can be connected to <em>RefPorts</em> or <em>VarPorts</em> using <code class="docutils literal notranslate"><span class="pre">connect(..)</span></code></p></li>
 <li><p><em>RefPorts</em> can be connected to <em>Vars</em> using <code class="docutils literal notranslate"><span class="pre">connect_var(..)</span></code></p></li>

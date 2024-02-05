@@ -818,7 +818,7 @@ div.rendered_html tbody tr:hover {
 <section id="Serialization-of-Lava-networks">
 <h1>Serialization of Lava networks<a class="headerlink" href="#Serialization-of-Lava-networks" title="Permalink to this heading"></a></h1>
 <p>A Lava network can be saved to and later loaded from a file, this is also called serialization. Serialization of Lava networks, a list of Lava processes which are optionally connected and/or compiled, is based on the pickle module from python. The pickle module implements binary protocols for serializing and de-serializing a Python object structure.</p>
-<p><img alt="db150c020fc942e49478b980be6c792a" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_images/lava_notebooks_in_depth_tutorial11_serialization.png" style="width: 600px;" /></p>
+<p><img alt="2d6010f462374cd8a299afa45be00c75" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_images/lava_notebooks_in_depth_tutorial11_serialization.png" style="width: 600px;" /></p>
 <p>Serialization of compiled Lava networks allows to easily share bigger Lava networks and to execute pre-compiled networks. This enables to run networks which take a long time to compile faster, which decreases the time to execution. Pre-compilation also enables the execution of complex networks on embedded environments, which otherwise would suffer from long compilation times.</p>
 <blockquote>
 <div><div class="line-block">
@@ -845,13 +845,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.utils.serialization</span> <span class="kn">import</span> <span class="n">save</span><span class="p">,</span> <span class="n">load</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import tempfile
+from lava.proc.lif.process import LIF
+from lava.proc.dense.process import Dense
+from lava.magma.core.run_configs import Loihi2SimCfg
+from lava.magma.core.run_conditions import RunSteps
+from lava.utils.serialization import save, load
 </pre></div>
 </div>
 </div>
@@ -860,21 +860,21 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_size</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">post_size</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pre_size = 2
+post_size = 3
 
-<span class="c1"># Create network</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">post_size</span><span class="p">,</span> <span class="n">pre_size</span><span class="p">))</span>
+# Create network
+weights = np.ones((post_size, pre_size))
 
-<span class="n">lif_in</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">pre_size</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
-                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LIF_neuron input&quot;</span><span class="p">)</span>
-<span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Dense&quot;</span><span class="p">)</span>
-<span class="n">lif_out</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">post_size</span><span class="p">,),</span> <span class="n">bias_mant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vth</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span>
-                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LIF_neuron output&quot;</span><span class="p">)</span>
+lif_in = LIF(shape=(pre_size,), bias_mant=100, vth=120,
+                    name=&quot;LIF_neuron input&quot;)
+dense = Dense(weights=weights * 10, name=&quot;Dense&quot;)
+lif_out = LIF(shape=(post_size,), bias_mant=0, vth=50000,
+                    name=&quot;LIF_neuron output&quot;)
 
-<span class="c1"># Connect the processes</span>
-<span class="n">lif_in</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">dense</span><span class="o">.</span><span class="n">s_in</span><span class="p">)</span>
-<span class="n">dense</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">lif_out</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
+# Connect the processes
+lif_in.s_out.connect(dense.s_in)
+dense.a_out.connect(lif_out.a_in)
 </pre></div>
 </div>
 </div>
@@ -883,8 +883,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create executable</span>
-<span class="n">ex</span> <span class="o">=</span> <span class="n">lif_in</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">run_cfg</span><span class="o">=</span><span class="n">Loihi2SimCfg</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create executable
+ex = lif_in.compile(run_cfg=Loihi2SimCfg())
 </pre></div>
 </div>
 </div>
@@ -897,15 +897,15 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Context manager is used only to ensure clean up</span>
-<span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdirname</span><span class="p">:</span>
-    <span class="c1"># Store the Lava network</span>
-    <span class="n">save</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="p">[</span><span class="n">lif_in</span><span class="p">,</span> <span class="n">lif_out</span><span class="p">,</span> <span class="n">dense</span><span class="p">],</span>
-         <span class="n">filename</span><span class="o">=</span><span class="n">tmpdirname</span> <span class="o">+</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
-         <span class="n">executable</span><span class="o">=</span><span class="n">ex</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Context manager is used only to ensure clean up
+with tempfile.TemporaryDirectory() as tmpdirname:
+    # Store the Lava network
+    save(processes=[lif_in, lif_out, dense],
+         filename=tmpdirname + &quot;test&quot;,
+         executable=ex)
 
-    <span class="c1"># Load executable again</span>
-    <span class="n">procs</span><span class="p">,</span> <span class="n">loaded_ex</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">tmpdirname</span> <span class="o">+</span> <span class="s2">&quot;test.pickle&quot;</span><span class="p">)</span>
+    # Load executable again
+    procs, loaded_ex = load(tmpdirname + &quot;test.pickle&quot;)
 </pre></div>
 </div>
 </div>
@@ -915,9 +915,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">procs</span><span class="p">)</span>
-<span class="n">input_lif</span> <span class="o">=</span> <span class="n">procs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">output_lif</span> <span class="o">=</span> <span class="n">procs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(procs)
+input_lif = procs[0]
+output_lif = procs[1]
 </pre></div>
 </div>
 </div>
@@ -934,8 +934,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the runtime from the loaded executable</span>
-<span class="n">input_lif</span><span class="o">.</span><span class="n">create_runtime</span><span class="p">(</span><span class="n">executable</span><span class="o">=</span><span class="n">loaded_ex</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create the runtime from the loaded executable
+input_lif.create_runtime(executable=loaded_ex)
 </pre></div>
 </div>
 </div>
@@ -944,19 +944,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">output_lif_in_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">pre_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
-<span class="n">output_lif_out_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">post_size</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_steps = 5
+output_lif_in_v = np.zeros(shape=(pre_size, num_steps))
+output_lif_out_u = np.zeros(shape=(post_size, num_steps))
 
-<span class="c1"># Execute the network and retrieve voltage and current</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
-        <span class="n">input_lif</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+# Execute the network and retrieve voltage and current
+try:
+    for i in range(num_steps):
+        input_lif.run(condition=RunSteps(num_steps=1))
 
-        <span class="n">output_lif_in_v</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_lif</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="n">output_lif_out_u</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_lif</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="n">input_lif</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        output_lif_in_v[:, i] = input_lif.v.get()
+        output_lif_out_u[:, i] = output_lif.u.get()
+finally:
+    input_lif.stop()
 </pre></div>
 </div>
 </div>
@@ -965,10 +965,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Voltage of 2 input LIF neurons over time steps: &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_lif_in_v</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current of 3 output LIF neurons over time steps: &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_lif_out_u</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Voltage of 2 input LIF neurons over time steps: &quot;)
+print(output_lif_in_v)
+print(&quot;Current of 3 output LIF neurons over time steps: &quot;)
+print(output_lif_out_u)
 </pre></div>
 </div>
 </div>

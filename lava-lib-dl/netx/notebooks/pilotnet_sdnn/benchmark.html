@@ -829,17 +829,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import logging
+import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span><span class="p">,</span> <span class="n">Loihi2HwCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.proc</span> <span class="kn">import</span> <span class="n">io</span>
+from lava.magma.core.run_configs import Loihi2SimCfg, Loihi2HwCfg
+from lava.magma.core.run_conditions import RunSteps
+from lava.proc import io
 
-<span class="kn">from</span> <span class="nn">lava.lib.dl</span> <span class="kn">import</span> <span class="n">netx</span>
-<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PilotNetDataset</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">PilotNetEncoder</span><span class="p">,</span> <span class="n">PilotNetNxEncoderModel</span><span class="p">,</span> <span class="n">get_input_transform</span>
+from lava.lib.dl import netx
+from dataset import PilotNetDataset
+from utils import PilotNetEncoder, PilotNetNxEncoderModel, get_input_transform
 </pre></div>
 </div>
 </div>
@@ -851,17 +851,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.utils.system</span> <span class="kn">import</span> <span class="n">Loihi2</span>
-<span class="n">Loihi2</span><span class="o">.</span><span class="n">preferred_partition</span> <span class="o">=</span> <span class="s1">&#39;oheogulch&#39;</span>
-<span class="n">loihi2_is_available</span> <span class="o">=</span> <span class="n">Loihi2</span><span class="o">.</span><span class="n">is_loihi2_available</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from lava.utils.system import Loihi2
+Loihi2.preferred_partition = &#39;oheogulch&#39;
+loihi2_is_available = Loihi2.is_loihi2_available
 
-<span class="k">if</span> <span class="n">loihi2_is_available</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">lava.utils</span> <span class="kn">import</span> <span class="n">loihi2_profiler</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running on </span><span class="si">{</span><span class="n">Loihi2</span><span class="o">.</span><span class="n">partition</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">compression</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">Compression</span><span class="o">.</span><span class="n">DELTA_SPARSE_8</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Loihi2 compiler is not available in this system. &quot;</span>
-                 <span class="s2">&quot;This tutorial cannot proceed further.&quot;</span><span class="p">)</span>
+if loihi2_is_available:
+    from lava.utils import loihi2_profiler
+    print(f&#39;Running on {Loihi2.partition}&#39;)
+    compression = io.encoder.Compression.DELTA_SPARSE_8
+else:
+    RuntimeError(&quot;Loihi2 compiler is not available in this system. &quot;
+                 &quot;This tutorial cannot proceed further.&quot;)
 </pre></div>
 </div>
 </div>
@@ -880,9 +880,9 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_steps</span> <span class="o">=</span> <span class="mi">2000</span> <span class="c1"># Run for a very long time to get good power measurement</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">netx</span><span class="o">.</span><span class="n">hdf5</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">net_config</span><span class="o">=</span><span class="s1">&#39;network.net&#39;</span><span class="p">,</span> <span class="n">skip_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_steps = 2000 # Run for a very long time to get good power measurement
+net = netx.hdf5.Network(net_config=&#39;network.net&#39;, skip_layers=1)
+print(net)
 <br/></pre></div>
 </div>
 </div>
@@ -910,14 +910,14 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span> <span class="o">=</span> <span class="n">get_input_transform</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">net_config</span><span class="p">)</span>
-<span class="n">full_set</span> <span class="o">=</span> <span class="n">PilotNetDataset</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;../data&#39;</span><span class="p">,</span>
-    <span class="n">size</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>  <span class="c1"># input transform</span>
-    <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># visualize ensures the images are returned in sequence</span>
-    <span class="n">sample_offset</span><span class="o">=</span><span class="mi">10550</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>transform = get_input_transform(net.net_config)
+full_set = PilotNetDataset(
+    path=&#39;../data&#39;,
+    size=net.inp.shape[:2],
+    transform=transform,  # input transform
+    visualize=True,  # visualize ensures the images are returned in sequence
+    sample_offset=10550,
+)
 </pre></div>
 </div>
 </div>
@@ -925,10 +925,10 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">dataloader</span><span class="o">.</span><span class="n">SpikeDataloader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">full_set</span><span class="p">)</span>
-<span class="n">input_encoder</span> <span class="o">=</span> <span class="n">PilotNetEncoder</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">inp</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
-                                <span class="n">net_config</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">net_config</span><span class="p">,</span>
-                                <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataloader = io.dataloader.SpikeDataloader(dataset=full_set)
+input_encoder = PilotNetEncoder(shape=net.inp.shape,
+                                net_config=net.net_config,
+                                compression=compression)
 </pre></div>
 </div>
 </div>
@@ -936,8 +936,8 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataloader</span><span class="o">.</span><span class="n">s_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">input_encoder</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
-<span class="n">input_encoder</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">inp</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataloader.s_out.connect(input_encoder.inp)
+input_encoder.out.connect(net.inp)
 </pre></div>
 </div>
 </div>
@@ -948,10 +948,10 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power_logger</span> <span class="o">=</span> <span class="n">loihi2_profiler</span><span class="o">.</span><span class="n">Loihi2Power</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">runtime_logger</span> <span class="o">=</span> <span class="n">loihi2_profiler</span><span class="o">.</span><span class="n">Loihi2ExecutionTime</span><span class="p">()</span>
-<span class="n">memory_logger</span> <span class="o">=</span> <span class="n">loihi2_profiler</span><span class="o">.</span><span class="n">Loihi2Memory</span><span class="p">()</span>
-<span class="n">activity_logger</span> <span class="o">=</span> <span class="n">loihi2_profiler</span><span class="o">.</span><span class="n">Loihi2Activity</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>power_logger = loihi2_profiler.Loihi2Power(num_steps=num_steps)
+runtime_logger = loihi2_profiler.Loihi2ExecutionTime()
+memory_logger = loihi2_profiler.Loihi2Memory()
+activity_logger = loihi2_profiler.Loihi2Activity()
 </pre></div>
 </div>
 </div>
@@ -963,15 +963,15 @@ Running on oheogulch
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exception_proc_model_map</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">io</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">DeltaEncoder</span><span class="p">:</span> <span class="n">io</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">PyDeltaEncoderModelSparse</span><span class="p">,</span>
-    <span class="n">PilotNetEncoder</span><span class="p">:</span> <span class="n">PilotNetNxEncoderModel</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">run_config</span> <span class="o">=</span> <span class="n">Loihi2HwCfg</span><span class="p">(</span><span class="n">exception_proc_model_map</span><span class="o">=</span><span class="n">exception_proc_model_map</span><span class="p">,</span>
-                         <span class="n">callback_fxs</span><span class="o">=</span><span class="p">[</span><span class="n">power_logger</span><span class="p">,</span> <span class="n">runtime_logger</span><span class="p">,</span> <span class="n">memory_logger</span><span class="p">,</span> <span class="n">activity_logger</span><span class="p">])</span>
-<span class="n">net</span><span class="o">.</span><span class="n">_log_config</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-<span class="n">net</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_config</span><span class="p">)</span>
-<span class="n">net</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>exception_proc_model_map = {
+    io.encoder.DeltaEncoder: io.encoder.PyDeltaEncoderModelSparse,
+    PilotNetEncoder: PilotNetNxEncoderModel,
+}
+run_config = Loihi2HwCfg(exception_proc_model_map=exception_proc_model_map,
+                         callback_fxs=[power_logger, runtime_logger, memory_logger, activity_logger])
+net._log_config.level = logging.INFO
+net.run(condition=RunSteps(num_steps=num_steps), run_cfg=run_config)
+net.stop()
 </pre></div>
 </div>
 </div>
@@ -1042,10 +1042,10 @@ Final max_ratio=1, Per core distribution:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># runtime measurements</span>
-<span class="n">inference_rate</span> <span class="o">=</span> <span class="mf">1e6</span> <span class="o">/</span> <span class="n">runtime_logger</span><span class="o">.</span><span class="n">avg_time_per_step</span>
-<span class="n">total_inference_time</span> <span class="o">=</span> <span class="n">num_steps</span> <span class="o">*</span> <span class="n">runtime_logger</span><span class="o">.</span><span class="n">avg_time_per_step</span> <span class="o">*</span> <span class="mf">1e-6</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Throughput : </span><span class="si">{</span><span class="n">inference_rate</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> fps.&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># runtime measurements
+inference_rate = 1e6 / runtime_logger.avg_time_per_step
+total_inference_time = num_steps * runtime_logger.avg_time_per_step * 1e-6
+print(f&#39;Throughput : {inference_rate:.2f} fps.&#39;)
 </pre></div>
 </div>
 </div>
@@ -1061,11 +1061,11 @@ Throughput : 16.87 fps.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">runtime_logger</span><span class="o">.</span><span class="n">execution_time_per_step</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total execution time per timestep&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time Step&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Time (us)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15, 5))
+plt.plot(runtime_logger.execution_time_per_step, label=&#39;Total execution time per timestep&#39;)
+plt.xlabel(&#39;Time Step&#39;)
+plt.ylabel(&#39;Time (us)&#39;)
+plt.legend()
 </pre></div>
 </div>
 </div>
@@ -1094,11 +1094,11 @@ Throughput : 16.87 fps.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># power measurements</span>
-<span class="n">vdd_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">vdd_power</span>  <span class="c1"># neurocore power</span>
-<span class="n">vddm_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">vddm_power</span>  <span class="c1"># memory power</span>
-<span class="n">vddio_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">vddio_power</span>  <span class="c1"># IO power</span>
-<span class="n">total_power</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">total_power</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># power measurements
+vdd_p = power_logger.vdd_power  # neurocore power
+vddm_p = power_logger.vddm_power  # memory power
+vddio_p = power_logger.vddio_power  # IO power
+total_power = power_logger.total_power
 </pre></div>
 </div>
 </div>
@@ -1109,21 +1109,21 @@ Throughput : 16.87 fps.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_chips</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">Loihi2</span><span class="o">.</span><span class="n">partition</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;kp&#39;</span><span class="p">,</span> <span class="s1">&#39;kp_stack&#39;</span><span class="p">,</span> <span class="s1">&#39;kp_build&#39;</span><span class="p">]:</span>
-    <span class="n">num_chips</span> <span class="o">=</span> <span class="mi">8</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_chips = 1
+if Loihi2.partition in [&#39;kp&#39;, &#39;kp_stack&#39;, &#39;kp_build&#39;]:
+    num_chips = 8
 
-<span class="c1"># per chip static power</span>
-<span class="n">static_total_power</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">static_total_power</span> <span class="o">/</span> <span class="n">num_chips</span>
-<span class="n">static_vdd_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">static_vdd_power</span> <span class="o">/</span> <span class="n">num_chips</span>
-<span class="n">static_vddm_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">static_vddm_power</span> <span class="o">/</span> <span class="n">num_chips</span>
-<span class="n">static_vddio_p</span> <span class="o">=</span> <span class="n">power_logger</span><span class="o">.</span><span class="n">static_vddio_power</span> <span class="o">/</span> <span class="n">num_chips</span>
+# per chip static power
+static_total_power = power_logger.static_total_power / num_chips
+static_vdd_p = power_logger.static_vdd_power / num_chips
+static_vddm_p = power_logger.static_vddm_power / num_chips
+static_vddio_p = power_logger.static_vddio_power / num_chips
 
-<span class="c1"># compensate for static power of multiple chip</span>
-<span class="n">total_power</span> <span class="o">-=</span> <span class="p">(</span><span class="n">num_chips</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">static_total_power</span>
-<span class="n">vdd_p</span> <span class="o">-=</span> <span class="p">(</span><span class="n">num_chips</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">static_vdd_p</span>
-<span class="n">vddm_p</span> <span class="o">-=</span> <span class="p">(</span><span class="n">num_chips</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">static_vddm_p</span>
-<span class="n">vddio_p</span> <span class="o">-=</span> <span class="p">(</span><span class="n">num_chips</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">static_vddio_p</span>
+# compensate for static power of multiple chip
+total_power -= (num_chips - 1) * static_total_power
+vdd_p -= (num_chips - 1) * static_vdd_p
+vddm_p -= (num_chips - 1) * static_vddm_p
+vddio_p -= (num_chips - 1) * static_vddio_p
 </pre></div>
 </div>
 </div>
@@ -1131,16 +1131,16 @@ Throughput : 16.87 fps.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_power_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">total_power</span><span class="p">)</span>
-<span class="n">vdd_p_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vdd_p</span><span class="p">)</span>
-<span class="n">vddm_p_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vddm_p</span><span class="p">)</span>
-<span class="n">vddio_p_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vddio_p</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total Power   : </span><span class="si">{</span><span class="n">total_power_mean</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dynamic Power : </span><span class="si">{</span><span class="n">total_power_mean</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">static_total_power</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Static Power  : </span><span class="si">{</span><span class="n">static_total_power</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;VDD Power     : </span><span class="si">{</span><span class="n">vdd_p_mean</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;VDD-M Power   : </span><span class="si">{</span><span class="n">vddm_p_mean</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;VDD-IO Power  : </span><span class="si">{</span><span class="n">vddio_p_mean</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_power_mean = np.mean(total_power)
+vdd_p_mean = np.mean(vdd_p)
+vddm_p_mean = np.mean(vddm_p)
+vddio_p_mean = np.mean(vddio_p)
+print(f&#39;Total Power   : {total_power_mean:.6f} W&#39;)
+print(f&#39;Dynamic Power : {total_power_mean - static_total_power:.6f} W&#39;)
+print(f&#39;Static Power  : {static_total_power:.6f} W&#39;)
+print(f&#39;VDD Power     : {vdd_p_mean:.6f} W&#39;)
+print(f&#39;VDD-M Power   : {vddm_p_mean:.6f} W&#39;)
+print(f&#39;VDD-IO Power  : {vddio_p_mean:.6f} W&#39;)
 </pre></div>
 </div>
 </div>
@@ -1161,10 +1161,10 @@ VDD-IO Power  : 0.004939 W
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_energy</span> <span class="o">=</span> <span class="n">total_power_mean</span> <span class="o">/</span> <span class="n">inference_rate</span>
-<span class="n">dynamic_energy</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_power_mean</span> <span class="o">-</span> <span class="n">static_total_power</span><span class="p">)</span> <span class="o">/</span> <span class="n">inference_rate</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total Energy per inference   : </span><span class="si">{</span><span class="n">total_energy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e3</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> mJ&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dynamic Energy per inference : </span><span class="si">{</span><span class="n">dynamic_energy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e3</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1"> mJ&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_energy = total_power_mean / inference_rate
+dynamic_energy = (total_power_mean - static_total_power) / inference_rate
+print(f&#39;Total Energy per inference   : {total_energy * 1e3:.6f} mJ&#39;)
+print(f&#39;Dynamic Energy per inference : {dynamic_energy * 1e3:.6f} mJ&#39;)
 </pre></div>
 </div>
 </div>
@@ -1181,21 +1181,21 @@ Dynamic Energy per inference : -0.359587 mJ
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">_get_lines</span><span class="o">.</span><span class="n">prop_cycler</span><span class="p">)[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">total_power</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Power&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">total_power</span><span class="p">)</span>
-        <span class="o">+</span> <span class="n">static_total_power</span><span class="p">,</span>
-        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Static Power&#39;</span><span class="p">)</span>
-<span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">_get_lines</span><span class="o">.</span><span class="n">prop_cycler</span><span class="p">)[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vdd_p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;VDD Power&#39;</span><span class="p">)</span>
-<span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">_get_lines</span><span class="o">.</span><span class="n">prop_cycler</span><span class="p">)[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vddm_p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;VDD-M Power&#39;</span><span class="p">)</span>
-<span class="n">color</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">_get_lines</span><span class="o">.</span><span class="n">prop_cycler</span><span class="p">)[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vddio_p</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;VDD-IO Power&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power (W)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (us)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(15, 5))
+color = next(ax._get_lines.prop_cycler)[&#39;color&#39;]
+ax.plot(total_power, color=color, label=&#39;Total Power&#39;)
+ax.plot(np.zeros_like(total_power)
+        + static_total_power,
+        linestyle=&#39;--&#39;, color=color, label=&#39;Total Static Power&#39;)
+color = next(ax._get_lines.prop_cycler)[&#39;color&#39;]
+ax.plot(vdd_p, color=color, label=&#39;VDD Power&#39;)
+color = next(ax._get_lines.prop_cycler)[&#39;color&#39;]
+ax.plot(vddm_p, color=color, label=&#39;VDD-M Power&#39;)
+color = next(ax._get_lines.prop_cycler)[&#39;color&#39;]
+ax.plot(vddio_p, color=color, label=&#39;VDD-IO Power&#39;)
+ax.set_ylabel(&#39;Power (W)&#39;)
+ax.set_xlabel(&#39;Time (us)&#39;)
+ax.legend()
 <br/></pre></div>
 </div>
 </div>
@@ -1225,14 +1225,14 @@ Dynamic Energy per inference : -0.359587 mJ
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">activity_logger</span><span class="o">.</span><span class="n">core_idx</span><span class="p">,</span> <span class="n">activity_logger</span><span class="o">.</span><span class="n">syn_ops</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Synaptic Ops&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">activity_logger</span><span class="o">.</span><span class="n">core_idx</span><span class="p">,</span> <span class="n">activity_logger</span><span class="o">.</span><span class="n">dendrite_updates</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Neuron Updates&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">activity_logger</span><span class="o">.</span><span class="n">core_idx</span><span class="p">,</span> <span class="n">activity_logger</span><span class="o">.</span><span class="n">axon_out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Output Spikes&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">activity_logger</span><span class="o">.</span><span class="n">core_idx</span><span class="p">,</span> <span class="n">activity_logger</span><span class="o">.</span><span class="n">spikes_in</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input Spikes&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Core Idx&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15, 5))
+plt.plot(activity_logger.core_idx, activity_logger.syn_ops, label=&#39;Synaptic Ops&#39;)
+plt.plot(activity_logger.core_idx, activity_logger.dendrite_updates, label=&#39;Neuron Updates&#39;)
+plt.plot(activity_logger.core_idx, activity_logger.axon_out, label=&#39;Output Spikes&#39;)
+plt.plot(activity_logger.core_idx, activity_logger.spikes_in, label=&#39;Input Spikes&#39;)
+plt.xlabel(&#39;Core Idx&#39;)
+plt.ylabel(&#39;Count&#39;)
+plt.legend()
 </pre></div>
 </div>
 </div>
@@ -1260,11 +1260,11 @@ Dynamic Energy per inference : -0.359587 mJ
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">memory_logger</span><span class="o">.</span><span class="n">core_idx</span><span class="p">,</span> <span class="n">memory_logger</span><span class="o">.</span><span class="n">total_mpds</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Memory Utilization&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Used / Total&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Core Idx&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(15, 5))
+plt.bar(memory_logger.core_idx, memory_logger.total_mpds, label=&#39;Memory Utilization&#39;)
+plt.ylabel(&#39;Used / Total&#39;)
+plt.xlabel(&#39;Core Idx&#39;)
+plt.legend()
 </pre></div>
 </div>
 </div>

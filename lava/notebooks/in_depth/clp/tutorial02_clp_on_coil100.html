@@ -855,19 +855,19 @@ experiments both in multi-shot and few-shot settings. Crucially, novelty detecti
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pylab as plt
 
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">Loihi2SimCfg</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">LearningDense</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.models</span> <span class="kn">import</span> <span class="n">PyLearningDenseModelBitApproximate</span>
+from lava.magma.core.run_configs import Loihi2SimCfg
+from lava.magma.core.run_conditions import RunSteps
+from lava.proc.dense.process import LearningDense
+from lava.proc.dense.models import PyLearningDenseModelBitApproximate
 </pre></div>
 </div>
 </div>
 <section id="Dasaset:-COIL-100">
 <h3>Dasaset: COIL-100<a class="headerlink" href="#Dasaset:-COIL-100" title="Permalink to this heading"></a></h3>
-<center><p><img alt="9924a2abfb2d4310836a1b020afd0ce0" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/coil_100.png" /></p>
+<center><p><img alt="bac48aeab45949bb9a228e45ccbd0bc4" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/coil_100.png" /></p>
 <center><center><figcaption align="center"><p>Figure 1. COIL-100 dataset. The dataset includes 72 frames for each of the 100 objects rotated on a turntable.</p>
 </figcaption><center></section>
 <section id="Data-preparation-and-visualization">
@@ -882,27 +882,27 @@ this helper function.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">extract_and_load_features</span>
-<span class="c1"># Load COIL-100 data and extract features</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">extract_and_load_features</span><span class="p">(</span><span class="n">extract</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import extract_and_load_features
+# Load COIL-100 data and extract features
+X, y = extract_and_load_features(extract=False)
 
-<span class="c1"># The label==0 is reserved for &quot;no information&quot; on the communication channel</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+# The label==0 is reserved for &quot;no information&quot; on the communication channel
+y = y + 1
 
-<span class="c1"># The negative feature values are clipped to zero. We have validated that this does not degrade accuracy.</span>
-<span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+# The negative feature values are clipped to zero. We have validated that this does not degrade accuracy.
+X[X&lt;0]=0
 
-<span class="c1"># Normalize the vectors</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+# Normalize the vectors
+X = X / np.expand_dims(np.linalg.norm(X, axis=1), axis=1)
 
-<span class="c1"># The fraction of the fixed point representation used to translate floating point input to graded spikes</span>
-<span class="n">b_fraction</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">X_fixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">b_fraction</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+# The fraction of the fixed point representation used to translate floating point input to graded spikes
+b_fraction = 7
+X_fixed = np.round(X * 2 ** b_fraction).astype(np.int32)
 
-<span class="c1"># Zero valued neuron is upgraded to &#39;1&#39; so that they can overwrite the x1 trace</span>
-<span class="n">X_fixed</span> <span class="o">=</span> <span class="n">X_fixed</span> <span class="o">+</span> <span class="mi">1</span>
+# Zero valued neuron is upgraded to &#39;1&#39; so that they can overwrite the x1 trace
+X_fixed = X_fixed + 1
 
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+print(X.shape, y.shape)
 </pre></div>
 </div>
 </div>
@@ -924,12 +924,12 @@ us roughly know which range of the similarity values (input currents to Prototyp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_single</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_fixed</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">42</span><span class="o">*</span><span class="mi">72</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">),:],</span> <span class="n">X_fixed</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sim_single</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Random sample 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Random sample 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Random sample 3&quot;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram of the similarities of three random samples to all other samples&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sim_single = np.dot(X_fixed[np.random.randint(low=0, high=42*72, size=3),:], X_fixed.T)
+plt.figure(figsize=(12,6))
+plt.hist(sim_single.T, bins=40)
+plt.legend([&quot;Random sample 1&quot;, &quot;Random sample 2&quot;, &quot;Random sample 3&quot;])
+plt.title(&quot;Histogram of the similarities of three random samples to all other samples&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -948,15 +948,15 @@ us roughly know which range of the similarity values (input currents to Prototyp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
 
-<span class="c1"># Subsample the dataset</span>
-<span class="n">k_sample</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">X_sampled</span> <span class="o">=</span> <span class="n">X_fixed</span><span class="p">[::</span><span class="n">k_sample</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">y_sampled</span> <span class="o">=</span> <span class="n">y</span><span class="p">[::</span><span class="n">k_sample</span><span class="p">]</span>
+# Subsample the dataset
+k_sample = 2
+X_sampled = X_fixed[::k_sample, :]
+y_sampled = y[::k_sample]
 
-<span class="n">test_size</span> <span class="o">=</span> <span class="mi">26</span><span class="o">/</span><span class="mi">36</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_sampled</span><span class="p">,</span> <span class="n">y_sampled</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_sampled</span><span class="p">)</span>
+test_size = 26/36
+X_train, X_test, y_train, y_test = train_test_split(X_sampled, y_sampled, test_size=test_size, random_state=1000, stratify=y_sampled)
 </pre></div>
 </div>
 </div>
@@ -968,10 +968,10 @@ us roughly know which range of the similarity values (input currents to Prototyp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_train</span><span class="p">),:]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_train</span><span class="p">)]</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test</span><span class="p">),:]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test</span><span class="p">)]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train = X_train[np.argsort(y_train),:]
+y_train = y_train[np.argsort(y_train)]
+X_test = X_test[np.argsort(y_test),:]
+y_test = y_test[np.argsort(y_test)]
 </pre></div>
 </div>
 </div>
@@ -980,16 +980,16 @@ us roughly know which range of the similarity values (input currents to Prototyp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cls_rng</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
-<span class="n">n_classes</span> <span class="o">=</span> <span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cls_rng = [0, 20]
+n_classes = cls_rng[1]
 
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[(</span><span class="n">y_train</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">:]</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[(</span><span class="n">y_test</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">:]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[(</span><span class="n">y_train</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">[(</span><span class="n">y_test</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+X_train = X_train[(y_train&gt;cls_rng[0]) &amp; (y_train&lt;=cls_rng[1]), :]
+X_test = X_test[(y_test&gt;cls_rng[0]) &amp; (y_test&lt;=cls_rng[1]), :]
+y_train = y_train[(y_train&gt;cls_rng[0]) &amp; (y_train&lt;=cls_rng[1])]
+y_test = y_test[(y_test&gt;cls_rng[0]) &amp; (y_test&lt;=cls_rng[1])]
 
-<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+print(X_train.shape)
+print(X_test.shape)
 </pre></div>
 </div>
 </div>
@@ -1010,28 +1010,28 @@ us roughly know which range of the similarity values (input currents to Prototyp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import colors
 
-<span class="n">a_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">19000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+a_in = np.arange(10000,19000, 1000)
 
-<span class="n">sims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+sims = np.dot(X_train, X_test.T)
 
-<span class="c1"># define the colormap</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span>
+# define the colormap
+cmap = plt.cm.jet
 
-<span class="c1"># extract all colors from the .jet map</span>
-<span class="n">cmaplist</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmap</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">)]</span>
+# extract all colors from the .jet map
+cmaplist = [cmap(i) for i in range(cmap.N)]
 
-<span class="n">bounds</span><span class="o">=</span><span class="n">a_in</span>
-<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+bounds=a_in
+norm = colors.BoundaryNorm(bounds, cmap.N)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sims</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">a_in</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dot product similarity between normalized, 7-bit fixed-point vectors&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Testing Samples&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Training Samples&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.figure(figsize=(30,5))
+img = plt.imshow(sims, interpolation=&#39;nearest&#39;,cmap=cmap, norm=norm)
+plt.colorbar(img, cmap=cmap, norm=norm, boundaries=bounds, ticks=a_in)
+plt.title(&quot;Dot product similarity between normalized, 7-bit fixed-point vectors&quot;)
+plt.xlabel(&quot;Testing Samples&quot;)
+plt.ylabel(&quot;Training Samples&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1046,7 @@ us roughly know which range of the similarity values (input currents to Prototyp
 </section>
 <section id="Lava-diagram-of-CLP-for-COIL-100-experiment">
 <h3>Lava diagram of CLP for COIL-100 experiment<a class="headerlink" href="#Lava-diagram-of-CLP-for-COIL-100-experiment" title="Permalink to this heading"></a></h3>
-<center><p><img alt="4655ba1280164b7297a4b55c5e91b9ef" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/clp_coil100_lava_diagram.png" /></p>
+<center><p><img alt="60f463bfb50d41799d995435c7c3757e" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/clp_coil100_lava_diagram.png" /></p>
 <center><center><figcaption align="center"><p>Figure 1. Lava process diagram of the CLP that is capable of both unsupervised and supervised learning</p>
 </figcaption><center><p>Compared to the introductory CLP tutorial, we are using an upgraded version of the algorithm here. Specifically, this version is concurrently capable of both unsupervised and supervised learning. This is possible thanks to error feedback from the <code class="docutils literal notranslate"><span class="pre">Readout</span></code> process to the <code class="docutils literal notranslate"><span class="pre">Allocator</span></code> process. Basically, when there is a mismatch between the predicted label and the user-provided true label, the <code class="docutils literal notranslate"><span class="pre">Readout</span></code> process generates an error signal, which triggers the allocation of a new prototype
 neuron for this mistaken pattern. As we will see later, this will improve the performance. This error feedback can be turned on or off, and based on this the CLP performs either supervised or unsupervised learning.</p>
@@ -1064,11 +1064,11 @@ we want some input current ranges to trigger output spikes at different time ste
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from utils import wta_hyperparam_search</span>
-<span class="c1"># a_in = [11900]+list(range(12000,18800, 1200))</span>
-<span class="c1"># print(a_in)</span>
-<span class="c1"># n_steps = 25</span>
-<span class="c1"># best_params = wta_hyperparam_search(a_in, n_steps)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># from utils import wta_hyperparam_search
+# a_in = [11900]+list(range(12000,18800, 1200))
+# print(a_in)
+# n_steps = 25
+# best_params = wta_hyperparam_search(a_in, n_steps)
 </pre></div>
 </div>
 </div>
@@ -1118,18 +1118,18 @@ vth = 53000
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_wta_voltage_dynamics</span>
-<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">25</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import plot_wta_voltage_dynamics
+n_steps = 25
 
-<span class="c1"># Input values to differentiate based on spike time</span>
-<span class="n">a_in</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11900</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">12000</span><span class="p">,</span><span class="mi">18800</span><span class="p">,</span> <span class="mi">1200</span><span class="p">))</span>
+# Input values to differentiate based on spike time
+a_in = [11900]+list(range(12000,18800, 1200))
 
-<span class="c1"># Optimized hyperparameters</span>
-<span class="n">du</span> <span class="o">=</span> <span class="mi">70</span>
-<span class="n">dv</span> <span class="o">=</span> <span class="mi">740</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mi">53000</span>
+# Optimized hyperparameters
+du = 70
+dv = 740
+vth = 53000
 
-<span class="n">plot_wta_voltage_dynamics</span><span class="p">(</span><span class="n">du</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">vth</span><span class="p">,</span> <span class="n">a_in</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+plot_wta_voltage_dynamics(du, dv, vth, a_in, n_steps)
 </pre></div>
 </div>
 </div>
@@ -1148,23 +1148,23 @@ current CLP algorithm, as K-NN stores all data, while CLP stores only those that
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 
-<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
-<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Offline KNN accuracy (k=1):&quot;</span><span class="p">,</span> <span class="n">acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+knn = KNeighborsClassifier(n_neighbors=1, metric=&#39;cosine&#39;)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+print(&quot;Offline KNN accuracy (k=1):&quot;, acc.round(3))
 
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6,6))
+plt.xticks(np.arange(cls_rng[1]))
+plt.yticks(np.arange(cls_rng[1]))
+plt.imshow(cm)
+plt.colorbar()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1196,23 +1196,23 @@ Offline KNN accuracy (k=1): 0.971
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># General params</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">t_wait</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1"># the waiting window for novelty detection after input injection</span>
-<span class="n">n_protos</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of the prototypes</span>
-<span class="c1"># The time difference between two consecutive inputs</span>
-<span class="n">n_steps_per_sample</span> <span class="o">=</span> <span class="n">t_wait</span> <span class="o">+</span> <span class="mi">8</span>  <span class="c1"># To give enough time for dynamics to converge</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># General params
+n_features = X_train.shape[1]
+t_wait = 13  # the waiting window for novelty detection after input injection
+n_protos = 100  # number of the prototypes
+# The time difference between two consecutive inputs
+n_steps_per_sample = t_wait + 8  # To give enough time for dynamics to converge
 
-<span class="c1"># PrototypeLIF neural dynamics parameters</span>
-<span class="n">du</span> <span class="o">=</span> <span class="mi">70</span>
-<span class="n">dv</span> <span class="o">=</span> <span class="mi">740</span>
-<span class="n">vth</span> <span class="o">=</span> <span class="mi">53000</span>
-<span class="n">exception_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">LearningDense</span><span class="p">:</span> <span class="n">PyLearningDenseModelBitApproximate</span>
-<span class="p">}</span>
+# PrototypeLIF neural dynamics parameters
+du = 70
+dv = 740
+vth = 53000
+exception_map = {
+        LearningDense: PyLearningDenseModelBitApproximate
+}
 
-<span class="n">run_cfg</span> <span class="o">=</span> <span class="n">Loihi2SimCfg</span><span class="p">(</span><span class="n">select_tag</span><span class="o">=</span><span class="s2">&quot;fixed_pt&quot;</span><span class="p">,</span>
-                       <span class="n">exception_proc_model_map</span><span class="o">=</span><span class="n">exception_map</span><span class="p">)</span>
+run_cfg = Loihi2SimCfg(select_tag=&quot;fixed_pt&quot;,
+                       exception_proc_model_map=exception_map)
 </pre></div>
 </div>
 </div>
@@ -1233,24 +1233,24 @@ reads the collected results from the monitors. These are the predictions and spi
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">clp</span> <span class="kn">import</span> <span class="n">CLP</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from clp import CLP
 
-<span class="n">clp</span> <span class="o">=</span> <span class="n">CLP</span><span class="p">(</span><span class="n">supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-          <span class="n">learn_novels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-          <span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span>
-          <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-          <span class="n">n_steps_per_sample</span><span class="o">=</span><span class="n">n_steps_per_sample</span><span class="p">,</span>
-          <span class="n">b_fraction</span><span class="o">=</span><span class="n">b_fraction</span><span class="p">,</span>
-          <span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-          <span class="n">dv</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span>
-          <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-          <span class="n">t_wait</span><span class="o">=</span><span class="n">t_wait</span><span class="p">,</span>
-          <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+clp = CLP(supervised=True,
+          learn_novels=True,
+          n_protos=n_protos,
+          n_features=n_features,
+          n_steps_per_sample=n_steps_per_sample,
+          b_fraction=b_fraction,
+          du=du,
+          dv=dv,
+          vth=vth,
+          t_wait=t_wait,
+          debug=False)
 
-<span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+s_pattern_inp, s_user_label = clp.generate_input_spikes(X_train, y_train)
+clp = clp.setup_procs_and_conns()
 
-<span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+num_steps = clp.num_steps
 </pre></div>
 </div>
 </div>
@@ -1258,13 +1258,13 @@ reads the collected results from the monitors. These are the predictions and spi
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Run
 
-<span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+run_cond = RunSteps(num_steps=num_steps)
 
-<span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-<span class="n">novelty_spikes</span><span class="p">,</span> <span class="n">proto_spikes</span><span class="p">,</span> <span class="n">error_spikes</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">currs</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+novelty_spikes, proto_spikes, error_spikes, preds, currs = clp.get_results()
 <br/></pre></div>
 </div>
 </div>
@@ -1273,36 +1273,36 @@ reads the collected results from the monitors. These are the predictions and spi
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span>  <span class="n">plot_spikes</span><span class="p">,</span> <span class="n">plot_spikes_time_series</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span>
-<span class="n">plot_spikes_time_series</span><span class="p">(</span>
-        <span class="n">spikes</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">9</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">8</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">7</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">proto_spikes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">error_spikes</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s_pattern_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]],</span>
-        <span class="n">time_series</span><span class="o">=</span><span class="n">preds</span><span class="p">,</span>
-        <span class="n">y_label_time_series</span> <span class="o">=</span> <span class="s1">&#39;Predictions&#39;</span><span class="p">,</span>
-        <span class="n">time</span><span class="o">=</span><span class="n">time</span><span class="p">,</span>
-        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
-        <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Prototype Neuron 9&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 8&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Prototype Neuron 7&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 6&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Prototype Neuron 5&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 4&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Prototype Neuron 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 2&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Prototype Neuron 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Prototype Neuron 0&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Error Spikes&#39;</span><span class="p">,</span> <span class="s1">&#39;Novelty Spikes&#39;</span><span class="p">,</span> <span class="s1">&#39;Input Injection&#39;</span><span class="p">],</span>
-        <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#f14a16&#39;</span><span class="p">,</span> <span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">,</span> <span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;#f14a16&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9912&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;#458b00&#39;</span><span class="p">,</span> <span class="s1">&#39;#f14a16&#39;</span><span class="p">,</span> <span class="s1">&#39;#458b00&#39;</span><span class="p">],</span>
-        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Spike Raster Plot&#39;</span><span class="p">,</span>
-        <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span>
-<span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from utils import  plot_spikes, plot_spikes_time_series
+time = np.arange(num_steps)
+plot_spikes_time_series(
+        spikes=[np.where(proto_spikes[:, 9])[0],
+                np.where(proto_spikes[:, 8])[0],
+                np.where(proto_spikes[:, 7])[0],
+                np.where(proto_spikes[:, 6])[0],
+                np.where(proto_spikes[:, 5])[0],
+                np.where(proto_spikes[:, 4])[0],
+                np.where(proto_spikes[:, 3])[0],
+                np.where(proto_spikes[:, 2])[0],
+                np.where(proto_spikes[:, 1])[0],
+                np.where(proto_spikes[:, 0])[0],
+                np.where(error_spikes)[0],
+                np.where(novelty_spikes)[0],
+                np.where(s_pattern_inp[0, :])[0]],
+        time_series=preds,
+        y_label_time_series = &#39;Predictions&#39;,
+        time=time,
+        figsize=(20, 8),
+        legend=[&#39;Prototype Neuron 9&#39;, &#39;Prototype Neuron 8&#39;,
+                &#39;Prototype Neuron 7&#39;, &#39;Prototype Neuron 6&#39;,
+                &#39;Prototype Neuron 5&#39;, &#39;Prototype Neuron 4&#39;,
+                &#39;Prototype Neuron 3&#39;, &#39;Prototype Neuron 2&#39;,
+                &#39;Prototype Neuron 1&#39;, &#39;Prototype Neuron 0&#39;,
+                &#39;Error Spikes&#39;, &#39;Novelty Spikes&#39;, &#39;Input Injection&#39;],
+        colors=[&#39;blue&#39;, &#39;#458b00&#39;, &#39;#f14a16&#39;, &#39;#458b00&#39;, &#39;#ff9912&#39;, &#39;#458b00&#39;, &#39;purple&#39;, &#39;#f14a16&#39;, &#39;blue&#39;, &#39;#ff9912&#39;,&#39;r&#39;,&#39;#458b00&#39;, &#39;#f14a16&#39;, &#39;#458b00&#39;],
+        title=&#39;Spike Raster Plot&#39;,
+        num_steps=num_steps
+)
 </pre></div>
 </div>
 </div>
@@ -1321,20 +1321,20 @@ reads the collected results from the monitors. These are the predictions and spi
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clp</span><span class="o">.</span><span class="n">supervised</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">clp</span><span class="o">.</span><span class="n">learn_novels</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clp.supervised = False
+clp.learn_novels = False
 
-<span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+s_pattern_inp, s_user_label = clp.generate_input_spikes(X_test)
+clp = clp.setup_procs_and_conns()
 
-<span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+num_steps = clp.num_steps
 
-<span class="c1"># Run</span>
-<span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+# Run
+run_cond = RunSteps(num_steps=num_steps)
 
-<span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-<span class="n">novelty_spikes</span><span class="p">,</span> <span class="n">proto_spikes</span><span class="p">,</span> <span class="n">error_spikes</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span><span class="n">currs</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+novelty_spikes, proto_spikes, error_spikes, preds,currs = clp.get_results()
 <br/></pre></div>
 </div>
 </div>
@@ -1349,26 +1349,26 @@ misclassify some known instances as unknowns. This can be solved by tuning the h
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])[:,</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">novelty_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])[:,</span><span class="mi">0</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = np.maximum.reduceat(preds.copy(), np.r_[0:len(preds):n_steps_per_sample])[:,0]
+novelty_pred = np.maximum.reduceat(novelty_spikes.copy(), np.r_[0:len(novelty_spikes):n_steps_per_sample])[:,0]
 
-<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test accuracy on offline trained classes (including no response cases): &quot;</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+acc = accuracy_score(y_test, y_pred).round(3)
+print(&quot;Test accuracy on offline trained classes (including no response cases): &quot;, acc)
 
-<span class="n">err_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span><span class="p">[</span><span class="n">y_pred</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">[</span><span class="n">y_pred</span><span class="o">!=</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error rate on test set (excluding no response cases): &quot;</span><span class="p">,</span> <span class="n">err_rate</span><span class="p">)</span>
+err_rate = (np.sum(y_pred[y_pred!=0] != y_test[y_pred!=0])/len(y_test)).round(3)
+print(&quot;Error rate on test set (excluding no response cases): &quot;, err_rate)
 
-<span class="n">y_known</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">nvl_FP</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_known</span><span class="p">,</span> <span class="n">novelty_pred</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;False positive rate for novelty detection: &quot;</span><span class="p">,</span> <span class="n">nvl_FP</span><span class="p">)</span>
+y_known = np.zeros(shape=y_test.shape)
+nvl_FP = (1-accuracy_score(y_known, novelty_pred)).round(3)
+print(&quot;False positive rate for novelty detection: &quot;, nvl_FP)
 
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6,6))
+plt.xticks(np.arange(cls_rng[1]+1))
+plt.yticks(np.arange(cls_rng[1]+1))
+plt.imshow(cm)
+plt.colorbar()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1396,18 +1396,18 @@ False positive rate for novelty detection:  0.067
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## OOD detection data prep</span>
-<span class="n">cls_rng</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<span class="n">n_classes</span> <span class="o">=</span> <span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## OOD detection data prep
+cls_rng = [20, 30]
+n_classes = cls_rng[1]
 
-<span class="n">X_ood</span> <span class="o">=</span> <span class="n">X_sampled</span><span class="p">[(</span><span class="n">y_sampled</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_sampled</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">:]</span>
-<span class="n">y_ood</span> <span class="o">=</span> <span class="n">y_sampled</span><span class="p">[(</span><span class="n">y_sampled</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_sampled</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+X_ood = X_sampled[(y_sampled&gt;cls_rng[0]) &amp; (y_sampled&lt;=cls_rng[1]), :]
+y_ood = y_sampled[(y_sampled&gt;cls_rng[0]) &amp; (y_sampled&lt;=cls_rng[1])]
 
-<span class="n">X_ood</span> <span class="o">=</span> <span class="n">X_ood</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_ood</span><span class="p">),:]</span>
-<span class="n">y_ood</span> <span class="o">=</span> <span class="n">y_ood</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_ood</span><span class="p">)]</span>
+X_ood = X_ood[np.argsort(y_ood),:]
+y_ood = y_ood[np.argsort(y_ood)]
 
-<span class="nb">print</span><span class="p">(</span><span class="n">X_ood</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_ood</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+print(X_ood.shape)
+print(y_ood.shape)
 </pre></div>
 </div>
 </div>
@@ -1424,20 +1424,20 @@ False positive rate for novelty detection:  0.067
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clp</span><span class="o">.</span><span class="n">supervised</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">clp</span><span class="o">.</span><span class="n">learn_novels</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clp.supervised = False
+clp.learn_novels = False
 
-<span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">X_ood</span><span class="p">)</span>
-<span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+s_pattern_inp, s_user_label = clp.generate_input_spikes(X_ood)
+clp = clp.setup_procs_and_conns()
 
-<span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+num_steps = clp.num_steps
 
-<span class="c1"># Run</span>
-<span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+# Run
+run_cond = RunSteps(num_steps=num_steps)
 
-<span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-<span class="n">novelty_spikes</span><span class="p">,</span> <span class="n">proto_spikes</span><span class="p">,</span> <span class="n">error_spikes</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+novelty_spikes, proto_spikes, error_spikes, preds, _ = clp.get_results()
 </pre></div>
 </div>
 </div>
@@ -1445,10 +1445,10 @@ False positive rate for novelty detection:  0.067
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">novelty_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">novelty_spikes</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>novelty_pred = np.maximum.reduceat(novelty_spikes.copy(), np.r_[0:len(novelty_spikes):n_steps_per_sample])
 
-<span class="n">y_unknown</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">y_ood</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correct novelty detection rate: &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_unknown</span><span class="p">,</span> <span class="n">novelty_pred</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+y_unknown = np.ones(shape=y_ood.shape)
+print(&quot;Correct novelty detection rate: &quot;, accuracy_score(y_unknown, novelty_pred).round(3))
 </pre></div>
 </div>
 </div>
@@ -1472,24 +1472,24 @@ this kind of post-labelling. However, they do not trigger learning themselves bu
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_size</span> <span class="o">=</span> <span class="mi">26</span><span class="o">/</span><span class="mi">36</span>
-<span class="n">X_train_on</span><span class="p">,</span> <span class="n">X_test_on</span><span class="p">,</span> <span class="n">y_train_on</span><span class="p">,</span> <span class="n">y_test_on</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_sampled</span><span class="p">,</span> <span class="n">y_sampled</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_sampled</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_size = 26/36
+X_train_on, X_test_on, y_train_on, y_test_on = train_test_split(X_sampled, y_sampled, test_size=test_size, random_state=1000, stratify=y_sampled)
 
-<span class="n">X_train_on</span> <span class="o">=</span> <span class="n">X_train_on</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_train_on</span><span class="p">),:]</span>
-<span class="n">y_train_on</span> <span class="o">=</span> <span class="n">y_train_on</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_train_on</span><span class="p">)]</span>
-<span class="n">X_test_on</span> <span class="o">=</span> <span class="n">X_test_on</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">),:]</span>
-<span class="n">y_test_on</span> <span class="o">=</span> <span class="n">y_test_on</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">)]</span>
+X_train_on = X_train_on[np.argsort(y_train_on),:]
+y_train_on = y_train_on[np.argsort(y_train_on)]
+X_test_on = X_test_on[np.argsort(y_test_on),:]
+y_test_on = y_test_on[np.argsort(y_test_on)]
 
-<span class="n">cls_rng</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<span class="n">n_classes</span> <span class="o">=</span> <span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+cls_rng = [20, 30]
+n_classes = cls_rng[1]
 
-<span class="n">X_train_on</span> <span class="o">=</span> <span class="n">X_train_on</span><span class="p">[(</span><span class="n">y_train_on</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_on</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">:]</span>
-<span class="n">X_test_on</span> <span class="o">=</span> <span class="n">X_test_on</span><span class="p">[(</span><span class="n">y_test_on</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test_on</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">:]</span>
-<span class="n">y_train_on</span> <span class="o">=</span> <span class="n">y_train_on</span><span class="p">[(</span><span class="n">y_train_on</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_train_on</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-<span class="n">y_test_on</span> <span class="o">=</span> <span class="n">y_test_on</span><span class="p">[(</span><span class="n">y_test_on</span><span class="o">&gt;</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_test_on</span><span class="o">&lt;=</span><span class="n">cls_rng</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+X_train_on = X_train_on[(y_train_on&gt;cls_rng[0]) &amp; (y_train_on&lt;=cls_rng[1]), :]
+X_test_on = X_test_on[(y_test_on&gt;cls_rng[0]) &amp; (y_test_on&lt;=cls_rng[1]), :]
+y_train_on = y_train_on[(y_train_on&gt;cls_rng[0]) &amp; (y_train_on&lt;=cls_rng[1])]
+y_test_on = y_test_on[(y_test_on&gt;cls_rng[0]) &amp; (y_test_on&lt;=cls_rng[1])]
 
-<span class="nb">print</span><span class="p">(</span><span class="n">X_train_on</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X_test_on</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+print(X_train_on.shape)
+print(X_test_on.shape)
 </pre></div>
 </div>
 </div>
@@ -1510,9 +1510,9 @@ this kind of post-labelling. However, they do not trigger learning themselves bu
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proto_labels</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">readout_layer</span><span class="o">.</span><span class="n">proto_labels</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="n">weights_proto</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">dense_proto</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>proto_labels = clp.readout_layer.proto_labels.get()
+weights_proto = clp.dense_proto.weights.get()
+clp.prototypes.stop()
 </pre></div>
 </div>
 </div>
@@ -1524,84 +1524,84 @@ this kind of post-labelling. However, they do not trigger learning themselves bu
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
 
-<span class="n">old_class_accs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">inc_class_accs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">total_accs</span> <span class="o">=</span> <span class="p">[]</span>
+old_class_accs = []
+inc_class_accs = []
+total_accs = []
 
-<span class="n">k_shot_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+k_shot_list = [1, 5, 10]
 
-<span class="k">for</span> <span class="n">k_shot</span> <span class="ow">in</span> <span class="n">k_shot_list</span><span class="p">:</span>
+for k_shot in k_shot_list:
 
-    <span class="n">X_train_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">X_train_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X_train_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">X_test_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">X_test_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X_test_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">y_train_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_train_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
-    <span class="n">y_test_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+    X_train_k_shot = np.reshape(X_train_on, (-1, 10, X_train_on.shape[-1]))[:, :k_shot].reshape((-1, X_train_on.shape[-1]))
+    X_test_k_shot = np.reshape(X_test_on, (-1, 10, X_test_on.shape[-1]))[:, :k_shot].reshape((-1, X_test_on.shape[-1]))
+    y_train_k_shot = np.reshape(y_train_on, (-1, 10))[:, :k_shot].reshape((-1,))
+    y_test_k_shot = np.reshape(y_test_on, (-1, 10,))[:, :k_shot].reshape((-1,))
 
-    <span class="c1"># #------------- Incremental training ------------#</span>
+    # #------------- Incremental training ------------#
 
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">CLP</span><span class="p">(</span><span class="n">supervised</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-              <span class="n">learn_novels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-              <span class="n">weights_proto</span><span class="o">=</span><span class="n">weights_proto</span><span class="p">,</span>
-              <span class="n">proto_labels</span><span class="o">=</span><span class="n">proto_labels</span><span class="p">,</span>
-              <span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span>
-              <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-              <span class="n">n_steps_per_sample</span><span class="o">=</span><span class="n">n_steps_per_sample</span><span class="p">,</span>
-              <span class="n">b_fraction</span><span class="o">=</span><span class="n">b_fraction</span><span class="p">,</span>
-              <span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-              <span class="n">dv</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span>
-              <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-              <span class="n">t_wait</span><span class="o">=</span><span class="n">t_wait</span><span class="p">)</span>
-    <span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">X_train_k_shot</span><span class="p">,</span> <span class="n">y_train_k_shot</span><span class="p">)</span>
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+    clp = CLP(supervised=False,
+              learn_novels=True,
+              weights_proto=weights_proto,
+              proto_labels=proto_labels,
+              n_protos=n_protos,
+              n_features=n_features,
+              n_steps_per_sample=n_steps_per_sample,
+              b_fraction=b_fraction,
+              du=du,
+              dv=dv,
+              vth=vth,
+              t_wait=t_wait)
+    s_pattern_inp, s_user_label = clp.generate_input_spikes(X_train_k_shot, y_train_k_shot)
+    clp = clp.setup_procs_and_conns()
 
-    <span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+    num_steps = clp.num_steps
 
-    <span class="c1"># Run</span>
-    <span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+    # Run
+    run_cond = RunSteps(num_steps=num_steps)
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+    clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-    <span class="c1">#---------------- Testing -----------------------#</span>
+    #---------------- Testing -----------------------#
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">supervised</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">clp</span><span class="o">.</span><span class="n">learn_novels</span> <span class="o">=</span> <span class="kc">False</span>
+    clp.supervised = False
+    clp.learn_novels = False
 
-    <span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X_test</span><span class="p">,</span> <span class="n">X_test_on</span><span class="p">)))</span>
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+    s_pattern_inp, s_user_label = clp.generate_input_spikes(np.vstack((X_test, X_test_on)))
+    clp = clp.setup_procs_and_conns()
 
-    <span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+    num_steps = clp.num_steps
 
-    <span class="c1"># Run</span>
-    <span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+    # Run
+    run_cond = RunSteps(num_steps=num_steps)
+    clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-    <span class="n">novelty_spikes</span><span class="p">,</span> <span class="n">proto_spikes</span><span class="p">,</span> <span class="n">error_spikes</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">currs</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+    novelty_spikes, proto_spikes, error_spikes, preds, currs = clp.get_results()
+    y_pred = np.maximum.reduceat(preds.copy(), np.r_[0:len(preds):n_steps_per_sample])
 
-    <span class="n">old_cls_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)])</span>
-    <span class="n">new_cls_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">):])</span>
+    old_cls_acc = accuracy_score(y_test, y_pred[:len(y_test)])
+    new_cls_acc = accuracy_score(y_test_on, y_pred[len(y_test):])
 
-    <span class="n">y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_on</span><span class="p">))</span>
-    <span class="n">total_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    y_all = np.concatenate((y_test,y_test_on))
+    total_acc = accuracy_score(y_all, y_pred)
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;k = &quot;</span> <span class="p">,</span><span class="n">k_shot</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for old classes: &quot;</span><span class="p">,</span> <span class="n">old_cls_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for new classes: &quot;</span><span class="p">,</span> <span class="n">new_cls_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total accuracy: &quot;</span><span class="p">,</span> <span class="n">total_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------&quot;</span><span class="p">)</span>
+    print(&quot;k = &quot; ,k_shot)
+    print(&quot;Accuracy for old classes: &quot;, old_cls_acc.round(3))
+    print(&quot;Accuracy for new classes: &quot;, new_cls_acc.round(3))
+    print(&quot;Total accuracy: &quot;, total_acc.round(3))
+    print(&quot;--------------------------------&quot;)
 
-    <span class="n">old_class_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">old_cls_acc</span><span class="p">)</span>
-    <span class="n">inc_class_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_cls_acc</span><span class="p">)</span>
-    <span class="n">total_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_acc</span><span class="p">)</span>
+    old_class_accs.append(old_cls_acc)
+    inc_class_accs.append(new_cls_acc)
+    total_accs.append(total_acc)
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    clp.prototypes.stop()
 
-<span class="n">old_class_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">old_class_accs</span><span class="p">)</span>
-<span class="n">inc_class_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inc_class_accs</span><span class="p">)</span>
-<span class="n">total_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">total_accs</span><span class="p">)</span>
+old_class_accs = np.array(old_class_accs)
+inc_class_accs = np.array(inc_class_accs)
+total_accs = np.array(total_accs)
 </pre></div>
 </div>
 </div>
@@ -1636,22 +1636,22 @@ shots, i.e., more frames for training each object, helps to increase this accura
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">X_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">old_class_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Base classes (10-shot, supervised)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="p">,</span> <span class="n">inc_class_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Novel classes (k-shot, unsupervised)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">total_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total accuracy&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(8,4))
+X_axis = np.arange(3)
+plt.bar(X_axis-0.2, old_class_accs, 0.2, label=&#39;Base classes (10-shot, supervised)&#39;)
+plt.bar(X_axis, inc_class_accs, 0.2, label=&#39;Novel classes (k-shot, unsupervised)&#39;)
+plt.bar(X_axis+0.2, total_accs, 0.2, label=&#39;Total accuracy&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.3</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">X_axis</span><span class="p">,</span> <span class="n">k_shot_list</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+plt.ylim([0,1.3])
+plt.xticks(X_axis, k_shot_list)
+plt.yticks(np.arange(0.1,1.1,0.1))
+plt.grid(linewidth=0.5, axis=&#39;y&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Few-shot unsupervised OCL with 20 base and 10 incremental classes&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k: number of frames per class used in incremental learning&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.title(&quot;Few-shot unsupervised OCL with 20 base and 10 incremental classes&quot;)
+plt.xlabel(&quot;k: number of frames per class used in incremental learning&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1666,21 +1666,21 @@ shots, i.e., more frames for training each object, helps to increase this accura
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_pred = np.maximum.reduceat(preds.copy(), np.r_[0:len(preds):n_steps_per_sample])
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Old classes&#39; accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New classes&#39; accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">):]))</span>
-<span class="n">y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_on</span><span class="p">))</span>
-<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+print(&quot;Old classes&#39; accuracy: &quot;, accuracy_score(y_test, y_pred[:len(y_test)]))
+print(&quot;New classes&#39; accuracy: &quot;, accuracy_score(y_test_on, y_pred[len(y_test):]))
+y_all = np.concatenate((y_test,y_test_on))
+acc = accuracy_score(y_all, y_pred)
+print(&quot;Accuracy: &quot;, acc)
 
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cm = confusion_matrix(y_all, y_pred)
+plt.figure(figsize=(5,5))
+plt.xticks(np.arange(n_classes+1))
+plt.yticks(np.arange(n_classes+1))
+plt.imshow(cm)
+plt.colorbar()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1712,84 +1712,84 @@ Accuracy:  0.8474358974358974
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
 
-<span class="n">old_class_accs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">inc_class_accs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">total_accs</span> <span class="o">=</span> <span class="p">[]</span>
+old_class_accs = []
+inc_class_accs = []
+total_accs = []
 
-<span class="n">k_shot_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+k_shot_list = [1, 5, 10]
 
-<span class="k">for</span> <span class="n">k_shot</span> <span class="ow">in</span> <span class="n">k_shot_list</span><span class="p">:</span>
+for k_shot in k_shot_list:
 
-    <span class="n">X_train_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">X_train_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X_train_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">X_test_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">X_test_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X_test_on</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">y_train_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_train_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
-    <span class="n">y_test_k_shot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,))[:,</span> <span class="p">:</span><span class="n">k_shot</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+    X_train_k_shot = np.reshape(X_train_on, (-1, 10, X_train_on.shape[-1]))[:, :k_shot].reshape((-1, X_train_on.shape[-1]))
+    X_test_k_shot = np.reshape(X_test_on, (-1, 10, X_test_on.shape[-1]))[:, :k_shot].reshape((-1, X_test_on.shape[-1]))
+    y_train_k_shot = np.reshape(y_train_on, (-1, 10))[:, :k_shot].reshape((-1,))
+    y_test_k_shot = np.reshape(y_test_on, (-1, 10,))[:, :k_shot].reshape((-1,))
 
-    <span class="c1"># #------------- Incremental training ------------#</span>
+    # #------------- Incremental training ------------#
 
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">CLP</span><span class="p">(</span><span class="n">supervised</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-              <span class="n">learn_novels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-              <span class="n">weights_proto</span><span class="o">=</span><span class="n">weights_proto</span><span class="p">,</span>
-              <span class="n">proto_labels</span><span class="o">=</span><span class="n">proto_labels</span><span class="p">,</span>
-              <span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span>
-              <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
-              <span class="n">n_steps_per_sample</span><span class="o">=</span><span class="n">n_steps_per_sample</span><span class="p">,</span>
-              <span class="n">b_fraction</span><span class="o">=</span><span class="n">b_fraction</span><span class="p">,</span>
-              <span class="n">du</span><span class="o">=</span><span class="n">du</span><span class="p">,</span>
-              <span class="n">dv</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span>
-              <span class="n">vth</span><span class="o">=</span><span class="n">vth</span><span class="p">,</span>
-              <span class="n">t_wait</span><span class="o">=</span><span class="n">t_wait</span><span class="p">)</span>
-    <span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">X_train_k_shot</span><span class="p">,</span> <span class="n">y_train_k_shot</span><span class="p">)</span>
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+    clp = CLP(supervised=True,
+              learn_novels=True,
+              weights_proto=weights_proto,
+              proto_labels=proto_labels,
+              n_protos=n_protos,
+              n_features=n_features,
+              n_steps_per_sample=n_steps_per_sample,
+              b_fraction=b_fraction,
+              du=du,
+              dv=dv,
+              vth=vth,
+              t_wait=t_wait)
+    s_pattern_inp, s_user_label = clp.generate_input_spikes(X_train_k_shot, y_train_k_shot)
+    clp = clp.setup_procs_and_conns()
 
-    <span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+    num_steps = clp.num_steps
 
-    <span class="c1"># Run</span>
-    <span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
+    # Run
+    run_cond = RunSteps(num_steps=num_steps)
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+    clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-    <span class="c1">#---------------- Testing -----------------------#</span>
+    #---------------- Testing -----------------------#
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">supervised</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">clp</span><span class="o">.</span><span class="n">learn_novels</span> <span class="o">=</span> <span class="kc">False</span>
+    clp.supervised = False
+    clp.learn_novels = False
 
-    <span class="n">s_pattern_inp</span><span class="p">,</span> <span class="n">s_user_label</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">generate_input_spikes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X_test</span><span class="p">,</span> <span class="n">X_test_on</span><span class="p">)))</span>
-    <span class="n">clp</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">setup_procs_and_conns</span><span class="p">()</span>
+    s_pattern_inp, s_user_label = clp.generate_input_spikes(np.vstack((X_test, X_test_on)))
+    clp = clp.setup_procs_and_conns()
 
-    <span class="n">num_steps</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">num_steps</span>
+    num_steps = clp.num_steps
 
-    <span class="c1"># Run</span>
-    <span class="n">run_cond</span> <span class="o">=</span> <span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">)</span>
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">run_cond</span><span class="p">,</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">run_cfg</span><span class="p">)</span>
+    # Run
+    run_cond = RunSteps(num_steps=num_steps)
+    clp.prototypes.run(condition=run_cond, run_cfg=run_cfg)
 
-    <span class="n">novelty_spikes</span><span class="p">,</span> <span class="n">proto_spikes</span><span class="p">,</span> <span class="n">error_spikes</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">currs</span> <span class="o">=</span> <span class="n">clp</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+    novelty_spikes, proto_spikes, error_spikes, preds, currs = clp.get_results()
+    y_pred = np.maximum.reduceat(preds.copy(), np.r_[0:len(preds):n_steps_per_sample])
 
-    <span class="n">old_cls_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)])</span>
-    <span class="n">new_cls_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">):])</span>
+    old_cls_acc = accuracy_score(y_test, y_pred[:len(y_test)])
+    new_cls_acc = accuracy_score(y_test_on, y_pred[len(y_test):])
 
-    <span class="n">y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_on</span><span class="p">))</span>
-    <span class="n">total_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    y_all = np.concatenate((y_test,y_test_on))
+    total_acc = accuracy_score(y_all, y_pred)
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;k = &quot;</span> <span class="p">,</span><span class="n">k_shot</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for old classes: &quot;</span><span class="p">,</span> <span class="n">old_cls_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy for new classes: &quot;</span><span class="p">,</span> <span class="n">new_cls_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total accuracy: &quot;</span><span class="p">,</span> <span class="n">total_acc</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------&quot;</span><span class="p">)</span>
+    print(&quot;k = &quot; ,k_shot)
+    print(&quot;Accuracy for old classes: &quot;, old_cls_acc.round(3))
+    print(&quot;Accuracy for new classes: &quot;, new_cls_acc.round(3))
+    print(&quot;Total accuracy: &quot;, total_acc.round(3))
+    print(&quot;--------------------------------&quot;)
 
-    <span class="n">old_class_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">old_cls_acc</span><span class="p">)</span>
-    <span class="n">inc_class_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_cls_acc</span><span class="p">)</span>
-    <span class="n">total_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_acc</span><span class="p">)</span>
+    old_class_accs.append(old_cls_acc)
+    inc_class_accs.append(new_cls_acc)
+    total_accs.append(total_acc)
 
-    <span class="n">clp</span><span class="o">.</span><span class="n">prototypes</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    clp.prototypes.stop()
 
-<span class="n">old_class_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">old_class_accs</span><span class="p">)</span>
-<span class="n">inc_class_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inc_class_accs</span><span class="p">)</span>
-<span class="n">total_accs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">total_accs</span><span class="p">)</span>
+old_class_accs = np.array(old_class_accs)
+inc_class_accs = np.array(inc_class_accs)
+total_accs = np.array(total_accs)
 </pre></div>
 </div>
 </div>
@@ -1824,22 +1824,22 @@ version, as expected. - Adding five more frames on top of this (i.e. 10-shot) d
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">X_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">old_class_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Base classes (10-shot, supervised)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="p">,</span> <span class="n">inc_class_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Novel classes (k-shot, supervised)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">X_axis</span><span class="o">+</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">total_accs</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total accuracy&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(8,4))
+X_axis = np.arange(3)
+plt.bar(X_axis-0.2, old_class_accs, 0.2, label=&#39;Base classes (10-shot, supervised)&#39;)
+plt.bar(X_axis, inc_class_accs, 0.2, label=&#39;Novel classes (k-shot, supervised)&#39;)
+plt.bar(X_axis+0.2, total_accs, 0.2, label=&#39;Total accuracy&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.3</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">X_axis</span><span class="p">,</span> <span class="n">k_shot_list</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+plt.ylim([0,1.3])
+plt.xticks(X_axis, k_shot_list)
+plt.yticks(np.arange(0.1,1.1,0.1))
+plt.grid(linewidth=0.5, axis=&#39;y&#39;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Few-shot supervised OCL with 20 base and 10 incremental classes&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k: number of frames per class used in incremental learning&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.title(&quot;Few-shot supervised OCL with 20 base and 10 incremental classes&quot;)
+plt.xlabel(&quot;k: number of frames per class used in incremental learning&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1854,24 +1854,24 @@ version, as expected. - Adding five more frames on top of this (i.e. 10-shot) d
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span><span class="n">n_steps_per_sample</span><span class="p">])</span>
+y_pred = np.maximum.reduceat(preds.copy(), np.r_[0:len(preds):n_steps_per_sample])
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Old classes&#39; accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New classes&#39; accuracy: &quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_on</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">):]))</span>
-<span class="n">y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_on</span><span class="p">))</span>
-<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: &quot;</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
+print(&quot;Old classes&#39; accuracy: &quot;, accuracy_score(y_test, y_pred[:len(y_test)]))
+print(&quot;New classes&#39; accuracy: &quot;, accuracy_score(y_test_on, y_pred[len(y_test):]))
+y_all = np.concatenate((y_test,y_test_on))
+acc = accuracy_score(y_all, y_pred)
+print(&quot;Accuracy: &quot;, acc)
 
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_all</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_classes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cm = confusion_matrix(y_all, y_pred)
+plt.figure(figsize=(5,5))
+plt.xticks(np.arange(n_classes+1))
+plt.yticks(np.arange(n_classes+1))
+plt.imshow(cm)
+plt.colorbar()
+plt.show()
 </pre></div>
 </div>
 </div>
