@@ -867,7 +867,7 @@ from lava.proc.dense.models import PyLearningDenseModelBitApproximate
 </div>
 <section id="Dasaset:-COIL-100">
 <h3>Dasaset: COIL-100<a class="headerlink" href="#Dasaset:-COIL-100" title="Permalink to this heading"></a></h3>
-<center><p><img alt="d658ddc87dd347278bf54d2208b8efe7" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/coil_100.png" /></p>
+<center><p><img alt="5d35cde29ec74a4988bedf057cf8e7be" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/coil_100.png" /></p>
 <center><center><figcaption align="center"><p>Figure 1. COIL-100 dataset. The dataset includes 72 frames for each of the 100 objects rotated on a turntable.</p>
 </figcaption><center></section>
 <section id="Data-preparation-and-visualization">
@@ -1046,7 +1046,7 @@ plt.show()
 </section>
 <section id="Lava-diagram-of-CLP-for-COIL-100-experiment">
 <h3>Lava diagram of CLP for COIL-100 experiment<a class="headerlink" href="#Lava-diagram-of-CLP-for-COIL-100-experiment" title="Permalink to this heading"></a></h3>
-<center><p><img alt="9c8d64311da94af5bdf0a828061aba37" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/clp_coil100_lava_diagram.png" /></p>
+<center><p><img alt="6f70ded995164b06a1636cf2d6970039" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial_clp/clp_coil100_lava_diagram.png" /></p>
 <center><center><figcaption align="center"><p>Figure 1. Lava process diagram of the CLP that is capable of both unsupervised and supervised learning</p>
 </figcaption><center><p>Compared to the introductory CLP tutorial, we are using an upgraded version of the algorithm here. Specifically, this version is concurrently capable of both unsupervised and supervised learning. This is possible thanks to error feedback from the <code class="docutils literal notranslate"><span class="pre">Readout</span></code> process to the <code class="docutils literal notranslate"><span class="pre">Allocator</span></code> process. Basically, when there is a mismatch between the predicted label and the user-provided true label, the <code class="docutils literal notranslate"><span class="pre">Readout</span></code> process generates an error signal, which triggers the allocation of a new prototype
 neuron for this mistaken pattern. As we will see later, this will improve the performance. This error feedback can be turned on or off, and based on this the CLP performs either supervised or unsupervised learning.</p>
