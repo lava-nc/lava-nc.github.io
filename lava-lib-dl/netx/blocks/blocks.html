@@ -755,6 +755,39 @@ spike.</p></li>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.blocks.process.RecurrentDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.blocks.process.</span></span><span class="sig-name descname"><span class="pre">RecurrentDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.blocks.process.RecurrentDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.lib.dl.netx.blocks.process.AbstractBlock" title="lava.lib.dl.netx.blocks.process.AbstractBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractBlock</span></code></a></p>
+<p>RecurrentDense layer block.
+:param shape: shape of the layer block in (x, y, z)/WHC format.
+:type shape: tuple or list
+:param neuron_params: dictionary of neuron parameters. Defaults to None.
+:type neuron_params: dict, optional
+:param weight: synaptic weight.
+:type weight: np.ndarray
+:param weight_rec: recurrent synaptic weight.
+:type weight_rec: np.ndarray
+:param delay: synaptic delay.
+:type delay: np.ndarray
+:param bias: bias of neuron. None means no bias. Defaults to None.
+:type bias: np.ndarray or None
+:param has_graded_input: flag for graded spikes at input. Defaults to False.
+:type has_graded_input: dict
+:param num_weight_bits: number of weight bits. Defaults to 8.
+:type num_weight_bits: int
+:param weight_exponent: weight exponent value. Defaults to 0.
+:type weight_exponent: int
+:param sparse_synapse: connection is sparse
+:type sparse_synapse: bool
+:param input_message_bits: number of message bits in input spike. Defaults to 0 meaning unary</p>
+<blockquote>
+<div><p>spike.</p>
+</div></blockquote>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-lava.lib.dl.netx.blocks.models">
 <span id="models"></span><h2>Models<a class="headerlink" href="#module-lava.lib.dl.netx.blocks.models" title="Permalink to this heading"></a></h2>

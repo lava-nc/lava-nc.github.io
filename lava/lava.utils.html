@@ -737,7 +737,7 @@ size=&quot;&quot;;
 
 <dl class="py function">
 <dt class="sig sig-object py" id="lava.utils.weightutils.clip_weights">
-<span class="sig-prename descclassname"><span class="pre">lava.utils.weightutils.</span></span><span class="sig-name descname"><span class="pre">clip_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign_mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.weightutils.clip_weights" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">lava.utils.weightutils.</span></span><span class="sig-name descname"><span class="pre">clip_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign_mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_simulation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.utils.weightutils.clip_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Truncate the least significant bits of the weight matrix given the
 sign mode and number of weight bits.</p>
 <dl class="field-list simple">
@@ -746,6 +746,8 @@ sign mode and number of weight bits.</p>
 <li><p><strong>weights</strong> (<em>numpy.ndarray</em><em>, </em><em>spmatrix</em>) – Weight matrix that is to be truncated.</p></li>
 <li><p><strong>sign_mode</strong> (<a class="reference internal" href="#lava.utils.weightutils.SignMode" title="lava.utils.weightutils.SignMode"><em>SignMode</em></a>) – Sign mode to use for truncation.</p></li>
 <li><p><strong>num_bits</strong> (<em>int</em>) – Number of bits to use to clip the weights to.</p></li>
+<li><p><strong>learning_simulation</strong> (<em>bool</em><em>, </em><em>optional</em>) – Boolean flag, specifying if this method is used in context of learning
+(in simulation).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

@@ -574,14 +574,14 @@ size=&quot;&quot;;
 }
 <span class="target" id="module-lava.lib.optimization.utils.generators.mis"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.utils.generators.mis.</span></span><span class="sig-name descname"><span class="pre">MISProblem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.optimization.utils.generators.mis.</span></span><span class="sig-name descname"><span class="pre">MISProblem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjacency_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Utility class to instantiate Maximum Independent Set problems and
 convert them to a QUBO formulation.</p>
 <dl class="py property">
-<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.connection_prob">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connection_prob</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.connection_prob" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the connection probability of the graph.</p>
+<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.adjacency_matrix">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adjacency_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.adjacency_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the adjacency matrix of the graph.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -612,8 +612,47 @@ member of the MIS.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.from_random_uniform">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_random_uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.from_random_uniform" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate a new MIS problem, based on a random uniform graph sampled
+with the given paramters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_vertices</strong> (<em>int</em>) – Number of vertices of the random graph.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Density of the random adjacency matrix.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Seed for random graph generation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#lava.lib.optimization.utils.generators.mis.MISProblem" title="lava.lib.optimization.utils.generators.mis.MISProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MISProblem</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.from_watts_strogatz">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_watts_strogatz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_prob</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.from_watts_strogatz" title="Permalink to this definition"></a></dt>
+<dd><p>Instantiate a new MIS problem, based on a random Watts-Strogatz graph
+sampled with the given parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_vertices</strong> (<em>int</em>) – Number of vertices of the random graph.</p></li>
+<li><p><strong>num_neighbors</strong> (<em>int</em>) – Each node is joined with its k nearest neighbors.</p></li>
+<li><p><strong>connection_prob</strong> (<em>float</em>) – Connection probability between different vertices.</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – Seed for random graph generation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#lava.lib.optimization.utils.generators.mis.MISProblem" title="lava.lib.optimization.utils.generators.mis.MISProblem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MISProblem</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.get_as_qubo">
-<span class="sig-name descname"><span class="pre">get_as_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_diag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_off</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.get_as_qubo" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_as_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_diag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_off</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.get_as_qubo" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a QUBO whose solution corresponds to the maximum independent
 set (MIS) of the graph defined by the input adjacency matrix.</p>
 <dl class="field-list simple">
@@ -667,19 +706,8 @@ Q_ij = w_off (for i!=j) .</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.get_graph_matrix">
-<span class="sig-name descname"><span class="pre">get_graph_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.get_graph_matrix" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the adjacency matrix of the graph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.get_qubo_matrix">
-<span class="sig-name descname"><span class="pre">get_qubo_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_diag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_off</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.get_qubo_matrix" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_qubo_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w_diag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w_off</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.get_qubo_matrix" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a QUBO whose solution corresponds to the maximum independent
 set (MIS) of the graph defined by the input adjacency matrix.</p>
 <dl class="field-list simple">
@@ -700,15 +728,15 @@ Q_ij = w_off (for i!=j) .</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.num_vertices">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_vertices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.num_vertices" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the number of vertices in the graph.</p>
+<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.num_edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.num_edges" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of edges in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.seed">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.seed" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the seed used for generating the graph.</p>
+<dt class="sig sig-object py" id="lava.lib.optimization.utils.generators.mis.MISProblem.num_vertices">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_vertices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#lava.lib.optimization.utils.generators.mis.MISProblem.num_vertices" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of vertices in the graph.</p>
 </dd></dl>
 
 </dd></dl>

@@ -634,12 +634,32 @@ size=&quot;&quot;;
   &quot;AbstractProcess&quot; [URL=&quot;../lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;The notion of a Process is inspired by the Communicating Sequential&quot;];
   &quot;Receiver&quot; [URL=&quot;../lava/lava.proc.receiver.html#lava.proc.receiver.process.Receiver&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Process saving input messages as a payload variable.&quot;];
   &quot;AbstractProcess&quot; -&gt; &quot;Receiver&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Receiver32Bit&quot; [URL=&quot;../lava/lava.proc.receiver.html#lava.proc.receiver.process.Receiver32Bit&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Process saving input messages as a payload variable. For up to 32bit&quot;];
+  &quot;AbstractProcess&quot; -&gt; &quot;Receiver32Bit&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
 }
 <span class="target" id="module-lava.proc.receiver.process"></span><dl class="py class">
 <dt class="sig sig-object py" id="lava.proc.receiver.process.Receiver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.receiver.process.</span></span><span class="sig-name descname"><span class="pre">Receiver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.receiver.process.Receiver" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a></p>
 <p>Process saving input messages as a payload variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<em>tuple</em><em>(</em><em>int</em><em>)</em>) – Shape of the population of process units.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the Process. Default is ‘Process_ID’, where ID is an
+integer value that is determined automatically.</p></li>
+<li><p><strong>log_config</strong> (<a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.LogConfig" title="lava.magma.core.process.process.LogConfig"><em>LogConfig</em></a>) – Configuration options for logging.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.receiver.process.Receiver32Bit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.receiver.process.</span></span><span class="sig-name descname"><span class="pre">Receiver32Bit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.receiver.process.Receiver32Bit" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="lava.magma.core.process.html#lava.magma.core.process.process.AbstractProcess" title="lava.magma.core.process.process.AbstractProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractProcess</span></code></a></p>
+<p>Process saving input messages as a payload variable. For up to 32bit
+payload.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
