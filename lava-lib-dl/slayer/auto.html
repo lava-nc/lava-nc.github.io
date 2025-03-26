@@ -563,8 +563,102 @@
     text-align: unset;
 }
 </style>
-<section id="auto">
-<h1>Auto<a class="headerlink" href="#auto" title="Permalink to this heading"></a></h1>
+<section id="module-lava.lib.dl.slayer.auto">
+<span id="auto"></span><h1>Auto<a class="headerlink" href="#module-lava.lib.dl.slayer.auto" title="Permalink to this heading"></a></h1>
+<p>Auto network generation module form network description. We support hdf5
+network description for now. It is intended to load a model and perform
+fine tuning or use it as a pretrained feature extractor.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.auto.</span></span><span class="sig-name descname"><span class="pre">SequentialNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork" title="Permalink to this definition"></a></dt>
+<dd><p>Creates sequential network from hdf5 network description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>network_config</strong> (<em>str</em>) – name of network configuration description.</p></li>
+<li><p><strong>persistent_state</strong> (<em>bool</em>) – flag for persistent state. Defaults to False.</p></li>
+<li><p><strong>reduction</strong> (<em>str</em><em> or </em><em>None</em>) – Reduction of output spike. Options are ‘sum’ or ‘mean’.
+None means no reduction. Defaults to None.</p></li>
+<li><p><strong>weight_norm</strong> (<em>bool</em>) – flag to enable weight norm. Defaults to False.</p></li>
+<li><p><strong>count_log</strong> (<em>bool</em>) – flag to enable count statistics. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>network module.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch module</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.average_block">
+<span class="sig-name descname"><span class="pre">average_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.average_block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.dense_block">
+<span class="sig-name descname"><span class="pre">dense_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.dense_block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.flatten_block">
+<span class="sig-name descname"><span class="pre">flatten_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.flatten_block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spike</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.input_block">
+<span class="sig-name descname"><span class="pre">input_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.input_block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.SequentialNetwork.read_block">
+<span class="sig-name descname"><span class="pre">read_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer_handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.SequentialNetwork.read_block" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.get_classes">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.auto.</span></span><span class="sig-name descname"><span class="pre">get_classes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.get_classes" title="Permalink to this definition"></a></dt>
+<dd><p>Maps slayer class from neuron type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>neuron_type</strong> (<em>string</em>) – neuron type description. None means cuba neuron. Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>neuron class and block class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>neuron_class, block_class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.slayer.auto.get_neuron_params">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.auto.</span></span><span class="sig-name descname"><span class="pre">get_neuron_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neuron_handle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neuron_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.auto.get_neuron_params" title="Permalink to this definition"></a></dt>
+<dd><p>Gets neuron parameters from the hdf5 description handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>neuron_handle</strong> (<em>hdf5 handle</em>) – handle to hdf5 object that describes the neuron.</p></li>
+<li><p><strong>neuron_class</strong> (<em>slayer.neuron.*</em>) – neuron class type</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary of neuron parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

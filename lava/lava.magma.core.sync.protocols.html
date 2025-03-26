@@ -591,12 +591,12 @@ implemented to define the behavior of the underlying <cite>Process</cite>.</p>
 <p>For example:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>   <span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">SimpleProcess</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">AsyncProtocol</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">class</span> <span class="nc">SimpleProcessModel</span><span class="p">(</span><span class="n">PyAsyncProcessModel</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="k">class</span><span class="w"> </span><span class="nc">SimpleProcessModel</span><span class="p">(</span><span class="n">PyAsyncProcessModel</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>       <span class="n">u</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>       <span class="n">v</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>       <span class="k">def</span> <span class="nf">run_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>       <span class="k">def</span><span class="w"> </span><span class="nf">run_async</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>           <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>               <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">+</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span>               <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1000</span>
@@ -650,11 +650,11 @@ executed in the given time step.</p>
 <p>For example:
 To execute the post management phase (‘run_post_mgmt()’), the function
 <cite>post_guard()</cite> must return True.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post_guard</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">run_post_mgmt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># i.e. read out a variable from a neurocore</span>
 </pre></div>
 </div>

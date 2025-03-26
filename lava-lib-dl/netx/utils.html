@@ -565,6 +565,71 @@
 </style>
 <section id="utils">
 <h1>Utils<a class="headerlink" href="#utils" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-lava.lib.dl.netx.utils"></span><p>HDF5 net description manipulation utilities.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.utils.NetDict">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.utils.</span></span><span class="sig-name descname"><span class="pre">NetDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.utils.NetDict" title="Permalink to this definition"></a></dt>
+<dd><p>Provides dictionary like access to h5py object without the h5py quirks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – filename of h5py file to be loaded. It is only invoked if hdf5 file
+handle <code class="docutils literal notranslate"><span class="pre">f</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Default is None.</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – file open mode, by default ‘r’.</p></li>
+<li><p><strong>f</strong> (<em>h5py.File</em><em> or </em><em>h5py.Group</em><em>, </em><em>optional</em>) – hdf5 file object handle. Overwrites the function of filename if it is
+not <code class="docutils literal notranslate"><span class="pre">None</span></code>. Default is None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.utils.SYNAPSE_SIGN_MODE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.utils.</span></span><span class="sig-name descname"><span class="pre">SYNAPSE_SIGN_MODE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.utils.SYNAPSE_SIGN_MODE" title="Permalink to this definition"></a></dt>
+<dd><p>Enum for synapse sign mode. Options are {<code class="docutils literal notranslate"><span class="pre">MIXED</span> <span class="pre">:</span> <span class="pre">1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">EXCITATORY</span> <span class="pre">:</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">INHIBITORY</span> <span class="pre">:</span> <span class="pre">2</span></code>}.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.utils.num_delay_bits">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.utils.</span></span><span class="sig-name descname"><span class="pre">num_delay_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.utils.num_delay_bits" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the number of delay bits required.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delays</strong> (<em>np.ndarray</em>) – delay vector</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>number of delay bits.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="lava.lib.dl.netx.utils.optimize_weight_bits">
+<span class="sig-prename descclassname"><span class="pre">lava.lib.dl.netx.utils.</span></span><span class="sig-name descname"><span class="pre">optimize_weight_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.netx.utils.optimize_weight_bits" title="Permalink to this definition"></a></dt>
+<dd><p>Optimizes the weight matrix to best fit in Loihi’s synapse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>np.ndarray</em>) – standard 8 bit signed weight matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <a class="reference internal" href="#lava.lib.dl.netx.utils.SYNAPSE_SIGN_MODE" title="lava.lib.dl.netx.utils.SYNAPSE_SIGN_MODE"><code class="xref py py-class docutils literal notranslate"><span class="pre">SYNAPSE_SIGN_MODE</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>np.ndarray</em> – optimized weight matrix</p></li>
+<li><p><em>int</em> – weight bits</p></li>
+<li><p><em>int</em> – weight_exponent</p></li>
+<li><p><em>SYNAPSE_SIGN_MODE</em> – synapse sign mode</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

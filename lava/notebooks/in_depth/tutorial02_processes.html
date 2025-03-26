@@ -835,7 +835,7 @@ div.rendered_html tbody tr:hover {
 </li><li><p>ports that share data with other Processes, and</p>
 </li><li><p>an API that facilitates user interaction.</p>
 </li></ol><p>A <em>Process</em> can thus be as simple as a single neuron or a synapse, as complex as a full neural network, and as non-neuromorphic as a streaming interface for a peripheral device or an executed instance of regular program code.</p>
-<p><img alt="55ff23e00bc14d8d9e48cf0b2445f391" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig01_processes.png" style="width: 1000px;" /></p>
+<p><img alt="ea0e5ce26e0a482894da13a67a3f0369" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig01_processes.png" style="width: 1000px;" /></p>
 <p><em>Processes</em> are independent from each other as they primarily operate on their own local memory while they pass messages between each other via channels. Different <em>Processes</em> thus proceed their computations simultaneously and asynchronously, mirroring the high parallelism inherent in neuromorphic hardware. The parallel <em>Processes</em> are furthermore safe against side effects from shared-memory interaction.</p>
 <p>Once a <em>Process</em> has been coded in Python, Lava allows to run it seamlessly across different backends such as a CPU, a GPU, or neuromorphic cores. Developers can thus easily test and benchmark their applications on classical computing hardware and then deploy it to neuromorphic hardware. Furthermore, Lava takes advantage of distributed, heterogeneous hardware such as Loihi as it can run some <em>Processes</em> on neuromorphic cores and in parallel others on embedded conventional CPUs and GPUs.</p>
 <p>While Lava provides a growing <a class="reference external" href="https://github.com/lava-nc/lava/tree/main/src/lava/proc">library of Processes</a>, you can easily write your own processes that suit your needs.</p>
@@ -844,12 +844,12 @@ div.rendered_html tbody tr:hover {
 <h2>How to build a <em>Process</em>?<a class="headerlink" href="#How-to-build-a-Process?" title="Permalink to this heading"></a></h2>
 <section id="Overall-architecture">
 <h3>Overall architecture<a class="headerlink" href="#Overall-architecture" title="Permalink to this heading"></a></h3>
-<p>All <em>Processes</em> in Lava share a universal architecture as they inherit from the same <em>AbstractProcess</em> class. Each <em>Process</em> consists of the following four key components. <img alt="a76d67597ee145cc88590099d7b86474" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig02_architectural_components.png" style="width: 1000px;" /></p>
+<p>All <em>Processes</em> in Lava share a universal architecture as they inherit from the same <em>AbstractProcess</em> class. Each <em>Process</em> consists of the following four key components. <img alt="963f13b8d9444169b1b5ec2fcbf7c111" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig02_architectural_components.png" style="width: 1000px;" /></p>
 </section>
 <section id="AbstractProcess:-Defining-Vars,-Ports,-and-the-API">
 <h3><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API<a class="headerlink" href="#AbstractProcess:-Defining-Vars,-Ports,-and-the-API" title="Permalink to this heading"></a></h3>
 <p>When you create your own new process, you need to inherit from the AbstractProcess class. As an example, we will implement the <em>class LIF</em>, a group of leaky integrate-and-fire (LIF) neurons.</p>
-<p><img alt="79f7d985e2c54816a746ceb24ad7bfc8" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig03_lifs.png" style="width: 780px;" /></p>
+<p><img alt="2aeecdfaf7764f588ac16633a3275a8f" class="no-scaled-link" src="https://raw.githubusercontent.com/lava-nc/lava-nc.github.io/main/_static/images/tutorial02/fig03_lifs.png" style="width: 780px;" /></p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>

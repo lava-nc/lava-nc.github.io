@@ -603,8 +603,8 @@
 <section id="building-a-simple-feed-forward-network">
 <h3>Building a simple feed-forward network<a class="headerlink" href="#building-a-simple-feed-forward-network" title="Permalink to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate Lava processes to build network</span>
-<span class="kn">from</span> <span class="nn">lava.proc.dense.process</span> <span class="kn">import</span> <span class="n">Dense</span>
-<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.proc.dense.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dense</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.proc.lif.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">LIF</span>
 
 <span class="n">lif1</span> <span class="o">=</span> <span class="n">LIF</span><span class="p">()</span>
 <span class="n">dense</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">()</span>
@@ -615,8 +615,8 @@
 <span class="n">dense</span><span class="o">.</span><span class="n">out_ports</span><span class="o">.</span><span class="n">a_out</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lif2</span><span class="o">.</span><span class="n">in_ports</span><span class="o">.</span><span class="n">a_in</span><span class="p">)</span>
 
 <span class="c1"># Execute process lif1 and all processes connected to it for fixed number of steps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_conditions</span> <span class="kn">import</span> <span class="n">RunSteps</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.run_configs</span> <span class="kn">import</span> <span class="n">RunConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.run_conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunSteps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.run_configs</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunConfig</span>
 <span class="n">lif1</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">RunSteps</span><span class="p">(</span><span class="n">num_steps</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">run_cfg</span><span class="o">=</span><span class="n">SimpleRunConfig</span><span class="p">(</span>
          <span class="n">sync_domains</span><span class="o">=</span><span class="p">[]))</span>
 <span class="n">lif1</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -626,12 +626,12 @@
 <section id="creating-a-custom-lava-process">
 <h3>Creating a custom Lava process<a class="headerlink" href="#creating-a-custom-lava-process" title="Permalink to this heading"></a></h3>
 <p>A process has input and output ports to interact with other processes, internal variables may have different behavioral implementations in different programming languages or for different HW platforms.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">lava.magma.core.process.process</span> <span class="kn">import</span> <span class="n">AbstractProcess</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.variable</span> <span class="kn">import</span> <span class="n">Var</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.process.ports.ports</span> <span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.process.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractProcess</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.process.variable</span><span class="w"> </span><span class="kn">import</span> <span class="n">Var</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.process.ports.ports</span><span class="w"> </span><span class="kn">import</span> <span class="n">InPort</span><span class="p">,</span> <span class="n">OutPort</span>
 
 
-<span class="k">class</span> <span class="nc">LIF</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LIF</span><span class="p">(</span><span class="n">AbstractProcess</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Leaky-Integrate-and-Fire neural process with activation input and spike</span>
 <span class="sd">    output ports a_in and s_out.</span>
 
@@ -641,7 +641,7 @@
 <span class="sd">    s_out = v[t] &gt; vth</span>
 <span class="sd">    v[t] = v[t] - s_out*vth</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
        <span class="n">shape</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;shape&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
        <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span> <span class="o">=</span> <span class="n">InPort</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
@@ -658,19 +658,19 @@
 <section id="creating-process-models">
 <h3>Creating process models<a class="headerlink" href="#creating-process-models" title="Permalink to this heading"></a></h3>
 <p>Process models are used to provide different behavioral models of a process. This Python model implements the LIF process, the Loihi synchronization protocol and requires a CPU compute resource to run.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span> <span class="kn">import</span> <span class="n">LoihiProtocol</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.ports</span> <span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.type</span> <span class="kn">import</span> <span class="n">LavaPyType</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.resources</span> <span class="kn">import</span> <span class="n">CPU</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.decorator</span> <span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
-<span class="kn">from</span> <span class="nn">lava.magma.core.model.py.model</span> <span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
-<span class="kn">from</span> <span class="nn">lava.proc.lif.process</span> <span class="kn">import</span> <span class="n">LIF</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.sync.protocols.loihi_protocol</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoihiProtocol</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.model.py.ports</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyInPort</span><span class="p">,</span> <span class="n">PyOutPort</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.model.py.type</span><span class="w"> </span><span class="kn">import</span> <span class="n">LavaPyType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.resources</span><span class="w"> </span><span class="kn">import</span> <span class="n">CPU</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.decorator</span><span class="w"> </span><span class="kn">import</span> <span class="n">implements</span><span class="p">,</span> <span class="n">requires</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.magma.core.model.py.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyLoihiProcessModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lava.proc.lif.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">LIF</span>
 
 
 <span class="nd">@implements</span><span class="p">(</span><span class="n">proc</span><span class="o">=</span><span class="n">LIF</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">LoihiProtocol</span><span class="p">)</span>
 <span class="nd">@requires</span><span class="p">(</span><span class="n">CPU</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">PyLifModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PyLifModel</span><span class="p">(</span><span class="n">PyLoihiProcessModel</span><span class="p">):</span>
     <span class="n">a_in</span><span class="p">:</span> <span class="n">PyInPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyInPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
     <span class="n">s_out</span><span class="p">:</span> <span class="n">PyOutPort</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">PyOutPort</span><span class="o">.</span><span class="n">VEC_DENSE</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">u</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
@@ -680,7 +680,7 @@
     <span class="n">dv</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
     <span class="n">vth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">LavaPyType</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_spk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">12</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">du</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">12</span><span class="p">)</span>
         <span class="n">a_in_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_in</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u</span><span class="p">[:]</span> <span class="o">+=</span> <span class="n">a_in_data</span>

@@ -563,8 +563,89 @@
     text-align: unset;
 }
 </style>
-<section id="ann-statistics-sampler">
-<h1>ANN Statistics Sampler<a class="headerlink" href="#ann-statistics-sampler" title="Permalink to this heading"></a></h1>
+<section id="module-lava.lib.dl.bootstrap.ann_sampler">
+<span id="ann-statistics-sampler"></span><h1>ANN Statistics Sampler<a class="headerlink" href="#module-lava.lib.dl.bootstrap.ann_sampler" title="Permalink to this heading"></a></h1>
+<p>ANN sampler module.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.bootstrap.ann_sampler.</span></span><span class="sig-name descname"><span class="pre">AnnSampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_centers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.1,</span> <span class="pre">0.9]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler" title="Permalink to this definition"></a></dt>
+<dd><p>ANN data point sampler. It samples the weighted spike input rate
+<span class="math">z = \langle z[t]\rangle</span> and
+neurons output spike rate (activation)
+<span class="math">a = \langle s[t]\rangle</span> data points, manages the data points,
+and provides picewise linear ANN activation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_centers</strong> (<em>int</em>) – number of sampling centers. Defaults to 5.</p></li>
+<li><p><strong>sample_range</strong> (<em>list</em>) – min and max range of sampling points. Defaults to [0.1, 0.9].</p></li>
+<li><p><strong>eps</strong> (<em>float</em>) – infinitesimal constant. Defaults to 1e-5.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.append" title="Permalink to this definition"></a></dt>
+<dd><p>Appends new data points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>torch.tensor</em>) – output spike tensor.</p></li>
+<li><p><strong>z</strong> (<em>torch.tensor</em>) – weighted spike tensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clears all data points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Fit piecewise linear model from sampled data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Picewise ANN activation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>z</strong> (<em>torch tensor</em>) – weighted input for ANN.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>equivalent ANN activation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the piecewise ANN activation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>figsize</strong> (<em>tuple</em><em> of </em><em>2</em>) – width and height of figure. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.lib.dl.bootstrap.ann_sampler.AnnSampler.soft_clear">
+<span class="sig-name descname"><span class="pre">soft_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.bootstrap.ann_sampler.AnnSampler.soft_clear" title="Permalink to this definition"></a></dt>
+<dd><p>Randomly clears half of the data points while retaining some of the
+history.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

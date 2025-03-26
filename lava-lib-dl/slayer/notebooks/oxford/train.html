@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spike to Spike Regression: Oxford &mdash; Lava  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Lava
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_architecture_overview.html">Lava Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#key-attributes">Key attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#why-do-we-need-lava">Why do we need Lava?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-s-foundational-concepts">Lava’s foundational concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#processes">1. Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#behavioral-implementations-via-processmodels">2. Behavioral implementations via ProcessModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#composability-and-connectivity">3. Composability and connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava_architecture_overview.html#cross-platform-execution">4. Cross-platform execution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava_architecture_overview.html#lava-software-stack">Lava software stack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started_with_lava.html">Getting Started with Lava</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html">Installing Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#1.-System-Requirements">1. System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.-Getting-Started">2. Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.1-Cloning-Lava-and-Running-from-Source">2.1 Cloning Lava and Running from Source</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#2.2-[Alternative]-Installing-Lava-from-Binaries">2.2 [Alternative] Installing Lava from Binaries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#3.-Running-Lava-on-Intel-Loihi">3. Running Lava on Intel Loihi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#4.-Lava-Developer-Guide">4. Lava Developer Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#5.-Tutorials">5. Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial01_installing_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html">Walk through Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#1.-Usage-of-the-Process-Library">1. Usage of the Process Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Processes">Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Ports-and-connections">Ports and connections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Variables">Variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Record-internal-Vars-over-time">Record internal Vars over time</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execution">Execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Retrieve-recorded-data">Retrieve recorded data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Summary">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Learn-more-about">Learn more about</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#2.-Create-a-custom-Process">2. Create a custom Process</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Create-a-new-ProcessModel">Create a new ProcessModel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Use-the-custom-SpikeGenerator">Use the custom SpikeGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#Execute-and-plot">Execute and plot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id1">Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#id2">Learn more about</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial00_tour_through_lava.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html">Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#What-is-a-Process?">What is a <em>Process</em>?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#How-to-build-a-Process?">How to build a <em>Process</em>?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Overall-architecture">Overall architecture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#AbstractProcess:-Defining-Vars,-Ports,-and-the-API"><em>AbstractProcess</em>: Defining <em>Vars</em>, <em>Ports</em>, and the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#ProcessModel:-Defining-the-behavior-of-a-Process"><em>ProcessModel</em>: Defining the behavior of a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Instantiating-the-Process">Instantiating the <em>Process</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Interacting-with-Processes">Interacting with <em>Processes</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Accessing-Vars">Accessing <em>Vars</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Using-custom-APIs">Using custom APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Executing-a-Process">Executing a <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#Update-Vars">Update <em>Vars</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial02_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html"><em>ProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-LIF-Process">Create a LIF <em>Process</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Create-a-Python-LeafProcessModel-that-implements-the-LIF-Process">Create a Python <em>LeafProcessModel</em> that implements the LIF <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Defining-a-PyLifModel-for-LIF">Defining a <em>PyLifModel</em> for LIF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Compile-and-run-PyLifModel">Compile and run <em>PyLifModel</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#Selecting-1-ProcessModel:-More-on-LeafProcessModel-attributes-and-relations">Selecting 1 <em>ProcessModel</em>: More on <em>LeafProcessModel</em> attributes and relations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial03_process_models.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html">Execution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Configuring-and-starting-execution">Configuring and starting execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Run-conditions">Run conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Run-configurations">Run configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Running-multiple-Processes">Running multiple <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Pausing,-resuming,-and-stopping-execution">Pausing, resuming, and stopping execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#Manual-compilation-and-execution">Manual compilation and execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial04_execution.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html">Connect processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Building-a-network-of-Processes">Building a network of <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Create-a-connection">Create a connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Possible-connections">Possible connections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#There-are-some-things-to-consider-though:">There are some things to consider though:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connect-multiple-InPorts-from-a-single-OutPort">Connect multiple <em>InPorts</em> from a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#Connecting-multiple-InPorts-to-a-single-OutPort">Connecting multiple <em>InPorts</em> to a single <em>OutPort</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial05_connect_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html">Hierarchical <em>Processes</em> and <em>SubProcessModels</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-LIF-and-Dense-Processes-and-ProcessModels">Create LIF and Dense <em>Processes</em> and <em>ProcessModels</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Dense-connection-Process">Create a Dense connection <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-Dense-connection-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Dense connection <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-LIF-neuron-Process">Create a LIF neuron <em>Process</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-Python-LIF-neuron-ProcessModel-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python LIF neuron <em>ProcessModel</em> implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-DenseLayer-Hierarchical-Process-that-encompasses-Dense-and-LIF-Process-behavior">Create a DenseLayer Hierarchical <em>Process</em> that encompasses Dense and LIF <em>Process</em> behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Create-a-SubProcessModel-that-implements-the-DenseLayer-Process-using-Dense-and-LIF-child-Processes">Create a <em>SubProcessModel</em> that implements the DenseLayer <em>Process</em> using Dense and LIF child <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-the-DenseLayer-Process">Run the DenseLayer <em>Process</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#Run-Connected-DenseLayer-Processes">Run Connected DenseLayer <em>Processes</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial06_hierarchical_processes.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html">Remote Memory Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Recommended-tutorials-before-starting:">Recommended tutorials before starting:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-minimal-Process-and-ProcessModel-with-a-RefPort">Create a minimal <em>Process</em> and <em>ProcessModel</em> with a <em>RefPort</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Create-a-Python-Process-Model-implementing-the-Loihi-Sync-Protocol-and-requiring-a-CPU-compute-resource">Create a Python Process Model implementing the Loihi Sync Protocol and requiring a CPU compute resource</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Run-the-Processes">Run the <em>Processes</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Implicit-and-explicit-VarPorts">Implicit and explicit VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#Options-to-connect-RefPorts-and-VarPorts">Options to connect RefPorts and VarPorts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial07_remote_memory_access.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html">MNIST Digit Classification with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#This-tutorial-gives-a-bird’s-eye-view-of">This tutorial gives a bird’s-eye view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Our-MNIST-Classifier">Our MNIST Classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#General-Imports">General Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Lava-Processes">Lava Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Connecting-Processes">Connecting Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Execution-and-results">Execution and results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial01_mnist_digit_classification.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html">Excitatory-Inhibitory Neural Network with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#This-tutorial-gives-a-high-level-view-of">This tutorial gives a high level view of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network">E/I Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#General-imports">General imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#E/I-Network-Lava-Process">E/I Network Lava Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#ProcessModels-for-Python-execution">ProcessModels for Python execution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Rate-neurons">Rate neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Defining-the-parameters-for-the-network">Defining the parameters for the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-and-Results">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Visualizing-the-activity">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Further-analysis">Further analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Controlling-the-network">Controlling the network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#LIF-Neurons">LIF Neurons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id7">Execution and Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id8">Visualizing the activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#id9">Controlling the network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#DIfferent-recurrent-activation-regimes">DIfferent recurrent activation regimes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Running-a-ProcessModel-bit-accurate-with-Loihi">Running a ProcessModel bit-accurate with Loihi</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Execution-of-bit-accurate-model">Execution of bit accurate model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/end_to_end/tutorial02_excitatory_inhibitory_network.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html">Spike-timing Dependent Plasticity (STDP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#STDP-from-Lavas-Process-Library">STDP from Lavas Process Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial08_stdp.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html">Custom Learning Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#2.-Loihi’s-learning-engine">2. Loihi’s learning engine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Epoch-based-updates">Epoch-based updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Synaptic-variables">Synaptic variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Learning-rules">Learning rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Scaling-factors">Scaling factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Factors">Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Traces">Traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Example:-Basic-pair-based-STDP">Example: Basic pair-based STDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Instantiating-LearningRule">Instantiating LearningRule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#The-plastic-connection-Process">The plastic connection Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-spike-trains">Plot spike trains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-traces">Plot traces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Plot-STDP-learning-window-and-weight-changes">Plot STDP learning window and weight changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/tutorial09_custom_learning_rules.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html">Three Factor Learning with Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#This-tutorial-assumes-that-you:">This tutorial assumes that you:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-three-factor-learning-rule-interfaces-in-Lava">Defining three-factor learning rule interfaces in Lava</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Reward-modulated-Spike-Timing-Dependent-Plasticity-(R-STDP)-learning-rule">Reward-modulated Spike-Timing Dependent Plasticity (R-STDP) learning rule</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Defining-a-simple-learning-network-with-localized-reward-signals">Defining a simple learning network with localized reward signals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-network-parameters-and-weights">Initialize network parameters and weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Generate-binary-input-and-graded-reward-spikes">Generate binary input and graded reward spikes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Initialize-Network-Processes">Initialize Network Processes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Connect-Network-Processes">Connect Network Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Create-monitors-to-observe-the-weight-and-trace-dynamics-during-learning">Create monitors to observe the weight and trace dynamics during learning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Run-the-network">Run the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Visualize-the-learning-results">Visualize the learning results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-eligibility-trace-dynamics">Plot eligibility trace dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Plot-reward-trace-dynamics">Plot reward trace dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Advanced-Topic:-Implementing-custom-learning-rule-interfaces">Advanced Topic: Implementing custom learning rule interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#How-to-learn-more?">How to learn more?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/notebooks/in_depth/three_factor_learning/tutorial01_Reward_Modulated_STDP.html#Follow-the-links-below-for-deep-dive-tutorials-on-the-concepts-in-this-tutorial:">Follow the links below for deep-dive tutorials on the concepts in this tutorial:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../algorithms.html">Algorithms and Application Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dl.html">Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#lava-dl-workflow">Lava-DL Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#slayer-2-0">SLAYER 2.0</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#bootstrap">Bootstrap</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-1">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#network-exchange-netx-library">Network Exchange (NetX) Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../dl.html#example-code-2">Example Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dl.html#detailed-description">Detailed Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../slayer.html">Lava-DL SLAYER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/bootstrap.html">Lava-DL Bootstrap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/netx.html">Lava-DL NetX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../dnf.html">Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#what-is-lava-dnf">What is lava-dnf?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../dnf.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../optimization.html">Neuromorphic Constrained Optimization Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#about-the-project">About the Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#taxonomy-of-optimization-problems">Taxonomy of Optimization Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#optimizationsolver-and-optimizationproblem-classes">OptimizationSolver and OptimizationProblem Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#tutorials">Tutorials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#quadratic-programming">Quadratic Programming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#quadratic-uncosntrained-binary-optimization">Quadratic Uncosntrained Binary Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qp-problems">Solving QP problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#solving-qubo">Solving QUBO</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../optimization.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../optimization.html#alternative-installing-lava-via-conda">[Alternative] Installing Lava via Conda</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#lava-s-origins">Lava’s Origins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contact-information">Contact Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#development-roadmap">Development Roadmap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#initial-release">Initial Release</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#how-to-contribute-to-lava">How to contribute to Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-an-issue">Open an Issue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#pull-request-checklist">Pull Request Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#open-a-pull-request">Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#coding-conventions">Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#code-requirements">Code Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#docstring-format">Docstring Format</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#contributors">Contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#contributor">Contributor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#committer">Committer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-project-committers">List of lava-nc/lava Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dnf-project-committers">List of lava-nc/lava-dnf Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-optimization-project-committers">List of lava-nc/lava-optimization Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#list-of-lava-nc-lava-dl-project-committers">List of lava-nc/lava-dl Project Committers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../developer_guide.html#committer-promotion">Committer Promotion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#repository-structure">Repository Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#id17">lava-nc/lava</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dnf">lava-nc/lava-dnf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-dl">lava-nc/lava-dl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-optimization">lava-nc/lava-optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../developer_guide.html#lava-nc-lava-docs">lava-nc/lava-docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../developer_guide.html#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lava_api_documentation.html">Lava API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava/lava.html">Lava</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.magma.html">Magma</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.magma.compiler.html">lava.magma.compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.magma.core.html">lava.magma.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.magma.runtime.html">lava.magma.runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.proc.html">Lava process library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.conv.html">lava.proc.conv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.dense.html">lava.proc.dense</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.io.html">lava.proc.io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.learning_rules.html">lava.proc.learning_rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.lif.html">lava.proc.lif</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.monitor.html">lava.proc.monitor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.receiver.html">lava.proc.receiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.sdn.html">lava.proc.sdn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.proc.spiker.html">lava.proc.spiker</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava/lava.utils.html">Lava Utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.dataloader.html">lava.utils.dataloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-float2fixed">lava.utils.float2fixed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-profiler">lava.utils.profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-system">lava.utils.system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-validator">lava.utils.validator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-visualizer">lava.utils.visualizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava/lava.utils.html#lava-utils-weightutils">lava.utils.weightutils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../index.html">Lava - Deep Learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html">SLAYER</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../neuron/modules.html">Neuron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../synapse/modules.html">Synapse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../spike/modules.html">Spike</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../axon/modules.html">Axon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../dendrite/modules.html">Dendrite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../loss.html">Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../classifier.html">Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../io.html">Input/Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../auto.html">Auto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../utils/modules.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bootstrap/index.html">Bootstrap (ANN-SNN training)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/block/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/ann_sampler.html">ANN Statistics Sampler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../bootstrap/routine.html">Routine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../bootstrap/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html">Lava-DL NetX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/blocks/modules.html">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/hdf5.html">HDF5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../netx/utils.html">Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../netx/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.html">Lava - Dynamic Neural Fields</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.connect.html">lava.lib.dnf.connect</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.connect.html#lava-lib-dnf-connect-connect">lava.lib.dnf.connect.connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.connect.html#lava-lib-dnf-connect-exceptions">lava.lib.dnf.connect.exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.kernels.html">lava.lib.dnf.kernels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.kernels.html#lava-lib-dnf-kernels-kernels">lava.lib.dnf.kernels.kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.operations.html">lava.lib.dnf.operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-enums">lava.lib.dnf.operations.enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-exceptions">lava.lib.dnf.operations.exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-operations">lava.lib.dnf.operations.operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.operations.html#lava-lib-dnf-operations-shape-handlers">lava.lib.dnf.operations.shape_handlers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.inputs.html">lava.lib.dnf.inputs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.inputs.gauss_pattern.html">lava.lib.dnf.inputs.gauss_pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.inputs.rate_code_spike_gen.html">lava.lib.dnf.inputs.rate_code_spike_gen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.utils.html">lava.lib.dnf.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-convenience">lava.lib.dnf.utils.convenience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-math">lava.lib.dnf.utils.math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-plotting">lava.lib.dnf.utils.plotting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-dnf/lava.lib.dnf.utils.html#lava-lib-dnf-utils-validation">lava.lib.dnf.utils.validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.html">Lava - Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html">lava.lib.optimization.problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.bayesian.html">lava.lib.optimization.problems.bayesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-coefficients">lava.lib.optimization.problems.coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-constraints">lava.lib.optimization.problems.constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-cost">lava.lib.optimization.problems.cost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-problems">lava.lib.optimization.problems.problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.problems.html#lava-lib-optimization-problems-variables">lava.lib.optimization.problems.variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.solvers.html">lava.lib.optimization.solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.solvers.bayesian.html">lava.lib.optimization.solvers.bayesian</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.solvers.generic.html">lava.lib.optimization.solvers.generic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.solvers.qp.html">lava.lib.optimization.solvers.qp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.utils.html">lava.lib.optimization.utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.utils.generators.html">lava.lib.optimization.utils.generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../lava-lib-optimization/lava.lib.optimization.utils.html#lava-lib-optimization-utils-solver-tuner">lava.lib.optimization.utils.solver_tuner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Lava</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Spike to Spike Regression: Oxford</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/lava-lib-dl/slayer/notebooks/oxford/train.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars and line breaks on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+    white-space: pre;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Spike-to-Spike-Regression:-Oxford">
+<h1>Spike to Spike Regression: Oxford<a class="headerlink" href="#Spike-to-Spike-Regression:-Oxford" title="Permalink to this heading"></a></h1>
+<p>This tutorial demonstrates <em>spike to spike regression</em> training using <strong>``lava.lib.dl.slayer``</strong>.</p>
+<p>The task is to learn to transform a random Poisson spike train to produce output spike pattern that resembles <em>The Radcliffe Camera</em> building of Oxford University, England. The input and output both consist of 200 neurons each and the spikes span approximately 1900ms. The input and output pair are converted from <a class="reference external" href="https://github.com/fzenke/pub2018superspike">SuperSpike</a> (© GPL-3).</p>
+<table><tr><td align="center"><p>Input</p>
+</td><td align="center"><p>Target</p>
+</td></tr><tr><td><p><img alt="Drawing" src="../../../../_images/input.gif" /></p>
+</td><td><p><img alt="Drawing" src="../../../../_images/target.gif" /></p>
+</td></tr></table><div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
+import h5py
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+# import slayer from lava-dl
+import lava.lib.dl.slayer as slayer
+
+import IPython.display as display
+from matplotlib import animation
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Create-Dataset">
+<h1>Create Dataset<a class="headerlink" href="#Create-Dataset" title="Permalink to this heading"></a></h1>
+<p>Create a simple PyTorch dataset class. The dataset class follows standard torch dataset definition.</p>
+<p>It shows usage of <strong>``slayer.io``</strong> module. The module provides a way to</p>
+<ul class="simple">
+<li><p>easily represent events including graded spikes</p></li>
+<li><p>read/write events in different known binary and numpy formats</p></li>
+<li><p>transform event to tensor for processing it using slayer network and convert a spike tensor back to event</p></li>
+<li><p>display/animate the tensor for visualization</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class OxfordDataset(Dataset):
+    def __init__(self):
+        super(OxfordDataset, self).__init__()
+        self.input  = slayer.io.read_1d_spikes(&#39;input.bs1&#39; )
+        self.target = slayer.io.read_1d_spikes(&#39;output.bs1&#39;)
+        self.target.t = self.target.t.astype(int)
+
+    def __getitem__(self, _):
+        return (
+            self.input.fill_tensor(torch.zeros(1, 1, 200, 2000)).squeeze(),  # input
+            self.target.fill_tensor(torch.zeros(1, 1, 200, 2000)).squeeze(), # target
+        )
+
+    def __len__(self):
+        return 1 # just one sample for this problem
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Create-Network">
+<h1>Create Network<a class="headerlink" href="#Create-Network" title="Permalink to this heading"></a></h1>
+<p>A slayer network definition follows standard PyTorch way using <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>.</p>
+<p>The network can be described with a combination of individual <code class="docutils literal notranslate"><span class="pre">synapse</span></code>, <code class="docutils literal notranslate"><span class="pre">dendrite</span></code>, <code class="docutils literal notranslate"><span class="pre">neuron</span></code> and <code class="docutils literal notranslate"><span class="pre">axon</span></code> components. For rapid and easy development, slayer provides <strong>block interface</strong> - <code class="docutils literal notranslate"><span class="pre">slayer.block</span></code> - which bundles all these individual components into a single unit. These blocks can be cascaded to build a network easily. The block interface provides additional utilities for normalization (weight and neuron), dropout, gradient monitoring and network export.</p>
+<p>In the example below, <code class="docutils literal notranslate"><span class="pre">slayer.block.cuba</span></code> is illustrated.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Network(torch.nn.Module):
+    def __init__(self):
+        super(Network, self).__init__()
+
+        neuron_params = {
+                &#39;threshold&#39;     : 0.1,
+                &#39;current_decay&#39; : 1,
+                &#39;voltage_decay&#39; : 0.1,
+                &#39;requires_grad&#39; : True,
+            }
+
+        self.blocks = torch.nn.ModuleList([
+                slayer.block.cuba.Dense(neuron_params, 200, 256),
+                slayer.block.cuba.Dense(neuron_params, 256, 200),
+            ])
+
+    def forward(self, spike):
+        for block in self.blocks:
+            spike = block(spike)
+        return spike
+
+    def export_hdf5(self, filename):
+        # network export to hdf5 format
+        h = h5py.File(filename, &#39;w&#39;)
+        layer = h.create_group(&#39;layer&#39;)
+        for i, b in enumerate(self.blocks):
+            b.export_hdf5(layer.create_group(f&#39;{i}&#39;))
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Instantiate-Network,-Optimizer,-DataSet-and-DataLoader">
+<h1>Instantiate Network, Optimizer, DataSet and DataLoader<a class="headerlink" href="#Instantiate-Network,-Optimizer,-DataSet-and-DataLoader" title="Permalink to this heading"></a></h1>
+<p>Running the network in GPU is as simple as selecting <code class="docutils literal notranslate"><span class="pre">torch.device('cuda')</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trained_folder = &#39;Trained&#39;
+os.makedirs(trained_folder, exist_ok=True)
+
+# device = torch.device(&#39;cpu&#39;)
+device = torch.device(&#39;cuda&#39;)
+
+net = Network().to(device)
+
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001, weight_decay=1e-5)
+
+training_set = OxfordDataset()
+train_loader = DataLoader(dataset=training_set, batch_size=1)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Visualize-the-input-and-output-spike-train">
+<h1>Visualize the input and output spike train<a class="headerlink" href="#Visualize-the-input-and-output-spike-train" title="Permalink to this heading"></a></h1>
+<p>A <code class="docutils literal notranslate"><span class="pre">slayer.io.Event</span></code> can be visualized by invoking it’s <code class="docutils literal notranslate"><span class="pre">Event.show()</span></code> routine. <code class="docutils literal notranslate"><span class="pre">Event.anim()</span></code> instead returns the event visualization animation which can be embedded in notebook or exported as video/gif. Here, we will export gif animation and visualize it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>input_anim  = training_set.input.anim(plt.figure(figsize=(10, 10)))
+target_anim = training_set.target.anim(plt.figure(figsize=(10, 10)))
+
+## This produces interactive animation
+# display.HTML(input_anim.to_jshtml())
+# display.HTML(target_anim.to_jshtml())
+
+## Saving and loading gif for better animation in github
+input_anim.save(&#39;input.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+target_anim.save(&#39;target.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gif_td = lambda gif: f&#39;&lt;td&gt; &lt;img src=&quot;{gif}&quot; alt=&quot;Drawing&quot; style=&quot;height: 400px;&quot;/&gt; &lt;/td&gt;&#39;
+html = &#39;&lt;table&gt;&lt;tr&gt;&#39;
+html += &#39;&lt;td&gt; Input &lt;/td&gt;&lt;td&gt; Target &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&#39;
+html += gif_td(f&#39;input.gif&#39;)
+html += gif_td(f&#39;target.gif&#39;)
+html += &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
+display.HTML(html)
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table><tr><td> Input </td><td> Target </td></tr><tr><td> <img src="input.gif" alt="Drawing" style="height: 400px;"/> </td><td> <img src="target.gif" alt="Drawing" style="height: 400px;"/> </td></tr></table></div>
+</div>
+</section>
+<section id="Error-module">
+<h1>Error module<a class="headerlink" href="#Error-module" title="Permalink to this heading"></a></h1>
+<p>Slayer provides prebuilt loss modules: <code class="docutils literal notranslate"><span class="pre">slayer.loss.{SpikeTime,</span> <span class="pre">SpikeRate,</span> <span class="pre">SpikeMax}</span></code>. * <code class="docutils literal notranslate"><span class="pre">SpikeTime</span></code>: precise spike time based loss when target spike train is known. * <code class="docutils literal notranslate"><span class="pre">SpikeRate</span></code>: spike rate based loss when desired rate of the output neuron is known. * <code class="docutils literal notranslate"><span class="pre">SpikeMax</span></code>: negative log likelihood losses for classification without any rate tuning.</p>
+<p>Since the target spike train <span class="math">\hat{\boldsymbol s}(t)</span> is known for this problem, we use <code class="docutils literal notranslate"><span class="pre">SpikeTime</span></code> loss here. It uses <em>van Rossum</em> like spike train distance metric. The actual and target spike trains are filtered using a FIR filter and the norm of the timeseries is the loss metric.</p>
+<div class="math">
+<p><span class="math">L = \frac{1}{2T} \int_T \left(h_\text{FIR} * ({\boldsymbol s} - \hat{\boldsymbol s})\right)(t)^\top{\bf 1}\,\text dt</span></p>
+</div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time_constant</span></code>: time constant of the FIR filter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter_order</span></code>: the order of FIR filter. Exponential decay is first order filter.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>error = slayer.loss.SpikeTime(time_constant=2, filter_order=2).to(device)
+
+# the followng portion just illustrates the SpikeTime loss calculation.
+# IT IS NOT NEEDED IN PRACTICE
+input, target = training_set[0]
+output = net(input.unsqueeze(dim=0).to(device))[0]
+# just considering first neuron for illustration
+output_trace = error.filter(output[0].to(device)).flatten().cpu().data.numpy()
+target_trace = error.filter(target[0].to(device)).flatten().cpu().data.numpy()
+fig, ax = plt.subplots(2, 1, figsize=(15, 3), sharex=True)
+ax[0].plot(output_trace, label=&#39;output trace&#39;)
+ax[0].plot(target_trace, label=&#39;target trace&#39;)
+ax[1].plot(output_trace - target_trace, label=&#39;error trace&#39;)
+ax[0].set_ylabel(&#39;trace&#39;)
+ax[1].set_ylabel(&#39;trace&#39;)
+ax[1].set_xlabel(&#39;time [ms]&#39;)
+for a in ax: a.legend()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_12_0.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_12_0.png" />
+</div>
+</div>
+</section>
+<section id="Stats-and-Assistants">
+<h1>Stats and Assistants<a class="headerlink" href="#Stats-and-Assistants" title="Permalink to this heading"></a></h1>
+<p>Slayer provides <code class="docutils literal notranslate"><span class="pre">slayer.utils.LearningStats</span></code> as a simple learning statistics logger for training, validation and testing.</p>
+<p>In addtion, <code class="docutils literal notranslate"><span class="pre">slayer.utils.Assistant</span></code> module wraps common training validation and testing routine which help simplify the training routine.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stats = slayer.utils.LearningStats()
+assistant = slayer.utils.Assistant(net, error, optimizer, stats)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Training-Loop">
+<h1>Training Loop<a class="headerlink" href="#Training-Loop" title="Permalink to this heading"></a></h1>
+<p>Training loop mainly consists of looping over epochs and calling <code class="docutils literal notranslate"><span class="pre">assistant.train</span></code> utility to train.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stats</span></code> can be used in print statement to get formatted stats printout.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stats.training.best_loss</span></code> can be used to find out if the current iteration has the best loss. Here, we use it to save the best model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stats.update()</span></code> updates the stats collected for the epoch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stats.save</span></code> saves the stats in files.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>epochs = 5000
+
+for epoch in range(epochs):
+    for i, (input, target) in enumerate(train_loader): # training loop
+        output = assistant.train(input, target)
+        print(f&#39;\r[Epoch {epoch:3d}/{epochs}] {stats}&#39;, end=&#39;&#39;)
+
+    if stats.training.best_loss:
+        torch.save(net.state_dict(), trained_folder + &#39;/network.pt&#39;)
+    stats.update()
+    stats.save(trained_folder + &#39;/&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[Epoch 4999/5000] Train loss = 46478.09375 (min = 44918.71875))
+</pre></div></div>
+</div>
+</section>
+<section id="Plot-the-learning-curves">
+<h1>Plot the learning curves<a class="headerlink" href="#Plot-the-learning-curves" title="Permalink to this heading"></a></h1>
+<p>Plotting the learning curves is as easy as calling <code class="docutils literal notranslate"><span class="pre">stats.plot()</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>stats.plot(figsize=(15, 5))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_18_0.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_18_0.png" />
+</div>
+</div>
+</section>
+<section id="Export-the-best-model">
+<h1>Export the best model<a class="headerlink" href="#Export-the-best-model" title="Permalink to this heading"></a></h1>
+<p>Load the best model during training and export it as hdf5 network. It is supported by <code class="docutils literal notranslate"><span class="pre">lava.lib.dl.netx</span></code> to automatically load the network as a lava process.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>net.load_state_dict(torch.load(trained_folder + &#39;/network.pt&#39;))
+net.export_hdf5(trained_folder + &#39;/network.net&#39;)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Visualize-the-network-output">
+<h1>Visualize the network output<a class="headerlink" href="#Visualize-the-network-output" title="Permalink to this heading"></a></h1>
+<p>Here, we will use <code class="docutils literal notranslate"><span class="pre">slayer.io.tensor_to_event</span></code> method to convert the torch output spike tensor into <code class="docutils literal notranslate"><span class="pre">slayer.io.Event</span></code> object and visualize the input and output event.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>output = net(input.to(device))
+event = slayer.io.tensor_to_event(output.cpu().data.numpy())
+output_anim = event.anim(plt.figure(figsize=(10, 10)))
+# display.HTML(output_anim.to_jshtml())
+output_anim.save(&#39;output.gif&#39;, animation.PillowWriter(fps=24), dpi=300)
+
+html = &#39;&lt;table&gt;&lt;tr&gt;&#39;
+html += &#39;&lt;td&gt;Output&lt;/td&gt;&lt;td&gt;Target&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&#39;
+html += gif_td(f&#39;output.gif&#39;)
+html += gif_td(f&#39;target.gif&#39;)
+html += &#39;&lt;/tr&gt;&lt;/table&gt;&#39;
+display.HTML(html)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table><tr><td>Output</td><td>Target</td></tr><tr><td> <img src="output.gif" alt="Drawing" style="height: 400px;"/> </td><td> <img src="target.gif" alt="Drawing" style="height: 400px;"/> </td></tr></table></div>
+</div>
+</section>
+<section id="Compare-Output-vs-Target">
+<h1>Compare Output vs Target<a class="headerlink" href="#Compare-Output-vs-Target" title="Permalink to this heading"></a></h1>
+<p>Event data can be accessed as <code class="docutils literal notranslate"><span class="pre">slayer.io.Event.{x,</span> <span class="pre">y,</span> <span class="pre">c,</span> <span class="pre">t,</span> <span class="pre">p}</span></code> for x-address, y-address, channel-address, timestamp and graded-payload. This can be used for further processing and visualization of event data.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(7, 7))
+plt.plot(training_set.target.t, training_set.target.x, &#39;.&#39;, markersize=12, label=&#39;target&#39;)
+plt.plot(event.t, event.x, &#39;.&#39;, label=&#39;actual&#39;)
+plt.xlabel(&#39;time [ms]&#39;)
+plt.ylabel(&#39;neuron&#39;)
+plt.legend()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x7f78ce257430&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_24_1.png" src="../../../../_images/lava-lib-dl_slayer_notebooks_oxford_train_24_1.png" />
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

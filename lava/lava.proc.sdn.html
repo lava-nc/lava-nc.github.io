@@ -592,6 +592,8 @@ size=&quot;&quot;;
   &quot;AbstractPyProcessModel&quot; -&gt; &quot;PyLoihiProcessModel&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PySigmaDeltaModelFixed&quot; [URL=&quot;../lava/lava.proc.sdn.html#lava.proc.sdn.models.PySigmaDeltaModelFixed&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Fixed point implementation of Sigma Delta neuron.&quot;];
   &quot;AbstractSigmaDeltaModel&quot; -&gt; &quot;PySigmaDeltaModelFixed&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;PySigmaDeltaModelFixedCorrected&quot; [URL=&quot;../lava/lava.proc.sdn.html#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Fixed point implementation of Sigma Delta neuron.&quot;];
+  &quot;AbstractSigmaDeltaModel&quot; -&gt; &quot;PySigmaDeltaModelFixedCorrected&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PySigmaDeltaModelFloat&quot; [URL=&quot;../lava/lava.proc.sdn.html#lava.proc.sdn.models.PySigmaDeltaModelFloat&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Floating point implementation of Sigma Delta neuron.&quot;];
   &quot;AbstractSigmaDeltaModel&quot; -&gt; &quot;PySigmaDeltaModelFloat&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
   &quot;PySigmaModelFixed&quot; [URL=&quot;../lava/lava.proc.sdn.html#lava.proc.sdn.models.PySigmaModelFixed&quot;,fillcolor=white,fontname=&quot;Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans&quot;,fontsize=10,height=0.25,shape=box,style=&quot;setlinewidth(0.5),filled&quot;,target=&quot;_top&quot;,tooltip=&quot;Fixed point implementation of Sigma decoding&quot;];
@@ -1079,6 +1081,101 @@ supported.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixed.vth">
 <span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixed.vth" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.proc.sdn.models.</span></span><span class="sig-name descname"><span class="pre">PySigmaDeltaModelFixedCorrected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#lava.proc.sdn.models.AbstractSigmaDeltaModel" title="lava.proc.sdn.models.AbstractSigmaDeltaModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractSigmaDeltaModel</span></code></a></p>
+<p>Fixed point implementation of Sigma Delta neuron.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.a_in">
+<span class="sig-name descname"><span class="pre">a_in</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyInPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.a_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.act">
+<span class="sig-name descname"><span class="pre">act</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.act" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=16)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.bias" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.cum_error">
+<span class="sig-name descname"><span class="pre">cum_error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'bool'&gt;,</span> <span class="pre">precision=1)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.cum_error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.error">
+<span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.error" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.implements_process">
+<span class="sig-name descname"><span class="pre">implements_process</span></span><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.implements_process" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#lava.proc.sdn.process.SigmaDelta" title="lava.proc.sdn.process.SigmaDelta"><code class="xref py py-class docutils literal notranslate"><span class="pre">SigmaDelta</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.implements_protocol">
+<span class="sig-name descname"><span class="pre">implements_protocol</span></span><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.implements_protocol" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="lava.magma.core.sync.protocols.html#lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol" title="lava.magma.core.sync.protocols.loihi_protocol.LoihiProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoihiProtocol</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.required_resources">
+<span class="sig-name descname"><span class="pre">required_resources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[ty.Type[AbstractResource]]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'lava.magma.core.resources.CPU'&gt;]</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.required_resources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.residue">
+<span class="sig-name descname"><span class="pre">residue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.residue" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.run_spk">
+<span class="sig-name descname"><span class="pre">run_spk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.run_spk" title="Permalink to this definition"></a></dt>
+<dd><p>Function that runs in Spiking Phase</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.s_out">
+<span class="sig-name descname"><span class="pre">s_out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'lava.magma.core.model.py.ports.PyOutPortVectorDense'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.s_out" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.sigma">
+<span class="sig-name descname"><span class="pre">sigma</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.sigma" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.spike_exp">
+<span class="sig-name descname"><span class="pre">spike_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.spike_exp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.state_exp">
+<span class="sig-name descname"><span class="pre">state_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=3)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.state_exp" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.tags">
+<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ty.List[str]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['fixed_pt']</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.tags" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.vth">
+<span class="sig-name descname"><span class="pre">vth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">LavaPyType(cls=&lt;class</span> <span class="pre">'numpy.ndarray'&gt;,</span> <span class="pre">d_type=&lt;class</span> <span class="pre">'numpy.int32'&gt;,</span> <span class="pre">precision=24)</span></em><a class="headerlink" href="#lava.proc.sdn.models.PySigmaDeltaModelFixedCorrected.vth" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
