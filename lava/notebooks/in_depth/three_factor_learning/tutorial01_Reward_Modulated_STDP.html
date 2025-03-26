@@ -873,10 +873,8 @@ R_STDP = RewardModulatedSTDP(learning_rate=1,
 populations to affect the dynamics of the R-STDP eligibility trace.</p>
 <p>The network’s post-synaptic population also receives localized, graded reward spikes. The post-synaptic neurons transform the graded reward spikes to localized reward traces, which act as targeted modulators to specific plastic synapses within the LearningDense process. This tutorials now includes a RSTDPLIF Process, used for post-synaptic neurons that can each compute up to two custom reward traces or “third factor” modulators.</p>
 <p>The diagram below explains the structure of the spiking network used to demonstrate the learnable weights modified with the R-STDP learning rule.</p>
-<p><img alt="R_STDP_structure" src="https://raw.githubusercontent.com/lava-nc/lava-docs/three_factor_learning/_static/images/tutorial_learning/r_stdp__tutorial_structure.svg" /></p>
-<p>The simple spiking network shown above translates to a connected Lava process architecture as shown below.</p>
-<p><img alt="R_STDP_architecture" src="https://raw.githubusercontent.com/lava-nc/lava-docs/three_factor_learning/_static/images/tutorial_learning/r_stdp_tutorial_architecture.svg" /></p>
-<p><em>NOTE : Though the RSTDPLIF Process can currently only be executed on CPU backend, it is modeled from Loihi 2’s ability to compute custom post-traces in microcoded neuron instructions. Lava support for on-chip execution will be available soon!</em></p>
+<img alt="R_STDP_structure" src="https://raw.githubusercontent.com/lava-nc/lava-docs/three_factor_learning/_static/images/tutorial_learning/r_stdp__tutorial_structure.svg" /><p>The simple spiking network shown above translates to a connected Lava process architecture as shown below.</p>
+<img alt="R_STDP_architecture" src="https://raw.githubusercontent.com/lava-nc/lava-docs/three_factor_learning/_static/images/tutorial_learning/r_stdp_tutorial_architecture.svg" /><p><em>NOTE : Though the RSTDPLIF Process can currently only be executed on CPU backend, it is modeled from Loihi 2’s ability to compute custom post-traces in microcoded neuron instructions. Lava support for on-chip execution will be available soon!</em></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>

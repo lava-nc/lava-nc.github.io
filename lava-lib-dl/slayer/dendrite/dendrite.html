@@ -566,114 +566,11 @@
 </style>
 <section id="dendrite-module">
 <h1>Dendrite Module<a class="headerlink" href="#dendrite-module" title="Permalink to this heading"></a></h1>
-<section id="module-lava.lib.dl.slayer.dendrite.sigma">
-<span id="sigma-decoder"></span><h2>Sigma Decoder<a class="headerlink" href="#module-lava.lib.dl.slayer.dendrite.sigma" title="Permalink to this heading"></a></h2>
-<p>Sigma Decoder implementation.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.dendrite.sigma.</span></span><span class="sig-name descname"><span class="pre">Sigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>Sigma decoder implementation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>persistent_state</strong> (<em>bool</em>) – flag to enable persistent state. Defaults to False.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma.persistent_state">
-<span class="sig-name descname"><span class="pre">persistent_state</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma.persistent_state" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma.shape">
-<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma.shape" title="Permalink to this definition"></a></dt>
-<dd><p>shape of the sigma unit. It is initialized on first run. The value is
-None before initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch shape</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma.pre_state">
-<span class="sig-name descname"><span class="pre">pre_state</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma.pre_state" title="Permalink to this definition"></a></dt>
-<dd><p>previous state of sigma unit.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma.device_params">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma.device_params" title="Permalink to this definition"></a></dt>
-<dd><p>Dictionary of device parameters.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.sigma.Sigma.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.sigma.Sigma.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="sigma-decoder">
+<h2>Sigma Decoder<a class="headerlink" href="#sigma-decoder" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-lava.lib.dl.slayer.dendrite">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-lava.lib.dl.slayer.dendrite" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lava.lib.dl.slayer.dendrite.</span></span><span class="sig-name descname"><span class="pre">Sigma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">persistent_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>Sigma decoder implementation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>persistent_state</strong> (<em>bool</em>) – flag to enable persistent state. Defaults to False.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma.persistent_state">
-<span class="sig-name descname"><span class="pre">persistent_state</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma.persistent_state" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma.shape">
-<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma.shape" title="Permalink to this definition"></a></dt>
-<dd><p>shape of the sigma unit. It is initialized on first run. The value is
-None before initialization.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch shape</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma.pre_state">
-<span class="sig-name descname"><span class="pre">pre_state</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma.pre_state" title="Permalink to this definition"></a></dt>
-<dd><p>previous state of sigma unit.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma.device_params">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_params</span></span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma.device_params" title="Permalink to this definition"></a></dt>
-<dd><p>Dictionary of device parameters.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="lava.lib.dl.slayer.dendrite.Sigma.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lava.lib.dl.slayer.dendrite.Sigma.forward" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
